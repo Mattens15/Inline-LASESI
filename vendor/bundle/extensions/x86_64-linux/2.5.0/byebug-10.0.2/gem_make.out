@@ -1,0 +1,19 @@
+current directory: /home/mattens/Scrivania/Inline-LASSESI/Inline/vendor/bundle/gems/byebug-10.0.2/ext/byebug
+/usr/bin/ruby -r ./siteconf20180508-29211-c0h329.rb extconf.rb
+creating Makefile
+
+current directory: /home/mattens/Scrivania/Inline-LASSESI/Inline/vendor/bundle/gems/byebug-10.0.2/ext/byebug
+make "DESTDIR=" clean
+
+current directory: /home/mattens/Scrivania/Inline-LASSESI/Inline/vendor/bundle/gems/byebug-10.0.2/ext/byebug
+make "DESTDIR="
+compiling breakpoint.c
+compiling byebug.c
+compiling context.c
+compiling locker.c
+compiling threads.c
+linking shared-object byebug/byebug.so
+
+current directory: /home/mattens/Scrivania/Inline-LASSESI/Inline/vendor/bundle/gems/byebug-10.0.2/ext/byebug
+make "DESTDIR=" install
+/usr/bin/install -c -m 0755 byebug.so ./.gem.20180508-29211-1yuibo/byebug

@@ -1,0 +1,17 @@
+current directory: /home/mattens/Scrivania/Inline-LASSESI/Inline/vendor/bundle/gems/bootsnap-1.3.0/ext/bootsnap
+/usr/bin/ruby -r ./siteconf20180508-29211-1tja3h5.rb extconf.rb
+creating Makefile
+
+current directory: /home/mattens/Scrivania/Inline-LASSESI/Inline/vendor/bundle/gems/bootsnap-1.3.0/ext/bootsnap
+make "DESTDIR=" clean
+
+current directory: /home/mattens/Scrivania/Inline-LASSESI/Inline/vendor/bundle/gems/bootsnap-1.3.0/ext/bootsnap
+make "DESTDIR="
+compiling bootsnap.c
+linking shared-object bootsnap/bootsnap.so
+bootsnap.o: nella funzione "bs_rb_fetch":
+bootsnap.c:(.text+0x6d9): attenzione: the use of `mktemp' is dangerous, better use `mkstemp' or `mkdtemp'
+
+current directory: /home/mattens/Scrivania/Inline-LASSESI/Inline/vendor/bundle/gems/bootsnap-1.3.0/ext/bootsnap
+make "DESTDIR=" install
+/usr/bin/install -c -m 0755 bootsnap.so ./.gem.20180508-29211-1fex5yw/bootsnap
