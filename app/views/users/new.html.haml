@@ -1,0 +1,27 @@
+-provide(:title, "Signing up")
+
+.container
+	%h3 Join us
+	= form_for(@user) do |f|
+		= render 'shared/error_messages'
+		
+		.form-group
+			= f.label 'Email'
+			= f.text_field :email, {:class => 'form-control'}
+		
+		.form-group
+			= f.label 'Nickname'
+			= f.text_field :nick, {:class => 'form-control'}
+		
+		.form-group
+			= f.label 'Password'
+			= f.password_field :password, {:class => 'form-control'}
+		
+		.form-group
+			= f.label 'Password confirm'
+			= f.password_field :password_confirmation, {:class => 'form-control'}
+		%br
+		.form-group
+			= f.submit "Signup", class: "btn btn-primary"
+
+	
