@@ -1,0 +1,46 @@
+= form_for @room do |f|
+  - if @room.errors.any?
+    #error_explanation
+      %h2= "#{pluralize(@room.errors.count, "error")} prohibited this room from being saved:"
+      %ul
+        - @room.errors.full_messages.each do |message|
+          %li= message
+
+  .field
+    = f.label :name
+    = f.text_field :name
+  .field
+    = f.label :description
+    = f.text_field :description
+  .field
+    = f.label :max_partecipans
+    = f.number_field :max_partecipans
+  .field
+    = f.label :latitude
+    = f.text_field :latitude
+  .field
+    = f.label :longitude
+    = f.text_field :longitude
+  .field
+    = f.label :notes
+    = f.text_field :notes
+  .field
+    = f.label :time_from
+    = f.datetime_select :time_from
+  .field
+    = f.label :time_to
+    = f.datetime_select :time_to
+  .field
+    = f.label :avatar_file
+    = f.text_field :avatar_file
+  .field
+    = f.label :avatar_size
+    = f.text_field :avatar_size
+  .field
+    = f.label :avatar_updated_at
+    = f.text_field :avatar_updated_at
+  .field
+    = f.label :datetime
+    = f.text_field :datetime
+  .actions
+    = f.submit 'Save'

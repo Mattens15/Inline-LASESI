@@ -10,7 +10,40 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2018_05_19_010033) do
+ActiveRecord::Schema.define(version: 2018_05_21_135820) do
+
+  create_table "has_powers", force: :cascade do |t|
+    t.integer "user_id"
+    t.integer "room_id"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+  end
+
+  create_table "prenotaziones", force: :cascade do |t|
+    t.integer "user_id"
+    t.integer "room_id"
+    t.datetime "time_from"
+    t.datetime "time_to"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+  end
+
+  create_table "rooms", force: :cascade do |t|
+    t.string "name"
+    t.string "description"
+    t.integer "max_partecipans"
+    t.float "latitude"
+    t.float "longitude"
+    t.string "notes"
+    t.datetime "time_from"
+    t.datetime "time_to"
+    t.string "avatar_file"
+    t.float "avatar_size"
+    t.string "avatar_updated_at"
+    t.string "datetime"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+  end
 
   create_table "users", force: :cascade do |t|
     t.string "nick"
