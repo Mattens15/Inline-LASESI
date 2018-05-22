@@ -1,7 +1,12 @@
-.container.text-center
-  %h3 Mappa sotto sviluppo
-.container#map{style: "width: 800px; height: 800px;"}
-.container#data-load{:hidden => ""}
+
+
+.sidebar.pad2
+  .heading
+    %h3 Room vicine
+  .listings#listings
+.map.pad2#map
+
+
 	
 :javascript
   render_map();

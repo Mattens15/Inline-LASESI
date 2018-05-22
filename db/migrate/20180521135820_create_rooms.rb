@@ -3,10 +3,12 @@ class CreateRooms < ActiveRecord::Migration[5.2]
     create_table :rooms do |t|
       t.string :name
       t.string :description
+      t.string :notes
       t.integer :max_partecipans
+      t.string :address
       t.float :latitude
       t.float :longitude
-      t.string :notes
+      t.integer :created_by
       t.datetime :time_from
       t.datetime :time_to
       t.string :avatar_file
