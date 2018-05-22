@@ -92,11 +92,13 @@ function render_map(){
           
           map.addLayer({
             "id": 'locations',
-            "type": "circle",
+            "type": "symbol",
             "source": 'places',
-            "paint":{
-              "circle-radius": 7,
-              "circle-color": "#007cbf"
+            "layout": {
+              "icon-image": "marker-15",
+              "text-field": "{title}",
+              "text-offset": [0, 0.6],
+              "text-anchor": "top"
             }
           });
                 
@@ -340,10 +342,17 @@ function render_map(){
           
           var header = document.getElementById('num_rooms');
           var suffix;
-          if(count == 1) suffix = ' stanza';
-          else suffix = ' stanze';
+          var prefix;
+          if(count == 1){
+            suffix = ' stanza';
+            prefix = 'E\' stata trovata ';
+          }
+          else {
+            suffix = ' stanze';
+            prefix = 'Sono state trovate ';
+          }
           
-          header.innerHTML = 'Sono state trovate '+count+suffix+' nel raggio di '+document.getElementById('radius').value+' km.';
+          header.innerHTML = prefix+count+suffix+' nel raggio di '+document.getElementById('radius').value+' km.';
         }
         
       });
