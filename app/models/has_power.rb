@@ -1,0 +1,2 @@
+class HasPower < ApplicationRecord
+end

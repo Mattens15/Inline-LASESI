@@ -1,0 +1,23 @@
+%h1 Listing has_powers
+
+%table
+  %thead
+    %tr
+      %th User
+      %th Room
+      %th
+      %th
+      %th
+
+  %tbody
+    - @has_powers.each do |has_power|
+      %tr
+        %td= has_power.user_id
+        %td= has_power.room_id
+        %td= link_to 'Show', has_power
+        %td= link_to 'Edit', edit_has_power_path(has_power)
+        %td= link_to 'Destroy', has_power, method: :delete, data: { confirm: 'Are you sure?' }
+
+%br
+
+= link_to 'New Has power', new_has_power_path

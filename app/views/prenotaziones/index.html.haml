@@ -1,0 +1,27 @@
+%h1 Listing prenotaziones
+
+%table
+  %thead
+    %tr
+      %th User
+      %th Room
+      %th Time from
+      %th Time to
+      %th
+      %th
+      %th
+
+  %tbody
+    - @prenotaziones.each do |prenotazione|
+      %tr
+        %td= prenotazione.user_id
+        %td= prenotazione.room_id
+        %td= prenotazione.time_from
+        %td= prenotazione.time_to
+        %td= link_to 'Show', prenotazione
+        %td= link_to 'Edit', edit_prenotazione_path(prenotazione)
+        %td= link_to 'Destroy', prenotazione, method: :delete, data: { confirm: 'Are you sure?' }
+
+%br
+
+= link_to 'New Prenotazione', new_prenotazione_path

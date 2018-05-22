@@ -1,0 +1,42 @@
+%p#notice= notice
+
+%p
+  %b Name:
+  = @room.name
+%p
+  %b Description:
+  = @room.description
+%p
+  %b Max partecipans:
+  = @room.max_partecipans
+%p
+  %b Latitude:
+  = @room.latitude
+%p
+  %b Longitude:
+  = @room.longitude
+%p
+  %b Notes:
+  = @room.notes
+%p
+  %b Time from:
+  = @room.time_from
+%p
+  %b Time to:
+  = @room.time_to
+%p
+  %b Avatar file:
+  = @room.avatar_file
+%p
+  %b Avatar size:
+  = @room.avatar_size
+%p
+  %b Avatar updated at:
+  = @room.avatar_updated_at
+%p
+  %b Datetime:
+  = @room.datetime
+
+= link_to 'Edit', edit_room_path(@room)
+\|
+= link_to 'Back', rooms_path

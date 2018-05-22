@@ -1,0 +1,2 @@
+module MapboxHelper
+end
