@@ -19,45 +19,33 @@
 //= require turbolinks
 //= require_tree .
 
-// This will let you use the .remove() function later on
-if (!('remove' in Element.prototype)) {
-  Element.prototype.remove = function() {
-    if (this.parentNode) {
-      this.parentNode.removeChild(this);
-    }
-  };
-}
+
 
 
 function render_map(){
 	var xmlhttp = new XMLHttpRequest();
 	xmlhttp.onreadystatechange = function() {
     if (this.readyState == 4 && this.status == 200) {
+      var toremove = document.getElementById('listings');
+      while(toremove != null && toremove.hasChildNodes()){
+        toremove.removeChild(toremove.childNodes[0]);
+      }
+      
   		var rooms_json = JSON.parse(this.responseText);
       mapboxgl.accessToken = 'pk.eyJ1IjoibGV0c2ZlZCIsImEiOiJjamhkamxmYXcwNTBvMzBva3VyOG50NjFtIn0.EuqkJJgJMWazgpxc6YJp4A';
       var map = new mapboxgl.Map({
         container: 'map',
-        style: 'mapbox://styles/mapbox/streets-v9',
+        style: 'mapbox://styles/mapbox/streets-v8',
         center: [12.48197078704834,41.893460648167355],
-        zoom: 15
+        zoom: 15,
+        attributionControl: false
       });
       
-      map.addControl(new MapboxGeocoder({
-        accessToken: mapboxgl.accessToken
-      }));
-      
-      map.addControl(new mapboxgl.NavigationControl());
-      map.addControl(new mapboxgl.GeolocateControl({
-        positionOptions: {
-            enableHighAccuracy: true
-        },
-        trackUserLocation: true
-      }));
-      
+      map.addControl(new mapboxgl.AttributionControl(), 'top-left');
       map.on('click', 'symbols', function (e) {
         map.flyTo({center: e.features[0].geometry.coordinates});
       });
-      
+
       var array_obj = []
       for(var i = 0; i < rooms_json.length; i++){
         var coord = [rooms_json[i].longitude, rooms_json[i].latitude];
@@ -70,6 +58,7 @@ function render_map(){
             }, 
           "properties": 
             {
+              "id": rooms_json[i].id,
               "title": rooms_json[i].name,
               "address": rooms_json[i].address,
               "owner": rooms_json[i].user_id,
@@ -83,128 +72,293 @@ function render_map(){
         "features": array_obj
       }
       
-      function createPopUp(currentFeature) {
-        var popUps = document.getElementsByClassName('mapboxgl-popup');
-        // Check if there is already a popup on the map and if so, remove it
-        if (popUps[0]) popUps[0].remove();
-        
-        var popup = new mapboxgl.Popup({ closeOnClick: true })
-          .setLngLat(currentFeature.geometry.coordinates)
-          .setHTML('<h3>'+currentFeature.properties.title+'</h3>' +
-            '<h4>' + currentFeature.properties.address + '</h4>'+ 
-            '<p>'+currentFeature.properties.description+'</p>')
-          .addTo(map);
-      }
-
-      function buildLocationList(data) {
-      // Iterate through the list of stores
-        for (i = 0; i < data.features.length; i++) {
-          var currentFeature = data.features[i];
-          // Shorten data.feature.properties to just `prop` so we're not
-          // writing this long form over and over again.
-          var prop = currentFeature.properties;
-          // Select the listing container in the HTML and append a div
-          // with the class 'item' for each store
-          var listings = document.getElementById('listings');
-          var listing = listings.appendChild(document.createElement('div'));
-          listing.className = 'item';
-          listing.id = 'listing-' + i;
-      
-          // Create a new link with the class 'title' for each store
-          // and fill it with the store address
-          var link = listing.appendChild(document.createElement('h4'))
-          link.className = 'title';
-          link.dataPosition = i;
-          link.innerHTML = prop.title;
-      
-          // Create a new div with the class 'details' for each store
-          // and fill it with the city and phone number
-          var details = listing.appendChild(document.createElement('div'));
-          details.innerHTML = "Address: "+prop.address;
-          if (prop.phone) {
-            details.innerHTML += ' &middot; ' + prop.phoneFormatted;
-          }
-          // Add an event listener for the links in the sidebar listing
-            
-          link.addEventListener('click', function(e) {
-            // Update the currentFeature to the store associated with the clicked link
-            var clickedListing = data.features[this.dataPosition];
-            // 1. Fly to the point associated with the clicked link
-            flyToStore(clickedListing);
-            // 2. Close all other popups and display popup for clicked store
-            createPopUp(clickedListing);
-            // 3. Highlight listing in sidebar (and remove highlight for all other listings)
-            var activeItem = document.getElementsByClassName('active');
-            if (activeItem[0]) {
-              activeItem[0].classList.remove('active');
-            }
-            this.parentNode.classList.add('active');
+      // This adds the data to the map
+      map.on('load', function (e) {
+        // This is where your '.addLayer()' used to be, instead add only the source without styling a layer
+          map.addSource("places", {
+            "type": "geojson",
+            "data": stores
           });
-        }
-      }
-      
-      function flyToStore(currentFeature) {
-        map.flyTo({
-          center: currentFeature.geometry.coordinates,
-          zoom: 15
-        });
-      }
-      
-      map.on('load', function () {
-        map.loadImage("https://i.imgur.com/MK4NUzI.png", function(error, image) {
-          if (error) throw error;
-          map.addImage("custom-marker", image);
+          
+          buildLocationList(stores);
+          
+          map.addSource('single-point', {
+            'type': 'geojson',
+            'data': {
+              'type': 'FeatureCollection',
+              'features': []
+            }
+          });
+          
           map.addLayer({
             "id": 'locations',
             "type": "symbol",
-            "source": {
-                "type": "geojson",
-                "data": stores
-            },
+            "source": 'places',
             "layout": {
-                "icon-image": "custom-marker",
-                "icon-allow-overlap": true,
-                "icon-size": 0.5,
-                "text-field": "{title}",
-                "text-font": ["Open Sans Semibold", "Arial Unicode MS Bold"],
-                "text-offset": [0, 0.5],
-                "text-anchor": "top"
+              "icon-image": "marker-15",
+              "text-field": "{title}",
+              "text-offset": [0, 0.6],
+              "text-anchor": "top"
             }
           });
-          buildLocationList(stores);
+                
+          geocoder = new MapboxGeocoder({
+              accessToken: mapboxgl.accessToken
+          });
           
-        });
-      });
-      
-      map.on('click', function(e) {
-      // Query all the rendered points in the view
-        var features = map.queryRenderedFeatures(e.point, { layers: ['locations'] });
-        if (features.length) {
-          var clickedPoint = features[0];
-          // 1. Fly to the point
-          flyToStore(clickedPoint);
-          // 2. Close all other popups and display popup for clicked store
-          createPopUp(clickedPoint);
-          // 3. Highlight listing in sidebar (and remove highlight for all other listings)
-          var activeItem = document.getElementsByClassName('active');
-          if (activeItem[0]) {
-            activeItem[0].classList.remove('active');
-          }
-          // Find the index of the store.features that corresponds to the clickedPoint that fired the event listener
-          var selectedFeature = clickedPoint.properties.address;
-      
-          for (var i = 0; i < stores.features.length; i++) {
-            if (stores.features[i].properties.address === selectedFeature) {
-              selectedFeatureIndex = i;
+          geolocate = new mapboxgl.GeolocateControl({
+            positionOptions: {
+              enableHighAccuracy: true
+            },
+            trackUserLocation: true
+          });
+          
+          document.getElementById('geocoder').appendChild(geocoder.onAdd(map));
+          document.getElementById('geolocate').appendChild(geolocate.onAdd(map));
+          
+          geolocate.on('geolocate', function(ev){
+            console.log(ev);
+            var searchResult = ev.coords;
+            map.getSource('single-point').setData(searchResult);
+            
+            var options = {units: 'kilometers'};
+            stores.features.forEach(function(store){
+              var actual_coord = [searchResult.longitude, searchResult.latitude];
+              console.log(actual_coord);
+              Object.defineProperty(store.properties, 'distance', {      
+                value: turf.distance(actual_coord, store.geometry, options),
+                writable: true,
+                enumerable: true,
+                configurable: true
+              });
+              console.log('Distanza: '+store.properties.distance+'\nActual_coord: '+actual_coord);
+            });
+            
+            stores.features.sort(function(a,b){
+              if (a.properties.distance > b.properties.distance) {
+                return 1;
+              }
+              if (a.properties.distance < b.properties.distance) {
+                return -1;
+              }
+              // a must be equal to b
+              return 0;
+            });
+            
+            var listings = document.getElementById('listings');
+            while (listings.firstChild) {
+              listings.removeChild(listings.firstChild);
             }
-          }
-          // Select the correct list item using the found index and add the active class
-          var listing = document.getElementById('listing-' + selectedFeatureIndex);
-          listing.classList.add('active');
+      
+            buildLocationList(stores);
+      
+            function sortLonLat(storeIdentifier) {
+              var result_lats = searchResult.latitude;
+              var result_lons = searchResult.longitude;
+              var lats = [stores.features[storeIdentifier].geometry.coordinates[1], result_lats]
+              var lons = [stores.features[storeIdentifier].geometry.coordinates[0], result_lons]
+      
+              var sortedLons = lons.sort(function(a,b){
+                  if (a > b) { return 1; }
+                  if (a.distance < b.distance) { return -1; }
+                  return 0;
+                });
+              var sortedLats = lats.sort(function(a,b){
+                  if (a > b) { return 1; }
+                  if (a.distance < b.distance) { return -1; }
+                  return 0;
+                });
+
+            };
+      
+            sortLonLat(0);
+          });
+          
+          geocoder.on('result', function(ev) {
+            console.log(ev);
+            map.getSource('single-point').setData();
+            var searchResult = ev.result.geometry;
+            map.getSource('single-point').setData(searchResult);
+            
+            var options = {units: 'kilometers'};
+            stores.features.forEach(function(store){
+              Object.defineProperty(store.properties, 'distance', {
+                value: turf.distance(searchResult, store.geometry, options),
+                writable: true,
+                enumerable: true,
+                configurable: true
+              });
+              console.log('Distanza obj: '+store.properties.distance);
+            });
+      
+            stores.features.sort(function(a,b){
+              if (a.properties.distance > b.properties.distance) {
+                return 1;
+              }
+              if (a.properties.distance < b.properties.distance) {
+                return -1;
+              }
+              // a must be equal to b
+              return 0;
+            });
+      
+            var listings = document.getElementById('listings');
+            while (listings.firstChild) {
+              listings.removeChild(listings.firstChild);
+            }
+      
+            buildLocationList(stores);
+      
+            function sortLonLat(storeIdentifier) {
+              var lats = [stores.features[storeIdentifier].geometry.coordinates[1], searchResult.coordinates[1]]
+              var lons = [stores.features[storeIdentifier].geometry.coordinates[0], searchResult.coordinates[0]]
+      
+              var sortedLons = lons.sort(function(a,b){
+                  if (a > b) { return 1; }
+                  if (a.distance < b.distance) { return -1; }
+                  return 0;
+                });
+              var sortedLats = lats.sort(function(a,b){
+                  if (a > b) { return 1; }
+                  if (a.distance < b.distance) { return -1; }
+                  return 0;
+                });
+            };
+      
+            sortLonLat(0);
+      
+          });
+      
+        // This is where your interactions with the symbol layer used to be
+        // Now you have interactions with DOM markers instead
+        stores.features.forEach(function(marker, i) {
+          // Create an img element for the marker
+          var el = document.createElement('div');
+          el.id = "marker-" + i;
+          el.className = 'marker';
+          // Add markers to the map at all points
+          new mapboxgl.Marker(el, {offset: [0, -23]})
+              .setLngLat(marker.geometry.coordinates)
+              .addTo(map);
+      
+          el.addEventListener('click', function(e){
+              // 1. Fly to the point
+              flyToStore(marker);
+
+              // 3. Highlight listing in sidebar (and remove highlight for all other listings)
+              var activeItem = document.getElementsByClassName('active');
+      
+              e.stopPropagation();
+              if (activeItem[0]) {
+                 activeItem[0].classList.remove('active');
+              }
+      
+              var listing = document.getElementById('listing-' + i);
+              listing.classList.add('active');
+      
+          });
+        });
+      
+        function flyToStore(currentFeature) {
+          map.flyTo({
+              center: currentFeature.geometry.coordinates,
+              zoom: 16
+            });
         }
+      
+      
+        function buildLocationList(data) {
+          var j = 0;
+          var count = 0;
+          for (i = 0; i < data.features.length; i++) {
+            if(i != 0 && i % 4 == 0){
+              j++;
+            }
+            var currentFeature = data.features[i];
+            var prop = currentFeature.properties;
+
+            if(!prop.distance || prop.distance > document.getElementById('radius').value) continue;
+            count++;
+            console.log('i: '+i+'\nj: '+j);
+            var listings = document.getElementById('listings');
+            var card_deck;
+            
+            if(!listings.hasChildNodes()){
+              var child = listings.appendChild(document.createElement('div'));
+              child.className = 'card-deck';
+              child.id = 'deck-'+i;
+            }
+            
+            card_deck = listings.children[j];
+              
+            var card = card_deck.appendChild(document.createElement('div'));
+            card.className = 'card';
+            
+            var card_body = card.appendChild(document.createElement('div'));
+            card_body.className = 'card-body';
+            
+            var link = card_body.appendChild(document.createElement('h4'));
+            link.className = 'card-title';
+            link.dataPosition = i;
+            link.innerHTML = prop.title;
+      
+            var details = card_body.appendChild(document.createElement('p'));
+            details.className = 'card-text';
+            details.innerHTML = prop.address;
+            if (prop.description){
+              details.innerHTML += '<br><small>'+prop.description+'</small>';
+            }
+            if (prop.phone) {
+              details.innerHTML += ' &middot; ' + prop.phoneFormatted;
+            }
+            
+            if (prop.distance) {
+              var roundedDistance = Math.round(prop.distance*100)/100;
+              details.innerHTML += '<p><strong>' + roundedDistance + ' kilometers away</strong></p>';
+            }
+      
+            var link_to= card_body.appendChild(document.createElement('a'));
+            link_to.href = '/rooms/'+prop.id;
+            link_to.className = 'card-link';
+            link_to.innerHTML = 'Visita la room';
+            
+            link.addEventListener('click', function(e){
+              // Update the currentFeature to the store associated with the clicked link
+              var clickedListing = data.features[this.dataPosition];
+      
+              // 1. Fly to the point
+              flyToStore(clickedListing);
+              
+              // 3. Highlight listing in sidebar (and remove highlight for all other listings)
+              var activeItem = document.getElementsByClassName('active');
+      
+              if (activeItem[0]) {
+                 activeItem[0].classList.remove('active');
+              }
+              this.parentNode.classList.add('active');
+          
+            });
+          }
+          
+          var header = document.getElementById('num_rooms');
+          var suffix;
+          var prefix;
+          if(count == 1){
+            suffix = ' stanza';
+            prefix = 'E\' stata trovata ';
+          }
+          else {
+            suffix = ' stanze';
+            prefix = 'Sono state trovate ';
+          }
+          
+          header.innerHTML = prefix+count+suffix+' nel raggio di '+document.getElementById('radius').value+' km.';
+        }
+        
       });
+   
     }
   };
   xmlhttp.open("GET", '/rooms.json', true);
-	xmlhttp.send();
+  xmlhttp.send(); 
 }
