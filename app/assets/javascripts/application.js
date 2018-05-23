@@ -19,9 +19,68 @@
 //= require turbolinks
 //= require_tree .
 
-
-
-
+/*
+function render_map_for_room(){
+  var map = new mapboxgl.Map({
+    container: 'map',
+    style: 'mapbox://styles/mapbox/streets-v8',
+    center: [12.48197078704834,41.893460648167355],
+    zoom: 15,
+    attributionControl: false
+  });
+  var stores = {
+    "type": "FeatureCollection",
+    "features": []
+  }
+  
+  map.on('load', function(e) {
+    map.addSource('single-point', {
+      'type': 'geojson'
+      'data': stoes
+    });
+  });
+  
+  map.addLayer({
+    "id": 'locations',
+    "type": "cirlce",
+    "source": 'single-point',
+    "layout": {
+      "icon-image": "marker-15",
+      "text-field": "{title}",
+      "text-offset": [0, 0.6],
+      "text-anchor": "top"
+    }
+  });
+  
+  geocoder = new MapboxGeocoder({
+    accessToken: mapboxgl.accessToken
+  });
+  
+  geolocate = new mapboxgl.GeolocateControl({
+    positionOptions: {
+      enableHighAccuracy: true
+    },
+    trackUserLocation: true
+  });
+  
+  document.getElementById('geocoder').appendChild(geocoder.onAdd(map));
+  document.getElementById('geolocate').appendChild(geolocate.onAdd(map));
+  
+  geolocate.on('geolocate', function(ev){
+    console.log(ev);
+    var searchResult = ev.coords;
+    map.getSource('single-point').setData(searchResult);
+    
+    var lats_html = document.getElementById('lats_input');
+    var lons_html = document.getElementById('lons_input');
+    var addr_html = document.getElementById('addr_input');
+  });
+  
+  geodecoder.on('result', function(ev){
+    console.log(ev);
+  });
+}
+*/
 function render_map(){
 	var xmlhttp = new XMLHttpRequest();
 	xmlhttp.onreadystatechange = function() {
@@ -72,9 +131,8 @@ function render_map(){
         "features": array_obj
       }
       
-      // This adds the data to the map
       map.on('load', function (e) {
-        // This is where your '.addLayer()' used to be, instead add only the source without styling a layer
+          
           map.addSource("places", {
             "type": "geojson",
             "data": stores
@@ -101,7 +159,7 @@ function render_map(){
               "text-anchor": "top"
             }
           });
-                
+          
           geocoder = new MapboxGeocoder({
               accessToken: mapboxgl.accessToken
           });
@@ -115,25 +173,23 @@ function render_map(){
           
           document.getElementById('geocoder').appendChild(geocoder.onAdd(map));
           document.getElementById('geolocate').appendChild(geolocate.onAdd(map));
-          
+         
           geolocate.on('geolocate', function(ev){
-            console.log(ev);
             var searchResult = ev.coords;
             map.getSource('single-point').setData(searchResult);
             
             var options = {units: 'kilometers'};
             stores.features.forEach(function(store){
               var actual_coord = [searchResult.longitude, searchResult.latitude];
-              console.log(actual_coord);
               Object.defineProperty(store.properties, 'distance', {      
                 value: turf.distance(actual_coord, store.geometry, options),
                 writable: true,
                 enumerable: true,
                 configurable: true
               });
-              console.log('Distanza: '+store.properties.distance+'\nActual_coord: '+actual_coord);
             });
             
+            drawCircle([searchResult.longitude, searchResult.latitude], document.getElementById('radius').value)
             stores.features.sort(function(a,b){
               if (a.properties.distance > b.properties.distance) {
                 return 1;
@@ -175,11 +231,8 @@ function render_map(){
           });
           
           geocoder.on('result', function(ev) {
-            console.log(ev);
-            map.getSource('single-point').setData();
             var searchResult = ev.result.geometry;
             map.getSource('single-point').setData(searchResult);
-            
             var options = {units: 'kilometers'};
             stores.features.forEach(function(store){
               Object.defineProperty(store.properties, 'distance', {
@@ -188,9 +241,8 @@ function render_map(){
                 enumerable: true,
                 configurable: true
               });
-              console.log('Distanza obj: '+store.properties.distance);
             });
-      
+          
             stores.features.sort(function(a,b){
               if (a.properties.distance > b.properties.distance) {
                 return 1;
@@ -201,14 +253,15 @@ function render_map(){
               // a must be equal to b
               return 0;
             });
-      
+            
+            drawCircle(searchResult.coordinates, document.getElementById('radius').value);
             var listings = document.getElementById('listings');
             while (listings.firstChild) {
               listings.removeChild(listings.firstChild);
             }
       
             buildLocationList(stores);
-      
+            
             function sortLonLat(storeIdentifier) {
               var lats = [stores.features[storeIdentifier].geometry.coordinates[1], searchResult.coordinates[1]]
               var lons = [stores.features[storeIdentifier].geometry.coordinates[0], searchResult.coordinates[0]]
@@ -224,13 +277,14 @@ function render_map(){
                   return 0;
                 });
             };
-      
+            
             sortLonLat(0);
       
           });
       
         // This is where your interactions with the symbol layer used to be
         // Now you have interactions with DOM markers instead
+
         stores.features.forEach(function(marker, i) {
           // Create an img element for the marker
           var el = document.createElement('div');
@@ -240,7 +294,6 @@ function render_map(){
           new mapboxgl.Marker(el, {offset: [0, -23]})
               .setLngLat(marker.geometry.coordinates)
               .addTo(map);
-      
           el.addEventListener('click', function(e){
               // 1. Fly to the point
               flyToStore(marker);
@@ -258,14 +311,38 @@ function render_map(){
       
           });
         });
-      
+        
         function flyToStore(currentFeature) {
           map.flyTo({
               center: currentFeature.geometry.coordinates,
               zoom: 16
             });
         }
-      
+        
+        function drawCircle(data, r){
+          if(map.getLayer('circle')) map.removeLayer('circle');
+          if(map.getSource('circle-point')) map.removeSource('circle-point');
+          
+          var radius = r;
+          var options = {steps: 64, units: 'kilometers'};
+          var circle = turf.circle(data, radius, options);
+          map.addSource('circle-point',{
+            'type': 'geojson',
+            'data': circle
+          });
+          
+          map.addLayer({
+            "id": 'circle',
+            "type": 'fill',
+            "source": 'circle-point',
+            "layout": {  
+            },
+            "paint":{
+              'fill-color': '#33ccff',
+              'fill-opacity': 0.2
+            }
+          });
+        }
       
         function buildLocationList(data) {
           var j = 0;
@@ -277,9 +354,8 @@ function render_map(){
             var currentFeature = data.features[i];
             var prop = currentFeature.properties;
 
-            if(!prop.distance || prop.distance > document.getElementById('radius').value) continue;
+            if(prop.distance < 0 || prop.distance > document.getElementById('radius').value) continue;
             count++;
-            console.log('i: '+i+'\nj: '+j);
             var listings = document.getElementById('listings');
             var card_deck;
             
@@ -356,7 +432,7 @@ function render_map(){
         }
         
       });
-   
+      
     }
   };
   xmlhttp.open("GET", '/rooms.json', true);
