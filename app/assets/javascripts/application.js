@@ -19,7 +19,7 @@
 //= require turbolinks
 //= require_tree .
 
-/*
+//FUNZIONA USATA PER RENDERIZZARE MAPPA IN ROOM#NEW
 function render_map_for_room(){
   var map = new mapboxgl.Map({
     container: 'map',
@@ -35,8 +35,8 @@ function render_map_for_room(){
   
   map.on('load', function(e) {
     map.addSource('single-point', {
-      'type': 'geojson'
-      'data': stoes
+      'type': 'geojson',
+      'data': stores
     });
   });
   
@@ -56,31 +56,23 @@ function render_map_for_room(){
     accessToken: mapboxgl.accessToken
   });
   
-  geolocate = new mapboxgl.GeolocateControl({
-    positionOptions: {
-      enableHighAccuracy: true
-    },
-    trackUserLocation: true
-  });
-  
   document.getElementById('geocoder').appendChild(geocoder.onAdd(map));
-  document.getElementById('geolocate').appendChild(geolocate.onAdd(map));
   
-  geolocate.on('geolocate', function(ev){
+  geodecoder.on('result', function(ev){
     console.log(ev);
-    var searchResult = ev.coords;
+    var searchResult = ev.result.geometry;
     map.getSource('single-point').setData(searchResult);
     
     var lats_html = document.getElementById('lats_input');
     var lons_html = document.getElementById('lons_input');
     var addr_html = document.getElementById('addr_input');
-  });
-  
-  geodecoder.on('result', function(ev){
-    console.log(ev);
+    
+    lats_html.value = searchResult.coordinates[1];
+    lons_html.value = searchResult.coordinates[0];
+    addr_html.value = ev.result.place_name;
   });
 }
-*/
+
 function render_map(){
 	var xmlhttp = new XMLHttpRequest();
 	xmlhttp.onreadystatechange = function() {
@@ -138,13 +130,23 @@ function render_map(){
             "data": stores
           });
           
-          buildLocationList(stores);
+          buildLocationList(stores, false);
           
           map.addSource('single-point', {
             'type': 'geojson',
             'data': {
               'type': 'FeatureCollection',
               'features': []
+            }
+          });
+          
+          map.addLayer({
+            "id": 'center',
+            "type": "circle",
+            "source": 'single-point',
+            'paint': {
+              'circle-radius': 7,
+              'circle-color': '#33ccff'
             }
           });
           
@@ -176,7 +178,6 @@ function render_map(){
          
           geolocate.on('geolocate', function(ev){
             var searchResult = ev.coords;
-            map.getSource('single-point').setData(searchResult);
             
             var options = {units: 'kilometers'};
             stores.features.forEach(function(store){
@@ -206,7 +207,7 @@ function render_map(){
               listings.removeChild(listings.firstChild);
             }
       
-            buildLocationList(stores);
+            buildLocationList(stores, true);
       
             function sortLonLat(storeIdentifier) {
               var result_lats = searchResult.latitude;
@@ -231,6 +232,7 @@ function render_map(){
           });
           
           geocoder.on('result', function(ev) {
+            console.log(JSON.stringify(ev));
             var searchResult = ev.result.geometry;
             map.getSource('single-point').setData(searchResult);
             var options = {units: 'kilometers'};
@@ -260,7 +262,7 @@ function render_map(){
               listings.removeChild(listings.firstChild);
             }
       
-            buildLocationList(stores);
+            buildLocationList(stores, true);
             
             function sortLonLat(storeIdentifier) {
               var lats = [stores.features[storeIdentifier].geometry.coordinates[1], searchResult.coordinates[1]]
@@ -332,6 +334,7 @@ function render_map(){
           });
           
           map.addLayer({
+            
             "id": 'circle',
             "type": 'fill',
             "source": 'circle-point',
@@ -344,7 +347,7 @@ function render_map(){
           });
         }
       
-        function buildLocationList(data) {
+        function buildLocationList(data,query) {
           var j = 0;
           var count = 0;
           for (i = 0; i < data.features.length; i++) {
@@ -362,9 +365,17 @@ function render_map(){
             if(!listings.hasChildNodes()){
               var child = listings.appendChild(document.createElement('div'));
               child.className = 'card-deck';
-              child.id = 'deck-'+i;
+              child.id = 'deck-'+j;
             }
             
+            console.log(listings.children.length);
+            if(listings.children.length - 1< j ){
+              console.log(listings.children.length);
+              var added = listings.appendChild(document.createElement('div'));
+              added.className = 'card-deck my-2';
+              added.id = 'deck-'+j
+            }
+            console.log('i: '+i+'\nj: '+j);
             card_deck = listings.children[j];
               
             var card = card_deck.appendChild(document.createElement('div'));
@@ -415,22 +426,22 @@ function render_map(){
           
             });
           }
-          
-          var header = document.getElementById('num_rooms');
-          var suffix;
-          var prefix;
-          if(count == 1){
-            suffix = ' stanza';
-            prefix = 'E\' stata trovata ';
+          if(query){
+            var header = document.getElementById('num_rooms');
+            var suffix;
+            var prefix;
+            if(count == 1){
+              suffix = ' stanza';
+              prefix = 'E\' stata trovata ';
+            }
+            else {
+              suffix = ' stanze';
+              prefix = 'Sono state trovate ';
+            }
+            
+            header.innerHTML = prefix+count+suffix+' nel raggio di '+document.getElementById('radius').value+' km.';
           }
-          else {
-            suffix = ' stanze';
-            prefix = 'Sono state trovate ';
-          }
-          
-          header.innerHTML = prefix+count+suffix+' nel raggio di '+document.getElementById('radius').value+' km.';
         }
-        
       });
       
     }
