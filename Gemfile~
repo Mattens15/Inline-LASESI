@@ -71,5 +71,5 @@ group :test do
   gem 'cucumber'
 end
 
-#For icon id reference view https://www.octicons.github.com
+
 gem "octicons_helper", "~> 7.3"

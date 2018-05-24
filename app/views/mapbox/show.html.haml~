@@ -1,0 +1,12 @@
+%head
+  %link{:href=>image_path('favicon.ico'),:rel=>'icon',:type=>'image/vnd.microsoft.icon'}
+.sidebar.pad2
+  .heading
+    %h3 Room vicine
+  .listings#listings
+.map.pad2#map
+
+
+	
+:javascript
+  render_map();

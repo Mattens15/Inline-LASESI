@@ -1,0 +1,26 @@
+%h1="Fuk you"
+= form_for @room do |f|
+  - if @room.errors.any?
+    #error_explanation
+      %h2= "#{pluralize(@room.errors.count, "error")} prohibited this room from being saved:"
+      %ul
+        - @room.errors.full_messages.each do |message|
+          %li= message
+  .form-group.row
+    = f.label :name
+    = f.text_field :name, class: 'form-control'
+  .form-group.row
+    = f.label :description
+    = f.text_area :description, class: 'form-control'
+  .form-group.row
+    = f.label :max_partecipants
+    = f.number_field :max_partecipans, class: 'form-control'
+  .form-group.row
+    = f.label :time_from
+    = f.datetime_select :time_from
+  .form-group.row
+    = f.label :time_to
+    = f.datetime_select :time_to
+  .form-group.row
+    = f.submit 'Save'
+
