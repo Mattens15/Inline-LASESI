@@ -1,22 +1,28 @@
 - provide(:title, "Find the nearest room");
-
-.container#map{:style=>'width: 120%; height: 300px; margin-top: 1%;'}
-.container	
-	.form-inline.mx-auto.my-auto
-		.form-group.mx-auto.my-auto
-			%label.mx-2.my-auto
-				Insert your radius in kilometres:
-			%input.form-control.mx-auto.my-auto{:type => 'number', :step => '0.1', :id => 'radius', :value => '5'}
-		.form-group.mx-auto.my-auto
-			%label.mx-2.my-auto
-				Find location: 
-			#geocoder.mx-2.my-2
-			#geolocate.mx-3.my-2
-
-%br
-.contaner.header.text-center
-	%h5#num_rooms
-.container#listings
-
-:javascript
-	render_map();
+.container
+  .row.mx-auto#map{:style=>'width: 100%; height: 300px; margin-top: 1%;'}
+  .row
+    .my-2.col-4.mx-auto
+      %label
+        Insert your radius:
+      %input.form-control.mx-auto.my-auto{:type => 'number', :step => '0.1', :id => 'radius', :value => '', :placeholder => 'Insert your radius...'}
+    .my-auto.col-4.mx-auto
+      %label.mx-2.my-auto
+        Find location: 
+      .row
+        .col-xs-6.my-auto.mx-2#geocoder
+        .col-xs-6.my-auto.mx-2#geolocate
+    = form_for rooms_path, :html => {:class => 'form col-4.mx-auto.my-auto'} do |f|
+      =f.label 'Search room!'
+      .row
+        =f.text_field :name, class: 'col-xs-6'
+        =f.submit 'Submit', class: 'col-xs-6 btn btn-success'
+          
+  %br
+  .container.header.text-center
+    %h5#num_rooms
+  .container#listings
+  
+  :javascript
+    render_map();
+  

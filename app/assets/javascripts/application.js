@@ -14,7 +14,6 @@
 //= require turbolinks
 //= require_tree .
 //= require bootstrap
-//= require turbolinks
 //= require mapbox-gl
 //= require_tree .
 
@@ -89,7 +88,7 @@ function render_map(){
         style: 'mapbox://styles/mapbox/streets-v8',
         center: [12.48197078704834,41.893460648167355],
         zoom: 15,
-        hash: true,
+        //hash: true,
         attributionControl: false
       });
       
@@ -302,9 +301,11 @@ function render_map(){
 
         stores.features.forEach(function(marker, i) {
           // Create an img element for the marker
+          console.log(stores.features);
           var el = document.createElement('div');
           el.id = "marker-" + i;
           el.className = 'marker';
+          el.innerHTML = marker.geometry.coordinates;
           // Add markers to the map at all points
           new mapboxgl.Marker(el, {offset: [0, 0]})
               .setLngLat(marker.geometry.coordinates)
@@ -383,7 +384,7 @@ function render_map(){
               child.id = 'deck-'+j;
             }
             
-            if(listings.children.length - 1< j ){
+            if(listings.children.length - 1 < j){
               var added = listings.appendChild(document.createElement('div'));
               added.className = 'row my-2 divCard';
               added.id = 'deck-'+j
