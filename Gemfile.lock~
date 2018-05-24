@@ -156,11 +156,17 @@ GEM
     nio4r (2.3.1)
     nokogiri (1.8.2)
       mini_portile2 (~> 2.3.0)
+<<<<<<< HEAD
     notiffany (0.1.1)
       nenv (~> 0.1)
       shellany (~> 0.0)
-    
+    octicons (7.3.0)
       nokogiri (>= 1.6.3.1)
+    octicons_helper (7.3.0)
+      octicons (= 7.3.0)
+      rails
+=======
+>>>>>>> db0619f72a5a256e5d4807bfdc24d88e8c995dc8
     popper_js (1.12.9)
     public_suffix (3.0.2)
     puma (3.11.4)
@@ -282,9 +288,11 @@ DEPENDENCIES
   jquery-ui-rails
   listen (>= 3.0.5, < 3.2)
   mapbox-gl-rails
-
+<<<<<<< HEAD
   mapbox-rails
-
+  octicons_helper (~> 7.3)
+=======
+>>>>>>> db0619f72a5a256e5d4807bfdc24d88e8c995dc8
   puma (~> 3.11)
   rails (~> 5.2.0)
   rails-controller-testing

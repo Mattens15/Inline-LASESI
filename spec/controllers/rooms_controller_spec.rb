@@ -45,22 +45,31 @@ RSpec.describe RoomsController, type: :controller do
     it "returns a success response" do
       room = Room.create! valid_attributes
       get :index, params: {}, session: valid_session
-      expect(response).to be_success
+      expect(response).to be_successful
     end
   end
 
   describe "GET #show" do
-    it "returns a success response" do
-      room = Room.create! valid_attributes
-      get :show, params: {id: room.to_param}, session: valid_session
-      expect(response).to be_success
+    context "with valid id" do
+      it "returns a success response" do
+        room = Room.create! valid_attributes
+        get :show, params: {id: room.to_param}, session: valid_session
+        expect(response).to be_successful
+      end
+    end
+    
+    context "with invalid id" do
+      it "shows error page" do
+        get :show, params: {id: invalid_attributes}, session: valid_session
+        expect(response).to be_success
+      end
     end
   end
 
   describe "GET #new" do
     it "returns a success response" do
       get :new, params: {}, session: valid_session
-      expect(response).to be_success
+      expect(response).to be_successful
     end
   end
 

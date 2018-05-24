@@ -10,16 +10,15 @@
 // Read Sprockets README (https://github.com/rails/sprockets#sprockets-directives) for details
 // about supported directives.
 //
-//= require rails-ujs
 //= require activestorage
 //= require turbolinks
 //= require_tree .
 //= require bootstrap
-//= require rails-ujs
 //= require turbolinks
+//= require mapbox-gl
 //= require_tree .
 
-//FUNZIONA USATA PER RENDERIZZARE MAPPA IN ROOM#NEW
+//FUNZIONE USATA PER RENDERIZZARE MAPPA IN ROOM#NEW
 function render_map_for_room(){
   var map = new mapboxgl.Map({
     container: 'map',
@@ -73,6 +72,7 @@ function render_map_for_room(){
   });
 }
 
+//FUNZIONE USATA PER RENDERIZZARE LA MAPPA IN MAP#SHOW
 function render_map(){
 	var xmlhttp = new XMLHttpRequest();
 	xmlhttp.onreadystatechange = function() {
@@ -81,7 +81,7 @@ function render_map(){
       while(toremove != null && toremove.hasChildNodes()){
         toremove.removeChild(toremove.childNodes[0]);
       }
-      
+
   		var rooms_json = JSON.parse(this.responseText);
       mapboxgl.accessToken = 'pk.eyJ1IjoibGV0c2ZlZCIsImEiOiJjamhkamxmYXcwNTBvMzBva3VyOG50NjFtIn0.EuqkJJgJMWazgpxc6YJp4A';
       var map = new mapboxgl.Map({
@@ -89,6 +89,7 @@ function render_map(){
         style: 'mapbox://styles/mapbox/streets-v8',
         center: [12.48197078704834,41.893460648167355],
         zoom: 15,
+        hash: true,
         attributionControl: false
       });
       
@@ -173,6 +174,18 @@ function render_map(){
             trackUserLocation: true
           });
           
+          map.on('click', 'locations', function(e) {
+            var feature = e.features[0];
+            flyToStore(feature);
+          });
+          
+          map.on('mouseenter', 'locations', function () {
+            map.getCanvas().style.cursor = 'pointer';
+          });
+          
+          map.on('mouseleave', 'locations', function () {
+            map.getCanvas().style.cursor = '';
+          });
           document.getElementById('geocoder').appendChild(geocoder.onAdd(map));
           document.getElementById('geolocate').appendChild(geolocate.onAdd(map));
          
@@ -232,8 +245,8 @@ function render_map(){
           });
           
           geocoder.on('result', function(ev) {
-            console.log(JSON.stringify(ev));
             var searchResult = ev.result.geometry;
+            
             map.getSource('single-point').setData(searchResult);
             var options = {units: 'kilometers'};
             stores.features.forEach(function(store){
@@ -293,9 +306,10 @@ function render_map(){
           el.id = "marker-" + i;
           el.className = 'marker';
           // Add markers to the map at all points
-          new mapboxgl.Marker(el, {offset: [0, -23]})
+          new mapboxgl.Marker(el, {offset: [0, 0]})
               .setLngLat(marker.geometry.coordinates)
               .addTo(map);
+          /*
           el.addEventListener('click', function(e){
               // 1. Fly to the point
               flyToStore(marker);
@@ -310,8 +324,9 @@ function render_map(){
       
               var listing = document.getElementById('listing-' + i);
               listing.classList.add('active');
-      
+        
           });
+          */
         });
         
         function flyToStore(currentFeature) {
@@ -364,22 +379,20 @@ function render_map(){
             
             if(!listings.hasChildNodes()){
               var child = listings.appendChild(document.createElement('div'));
-              child.className = 'card-deck';
+              child.className = 'row';
               child.id = 'deck-'+j;
             }
             
-            console.log(listings.children.length);
             if(listings.children.length - 1< j ){
-              console.log(listings.children.length);
               var added = listings.appendChild(document.createElement('div'));
-              added.className = 'card-deck my-2';
+              added.className = 'row my-2 divCard';
               added.id = 'deck-'+j
             }
-            console.log('i: '+i+'\nj: '+j);
+
             card_deck = listings.children[j];
               
             var card = card_deck.appendChild(document.createElement('div'));
-            card.className = 'card';
+            card.className = 'card mx-2';
             
             var card_body = card.appendChild(document.createElement('div'));
             card_body.className = 'card-body';
