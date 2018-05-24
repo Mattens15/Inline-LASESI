@@ -52,22 +52,16 @@ end
 
 # Windows does not include zoneinfo files, so bundle the tzinfo-data gem
 gem 'tzinfo-data', platforms: [:mingw, :mswin, :x64_mingw, :jruby]
-gem 'bcrypt',               '3.1.7'
 gem 'haml-rails'
 gem 'bootstrap'
 gem 'mapbox-gl-rails'
-gem 'mapbox-rails'
-
-group :development, :test do
-  gem 'rspec-rails'
-  gem 'factory_bot_rails'
-end
 
 group :test do
-  gem 'faker'
-  gem 'capybara'
-  gem 'guard-rspec'
-  gem 'launchy'
-  gem 'cucumber'
+  gem 'cucumber-rails', require: false
+  gem 'database_cleaner'
+  gem 'rails-controller-testing'
 end
 
+group :development, :test do
+  gem 'rspec-rails', '~> 3.7'
+end

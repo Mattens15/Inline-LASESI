@@ -10,16 +10,16 @@
 // Read Sprockets README (https://github.com/rails/sprockets#sprockets-directives) for details
 // about supported directives.
 //
-//= require rails-ujs
 //= require activestorage
 //= require turbolinks
 //= require_tree .
 //= require bootstrap
-//= require rails-ujs
 //= require turbolinks
+//= require mapbox-gl
 //= require_tree .
 
-//FUNZIONA USATA PER RENDERIZZARE MAPPA IN ROOM#NEW
+
+//FUNZIONE USATA PER RENDERIZZARE MAPPA IN ROOM#NEW
 function render_map_for_room(){
   var map = new mapboxgl.Map({
     container: 'map',
@@ -73,6 +73,7 @@ function render_map_for_room(){
   });
 }
 
+//FUNZIONE USATA PER RENDERIZZARE LA MAPPA IN MAP#SHOW
 function render_map(){
 	var xmlhttp = new XMLHttpRequest();
 	xmlhttp.onreadystatechange = function() {
@@ -82,6 +83,7 @@ function render_map(){
         toremove.removeChild(toremove.childNodes[0]);
       }
       
+      var testing_in = document.getElementById('testing');
   		var rooms_json = JSON.parse(this.responseText);
       mapboxgl.accessToken = 'pk.eyJ1IjoibGV0c2ZlZCIsImEiOiJjamhkamxmYXcwNTBvMzBva3VyOG50NjFtIn0.EuqkJJgJMWazgpxc6YJp4A';
       var map = new mapboxgl.Map({
@@ -233,7 +235,9 @@ function render_map(){
           
           geocoder.on('result', function(ev) {
             console.log(JSON.stringify(ev));
+            testing_in.value = ev.result.geometry;
             var searchResult = ev.result.geometry;
+            
             map.getSource('single-point').setData(searchResult);
             var options = {units: 'kilometers'};
             stores.features.forEach(function(store){
