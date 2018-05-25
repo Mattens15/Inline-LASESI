@@ -1,0 +1,46 @@
+!!!5
+%html{:lang => "it"}
+  %head
+    %meta{:content => "text/html; charset=UTF-8", "http-equiv" => "Content-Type"}/
+    %title SignUp Inline
+    %meta{:charset => "utf-8"}/
+    %meta{:content => "width=device-width, initial-scale=1", :name => "viewport"}/
+    %link{:crossorigin => "anonymous", :href => "https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0-alpha.6/css/bootstrap.min.css", :integrity => "sha384-rwoIResjU2yc3z8GV/NPeZWAv56rSmLldC3R/AZzGRnGxQQKnKkoFVhFQhNUwEyJ", :rel => "stylesheet"}/
+    %script{:src => "https://ajax.googleapis.com/ajax/libs/jquery/3.2.1/jquery.min.js"}
+    %script{:crossorigin => "anonymous", :integrity => "sha384-vBWWzlZJ8ea9aCX4pEW3rVHjgjt7zpkNpZk+02D9phzyeVkE+jo0ieGizqPLForn", :src => "https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0-alpha.6/js/bootstrap.min.js"}
+  %body
+    .container-fluid{:style => "padding-left:10%;padding-right:10%;"}
+      .row
+        .col-lg-6{:style => "margin-top:5%"}
+          %center>
+            %h1 Login
+            %br/
+            %form{:action => "", :method => "post", :name => "login", :style => "width:60%"}
+              .form-group
+                %h1 Email
+                %input.form-control{:name => "email", :placeholder => "prova@example.com", :required => "", :type => "email"}/
+              .form-group
+                %h1 Password
+                %input.form-control{:name => "password", :required => "", :type => "password"}/
+              %input.btn.btn-sm.btn-success{:type => "submit", :value => "Invia"}/
+              %input.btn.btn-sm.btn-danger{:type => "reset", :value => "Reset"}/
+          c
+        .col-lg-6{:style => "margin-top:5%"}
+          %center
+            %h1 SignUp
+            %br/
+            %form{:action => "", :method => "post", :name => "signup", :style => "width:60%"}
+              .form-group
+                %h1 Username
+                %input.form-control{:maxlength => "20", :name => "text", :required => "", :type => "username"}/
+              .form-group
+                %h1 Email
+                %input.form-control{:maxlength => "50", :name => "email", :placeholder => "prova@example.com", :required => "", :type => "email"}/
+              .form-group
+                %h1 Password
+                %input.form-control{:maxlength => "30", :name => "password", :required => "", :type => "password"}/
+              .form-group
+                %h1 Password Confirmation
+                %input.form-control{:maxlength => "30", :name => "password_confirmation", :required => "", :type => "password"}/
+              %input.btn.btn-sm.btn-success{:type => "submit", :value => "Invia"}/
+              %input.btn.btn-sm.btn-danger{:type => "reset", :value => "Reset"}/
