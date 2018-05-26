@@ -12,13 +12,13 @@
       %div{:style => 'display: flex;'}
         .col-10#geocoder
         .col-2#geolocate.my-auto
-    =form_tag(map_path, method: :get) do
+    .col-4
       =label_tag 'Search room!'
       .row{:style => 'margin-top: -2px;'}
         .col-9
-          =text_field_tag :name, params[:name], class: 'col-xs-6 form-control', :id => 'searchbyname_form'
+          %input.col-xs-6.form-control#searchbyname_form{:type => 'text-field'}
         .col-3
-          =submit_tag 'Search', :name => nil, class: 'col-xs-6 btn btn-success', :onclick => 'updateByParam()'
+          %submit.col-xs-6.btn.btn-success#searchbyname_button Search
     
   %br
   .container.header.text-center
@@ -26,5 +26,6 @@
   .container#listings
   
   :javascript
-    init('/map.json');
+    var data = 
+    render_map(buildObjectForMap('/map.json'));
   
