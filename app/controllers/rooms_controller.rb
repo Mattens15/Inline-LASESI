@@ -5,23 +5,6 @@ class RoomsController < ApplicationController
   # GET /rooms.json
   def index
     @rooms = Room.all
-    @geojson = Array.new
-		@rooms = Room.all
-		
-		@rooms.each do |r|
-			@geojson << {
-				type: 'Feature',
-				geometry: {
-					type: 'Point',
-					coordinates: [r.longitude, r.latitude]
-				},
-				proprietes: {
-					name: r.name,
-					:'marker-symbol'=> 'circle',
-					:'marker-size'	=> 'medium'
-				}
-			}
-		end
   end
 
   # GET /rooms/1

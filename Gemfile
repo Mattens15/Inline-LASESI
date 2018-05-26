@@ -51,11 +51,11 @@ end
 
 
 # Windows does not include zoneinfo files, so bundle the tzinfo-data gem
-gem 'tzinfo-data', platforms: [:mingw, :mswin, :x64_mingw, :jruby]
 gem 'haml-rails'
 gem 'bootstrap'
 gem 'mapbox-gl-rails'
-
+gem 'capybara'
+gem 'sqlite3_ar_regexp', '~> 2.2'
 group :test do
   gem 'cucumber-rails', require: false
   gem 'database_cleaner'

@@ -1,23 +1,25 @@
 - provide(:title, "Find the nearest room");
 .container
-  .row.mx-auto#map{:style=>'width: 100%; height: 300px; margin-top: 1%;'}
-  .row
-    .my-2.col-4.mx-auto
+  .row#map{:style=>'width: 100%; height: 300px; margin-top: 1%;'}
+  .row{:style => 'text-align: center;'}
+    .col-4
       %label
         Insert your radius:
-      %input.form-control.mx-auto.my-auto{:type => 'number', :step => '0.1', :id => 'radius', :value => '', :placeholder => 'Insert your radius...'}
-    .my-auto.col-4.mx-auto
-      %label.mx-2.my-auto
+      %input.form-control{:type => 'number', :step => '0.1', :id => 'radius', :value => '', :placeholder => 'Insert your radius...', :value => '5'}
+    .col-4{:style => "padding-left: 20px;padding-right: 0px;"}
+      %label
         Find location: 
-      .row
-        .col-xs-6.my-auto.mx-2#geocoder
-        .col-xs-6.my-auto.mx-2#geolocate
-    = form_for rooms_path, :html => {:class => 'form col-4.mx-auto.my-auto'} do |f|
-      =f.label 'Search room!'
-      .row
-        =f.text_field :name, class: 'col-xs-6'
-        =f.submit 'Submit', class: 'col-xs-6 btn btn-success'
-          
+      %div{:style => 'display: flex;'}
+        .col-10#geocoder
+        .col-2#geolocate.my-auto
+    =form_tag(map_path, method: :get) do
+      =label_tag 'Search room!'
+      .row{:style => 'margin-top: -2px;'}
+        .col-9
+          =text_field_tag :name, params[:name], class: 'col-xs-6 form-control'
+        .col-3
+          =submit_tag 'Search', :name => nil, class: 'col-xs-6 btn btn-success'
+    
   %br
   .container.header.text-center
     %h5#num_rooms

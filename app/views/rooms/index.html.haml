@@ -20,7 +20,7 @@
       %th
 
   %tbody
-    - @rooms.each do |room|
+    -Room.all.each do |room|
       %tr
         %td= room.name
         %td= room.description

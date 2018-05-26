@@ -82,6 +82,7 @@ function render_map(){
       }
 
   		var rooms_json = JSON.parse(this.responseText);
+      console.log(rooms_json);
       mapboxgl.accessToken = 'pk.eyJ1IjoibGV0c2ZlZCIsImEiOiJjamhkamxmYXcwNTBvMzBva3VyOG50NjFtIn0.EuqkJJgJMWazgpxc6YJp4A';
       var map = new mapboxgl.Map({
         container: 'map',
@@ -301,7 +302,6 @@ function render_map(){
 
         stores.features.forEach(function(marker, i) {
           // Create an img element for the marker
-          console.log(stores.features);
           var el = document.createElement('div');
           el.id = "marker-" + i;
           el.className = 'marker';
@@ -460,6 +460,7 @@ function render_map(){
       
     }
   };
-  xmlhttp.open("GET", '/rooms.json', true);
+  var data = /(.*)map(.*)/.exec(document.URL)
+  xmlhttp.open("GET", '/map.json'+data[2], true);
   xmlhttp.send(); 
 }
