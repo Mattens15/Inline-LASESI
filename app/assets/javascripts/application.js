@@ -82,7 +82,6 @@ function render_map(){
       }
 
   		var rooms_json = JSON.parse(this.responseText);
-      console.log(rooms_json);
       mapboxgl.accessToken = 'pk.eyJ1IjoibGV0c2ZlZCIsImEiOiJjamhkamxmYXcwNTBvMzBva3VyOG50NjFtIn0.EuqkJJgJMWazgpxc6YJp4A';
       var map = new mapboxgl.Map({
         container: 'map',
@@ -114,11 +113,14 @@ function render_map(){
               "title": rooms_json[i].name,
               "address": rooms_json[i].address,
               "owner": rooms_json[i].user_id,
-              "description": rooms_json[i].description
+              "description": rooms_json[i].description,
+              "visible": true
             }
           };
       }
       
+      
+       
       var stores = {
         "type": "FeatureCollection",
         "features": array_obj
@@ -186,6 +188,7 @@ function render_map(){
           map.on('mouseleave', 'locations', function () {
             map.getCanvas().style.cursor = '';
           });
+          
           document.getElementById('geocoder').appendChild(geocoder.onAdd(map));
           document.getElementById('geolocate').appendChild(geolocate.onAdd(map));
          
@@ -296,7 +299,7 @@ function render_map(){
             sortLonLat(0);
       
           });
-      
+          
         // This is where your interactions with the symbol layer used to be
         // Now you have interactions with DOM markers instead
 
@@ -310,24 +313,6 @@ function render_map(){
           new mapboxgl.Marker(el, {offset: [0, 0]})
               .setLngLat(marker.geometry.coordinates)
               .addTo(map);
-          /*
-          el.addEventListener('click', function(e){
-              // 1. Fly to the point
-              flyToStore(marker);
-
-              // 3. Highlight listing in sidebar (and remove highlight for all other listings)
-              var activeItem = document.getElementsByClassName('active');
-      
-              e.stopPropagation();
-              if (activeItem[0]) {
-                 activeItem[0].classList.remove('active');
-              }
-      
-              var listing = document.getElementById('listing-' + i);
-              listing.classList.add('active');
-        
-          });
-          */
         });
         
         function flyToStore(currentFeature) {
@@ -373,14 +358,14 @@ function render_map(){
             var currentFeature = data.features[i];
             var prop = currentFeature.properties;
 
-            if(prop.distance < 0 || prop.distance > document.getElementById('radius').value) continue;
+            if(prop.distance < 0 || prop.distance > document.getElementById('radius').value || !prop.visible) continue;
             count++;
             var listings = document.getElementById('listings');
             var card_deck;
             
             if(!listings.hasChildNodes()){
               var child = listings.appendChild(document.createElement('div'));
-              child.className = 'row';
+              child.className = 'row my-2 divCard';
               child.id = 'deck-'+j;
             }
             
@@ -409,6 +394,7 @@ function render_map(){
             if (prop.description){
               details.innerHTML += '<br><small>'+prop.description+'</small>';
             }
+            
             if (prop.phone) {
               details.innerHTML += ' &middot; ' + prop.phoneFormatted;
             }
@@ -460,7 +446,42 @@ function render_map(){
       
     }
   };
-  var data = /(.*)map(.*)/.exec(document.URL)
   xmlhttp.open("GET", '/map.json'+data[2], true);
   xmlhttp.send(); 
 }
+
+function updateByParam(){ //forse data non va in input
+  
+  if($searchbyname_form!=""){	 
+    for(var i=0; i<data.features.length; i++){
+      data.features[i].visibility=data.features[i].name.includes(($searchbyname).val)?true:false;
+    }
+    buildLocationList(data,false);
+    ($listings).load();
+  }  
+}
+
+function getJSON(path, callback){
+    var xmlhttp = new XMLHttpRequest();
+    xmlhttp.onreadystatechange = function() {
+        if (xmlhttp.readyState === 4 && xmlhttp.status === 200){
+          callback(xmlhttp.responseText);
+        }
+    };
+    xmlhttp.open("GET", '/map.json', true);
+    xmlhttp.send();
+}
+
+function init(path_JSON){
+  var json = function () {
+    var jsonTemp = null;
+    $.ajax({
+        'async': false,
+        'url': path_JSON,
+        'success': function (data) {
+            jsonTemp = data;
+        }
+    });
+    return jsonTemp;
+  }(); 
+};

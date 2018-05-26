@@ -1,12 +1,7 @@
 class MapboxController < ApplicationController
 
 	def show
-    
-    @room = if params[:name]
-      Room.where('name REGEXP ?', "(.*)#{params[:name]}(.*)")
-    else
-      @room = Room.all
-    end
+    @room = Room.all
     
     @roomlist = []
         
@@ -29,15 +24,9 @@ class MapboxController < ApplicationController
     respond_to do |format|
       format.html
       format.json{
-        logger.debug "just rendered this: #{@roomlist}"
         render :json => @roomlist.to_json
       }
     end
 	end
-  
-  private
-    def query_params
-      params.require(:map).permit(:name)
-    end
 end
 

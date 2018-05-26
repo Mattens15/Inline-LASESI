@@ -16,9 +16,9 @@
       =label_tag 'Search room!'
       .row{:style => 'margin-top: -2px;'}
         .col-9
-          =text_field_tag :name, params[:name], class: 'col-xs-6 form-control'
+          =text_field_tag :name, params[:name], class: 'col-xs-6 form-control', :id => 'searchbyname_form'
         .col-3
-          =submit_tag 'Search', :name => nil, class: 'col-xs-6 btn btn-success'
+          =submit_tag 'Search', :name => nil, class: 'col-xs-6 btn btn-success', :onclick => 'updateByParam()'
     
   %br
   .container.header.text-center
@@ -26,5 +26,5 @@
   .container#listings
   
   :javascript
-    render_map();
+    init('/map.json');
   
