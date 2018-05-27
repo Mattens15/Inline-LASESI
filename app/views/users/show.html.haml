@@ -1,2 +1,26 @@
-= @user.username
-, #{@user.email}
+!!!5
+%html{:lang => "it"}
+    
+    %head
+        %meta{:content => "text/html; charset=UTF-8", "http-equiv" => "Content-Type"}/
+        %title Profile Inline
+        %meta{:charset => "utf-8"}/
+        %meta{:content => "width=device-width, initial-scale=1", :name => "viewport"}/
+        %link{:crossorigin => "anonymous", :href => "https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0-alpha.6/css/bootstrap.min.css", :integrity => "sha384-rwoIResjU2yc3z8GV/NPeZWAv56rSmLldC3R/AZzGRnGxQQKnKkoFVhFQhNUwEyJ", :rel => "stylesheet"}/
+        %script{:src => "https://ajax.googleapis.com/ajax/libs/jquery/3.2.1/jquery.min.js"}
+        %script{:crossorigin => "anonymous", :integrity => "sha384-vBWWzlZJ8ea9aCX4pEW3rVHjgjt7zpkNpZk+02D9phzyeVkE+jo0ieGizqPLForn", :src => "https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0-alpha.6/js/bootstrap.min.js"}
+    %body
+        .container-fluid
+            .row
+            .col-lg-6
+                %label
+                    %h2 USERNAME:
+                    = @user.username
+                %br/
+                %label  
+                    %h2 EMAIL
+                    = @user.email
+            .col-lg-6
+                %label
+                    %h2 ID
+                    = @user.id

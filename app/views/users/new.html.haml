@@ -13,34 +13,35 @@
       .row
         .col-lg-6{:style => "margin-top:5%"}
           %center>
-            %h1 Login
+            %h3 Login
             %br/
             %form{:action => "", :method => "post", :name => "login", :style => "width:60%"}
               .form-group
-                %h1 Email
+                %h3 Email
                 %input.form-control{:name => "email", :placeholder => "prova@example.com", :required => "", :type => "email"}/
               .form-group
-                %h1 Password
+                %h3 Password
                 %input.form-control{:name => "password", :required => "", :type => "password"}/
               %input.btn.btn-sm.btn-success{:type => "submit", :value => "Invia"}/
               %input.btn.btn-sm.btn-danger{:type => "reset", :value => "Reset"}/
           c
         .col-lg-6{:style => "margin-top:5%"}
           %center
-            %h1 SignUp
+            %h3 SignUp
             %br/
-            %form{:action => "", :method => "post", :name => "signup", :style => "width:60%"}
+            = form_for(@user) do |f|
+              = render 'shared/error_messages'
               .form-group
-                %h1 Username
-                %input.form-control{:maxlength => "20", :name => "text", :required => "", :type => "username"}/
+                %h3 Username
+                %input.form-control{:maxlength => "20",:id => "user_username", :name => "user[username]", :required => "", :type => "username"}/
               .form-group
-                %h1 Email
-                %input.form-control{:maxlength => "50", :name => "email", :placeholder => "prova@example.com", :required => "", :type => "email"}/
+                %h3 Email
+                %input.form-control{:maxlength => "50",:id => "user_email", :name => "user[email]", :placeholder => "prova@example.com", :required => "", :type => "email"}/
               .form-group
-                %h1 Password
-                %input.form-control{:maxlength => "30", :name => "password", :required => "", :type => "password"}/
+                %h3 Password
+                %input.form-control{:maxlength => "30",:id => "user_password", :name => "user[password]", :required => "", :type => "password"}/
               .form-group
-                %h1 Password Confirmation
-                %input.form-control{:maxlength => "30", :name => "password_confirmation", :required => "", :type => "password"}/
+                %h3 Password Confirmation
+                %input.form-control{:maxlength => "30",:id => "user_passwordconfirmation", :name => "user[passwor_confirmation]", :required => "", :type => "password"}/
               %input.btn.btn-sm.btn-success{:type => "submit", :value => "Invia"}/
               %input.btn.btn-sm.btn-danger{:type => "reset", :value => "Reset"}/
