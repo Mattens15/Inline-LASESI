@@ -15,10 +15,7 @@ ActiveRecord::Schema.define(version: 2018_05_25_100419) do
   create_table "users", force: :cascade do |t|
     t.string "username"
     t.string "email"
-    t.string "password"
-    t.json "room_host"
     t.boolean "admin"
-    t.json "rooms"
     t.json "facebook"
     t.json "google"
     t.integer "exp"
