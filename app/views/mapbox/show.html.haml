@@ -5,7 +5,7 @@
     .col-4
       %label
         Insert your radius:
-      %input.form-control{:type => 'number', :step => '0.1', :id => 'radius', :value => '', :placeholder => 'Insert your radius...', :value => '5'}
+      %input.form-control{:type => 'number', :step => '0.1', :id => 'radius', :value => '', :placeholder => 'Insert your radius...', :value => '5', :min => '0.1'}
     .col-4{:style => "padding-left: 20px;padding-right: 0px;"}
       %label
         Find location: 
@@ -15,10 +15,8 @@
     .col-4
       =label_tag 'Search room!'
       .row{:style => 'margin-top: -2px;'}
-        .col-9
+        .col-12
           %input.col-xs-6.form-control#searchbyname_form{:type => 'text-field'}
-        .col-3
-          %submit.col-xs-6.btn.btn-success#searchbyname_button Search
     
   %br
   .container.header.text-center

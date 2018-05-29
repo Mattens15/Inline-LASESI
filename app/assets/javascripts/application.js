@@ -287,10 +287,12 @@ function render_map(stores){
   
       });
       
-      $('#searchbyname_button').click(function(){
-        updateByParam();
+      
+      $('#searchbyname_form').keyup(function(){
+        updateByParam()
       });
-       
+        
+    
     //COSTRUISCO ELEMENTI HTML PER OGNI ROOM
     buildMarker(stores);
     
@@ -429,16 +431,23 @@ function buildLocationList(data,query) {
 //USATA NELLE FUNZIONI JQUERY
 //SERVE PER SELEZIONARE LE ROOM TRAMITE ESPRESSIONE REGOLARE
 function updateByParam(){
+  var data = buildObjectForMap('/map.json');
   if($('#searchbyname_form').val() != ""){
-    var data = buildObjectForMap('/map.json');
-    
     for(var i=0; i<data.features.length; i++){
-      var regex = new RegExp('(.*)'+document.getElementById('searchbyname_form').value+'(.*)', "i");
-      data.features[i].properties.visible = regex.test(data.features[i].properties.title);
+      //var regex = new RegExp('(.*)'+document.getElementById('searchbyname_form').value+'(.*)', "i");
+      var contained = document.getElementById('searchbyname_form').value
+      data.features[i].properties.visible = data.features[i].properties.title.indexOf(contained) > 0 ? true:false;
+      console.log('Form value: '+document.getElementById('searchbyname_form').value +'\nNome: '+ data.features[i].properties.title+'\n\tVisible: '+data.features[i].properties.visible);
     }
-    
-    buildLocationList(data,false);
-  }  
+  
+  }
+  else{
+    for(var i=0; i<data.features.length; i++){
+      data.features[i].properties.visible = true;
+    }
+  }
+  
+  buildLocationList(data,false);
 }
 
 //USATA PER COSTRUIRE UN OGGETTO GEOJSON PER LA MAPPA

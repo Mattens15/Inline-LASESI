@@ -1,2 +1,6 @@
-%h1 Users#show
-%p Find me in app/views/users/show.html.haml
+%p#notice= notice
+
+
+= link_to 'Edit', edit_user_path(@user)
+\|
+= link_to 'Back', users_path

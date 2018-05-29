@@ -1,2 +1,46 @@
 class Room < ApplicationRecord
+  VALID_ROOM_NAME = /[a-zA-Z]/i
+  validates :user_id, presence: true
+  
+  validates :max_participants, presence: true, 
+            numericality: {:greater_than => 1}
+  
+  validates :name, presence: true, length: { in: 5..30 },
+            format: {with: VALID_ROOM_NAME}
+  
+  belongs_to :user
+  has_many :powers, dependent: :destroy
+  has_many :reservations, dependent: :destroy
+  
+  #SOLO IL CREATORE DELLA STANZA PUÒ USARE QUESTA FUNZIONE
+  def add_room_host(other_user)
+    #CONTROLLO
+    
+    #CREAZIONE DI UNA RELAZIONE POWER
+    self.powers.create(self.id, other_user.id)
+  end
+  
+  #SOLO IL CREATORE DELLA STANZA PUÒ USARE QUESTA FUNZIONE
+  def remove_room_host(other_user)
+    
+    #RIMOZIONE DI UNA RELAZIONE POWER
+    @association = Power.find_by user_id: other.user.id, room_id: self.id
+    @association.destroy! if !@association.nil?
+  end
+  
+  #PUÒ ESSERE LANCIATA DA QUALSIASI UTENTE
+  def add_reservation(an_user)
+    self.reservations.create(an_user.id, self.id)
+  end
+  
+  #PUÒ ESSERE LANCIATA DA UN UTENTE CON UNA PRENOTAZIONE
+  def remove_reservation(an_user)
+    
+    #METODO DICHIARATO IN HELPER
+    if(can_delete?)
+      #RIMOZIONE DI UNA RELAZIONE RESERVATION
+      @association = Reservation.find_by user_id: an_user.id, room_id: self.id
+      @association.destroy! if !@association.nil?
+    end
+  end
 end

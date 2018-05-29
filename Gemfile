@@ -55,6 +55,7 @@ gem 'haml-rails'
 gem 'bootstrap'
 gem 'mapbox-gl-rails'
 gem 'capybara'
+gem 'bcrypt', '~> 3.1.7'
 gem 'sqlite3_ar_regexp', '~> 2.2'
 group :test do
   gem 'cucumber-rails', require: false

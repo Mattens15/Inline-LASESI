@@ -10,52 +10,58 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2018_05_21_135820) do
+ActiveRecord::Schema.define(version: 2018_05_28_233631) do
 
-  create_table "has_powers", force: :cascade do |t|
+  create_table "powers", force: :cascade do |t|
     t.integer "user_id"
     t.integer "room_id"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
+    t.index ["room_id"], name: "index_powers_on_room_id"
+    t.index ["user_id", "room_id"], name: "index_powers_on_user_id_and_room_id", unique: true
+    t.index ["user_id"], name: "index_powers_on_user_id"
   end
 
-  create_table "prenotaziones", force: :cascade do |t|
+  create_table "reservations", force: :cascade do |t|
     t.integer "user_id"
     t.integer "room_id"
-    t.datetime "time_from"
-    t.datetime "time_to"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
+    t.index ["room_id"], name: "index_reservations_on_room_id"
+    t.index ["user_id", "room_id"], name: "index_reservations_on_user_id_and_room_id", unique: true
+    t.index ["user_id"], name: "index_reservations_on_user_id"
   end
 
   create_table "rooms", force: :cascade do |t|
     t.string "name"
     t.string "description"
-    t.string "notes"
-    t.integer "max_partecipans"
+    t.boolean "fifo"
+    t.integer "max_participants"
     t.string "address"
     t.float "latitude"
     t.float "longitude"
-    t.integer "created_by"
     t.datetime "time_from"
     t.datetime "time_to"
+    t.boolean "private"
+    t.time "max_unjoin_time"
     t.string "avatar_file"
     t.float "avatar_size"
     t.string "avatar_updated_at"
     t.string "datetime"
+    t.integer "user_id"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
+    t.index ["user_id"], name: "index_rooms_on_user_id"
   end
 
   create_table "users", force: :cascade do |t|
     t.string "username"
     t.string "email"
-    t.string "password"
+    t.string "password_digest"
     t.boolean "admin"
-    t.json "room_host"
     t.json "facebook"
     t.json "google"
-    t.json "ratings"
+    t.json "rating"
     t.json "invitations"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false

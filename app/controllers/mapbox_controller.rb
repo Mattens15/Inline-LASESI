@@ -11,7 +11,7 @@ class MapboxController < ApplicationController
        :name => r.name,
        :description => r.description,
        :address => r.address,
-       :created_by => r.created_by,
+       :owner => r.user_id,
        :latitude => r.latitude,
        :longitude => r.longitude,
        :time_from => r.time_from,
