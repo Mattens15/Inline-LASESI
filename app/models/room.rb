@@ -2,11 +2,13 @@ class Room < ApplicationRecord
   VALID_ROOM_NAME = /[a-zA-Z]/i
   validates :user_id, presence: true
   
+  
   validates :max_participants, presence: true, 
-            numericality: {:greater_than => 1}
+            numericality: {only_integer: true, greater_than_or_equal_to: 1}
   
   validates :name, presence: true, length: { in: 5..30 },
             format: {with: VALID_ROOM_NAME}
+  validates :description, length: { maximum: 140 }
   
   belongs_to :user
   has_many :powers, dependent: :destroy

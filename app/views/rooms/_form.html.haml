@@ -1,25 +1,50 @@
 = form_for @room do |f|
   - if @room.errors.any?
-    #error_explanation
-      %h2= "#{pluralize(@room.errors.count, "error")} prohibited this room from being saved:"
-      %ul
+    .mx-auto.form-group
+      %h4.text-center
+        = "#{pluralize(@room.errors.count, "error")} on the form:"
+      %ul.mx-auto{:style => 'padding-left: 0px;'}
         - @room.errors.full_messages.each do |message|
-          %li= message
+          .text-center.alert.alert-danger= message
+  
   .form-group.row
-    = f.label :name
+    %label.mx-auto
+      Nome della stanza (Caratteri consentiti A-Za-z)
     = f.text_field :name, class: 'form-control'
   .form-group.row
-    = f.label :description
-    = f.text_area :description, class: 'form-control'
-  .form-group.row
-    = f.label :max_partecipans
-    = f.number_field :max_partecipans, class: 'form-control'
-  .form-group.row
+    %label.mx-auto
+      Descrizione della room (Massimo 140 caratteri)
+    = f.text_area :description, class: 'form-control', style: 'resize:none;'
+  .row
+    .col-6{:style => 'padding-left: 0px;'}
+      .row
+        %label
+          Your room has a location? 
+      .row
+        .btn.btn-dark.form-control#map_control
+          Click me!
+    .col-6{:style => 'padding-right: 0px;'}
+      .form-group.row
+        %label.mx-auto
+          Numero partecipanti massimo (Minimo 1)
+        = f.text_field :max_participants, class: 'form-control'
+  .form-group.row#time_from
     = f.label :time_from
-    = f.datetime_select :time_from
-  .form-group.row
+    = f.datetime_select :time_from, class: 'form-control'
+  .form-group.row#time_to
     = f.label :time_to
-    = f.datetime_select :time_to
+    = f.datetime_select :time_to, class: 'form-control'
+  .form-group.row#address
+    = f.text_field :address, class: 'form-control', id: 'addr_input'
+    = f.text_field :latitude, class: 'form-control', id: 'lats_input'
+    = f.text_field :longitude, class: 'form-control', id: 'lons_input'
+    
+  .row#map_div
+    %h4.mx-auto
+      Look for your location here!
+    #map{:style=>'width: 100%; height: 300px; margin-top: 1%;'}
+    .row#geocoder{:style => 'width: 100%; margin-top: 1rem; margin-bottom: 1rem;'}
   .form-group.row
-    = f.submit 'Save'
+    = f.submit 'Save', class: 'btn btn-success mx-auto form-control'
+
 

@@ -21,6 +21,7 @@ var map;
 
 //FUNZIONE USATA PER RENDERIZZARE MAPPA IN ROOM#NEW
 function render_map_for_room(){
+  mapboxgl.accessToken = 'pk.eyJ1IjoibGV0c2ZlZCIsImEiOiJjamhkamxmYXcwNTBvMzBva3VyOG50NjFtIn0.EuqkJJgJMWazgpxc6YJp4A';
   map = new mapboxgl.Map({
     container: 'map',
     style: 'mapbox://styles/mapbox/streets-v8',
@@ -38,39 +39,43 @@ function render_map_for_room(){
       'type': 'geojson',
       'data': stores
     });
-  });
-  
-  map.addLayer({
-    "id": 'locations',
-    "type": "cirlce",
-    "source": 'single-point',
-    "layout": {
-      "icon-image": "marker-15",
-      "text-field": "{title}",
-      "text-offset": [0, 0.6],
-      "text-anchor": "top"
-    }
-  });
-  
-  geocoder = new MapboxGeocoder({
-    accessToken: mapboxgl.accessToken
-  });
-  
-  document.getElementById('geocoder').appendChild(geocoder.onAdd(map));
-  
-  geodecoder.on('result', function(ev){
-    console.log(ev);
-    var searchResult = ev.result.geometry;
-    map.getSource('single-point').setData(searchResult);
     
-    var lats_html = document.getElementById('lats_input');
-    var lons_html = document.getElementById('lons_input');
-    var addr_html = document.getElementById('addr_input');
+    map.addLayer({
+      "id": 'locations',
+      "type": "symbol",
+      "source": 'single-point',
+      "layout": {
+        "icon-image": "marker-15",
+        "text-field": "{title}",
+        "text-offset": [0, 0.6],
+        "text-anchor": "top"
+      }
+    });
     
-    lats_html.value = searchResult.coordinates[1];
-    lons_html.value = searchResult.coordinates[0];
-    addr_html.value = ev.result.place_name;
+    geocoder = new MapboxGeocoder({
+      accessToken: mapboxgl.accessToken
+    });
+  
+    document.getElementById('geocoder').appendChild(geocoder.onAdd(map));
+    
+    geocoder.on('result', function(ev){
+      console.log(ev);
+      var searchResult = ev.result.geometry;
+      map.getSource('single-point').setData(searchResult);
+      
+      var lats_html = document.getElementById('lats_input');
+      var lons_html = document.getElementById('lons_input');
+      var addr_html = document.getElementById('addr_input');
+      
+      lats_html.value = searchResult.coordinates[1];
+      lons_html.value = searchResult.coordinates[0];
+      addr_html.value = ev.result.place_name;
+    });
   });
+  
+ 
+  
+  
 }
 
 //FUNZIONE USATA PER RENDERIZZARE LA MAPPA IN MAP#SHOW
@@ -183,7 +188,7 @@ function render_map(stores){
         var options = {units: 'kilometers'};
         stores.features.forEach(function(store){
           var actual_coord = [searchResult.longitude, searchResult.latitude];
-          Object.defineProperty(store.properties, 'distance', {      
+          Object.defineProperty(store.properties, 'distance', {
             value: turf.distance(actual_coord, store.geometry, options),
             writable: true,
             enumerable: true,
@@ -207,10 +212,12 @@ function render_map(stores){
         while (listings.firstChild) {
           listings.removeChild(listings.firstChild);
         }
-  
+      
+      
         buildLocationList(stores, true);
         //FUNZIONE COPIATA E INCOLLATA DALLA DOCUMENTAZIONE DI MAPBOX
         //SERVE A ORDINARE PER DISTANZA  
+        
         function sortLonLat(storeIdentifier) {
           var result_lats = searchResult.latitude;
           var result_lons = searchResult.longitude;
@@ -229,7 +236,7 @@ function render_map(stores){
             });
 
         };
-  
+        
         sortLonLat(0);
       });
       
@@ -302,7 +309,7 @@ function render_map(stores){
     function drawCircle(data, r){
       if(map.getLayer('circle')) map.removeLayer('circle');
       if(map.getSource('circle-point')) map.removeSource('circle-point');
-      
+      if(radius < 0.1) return;
       var radius = r;
       var options = {steps: 64, units: 'kilometers'};
       var circle = turf.circle(data, radius, options);
@@ -336,13 +343,19 @@ function buildLocationList(data,query) {
   }
   var j = 0;
   var count = 0;
+  if(document.getElementById('radius').value < 0.1){
+    var listings = document.getElementById('listings');
+    var alert = listings.appendChild(document.createElement('div'));
+    alert.className = 'alert alert-danger text-center';
+    alert.innerHTML = 'Il raggio deve essere un numero reale maggiore o uguale a 0.1';
+    return;
+  }
   for (i = 0; i < data.features.length; i++) {
     if(i != 0 && i % 4 == 0){
       j++;
     }
     var currentFeature = data.features[i];
     var prop = currentFeature.properties;
-  
     if(prop.distance < 0 || prop.distance > document.getElementById('radius').value || !prop.visible) continue;
     count++;
     var listings = document.getElementById('listings');
@@ -431,10 +444,9 @@ function buildLocationList(data,query) {
 //USATA NELLE FUNZIONI JQUERY
 //SERVE PER SELEZIONARE LE ROOM TRAMITE ESPRESSIONE REGOLARE
 function updateByParam(){
-  var data = buildObjectForMap('/map.json');
+  var data = buildObjectForMap('/dashboard.json');
   if($('#searchbyname_form').val() != ""){
     for(var i=0; i<data.features.length; i++){
-      //var regex = new RegExp('(.*)'+document.getElementById('searchbyname_form').value+'(.*)', "i");
       var contained = document.getElementById('searchbyname_form').value
       data.features[i].properties.visible = data.features[i].properties.title.indexOf(contained) > 0 ? true:false;
       console.log('Form value: '+document.getElementById('searchbyname_form').value +'\nNome: '+ data.features[i].properties.title+'\n\tVisible: '+data.features[i].properties.visible);
