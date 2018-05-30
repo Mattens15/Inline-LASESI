@@ -10,20 +10,20 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2018_05_25_100419) do
+ActiveRecord::Schema.define(version: 2018_05_30_194749) do
 
   create_table "users", force: :cascade do |t|
     t.string "username"
     t.string "email"
-    t.boolean "admin"
+    t.string "password"
     t.json "facebook"
     t.json "google"
-    t.integer "exp"
     t.json "rating"
     t.json "invitations"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
     t.string "password_digest"
+    t.boolean "admin", default: false
     t.index ["email"], name: "index_users_on_email", unique: true
   end
 
