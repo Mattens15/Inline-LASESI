@@ -19,6 +19,66 @@
 
 var map;
 
+//FUNZIONA USATA PER RENDERIZZARE MAPPA IN ROOM#SHOW
+function render_map_for_room_show(path_JSON){
+  var rooms_json = init(path_JSON);
+  mapboxgl.accessToken = 'pk.eyJ1IjoibGV0c2ZlZCIsImEiOiJjamhkamxmYXcwNTBvMzBva3VyOG50NjFtIn0.EuqkJJgJMWazgpxc6YJp4A';
+  
+  map = new mapboxgl.Map({
+    container: 'map',
+    style: 'mapbox://styles/mapbox/streets-v8',
+    center: [rooms_json.longitude, rooms_json.latitude],
+    zoom: 12,
+    attributionControl: false,
+    interactive: false
+  });
+  
+  var coord = [rooms_json.longitude, rooms_json.latitude];
+  var array_obj = [{
+    "type": "Feature",
+    "geometry": 
+      {
+        "type": "Point",
+        "coordinates": coord
+      }, 
+    "properties": 
+      {
+        "id": rooms_json.id,
+        "title": rooms_json.name,
+        "address": rooms_json.address,
+        "owner": rooms_json.user_id,
+        "description": rooms_json.description
+      }
+  }];
+
+  
+  var stores = {
+    "type": "FeatureCollection",
+    "features": array_obj
+  }
+  
+  map.on('load', function(e){
+    map.addSource('place', {
+      'type': 'geojson',
+      'data': stores
+    });
+    
+    map.addLayer({
+      'id': 'places',
+      'type': 'symbol',
+      'source': 'place',
+      'layout': {
+          'icon-image': 'marker-15',
+          'text-field': '{title}',
+          'text-offset': [0, 0.6],
+          'text-anchor': 'top'
+        }
+    });
+  });
+  
+  
+}
+
 //FUNZIONE USATA PER RENDERIZZARE MAPPA IN ROOM#NEW
 function render_map_for_room(){
   mapboxgl.accessToken = 'pk.eyJ1IjoibGV0c2ZlZCIsImEiOiJjamhkamxmYXcwNTBvMzBva3VyOG50NjFtIn0.EuqkJJgJMWazgpxc6YJp4A';
@@ -93,14 +153,6 @@ function render_map(stores){
   
   //SPOSTO LE INFO DI MAPBOX IN ALTO A DESTRA
   map.addControl(new mapboxgl.AttributionControl(), 'top-left');
-  
-  //QUANDO CLICCO UN SIMBOLO, LO CENTRA E ZOMMA
-  //OBSOLETO
-  /* 
-  map.on('click', 'symbols', function (e) {
-    map.flyTo({center: e.features[0].geometry.coordinates});
-  });
-  */
   
   //METODI ASINCRONI PER LA MAPPA
   map.on('load', function (e) {

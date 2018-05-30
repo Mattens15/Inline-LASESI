@@ -1,42 +1,36 @@
-%p#notice= notice
+-provide(:title, @room.name)
+%br
+.container.border{:style => 'padding-left: 0px; padding-right: 0px;'}
+  .page-header.media
+    %img.align-self-start.mx-3.my-5{:src => 'http://www.iconsplace.com/download/black-google-chrome-512.ico', :width => '64px', :weigth => '64px'}
+    .media-body
+      %h3.text-center.my-3
+        =@room.name
+      %p.text-center
+        =@room.description
 
-%p
-  %b Name:
-  = @room.name
-%p
-  %b Description:
-  = @room.description
-%p
-  %b Max partecipans:
-  = @room.max_partecipans
-%p
-  %b Latitude:
-  = @room.latitude
-%p
-  %b Longitude:
-  = @room.longitude
-%p
-  %b Notes:
-  = @room.notes
-%p
-  %b Time from:
-  = @room.time_from
-%p
-  %b Time to:
-  = @room.time_to
-%p
-  %b Avatar file:
-  = @room.avatar_file
-%p
-  %b Avatar size:
-  = @room.avatar_size
-%p
-  %b Avatar updated at:
-  = @room.avatar_updated_at
-%p
-  %b Datetime:
-  = @room.datetime
-
-= link_to 'Edit', edit_room_path(@room)
-\|
-= link_to 'Back', rooms_path
+  .row
+    .col-3.border-right
+      %h4.text-center.my-auto.border-bottom
+        Info
+      .row#map.mx-auto{:style=>'width: 100%; height: 200px; margin: 5%;'}
+      %label
+        Address:
+      =@room.address
+      %h4.text-center.my-3
+        Room host:
+      %table.table
+        %tbody
+        -@room.powers.each do |p|
+          %tr
+            %td.text-center=link_to p.user.username, user_path(p.user) 
+    .col-6
+      QUI VA LA CHAT
+    .col-3.border-left
+      %h4.text-center.my-auto.border-bottom
+        Coda
+      %table.table
+        %tbody
+        
+:javascript
+  render_map_for_room_show(document.URL+'.json');

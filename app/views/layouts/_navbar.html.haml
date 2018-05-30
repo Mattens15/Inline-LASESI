@@ -1,10 +1,9 @@
 =stylesheet_link_tag 'navbar'
-%nav.navbar.navbar-default
-  .container-fluid
-    .navbar-header
-      =image_tag("logo.png")
-      
+%nav.navbar.navbar-default{:role => 'navigation'}
+  .navbar-header
+    =image_tag("logo.png")
+  .float-sm-right
     =image_tag("mail.svg",class:"navicon1")
     =image_tag("person.svg",class:"navicon2")
     %button.btn.btn-success#create Create a room
-     
+
