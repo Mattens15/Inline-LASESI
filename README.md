@@ -10,7 +10,8 @@ Things you may want to cover:
 * System dependencies
 
 * Configuration
-
+  TO ACCESS CALENDAR Inline::Application.config.cal
+  
 * Database creation
 
 * Database initialization

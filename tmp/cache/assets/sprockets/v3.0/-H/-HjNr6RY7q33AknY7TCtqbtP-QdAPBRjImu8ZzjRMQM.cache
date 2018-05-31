@@ -1,0 +1,57 @@
+I"&(function() {
+  var mapbox_api;
+
+  mapbox_api = function() {
+    var map;
+    mapboxgl.accessToken = 'pk.eyJ1IjoibGV0c2ZlZCIsImEiOiJjamhkamxmYXcwNTBvMzBva3VyOG50NjFtIn0.EuqkJJgJMWazgpxc6YJp4A';
+    map = new mapboxgl.Map({
+      container: 'map',
+      center: [12.4781985, 42.2058305],
+      style: 'mapbox://styles/mapbox/streets-v9',
+      zoom: 2
+    });
+    map.addControl(new MapboxGeocoder({
+      accessToken: 'pk.eyJ1IjoibGV0c2ZlZCIsImEiOiJjamhkamxmYXcwNTBvMzBva3VyOG50NjFtIn0.EuqkJJgJMWazgpxc6YJp4A'
+    }));
+    map.addControl(new mapboxgl.GeolocateControl({
+      positionOptions: {
+        enableHighAccuracy: true
+      },
+      trackUserLocation: true
+    }));
+    map.on('load', function() {
+      map.addLayer({
+        'id': 'points',
+        'type': 'symbol',
+        'source': {
+          'type': 'geojson',
+          'data': {
+            'type': 'FeatureCollection',
+            'features': [
+              {
+                'type': 'Feature',
+                'geometry': {
+                  'type': 'Point',
+                  'coordinates': [12.602005004882812, 42.178670521216]
+                },
+                'properties': {
+                  'title': 'Room1',
+                  'icon': 'harbor'
+                }
+              }
+            ]
+          }
+        },
+        'layout': {
+          'icon-image': '{icon}-15',
+          'text-field': '{title}',
+          'text-font': ['Open Sans Semibold', 'Arial Unicode MS Bold'],
+          'text-offset': [0, 0.6],
+          'text-anchor': 'top'
+        }
+      });
+    });
+  };
+
+}).call(this);
+:ET

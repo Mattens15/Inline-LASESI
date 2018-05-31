@@ -11,6 +11,20 @@
     %label.mx-auto
       Nome della stanza (Caratteri consentiti A-Za-z)
     = f.text_field :name, class: 'form-control'
+  .row
+    .col-6{:style => 'padding-left: 0px;'}
+      .row
+        %label.mx-auto 
+          Time from
+      .row
+        = f.text_field :time_from, class: 'form-control', id: 'inputdateFrom'
+    .col-6{:style => 'padding-right: 0px;'}
+      .row
+        %label.mx-auto
+          Time to
+      .row
+        = f.text_field :time_to, class: 'form-control', id: 'inputdateTo'
+  %br
   .form-group.row
     %label.mx-auto
       Descrizione della room (Massimo 140 caratteri)
@@ -18,8 +32,8 @@
   .row
     .col-6{:style => 'padding-left: 0px;'}
       .row
-        %label
-          Your room has a location? 
+        %label.mx-auto
+          La tua stanza ha una location?
       .row
         .btn.btn-dark.form-control#map_control
           Click me!
@@ -28,12 +42,7 @@
         %label.mx-auto
           Numero partecipanti massimo (Minimo 1)
         = f.text_field :max_participants, class: 'form-control'
-  .form-group.row#time_from
-    = f.label :time_from
-    = f.datetime_select :time_from, class: 'form-control'
-  .form-group.row#time_to
-    = f.label :time_to
-    = f.datetime_select :time_to, class: 'form-control'
+   
   .form-group.row#address
     = f.text_field :address, class: 'form-control', id: 'addr_input'
     = f.text_field :latitude, class: 'form-control', id: 'lats_input'
@@ -41,10 +50,10 @@
     
   .row#map_div
     %h5.mx-auto
-      Look for your location here!
+      Cerca la tua location qui!
     #map{:style=>'width: 100%; height: 300px; margin-top: 1%;'}
     .row#geocoder{:style => 'width: 100%; margin-top: 1rem; margin-bottom: 1rem;'}
   .form-group.row
     = f.submit 'Save', class: 'btn btn-success mx-auto form-control'
 
-
+-

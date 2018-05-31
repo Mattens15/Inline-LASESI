@@ -56,7 +56,10 @@ gem 'bootstrap'
 gem 'mapbox-gl-rails'
 gem 'capybara'
 gem 'bcrypt', '~> 3.1.7'
-gem 'sqlite3_ar_regexp', '~> 2.2'
+gem 'google-api-client', '~> 0.9.18'
+gem 'googleauth'
+gem 'flatpickr_rails'
+
 group :test do
   gem 'cucumber-rails', require: false
   gem 'database_cleaner'

@@ -10,12 +10,14 @@
 // Read Sprockets README (https://github.com/rails/sprockets#sprockets-directives) for details
 // about supported directives.
 //
+//= require jquery
+//= require flatpickr
 //= require activestorage
 //= require turbolinks
-//= require_tree
 //= require bootstrap
 //= require mapbox-gl
 //= require_tree 
+
 
 var map;
 
@@ -89,24 +91,22 @@ function render_map_for_room(){
     zoom: 15,
     attributionControl: false
   });
-  var stores = {
-    "type": "FeatureCollection",
-    "features": []
-  }
   
   map.on('load', function(e) {
     map.addSource('single-point', {
-      'type': 'geojson',
-      'data': stores
+      "type": "geojson",
+      "data": {
+          "type": "FeatureCollection",
+          "features": []
+      }
     });
     
     map.addLayer({
-      "id": 'locations',
+      "id": 'location',
       "type": "symbol",
       "source": 'single-point',
       "layout": {
         "icon-image": "marker-15",
-        "text-field": "{title}",
         "text-offset": [0, 0.6],
         "text-anchor": "top"
       }
@@ -119,9 +119,8 @@ function render_map_for_room(){
     document.getElementById('geocoder').appendChild(geocoder.onAdd(map));
     
     geocoder.on('result', function(ev){
-      console.log(ev);
       var searchResult = ev.result.geometry;
-      map.getSource('single-point').setData(searchResult);
+      map.getSource('single-point').setData(ev.result.geometry);
       
       var lats_html = document.getElementById('lats_input');
       var lons_html = document.getElementById('lons_input');

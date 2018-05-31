@@ -44,6 +44,38 @@ module Inline
     config.action_view.field_error_proc = Proc.new { |html_tag, instance| 
       html_tag
     }
+    
+    #INIZIALIZZAZIONE CALENDAR
+    Inline::Application.configure do
+      require 'google/apis/calendar_v3'
+      require 'google/api_client/auth/key_utils'
+      
+      keypath = Rails.root.join('config','key.p12').to_s
+      key = Google::APIClient::KeyUtils::load_from_pkcs12(keypath, 'notasecret')
+    
+      client_options = {
+        :token_credential_uri => 'https://accounts.google.com/o/oauth2/token',
+        :audience             => 'https://accounts.google.com/o/oauth2/token',
+        :scope                => 'https://www.googleapis.com/auth/calendar',
+        :issuer               => 'inline@inline-205713.iam.gserviceaccount.com',
+        :sub                  => 'inline@inline-205713.iam.gserviceaccount.com',
+        :signing_key          => key      
+      }
+      
+      cal = Google::Apis::CalendarV3::CalendarService.new
+      cal.authorization = Signet::OAuth2::Client.new(client_options).tap{ |auth| auth.fetch_access_token! }
+      
+      config.cal = cal
+      #USATO PER CONDIVIDERE IL CALENDARIO
+      #rule = Google::Apis::CalendarV3::AclRule.new(
+      #  scope: {
+      #    type: 'user',
+      #    value: 'danieligno10@gmail.com'
+      #  },
+      #  role: 'owner'  
+      #)
+      #cal.insert_acl('primary', rule)
+    end
   end
 end
 

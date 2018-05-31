@@ -16,6 +16,7 @@ class CreateRooms < ActiveRecord::Migration[5.2]
       t.float :avatar_size
       t.string :avatar_updated_at
       t.string :datetime
+      t.json :event
       
       t.belongs_to :user
       t.timestamps

@@ -32,7 +32,9 @@ class Room < ApplicationRecord
   
   #PUÒ ESSERE LANCIATA DA QUALSIASI UTENTE
   def add_reservation(an_user)
-    self.reservations.create(an_user.id, self.id)
+    #UN UTENTE SI PUÒ PRENOTARE SE NON È ROOM HOST DELLA STANZA
+    @power = Power.find_by user_id: an_user.id, room_id: self.id
+    self.reservations.create(an_user.id, self.id) if @power.nil?
   end
   
   #PUÒ ESSERE LANCIATA DA UN UTENTE CON UNA PRENOTAZIONE
@@ -44,5 +46,17 @@ class Room < ApplicationRecord
       @association = Reservation.find_by user_id: an_user.id, room_id: self.id
       @association.destroy! if !@association.nil?
     end
+  end
+  
+  #CREA UN EVENTO ALLA CREAZIONE DELLA ROOM
+  def create_event
+    self.event = {
+      'summary'     => self.name,
+      'description' => self.description,
+      'location'    => self.address,
+      'start'       => { 'dateTime' => self.time_from },
+      'end'         => { 'dateTime' => self.time_to   },
+      'attendees'   => []
+    }
   end
 end

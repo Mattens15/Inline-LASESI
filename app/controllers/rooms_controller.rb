@@ -1,4 +1,5 @@
 class RoomsController < ApplicationController
+  require 'google/apis/calendar_v3'
   before_action :set_room, only: [:show, :edit, :update, :destroy]
 
   # GET /rooms
@@ -27,8 +28,11 @@ class RoomsController < ApplicationController
     @room = Room.new(room_params)
     
     #@room.powers.create(self.id, current_user.id)
+    
+    @cal = Inline::Application.config.cal
     respond_to do |format|
       if @room.save
+        insert_event(Rails.secrets.google_calendar_id, @room.create_event);
         format.html { redirect_to @room, notice: 'Room was successfully created.' }
         format.json { render :show, status: :created, location: @room }
       else
@@ -41,6 +45,7 @@ class RoomsController < ApplicationController
   # PATCH/PUT /rooms/1
   # PATCH/PUT /rooms/1.json
   def update
+    #MODIFICA EVENTO
     respond_to do |format|
       if @room.update(room_params)
         format.html { redirect_to @room, notice: 'Room was successfully updated.' }
@@ -56,6 +61,7 @@ class RoomsController < ApplicationController
   # DELETE /rooms/1.json
   def destroy
     @room.destroy
+    #DISTRUZIONE EVENTO
     respond_to do |format|
       format.html { redirect_to rooms_url, notice: 'Room was successfully destroyed.' }
       format.json { head :no_content }
