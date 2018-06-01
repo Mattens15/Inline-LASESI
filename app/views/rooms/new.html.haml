@@ -15,10 +15,16 @@
       $('#map_div').toggle();
     });
     
+    
     $('#addr_input').hide();
     $('#lons_input').hide();
     $('#lats_input').hide();
     
+    $('#reset_location').on('click', function(){
+      $('#addr_input').val('');
+      $('#lons_input').val('');
+      $('#lats_input').val('');
+    });
     var dateFrom = $("#inputdateFrom").flatpickr({ 
       enableTime: true,
       minDate: Date.now(),
@@ -35,7 +41,6 @@
       altInput: true,
       altFromat: "F j, Y",
       dateFormat: 'Y-m-d H:i',
-      minDate: Date.now(),
       onChange(selectedDates, dateStr, instance){
         changeDateMaxFrom(selectedDates)
       }

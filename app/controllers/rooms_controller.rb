@@ -29,10 +29,27 @@ class RoomsController < ApplicationController
     
     #@room.powers.create(self.id, current_user.id)
     
-    @cal = Inline::Application.config.cal
+    
+
     respond_to do |format|
       if @room.save
-        insert_event(Rails.secrets.google_calendar_id, @room.create_event);
+      
+        cal = Inline::Application.config.cal
+        today = Date.today
+
+        today = Date.today
+        event = Google::Apis::CalendarV3::Event.new({
+          start: Google::Apis::CalendarV3::EventDateTime.new(date_time: today),
+          end: Google::Apis::CalendarV3::EventDateTime.new(date_time: today + 1),
+          summary: @room.name
+        })
+        
+        
+        logger.debug event
+        logger.debug @room.update_event
+        cal.insert_event(Rails.application.secrets.google_calendar_id, @room.update_event)
+        @event_list = cal.list_events(Rails.application.secrets.google_calendar_id)
+        
         format.html { redirect_to @room, notice: 'Room was successfully created.' }
         format.json { render :show, status: :created, location: @room }
       else

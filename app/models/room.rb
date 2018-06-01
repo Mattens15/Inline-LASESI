@@ -1,7 +1,10 @@
 class Room < ApplicationRecord
+  before_save{ self.event = self.update_event }
   VALID_ROOM_NAME = /[a-zA-Z]/i
-  validates :user_id, presence: true
+  #validates :user_id, presence: true
   
+  #validates :time_to, presence: true
+  #validates :time_from, presence: true
   
   validates :max_participants, presence: true, 
             numericality: {only_integer: true, greater_than_or_equal_to: 1}
@@ -10,7 +13,7 @@ class Room < ApplicationRecord
             format: {with: VALID_ROOM_NAME}
   validates :description, length: { maximum: 140 }
   
-  belongs_to :user
+  #belongs_to :user
   has_many :powers, dependent: :destroy
   has_many :reservations, dependent: :destroy
   
@@ -49,14 +52,22 @@ class Room < ApplicationRecord
   end
   
   #CREA UN EVENTO ALLA CREAZIONE DELLA ROOM
-  def create_event
-    self.event = {
-      'summary'     => self.name,
-      'description' => self.description,
-      'location'    => self.address,
-      'start'       => { 'dateTime' => self.time_from },
-      'end'         => { 'dateTime' => self.time_to   },
-      'attendees'   => []
-    }
+  def create_attendees_json
+    attendees = []
+    self.reservations.each do |r|
+      attendees << {
+        'email': r.user.email,
+        'displayName': r.user.username
+      }
+    end
+  end
+  
+  def update_event
+    today = Date.today
+    event = Google::Apis::CalendarV3::Event.new({
+      start: Google::Apis::CalendarV3::EventDateTime.new(date_time: self.time_from.to_datetime.rfc3339),
+      end: Google::Apis::CalendarV3::EventDateTime.new(date_time: self.time_to.to_datetime.rfc3339),
+      summary: self.name,
+    })
   end
 end

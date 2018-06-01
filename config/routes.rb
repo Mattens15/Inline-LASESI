@@ -1,5 +1,7 @@
 Rails.application.routes.draw do
   
+  get 'calendar'      => 'calendar_prova#calendar'
+  post 'event'         => 'calendar_prova#event'
   resources :users
   resources :rooms
 	root                     'mapbox#show'

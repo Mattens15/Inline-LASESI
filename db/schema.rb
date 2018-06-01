@@ -48,6 +48,8 @@ ActiveRecord::Schema.define(version: 2018_05_28_233631) do
     t.float "avatar_size"
     t.string "avatar_updated_at"
     t.string "datetime"
+    t.string "recurrence"
+    t.json "event"
     t.integer "user_id"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
