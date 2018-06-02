@@ -1,5 +1,4 @@
 class RoomsController < ApplicationController
-  require 'google/apis/calendar_v3'
   before_action :set_room, only: [:show, :edit, :update, :destroy]
 
   # GET /rooms
@@ -15,6 +14,8 @@ class RoomsController < ApplicationController
 
   # GET /rooms/new
   def new
+    #AL MOMENTO SENZA LA DEFINIZIONE DELLA SESSIONE, E' MEGLIO COMMENTARLO
+    #@room = current_user.microposts.build
     @room = Room.new
   end
 
@@ -27,26 +28,11 @@ class RoomsController < ApplicationController
   def create
     @room = Room.new(room_params)
     
+    #AL MOMENTO SENZA LA DEFINIZIONE DELLA SESSIONE, E' MEGLIO COMMENTARLO
     #@room.powers.create(self.id, current_user.id)
-    
-    
-
     respond_to do |format|
       if @room.save
-      
         cal = Inline::Application.config.cal
-        today = Date.today
-
-        today = Date.today
-        event = Google::Apis::CalendarV3::Event.new({
-          start: Google::Apis::CalendarV3::EventDateTime.new(date_time: today),
-          end: Google::Apis::CalendarV3::EventDateTime.new(date_time: today + 1),
-          summary: @room.name
-        })
-        
-        
-        logger.debug event
-        logger.debug @room.update_event
         cal.insert_event(Rails.application.secrets.google_calendar_id, @room.update_event)
         @event_list = cal.list_events(Rails.application.secrets.google_calendar_id)
         
@@ -73,11 +59,21 @@ class RoomsController < ApplicationController
       end
     end
   end
+  
+  def reservations
+    @room = find(:room_id)
+    
+    respond_to do |format|
 
+      format.json { render json: @room.reservations }
+    end
+  end
+  
   # DELETE /rooms/1
   # DELETE /rooms/1.json
   def destroy
-    @room.destroy
+    
+    @room.destroy if(current_user.id == @room.user_id)
     #DISTRUZIONE EVENTO
     respond_to do |format|
       format.html { redirect_to rooms_url, notice: 'Room was successfully destroyed.' }

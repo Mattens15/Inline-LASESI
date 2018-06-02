@@ -5336,3 +5336,3093 @@ Processing by RoomsController#index as HTML
 Completed 200 OK in 40ms (Views: 38.9ms | ActiveRecord: 0.2ms)
 
 
+Started GET "/rooms/new" for 127.0.0.1 at 2018-06-01 19:01:29 +0200
+Processing by RoomsController#new as HTML
+  Rendering rooms/new.html.haml within layouts/application
+  Rendered rooms/_form.html.haml (13.7ms)
+  Rendered rooms/new.html.haml within layouts/application (20.2ms)
+  Rendered layouts/_navbar.html.haml (9.8ms)
+Completed 200 OK in 57ms (Views: 54.6ms | ActiveRecord: 0.0ms)
+
+
+Started GET "/rooms/1" for 127.0.0.1 at 2018-06-01 19:12:12 +0200
+Processing by RoomsController#show as HTML
+  Parameters: {"id"=>"1"}
+  [1m[36mRoom Load (0.1ms)[0m  [1m[34mSELECT  "rooms".* FROM "rooms" WHERE "rooms"."id" = ? LIMIT ?[0m  [["id", 1], ["LIMIT", 1]]
+  ↳ app/controllers/rooms_controller.rb:91
+Completed 404 Not Found in 1ms (ActiveRecord: 0.1ms)
+
+
+  
+ActiveRecord::RecordNotFound (Couldn't find Room with 'id'=1):
+  
+app/controllers/rooms_controller.rb:91:in `set_room'
+Started GET "/rooms" for 127.0.0.1 at 2018-06-01 19:12:15 +0200
+Processing by RoomsController#index as HTML
+  Rendering rooms/index.html.haml within layouts/application
+  [1m[36mRoom Load (0.2ms)[0m  [1m[34mSELECT "rooms".* FROM "rooms"[0m
+  ↳ app/views/rooms/index.html.haml:23
+  Rendered rooms/index.html.haml within layouts/application (6.0ms)
+  Rendered layouts/_navbar.html.haml (4.8ms)
+Completed 200 OK in 39ms (Views: 37.1ms | ActiveRecord: 0.2ms)
+
+
+Started GET "/rooms/29" for 127.0.0.1 at 2018-06-01 19:12:17 +0200
+Processing by RoomsController#show as HTML
+  Parameters: {"id"=>"29"}
+  [1m[36mRoom Load (0.3ms)[0m  [1m[34mSELECT  "rooms".* FROM "rooms" WHERE "rooms"."id" = ? LIMIT ?[0m  [["id", 29], ["LIMIT", 1]]
+  ↳ app/controllers/rooms_controller.rb:91
+  Rendering rooms/show.html.haml within layouts/application
+  [1m[36mPower Load (0.3ms)[0m  [1m[34mSELECT "powers".* FROM "powers" WHERE "powers"."room_id" = ?[0m  [["room_id", 29]]
+  ↳ app/views/rooms/show.html.haml:24
+  Rendered rooms/show.html.haml within layouts/application (10.0ms)
+  Rendered layouts/_navbar.html.haml (4.2ms)
+Completed 200 OK in 47ms (Views: 44.3ms | ActiveRecord: 0.6ms)
+
+
+Started GET "/rooms/29.json" for 127.0.0.1 at 2018-06-01 19:12:17 +0200
+Processing by RoomsController#show as JSON
+  Parameters: {"id"=>"29"}
+  [1m[36mRoom Load (0.1ms)[0m  [1m[34mSELECT  "rooms".* FROM "rooms" WHERE "rooms"."id" = ? LIMIT ?[0m  [["id", 29], ["LIMIT", 1]]
+  ↳ app/controllers/rooms_controller.rb:91
+  Rendering rooms/show.json.jbuilder
+  Rendered rooms/_room.json.jbuilder (0.6ms)
+  Rendered rooms/show.json.jbuilder (1.3ms)
+Completed 200 OK in 3ms (Views: 2.4ms | ActiveRecord: 0.1ms)
+
+
+Started GET "/rooms/29" for 127.0.0.1 at 2018-06-01 19:13:01 +0200
+Processing by RoomsController#show as HTML
+  Parameters: {"id"=>"29"}
+  [1m[36mRoom Load (0.2ms)[0m  [1m[34mSELECT  "rooms".* FROM "rooms" WHERE "rooms"."id" = ? LIMIT ?[0m  [["id", 29], ["LIMIT", 1]]
+  ↳ app/controllers/rooms_controller.rb:91
+  Rendering rooms/show.html.haml within layouts/application
+  [1m[36mPower Load (0.1ms)[0m  [1m[34mSELECT "powers".* FROM "powers" WHERE "powers"."room_id" = ?[0m  [["room_id", 29]]
+  ↳ app/views/rooms/show.html.haml:24
+  Rendered rooms/show.html.haml within layouts/application (7.1ms)
+  Rendered layouts/_navbar.html.haml (4.3ms)
+Completed 200 OK in 38ms (Views: 36.2ms | ActiveRecord: 0.3ms)
+
+
+Started GET "/rooms/29.json" for 127.0.0.1 at 2018-06-01 19:13:02 +0200
+Processing by RoomsController#show as JSON
+  Parameters: {"id"=>"29"}
+  [1m[36mRoom Load (0.2ms)[0m  [1m[34mSELECT  "rooms".* FROM "rooms" WHERE "rooms"."id" = ? LIMIT ?[0m  [["id", 29], ["LIMIT", 1]]
+  ↳ app/controllers/rooms_controller.rb:91
+  Rendering rooms/show.json.jbuilder
+  Rendered rooms/_room.json.jbuilder (0.9ms)
+  Rendered rooms/show.json.jbuilder (2.2ms)
+Completed 200 OK in 5ms (Views: 3.7ms | ActiveRecord: 0.2ms)
+
+
+Started GET "/rooms" for 127.0.0.1 at 2018-06-01 19:18:53 +0200
+Processing by RoomsController#index as HTML
+  Rendering rooms/index.html.haml within layouts/application
+  [1m[36mRoom Load (0.2ms)[0m  [1m[34mSELECT "rooms".* FROM "rooms"[0m
+  ↳ app/views/rooms/index.html.haml:23
+  Rendered rooms/index.html.haml within layouts/application (4.3ms)
+  Rendered layouts/_navbar.html.haml (4.7ms)
+Completed 200 OK in 40ms (Views: 39.2ms | ActiveRecord: 0.2ms)
+
+
+Started GET "/rooms/new" for 127.0.0.1 at 2018-06-01 19:18:56 +0200
+Processing by RoomsController#new as HTML
+  Rendering rooms/new.html.haml within layouts/application
+  Rendered rooms/_form.html.haml (15.3ms)
+  Rendered rooms/new.html.haml within layouts/application (23.4ms)
+  Rendered layouts/_navbar.html.haml (9.3ms)
+Completed 200 OK in 65ms (Views: 63.8ms | ActiveRecord: 0.0ms)
+
+
+Started GET "/map" for 127.0.0.1 at 2018-06-01 19:24:00 +0200
+  
+ActionController::RoutingError (No route matches [GET] "/map"):
+  
+actionpack (5.2.0) lib/action_dispatch/middleware/debug_exceptions.rb:65:in `call'
+web-console (3.6.2) lib/web_console/middleware.rb:135:in `call_app'
+web-console (3.6.2) lib/web_console/middleware.rb:30:in `block in call'
+web-console (3.6.2) lib/web_console/middleware.rb:20:in `catch'
+web-console (3.6.2) lib/web_console/middleware.rb:20:in `call'
+actionpack (5.2.0) lib/action_dispatch/middleware/show_exceptions.rb:33:in `call'
+railties (5.2.0) lib/rails/rack/logger.rb:38:in `call_app'
+railties (5.2.0) lib/rails/rack/logger.rb:26:in `block in call'
+activesupport (5.2.0) lib/active_support/tagged_logging.rb:71:in `block in tagged'
+activesupport (5.2.0) lib/active_support/tagged_logging.rb:28:in `tagged'
+activesupport (5.2.0) lib/active_support/tagged_logging.rb:71:in `tagged'
+railties (5.2.0) lib/rails/rack/logger.rb:26:in `call'
+sprockets-rails (3.2.1) lib/sprockets/rails/quiet_assets.rb:13:in `call'
+actionpack (5.2.0) lib/action_dispatch/middleware/remote_ip.rb:81:in `call'
+actionpack (5.2.0) lib/action_dispatch/middleware/request_id.rb:27:in `call'
+rack (2.0.5) lib/rack/method_override.rb:22:in `call'
+rack (2.0.5) lib/rack/runtime.rb:22:in `call'
+activesupport (5.2.0) lib/active_support/cache/strategy/local_cache_middleware.rb:29:in `call'
+actionpack (5.2.0) lib/action_dispatch/middleware/executor.rb:14:in `call'
+actionpack (5.2.0) lib/action_dispatch/middleware/static.rb:127:in `call'
+rack (2.0.5) lib/rack/sendfile.rb:111:in `call'
+railties (5.2.0) lib/rails/engine.rb:524:in `call'
+puma (3.11.4) lib/puma/configuration.rb:225:in `call'
+puma (3.11.4) lib/puma/server.rb:632:in `handle_request'
+puma (3.11.4) lib/puma/server.rb:446:in `process_client'
+puma (3.11.4) lib/puma/server.rb:306:in `block in run'
+puma (3.11.4) lib/puma/thread_pool.rb:120:in `block in spawn_thread'
+Started GET "/dashboard" for 127.0.0.1 at 2018-06-01 19:24:04 +0200
+Processing by MapboxController#show as HTML
+  [1m[36mRoom Load (0.2ms)[0m  [1m[34mSELECT "rooms".* FROM "rooms"[0m
+  ↳ app/controllers/mapbox_controller.rb:8
+  Rendering mapbox/show.html.haml within layouts/application
+  Rendered mapbox/show.html.haml within layouts/application (13.0ms)
+  Rendered layouts/_navbar.html.haml (4.5ms)
+Completed 200 OK in 42ms (Views: 39.3ms | ActiveRecord: 0.2ms)
+
+
+Started GET "/dashboard.json" for 127.0.0.1 at 2018-06-01 19:24:04 +0200
+Processing by MapboxController#show as JSON
+  [1m[36mRoom Load (0.1ms)[0m  [1m[34mSELECT "rooms".* FROM "rooms"[0m
+  ↳ app/controllers/mapbox_controller.rb:8
+Completed 200 OK in 2ms (Views: 0.1ms | ActiveRecord: 0.1ms)
+
+
+Started GET "/rooms/31" for 127.0.0.1 at 2018-06-01 19:29:36 +0200
+Processing by RoomsController#show as HTML
+  Parameters: {"id"=>"31"}
+  [1m[36mRoom Load (2.6ms)[0m  [1m[34mSELECT  "rooms".* FROM "rooms" WHERE "rooms"."id" = ? LIMIT ?[0m  [["id", 31], ["LIMIT", 1]]
+  ↳ app/controllers/rooms_controller.rb:91
+  Rendering rooms/show.html.haml within layouts/application
+  [1m[36mPower Load (0.7ms)[0m  [1m[34mSELECT "powers".* FROM "powers" WHERE "powers"."room_id" = ?[0m  [["room_id", 31]]
+  ↳ app/views/rooms/show.html.haml:24
+  Rendered rooms/show.html.haml within layouts/application (33.7ms)
+  Rendered layouts/_navbar.html.haml (6.9ms)
+Completed 200 OK in 123ms (Views: 110.6ms | ActiveRecord: 3.2ms)
+
+
+Started GET "/rooms/31.json" for 127.0.0.1 at 2018-06-01 19:29:36 +0200
+Processing by RoomsController#show as JSON
+  Parameters: {"id"=>"31"}
+  [1m[36mRoom Load (0.1ms)[0m  [1m[34mSELECT  "rooms".* FROM "rooms" WHERE "rooms"."id" = ? LIMIT ?[0m  [["id", 31], ["LIMIT", 1]]
+  ↳ app/controllers/rooms_controller.rb:91
+  Rendering rooms/show.json.jbuilder
+  Rendered rooms/_room.json.jbuilder (0.6ms)
+  Rendered rooms/show.json.jbuilder (1.3ms)
+Completed 200 OK in 4ms (Views: 2.3ms | ActiveRecord: 0.1ms)
+
+
+Started GET "/rooms/31" for 127.0.0.1 at 2018-06-01 19:32:08 +0200
+Processing by RoomsController#show as HTML
+  Parameters: {"id"=>"31"}
+  [1m[36mRoom Load (0.2ms)[0m  [1m[34mSELECT  "rooms".* FROM "rooms" WHERE "rooms"."id" = ? LIMIT ?[0m  [["id", 31], ["LIMIT", 1]]
+  ↳ app/controllers/rooms_controller.rb:91
+  Rendering rooms/show.html.haml within layouts/application
+  [1m[36mPower Load (0.3ms)[0m  [1m[34mSELECT "powers".* FROM "powers" WHERE "powers"."room_id" = ?[0m  [["room_id", 31]]
+  ↳ app/views/rooms/show.html.haml:24
+  Rendered rooms/show.html.haml within layouts/application (7.7ms)
+  Rendered layouts/_navbar.html.haml (5.2ms)
+Completed 200 OK in 40ms (Views: 38.1ms | ActiveRecord: 0.4ms)
+
+
+Started GET "/rooms/31.json" for 127.0.0.1 at 2018-06-01 19:32:08 +0200
+Processing by RoomsController#show as JSON
+  Parameters: {"id"=>"31"}
+  [1m[36mRoom Load (0.2ms)[0m  [1m[34mSELECT  "rooms".* FROM "rooms" WHERE "rooms"."id" = ? LIMIT ?[0m  [["id", 31], ["LIMIT", 1]]
+  ↳ app/controllers/rooms_controller.rb:91
+  Rendering rooms/show.json.jbuilder
+  Rendered rooms/_room.json.jbuilder (0.8ms)
+  Rendered rooms/show.json.jbuilder (1.8ms)
+Completed 200 OK in 4ms (Views: 2.9ms | ActiveRecord: 0.2ms)
+
+
+Started GET "/rooms/31" for 127.0.0.1 at 2018-06-01 19:32:28 +0200
+Processing by RoomsController#show as HTML
+  Parameters: {"id"=>"31"}
+  [1m[36mRoom Load (0.2ms)[0m  [1m[34mSELECT  "rooms".* FROM "rooms" WHERE "rooms"."id" = ? LIMIT ?[0m  [["id", 31], ["LIMIT", 1]]
+  ↳ app/controllers/rooms_controller.rb:91
+  Rendering rooms/show.html.haml within layouts/application
+  [1m[36mPower Load (0.2ms)[0m  [1m[34mSELECT "powers".* FROM "powers" WHERE "powers"."room_id" = ?[0m  [["room_id", 31]]
+  ↳ app/views/rooms/show.html.haml:24
+  Rendered rooms/show.html.haml within layouts/application (13.2ms)
+  Rendered layouts/_navbar.html.haml (4.6ms)
+Completed 200 OK in 69ms (Views: 66.8ms | ActiveRecord: 0.4ms)
+
+
+Started GET "/rooms/31.json" for 127.0.0.1 at 2018-06-01 19:32:28 +0200
+Processing by RoomsController#show as JSON
+  Parameters: {"id"=>"31"}
+  [1m[36mRoom Load (0.2ms)[0m  [1m[34mSELECT  "rooms".* FROM "rooms" WHERE "rooms"."id" = ? LIMIT ?[0m  [["id", 31], ["LIMIT", 1]]
+  ↳ app/controllers/rooms_controller.rb:91
+  Rendering rooms/show.json.jbuilder
+  Rendered rooms/_room.json.jbuilder (0.7ms)
+  Rendered rooms/show.json.jbuilder (2.8ms)
+Completed 200 OK in 7ms (Views: 5.0ms | ActiveRecord: 0.2ms)
+
+
+Started GET "/rooms/31" for 127.0.0.1 at 2018-06-01 19:32:43 +0200
+Processing by RoomsController#show as HTML
+  Parameters: {"id"=>"31"}
+  [1m[36mRoom Load (0.2ms)[0m  [1m[34mSELECT  "rooms".* FROM "rooms" WHERE "rooms"."id" = ? LIMIT ?[0m  [["id", 31], ["LIMIT", 1]]
+  ↳ app/controllers/rooms_controller.rb:91
+  Rendering rooms/show.html.haml within layouts/application
+  [1m[36mPower Load (0.2ms)[0m  [1m[34mSELECT "powers".* FROM "powers" WHERE "powers"."room_id" = ?[0m  [["room_id", 31]]
+  ↳ app/views/rooms/show.html.haml:24
+  Rendered rooms/show.html.haml within layouts/application (14.9ms)
+  Rendered layouts/_navbar.html.haml (11.8ms)
+Completed 200 OK in 65ms (Views: 62.5ms | ActiveRecord: 0.4ms)
+
+
+Started GET "/rooms/31.json" for 127.0.0.1 at 2018-06-01 19:32:43 +0200
+Processing by RoomsController#show as JSON
+  Parameters: {"id"=>"31"}
+  [1m[36mRoom Load (0.2ms)[0m  [1m[34mSELECT  "rooms".* FROM "rooms" WHERE "rooms"."id" = ? LIMIT ?[0m  [["id", 31], ["LIMIT", 1]]
+  ↳ app/controllers/rooms_controller.rb:91
+  Rendering rooms/show.json.jbuilder
+  Rendered rooms/_room.json.jbuilder (0.5ms)
+  Rendered rooms/show.json.jbuilder (1.3ms)
+Completed 200 OK in 4ms (Views: 2.3ms | ActiveRecord: 0.2ms)
+
+
+Started GET "/rooms/31" for 127.0.0.1 at 2018-06-01 19:32:56 +0200
+Processing by RoomsController#show as HTML
+  Parameters: {"id"=>"31"}
+  [1m[36mRoom Load (0.2ms)[0m  [1m[34mSELECT  "rooms".* FROM "rooms" WHERE "rooms"."id" = ? LIMIT ?[0m  [["id", 31], ["LIMIT", 1]]
+  ↳ app/controllers/rooms_controller.rb:91
+  Rendering rooms/show.html.haml within layouts/application
+  [1m[36mPower Load (0.2ms)[0m  [1m[34mSELECT "powers".* FROM "powers" WHERE "powers"."room_id" = ?[0m  [["room_id", 31]]
+  ↳ app/views/rooms/show.html.haml:24
+  Rendered rooms/show.html.haml within layouts/application (7.7ms)
+  Rendered layouts/_navbar.html.haml (16.7ms)
+Completed 200 OK in 67ms (Views: 65.7ms | ActiveRecord: 0.4ms)
+
+
+Started GET "/rooms/31.json" for 127.0.0.1 at 2018-06-01 19:32:57 +0200
+Processing by RoomsController#show as JSON
+  Parameters: {"id"=>"31"}
+  [1m[36mRoom Load (0.2ms)[0m  [1m[34mSELECT  "rooms".* FROM "rooms" WHERE "rooms"."id" = ? LIMIT ?[0m  [["id", 31], ["LIMIT", 1]]
+  ↳ app/controllers/rooms_controller.rb:91
+  Rendering rooms/show.json.jbuilder
+  Rendered rooms/_room.json.jbuilder (0.6ms)
+  Rendered rooms/show.json.jbuilder (1.3ms)
+Completed 200 OK in 4ms (Views: 2.4ms | ActiveRecord: 0.2ms)
+
+
+Started GET "/rooms/31" for 127.0.0.1 at 2018-06-01 19:33:03 +0200
+Processing by RoomsController#show as HTML
+  Parameters: {"id"=>"31"}
+  [1m[36mRoom Load (0.7ms)[0m  [1m[34mSELECT  "rooms".* FROM "rooms" WHERE "rooms"."id" = ? LIMIT ?[0m  [["id", 31], ["LIMIT", 1]]
+  ↳ app/controllers/rooms_controller.rb:91
+  Rendering rooms/show.html.haml within layouts/application
+  [1m[36mPower Load (0.1ms)[0m  [1m[34mSELECT "powers".* FROM "powers" WHERE "powers"."room_id" = ?[0m  [["room_id", 31]]
+  ↳ app/views/rooms/show.html.haml:23
+  Rendered rooms/show.html.haml within layouts/application (11.2ms)
+  Rendered layouts/_navbar.html.haml (9.8ms)
+Completed 200 OK in 63ms (Views: 58.1ms | ActiveRecord: 0.9ms)
+
+
+Started GET "/rooms/31.json" for 127.0.0.1 at 2018-06-01 19:33:03 +0200
+Processing by RoomsController#show as JSON
+  Parameters: {"id"=>"31"}
+  [1m[36mRoom Load (0.2ms)[0m  [1m[34mSELECT  "rooms".* FROM "rooms" WHERE "rooms"."id" = ? LIMIT ?[0m  [["id", 31], ["LIMIT", 1]]
+  ↳ app/controllers/rooms_controller.rb:91
+  Rendering rooms/show.json.jbuilder
+  Rendered rooms/_room.json.jbuilder (0.6ms)
+  Rendered rooms/show.json.jbuilder (1.5ms)
+Completed 200 OK in 4ms (Views: 2.7ms | ActiveRecord: 0.2ms)
+
+
+Started GET "/rooms/31" for 127.0.0.1 at 2018-06-01 19:33:44 +0200
+Processing by RoomsController#show as HTML
+  Parameters: {"id"=>"31"}
+  [1m[36mRoom Load (0.2ms)[0m  [1m[34mSELECT  "rooms".* FROM "rooms" WHERE "rooms"."id" = ? LIMIT ?[0m  [["id", 31], ["LIMIT", 1]]
+  ↳ app/controllers/rooms_controller.rb:91
+  Rendering rooms/show.html.haml within layouts/application
+  [1m[36mPower Load (0.2ms)[0m  [1m[34mSELECT "powers".* FROM "powers" WHERE "powers"."room_id" = ?[0m  [["room_id", 31]]
+  ↳ app/views/rooms/show.html.haml:24
+  Rendered rooms/show.html.haml within layouts/application (6.0ms)
+  Rendered layouts/_navbar.html.haml (11.3ms)
+Completed 200 OK in 52ms (Views: 50.2ms | ActiveRecord: 0.4ms)
+
+
+Started GET "/rooms/31.json" for 127.0.0.1 at 2018-06-01 19:33:45 +0200
+Processing by RoomsController#show as JSON
+  Parameters: {"id"=>"31"}
+  [1m[36mRoom Load (0.1ms)[0m  [1m[34mSELECT  "rooms".* FROM "rooms" WHERE "rooms"."id" = ? LIMIT ?[0m  [["id", 31], ["LIMIT", 1]]
+  ↳ app/controllers/rooms_controller.rb:91
+  Rendering rooms/show.json.jbuilder
+  Rendered rooms/_room.json.jbuilder (0.5ms)
+  Rendered rooms/show.json.jbuilder (1.4ms)
+Completed 200 OK in 4ms (Views: 2.5ms | ActiveRecord: 0.1ms)
+
+
+Started GET "/rooms/31" for 127.0.0.1 at 2018-06-01 19:33:53 +0200
+Processing by RoomsController#show as HTML
+  Parameters: {"id"=>"31"}
+  [1m[36mRoom Load (1.1ms)[0m  [1m[34mSELECT  "rooms".* FROM "rooms" WHERE "rooms"."id" = ? LIMIT ?[0m  [["id", 31], ["LIMIT", 1]]
+  ↳ app/controllers/rooms_controller.rb:91
+  Rendering rooms/show.html.haml within layouts/application
+  [1m[36mPower Load (0.2ms)[0m  [1m[34mSELECT "powers".* FROM "powers" WHERE "powers"."room_id" = ?[0m  [["room_id", 31]]
+  ↳ app/views/rooms/show.html.haml:24
+  Rendered rooms/show.html.haml within layouts/application (14.4ms)
+  Rendered layouts/_navbar.html.haml (4.2ms)
+Completed 200 OK in 62ms (Views: 55.2ms | ActiveRecord: 1.2ms)
+
+
+Started GET "/rooms/31.json" for 127.0.0.1 at 2018-06-01 19:33:53 +0200
+Processing by RoomsController#show as JSON
+  Parameters: {"id"=>"31"}
+  [1m[36mRoom Load (0.2ms)[0m  [1m[34mSELECT  "rooms".* FROM "rooms" WHERE "rooms"."id" = ? LIMIT ?[0m  [["id", 31], ["LIMIT", 1]]
+  ↳ app/controllers/rooms_controller.rb:91
+  Rendering rooms/show.json.jbuilder
+  Rendered rooms/_room.json.jbuilder (0.7ms)
+  Rendered rooms/show.json.jbuilder (3.2ms)
+Completed 200 OK in 6ms (Views: 4.4ms | ActiveRecord: 0.2ms)
+
+
+Started GET "/rooms/31" for 127.0.0.1 at 2018-06-01 19:34:24 +0200
+Processing by RoomsController#show as HTML
+  Parameters: {"id"=>"31"}
+  [1m[36mRoom Load (1.0ms)[0m  [1m[34mSELECT  "rooms".* FROM "rooms" WHERE "rooms"."id" = ? LIMIT ?[0m  [["id", 31], ["LIMIT", 1]]
+  ↳ app/controllers/rooms_controller.rb:91
+  Rendering rooms/show.html.haml within layouts/application
+  Rendered rooms/show.html.haml within layouts/application (2.7ms)
+Completed 500 Internal Server Error in 10ms (ActiveRecord: 1.0ms)
+
+
+  
+ActionView::Template::Error (Illegal nesting: nesting within plain text is illegal.):
+    16:         .row#map.mx-auto{:style=>'width: 100%; height: 200px; margin: 5%;'}
+    17:         %label
+    18:           Address:
+    19:             =@room.address
+    20:       %h4.text-center.my-3
+    21:         Room host:
+    22:       %table.table
+  
+app/views/rooms/show.html.haml:19
+Started GET "/rooms/31" for 127.0.0.1 at 2018-06-01 19:34:30 +0200
+Processing by RoomsController#show as HTML
+  Parameters: {"id"=>"31"}
+  [1m[36mRoom Load (0.3ms)[0m  [1m[34mSELECT  "rooms".* FROM "rooms" WHERE "rooms"."id" = ? LIMIT ?[0m  [["id", 31], ["LIMIT", 1]]
+  ↳ app/controllers/rooms_controller.rb:91
+  Rendering rooms/show.html.haml within layouts/application
+  [1m[36mPower Load (0.2ms)[0m  [1m[34mSELECT "powers".* FROM "powers" WHERE "powers"."room_id" = ?[0m  [["room_id", 31]]
+  ↳ app/views/rooms/show.html.haml:24
+  Rendered rooms/show.html.haml within layouts/application (11.7ms)
+  Rendered layouts/_navbar.html.haml (11.8ms)
+Completed 200 OK in 62ms (Views: 59.5ms | ActiveRecord: 0.5ms)
+
+
+Started GET "/rooms/31.json" for 127.0.0.1 at 2018-06-01 19:34:31 +0200
+Processing by RoomsController#show as JSON
+  Parameters: {"id"=>"31"}
+  [1m[36mRoom Load (0.2ms)[0m  [1m[34mSELECT  "rooms".* FROM "rooms" WHERE "rooms"."id" = ? LIMIT ?[0m  [["id", 31], ["LIMIT", 1]]
+  ↳ app/controllers/rooms_controller.rb:91
+  Rendering rooms/show.json.jbuilder
+  Rendered rooms/_room.json.jbuilder (0.7ms)
+  Rendered rooms/show.json.jbuilder (1.6ms)
+Completed 200 OK in 4ms (Views: 2.9ms | ActiveRecord: 0.2ms)
+
+
+Started GET "/" for 127.0.0.1 at 2018-06-01 19:39:38 +0200
+Processing by MapboxController#show as HTML
+  [1m[36mRoom Load (0.3ms)[0m  [1m[34mSELECT "rooms".* FROM "rooms"[0m
+  ↳ app/controllers/mapbox_controller.rb:8
+  Rendering mapbox/show.html.haml within layouts/application
+  Rendered mapbox/show.html.haml within layouts/application (5.5ms)
+  Rendered layouts/_navbar.html.haml (5.0ms)
+Completed 200 OK in 35ms (Views: 32.6ms | ActiveRecord: 0.3ms)
+
+
+Started GET "/dashboard.json" for 127.0.0.1 at 2018-06-01 19:39:38 +0200
+Processing by MapboxController#show as JSON
+  [1m[36mRoom Load (0.2ms)[0m  [1m[34mSELECT "rooms".* FROM "rooms"[0m
+  ↳ app/controllers/mapbox_controller.rb:8
+Completed 200 OK in 2ms (Views: 0.1ms | ActiveRecord: 0.2ms)
+
+
+Started GET "/rooms/30" for 127.0.0.1 at 2018-06-01 19:40:11 +0200
+Processing by RoomsController#show as HTML
+  Parameters: {"id"=>"30"}
+  [1m[36mRoom Load (0.3ms)[0m  [1m[34mSELECT  "rooms".* FROM "rooms" WHERE "rooms"."id" = ? LIMIT ?[0m  [["id", 30], ["LIMIT", 1]]
+  ↳ app/controllers/rooms_controller.rb:91
+  Rendering rooms/show.html.haml within layouts/application
+  [1m[36mPower Load (0.2ms)[0m  [1m[34mSELECT "powers".* FROM "powers" WHERE "powers"."room_id" = ?[0m  [["room_id", 30]]
+  ↳ app/views/rooms/show.html.haml:25
+  Rendered rooms/show.html.haml within layouts/application (10.6ms)
+  Rendered layouts/_navbar.html.haml (4.2ms)
+Completed 200 OK in 47ms (Views: 44.2ms | ActiveRecord: 0.5ms)
+
+
+Started GET "/rooms/30.json" for 127.0.0.1 at 2018-06-01 19:40:12 +0200
+Processing by RoomsController#show as JSON
+  Parameters: {"id"=>"30"}
+  [1m[36mRoom Load (0.1ms)[0m  [1m[34mSELECT  "rooms".* FROM "rooms" WHERE "rooms"."id" = ? LIMIT ?[0m  [["id", 30], ["LIMIT", 1]]
+  ↳ app/controllers/rooms_controller.rb:91
+  Rendering rooms/show.json.jbuilder
+  Rendered rooms/_room.json.jbuilder (0.8ms)
+  Rendered rooms/show.json.jbuilder (1.8ms)
+Completed 200 OK in 6ms (Views: 3.9ms | ActiveRecord: 0.1ms)
+
+
+Started GET "/rooms/30" for 127.0.0.1 at 2018-06-01 19:41:46 +0200
+Processing by RoomsController#show as HTML
+  Parameters: {"id"=>"30"}
+  [1m[36mRoom Load (0.2ms)[0m  [1m[34mSELECT  "rooms".* FROM "rooms" WHERE "rooms"."id" = ? LIMIT ?[0m  [["id", 30], ["LIMIT", 1]]
+  ↳ app/controllers/rooms_controller.rb:91
+  Rendering rooms/show.html.haml within layouts/application
+  [1m[36mPower Load (0.1ms)[0m  [1m[34mSELECT "powers".* FROM "powers" WHERE "powers"."room_id" = ?[0m  [["room_id", 30]]
+  ↳ app/views/rooms/show.html.haml:26
+  Rendered rooms/show.html.haml within layouts/application (8.6ms)
+  Rendered layouts/_navbar.html.haml (4.0ms)
+Completed 200 OK in 41ms (Views: 38.0ms | ActiveRecord: 0.3ms)
+
+
+Started GET "/rooms/30.json" for 127.0.0.1 at 2018-06-01 19:41:47 +0200
+Processing by RoomsController#show as JSON
+  Parameters: {"id"=>"30"}
+  [1m[36mRoom Load (0.1ms)[0m  [1m[34mSELECT  "rooms".* FROM "rooms" WHERE "rooms"."id" = ? LIMIT ?[0m  [["id", 30], ["LIMIT", 1]]
+  ↳ app/controllers/rooms_controller.rb:91
+  Rendering rooms/show.json.jbuilder
+  Rendered rooms/_room.json.jbuilder (0.6ms)
+  Rendered rooms/show.json.jbuilder (1.4ms)
+Completed 200 OK in 4ms (Views: 2.5ms | ActiveRecord: 0.1ms)
+
+
+Started GET "/rooms/30" for 127.0.0.1 at 2018-06-01 19:43:17 +0200
+Processing by RoomsController#show as HTML
+  Parameters: {"id"=>"30"}
+  [1m[36mRoom Load (0.1ms)[0m  [1m[34mSELECT  "rooms".* FROM "rooms" WHERE "rooms"."id" = ? LIMIT ?[0m  [["id", 30], ["LIMIT", 1]]
+  ↳ app/controllers/rooms_controller.rb:91
+  Rendering rooms/show.html.haml within layouts/application
+  [1m[36mPower Load (0.2ms)[0m  [1m[34mSELECT "powers".* FROM "powers" WHERE "powers"."room_id" = ?[0m  [["room_id", 30]]
+  ↳ app/views/rooms/show.html.haml:26
+  Rendered rooms/show.html.haml within layouts/application (11.5ms)
+  Rendered layouts/_navbar.html.haml (10.9ms)
+Completed 200 OK in 51ms (Views: 49.5ms | ActiveRecord: 0.3ms)
+
+
+Started GET "/rooms/30" for 127.0.0.1 at 2018-06-01 19:43:50 +0200
+Processing by RoomsController#show as HTML
+  Parameters: {"id"=>"30"}
+  [1m[36mRoom Load (0.2ms)[0m  [1m[34mSELECT  "rooms".* FROM "rooms" WHERE "rooms"."id" = ? LIMIT ?[0m  [["id", 30], ["LIMIT", 1]]
+  ↳ app/controllers/rooms_controller.rb:91
+  Rendering rooms/show.html.haml within layouts/application
+  [1m[36mPower Load (0.2ms)[0m  [1m[34mSELECT "powers".* FROM "powers" WHERE "powers"."room_id" = ?[0m  [["room_id", 30]]
+  ↳ app/views/rooms/show.html.haml:26
+  Rendered rooms/show.html.haml within layouts/application (8.4ms)
+  Rendered layouts/_navbar.html.haml (6.9ms)
+Completed 200 OK in 53ms (Views: 51.0ms | ActiveRecord: 0.4ms)
+
+
+Started GET "/rooms/new" for 127.0.0.1 at 2018-06-01 19:44:53 +0200
+Processing by RoomsController#new as HTML
+  Rendering rooms/new.html.haml within layouts/application
+  Rendered rooms/_form.html.haml (11.5ms)
+  Rendered rooms/new.html.haml within layouts/application (15.6ms)
+  Rendered layouts/_navbar.html.haml (5.4ms)
+Completed 200 OK in 47ms (Views: 45.0ms | ActiveRecord: 0.0ms)
+
+
+Started GET "/rooms/30" for 127.0.0.1 at 2018-06-01 19:44:56 +0200
+Processing by RoomsController#show as HTML
+  Parameters: {"id"=>"30"}
+  [1m[36mRoom Load (0.3ms)[0m  [1m[34mSELECT  "rooms".* FROM "rooms" WHERE "rooms"."id" = ? LIMIT ?[0m  [["id", 30], ["LIMIT", 1]]
+  ↳ app/controllers/rooms_controller.rb:91
+  Rendering rooms/show.html.haml within layouts/application
+  [1m[36mPower Load (0.1ms)[0m  [1m[34mSELECT "powers".* FROM "powers" WHERE "powers"."room_id" = ?[0m  [["room_id", 30]]
+  ↳ app/views/rooms/show.html.haml:26
+  Rendered rooms/show.html.haml within layouts/application (5.5ms)
+  Rendered layouts/_navbar.html.haml (3.9ms)
+Completed 200 OK in 35ms (Views: 32.8ms | ActiveRecord: 0.4ms)
+
+
+Started GET "/rooms/30" for 127.0.0.1 at 2018-06-01 19:45:15 +0200
+Processing by RoomsController#show as HTML
+  Parameters: {"id"=>"30"}
+  [1m[36mRoom Load (0.3ms)[0m  [1m[34mSELECT  "rooms".* FROM "rooms" WHERE "rooms"."id" = ? LIMIT ?[0m  [["id", 30], ["LIMIT", 1]]
+  ↳ app/controllers/rooms_controller.rb:91
+  Rendering rooms/show.html.haml within layouts/application
+  [1m[36mPower Load (0.1ms)[0m  [1m[34mSELECT "powers".* FROM "powers" WHERE "powers"."room_id" = ?[0m  [["room_id", 30]]
+  ↳ app/views/rooms/show.html.haml:26
+  Rendered rooms/show.html.haml within layouts/application (12.9ms)
+  Rendered layouts/_navbar.html.haml (8.8ms)
+Completed 200 OK in 62ms (Views: 59.7ms | ActiveRecord: 0.4ms)
+
+
+Started GET "/rooms/30" for 127.0.0.1 at 2018-06-01 19:46:25 +0200
+Processing by RoomsController#show as HTML
+  Parameters: {"id"=>"30"}
+  [1m[36mRoom Load (0.2ms)[0m  [1m[34mSELECT  "rooms".* FROM "rooms" WHERE "rooms"."id" = ? LIMIT ?[0m  [["id", 30], ["LIMIT", 1]]
+  ↳ app/controllers/rooms_controller.rb:91
+  Rendering rooms/show.html.haml within layouts/application
+  [1m[36mPower Load (0.2ms)[0m  [1m[34mSELECT "powers".* FROM "powers" WHERE "powers"."room_id" = ?[0m  [["room_id", 30]]
+  ↳ app/views/rooms/show.html.haml:26
+  Rendered rooms/show.html.haml within layouts/application (12.2ms)
+  Rendered layouts/_navbar.html.haml (4.4ms)
+Completed 200 OK in 45ms (Views: 42.7ms | ActiveRecord: 0.4ms)
+
+
+Started GET "/rooms/30" for 127.0.0.1 at 2018-06-01 19:46:48 +0200
+Processing by RoomsController#show as HTML
+  Parameters: {"id"=>"30"}
+  [1m[36mRoom Load (0.2ms)[0m  [1m[34mSELECT  "rooms".* FROM "rooms" WHERE "rooms"."id" = ? LIMIT ?[0m  [["id", 30], ["LIMIT", 1]]
+  ↳ app/controllers/rooms_controller.rb:91
+  Rendering rooms/show.html.haml within layouts/application
+  [1m[36mPower Load (0.2ms)[0m  [1m[34mSELECT "powers".* FROM "powers" WHERE "powers"."room_id" = ?[0m  [["room_id", 30]]
+  ↳ app/views/rooms/show.html.haml:26
+  Rendered rooms/show.html.haml within layouts/application (9.7ms)
+  Rendered layouts/_navbar.html.haml (5.8ms)
+Completed 200 OK in 63ms (Views: 60.6ms | ActiveRecord: 0.4ms)
+
+
+Started GET "/rooms/30" for 127.0.0.1 at 2018-06-01 19:47:53 +0200
+Processing by RoomsController#show as HTML
+  Parameters: {"id"=>"30"}
+  [1m[36mRoom Load (0.4ms)[0m  [1m[34mSELECT  "rooms".* FROM "rooms" WHERE "rooms"."id" = ? LIMIT ?[0m  [["id", 30], ["LIMIT", 1]]
+  ↳ app/controllers/rooms_controller.rb:91
+  Rendering rooms/show.html.haml within layouts/application
+  [1m[36mPower Load (0.2ms)[0m  [1m[34mSELECT "powers".* FROM "powers" WHERE "powers"."room_id" = ?[0m  [["room_id", 30]]
+  ↳ app/views/rooms/show.html.haml:26
+  Rendered rooms/show.html.haml within layouts/application (6.9ms)
+  Rendered layouts/_navbar.html.haml (4.0ms)
+Completed 200 OK in 45ms (Views: 42.8ms | ActiveRecord: 0.6ms)
+
+
+Started GET "/rooms/30" for 127.0.0.1 at 2018-06-01 19:48:35 +0200
+Processing by RoomsController#show as HTML
+  Parameters: {"id"=>"30"}
+  [1m[36mRoom Load (0.2ms)[0m  [1m[34mSELECT  "rooms".* FROM "rooms" WHERE "rooms"."id" = ? LIMIT ?[0m  [["id", 30], ["LIMIT", 1]]
+  ↳ app/controllers/rooms_controller.rb:91
+  Rendering rooms/show.html.haml within layouts/application
+  [1m[36mPower Load (0.1ms)[0m  [1m[34mSELECT "powers".* FROM "powers" WHERE "powers"."room_id" = ?[0m  [["room_id", 30]]
+  ↳ app/views/rooms/show.html.haml:26
+  Rendered rooms/show.html.haml within layouts/application (6.1ms)
+  Rendered layouts/_navbar.html.haml (5.3ms)
+Completed 200 OK in 40ms (Views: 38.5ms | ActiveRecord: 0.3ms)
+
+
+Started GET "/rooms/30" for 127.0.0.1 at 2018-06-01 19:49:00 +0200
+Processing by RoomsController#show as HTML
+  Parameters: {"id"=>"30"}
+  [1m[36mRoom Load (0.2ms)[0m  [1m[34mSELECT  "rooms".* FROM "rooms" WHERE "rooms"."id" = ? LIMIT ?[0m  [["id", 30], ["LIMIT", 1]]
+  ↳ app/controllers/rooms_controller.rb:91
+  Rendering rooms/show.html.haml within layouts/application
+  [1m[36mPower Load (0.1ms)[0m  [1m[34mSELECT "powers".* FROM "powers" WHERE "powers"."room_id" = ?[0m  [["room_id", 30]]
+  ↳ app/views/rooms/show.html.haml:26
+  Rendered rooms/show.html.haml within layouts/application (13.4ms)
+  Rendered layouts/_navbar.html.haml (14.1ms)
+Completed 200 OK in 66ms (Views: 64.2ms | ActiveRecord: 0.3ms)
+
+
+Started GET "/rooms/30" for 127.0.0.1 at 2018-06-01 19:49:36 +0200
+Processing by RoomsController#show as HTML
+  Parameters: {"id"=>"30"}
+  [1m[36mRoom Load (0.2ms)[0m  [1m[34mSELECT  "rooms".* FROM "rooms" WHERE "rooms"."id" = ? LIMIT ?[0m  [["id", 30], ["LIMIT", 1]]
+  ↳ app/controllers/rooms_controller.rb:91
+  Rendering rooms/show.html.haml within layouts/application
+  [1m[36mPower Load (0.1ms)[0m  [1m[34mSELECT "powers".* FROM "powers" WHERE "powers"."room_id" = ?[0m  [["room_id", 30]]
+  ↳ app/views/rooms/show.html.haml:26
+  Rendered rooms/show.html.haml within layouts/application (8.9ms)
+  Rendered layouts/_navbar.html.haml (3.7ms)
+Completed 200 OK in 41ms (Views: 38.0ms | ActiveRecord: 0.3ms)
+
+
+Started GET "/rooms/30" for 127.0.0.1 at 2018-06-01 19:51:21 +0200
+Processing by RoomsController#show as HTML
+  Parameters: {"id"=>"30"}
+  [1m[36mRoom Load (0.1ms)[0m  [1m[34mSELECT  "rooms".* FROM "rooms" WHERE "rooms"."id" = ? LIMIT ?[0m  [["id", 30], ["LIMIT", 1]]
+  ↳ app/controllers/rooms_controller.rb:91
+  Rendering rooms/show.html.haml within layouts/application
+  [1m[36mPower Load (0.1ms)[0m  [1m[34mSELECT "powers".* FROM "powers" WHERE "powers"."room_id" = ?[0m  [["room_id", 30]]
+  ↳ app/views/rooms/show.html.haml:26
+  Rendered rooms/show.html.haml within layouts/application (10.6ms)
+  Rendered layouts/_navbar.html.haml (5.8ms)
+Completed 200 OK in 69ms (Views: 67.5ms | ActiveRecord: 0.2ms)
+
+
+Started GET "/rooms/30" for 127.0.0.1 at 2018-06-01 19:52:23 +0200
+Processing by RoomsController#show as HTML
+  Parameters: {"id"=>"30"}
+  [1m[36mRoom Load (0.1ms)[0m  [1m[34mSELECT  "rooms".* FROM "rooms" WHERE "rooms"."id" = ? LIMIT ?[0m  [["id", 30], ["LIMIT", 1]]
+  ↳ app/controllers/rooms_controller.rb:91
+  Rendering rooms/show.html.haml within layouts/application
+  [1m[36mPower Load (0.1ms)[0m  [1m[34mSELECT "powers".* FROM "powers" WHERE "powers"."room_id" = ?[0m  [["room_id", 30]]
+  ↳ app/views/rooms/show.html.haml:26
+  Rendered rooms/show.html.haml within layouts/application (8.3ms)
+  Rendered layouts/_navbar.html.haml (5.2ms)
+Completed 200 OK in 60ms (Views: 58.7ms | ActiveRecord: 0.2ms)
+
+
+Started GET "/rooms/30" for 127.0.0.1 at 2018-06-01 19:54:41 +0200
+Processing by RoomsController#show as HTML
+  Parameters: {"id"=>"30"}
+  [1m[36mRoom Load (0.3ms)[0m  [1m[34mSELECT  "rooms".* FROM "rooms" WHERE "rooms"."id" = ? LIMIT ?[0m  [["id", 30], ["LIMIT", 1]]
+  ↳ app/controllers/rooms_controller.rb:91
+  Rendering rooms/show.html.haml within layouts/application
+  [1m[36mPower Load (0.2ms)[0m  [1m[34mSELECT "powers".* FROM "powers" WHERE "powers"."room_id" = ?[0m  [["room_id", 30]]
+  ↳ app/views/rooms/show.html.haml:26
+  Rendered rooms/show.html.haml within layouts/application (8.8ms)
+  Rendered layouts/_navbar.html.haml (5.3ms)
+Completed 200 OK in 43ms (Views: 39.9ms | ActiveRecord: 0.5ms)
+
+
+Started GET "/rooms/30" for 127.0.0.1 at 2018-06-01 19:55:05 +0200
+Processing by RoomsController#show as HTML
+  Parameters: {"id"=>"30"}
+  [1m[36mRoom Load (0.2ms)[0m  [1m[34mSELECT  "rooms".* FROM "rooms" WHERE "rooms"."id" = ? LIMIT ?[0m  [["id", 30], ["LIMIT", 1]]
+  ↳ app/controllers/rooms_controller.rb:91
+  Rendering rooms/show.html.haml within layouts/application
+  [1m[36mPower Load (0.1ms)[0m  [1m[34mSELECT "powers".* FROM "powers" WHERE "powers"."room_id" = ?[0m  [["room_id", 30]]
+  ↳ app/views/rooms/show.html.haml:26
+  Rendered rooms/show.html.haml within layouts/application (7.7ms)
+  Rendered layouts/_navbar.html.haml (5.5ms)
+Completed 200 OK in 38ms (Views: 36.5ms | ActiveRecord: 0.3ms)
+
+
+Started GET "/rooms/30.json" for 127.0.0.1 at 2018-06-01 19:55:05 +0200
+Processing by RoomsController#show as JSON
+  Parameters: {"id"=>"30"}
+  [1m[36mRoom Load (0.1ms)[0m  [1m[34mSELECT  "rooms".* FROM "rooms" WHERE "rooms"."id" = ? LIMIT ?[0m  [["id", 30], ["LIMIT", 1]]
+  ↳ app/controllers/rooms_controller.rb:91
+  Rendering rooms/show.json.jbuilder
+  Rendered rooms/_room.json.jbuilder (2.1ms)
+  Rendered rooms/show.json.jbuilder (3.0ms)
+Completed 200 OK in 6ms (Views: 4.3ms | ActiveRecord: 0.1ms)
+
+
+Started GET "/rooms/30.json" for 127.0.0.1 at 2018-06-01 19:55:50 +0200
+Processing by RoomsController#show as JSON
+  Parameters: {"id"=>"30"}
+  [1m[36mRoom Load (0.1ms)[0m  [1m[34mSELECT  "rooms".* FROM "rooms" WHERE "rooms"."id" = ? LIMIT ?[0m  [["id", 30], ["LIMIT", 1]]
+  ↳ app/controllers/rooms_controller.rb:91
+  Rendering rooms/show.json.jbuilder
+  Rendered rooms/_room.json.jbuilder (0.7ms)
+  Rendered rooms/show.json.jbuilder (1.7ms)
+Completed 200 OK in 4ms (Views: 3.1ms | ActiveRecord: 0.1ms)
+
+
+Started GET "/rooms/" for 127.0.0.1 at 2018-06-01 19:56:02 +0200
+Processing by RoomsController#index as HTML
+  Rendering rooms/index.html.haml within layouts/application
+  [1m[36mRoom Load (0.2ms)[0m  [1m[34mSELECT "rooms".* FROM "rooms"[0m
+  ↳ app/views/rooms/index.html.haml:23
+  Rendered rooms/index.html.haml within layouts/application (4.9ms)
+  Rendered layouts/_navbar.html.haml (5.9ms)
+Completed 200 OK in 36ms (Views: 34.6ms | ActiveRecord: 0.2ms)
+
+
+Started GET "/rooms/29" for 127.0.0.1 at 2018-06-01 19:56:05 +0200
+Processing by RoomsController#show as HTML
+  Parameters: {"id"=>"29"}
+  [1m[36mRoom Load (0.2ms)[0m  [1m[34mSELECT  "rooms".* FROM "rooms" WHERE "rooms"."id" = ? LIMIT ?[0m  [["id", 29], ["LIMIT", 1]]
+  ↳ app/controllers/rooms_controller.rb:91
+  Rendering rooms/show.html.haml within layouts/application
+  [1m[36mPower Load (0.1ms)[0m  [1m[34mSELECT "powers".* FROM "powers" WHERE "powers"."room_id" = ?[0m  [["room_id", 29]]
+  ↳ app/views/rooms/show.html.haml:26
+  Rendered rooms/show.html.haml within layouts/application (10.3ms)
+  Rendered layouts/_navbar.html.haml (4.7ms)
+Completed 200 OK in 48ms (Views: 45.2ms | ActiveRecord: 0.3ms)
+
+
+Started GET "/rooms/29.json" for 127.0.0.1 at 2018-06-01 19:56:05 +0200
+Processing by RoomsController#show as JSON
+  Parameters: {"id"=>"29"}
+  [1m[36mRoom Load (0.1ms)[0m  [1m[34mSELECT  "rooms".* FROM "rooms" WHERE "rooms"."id" = ? LIMIT ?[0m  [["id", 29], ["LIMIT", 1]]
+  ↳ app/controllers/rooms_controller.rb:91
+  Rendering rooms/show.json.jbuilder
+  Rendered rooms/_room.json.jbuilder (0.7ms)
+  Rendered rooms/show.json.jbuilder (1.9ms)
+Completed 200 OK in 4ms (Views: 3.0ms | ActiveRecord: 0.1ms)
+
+
+Started GET "/rooms/30" for 127.0.0.1 at 2018-06-01 19:56:16 +0200
+Processing by RoomsController#show as HTML
+  Parameters: {"id"=>"30"}
+  [1m[36mRoom Load (0.1ms)[0m  [1m[34mSELECT  "rooms".* FROM "rooms" WHERE "rooms"."id" = ? LIMIT ?[0m  [["id", 30], ["LIMIT", 1]]
+  ↳ app/controllers/rooms_controller.rb:91
+  Rendering rooms/show.html.haml within layouts/application
+  [1m[36mPower Load (0.1ms)[0m  [1m[34mSELECT "powers".* FROM "powers" WHERE "powers"."room_id" = ?[0m  [["room_id", 30]]
+  ↳ app/views/rooms/show.html.haml:26
+  Rendered rooms/show.html.haml within layouts/application (6.7ms)
+  Rendered layouts/_navbar.html.haml (4.0ms)
+Completed 200 OK in 35ms (Views: 33.2ms | ActiveRecord: 0.2ms)
+
+
+Started GET "/rooms/30.json" for 127.0.0.1 at 2018-06-01 19:56:16 +0200
+Processing by RoomsController#show as JSON
+  Parameters: {"id"=>"30"}
+  [1m[36mRoom Load (0.1ms)[0m  [1m[34mSELECT  "rooms".* FROM "rooms" WHERE "rooms"."id" = ? LIMIT ?[0m  [["id", 30], ["LIMIT", 1]]
+  ↳ app/controllers/rooms_controller.rb:91
+  Rendering rooms/show.json.jbuilder
+  Rendered rooms/_room.json.jbuilder (1.9ms)
+  Rendered rooms/show.json.jbuilder (3.3ms)
+Completed 200 OK in 7ms (Views: 5.0ms | ActiveRecord: 0.1ms)
+
+
+Started GET "/rooms" for 127.0.0.1 at 2018-06-01 19:56:22 +0200
+Processing by RoomsController#index as HTML
+  Rendering rooms/index.html.haml within layouts/application
+  [1m[36mRoom Load (0.4ms)[0m  [1m[34mSELECT "rooms".* FROM "rooms"[0m
+  ↳ app/views/rooms/index.html.haml:23
+  Rendered rooms/index.html.haml within layouts/application (10.7ms)
+  Rendered layouts/_navbar.html.haml (4.0ms)
+Completed 200 OK in 44ms (Views: 41.6ms | ActiveRecord: 0.4ms)
+
+
+Started GET "/rooms/31" for 127.0.0.1 at 2018-06-01 19:56:30 +0200
+Processing by RoomsController#show as HTML
+  Parameters: {"id"=>"31"}
+  [1m[36mRoom Load (0.2ms)[0m  [1m[34mSELECT  "rooms".* FROM "rooms" WHERE "rooms"."id" = ? LIMIT ?[0m  [["id", 31], ["LIMIT", 1]]
+  ↳ app/controllers/rooms_controller.rb:91
+  Rendering rooms/show.html.haml within layouts/application
+  [1m[36mPower Load (0.1ms)[0m  [1m[34mSELECT "powers".* FROM "powers" WHERE "powers"."room_id" = ?[0m  [["room_id", 31]]
+  ↳ app/views/rooms/show.html.haml:26
+  Rendered rooms/show.html.haml within layouts/application (8.9ms)
+  Rendered layouts/_navbar.html.haml (4.7ms)
+Completed 200 OK in 44ms (Views: 41.8ms | ActiveRecord: 0.3ms)
+
+
+Started GET "/rooms/31.json" for 127.0.0.1 at 2018-06-01 19:56:30 +0200
+Processing by RoomsController#show as JSON
+  Parameters: {"id"=>"31"}
+  [1m[36mRoom Load (0.1ms)[0m  [1m[34mSELECT  "rooms".* FROM "rooms" WHERE "rooms"."id" = ? LIMIT ?[0m  [["id", 31], ["LIMIT", 1]]
+  ↳ app/controllers/rooms_controller.rb:91
+  Rendering rooms/show.json.jbuilder
+  Rendered rooms/_room.json.jbuilder (2.0ms)
+  Rendered rooms/show.json.jbuilder (4.1ms)
+Completed 200 OK in 7ms (Views: 5.8ms | ActiveRecord: 0.1ms)
+
+
+Started GET "/rooms/31" for 127.0.0.1 at 2018-06-01 19:56:48 +0200
+Processing by RoomsController#show as HTML
+  Parameters: {"id"=>"31"}
+  [1m[36mRoom Load (0.2ms)[0m  [1m[34mSELECT  "rooms".* FROM "rooms" WHERE "rooms"."id" = ? LIMIT ?[0m  [["id", 31], ["LIMIT", 1]]
+  ↳ app/controllers/rooms_controller.rb:91
+  Rendering rooms/show.html.haml within layouts/application
+  [1m[36mPower Load (0.1ms)[0m  [1m[34mSELECT "powers".* FROM "powers" WHERE "powers"."room_id" = ?[0m  [["room_id", 31]]
+  ↳ app/views/rooms/show.html.haml:26
+  Rendered rooms/show.html.haml within layouts/application (185.5ms)
+  Rendered layouts/_navbar.html.haml (4.5ms)
+Completed 200 OK in 255ms (Views: 252.0ms | ActiveRecord: 0.3ms)
+
+
+Started GET "/rooms/31.json" for 127.0.0.1 at 2018-06-01 19:56:49 +0200
+Processing by RoomsController#show as JSON
+  Parameters: {"id"=>"31"}
+  [1m[36mRoom Load (0.1ms)[0m  [1m[34mSELECT  "rooms".* FROM "rooms" WHERE "rooms"."id" = ? LIMIT ?[0m  [["id", 31], ["LIMIT", 1]]
+  ↳ app/controllers/rooms_controller.rb:91
+  Rendering rooms/show.json.jbuilder
+  Rendered rooms/_room.json.jbuilder (1.0ms)
+  Rendered rooms/show.json.jbuilder (2.1ms)
+Completed 200 OK in 5ms (Views: 3.6ms | ActiveRecord: 0.1ms)
+
+
+Started GET "/rooms/31.json" for 127.0.0.1 at 2018-06-01 19:56:57 +0200
+Processing by RoomsController#show as JSON
+  Parameters: {"id"=>"31"}
+  [1m[36mRoom Load (0.2ms)[0m  [1m[34mSELECT  "rooms".* FROM "rooms" WHERE "rooms"."id" = ? LIMIT ?[0m  [["id", 31], ["LIMIT", 1]]
+  ↳ app/controllers/rooms_controller.rb:91
+  Rendering rooms/show.json.jbuilder
+  Rendered rooms/_room.json.jbuilder (0.6ms)
+  Rendered rooms/show.json.jbuilder (1.5ms)
+Completed 200 OK in 5ms (Views: 3.1ms | ActiveRecord: 0.2ms)
+
+
+Started GET "/rooms/31" for 127.0.0.1 at 2018-06-01 19:57:13 +0200
+Processing by RoomsController#show as HTML
+  Parameters: {"id"=>"31"}
+  [1m[36mRoom Load (0.1ms)[0m  [1m[34mSELECT  "rooms".* FROM "rooms" WHERE "rooms"."id" = ? LIMIT ?[0m  [["id", 31], ["LIMIT", 1]]
+  ↳ app/controllers/rooms_controller.rb:91
+  Rendering rooms/show.html.haml within layouts/application
+  [1m[36mPower Load (0.1ms)[0m  [1m[34mSELECT "powers".* FROM "powers" WHERE "powers"."room_id" = ?[0m  [["room_id", 31]]
+  ↳ app/views/rooms/show.html.haml:26
+  Rendered rooms/show.html.haml within layouts/application (6.4ms)
+  Rendered layouts/_navbar.html.haml (3.8ms)
+Completed 200 OK in 37ms (Views: 35.9ms | ActiveRecord: 0.2ms)
+
+
+Started GET "/rooms/31.json" for 127.0.0.1 at 2018-06-01 19:57:14 +0200
+Processing by RoomsController#show as JSON
+  Parameters: {"id"=>"31"}
+  [1m[36mRoom Load (0.1ms)[0m  [1m[34mSELECT  "rooms".* FROM "rooms" WHERE "rooms"."id" = ? LIMIT ?[0m  [["id", 31], ["LIMIT", 1]]
+  ↳ app/controllers/rooms_controller.rb:91
+  Rendering rooms/show.json.jbuilder
+  Rendered rooms/_room.json.jbuilder (0.5ms)
+  Rendered rooms/show.json.jbuilder (1.2ms)
+Completed 200 OK in 3ms (Views: 2.2ms | ActiveRecord: 0.1ms)
+
+
+Started GET "/rooms/31" for 127.0.0.1 at 2018-06-01 19:58:19 +0200
+Processing by RoomsController#show as HTML
+  Parameters: {"id"=>"31"}
+  [1m[36mRoom Load (0.4ms)[0m  [1m[34mSELECT  "rooms".* FROM "rooms" WHERE "rooms"."id" = ? LIMIT ?[0m  [["id", 31], ["LIMIT", 1]]
+  ↳ app/controllers/rooms_controller.rb:91
+  Rendering rooms/show.html.haml within layouts/application
+  [1m[36mPower Load (0.1ms)[0m  [1m[34mSELECT "powers".* FROM "powers" WHERE "powers"."room_id" = ?[0m  [["room_id", 31]]
+  ↳ app/views/rooms/show.html.haml:26
+  Rendered rooms/show.html.haml within layouts/application (11.2ms)
+  Rendered layouts/_navbar.html.haml (3.8ms)
+Completed 200 OK in 53ms (Views: 47.9ms | ActiveRecord: 0.5ms)
+
+
+Started GET "/rooms/31.json" for 127.0.0.1 at 2018-06-01 19:58:20 +0200
+Processing by RoomsController#show as JSON
+  Parameters: {"id"=>"31"}
+  [1m[36mRoom Load (0.2ms)[0m  [1m[34mSELECT  "rooms".* FROM "rooms" WHERE "rooms"."id" = ? LIMIT ?[0m  [["id", 31], ["LIMIT", 1]]
+  ↳ app/controllers/rooms_controller.rb:91
+  Rendering rooms/show.json.jbuilder
+  Rendered rooms/_room.json.jbuilder (0.6ms)
+  Rendered rooms/show.json.jbuilder (1.5ms)
+Completed 200 OK in 4ms (Views: 2.6ms | ActiveRecord: 0.2ms)
+
+
+Started GET "/rooms/31" for 127.0.0.1 at 2018-06-01 19:58:35 +0200
+Processing by RoomsController#show as HTML
+  Parameters: {"id"=>"31"}
+  [1m[36mRoom Load (0.2ms)[0m  [1m[34mSELECT  "rooms".* FROM "rooms" WHERE "rooms"."id" = ? LIMIT ?[0m  [["id", 31], ["LIMIT", 1]]
+  ↳ app/controllers/rooms_controller.rb:91
+  Rendering rooms/show.html.haml within layouts/application
+  [1m[36mPower Load (0.2ms)[0m  [1m[34mSELECT "powers".* FROM "powers" WHERE "powers"."room_id" = ?[0m  [["room_id", 31]]
+  ↳ app/views/rooms/show.html.haml:26
+  Rendered rooms/show.html.haml within layouts/application (15.0ms)
+  Rendered layouts/_navbar.html.haml (5.7ms)
+Completed 200 OK in 61ms (Views: 58.7ms | ActiveRecord: 0.4ms)
+
+
+Started GET "/rooms/31.json" for 127.0.0.1 at 2018-06-01 19:58:36 +0200
+Processing by RoomsController#show as JSON
+  Parameters: {"id"=>"31"}
+  [1m[36mRoom Load (0.1ms)[0m  [1m[34mSELECT  "rooms".* FROM "rooms" WHERE "rooms"."id" = ? LIMIT ?[0m  [["id", 31], ["LIMIT", 1]]
+  ↳ app/controllers/rooms_controller.rb:91
+  Rendering rooms/show.json.jbuilder
+  Rendered rooms/_room.json.jbuilder (0.7ms)
+  Rendered rooms/show.json.jbuilder (1.6ms)
+Completed 200 OK in 4ms (Views: 2.7ms | ActiveRecord: 0.1ms)
+
+
+Started GET "/rooms/31" for 127.0.0.1 at 2018-06-01 21:56:35 +0200
+Processing by RoomsController#show as HTML
+  Parameters: {"id"=>"31"}
+  [1m[36mRoom Load (0.4ms)[0m  [1m[34mSELECT  "rooms".* FROM "rooms" WHERE "rooms"."id" = ? LIMIT ?[0m  [["id", 31], ["LIMIT", 1]]
+  ↳ app/controllers/rooms_controller.rb:91
+  Rendering rooms/show.html.haml within layouts/application
+  [1m[36mPower Load (0.2ms)[0m  [1m[34mSELECT "powers".* FROM "powers" WHERE "powers"."room_id" = ?[0m  [["room_id", 31]]
+  ↳ app/views/rooms/show.html.haml:26
+  Rendered rooms/show.html.haml within layouts/application (11.2ms)
+  Rendered layouts/_navbar.html.haml (4.3ms)
+Completed 200 OK in 49ms (Views: 46.2ms | ActiveRecord: 0.6ms)
+
+
+Started GET "/rooms/31" for 127.0.0.1 at 2018-06-01 21:56:54 +0200
+Processing by RoomsController#show as HTML
+  Parameters: {"id"=>"31"}
+  [1m[36mRoom Load (0.2ms)[0m  [1m[34mSELECT  "rooms".* FROM "rooms" WHERE "rooms"."id" = ? LIMIT ?[0m  [["id", 31], ["LIMIT", 1]]
+  ↳ app/controllers/rooms_controller.rb:91
+  Rendering rooms/show.html.haml within layouts/application
+  [1m[36mPower Load (0.2ms)[0m  [1m[34mSELECT "powers".* FROM "powers" WHERE "powers"."room_id" = ?[0m  [["room_id", 31]]
+  ↳ app/views/rooms/show.html.haml:26
+  Rendered rooms/show.html.haml within layouts/application (6.3ms)
+  Rendered layouts/_navbar.html.haml (4.3ms)
+Completed 200 OK in 36ms (Views: 34.4ms | ActiveRecord: 0.4ms)
+
+
+Started GET "/rooms/31.json" for 127.0.0.1 at 2018-06-01 21:56:54 +0200
+Processing by RoomsController#show as JSON
+  Parameters: {"id"=>"31"}
+  [1m[36mRoom Load (0.2ms)[0m  [1m[34mSELECT  "rooms".* FROM "rooms" WHERE "rooms"."id" = ? LIMIT ?[0m  [["id", 31], ["LIMIT", 1]]
+  ↳ app/controllers/rooms_controller.rb:91
+  Rendering rooms/show.json.jbuilder
+  Rendered rooms/_room.json.jbuilder (0.6ms)
+  Rendered rooms/show.json.jbuilder (1.3ms)
+Completed 200 OK in 4ms (Views: 2.5ms | ActiveRecord: 0.2ms)
+
+
+Started GET "/rooms/31" for 127.0.0.1 at 2018-06-01 21:57:16 +0200
+Processing by RoomsController#show as HTML
+  Parameters: {"id"=>"31"}
+  [1m[36mRoom Load (0.2ms)[0m  [1m[34mSELECT  "rooms".* FROM "rooms" WHERE "rooms"."id" = ? LIMIT ?[0m  [["id", 31], ["LIMIT", 1]]
+  ↳ app/controllers/rooms_controller.rb:91
+  Rendering rooms/show.html.haml within layouts/application
+  [1m[36mPower Load (0.2ms)[0m  [1m[34mSELECT "powers".* FROM "powers" WHERE "powers"."room_id" = ?[0m  [["room_id", 31]]
+  ↳ app/views/rooms/show.html.haml:26
+  Rendered rooms/show.html.haml within layouts/application (25.0ms)
+  Rendered layouts/_navbar.html.haml (5.4ms)
+Completed 200 OK in 69ms (Views: 67.7ms | ActiveRecord: 0.4ms)
+
+
+Started GET "/rooms/31.json" for 127.0.0.1 at 2018-06-01 21:57:17 +0200
+Processing by RoomsController#show as JSON
+  Parameters: {"id"=>"31"}
+  [1m[36mRoom Load (0.2ms)[0m  [1m[34mSELECT  "rooms".* FROM "rooms" WHERE "rooms"."id" = ? LIMIT ?[0m  [["id", 31], ["LIMIT", 1]]
+  ↳ app/controllers/rooms_controller.rb:91
+  Rendering rooms/show.json.jbuilder
+  Rendered rooms/_room.json.jbuilder (1.0ms)
+  Rendered rooms/show.json.jbuilder (2.4ms)
+Completed 200 OK in 6ms (Views: 4.3ms | ActiveRecord: 0.2ms)
+
+
+Started GET "/rooms/31" for 127.0.0.1 at 2018-06-01 21:58:17 +0200
+Processing by RoomsController#show as HTML
+  Parameters: {"id"=>"31"}
+  [1m[36mRoom Load (0.3ms)[0m  [1m[34mSELECT  "rooms".* FROM "rooms" WHERE "rooms"."id" = ? LIMIT ?[0m  [["id", 31], ["LIMIT", 1]]
+  ↳ app/controllers/rooms_controller.rb:91
+  Rendering rooms/show.html.haml within layouts/application
+  [1m[36mPower Load (0.2ms)[0m  [1m[34mSELECT "powers".* FROM "powers" WHERE "powers"."room_id" = ?[0m  [["room_id", 31]]
+  ↳ app/views/rooms/show.html.haml:26
+  Rendered rooms/show.html.haml within layouts/application (7.9ms)
+  Rendered layouts/_navbar.html.haml (3.9ms)
+Completed 200 OK in 38ms (Views: 35.6ms | ActiveRecord: 0.4ms)
+
+
+Started GET "/rooms/31.json" for 127.0.0.1 at 2018-06-01 21:58:17 +0200
+Processing by RoomsController#show as JSON
+  Parameters: {"id"=>"31"}
+  [1m[36mRoom Load (0.2ms)[0m  [1m[34mSELECT  "rooms".* FROM "rooms" WHERE "rooms"."id" = ? LIMIT ?[0m  [["id", 31], ["LIMIT", 1]]
+  ↳ app/controllers/rooms_controller.rb:91
+  Rendering rooms/show.json.jbuilder
+  Rendered rooms/_room.json.jbuilder (1.0ms)
+  Rendered rooms/show.json.jbuilder (3.6ms)
+Completed 200 OK in 17ms (Views: 14.6ms | ActiveRecord: 0.2ms)
+
+
+Started GET "/rooms/31" for 127.0.0.1 at 2018-06-01 22:03:40 +0200
+Processing by RoomsController#show as HTML
+  Parameters: {"id"=>"31"}
+  [1m[36mRoom Load (0.2ms)[0m  [1m[34mSELECT  "rooms".* FROM "rooms" WHERE "rooms"."id" = ? LIMIT ?[0m  [["id", 31], ["LIMIT", 1]]
+  ↳ app/controllers/rooms_controller.rb:91
+  Rendering rooms/show.html.haml within layouts/application
+  [1m[36mPower Load (0.2ms)[0m  [1m[34mSELECT "powers".* FROM "powers" WHERE "powers"."room_id" = ?[0m  [["room_id", 31]]
+  ↳ app/views/rooms/show.html.haml:26
+  Rendered rooms/show.html.haml within layouts/application (7.3ms)
+  Rendered layouts/_navbar.html.haml (4.3ms)
+Completed 200 OK in 37ms (Views: 34.7ms | ActiveRecord: 0.4ms)
+
+
+Started GET "/rooms/31.json" for 127.0.0.1 at 2018-06-01 22:03:46 +0200
+Processing by RoomsController#show as JSON
+  Parameters: {"id"=>"31"}
+  [1m[36mRoom Load (0.1ms)[0m  [1m[34mSELECT  "rooms".* FROM "rooms" WHERE "rooms"."id" = ? LIMIT ?[0m  [["id", 31], ["LIMIT", 1]]
+  ↳ app/controllers/rooms_controller.rb:91
+  Rendering rooms/show.json.jbuilder
+  Rendered rooms/_room.json.jbuilder (0.6ms)
+  Rendered rooms/show.json.jbuilder (1.5ms)
+Completed 200 OK in 4ms (Views: 2.6ms | ActiveRecord: 0.1ms)
+
+
+Started GET "/rooms/31" for 127.0.0.1 at 2018-06-01 22:05:16 +0200
+Processing by RoomsController#show as HTML
+  Parameters: {"id"=>"31"}
+  [1m[36mRoom Load (0.2ms)[0m  [1m[34mSELECT  "rooms".* FROM "rooms" WHERE "rooms"."id" = ? LIMIT ?[0m  [["id", 31], ["LIMIT", 1]]
+  ↳ app/controllers/rooms_controller.rb:91
+  Rendering rooms/show.html.haml within layouts/application
+  [1m[36mPower Load (0.2ms)[0m  [1m[34mSELECT "powers".* FROM "powers" WHERE "powers"."room_id" = ?[0m  [["room_id", 31]]
+  ↳ app/views/rooms/show.html.haml:28
+  Rendered rooms/show.html.haml within layouts/application (11.0ms)
+  Rendered layouts/_navbar.html.haml (4.8ms)
+Completed 200 OK in 54ms (Views: 52.2ms | ActiveRecord: 0.3ms)
+
+
+Started GET "/rooms/31.json" for 127.0.0.1 at 2018-06-01 22:05:18 +0200
+Processing by RoomsController#show as JSON
+  Parameters: {"id"=>"31"}
+  [1m[36mRoom Load (0.3ms)[0m  [1m[34mSELECT  "rooms".* FROM "rooms" WHERE "rooms"."id" = ? LIMIT ?[0m  [["id", 31], ["LIMIT", 1]]
+  ↳ app/controllers/rooms_controller.rb:91
+  Rendering rooms/show.json.jbuilder
+  Rendered rooms/_room.json.jbuilder (1.2ms)
+  Rendered rooms/show.json.jbuilder (2.7ms)
+Completed 200 OK in 7ms (Views: 5.1ms | ActiveRecord: 0.3ms)
+
+
+Started GET "/rooms/31" for 127.0.0.1 at 2018-06-01 22:05:25 +0200
+Processing by RoomsController#show as HTML
+  Parameters: {"id"=>"31"}
+  [1m[36mRoom Load (0.8ms)[0m  [1m[34mSELECT  "rooms".* FROM "rooms" WHERE "rooms"."id" = ? LIMIT ?[0m  [["id", 31], ["LIMIT", 1]]
+  ↳ app/controllers/rooms_controller.rb:91
+  Rendering rooms/show.html.haml within layouts/application
+  [1m[36mPower Load (0.2ms)[0m  [1m[34mSELECT "powers".* FROM "powers" WHERE "powers"."room_id" = ?[0m  [["room_id", 31]]
+  ↳ app/views/rooms/show.html.haml:28
+  Rendered rooms/show.html.haml within layouts/application (12.1ms)
+  Rendered layouts/_navbar.html.haml (8.6ms)
+Completed 200 OK in 61ms (Views: 55.2ms | ActiveRecord: 1.0ms)
+
+
+Started GET "/rooms/31.json" for 127.0.0.1 at 2018-06-01 22:05:27 +0200
+Processing by RoomsController#show as JSON
+  Parameters: {"id"=>"31"}
+  [1m[36mRoom Load (0.2ms)[0m  [1m[34mSELECT  "rooms".* FROM "rooms" WHERE "rooms"."id" = ? LIMIT ?[0m  [["id", 31], ["LIMIT", 1]]
+  ↳ app/controllers/rooms_controller.rb:91
+  Rendering rooms/show.json.jbuilder
+  Rendered rooms/_room.json.jbuilder (0.7ms)
+  Rendered rooms/show.json.jbuilder (1.6ms)
+Completed 200 OK in 4ms (Views: 2.8ms | ActiveRecord: 0.2ms)
+
+
+Started GET "/rooms/31" for 127.0.0.1 at 2018-06-01 22:06:14 +0200
+Processing by RoomsController#show as HTML
+  Parameters: {"id"=>"31"}
+  [1m[36mRoom Load (0.8ms)[0m  [1m[34mSELECT  "rooms".* FROM "rooms" WHERE "rooms"."id" = ? LIMIT ?[0m  [["id", 31], ["LIMIT", 1]]
+  ↳ app/controllers/rooms_controller.rb:91
+  Rendering rooms/show.html.haml within layouts/application
+  [1m[36mPower Load (0.2ms)[0m  [1m[34mSELECT "powers".* FROM "powers" WHERE "powers"."room_id" = ?[0m  [["room_id", 31]]
+  ↳ app/views/rooms/show.html.haml:31
+  Rendered rooms/show.html.haml within layouts/application (15.8ms)
+  Rendered layouts/_navbar.html.haml (5.0ms)
+Completed 200 OK in 65ms (Views: 58.8ms | ActiveRecord: 1.0ms)
+
+
+Started GET "/rooms/31.json" for 127.0.0.1 at 2018-06-01 22:06:14 +0200
+Processing by RoomsController#show as JSON
+  Parameters: {"id"=>"31"}
+  [1m[36mRoom Load (0.2ms)[0m  [1m[34mSELECT  "rooms".* FROM "rooms" WHERE "rooms"."id" = ? LIMIT ?[0m  [["id", 31], ["LIMIT", 1]]
+  ↳ app/controllers/rooms_controller.rb:91
+  Rendering rooms/show.json.jbuilder
+  Rendered rooms/_room.json.jbuilder (0.7ms)
+  Rendered rooms/show.json.jbuilder (1.6ms)
+Completed 200 OK in 4ms (Views: 2.7ms | ActiveRecord: 0.2ms)
+
+
+Started GET "/rooms/31" for 127.0.0.1 at 2018-06-01 22:06:49 +0200
+Processing by RoomsController#show as HTML
+  Parameters: {"id"=>"31"}
+  [1m[36mRoom Load (0.3ms)[0m  [1m[34mSELECT  "rooms".* FROM "rooms" WHERE "rooms"."id" = ? LIMIT ?[0m  [["id", 31], ["LIMIT", 1]]
+  ↳ app/controllers/rooms_controller.rb:91
+  Rendering rooms/show.html.haml within layouts/application
+  [1m[36mPower Load (0.2ms)[0m  [1m[34mSELECT "powers".* FROM "powers" WHERE "powers"."room_id" = ?[0m  [["room_id", 31]]
+  ↳ app/views/rooms/show.html.haml:32
+  Rendered rooms/show.html.haml within layouts/application (13.0ms)
+  Rendered layouts/_navbar.html.haml (5.6ms)
+Completed 200 OK in 65ms (Views: 63.0ms | ActiveRecord: 0.4ms)
+
+
+Started GET "/rooms/31.json" for 127.0.0.1 at 2018-06-01 22:06:50 +0200
+Processing by RoomsController#show as JSON
+  Parameters: {"id"=>"31"}
+  [1m[36mRoom Load (0.3ms)[0m  [1m[34mSELECT  "rooms".* FROM "rooms" WHERE "rooms"."id" = ? LIMIT ?[0m  [["id", 31], ["LIMIT", 1]]
+  ↳ app/controllers/rooms_controller.rb:91
+  Rendering rooms/show.json.jbuilder
+  Rendered rooms/_room.json.jbuilder (0.8ms)
+  Rendered rooms/show.json.jbuilder (1.9ms)
+Completed 200 OK in 5ms (Views: 3.5ms | ActiveRecord: 0.3ms)
+
+
+Started GET "/rooms/31" for 127.0.0.1 at 2018-06-01 22:10:35 +0200
+Processing by RoomsController#show as HTML
+  Parameters: {"id"=>"31"}
+  [1m[36mRoom Load (0.2ms)[0m  [1m[34mSELECT  "rooms".* FROM "rooms" WHERE "rooms"."id" = ? LIMIT ?[0m  [["id", 31], ["LIMIT", 1]]
+  ↳ app/controllers/rooms_controller.rb:91
+  Rendering rooms/show.html.haml within layouts/application
+  [1m[36mPower Load (0.2ms)[0m  [1m[34mSELECT "powers".* FROM "powers" WHERE "powers"."room_id" = ?[0m  [["room_id", 31]]
+  ↳ app/views/rooms/show.html.haml:32
+  Rendered rooms/show.html.haml within layouts/application (8.4ms)
+  Rendered layouts/_navbar.html.haml (4.0ms)
+Completed 200 OK in 42ms (Views: 40.1ms | ActiveRecord: 0.4ms)
+
+
+Started GET "/rooms/31.json" for 127.0.0.1 at 2018-06-01 22:10:48 +0200
+Processing by RoomsController#show as JSON
+  Parameters: {"id"=>"31"}
+  [1m[36mRoom Load (0.2ms)[0m  [1m[34mSELECT  "rooms".* FROM "rooms" WHERE "rooms"."id" = ? LIMIT ?[0m  [["id", 31], ["LIMIT", 1]]
+  ↳ app/controllers/rooms_controller.rb:91
+  Rendering rooms/show.json.jbuilder
+  Rendered rooms/_room.json.jbuilder (1.7ms)
+  Rendered rooms/show.json.jbuilder (3.1ms)
+Completed 200 OK in 6ms (Views: 4.5ms | ActiveRecord: 0.2ms)
+
+
+Started GET "/rooms/31" for 127.0.0.1 at 2018-06-01 22:11:12 +0200
+Processing by RoomsController#show as HTML
+  Parameters: {"id"=>"31"}
+  [1m[36mRoom Load (0.2ms)[0m  [1m[34mSELECT  "rooms".* FROM "rooms" WHERE "rooms"."id" = ? LIMIT ?[0m  [["id", 31], ["LIMIT", 1]]
+  ↳ app/controllers/rooms_controller.rb:91
+  Rendering rooms/show.html.haml within layouts/application
+  [1m[36mPower Load (0.1ms)[0m  [1m[34mSELECT "powers".* FROM "powers" WHERE "powers"."room_id" = ?[0m  [["room_id", 31]]
+  ↳ app/views/rooms/show.html.haml:33
+  Rendered rooms/show.html.haml within layouts/application (11.9ms)
+  Rendered layouts/_navbar.html.haml (7.0ms)
+Completed 200 OK in 57ms (Views: 55.5ms | ActiveRecord: 0.4ms)
+
+
+Started GET "/rooms/31.json" for 127.0.0.1 at 2018-06-01 22:11:13 +0200
+Processing by RoomsController#show as JSON
+  Parameters: {"id"=>"31"}
+  [1m[36mRoom Load (0.2ms)[0m  [1m[34mSELECT  "rooms".* FROM "rooms" WHERE "rooms"."id" = ? LIMIT ?[0m  [["id", 31], ["LIMIT", 1]]
+  ↳ app/controllers/rooms_controller.rb:91
+  Rendering rooms/show.json.jbuilder
+  Rendered rooms/_room.json.jbuilder (1.4ms)
+  Rendered rooms/show.json.jbuilder (2.7ms)
+Completed 200 OK in 6ms (Views: 4.4ms | ActiveRecord: 0.2ms)
+
+
+Started GET "/rooms/31" for 127.0.0.1 at 2018-06-01 22:11:44 +0200
+Processing by RoomsController#show as HTML
+  Parameters: {"id"=>"31"}
+  [1m[36mRoom Load (0.4ms)[0m  [1m[34mSELECT  "rooms".* FROM "rooms" WHERE "rooms"."id" = ? LIMIT ?[0m  [["id", 31], ["LIMIT", 1]]
+  ↳ app/controllers/rooms_controller.rb:91
+  Rendering rooms/show.html.haml within layouts/application
+  [1m[36mPower Load (0.5ms)[0m  [1m[34mSELECT "powers".* FROM "powers" WHERE "powers"."room_id" = ?[0m  [["room_id", 31]]
+  ↳ app/views/rooms/show.html.haml:35
+  Rendered rooms/show.html.haml within layouts/application (15.1ms)
+  Rendered layouts/_navbar.html.haml (11.7ms)
+Completed 200 OK in 72ms (Views: 68.3ms | ActiveRecord: 0.9ms)
+
+
+Started GET "/rooms/31.json" for 127.0.0.1 at 2018-06-01 22:11:44 +0200
+Processing by RoomsController#show as JSON
+  Parameters: {"id"=>"31"}
+  [1m[36mRoom Load (0.2ms)[0m  [1m[34mSELECT  "rooms".* FROM "rooms" WHERE "rooms"."id" = ? LIMIT ?[0m  [["id", 31], ["LIMIT", 1]]
+  ↳ app/controllers/rooms_controller.rb:91
+  Rendering rooms/show.json.jbuilder
+  Rendered rooms/_room.json.jbuilder (0.9ms)
+  Rendered rooms/show.json.jbuilder (2.0ms)
+Completed 200 OK in 5ms (Views: 3.6ms | ActiveRecord: 0.2ms)
+
+
+  [1m[36mRoom Load (1.5ms)[0m  [1m[34mSELECT "rooms".* FROM "rooms"[0m
+  [1m[35m (0.1ms)[0m  [1m[36mbegin transaction[0m
+  [1m[36mPower Load (0.1ms)[0m  [1m[34mSELECT "powers".* FROM "powers" WHERE "powers"."room_id" = ?[0m  [["room_id", 29]]
+  [1m[36mReservation Load (0.1ms)[0m  [1m[34mSELECT "reservations".* FROM "reservations" WHERE "reservations"."room_id" = ?[0m  [["room_id", 29]]
+  [1m[36mRoom Destroy (0.3ms)[0m  [1m[31mDELETE FROM "rooms" WHERE "rooms"."id" = ?[0m  [["id", 29]]
+  [1m[35m (406.4ms)[0m  [1m[36mcommit transaction[0m
+  [1m[35m (0.2ms)[0m  [1m[36mbegin transaction[0m
+  [1m[36mPower Load (0.2ms)[0m  [1m[34mSELECT "powers".* FROM "powers" WHERE "powers"."room_id" = ?[0m  [["room_id", 30]]
+  [1m[36mReservation Load (0.2ms)[0m  [1m[34mSELECT "reservations".* FROM "reservations" WHERE "reservations"."room_id" = ?[0m  [["room_id", 30]]
+  [1m[36mRoom Destroy (0.7ms)[0m  [1m[31mDELETE FROM "rooms" WHERE "rooms"."id" = ?[0m  [["id", 30]]
+  [1m[35m (1058.7ms)[0m  [1m[36mcommit transaction[0m
+  [1m[35m (0.2ms)[0m  [1m[36mbegin transaction[0m
+  [1m[36mPower Load (0.2ms)[0m  [1m[34mSELECT "powers".* FROM "powers" WHERE "powers"."room_id" = ?[0m  [["room_id", 31]]
+  [1m[36mReservation Load (0.1ms)[0m  [1m[34mSELECT "reservations".* FROM "reservations" WHERE "reservations"."room_id" = ?[0m  [["room_id", 31]]
+  [1m[36mRoom Destroy (0.5ms)[0m  [1m[31mDELETE FROM "rooms" WHERE "rooms"."id" = ?[0m  [["id", 31]]
+  [1m[35m (1378.6ms)[0m  [1m[36mcommit transaction[0m
+  [1m[36mUser Load (0.7ms)[0m  [1m[34mSELECT "users".* FROM "users"[0m
+Started GET "/map" for 127.0.0.1 at 2018-06-02 00:56:10 +0200
+  
+ActionController::RoutingError (No route matches [GET] "/map"):
+  
+actionpack (5.2.0) lib/action_dispatch/middleware/debug_exceptions.rb:65:in `call'
+web-console (3.6.2) lib/web_console/middleware.rb:135:in `call_app'
+web-console (3.6.2) lib/web_console/middleware.rb:30:in `block in call'
+web-console (3.6.2) lib/web_console/middleware.rb:20:in `catch'
+web-console (3.6.2) lib/web_console/middleware.rb:20:in `call'
+actionpack (5.2.0) lib/action_dispatch/middleware/show_exceptions.rb:33:in `call'
+railties (5.2.0) lib/rails/rack/logger.rb:38:in `call_app'
+railties (5.2.0) lib/rails/rack/logger.rb:26:in `block in call'
+activesupport (5.2.0) lib/active_support/tagged_logging.rb:71:in `block in tagged'
+activesupport (5.2.0) lib/active_support/tagged_logging.rb:28:in `tagged'
+activesupport (5.2.0) lib/active_support/tagged_logging.rb:71:in `tagged'
+railties (5.2.0) lib/rails/rack/logger.rb:26:in `call'
+sprockets-rails (3.2.1) lib/sprockets/rails/quiet_assets.rb:13:in `call'
+actionpack (5.2.0) lib/action_dispatch/middleware/remote_ip.rb:81:in `call'
+actionpack (5.2.0) lib/action_dispatch/middleware/request_id.rb:27:in `call'
+rack (2.0.5) lib/rack/method_override.rb:22:in `call'
+rack (2.0.5) lib/rack/runtime.rb:22:in `call'
+activesupport (5.2.0) lib/active_support/cache/strategy/local_cache_middleware.rb:29:in `call'
+actionpack (5.2.0) lib/action_dispatch/middleware/executor.rb:14:in `call'
+actionpack (5.2.0) lib/action_dispatch/middleware/static.rb:127:in `call'
+rack (2.0.5) lib/rack/sendfile.rb:111:in `call'
+railties (5.2.0) lib/rails/engine.rb:524:in `call'
+puma (3.11.4) lib/puma/configuration.rb:225:in `call'
+puma (3.11.4) lib/puma/server.rb:632:in `handle_request'
+puma (3.11.4) lib/puma/server.rb:446:in `process_client'
+puma (3.11.4) lib/puma/server.rb:306:in `block in run'
+puma (3.11.4) lib/puma/thread_pool.rb:120:in `block in spawn_thread'
+Started GET "/" for 127.0.0.1 at 2018-06-02 00:56:13 +0200
+Processing by MapboxController#show as HTML
+  [1m[36mRoom Load (0.2ms)[0m  [1m[34mSELECT "rooms".* FROM "rooms"[0m
+  ↳ app/controllers/mapbox_controller.rb:8
+  Rendering mapbox/show.html.haml within layouts/application
+  Rendered mapbox/show.html.haml within layouts/application (6.3ms)
+  Rendered layouts/_navbar.html.haml (3.9ms)
+Completed 200 OK in 42ms (Views: 40.3ms | ActiveRecord: 0.2ms)
+
+
+Started GET "/dashboard.json" for 127.0.0.1 at 2018-06-02 00:56:13 +0200
+Processing by MapboxController#show as JSON
+  [1m[36mRoom Load (0.2ms)[0m  [1m[34mSELECT "rooms".* FROM "rooms"[0m
+  ↳ app/controllers/mapbox_controller.rb:8
+Completed 200 OK in 1ms (Views: 0.1ms | ActiveRecord: 0.2ms)
+
+
+Started GET "/rooms/new" for 127.0.0.1 at 2018-06-02 01:04:01 +0200
+Processing by RoomsController#new as HTML
+  Rendering rooms/new.html.haml within layouts/application
+  Rendered rooms/_form.html.haml (8.6ms)
+  Rendered rooms/new.html.haml within layouts/application (11.1ms)
+  Rendered layouts/_navbar.html.haml (4.1ms)
+Completed 200 OK in 57ms (Views: 41.1ms | ActiveRecord: 0.4ms)
+
+
+Started POST "/rooms" for 127.0.0.1 at 2018-06-02 01:04:13 +0200
+Processing by RoomsController#create as HTML
+  Parameters: {"utf8"=>"✓", "authenticity_token"=>"6gh+mgr7j1cgl5S/S5HFS04MB3vttoYFXIEhMR6NcdMgKH9i5WnK3juAhzOuDuu8vz1Ckq0x+WGqhusS6U/qzA==", "room"=>{"name"=>"Daniele's room", "time_from"=>"2018-06-15 12:00", "time_to"=>"2018-06-22 12:00", "description"=>"", "max_participants"=>"333", "address"=>"", "latitude"=>"", "longitude"=>"", "recurrence"=>"true"}, "commit"=>"Save"}
+Unpermitted parameter: :recurrence
+  [1m[35m (0.2ms)[0m  [1m[36mbegin transaction[0m
+  ↳ app/controllers/rooms_controller.rb:34
+  [1m[36mRoom Create (3.1ms)[0m  [1m[32mINSERT INTO "rooms" ("name", "description", "max_participants", "address", "time_from", "time_to", "event", "created_at", "updated_at") VALUES (?, ?, ?, ?, ?, ?, ?, ?, ?)[0m  [["name", "Daniele's room"], ["description", ""], ["max_participants", 333], ["address", ""], ["time_from", "2018-06-15 12:00:00"], ["time_to", "2018-06-22 12:00:00"], ["event", "{\"end\":{\"date_time\":\"2018-06-22T12:00:00+00:00\"},\"start\":{\"date_time\":\"2018-06-15T12:00:00+00:00\"},\"summary\":\"Daniele's room\"}"], ["created_at", "2018-06-01 23:04:13.108388"], ["updated_at", "2018-06-01 23:04:13.108388"]]
+  ↳ app/controllers/rooms_controller.rb:34
+  [1m[35m (703.0ms)[0m  [1m[36mcommit transaction[0m
+  ↳ app/controllers/rooms_controller.rb:34
+#<Google::Apis::CalendarV3::Event:0x00005596935621e0>
+#<Google::Apis::CalendarV3::Event:0x0000559693541dc8>
+Sending HTTP post https://www.googleapis.com/calendar/v3/calendars/inline%40inline-205713.iam.gserviceaccount.com/events?
+200
+#<Hurley::Response POST https://www.googleapis.com/calendar/v3/calendars/inline%40inline-205713.iam.gserviceaccount.com/events == 200 (788 bytes) 617ms>
+Success - #<Google::Apis::CalendarV3::Event:0x0000559690712880
+ @created=Fri, 01 Jun 2018 23:04:14 +0000,
+ @creator=
+  #<Google::Apis::CalendarV3::Event::Creator:0x0000559690516810
+   @email="inline@inline-205713.iam.gserviceaccount.com",
+   @self=true>,
+ @end=
+  #<Google::Apis::CalendarV3::EventDateTime:0x000055969010edd0
+   @date_time=Fri, 22 Jun 2018 12:00:00 +0000>,
+ @etag="\"3055788509034000\"",
+ @html_link=
+  "https://www.google.com/calendar/event?eid=aDhuZXI4dWk2Y3R1dXQwMXJudWw0MGVnamcgaW5saW5lQGlubGluZS0yMDU3MTMuaWFtLmdzZXJ2aWNlYWNjb3VudC5jb20",
+ @i_cal_uid="h8ner8ui6ctuut01rnul40egjg@google.com",
+ @id="h8ner8ui6ctuut01rnul40egjg",
+ @kind="calendar#event",
+ @organizer=
+  #<Google::Apis::CalendarV3::Event::Organizer:0x00007f899b9f5f48
+   @email="inline@inline-205713.iam.gserviceaccount.com",
+   @self=true>,
+ @reminders=
+  #<Google::Apis::CalendarV3::Event::Reminders:0x00007f899b9e4dd8
+   @use_default=true>,
+ @sequence=0,
+ @start=
+  #<Google::Apis::CalendarV3::EventDateTime:0x00007f899b9d5360
+   @date_time=Fri, 15 Jun 2018 12:00:00 +0000>,
+ @status="confirmed",
+ @summary="Daniele's room",
+ @updated=Fri, 01 Jun 2018 23:04:14 +0000>
+
+Sending HTTP get https://www.googleapis.com/calendar/v3/calendars/inline%40inline-205713.iam.gserviceaccount.com/events?
+200
+#<Hurley::Response GET https://www.googleapis.com/calendar/v3/calendars/inline%40inline-205713.iam.gserviceaccount.com/events == 200 (1107 bytes) 359ms>
+Success - #<Google::Apis::CalendarV3::Events:0x00007f899a8389e0
+ @access_role="owner",
+ @default_reminders=[],
+ @etag="\"p324fdbeip6ptm0g\"",
+ @items=
+  [#<Google::Apis::CalendarV3::Event:0x00007f899a81b9d0
+    @created=Fri, 01 Jun 2018 23:04:14 +0000,
+    @creator=
+     #<Google::Apis::CalendarV3::Event::Creator:0x00007f899a80a338
+      @email="inline@inline-205713.iam.gserviceaccount.com",
+      @self=true>,
+    @end=
+     #<Google::Apis::CalendarV3::EventDateTime:0x00007f899a7f2080
+      @date_time=Fri, 22 Jun 2018 12:00:00 +0000>,
+    @etag="\"3055788509034000\"",
+    @html_link=
+     "https://www.google.com/calendar/event?eid=aDhuZXI4dWk2Y3R1dXQwMXJudWw0MGVnamcgaW5saW5lQGlubGluZS0yMDU3MTMuaWFtLmdzZXJ2aWNlYWNjb3VudC5jb20",
+    @i_cal_uid="h8ner8ui6ctuut01rnul40egjg@google.com",
+    @id="h8ner8ui6ctuut01rnul40egjg",
+    @kind="calendar#event",
+    @organizer=
+     #<Google::Apis::CalendarV3::Event::Organizer:0x00007f899a7c4608
+      @email="inline@inline-205713.iam.gserviceaccount.com",
+      @self=true>,
+    @reminders=
+     #<Google::Apis::CalendarV3::Event::Reminders:0x00007f899a7a70d0
+      @use_default=true>,
+    @sequence=0,
+    @start=
+     #<Google::Apis::CalendarV3::EventDateTime:0x00007f899a796ff0
+      @date_time=Fri, 15 Jun 2018 12:00:00 +0000>,
+    @status="confirmed",
+    @summary="Daniele's room",
+    @updated=Fri, 01 Jun 2018 23:04:14 +0000>],
+ @kind="calendar#events",
+ @next_sync_token="CIj2rdLJs9sCEIj2rdLJs9sCGAU=",
+ @summary="Inline",
+ @time_zone="UTC",
+ @updated=Fri, 01 Jun 2018 23:04:14 +0000>
+
+Redirected to http://localhost:3000/rooms/32
+Completed 302 Found in 2145ms (ActiveRecord: 706.3ms)
+
+
+Started GET "/rooms/32" for 127.0.0.1 at 2018-06-02 01:04:15 +0200
+Processing by RoomsController#show as HTML
+  Parameters: {"id"=>"32"}
+  [1m[36mRoom Load (0.8ms)[0m  [1m[34mSELECT  "rooms".* FROM "rooms" WHERE "rooms"."id" = ? LIMIT ?[0m  [["id", 32], ["LIMIT", 1]]
+  ↳ app/controllers/rooms_controller.rb:90
+  Rendering rooms/show.html.haml within layouts/application
+  [1m[36mPower Load (0.8ms)[0m  [1m[34mSELECT "powers".* FROM "powers" WHERE "powers"."room_id" = ?[0m  [["room_id", 32]]
+  ↳ app/views/rooms/show.html.haml:35
+  Rendered rooms/show.html.haml within layouts/application (45.1ms)
+  Rendered layouts/_navbar.html.haml (6.5ms)
+Completed 200 OK in 101ms (Views: 91.2ms | ActiveRecord: 2.2ms)
+
+
+Started GET "/rooms/32.json" for 127.0.0.1 at 2018-06-02 01:04:15 +0200
+Processing by RoomsController#show as JSON
+  Parameters: {"id"=>"32"}
+  [1m[36mRoom Load (0.1ms)[0m  [1m[34mSELECT  "rooms".* FROM "rooms" WHERE "rooms"."id" = ? LIMIT ?[0m  [["id", 32], ["LIMIT", 1]]
+  ↳ app/controllers/rooms_controller.rb:90
+  Rendering rooms/show.json.jbuilder
+  Rendered rooms/_room.json.jbuilder (0.8ms)
+  Rendered rooms/show.json.jbuilder (2.0ms)
+Completed 200 OK in 5ms (Views: 3.1ms | ActiveRecord: 0.1ms)
+
+
+Started GET "/rooms/32" for 127.0.0.1 at 2018-06-02 01:05:38 +0200
+Processing by RoomsController#show as HTML
+  Parameters: {"id"=>"32"}
+  [1m[36mRoom Load (0.6ms)[0m  [1m[34mSELECT  "rooms".* FROM "rooms" WHERE "rooms"."id" = ? LIMIT ?[0m  [["id", 32], ["LIMIT", 1]]
+  ↳ app/controllers/rooms_controller.rb:90
+  Rendering rooms/show.html.haml within layouts/application
+  [1m[36mPower Load (0.1ms)[0m  [1m[34mSELECT "powers".* FROM "powers" WHERE "powers"."room_id" = ?[0m  [["room_id", 32]]
+  ↳ app/views/rooms/show.html.haml:35
+  Rendered rooms/show.html.haml within layouts/application (19.7ms)
+  Rendered layouts/_navbar.html.haml (4.2ms)
+Completed 200 OK in 89ms (Views: 57.9ms | ActiveRecord: 1.7ms)
+
+
+Started GET "/rooms/32.json" for 127.0.0.1 at 2018-06-02 01:05:39 +0200
+Processing by RoomsController#show as JSON
+  Parameters: {"id"=>"32"}
+  [1m[36mRoom Load (0.2ms)[0m  [1m[34mSELECT  "rooms".* FROM "rooms" WHERE "rooms"."id" = ? LIMIT ?[0m  [["id", 32], ["LIMIT", 1]]
+  ↳ app/controllers/rooms_controller.rb:90
+  Rendering rooms/show.json.jbuilder
+  Rendered rooms/_room.json.jbuilder (1.0ms)
+  Rendered rooms/show.json.jbuilder (2.2ms)
+Completed 200 OK in 5ms (Views: 3.5ms | ActiveRecord: 0.2ms)
+
+
+Started GET "/rooms/32" for 127.0.0.1 at 2018-06-02 01:05:40 +0200
+Processing by RoomsController#show as HTML
+  Parameters: {"id"=>"32"}
+  [1m[36mRoom Load (0.2ms)[0m  [1m[34mSELECT  "rooms".* FROM "rooms" WHERE "rooms"."id" = ? LIMIT ?[0m  [["id", 32], ["LIMIT", 1]]
+  ↳ app/controllers/rooms_controller.rb:90
+  Rendering rooms/show.html.haml within layouts/application
+  [1m[36mPower Load (0.2ms)[0m  [1m[34mSELECT "powers".* FROM "powers" WHERE "powers"."room_id" = ?[0m  [["room_id", 32]]
+  ↳ app/views/rooms/show.html.haml:35
+  Rendered rooms/show.html.haml within layouts/application (6.3ms)
+  Rendered layouts/_navbar.html.haml (6.9ms)
+Completed 200 OK in 43ms (Views: 41.5ms | ActiveRecord: 0.3ms)
+
+
+Started GET "/rooms/32.json" for 127.0.0.1 at 2018-06-02 01:05:40 +0200
+Processing by RoomsController#show as JSON
+  Parameters: {"id"=>"32"}
+  [1m[36mRoom Load (0.2ms)[0m  [1m[34mSELECT  "rooms".* FROM "rooms" WHERE "rooms"."id" = ? LIMIT ?[0m  [["id", 32], ["LIMIT", 1]]
+  ↳ app/controllers/rooms_controller.rb:90
+  Rendering rooms/show.json.jbuilder
+  Rendered rooms/_room.json.jbuilder (0.7ms)
+  Rendered rooms/show.json.jbuilder (1.8ms)
+Completed 200 OK in 5ms (Views: 3.0ms | ActiveRecord: 0.2ms)
+
+
+Started GET "/rooms/new" for 127.0.0.1 at 2018-06-02 01:05:44 +0200
+Processing by RoomsController#new as HTML
+Completed 500 Internal Server Error in 122ms (ActiveRecord: 0.0ms)
+
+
+  
+NameError (undefined local variable or method `current_user' for #<RoomsController:0x00007f8999b85360>):
+  
+app/controllers/rooms_controller.rb:17:in `new'
+Started GET "/rooms/new" for 127.0.0.1 at 2018-06-02 01:06:46 +0200
+Processing by RoomsController#new as HTML
+Completed 500 Internal Server Error in 71ms (ActiveRecord: 0.0ms)
+
+
+  
+NameError (undefined local variable or method `current_user' for #<RoomsController:0x0000559693599438>):
+  
+app/controllers/rooms_controller.rb:17:in `new'
+Started GET "/rooms/new" for 127.0.0.1 at 2018-06-02 01:13:54 +0200
+Processing by RoomsController#new as HTML
+  Rendering rooms/new.html.haml within layouts/application
+  Rendered rooms/_form.html.haml (10.1ms)
+  Rendered rooms/new.html.haml within layouts/application (14.7ms)
+  Rendered layouts/_navbar.html.haml (9.5ms)
+Completed 200 OK in 76ms (Views: 59.9ms | ActiveRecord: 0.5ms)
+
+
+Started GET "/rooms/" for 127.0.0.1 at 2018-06-02 01:13:58 +0200
+Processing by RoomsController#index as HTML
+  Rendering rooms/index.html.haml within layouts/application
+  [1m[36mRoom Load (1.0ms)[0m  [1m[34mSELECT "rooms".* FROM "rooms"[0m
+  ↳ app/views/rooms/index.html.haml:23
+  Rendered rooms/index.html.haml within layouts/application (32.0ms)
+  Rendered layouts/_navbar.html.haml (5.3ms)
+Completed 200 OK in 140ms (Views: 135.4ms | ActiveRecord: 1.0ms)
+
+
+Started GET "/rooms/32" for 127.0.0.1 at 2018-06-02 01:14:01 +0200
+Processing by RoomsController#show as HTML
+  Parameters: {"id"=>"32"}
+  [1m[36mRoom Load (0.6ms)[0m  [1m[34mSELECT  "rooms".* FROM "rooms" WHERE "rooms"."id" = ? LIMIT ?[0m  [["id", 32], ["LIMIT", 1]]
+  ↳ app/controllers/rooms_controller.rb:78
+  Rendering rooms/show.html.haml within layouts/application
+  [1m[36mPower Load (0.3ms)[0m  [1m[34mSELECT "powers".* FROM "powers" WHERE "powers"."room_id" = ?[0m  [["room_id", 32]]
+  ↳ app/views/rooms/show.html.haml:35
+  Rendered rooms/show.html.haml within layouts/application (35.1ms)
+  Rendered layouts/_navbar.html.haml (4.8ms)
+Completed 200 OK in 90ms (Views: 80.7ms | ActiveRecord: 1.6ms)
+
+
+Started GET "/rooms/32.json" for 127.0.0.1 at 2018-06-02 01:14:01 +0200
+Processing by RoomsController#show as JSON
+  Parameters: {"id"=>"32"}
+  [1m[36mRoom Load (0.2ms)[0m  [1m[34mSELECT  "rooms".* FROM "rooms" WHERE "rooms"."id" = ? LIMIT ?[0m  [["id", 32], ["LIMIT", 1]]
+  ↳ app/controllers/rooms_controller.rb:78
+  Rendering rooms/show.json.jbuilder
+  Rendered rooms/_room.json.jbuilder (0.9ms)
+  Rendered rooms/show.json.jbuilder (2.6ms)
+Completed 200 OK in 9ms (Views: 5.5ms | ActiveRecord: 0.2ms)
+
+
+Started GET "/rooms/new" for 127.0.0.1 at 2018-06-02 01:14:05 +0200
+Processing by RoomsController#new as HTML
+  Rendering rooms/new.html.haml within layouts/application
+  Rendered rooms/_form.html.haml (15.3ms)
+  Rendered rooms/new.html.haml within layouts/application (20.4ms)
+  Rendered layouts/_navbar.html.haml (4.2ms)
+Completed 200 OK in 51ms (Views: 50.3ms | ActiveRecord: 0.0ms)
+
+
+Started POST "/rooms" for 127.0.0.1 at 2018-06-02 01:14:06 +0200
+Processing by RoomsController#create as HTML
+  Parameters: {"utf8"=>"✓", "authenticity_token"=>"QD7/v6MoIH70YHiZtOu7/8jRgI4celjvEm2gnYF4O1SKHv5HTLpl9+93axVRdJUIOeDFZ1z9J4vkamq+drqgSw==", "room"=>{"name"=>"", "time_from"=>"", "time_to"=>"", "description"=>"", "max_participants"=>"", "address"=>"", "latitude"=>"", "longitude"=>"", "recurrence"=>"true"}, "commit"=>"Save"}
+Unpermitted parameter: :recurrence
+  [1m[35m (0.1ms)[0m  [1m[36mbegin transaction[0m
+  ↳ app/controllers/rooms_controller.rb:34
+  [1m[35m (0.1ms)[0m  [1m[31mrollback transaction[0m
+  ↳ app/controllers/rooms_controller.rb:34
+  Rendering rooms/new.html.haml within layouts/application
+  Rendered rooms/_form.html.haml (12.7ms)
+  Rendered rooms/new.html.haml within layouts/application (20.4ms)
+  Rendered layouts/_navbar.html.haml (8.0ms)
+Completed 200 OK in 84ms (Views: 74.1ms | ActiveRecord: 0.1ms)
+
+
+Started GET "/rooms" for 127.0.0.1 at 2018-06-02 01:14:27 +0200
+Processing by RoomsController#index as HTML
+  Rendering rooms/index.html.haml within layouts/application
+  [1m[36mRoom Load (0.2ms)[0m  [1m[34mSELECT "rooms".* FROM "rooms"[0m
+  ↳ app/views/rooms/index.html.haml:23
+  Rendered rooms/index.html.haml within layouts/application (25.6ms)
+  Rendered layouts/_navbar.html.haml (9.7ms)
+Completed 200 OK in 81ms (Views: 75.7ms | ActiveRecord: 0.8ms)
+
+
+Started GET "/rooms/new" for 127.0.0.1 at 2018-06-02 01:14:29 +0200
+Processing by RoomsController#new as HTML
+  Rendering rooms/new.html.haml within layouts/application
+  Rendered rooms/_form.html.haml (17.2ms)
+  Rendered rooms/new.html.haml within layouts/application (26.9ms)
+  Rendered layouts/_navbar.html.haml (6.0ms)
+Completed 200 OK in 65ms (Views: 61.8ms | ActiveRecord: 0.0ms)
+
+
+Started POST "/rooms" for 127.0.0.1 at 2018-06-02 01:14:30 +0200
+Processing by RoomsController#create as HTML
+  Parameters: {"utf8"=>"✓", "authenticity_token"=>"r4O5G/8O6Izz+WZFrO56Tsdig+AUqceXg6lOMbVYPIhlo7jjEJytBejudclJcVS5NlPGCVQuuPN1roQSQpqnlw==", "room"=>{"name"=>"", "time_from"=>"", "time_to"=>"", "description"=>"", "max_participants"=>"", "address"=>"", "latitude"=>"", "longitude"=>"", "recurrence"=>"true"}, "commit"=>"Save"}
+Unpermitted parameter: :recurrence
+  [1m[35m (0.1ms)[0m  [1m[36mbegin transaction[0m
+  ↳ app/controllers/rooms_controller.rb:34
+  [1m[35m (0.1ms)[0m  [1m[31mrollback transaction[0m
+  ↳ app/controllers/rooms_controller.rb:34
+  Rendering rooms/new.html.haml within layouts/application
+  Rendered rooms/_form.html.haml (16.5ms)
+  Rendered rooms/new.html.haml within layouts/application (19.6ms)
+  Rendered layouts/_navbar.html.haml (6.4ms)
+Completed 200 OK in 87ms (Views: 59.7ms | ActiveRecord: 0.2ms)
+
+
+Started GET "/rooms" for 127.0.0.1 at 2018-06-02 01:19:21 +0200
+Processing by RoomsController#index as HTML
+  Rendering rooms/index.html.haml within layouts/application
+  [1m[36mRoom Load (0.2ms)[0m  [1m[34mSELECT "rooms".* FROM "rooms"[0m
+  ↳ app/views/rooms/index.html.haml:23
+  Rendered rooms/index.html.haml within layouts/application (15.2ms)
+  Rendered layouts/_navbar.html.haml (5.1ms)
+Completed 200 OK in 47ms (Views: 41.7ms | ActiveRecord: 0.6ms)
+
+
+Started GET "/rooms/32" for 127.0.0.1 at 2018-06-02 01:19:24 +0200
+Processing by RoomsController#show as HTML
+  Parameters: {"id"=>"32"}
+  [1m[36mRoom Load (0.3ms)[0m  [1m[34mSELECT  "rooms".* FROM "rooms" WHERE "rooms"."id" = ? LIMIT ?[0m  [["id", 32], ["LIMIT", 1]]
+  ↳ app/controllers/rooms_controller.rb:78
+  Rendering rooms/show.html.haml within layouts/application
+  [1m[36mPower Load (0.2ms)[0m  [1m[34mSELECT "powers".* FROM "powers" WHERE "powers"."room_id" = ?[0m  [["room_id", 32]]
+  ↳ app/views/rooms/show.html.haml:35
+  Rendered rooms/show.html.haml within layouts/application (15.6ms)
+  Rendered layouts/_navbar.html.haml (3.9ms)
+Completed 200 OK in 48ms (Views: 43.6ms | ActiveRecord: 0.8ms)
+
+
+Started GET "/rooms/32.json" for 127.0.0.1 at 2018-06-02 01:19:24 +0200
+Processing by RoomsController#show as JSON
+  Parameters: {"id"=>"32"}
+  [1m[36mRoom Load (0.1ms)[0m  [1m[34mSELECT  "rooms".* FROM "rooms" WHERE "rooms"."id" = ? LIMIT ?[0m  [["id", 32], ["LIMIT", 1]]
+  ↳ app/controllers/rooms_controller.rb:78
+  Rendering rooms/show.json.jbuilder
+  Rendered rooms/_room.json.jbuilder (1.2ms)
+  Rendered rooms/show.json.jbuilder (2.5ms)
+Completed 200 OK in 9ms (Views: 7.2ms | ActiveRecord: 0.1ms)
+
+
+Started GET "/rooms/32.json" for 127.0.0.1 at 2018-06-02 01:37:28 +0200
+Processing by RoomsController#show as JSON
+  Parameters: {"id"=>"32"}
+  [1m[36mRoom Load (0.2ms)[0m  [1m[34mSELECT  "rooms".* FROM "rooms" WHERE "rooms"."id" = ? LIMIT ?[0m  [["id", 32], ["LIMIT", 1]]
+  ↳ app/controllers/rooms_controller.rb:78
+  Rendering rooms/show.json.jbuilder
+  Rendered rooms/_room.json.jbuilder (0.6ms)
+  Rendered rooms/show.json.jbuilder (1.3ms)
+Completed 200 OK in 21ms (Views: 2.4ms | ActiveRecord: 0.6ms)
+
+
+  [1m[35m (0.1ms)[0m  [1m[34mSELECT "schema_migrations"."version" FROM "schema_migrations" ORDER BY "schema_migrations"."version" ASC[0m
+  ↳ /usr/lib/ruby/gems/2.5.0/gems/bootsnap-1.3.0/lib/bootsnap/load_path_cache/core_ext/kernel_require.rb:21
+  [1m[35m (0.1ms)[0m  [1m[34mSELECT "ar_internal_metadata"."value" FROM "ar_internal_metadata" WHERE "ar_internal_metadata"."key" = ?[0m  [["key", "environment"]]
+  ↳ /usr/lib/ruby/gems/2.5.0/gems/bootsnap-1.3.0/lib/bootsnap/load_path_cache/core_ext/kernel_require.rb:21
+  [1m[35m (0.0ms)[0m  [1m[34mSELECT "schema_migrations"."version" FROM "schema_migrations" ORDER BY "schema_migrations"."version" ASC[0m
+  ↳ /usr/lib/ruby/gems/2.5.0/gems/bootsnap-1.3.0/lib/bootsnap/load_path_cache/core_ext/kernel_require.rb:21
+  [1m[35m (0.0ms)[0m  [1m[34mSELECT "ar_internal_metadata"."value" FROM "ar_internal_metadata" WHERE "ar_internal_metadata"."key" = ?[0m  [["key", "environment"]]
+  ↳ /usr/lib/ruby/gems/2.5.0/gems/bootsnap-1.3.0/lib/bootsnap/load_path_cache/core_ext/kernel_require.rb:21
+  [1m[35m (0.0ms)[0m  [1m[34mSELECT "schema_migrations"."version" FROM "schema_migrations" ORDER BY "schema_migrations"."version" ASC[0m
+  ↳ /usr/lib/ruby/gems/2.5.0/gems/bootsnap-1.3.0/lib/bootsnap/load_path_cache/core_ext/kernel_require.rb:21
+  [1m[35m (0.0ms)[0m  [1m[34mSELECT "ar_internal_metadata"."value" FROM "ar_internal_metadata" WHERE "ar_internal_metadata"."key" = ?[0m  [["key", "environment"]]
+  ↳ /usr/lib/ruby/gems/2.5.0/gems/bootsnap-1.3.0/lib/bootsnap/load_path_cache/core_ext/kernel_require.rb:21
+  [1m[35m (0.1ms)[0m  [1m[34mSELECT sqlite_version(*)[0m
+  ↳ /usr/lib/ruby/gems/2.5.0/gems/bootsnap-1.3.0/lib/bootsnap/load_path_cache/core_ext/kernel_require.rb:21
+  [1m[35m (133.2ms)[0m  [1m[35mCREATE TABLE "schema_migrations" ("version" varchar NOT NULL PRIMARY KEY)[0m
+  ↳ /usr/lib/ruby/gems/2.5.0/gems/bootsnap-1.3.0/lib/bootsnap/load_path_cache/core_ext/kernel_require.rb:21
+  [1m[35m (130.4ms)[0m  [1m[35mCREATE TABLE "ar_internal_metadata" ("key" varchar NOT NULL PRIMARY KEY, "value" varchar, "created_at" datetime NOT NULL, "updated_at" datetime NOT NULL)[0m
+  ↳ /usr/lib/ruby/gems/2.5.0/gems/bootsnap-1.3.0/lib/bootsnap/load_path_cache/core_ext/kernel_require.rb:21
+  [1m[35m (0.3ms)[0m  [1m[34mSELECT "schema_migrations"."version" FROM "schema_migrations" ORDER BY "schema_migrations"."version" ASC[0m
+  ↳ /usr/lib/ruby/gems/2.5.0/gems/bootsnap-1.3.0/lib/bootsnap/load_path_cache/core_ext/kernel_require.rb:21
+Migrating to CreateRooms (20180521135820)
+  [1m[35m (0.1ms)[0m  [1m[36mbegin transaction[0m
+  ↳ /usr/lib/ruby/gems/2.5.0/gems/bootsnap-1.3.0/lib/bootsnap/load_path_cache/core_ext/kernel_require.rb:21
+  [1m[35m (0.5ms)[0m  [1m[35mCREATE TABLE "rooms" ("id" integer PRIMARY KEY AUTOINCREMENT NOT NULL, "name" varchar, "description" varchar, "fifo" boolean, "max_participants" integer, "address" varchar, "latitude" float, "longitude" float, "time_from" datetime, "time_to" datetime, "private" boolean, "max_unjoin_time" time, "avatar_file" varchar, "avatar_size" float, "avatar_updated_at" varchar, "datetime" varchar, "recurrence" varchar, "event" json, "user_id" integer, "created_at" datetime NOT NULL, "updated_at" datetime NOT NULL)[0m
+  ↳ db/migrate/20180521135820_create_rooms.rb:3
+  [1m[35m (0.2ms)[0m  [1m[35mCREATE  INDEX "index_rooms_on_user_id" ON "rooms" ("user_id")[0m
+  ↳ db/migrate/20180521135820_create_rooms.rb:3
+  [1m[36mActiveRecord::SchemaMigration Create (0.1ms)[0m  [1m[32mINSERT INTO "schema_migrations" ("version") VALUES (?)[0m  [["version", "20180521135820"]]
+  ↳ /usr/lib/ruby/gems/2.5.0/gems/bootsnap-1.3.0/lib/bootsnap/load_path_cache/core_ext/kernel_require.rb:21
+  [1m[35m (95.8ms)[0m  [1m[36mcommit transaction[0m
+  ↳ /usr/lib/ruby/gems/2.5.0/gems/bootsnap-1.3.0/lib/bootsnap/load_path_cache/core_ext/kernel_require.rb:21
+Migrating to CreateUsers (20180528143008)
+  [1m[35m (0.0ms)[0m  [1m[36mbegin transaction[0m
+  ↳ /usr/lib/ruby/gems/2.5.0/gems/bootsnap-1.3.0/lib/bootsnap/load_path_cache/core_ext/kernel_require.rb:21
+  [1m[35m (0.2ms)[0m  [1m[35mCREATE TABLE "users" ("id" integer PRIMARY KEY AUTOINCREMENT NOT NULL, "username" varchar, "email" varchar, "password_digest" varchar, "admin" boolean, "facebook" json, "google" json, "rating" json, "invitations" json, "created_at" datetime NOT NULL, "updated_at" datetime NOT NULL)[0m
+  ↳ db/migrate/20180528143008_create_users.rb:3
+  [1m[36mActiveRecord::SchemaMigration Create (0.1ms)[0m  [1m[32mINSERT INTO "schema_migrations" ("version") VALUES (?)[0m  [["version", "20180528143008"]]
+  ↳ /usr/lib/ruby/gems/2.5.0/gems/bootsnap-1.3.0/lib/bootsnap/load_path_cache/core_ext/kernel_require.rb:21
+  [1m[35m (128.1ms)[0m  [1m[36mcommit transaction[0m
+  ↳ /usr/lib/ruby/gems/2.5.0/gems/bootsnap-1.3.0/lib/bootsnap/load_path_cache/core_ext/kernel_require.rb:21
+Migrating to CreateReservations (20180528233547)
+  [1m[35m (0.2ms)[0m  [1m[36mbegin transaction[0m
+  ↳ /usr/lib/ruby/gems/2.5.0/gems/bootsnap-1.3.0/lib/bootsnap/load_path_cache/core_ext/kernel_require.rb:21
+  [1m[35m (0.9ms)[0m  [1m[35mCREATE TABLE "reservations" ("id" integer PRIMARY KEY AUTOINCREMENT NOT NULL, "user_id" integer, "room_id" integer, "created_at" datetime NOT NULL, "updated_at" datetime NOT NULL, CONSTRAINT "fk_rails_48a92fce51"
+FOREIGN KEY ("user_id")
+  REFERENCES "users" ("id")
+, CONSTRAINT "fk_rails_78d1025283"
+FOREIGN KEY ("room_id")
+  REFERENCES "rooms" ("id")
+)[0m
+  ↳ db/migrate/20180528233547_create_reservations.rb:3
+  [1m[35m (0.4ms)[0m  [1m[35mCREATE  INDEX "index_reservations_on_user_id" ON "reservations" ("user_id")[0m
+  ↳ db/migrate/20180528233547_create_reservations.rb:3
+  [1m[35m (0.3ms)[0m  [1m[35mCREATE  INDEX "index_reservations_on_room_id" ON "reservations" ("room_id")[0m
+  ↳ db/migrate/20180528233547_create_reservations.rb:3
+  [1m[35m (0.4ms)[0m  [1m[35mCREATE UNIQUE INDEX "index_reservations_on_user_id_and_room_id" ON "reservations" ("user_id", "room_id")[0m
+  ↳ db/migrate/20180528233547_create_reservations.rb:9
+  [1m[36mActiveRecord::SchemaMigration Create (0.3ms)[0m  [1m[32mINSERT INTO "schema_migrations" ("version") VALUES (?)[0m  [["version", "20180528233547"]]
+  ↳ /usr/lib/ruby/gems/2.5.0/gems/bootsnap-1.3.0/lib/bootsnap/load_path_cache/core_ext/kernel_require.rb:21
+  [1m[35m (103.5ms)[0m  [1m[36mcommit transaction[0m
+  ↳ /usr/lib/ruby/gems/2.5.0/gems/bootsnap-1.3.0/lib/bootsnap/load_path_cache/core_ext/kernel_require.rb:21
+Migrating to CreatePowers (20180528233631)
+  [1m[35m (0.2ms)[0m  [1m[36mbegin transaction[0m
+  ↳ /usr/lib/ruby/gems/2.5.0/gems/bootsnap-1.3.0/lib/bootsnap/load_path_cache/core_ext/kernel_require.rb:21
+  [1m[35m (0.8ms)[0m  [1m[35mCREATE TABLE "powers" ("id" integer PRIMARY KEY AUTOINCREMENT NOT NULL, "user_id" integer, "room_id" integer, "created_at" datetime NOT NULL, "updated_at" datetime NOT NULL, CONSTRAINT "fk_rails_c88e5c76c3"
+FOREIGN KEY ("user_id")
+  REFERENCES "users" ("id")
+, CONSTRAINT "fk_rails_c47f771459"
+FOREIGN KEY ("room_id")
+  REFERENCES "rooms" ("id")
+)[0m
+  ↳ db/migrate/20180528233631_create_powers.rb:3
+  [1m[35m (0.3ms)[0m  [1m[35mCREATE  INDEX "index_powers_on_user_id" ON "powers" ("user_id")[0m
+  ↳ db/migrate/20180528233631_create_powers.rb:3
+  [1m[35m (0.3ms)[0m  [1m[35mCREATE  INDEX "index_powers_on_room_id" ON "powers" ("room_id")[0m
+  ↳ db/migrate/20180528233631_create_powers.rb:3
+  [1m[35m (0.4ms)[0m  [1m[35mCREATE UNIQUE INDEX "index_powers_on_user_id_and_room_id" ON "powers" ("user_id", "room_id")[0m
+  ↳ db/migrate/20180528233631_create_powers.rb:9
+  [1m[36mActiveRecord::SchemaMigration Create (0.3ms)[0m  [1m[32mINSERT INTO "schema_migrations" ("version") VALUES (?)[0m  [["version", "20180528233631"]]
+  ↳ /usr/lib/ruby/gems/2.5.0/gems/bootsnap-1.3.0/lib/bootsnap/load_path_cache/core_ext/kernel_require.rb:21
+  [1m[35m (102.8ms)[0m  [1m[36mcommit transaction[0m
+  ↳ /usr/lib/ruby/gems/2.5.0/gems/bootsnap-1.3.0/lib/bootsnap/load_path_cache/core_ext/kernel_require.rb:21
+  [1m[36mActiveRecord::InternalMetadata Load (0.4ms)[0m  [1m[34mSELECT  "ar_internal_metadata".* FROM "ar_internal_metadata" WHERE "ar_internal_metadata"."key" = ? LIMIT ?[0m  [["key", "environment"], ["LIMIT", 1]]
+  ↳ /usr/lib/ruby/gems/2.5.0/gems/bootsnap-1.3.0/lib/bootsnap/load_path_cache/core_ext/kernel_require.rb:21
+  [1m[35m (0.1ms)[0m  [1m[36mbegin transaction[0m
+  ↳ /usr/lib/ruby/gems/2.5.0/gems/bootsnap-1.3.0/lib/bootsnap/load_path_cache/core_ext/kernel_require.rb:21
+  [1m[36mActiveRecord::InternalMetadata Create (0.6ms)[0m  [1m[32mINSERT INTO "ar_internal_metadata" ("key", "value", "created_at", "updated_at") VALUES (?, ?, ?, ?)[0m  [["key", "environment"], ["value", "development"], ["created_at", "2018-06-01 23:47:51.691815"], ["updated_at", "2018-06-01 23:47:51.691815"]]
+  ↳ /usr/lib/ruby/gems/2.5.0/gems/bootsnap-1.3.0/lib/bootsnap/load_path_cache/core_ext/kernel_require.rb:21
+  [1m[35m (117.8ms)[0m  [1m[36mcommit transaction[0m
+  ↳ /usr/lib/ruby/gems/2.5.0/gems/bootsnap-1.3.0/lib/bootsnap/load_path_cache/core_ext/kernel_require.rb:21
+  [1m[35m (0.3ms)[0m  [1m[34mSELECT "schema_migrations"."version" FROM "schema_migrations" ORDER BY "schema_migrations"."version" ASC[0m
+  ↳ /usr/lib/ruby/gems/2.5.0/gems/bootsnap-1.3.0/lib/bootsnap/load_path_cache/core_ext/kernel_require.rb:21
+Started GET "/rooms/32/reservation.json" for 127.0.0.1 at 2018-06-02 02:05:15 +0200
+  [1m[35m (0.1ms)[0m  [1m[34mSELECT "schema_migrations"."version" FROM "schema_migrations" ORDER BY "schema_migrations"."version" ASC[0m
+  ↳ /usr/lib/ruby/gems/2.5.0/gems/web-console-3.6.2/lib/web_console/middleware.rb:135
+  
+ActionController::RoutingError (No route matches [GET] "/rooms/32/reservation.json"):
+  
+actionpack (5.2.0) lib/action_dispatch/middleware/debug_exceptions.rb:65:in `call'
+web-console (3.6.2) lib/web_console/middleware.rb:135:in `call_app'
+web-console (3.6.2) lib/web_console/middleware.rb:30:in `block in call'
+web-console (3.6.2) lib/web_console/middleware.rb:20:in `catch'
+web-console (3.6.2) lib/web_console/middleware.rb:20:in `call'
+actionpack (5.2.0) lib/action_dispatch/middleware/show_exceptions.rb:33:in `call'
+railties (5.2.0) lib/rails/rack/logger.rb:38:in `call_app'
+railties (5.2.0) lib/rails/rack/logger.rb:26:in `block in call'
+activesupport (5.2.0) lib/active_support/tagged_logging.rb:71:in `block in tagged'
+activesupport (5.2.0) lib/active_support/tagged_logging.rb:28:in `tagged'
+activesupport (5.2.0) lib/active_support/tagged_logging.rb:71:in `tagged'
+railties (5.2.0) lib/rails/rack/logger.rb:26:in `call'
+sprockets-rails (3.2.1) lib/sprockets/rails/quiet_assets.rb:13:in `call'
+actionpack (5.2.0) lib/action_dispatch/middleware/remote_ip.rb:81:in `call'
+actionpack (5.2.0) lib/action_dispatch/middleware/request_id.rb:27:in `call'
+rack (2.0.5) lib/rack/method_override.rb:22:in `call'
+rack (2.0.5) lib/rack/runtime.rb:22:in `call'
+activesupport (5.2.0) lib/active_support/cache/strategy/local_cache_middleware.rb:29:in `call'
+actionpack (5.2.0) lib/action_dispatch/middleware/executor.rb:14:in `call'
+actionpack (5.2.0) lib/action_dispatch/middleware/static.rb:127:in `call'
+rack (2.0.5) lib/rack/sendfile.rb:111:in `call'
+railties (5.2.0) lib/rails/engine.rb:524:in `call'
+puma (3.11.4) lib/puma/configuration.rb:225:in `call'
+puma (3.11.4) lib/puma/server.rb:632:in `handle_request'
+puma (3.11.4) lib/puma/server.rb:446:in `process_client'
+puma (3.11.4) lib/puma/server.rb:306:in `block in run'
+puma (3.11.4) lib/puma/thread_pool.rb:120:in `block in spawn_thread'
+Started GET "/rooms/32/reservations.json" for 127.0.0.1 at 2018-06-02 02:05:24 +0200
+  
+ActionController::RoutingError (No route matches [GET] "/rooms/32/reservations.json"):
+  
+actionpack (5.2.0) lib/action_dispatch/middleware/debug_exceptions.rb:65:in `call'
+web-console (3.6.2) lib/web_console/middleware.rb:135:in `call_app'
+web-console (3.6.2) lib/web_console/middleware.rb:30:in `block in call'
+web-console (3.6.2) lib/web_console/middleware.rb:20:in `catch'
+web-console (3.6.2) lib/web_console/middleware.rb:20:in `call'
+actionpack (5.2.0) lib/action_dispatch/middleware/show_exceptions.rb:33:in `call'
+railties (5.2.0) lib/rails/rack/logger.rb:38:in `call_app'
+railties (5.2.0) lib/rails/rack/logger.rb:26:in `block in call'
+activesupport (5.2.0) lib/active_support/tagged_logging.rb:71:in `block in tagged'
+activesupport (5.2.0) lib/active_support/tagged_logging.rb:28:in `tagged'
+activesupport (5.2.0) lib/active_support/tagged_logging.rb:71:in `tagged'
+railties (5.2.0) lib/rails/rack/logger.rb:26:in `call'
+sprockets-rails (3.2.1) lib/sprockets/rails/quiet_assets.rb:13:in `call'
+actionpack (5.2.0) lib/action_dispatch/middleware/remote_ip.rb:81:in `call'
+actionpack (5.2.0) lib/action_dispatch/middleware/request_id.rb:27:in `call'
+rack (2.0.5) lib/rack/method_override.rb:22:in `call'
+rack (2.0.5) lib/rack/runtime.rb:22:in `call'
+activesupport (5.2.0) lib/active_support/cache/strategy/local_cache_middleware.rb:29:in `call'
+actionpack (5.2.0) lib/action_dispatch/middleware/executor.rb:14:in `call'
+actionpack (5.2.0) lib/action_dispatch/middleware/static.rb:127:in `call'
+rack (2.0.5) lib/rack/sendfile.rb:111:in `call'
+railties (5.2.0) lib/rails/engine.rb:524:in `call'
+puma (3.11.4) lib/puma/configuration.rb:225:in `call'
+puma (3.11.4) lib/puma/server.rb:632:in `handle_request'
+puma (3.11.4) lib/puma/server.rb:446:in `process_client'
+puma (3.11.4) lib/puma/server.rb:306:in `block in run'
+puma (3.11.4) lib/puma/thread_pool.rb:120:in `block in spawn_thread'
+Started GET "/rooms/32/reservations.json" for 127.0.0.1 at 2018-06-02 02:05:46 +0200
+  
+ActionController::RoutingError (No route matches [GET] "/rooms/32/reservations.json"):
+  
+actionpack (5.2.0) lib/action_dispatch/middleware/debug_exceptions.rb:65:in `call'
+web-console (3.6.2) lib/web_console/middleware.rb:135:in `call_app'
+web-console (3.6.2) lib/web_console/middleware.rb:30:in `block in call'
+web-console (3.6.2) lib/web_console/middleware.rb:20:in `catch'
+web-console (3.6.2) lib/web_console/middleware.rb:20:in `call'
+actionpack (5.2.0) lib/action_dispatch/middleware/show_exceptions.rb:33:in `call'
+railties (5.2.0) lib/rails/rack/logger.rb:38:in `call_app'
+railties (5.2.0) lib/rails/rack/logger.rb:26:in `block in call'
+activesupport (5.2.0) lib/active_support/tagged_logging.rb:71:in `block in tagged'
+activesupport (5.2.0) lib/active_support/tagged_logging.rb:28:in `tagged'
+activesupport (5.2.0) lib/active_support/tagged_logging.rb:71:in `tagged'
+railties (5.2.0) lib/rails/rack/logger.rb:26:in `call'
+sprockets-rails (3.2.1) lib/sprockets/rails/quiet_assets.rb:13:in `call'
+actionpack (5.2.0) lib/action_dispatch/middleware/remote_ip.rb:81:in `call'
+actionpack (5.2.0) lib/action_dispatch/middleware/request_id.rb:27:in `call'
+rack (2.0.5) lib/rack/method_override.rb:22:in `call'
+rack (2.0.5) lib/rack/runtime.rb:22:in `call'
+activesupport (5.2.0) lib/active_support/cache/strategy/local_cache_middleware.rb:29:in `call'
+actionpack (5.2.0) lib/action_dispatch/middleware/executor.rb:14:in `call'
+actionpack (5.2.0) lib/action_dispatch/middleware/static.rb:127:in `call'
+rack (2.0.5) lib/rack/sendfile.rb:111:in `call'
+railties (5.2.0) lib/rails/engine.rb:524:in `call'
+puma (3.11.4) lib/puma/configuration.rb:225:in `call'
+puma (3.11.4) lib/puma/server.rb:632:in `handle_request'
+puma (3.11.4) lib/puma/server.rb:446:in `process_client'
+puma (3.11.4) lib/puma/server.rb:306:in `block in run'
+puma (3.11.4) lib/puma/thread_pool.rb:120:in `block in spawn_thread'
+Started GET "/rooms/32/reservations.json" for 127.0.0.1 at 2018-06-02 02:05:47 +0200
+  
+ActionController::RoutingError (No route matches [GET] "/rooms/32/reservations.json"):
+  
+actionpack (5.2.0) lib/action_dispatch/middleware/debug_exceptions.rb:65:in `call'
+web-console (3.6.2) lib/web_console/middleware.rb:135:in `call_app'
+web-console (3.6.2) lib/web_console/middleware.rb:30:in `block in call'
+web-console (3.6.2) lib/web_console/middleware.rb:20:in `catch'
+web-console (3.6.2) lib/web_console/middleware.rb:20:in `call'
+actionpack (5.2.0) lib/action_dispatch/middleware/show_exceptions.rb:33:in `call'
+railties (5.2.0) lib/rails/rack/logger.rb:38:in `call_app'
+railties (5.2.0) lib/rails/rack/logger.rb:26:in `block in call'
+activesupport (5.2.0) lib/active_support/tagged_logging.rb:71:in `block in tagged'
+activesupport (5.2.0) lib/active_support/tagged_logging.rb:28:in `tagged'
+activesupport (5.2.0) lib/active_support/tagged_logging.rb:71:in `tagged'
+railties (5.2.0) lib/rails/rack/logger.rb:26:in `call'
+sprockets-rails (3.2.1) lib/sprockets/rails/quiet_assets.rb:13:in `call'
+actionpack (5.2.0) lib/action_dispatch/middleware/remote_ip.rb:81:in `call'
+actionpack (5.2.0) lib/action_dispatch/middleware/request_id.rb:27:in `call'
+rack (2.0.5) lib/rack/method_override.rb:22:in `call'
+rack (2.0.5) lib/rack/runtime.rb:22:in `call'
+activesupport (5.2.0) lib/active_support/cache/strategy/local_cache_middleware.rb:29:in `call'
+actionpack (5.2.0) lib/action_dispatch/middleware/executor.rb:14:in `call'
+actionpack (5.2.0) lib/action_dispatch/middleware/static.rb:127:in `call'
+rack (2.0.5) lib/rack/sendfile.rb:111:in `call'
+railties (5.2.0) lib/rails/engine.rb:524:in `call'
+puma (3.11.4) lib/puma/configuration.rb:225:in `call'
+puma (3.11.4) lib/puma/server.rb:632:in `handle_request'
+puma (3.11.4) lib/puma/server.rb:446:in `process_client'
+puma (3.11.4) lib/puma/server.rb:306:in `block in run'
+puma (3.11.4) lib/puma/thread_pool.rb:120:in `block in spawn_thread'
+Started GET "/rooms/32/reservations.json" for 127.0.0.1 at 2018-06-02 02:05:48 +0200
+  
+ActionController::RoutingError (No route matches [GET] "/rooms/32/reservations.json"):
+  
+actionpack (5.2.0) lib/action_dispatch/middleware/debug_exceptions.rb:65:in `call'
+web-console (3.6.2) lib/web_console/middleware.rb:135:in `call_app'
+web-console (3.6.2) lib/web_console/middleware.rb:30:in `block in call'
+web-console (3.6.2) lib/web_console/middleware.rb:20:in `catch'
+web-console (3.6.2) lib/web_console/middleware.rb:20:in `call'
+actionpack (5.2.0) lib/action_dispatch/middleware/show_exceptions.rb:33:in `call'
+railties (5.2.0) lib/rails/rack/logger.rb:38:in `call_app'
+railties (5.2.0) lib/rails/rack/logger.rb:26:in `block in call'
+activesupport (5.2.0) lib/active_support/tagged_logging.rb:71:in `block in tagged'
+activesupport (5.2.0) lib/active_support/tagged_logging.rb:28:in `tagged'
+activesupport (5.2.0) lib/active_support/tagged_logging.rb:71:in `tagged'
+railties (5.2.0) lib/rails/rack/logger.rb:26:in `call'
+sprockets-rails (3.2.1) lib/sprockets/rails/quiet_assets.rb:13:in `call'
+actionpack (5.2.0) lib/action_dispatch/middleware/remote_ip.rb:81:in `call'
+actionpack (5.2.0) lib/action_dispatch/middleware/request_id.rb:27:in `call'
+rack (2.0.5) lib/rack/method_override.rb:22:in `call'
+rack (2.0.5) lib/rack/runtime.rb:22:in `call'
+activesupport (5.2.0) lib/active_support/cache/strategy/local_cache_middleware.rb:29:in `call'
+actionpack (5.2.0) lib/action_dispatch/middleware/executor.rb:14:in `call'
+actionpack (5.2.0) lib/action_dispatch/middleware/static.rb:127:in `call'
+rack (2.0.5) lib/rack/sendfile.rb:111:in `call'
+railties (5.2.0) lib/rails/engine.rb:524:in `call'
+puma (3.11.4) lib/puma/configuration.rb:225:in `call'
+puma (3.11.4) lib/puma/server.rb:632:in `handle_request'
+puma (3.11.4) lib/puma/server.rb:446:in `process_client'
+puma (3.11.4) lib/puma/server.rb:306:in `block in run'
+puma (3.11.4) lib/puma/thread_pool.rb:120:in `block in spawn_thread'
+Started GET "/rooms/32/reservations.json" for 127.0.0.1 at 2018-06-02 02:05:48 +0200
+  
+ActionController::RoutingError (No route matches [GET] "/rooms/32/reservations.json"):
+  
+actionpack (5.2.0) lib/action_dispatch/middleware/debug_exceptions.rb:65:in `call'
+web-console (3.6.2) lib/web_console/middleware.rb:135:in `call_app'
+web-console (3.6.2) lib/web_console/middleware.rb:30:in `block in call'
+web-console (3.6.2) lib/web_console/middleware.rb:20:in `catch'
+web-console (3.6.2) lib/web_console/middleware.rb:20:in `call'
+actionpack (5.2.0) lib/action_dispatch/middleware/show_exceptions.rb:33:in `call'
+railties (5.2.0) lib/rails/rack/logger.rb:38:in `call_app'
+railties (5.2.0) lib/rails/rack/logger.rb:26:in `block in call'
+activesupport (5.2.0) lib/active_support/tagged_logging.rb:71:in `block in tagged'
+activesupport (5.2.0) lib/active_support/tagged_logging.rb:28:in `tagged'
+activesupport (5.2.0) lib/active_support/tagged_logging.rb:71:in `tagged'
+railties (5.2.0) lib/rails/rack/logger.rb:26:in `call'
+sprockets-rails (3.2.1) lib/sprockets/rails/quiet_assets.rb:13:in `call'
+actionpack (5.2.0) lib/action_dispatch/middleware/remote_ip.rb:81:in `call'
+actionpack (5.2.0) lib/action_dispatch/middleware/request_id.rb:27:in `call'
+rack (2.0.5) lib/rack/method_override.rb:22:in `call'
+rack (2.0.5) lib/rack/runtime.rb:22:in `call'
+activesupport (5.2.0) lib/active_support/cache/strategy/local_cache_middleware.rb:29:in `call'
+actionpack (5.2.0) lib/action_dispatch/middleware/executor.rb:14:in `call'
+actionpack (5.2.0) lib/action_dispatch/middleware/static.rb:127:in `call'
+rack (2.0.5) lib/rack/sendfile.rb:111:in `call'
+railties (5.2.0) lib/rails/engine.rb:524:in `call'
+puma (3.11.4) lib/puma/configuration.rb:225:in `call'
+puma (3.11.4) lib/puma/server.rb:632:in `handle_request'
+puma (3.11.4) lib/puma/server.rb:446:in `process_client'
+puma (3.11.4) lib/puma/server.rb:306:in `block in run'
+puma (3.11.4) lib/puma/thread_pool.rb:120:in `block in spawn_thread'
+Started GET "/rooms/32/reservations.json" for 127.0.0.1 at 2018-06-02 02:05:48 +0200
+  
+ActionController::RoutingError (No route matches [GET] "/rooms/32/reservations.json"):
+  
+actionpack (5.2.0) lib/action_dispatch/middleware/debug_exceptions.rb:65:in `call'
+web-console (3.6.2) lib/web_console/middleware.rb:135:in `call_app'
+web-console (3.6.2) lib/web_console/middleware.rb:30:in `block in call'
+web-console (3.6.2) lib/web_console/middleware.rb:20:in `catch'
+web-console (3.6.2) lib/web_console/middleware.rb:20:in `call'
+actionpack (5.2.0) lib/action_dispatch/middleware/show_exceptions.rb:33:in `call'
+railties (5.2.0) lib/rails/rack/logger.rb:38:in `call_app'
+railties (5.2.0) lib/rails/rack/logger.rb:26:in `block in call'
+activesupport (5.2.0) lib/active_support/tagged_logging.rb:71:in `block in tagged'
+activesupport (5.2.0) lib/active_support/tagged_logging.rb:28:in `tagged'
+activesupport (5.2.0) lib/active_support/tagged_logging.rb:71:in `tagged'
+railties (5.2.0) lib/rails/rack/logger.rb:26:in `call'
+sprockets-rails (3.2.1) lib/sprockets/rails/quiet_assets.rb:13:in `call'
+actionpack (5.2.0) lib/action_dispatch/middleware/remote_ip.rb:81:in `call'
+actionpack (5.2.0) lib/action_dispatch/middleware/request_id.rb:27:in `call'
+rack (2.0.5) lib/rack/method_override.rb:22:in `call'
+rack (2.0.5) lib/rack/runtime.rb:22:in `call'
+activesupport (5.2.0) lib/active_support/cache/strategy/local_cache_middleware.rb:29:in `call'
+actionpack (5.2.0) lib/action_dispatch/middleware/executor.rb:14:in `call'
+actionpack (5.2.0) lib/action_dispatch/middleware/static.rb:127:in `call'
+rack (2.0.5) lib/rack/sendfile.rb:111:in `call'
+railties (5.2.0) lib/rails/engine.rb:524:in `call'
+puma (3.11.4) lib/puma/configuration.rb:225:in `call'
+puma (3.11.4) lib/puma/server.rb:632:in `handle_request'
+puma (3.11.4) lib/puma/server.rb:446:in `process_client'
+puma (3.11.4) lib/puma/server.rb:306:in `block in run'
+puma (3.11.4) lib/puma/thread_pool.rb:120:in `block in spawn_thread'
+Started GET "/rooms/32/reservations.json" for 127.0.0.1 at 2018-06-02 02:05:48 +0200
+  
+ActionController::RoutingError (No route matches [GET] "/rooms/32/reservations.json"):
+  
+actionpack (5.2.0) lib/action_dispatch/middleware/debug_exceptions.rb:65:in `call'
+web-console (3.6.2) lib/web_console/middleware.rb:135:in `call_app'
+web-console (3.6.2) lib/web_console/middleware.rb:30:in `block in call'
+web-console (3.6.2) lib/web_console/middleware.rb:20:in `catch'
+web-console (3.6.2) lib/web_console/middleware.rb:20:in `call'
+actionpack (5.2.0) lib/action_dispatch/middleware/show_exceptions.rb:33:in `call'
+railties (5.2.0) lib/rails/rack/logger.rb:38:in `call_app'
+railties (5.2.0) lib/rails/rack/logger.rb:26:in `block in call'
+activesupport (5.2.0) lib/active_support/tagged_logging.rb:71:in `block in tagged'
+activesupport (5.2.0) lib/active_support/tagged_logging.rb:28:in `tagged'
+activesupport (5.2.0) lib/active_support/tagged_logging.rb:71:in `tagged'
+railties (5.2.0) lib/rails/rack/logger.rb:26:in `call'
+sprockets-rails (3.2.1) lib/sprockets/rails/quiet_assets.rb:13:in `call'
+actionpack (5.2.0) lib/action_dispatch/middleware/remote_ip.rb:81:in `call'
+actionpack (5.2.0) lib/action_dispatch/middleware/request_id.rb:27:in `call'
+rack (2.0.5) lib/rack/method_override.rb:22:in `call'
+rack (2.0.5) lib/rack/runtime.rb:22:in `call'
+activesupport (5.2.0) lib/active_support/cache/strategy/local_cache_middleware.rb:29:in `call'
+actionpack (5.2.0) lib/action_dispatch/middleware/executor.rb:14:in `call'
+actionpack (5.2.0) lib/action_dispatch/middleware/static.rb:127:in `call'
+rack (2.0.5) lib/rack/sendfile.rb:111:in `call'
+railties (5.2.0) lib/rails/engine.rb:524:in `call'
+puma (3.11.4) lib/puma/configuration.rb:225:in `call'
+puma (3.11.4) lib/puma/server.rb:632:in `handle_request'
+puma (3.11.4) lib/puma/server.rb:446:in `process_client'
+puma (3.11.4) lib/puma/server.rb:306:in `block in run'
+puma (3.11.4) lib/puma/thread_pool.rb:120:in `block in spawn_thread'
+Started GET "/rooms/32/reservations.json" for 127.0.0.1 at 2018-06-02 02:05:49 +0200
+  
+ActionController::RoutingError (No route matches [GET] "/rooms/32/reservations.json"):
+  
+actionpack (5.2.0) lib/action_dispatch/middleware/debug_exceptions.rb:65:in `call'
+web-console (3.6.2) lib/web_console/middleware.rb:135:in `call_app'
+web-console (3.6.2) lib/web_console/middleware.rb:30:in `block in call'
+web-console (3.6.2) lib/web_console/middleware.rb:20:in `catch'
+web-console (3.6.2) lib/web_console/middleware.rb:20:in `call'
+actionpack (5.2.0) lib/action_dispatch/middleware/show_exceptions.rb:33:in `call'
+railties (5.2.0) lib/rails/rack/logger.rb:38:in `call_app'
+railties (5.2.0) lib/rails/rack/logger.rb:26:in `block in call'
+activesupport (5.2.0) lib/active_support/tagged_logging.rb:71:in `block in tagged'
+activesupport (5.2.0) lib/active_support/tagged_logging.rb:28:in `tagged'
+activesupport (5.2.0) lib/active_support/tagged_logging.rb:71:in `tagged'
+railties (5.2.0) lib/rails/rack/logger.rb:26:in `call'
+sprockets-rails (3.2.1) lib/sprockets/rails/quiet_assets.rb:13:in `call'
+actionpack (5.2.0) lib/action_dispatch/middleware/remote_ip.rb:81:in `call'
+actionpack (5.2.0) lib/action_dispatch/middleware/request_id.rb:27:in `call'
+rack (2.0.5) lib/rack/method_override.rb:22:in `call'
+rack (2.0.5) lib/rack/runtime.rb:22:in `call'
+activesupport (5.2.0) lib/active_support/cache/strategy/local_cache_middleware.rb:29:in `call'
+actionpack (5.2.0) lib/action_dispatch/middleware/executor.rb:14:in `call'
+actionpack (5.2.0) lib/action_dispatch/middleware/static.rb:127:in `call'
+rack (2.0.5) lib/rack/sendfile.rb:111:in `call'
+railties (5.2.0) lib/rails/engine.rb:524:in `call'
+puma (3.11.4) lib/puma/configuration.rb:225:in `call'
+puma (3.11.4) lib/puma/server.rb:632:in `handle_request'
+puma (3.11.4) lib/puma/server.rb:446:in `process_client'
+puma (3.11.4) lib/puma/server.rb:306:in `block in run'
+puma (3.11.4) lib/puma/thread_pool.rb:120:in `block in spawn_thread'
+Started GET "/rooms/32/reservations.json" for 127.0.0.1 at 2018-06-02 02:09:09 +0200
+  
+ArgumentError (Missing :controller key on routes definition, please check your routes.):
+  
+config/routes.rb:7:in `block in <main>'
+config/routes.rb:1:in `<main>'
+Started GET "/rooms/32/reservations.json" for 127.0.0.1 at 2018-06-02 02:09:10 +0200
+  
+ActionController::RoutingError (No route matches [GET] "/rooms/32/reservations.json"):
+  
+actionpack (5.2.0) lib/action_dispatch/middleware/debug_exceptions.rb:65:in `call'
+web-console (3.6.2) lib/web_console/middleware.rb:135:in `call_app'
+web-console (3.6.2) lib/web_console/middleware.rb:30:in `block in call'
+web-console (3.6.2) lib/web_console/middleware.rb:20:in `catch'
+web-console (3.6.2) lib/web_console/middleware.rb:20:in `call'
+actionpack (5.2.0) lib/action_dispatch/middleware/show_exceptions.rb:33:in `call'
+railties (5.2.0) lib/rails/rack/logger.rb:38:in `call_app'
+railties (5.2.0) lib/rails/rack/logger.rb:26:in `block in call'
+activesupport (5.2.0) lib/active_support/tagged_logging.rb:71:in `block in tagged'
+activesupport (5.2.0) lib/active_support/tagged_logging.rb:28:in `tagged'
+activesupport (5.2.0) lib/active_support/tagged_logging.rb:71:in `tagged'
+railties (5.2.0) lib/rails/rack/logger.rb:26:in `call'
+sprockets-rails (3.2.1) lib/sprockets/rails/quiet_assets.rb:13:in `call'
+actionpack (5.2.0) lib/action_dispatch/middleware/remote_ip.rb:81:in `call'
+actionpack (5.2.0) lib/action_dispatch/middleware/request_id.rb:27:in `call'
+rack (2.0.5) lib/rack/method_override.rb:22:in `call'
+rack (2.0.5) lib/rack/runtime.rb:22:in `call'
+activesupport (5.2.0) lib/active_support/cache/strategy/local_cache_middleware.rb:29:in `call'
+actionpack (5.2.0) lib/action_dispatch/middleware/executor.rb:14:in `call'
+actionpack (5.2.0) lib/action_dispatch/middleware/static.rb:127:in `call'
+rack (2.0.5) lib/rack/sendfile.rb:111:in `call'
+railties (5.2.0) lib/rails/engine.rb:524:in `call'
+puma (3.11.4) lib/puma/configuration.rb:225:in `call'
+puma (3.11.4) lib/puma/server.rb:632:in `handle_request'
+puma (3.11.4) lib/puma/server.rb:446:in `process_client'
+puma (3.11.4) lib/puma/server.rb:306:in `block in run'
+puma (3.11.4) lib/puma/thread_pool.rb:120:in `block in spawn_thread'
+Started GET "/rooms/32/reservations.json" for 127.0.0.1 at 2018-06-02 02:09:11 +0200
+  
+ActionController::RoutingError (No route matches [GET] "/rooms/32/reservations.json"):
+  
+actionpack (5.2.0) lib/action_dispatch/middleware/debug_exceptions.rb:65:in `call'
+web-console (3.6.2) lib/web_console/middleware.rb:135:in `call_app'
+web-console (3.6.2) lib/web_console/middleware.rb:30:in `block in call'
+web-console (3.6.2) lib/web_console/middleware.rb:20:in `catch'
+web-console (3.6.2) lib/web_console/middleware.rb:20:in `call'
+actionpack (5.2.0) lib/action_dispatch/middleware/show_exceptions.rb:33:in `call'
+railties (5.2.0) lib/rails/rack/logger.rb:38:in `call_app'
+railties (5.2.0) lib/rails/rack/logger.rb:26:in `block in call'
+activesupport (5.2.0) lib/active_support/tagged_logging.rb:71:in `block in tagged'
+activesupport (5.2.0) lib/active_support/tagged_logging.rb:28:in `tagged'
+activesupport (5.2.0) lib/active_support/tagged_logging.rb:71:in `tagged'
+railties (5.2.0) lib/rails/rack/logger.rb:26:in `call'
+sprockets-rails (3.2.1) lib/sprockets/rails/quiet_assets.rb:13:in `call'
+actionpack (5.2.0) lib/action_dispatch/middleware/remote_ip.rb:81:in `call'
+actionpack (5.2.0) lib/action_dispatch/middleware/request_id.rb:27:in `call'
+rack (2.0.5) lib/rack/method_override.rb:22:in `call'
+rack (2.0.5) lib/rack/runtime.rb:22:in `call'
+activesupport (5.2.0) lib/active_support/cache/strategy/local_cache_middleware.rb:29:in `call'
+actionpack (5.2.0) lib/action_dispatch/middleware/executor.rb:14:in `call'
+actionpack (5.2.0) lib/action_dispatch/middleware/static.rb:127:in `call'
+rack (2.0.5) lib/rack/sendfile.rb:111:in `call'
+railties (5.2.0) lib/rails/engine.rb:524:in `call'
+puma (3.11.4) lib/puma/configuration.rb:225:in `call'
+puma (3.11.4) lib/puma/server.rb:632:in `handle_request'
+puma (3.11.4) lib/puma/server.rb:446:in `process_client'
+puma (3.11.4) lib/puma/server.rb:306:in `block in run'
+puma (3.11.4) lib/puma/thread_pool.rb:120:in `block in spawn_thread'
+Started GET "/rooms/32/reservations.json" for 127.0.0.1 at 2018-06-02 02:09:12 +0200
+  
+ActionController::RoutingError (No route matches [GET] "/rooms/32/reservations.json"):
+  
+actionpack (5.2.0) lib/action_dispatch/middleware/debug_exceptions.rb:65:in `call'
+web-console (3.6.2) lib/web_console/middleware.rb:135:in `call_app'
+web-console (3.6.2) lib/web_console/middleware.rb:30:in `block in call'
+web-console (3.6.2) lib/web_console/middleware.rb:20:in `catch'
+web-console (3.6.2) lib/web_console/middleware.rb:20:in `call'
+actionpack (5.2.0) lib/action_dispatch/middleware/show_exceptions.rb:33:in `call'
+railties (5.2.0) lib/rails/rack/logger.rb:38:in `call_app'
+railties (5.2.0) lib/rails/rack/logger.rb:26:in `block in call'
+activesupport (5.2.0) lib/active_support/tagged_logging.rb:71:in `block in tagged'
+activesupport (5.2.0) lib/active_support/tagged_logging.rb:28:in `tagged'
+activesupport (5.2.0) lib/active_support/tagged_logging.rb:71:in `tagged'
+railties (5.2.0) lib/rails/rack/logger.rb:26:in `call'
+sprockets-rails (3.2.1) lib/sprockets/rails/quiet_assets.rb:13:in `call'
+actionpack (5.2.0) lib/action_dispatch/middleware/remote_ip.rb:81:in `call'
+actionpack (5.2.0) lib/action_dispatch/middleware/request_id.rb:27:in `call'
+rack (2.0.5) lib/rack/method_override.rb:22:in `call'
+rack (2.0.5) lib/rack/runtime.rb:22:in `call'
+activesupport (5.2.0) lib/active_support/cache/strategy/local_cache_middleware.rb:29:in `call'
+actionpack (5.2.0) lib/action_dispatch/middleware/executor.rb:14:in `call'
+actionpack (5.2.0) lib/action_dispatch/middleware/static.rb:127:in `call'
+rack (2.0.5) lib/rack/sendfile.rb:111:in `call'
+railties (5.2.0) lib/rails/engine.rb:524:in `call'
+puma (3.11.4) lib/puma/configuration.rb:225:in `call'
+puma (3.11.4) lib/puma/server.rb:632:in `handle_request'
+puma (3.11.4) lib/puma/server.rb:446:in `process_client'
+puma (3.11.4) lib/puma/server.rb:306:in `block in run'
+puma (3.11.4) lib/puma/thread_pool.rb:120:in `block in spawn_thread'
+Started GET "/reservations" for 127.0.0.1 at 2018-06-02 02:10:13 +0200
+  
+ArgumentError (Missing :controller key on routes definition, please check your routes.):
+  
+config/routes.rb:7:in `block in <main>'
+config/routes.rb:1:in `<main>'
+Started GET "/reservations.json" for 127.0.0.1 at 2018-06-02 02:10:18 +0200
+  
+ActionController::RoutingError (No route matches [GET] "/reservations.json"):
+  
+actionpack (5.2.0) lib/action_dispatch/middleware/debug_exceptions.rb:65:in `call'
+web-console (3.6.2) lib/web_console/middleware.rb:135:in `call_app'
+web-console (3.6.2) lib/web_console/middleware.rb:30:in `block in call'
+web-console (3.6.2) lib/web_console/middleware.rb:20:in `catch'
+web-console (3.6.2) lib/web_console/middleware.rb:20:in `call'
+actionpack (5.2.0) lib/action_dispatch/middleware/show_exceptions.rb:33:in `call'
+railties (5.2.0) lib/rails/rack/logger.rb:38:in `call_app'
+railties (5.2.0) lib/rails/rack/logger.rb:26:in `block in call'
+activesupport (5.2.0) lib/active_support/tagged_logging.rb:71:in `block in tagged'
+activesupport (5.2.0) lib/active_support/tagged_logging.rb:28:in `tagged'
+activesupport (5.2.0) lib/active_support/tagged_logging.rb:71:in `tagged'
+railties (5.2.0) lib/rails/rack/logger.rb:26:in `call'
+sprockets-rails (3.2.1) lib/sprockets/rails/quiet_assets.rb:13:in `call'
+actionpack (5.2.0) lib/action_dispatch/middleware/remote_ip.rb:81:in `call'
+actionpack (5.2.0) lib/action_dispatch/middleware/request_id.rb:27:in `call'
+rack (2.0.5) lib/rack/method_override.rb:22:in `call'
+rack (2.0.5) lib/rack/runtime.rb:22:in `call'
+activesupport (5.2.0) lib/active_support/cache/strategy/local_cache_middleware.rb:29:in `call'
+actionpack (5.2.0) lib/action_dispatch/middleware/executor.rb:14:in `call'
+actionpack (5.2.0) lib/action_dispatch/middleware/static.rb:127:in `call'
+rack (2.0.5) lib/rack/sendfile.rb:111:in `call'
+railties (5.2.0) lib/rails/engine.rb:524:in `call'
+puma (3.11.4) lib/puma/configuration.rb:225:in `call'
+puma (3.11.4) lib/puma/server.rb:632:in `handle_request'
+puma (3.11.4) lib/puma/server.rb:446:in `process_client'
+puma (3.11.4) lib/puma/server.rb:306:in `block in run'
+puma (3.11.4) lib/puma/thread_pool.rb:120:in `block in spawn_thread'
+Started GET "/reservations.json" for 127.0.0.1 at 2018-06-02 02:10:43 +0200
+  
+ActionController::RoutingError (uninitialized constant RoomController):
+  
+bootsnap (1.3.0) lib/bootsnap/load_path_cache/core_ext/active_support.rb:53:in `block in load_missing_constant'
+bootsnap (1.3.0) lib/bootsnap/load_path_cache/core_ext/active_support.rb:8:in `without_bootsnap_cache'
+bootsnap (1.3.0) lib/bootsnap/load_path_cache/core_ext/active_support.rb:53:in `rescue in load_missing_constant'
+bootsnap (1.3.0) lib/bootsnap/load_path_cache/core_ext/active_support.rb:42:in `load_missing_constant'
+activesupport (5.2.0) lib/active_support/inflector/methods.rb:283:in `const_get'
+activesupport (5.2.0) lib/active_support/inflector/methods.rb:283:in `block in constantize'
+activesupport (5.2.0) lib/active_support/inflector/methods.rb:281:in `each'
+activesupport (5.2.0) lib/active_support/inflector/methods.rb:281:in `inject'
+activesupport (5.2.0) lib/active_support/inflector/methods.rb:281:in `constantize'
+actionpack (5.2.0) lib/action_dispatch/http/request.rb:88:in `controller_class_for'
+actionpack (5.2.0) lib/action_dispatch/http/request.rb:81:in `controller_class'
+actionpack (5.2.0) lib/action_dispatch/routing/route_set.rb:46:in `controller'
+actionpack (5.2.0) lib/action_dispatch/routing/route_set.rb:32:in `serve'
+actionpack (5.2.0) lib/action_dispatch/journey/router.rb:52:in `block in serve'
+actionpack (5.2.0) lib/action_dispatch/journey/router.rb:35:in `each'
+actionpack (5.2.0) lib/action_dispatch/journey/router.rb:35:in `serve'
+actionpack (5.2.0) lib/action_dispatch/routing/route_set.rb:840:in `call'
+rack (2.0.5) lib/rack/tempfile_reaper.rb:15:in `call'
+rack (2.0.5) lib/rack/etag.rb:25:in `call'
+rack (2.0.5) lib/rack/conditional_get.rb:25:in `call'
+rack (2.0.5) lib/rack/head.rb:12:in `call'
+actionpack (5.2.0) lib/action_dispatch/http/content_security_policy.rb:18:in `call'
+rack (2.0.5) lib/rack/session/abstract/id.rb:232:in `context'
+rack (2.0.5) lib/rack/session/abstract/id.rb:226:in `call'
+actionpack (5.2.0) lib/action_dispatch/middleware/cookies.rb:670:in `call'
+activerecord (5.2.0) lib/active_record/migration.rb:559:in `call'
+actionpack (5.2.0) lib/action_dispatch/middleware/callbacks.rb:28:in `block in call'
+activesupport (5.2.0) lib/active_support/callbacks.rb:98:in `run_callbacks'
+actionpack (5.2.0) lib/action_dispatch/middleware/callbacks.rb:26:in `call'
+actionpack (5.2.0) lib/action_dispatch/middleware/executor.rb:14:in `call'
+actionpack (5.2.0) lib/action_dispatch/middleware/debug_exceptions.rb:61:in `call'
+web-console (3.6.2) lib/web_console/middleware.rb:135:in `call_app'
+web-console (3.6.2) lib/web_console/middleware.rb:30:in `block in call'
+web-console (3.6.2) lib/web_console/middleware.rb:20:in `catch'
+web-console (3.6.2) lib/web_console/middleware.rb:20:in `call'
+actionpack (5.2.0) lib/action_dispatch/middleware/show_exceptions.rb:33:in `call'
+railties (5.2.0) lib/rails/rack/logger.rb:38:in `call_app'
+railties (5.2.0) lib/rails/rack/logger.rb:26:in `block in call'
+activesupport (5.2.0) lib/active_support/tagged_logging.rb:71:in `block in tagged'
+activesupport (5.2.0) lib/active_support/tagged_logging.rb:28:in `tagged'
+activesupport (5.2.0) lib/active_support/tagged_logging.rb:71:in `tagged'
+railties (5.2.0) lib/rails/rack/logger.rb:26:in `call'
+sprockets-rails (3.2.1) lib/sprockets/rails/quiet_assets.rb:13:in `call'
+actionpack (5.2.0) lib/action_dispatch/middleware/remote_ip.rb:81:in `call'
+actionpack (5.2.0) lib/action_dispatch/middleware/request_id.rb:27:in `call'
+rack (2.0.5) lib/rack/method_override.rb:22:in `call'
+rack (2.0.5) lib/rack/runtime.rb:22:in `call'
+activesupport (5.2.0) lib/active_support/cache/strategy/local_cache_middleware.rb:29:in `call'
+actionpack (5.2.0) lib/action_dispatch/middleware/executor.rb:14:in `call'
+actionpack (5.2.0) lib/action_dispatch/middleware/static.rb:127:in `call'
+rack (2.0.5) lib/rack/sendfile.rb:111:in `call'
+railties (5.2.0) lib/rails/engine.rb:524:in `call'
+puma (3.11.4) lib/puma/configuration.rb:225:in `call'
+puma (3.11.4) lib/puma/server.rb:632:in `handle_request'
+puma (3.11.4) lib/puma/server.rb:446:in `process_client'
+puma (3.11.4) lib/puma/server.rb:306:in `block in run'
+puma (3.11.4) lib/puma/thread_pool.rb:120:in `block in spawn_thread'
+Started GET "/reservations.json" for 127.0.0.1 at 2018-06-02 02:13:32 +0200
+  
+ActionController::RoutingError (No route matches [GET] "/reservations.json"):
+  
+actionpack (5.2.0) lib/action_dispatch/middleware/debug_exceptions.rb:65:in `call'
+web-console (3.6.2) lib/web_console/middleware.rb:135:in `call_app'
+web-console (3.6.2) lib/web_console/middleware.rb:30:in `block in call'
+web-console (3.6.2) lib/web_console/middleware.rb:20:in `catch'
+web-console (3.6.2) lib/web_console/middleware.rb:20:in `call'
+actionpack (5.2.0) lib/action_dispatch/middleware/show_exceptions.rb:33:in `call'
+railties (5.2.0) lib/rails/rack/logger.rb:38:in `call_app'
+railties (5.2.0) lib/rails/rack/logger.rb:26:in `block in call'
+activesupport (5.2.0) lib/active_support/tagged_logging.rb:71:in `block in tagged'
+activesupport (5.2.0) lib/active_support/tagged_logging.rb:28:in `tagged'
+activesupport (5.2.0) lib/active_support/tagged_logging.rb:71:in `tagged'
+railties (5.2.0) lib/rails/rack/logger.rb:26:in `call'
+sprockets-rails (3.2.1) lib/sprockets/rails/quiet_assets.rb:13:in `call'
+actionpack (5.2.0) lib/action_dispatch/middleware/remote_ip.rb:81:in `call'
+actionpack (5.2.0) lib/action_dispatch/middleware/request_id.rb:27:in `call'
+rack (2.0.5) lib/rack/method_override.rb:22:in `call'
+rack (2.0.5) lib/rack/runtime.rb:22:in `call'
+activesupport (5.2.0) lib/active_support/cache/strategy/local_cache_middleware.rb:29:in `call'
+actionpack (5.2.0) lib/action_dispatch/middleware/executor.rb:14:in `call'
+actionpack (5.2.0) lib/action_dispatch/middleware/static.rb:127:in `call'
+rack (2.0.5) lib/rack/sendfile.rb:111:in `call'
+railties (5.2.0) lib/rails/engine.rb:524:in `call'
+puma (3.11.4) lib/puma/configuration.rb:225:in `call'
+puma (3.11.4) lib/puma/server.rb:632:in `handle_request'
+puma (3.11.4) lib/puma/server.rb:446:in `process_client'
+puma (3.11.4) lib/puma/server.rb:306:in `block in run'
+puma (3.11.4) lib/puma/thread_pool.rb:120:in `block in spawn_thread'
+Started GET "/rooms/" for 127.0.0.1 at 2018-06-02 02:13:38 +0200
+Processing by RoomsController#index as HTML
+  Rendering rooms/index.html.haml within layouts/application
+  [1m[36mRoom Load (0.1ms)[0m  [1m[34mSELECT "rooms".* FROM "rooms"[0m
+  ↳ app/views/rooms/index.html.haml:23
+  Rendered rooms/index.html.haml within layouts/application (6.6ms)
+  Rendered layouts/_navbar.html.haml (3.8ms)
+Completed 200 OK in 289ms (Views: 283.1ms | ActiveRecord: 0.3ms)
+
+
+Started GET "/rooms/new" for 127.0.0.1 at 2018-06-02 02:13:40 +0200
+Processing by RoomsController#new as HTML
+  Rendering rooms/new.html.haml within layouts/application
+  Rendered rooms/_form.html.haml (27.2ms)
+  Rendered rooms/new.html.haml within layouts/application (36.9ms)
+  Rendered layouts/_navbar.html.haml (6.4ms)
+Completed 200 OK in 121ms (Views: 95.3ms | ActiveRecord: 0.8ms)
+
+
+  [1m[35m (0.2ms)[0m  [1m[36mbegin transaction[0m
+  [1m[36mUser Exists (0.1ms)[0m  [1m[34mSELECT  1 AS one FROM "users" WHERE "users"."username" = ? LIMIT ?[0m  [["username", "Antonio"], ["LIMIT", 1]]
+  [1m[36mUser Exists (0.1ms)[0m  [1m[34mSELECT  1 AS one FROM "users" WHERE LOWER("users"."email") = LOWER(?) LIMIT ?[0m  [["email", "Danieligno10@gmail.com"], ["LIMIT", 1]]
+  [1m[36mUser Create (0.2ms)[0m  [1m[32mINSERT INTO "users" ("username", "email", "password_digest", "created_at", "updated_at") VALUES (?, ?, ?, ?, ?)[0m  [["username", "Antonio"], ["email", "danieligno10@gmail.com"], ["password_digest", "$2a$10$JNTAkZeDIaqutE2VGWxK2ekgzAb8KMDy5/JIF/8SpmSlrDMdHuhc6"], ["created_at", "2018-06-02 00:14:20.945219"], ["updated_at", "2018-06-02 00:14:20.945219"]]
+  [1m[35m (119.6ms)[0m  [1m[36mcommit transaction[0m
+  [1m[35m (0.2ms)[0m  [1m[36mbegin transaction[0m
+  [1m[35m (0.2ms)[0m  [1m[31mrollback transaction[0m
+  [1m[35m (0.2ms)[0m  [1m[36mbegin transaction[0m
+  [1m[36mRoom Create (1.0ms)[0m  [1m[32mINSERT INTO "rooms" ("name", "description", "max_participants", "time_from", "time_to", "event", "user_id", "created_at", "updated_at") VALUES (?, ?, ?, ?, ?, ?, ?, ?, ?)[0m  [["name", "Antonio's Room"], ["description", "La room di antonio"], ["max_participants", 5], ["time_from", "2018-06-15 15:30:00"], ["time_to", "2018-06-15 15:50:00"], ["event", "{\"end\":{\"date_time\":\"2018-06-15T15:50:00+00:00\"},\"start\":{\"date_time\":\"2018-06-15T15:30:00+00:00\"},\"summary\":\"Antonio's Room\"}"], ["user_id", 1], ["created_at", "2018-06-02 00:16:01.749977"], ["updated_at", "2018-06-02 00:16:01.749977"]]
+  [1m[35m (890.2ms)[0m  [1m[36mcommit transaction[0m
+Started GET "/rooms/" for 127.0.0.1 at 2018-06-02 02:16:22 +0200
+  [1m[35m (0.1ms)[0m  [1m[34mSELECT "schema_migrations"."version" FROM "schema_migrations" ORDER BY "schema_migrations"."version" ASC[0m
+  ↳ /usr/lib/ruby/gems/2.5.0/gems/web-console-3.6.2/lib/web_console/middleware.rb:135
+Processing by RoomsController#index as HTML
+  Rendering rooms/index.html.haml within layouts/application
+  [1m[36mRoom Load (0.2ms)[0m  [1m[34mSELECT "rooms".* FROM "rooms"[0m
+  ↳ app/views/rooms/index.html.haml:23
+  Rendered rooms/index.html.haml within layouts/application (41.1ms)
+  Rendered layouts/_navbar.html.haml (5.7ms)
+Completed 200 OK in 317ms (Views: 300.6ms | ActiveRecord: 0.6ms)
+
+
+Started GET "/rooms/1" for 127.0.0.1 at 2018-06-02 02:16:25 +0200
+Processing by RoomsController#show as HTML
+  Parameters: {"id"=>"1"}
+  [1m[36mRoom Load (0.6ms)[0m  [1m[34mSELECT  "rooms".* FROM "rooms" WHERE "rooms"."id" = ? LIMIT ?[0m  [["id", 1], ["LIMIT", 1]]
+  ↳ app/controllers/rooms_controller.rb:81
+  Rendering rooms/show.html.haml within layouts/application
+  [1m[36mPower Load (0.1ms)[0m  [1m[34mSELECT "powers".* FROM "powers" WHERE "powers"."room_id" = ?[0m  [["room_id", 1]]
+  ↳ app/views/rooms/show.html.haml:35
+  Rendered rooms/show.html.haml within layouts/application (26.6ms)
+  Rendered layouts/_navbar.html.haml (5.8ms)
+Completed 200 OK in 69ms (Views: 64.1ms | ActiveRecord: 1.0ms)
+
+
+Started GET "/rooms/1.json" for 127.0.0.1 at 2018-06-02 02:16:25 +0200
+Processing by RoomsController#show as JSON
+  Parameters: {"id"=>"1"}
+  [1m[36mRoom Load (0.3ms)[0m  [1m[34mSELECT  "rooms".* FROM "rooms" WHERE "rooms"."id" = ? LIMIT ?[0m  [["id", 1], ["LIMIT", 1]]
+  ↳ app/controllers/rooms_controller.rb:81
+  Rendering rooms/show.json.jbuilder
+  Rendered rooms/_room.json.jbuilder (1.0ms)
+  Rendered rooms/show.json.jbuilder (2.2ms)
+Completed 200 OK in 8ms (Views: 4.4ms | ActiveRecord: 0.3ms)
+
+
+Started GET "/rooms/1.json" for 127.0.0.1 at 2018-06-02 02:16:25 +0200
+Processing by RoomsController#show as JSON
+  Parameters: {"id"=>"1"}
+  [1m[36mRoom Load (0.1ms)[0m  [1m[34mSELECT  "rooms".* FROM "rooms" WHERE "rooms"."id" = ? LIMIT ?[0m  [["id", 1], ["LIMIT", 1]]
+  ↳ app/controllers/rooms_controller.rb:81
+  Rendering rooms/show.json.jbuilder
+  Rendered rooms/_room.json.jbuilder (0.6ms)
+  Rendered rooms/show.json.jbuilder (1.3ms)
+Completed 200 OK in 4ms (Views: 2.5ms | ActiveRecord: 0.1ms)
+
+
+Started GET "/rooms/1/reservations.json" for 127.0.0.1 at 2018-06-02 02:16:30 +0200
+  
+ActionController::RoutingError (uninitialized constant RoomController):
+  
+bootsnap (1.3.0) lib/bootsnap/load_path_cache/core_ext/active_support.rb:53:in `block in load_missing_constant'
+bootsnap (1.3.0) lib/bootsnap/load_path_cache/core_ext/active_support.rb:8:in `without_bootsnap_cache'
+bootsnap (1.3.0) lib/bootsnap/load_path_cache/core_ext/active_support.rb:53:in `rescue in load_missing_constant'
+bootsnap (1.3.0) lib/bootsnap/load_path_cache/core_ext/active_support.rb:42:in `load_missing_constant'
+activesupport (5.2.0) lib/active_support/inflector/methods.rb:283:in `const_get'
+activesupport (5.2.0) lib/active_support/inflector/methods.rb:283:in `block in constantize'
+activesupport (5.2.0) lib/active_support/inflector/methods.rb:281:in `each'
+activesupport (5.2.0) lib/active_support/inflector/methods.rb:281:in `inject'
+activesupport (5.2.0) lib/active_support/inflector/methods.rb:281:in `constantize'
+actionpack (5.2.0) lib/action_dispatch/http/request.rb:88:in `controller_class_for'
+actionpack (5.2.0) lib/action_dispatch/http/request.rb:81:in `controller_class'
+actionpack (5.2.0) lib/action_dispatch/routing/route_set.rb:46:in `controller'
+actionpack (5.2.0) lib/action_dispatch/routing/route_set.rb:32:in `serve'
+actionpack (5.2.0) lib/action_dispatch/journey/router.rb:52:in `block in serve'
+actionpack (5.2.0) lib/action_dispatch/journey/router.rb:35:in `each'
+actionpack (5.2.0) lib/action_dispatch/journey/router.rb:35:in `serve'
+actionpack (5.2.0) lib/action_dispatch/routing/route_set.rb:840:in `call'
+rack (2.0.5) lib/rack/tempfile_reaper.rb:15:in `call'
+rack (2.0.5) lib/rack/etag.rb:25:in `call'
+rack (2.0.5) lib/rack/conditional_get.rb:25:in `call'
+rack (2.0.5) lib/rack/head.rb:12:in `call'
+actionpack (5.2.0) lib/action_dispatch/http/content_security_policy.rb:18:in `call'
+rack (2.0.5) lib/rack/session/abstract/id.rb:232:in `context'
+rack (2.0.5) lib/rack/session/abstract/id.rb:226:in `call'
+actionpack (5.2.0) lib/action_dispatch/middleware/cookies.rb:670:in `call'
+activerecord (5.2.0) lib/active_record/migration.rb:559:in `call'
+actionpack (5.2.0) lib/action_dispatch/middleware/callbacks.rb:28:in `block in call'
+activesupport (5.2.0) lib/active_support/callbacks.rb:98:in `run_callbacks'
+actionpack (5.2.0) lib/action_dispatch/middleware/callbacks.rb:26:in `call'
+actionpack (5.2.0) lib/action_dispatch/middleware/executor.rb:14:in `call'
+actionpack (5.2.0) lib/action_dispatch/middleware/debug_exceptions.rb:61:in `call'
+web-console (3.6.2) lib/web_console/middleware.rb:135:in `call_app'
+web-console (3.6.2) lib/web_console/middleware.rb:30:in `block in call'
+web-console (3.6.2) lib/web_console/middleware.rb:20:in `catch'
+web-console (3.6.2) lib/web_console/middleware.rb:20:in `call'
+actionpack (5.2.0) lib/action_dispatch/middleware/show_exceptions.rb:33:in `call'
+railties (5.2.0) lib/rails/rack/logger.rb:38:in `call_app'
+railties (5.2.0) lib/rails/rack/logger.rb:26:in `block in call'
+activesupport (5.2.0) lib/active_support/tagged_logging.rb:71:in `block in tagged'
+activesupport (5.2.0) lib/active_support/tagged_logging.rb:28:in `tagged'
+activesupport (5.2.0) lib/active_support/tagged_logging.rb:71:in `tagged'
+railties (5.2.0) lib/rails/rack/logger.rb:26:in `call'
+sprockets-rails (3.2.1) lib/sprockets/rails/quiet_assets.rb:13:in `call'
+actionpack (5.2.0) lib/action_dispatch/middleware/remote_ip.rb:81:in `call'
+actionpack (5.2.0) lib/action_dispatch/middleware/request_id.rb:27:in `call'
+rack (2.0.5) lib/rack/method_override.rb:22:in `call'
+rack (2.0.5) lib/rack/runtime.rb:22:in `call'
+activesupport (5.2.0) lib/active_support/cache/strategy/local_cache_middleware.rb:29:in `call'
+actionpack (5.2.0) lib/action_dispatch/middleware/executor.rb:14:in `call'
+actionpack (5.2.0) lib/action_dispatch/middleware/static.rb:127:in `call'
+rack (2.0.5) lib/rack/sendfile.rb:111:in `call'
+railties (5.2.0) lib/rails/engine.rb:524:in `call'
+puma (3.11.4) lib/puma/configuration.rb:225:in `call'
+puma (3.11.4) lib/puma/server.rb:632:in `handle_request'
+puma (3.11.4) lib/puma/server.rb:446:in `process_client'
+puma (3.11.4) lib/puma/server.rb:306:in `block in run'
+puma (3.11.4) lib/puma/thread_pool.rb:120:in `block in spawn_thread'
+Started GET "/rooms/1/reservations" for 127.0.0.1 at 2018-06-02 02:16:34 +0200
+  
+ActionController::RoutingError (uninitialized constant RoomController):
+  
+bootsnap (1.3.0) lib/bootsnap/load_path_cache/core_ext/active_support.rb:53:in `block in load_missing_constant'
+bootsnap (1.3.0) lib/bootsnap/load_path_cache/core_ext/active_support.rb:8:in `without_bootsnap_cache'
+bootsnap (1.3.0) lib/bootsnap/load_path_cache/core_ext/active_support.rb:53:in `rescue in load_missing_constant'
+bootsnap (1.3.0) lib/bootsnap/load_path_cache/core_ext/active_support.rb:42:in `load_missing_constant'
+activesupport (5.2.0) lib/active_support/inflector/methods.rb:283:in `const_get'
+activesupport (5.2.0) lib/active_support/inflector/methods.rb:283:in `block in constantize'
+activesupport (5.2.0) lib/active_support/inflector/methods.rb:281:in `each'
+activesupport (5.2.0) lib/active_support/inflector/methods.rb:281:in `inject'
+activesupport (5.2.0) lib/active_support/inflector/methods.rb:281:in `constantize'
+actionpack (5.2.0) lib/action_dispatch/http/request.rb:88:in `controller_class_for'
+actionpack (5.2.0) lib/action_dispatch/http/request.rb:81:in `controller_class'
+actionpack (5.2.0) lib/action_dispatch/routing/route_set.rb:46:in `controller'
+actionpack (5.2.0) lib/action_dispatch/routing/route_set.rb:32:in `serve'
+actionpack (5.2.0) lib/action_dispatch/journey/router.rb:52:in `block in serve'
+actionpack (5.2.0) lib/action_dispatch/journey/router.rb:35:in `each'
+actionpack (5.2.0) lib/action_dispatch/journey/router.rb:35:in `serve'
+actionpack (5.2.0) lib/action_dispatch/routing/route_set.rb:840:in `call'
+rack (2.0.5) lib/rack/tempfile_reaper.rb:15:in `call'
+rack (2.0.5) lib/rack/etag.rb:25:in `call'
+rack (2.0.5) lib/rack/conditional_get.rb:25:in `call'
+rack (2.0.5) lib/rack/head.rb:12:in `call'
+actionpack (5.2.0) lib/action_dispatch/http/content_security_policy.rb:18:in `call'
+rack (2.0.5) lib/rack/session/abstract/id.rb:232:in `context'
+rack (2.0.5) lib/rack/session/abstract/id.rb:226:in `call'
+actionpack (5.2.0) lib/action_dispatch/middleware/cookies.rb:670:in `call'
+activerecord (5.2.0) lib/active_record/migration.rb:559:in `call'
+actionpack (5.2.0) lib/action_dispatch/middleware/callbacks.rb:28:in `block in call'
+activesupport (5.2.0) lib/active_support/callbacks.rb:98:in `run_callbacks'
+actionpack (5.2.0) lib/action_dispatch/middleware/callbacks.rb:26:in `call'
+actionpack (5.2.0) lib/action_dispatch/middleware/executor.rb:14:in `call'
+actionpack (5.2.0) lib/action_dispatch/middleware/debug_exceptions.rb:61:in `call'
+web-console (3.6.2) lib/web_console/middleware.rb:135:in `call_app'
+web-console (3.6.2) lib/web_console/middleware.rb:30:in `block in call'
+web-console (3.6.2) lib/web_console/middleware.rb:20:in `catch'
+web-console (3.6.2) lib/web_console/middleware.rb:20:in `call'
+actionpack (5.2.0) lib/action_dispatch/middleware/show_exceptions.rb:33:in `call'
+railties (5.2.0) lib/rails/rack/logger.rb:38:in `call_app'
+railties (5.2.0) lib/rails/rack/logger.rb:26:in `block in call'
+activesupport (5.2.0) lib/active_support/tagged_logging.rb:71:in `block in tagged'
+activesupport (5.2.0) lib/active_support/tagged_logging.rb:28:in `tagged'
+activesupport (5.2.0) lib/active_support/tagged_logging.rb:71:in `tagged'
+railties (5.2.0) lib/rails/rack/logger.rb:26:in `call'
+sprockets-rails (3.2.1) lib/sprockets/rails/quiet_assets.rb:13:in `call'
+actionpack (5.2.0) lib/action_dispatch/middleware/remote_ip.rb:81:in `call'
+actionpack (5.2.0) lib/action_dispatch/middleware/request_id.rb:27:in `call'
+rack (2.0.5) lib/rack/method_override.rb:22:in `call'
+rack (2.0.5) lib/rack/runtime.rb:22:in `call'
+activesupport (5.2.0) lib/active_support/cache/strategy/local_cache_middleware.rb:29:in `call'
+actionpack (5.2.0) lib/action_dispatch/middleware/executor.rb:14:in `call'
+actionpack (5.2.0) lib/action_dispatch/middleware/static.rb:127:in `call'
+rack (2.0.5) lib/rack/sendfile.rb:111:in `call'
+railties (5.2.0) lib/rails/engine.rb:524:in `call'
+puma (3.11.4) lib/puma/configuration.rb:225:in `call'
+puma (3.11.4) lib/puma/server.rb:632:in `handle_request'
+puma (3.11.4) lib/puma/server.rb:446:in `process_client'
+puma (3.11.4) lib/puma/server.rb:306:in `block in run'
+puma (3.11.4) lib/puma/thread_pool.rb:120:in `block in spawn_thread'
+Started GET "/rooms" for 127.0.0.1 at 2018-06-02 02:16:46 +0200
+Processing by RoomsController#index as HTML
+  Rendering rooms/index.html.haml within layouts/application
+  [1m[36mRoom Load (0.2ms)[0m  [1m[34mSELECT "rooms".* FROM "rooms"[0m
+  ↳ app/views/rooms/index.html.haml:23
+  Rendered rooms/index.html.haml within layouts/application (6.3ms)
+  Rendered layouts/_navbar.html.haml (7.3ms)
+Completed 200 OK in 53ms (Views: 51.6ms | ActiveRecord: 0.2ms)
+
+
+Started GET "/rooms/1/reservations" for 127.0.0.1 at 2018-06-02 02:16:50 +0200
+  
+ActionController::RoutingError (uninitialized constant RoomController):
+  
+bootsnap (1.3.0) lib/bootsnap/load_path_cache/core_ext/active_support.rb:53:in `block in load_missing_constant'
+bootsnap (1.3.0) lib/bootsnap/load_path_cache/core_ext/active_support.rb:8:in `without_bootsnap_cache'
+bootsnap (1.3.0) lib/bootsnap/load_path_cache/core_ext/active_support.rb:53:in `rescue in load_missing_constant'
+bootsnap (1.3.0) lib/bootsnap/load_path_cache/core_ext/active_support.rb:42:in `load_missing_constant'
+activesupport (5.2.0) lib/active_support/inflector/methods.rb:283:in `const_get'
+activesupport (5.2.0) lib/active_support/inflector/methods.rb:283:in `block in constantize'
+activesupport (5.2.0) lib/active_support/inflector/methods.rb:281:in `each'
+activesupport (5.2.0) lib/active_support/inflector/methods.rb:281:in `inject'
+activesupport (5.2.0) lib/active_support/inflector/methods.rb:281:in `constantize'
+actionpack (5.2.0) lib/action_dispatch/http/request.rb:88:in `controller_class_for'
+actionpack (5.2.0) lib/action_dispatch/http/request.rb:81:in `controller_class'
+actionpack (5.2.0) lib/action_dispatch/routing/route_set.rb:46:in `controller'
+actionpack (5.2.0) lib/action_dispatch/routing/route_set.rb:32:in `serve'
+actionpack (5.2.0) lib/action_dispatch/journey/router.rb:52:in `block in serve'
+actionpack (5.2.0) lib/action_dispatch/journey/router.rb:35:in `each'
+actionpack (5.2.0) lib/action_dispatch/journey/router.rb:35:in `serve'
+actionpack (5.2.0) lib/action_dispatch/routing/route_set.rb:840:in `call'
+rack (2.0.5) lib/rack/tempfile_reaper.rb:15:in `call'
+rack (2.0.5) lib/rack/etag.rb:25:in `call'
+rack (2.0.5) lib/rack/conditional_get.rb:25:in `call'
+rack (2.0.5) lib/rack/head.rb:12:in `call'
+actionpack (5.2.0) lib/action_dispatch/http/content_security_policy.rb:18:in `call'
+rack (2.0.5) lib/rack/session/abstract/id.rb:232:in `context'
+rack (2.0.5) lib/rack/session/abstract/id.rb:226:in `call'
+actionpack (5.2.0) lib/action_dispatch/middleware/cookies.rb:670:in `call'
+activerecord (5.2.0) lib/active_record/migration.rb:559:in `call'
+actionpack (5.2.0) lib/action_dispatch/middleware/callbacks.rb:28:in `block in call'
+activesupport (5.2.0) lib/active_support/callbacks.rb:98:in `run_callbacks'
+actionpack (5.2.0) lib/action_dispatch/middleware/callbacks.rb:26:in `call'
+actionpack (5.2.0) lib/action_dispatch/middleware/executor.rb:14:in `call'
+actionpack (5.2.0) lib/action_dispatch/middleware/debug_exceptions.rb:61:in `call'
+web-console (3.6.2) lib/web_console/middleware.rb:135:in `call_app'
+web-console (3.6.2) lib/web_console/middleware.rb:30:in `block in call'
+web-console (3.6.2) lib/web_console/middleware.rb:20:in `catch'
+web-console (3.6.2) lib/web_console/middleware.rb:20:in `call'
+actionpack (5.2.0) lib/action_dispatch/middleware/show_exceptions.rb:33:in `call'
+railties (5.2.0) lib/rails/rack/logger.rb:38:in `call_app'
+railties (5.2.0) lib/rails/rack/logger.rb:26:in `block in call'
+activesupport (5.2.0) lib/active_support/tagged_logging.rb:71:in `block in tagged'
+activesupport (5.2.0) lib/active_support/tagged_logging.rb:28:in `tagged'
+activesupport (5.2.0) lib/active_support/tagged_logging.rb:71:in `tagged'
+railties (5.2.0) lib/rails/rack/logger.rb:26:in `call'
+sprockets-rails (3.2.1) lib/sprockets/rails/quiet_assets.rb:13:in `call'
+actionpack (5.2.0) lib/action_dispatch/middleware/remote_ip.rb:81:in `call'
+actionpack (5.2.0) lib/action_dispatch/middleware/request_id.rb:27:in `call'
+rack (2.0.5) lib/rack/method_override.rb:22:in `call'
+rack (2.0.5) lib/rack/runtime.rb:22:in `call'
+activesupport (5.2.0) lib/active_support/cache/strategy/local_cache_middleware.rb:29:in `call'
+actionpack (5.2.0) lib/action_dispatch/middleware/executor.rb:14:in `call'
+actionpack (5.2.0) lib/action_dispatch/middleware/static.rb:127:in `call'
+rack (2.0.5) lib/rack/sendfile.rb:111:in `call'
+railties (5.2.0) lib/rails/engine.rb:524:in `call'
+puma (3.11.4) lib/puma/configuration.rb:225:in `call'
+puma (3.11.4) lib/puma/server.rb:632:in `handle_request'
+puma (3.11.4) lib/puma/server.rb:446:in `process_client'
+puma (3.11.4) lib/puma/server.rb:306:in `block in run'
+puma (3.11.4) lib/puma/thread_pool.rb:120:in `block in spawn_thread'
+Started GET "/rooms/1/reservations" for 127.0.0.1 at 2018-06-02 02:17:18 +0200
+  
+ActionController::RoutingError (uninitialized constant RoomController):
+  
+bootsnap (1.3.0) lib/bootsnap/load_path_cache/core_ext/active_support.rb:53:in `block in load_missing_constant'
+bootsnap (1.3.0) lib/bootsnap/load_path_cache/core_ext/active_support.rb:8:in `without_bootsnap_cache'
+bootsnap (1.3.0) lib/bootsnap/load_path_cache/core_ext/active_support.rb:53:in `rescue in load_missing_constant'
+bootsnap (1.3.0) lib/bootsnap/load_path_cache/core_ext/active_support.rb:42:in `load_missing_constant'
+activesupport (5.2.0) lib/active_support/inflector/methods.rb:283:in `const_get'
+activesupport (5.2.0) lib/active_support/inflector/methods.rb:283:in `block in constantize'
+activesupport (5.2.0) lib/active_support/inflector/methods.rb:281:in `each'
+activesupport (5.2.0) lib/active_support/inflector/methods.rb:281:in `inject'
+activesupport (5.2.0) lib/active_support/inflector/methods.rb:281:in `constantize'
+actionpack (5.2.0) lib/action_dispatch/http/request.rb:88:in `controller_class_for'
+actionpack (5.2.0) lib/action_dispatch/http/request.rb:81:in `controller_class'
+actionpack (5.2.0) lib/action_dispatch/routing/route_set.rb:46:in `controller'
+actionpack (5.2.0) lib/action_dispatch/routing/route_set.rb:32:in `serve'
+actionpack (5.2.0) lib/action_dispatch/journey/router.rb:52:in `block in serve'
+actionpack (5.2.0) lib/action_dispatch/journey/router.rb:35:in `each'
+actionpack (5.2.0) lib/action_dispatch/journey/router.rb:35:in `serve'
+actionpack (5.2.0) lib/action_dispatch/routing/route_set.rb:840:in `call'
+rack (2.0.5) lib/rack/tempfile_reaper.rb:15:in `call'
+rack (2.0.5) lib/rack/etag.rb:25:in `call'
+rack (2.0.5) lib/rack/conditional_get.rb:25:in `call'
+rack (2.0.5) lib/rack/head.rb:12:in `call'
+actionpack (5.2.0) lib/action_dispatch/http/content_security_policy.rb:18:in `call'
+rack (2.0.5) lib/rack/session/abstract/id.rb:232:in `context'
+rack (2.0.5) lib/rack/session/abstract/id.rb:226:in `call'
+actionpack (5.2.0) lib/action_dispatch/middleware/cookies.rb:670:in `call'
+activerecord (5.2.0) lib/active_record/migration.rb:559:in `call'
+actionpack (5.2.0) lib/action_dispatch/middleware/callbacks.rb:28:in `block in call'
+activesupport (5.2.0) lib/active_support/callbacks.rb:98:in `run_callbacks'
+actionpack (5.2.0) lib/action_dispatch/middleware/callbacks.rb:26:in `call'
+actionpack (5.2.0) lib/action_dispatch/middleware/executor.rb:14:in `call'
+actionpack (5.2.0) lib/action_dispatch/middleware/debug_exceptions.rb:61:in `call'
+web-console (3.6.2) lib/web_console/middleware.rb:135:in `call_app'
+web-console (3.6.2) lib/web_console/middleware.rb:30:in `block in call'
+web-console (3.6.2) lib/web_console/middleware.rb:20:in `catch'
+web-console (3.6.2) lib/web_console/middleware.rb:20:in `call'
+actionpack (5.2.0) lib/action_dispatch/middleware/show_exceptions.rb:33:in `call'
+railties (5.2.0) lib/rails/rack/logger.rb:38:in `call_app'
+railties (5.2.0) lib/rails/rack/logger.rb:26:in `block in call'
+activesupport (5.2.0) lib/active_support/tagged_logging.rb:71:in `block in tagged'
+activesupport (5.2.0) lib/active_support/tagged_logging.rb:28:in `tagged'
+activesupport (5.2.0) lib/active_support/tagged_logging.rb:71:in `tagged'
+railties (5.2.0) lib/rails/rack/logger.rb:26:in `call'
+sprockets-rails (3.2.1) lib/sprockets/rails/quiet_assets.rb:13:in `call'
+actionpack (5.2.0) lib/action_dispatch/middleware/remote_ip.rb:81:in `call'
+actionpack (5.2.0) lib/action_dispatch/middleware/request_id.rb:27:in `call'
+rack (2.0.5) lib/rack/method_override.rb:22:in `call'
+rack (2.0.5) lib/rack/runtime.rb:22:in `call'
+activesupport (5.2.0) lib/active_support/cache/strategy/local_cache_middleware.rb:29:in `call'
+actionpack (5.2.0) lib/action_dispatch/middleware/executor.rb:14:in `call'
+actionpack (5.2.0) lib/action_dispatch/middleware/static.rb:127:in `call'
+rack (2.0.5) lib/rack/sendfile.rb:111:in `call'
+railties (5.2.0) lib/rails/engine.rb:524:in `call'
+puma (3.11.4) lib/puma/configuration.rb:225:in `call'
+puma (3.11.4) lib/puma/server.rb:632:in `handle_request'
+puma (3.11.4) lib/puma/server.rb:446:in `process_client'
+puma (3.11.4) lib/puma/server.rb:306:in `block in run'
+puma (3.11.4) lib/puma/thread_pool.rb:120:in `block in spawn_thread'
+Started GET "/rooms/1/reservations" for 127.0.0.1 at 2018-06-02 02:17:20 +0200
+  
+ActionController::RoutingError (uninitialized constant RoomController):
+  
+bootsnap (1.3.0) lib/bootsnap/load_path_cache/core_ext/active_support.rb:53:in `block in load_missing_constant'
+bootsnap (1.3.0) lib/bootsnap/load_path_cache/core_ext/active_support.rb:8:in `without_bootsnap_cache'
+bootsnap (1.3.0) lib/bootsnap/load_path_cache/core_ext/active_support.rb:53:in `rescue in load_missing_constant'
+bootsnap (1.3.0) lib/bootsnap/load_path_cache/core_ext/active_support.rb:42:in `load_missing_constant'
+activesupport (5.2.0) lib/active_support/inflector/methods.rb:283:in `const_get'
+activesupport (5.2.0) lib/active_support/inflector/methods.rb:283:in `block in constantize'
+activesupport (5.2.0) lib/active_support/inflector/methods.rb:281:in `each'
+activesupport (5.2.0) lib/active_support/inflector/methods.rb:281:in `inject'
+activesupport (5.2.0) lib/active_support/inflector/methods.rb:281:in `constantize'
+actionpack (5.2.0) lib/action_dispatch/http/request.rb:88:in `controller_class_for'
+actionpack (5.2.0) lib/action_dispatch/http/request.rb:81:in `controller_class'
+actionpack (5.2.0) lib/action_dispatch/routing/route_set.rb:46:in `controller'
+actionpack (5.2.0) lib/action_dispatch/routing/route_set.rb:32:in `serve'
+actionpack (5.2.0) lib/action_dispatch/journey/router.rb:52:in `block in serve'
+actionpack (5.2.0) lib/action_dispatch/journey/router.rb:35:in `each'
+actionpack (5.2.0) lib/action_dispatch/journey/router.rb:35:in `serve'
+actionpack (5.2.0) lib/action_dispatch/routing/route_set.rb:840:in `call'
+rack (2.0.5) lib/rack/tempfile_reaper.rb:15:in `call'
+rack (2.0.5) lib/rack/etag.rb:25:in `call'
+rack (2.0.5) lib/rack/conditional_get.rb:25:in `call'
+rack (2.0.5) lib/rack/head.rb:12:in `call'
+actionpack (5.2.0) lib/action_dispatch/http/content_security_policy.rb:18:in `call'
+rack (2.0.5) lib/rack/session/abstract/id.rb:232:in `context'
+rack (2.0.5) lib/rack/session/abstract/id.rb:226:in `call'
+actionpack (5.2.0) lib/action_dispatch/middleware/cookies.rb:670:in `call'
+activerecord (5.2.0) lib/active_record/migration.rb:559:in `call'
+actionpack (5.2.0) lib/action_dispatch/middleware/callbacks.rb:28:in `block in call'
+activesupport (5.2.0) lib/active_support/callbacks.rb:98:in `run_callbacks'
+actionpack (5.2.0) lib/action_dispatch/middleware/callbacks.rb:26:in `call'
+actionpack (5.2.0) lib/action_dispatch/middleware/executor.rb:14:in `call'
+actionpack (5.2.0) lib/action_dispatch/middleware/debug_exceptions.rb:61:in `call'
+web-console (3.6.2) lib/web_console/middleware.rb:135:in `call_app'
+web-console (3.6.2) lib/web_console/middleware.rb:30:in `block in call'
+web-console (3.6.2) lib/web_console/middleware.rb:20:in `catch'
+web-console (3.6.2) lib/web_console/middleware.rb:20:in `call'
+actionpack (5.2.0) lib/action_dispatch/middleware/show_exceptions.rb:33:in `call'
+railties (5.2.0) lib/rails/rack/logger.rb:38:in `call_app'
+railties (5.2.0) lib/rails/rack/logger.rb:26:in `block in call'
+activesupport (5.2.0) lib/active_support/tagged_logging.rb:71:in `block in tagged'
+activesupport (5.2.0) lib/active_support/tagged_logging.rb:28:in `tagged'
+activesupport (5.2.0) lib/active_support/tagged_logging.rb:71:in `tagged'
+railties (5.2.0) lib/rails/rack/logger.rb:26:in `call'
+sprockets-rails (3.2.1) lib/sprockets/rails/quiet_assets.rb:13:in `call'
+actionpack (5.2.0) lib/action_dispatch/middleware/remote_ip.rb:81:in `call'
+actionpack (5.2.0) lib/action_dispatch/middleware/request_id.rb:27:in `call'
+rack (2.0.5) lib/rack/method_override.rb:22:in `call'
+rack (2.0.5) lib/rack/runtime.rb:22:in `call'
+activesupport (5.2.0) lib/active_support/cache/strategy/local_cache_middleware.rb:29:in `call'
+actionpack (5.2.0) lib/action_dispatch/middleware/executor.rb:14:in `call'
+actionpack (5.2.0) lib/action_dispatch/middleware/static.rb:127:in `call'
+rack (2.0.5) lib/rack/sendfile.rb:111:in `call'
+railties (5.2.0) lib/rails/engine.rb:524:in `call'
+puma (3.11.4) lib/puma/configuration.rb:225:in `call'
+puma (3.11.4) lib/puma/server.rb:632:in `handle_request'
+puma (3.11.4) lib/puma/server.rb:446:in `process_client'
+puma (3.11.4) lib/puma/server.rb:306:in `block in run'
+puma (3.11.4) lib/puma/thread_pool.rb:120:in `block in spawn_thread'
+Started GET "/rooms/1/reservations" for 127.0.0.1 at 2018-06-02 02:19:37 +0200
+  
+ActionController::RoutingError (uninitialized constant RoomController):
+  
+bootsnap (1.3.0) lib/bootsnap/load_path_cache/core_ext/active_support.rb:53:in `block in load_missing_constant'
+bootsnap (1.3.0) lib/bootsnap/load_path_cache/core_ext/active_support.rb:8:in `without_bootsnap_cache'
+bootsnap (1.3.0) lib/bootsnap/load_path_cache/core_ext/active_support.rb:53:in `rescue in load_missing_constant'
+bootsnap (1.3.0) lib/bootsnap/load_path_cache/core_ext/active_support.rb:42:in `load_missing_constant'
+activesupport (5.2.0) lib/active_support/inflector/methods.rb:283:in `const_get'
+activesupport (5.2.0) lib/active_support/inflector/methods.rb:283:in `block in constantize'
+activesupport (5.2.0) lib/active_support/inflector/methods.rb:281:in `each'
+activesupport (5.2.0) lib/active_support/inflector/methods.rb:281:in `inject'
+activesupport (5.2.0) lib/active_support/inflector/methods.rb:281:in `constantize'
+actionpack (5.2.0) lib/action_dispatch/http/request.rb:88:in `controller_class_for'
+actionpack (5.2.0) lib/action_dispatch/http/request.rb:81:in `controller_class'
+actionpack (5.2.0) lib/action_dispatch/routing/route_set.rb:46:in `controller'
+actionpack (5.2.0) lib/action_dispatch/routing/route_set.rb:32:in `serve'
+actionpack (5.2.0) lib/action_dispatch/journey/router.rb:52:in `block in serve'
+actionpack (5.2.0) lib/action_dispatch/journey/router.rb:35:in `each'
+actionpack (5.2.0) lib/action_dispatch/journey/router.rb:35:in `serve'
+actionpack (5.2.0) lib/action_dispatch/routing/route_set.rb:840:in `call'
+rack (2.0.5) lib/rack/tempfile_reaper.rb:15:in `call'
+rack (2.0.5) lib/rack/etag.rb:25:in `call'
+rack (2.0.5) lib/rack/conditional_get.rb:25:in `call'
+rack (2.0.5) lib/rack/head.rb:12:in `call'
+actionpack (5.2.0) lib/action_dispatch/http/content_security_policy.rb:18:in `call'
+rack (2.0.5) lib/rack/session/abstract/id.rb:232:in `context'
+rack (2.0.5) lib/rack/session/abstract/id.rb:226:in `call'
+actionpack (5.2.0) lib/action_dispatch/middleware/cookies.rb:670:in `call'
+activerecord (5.2.0) lib/active_record/migration.rb:559:in `call'
+actionpack (5.2.0) lib/action_dispatch/middleware/callbacks.rb:28:in `block in call'
+activesupport (5.2.0) lib/active_support/callbacks.rb:98:in `run_callbacks'
+actionpack (5.2.0) lib/action_dispatch/middleware/callbacks.rb:26:in `call'
+actionpack (5.2.0) lib/action_dispatch/middleware/executor.rb:14:in `call'
+actionpack (5.2.0) lib/action_dispatch/middleware/debug_exceptions.rb:61:in `call'
+web-console (3.6.2) lib/web_console/middleware.rb:135:in `call_app'
+web-console (3.6.2) lib/web_console/middleware.rb:30:in `block in call'
+web-console (3.6.2) lib/web_console/middleware.rb:20:in `catch'
+web-console (3.6.2) lib/web_console/middleware.rb:20:in `call'
+actionpack (5.2.0) lib/action_dispatch/middleware/show_exceptions.rb:33:in `call'
+railties (5.2.0) lib/rails/rack/logger.rb:38:in `call_app'
+railties (5.2.0) lib/rails/rack/logger.rb:26:in `block in call'
+activesupport (5.2.0) lib/active_support/tagged_logging.rb:71:in `block in tagged'
+activesupport (5.2.0) lib/active_support/tagged_logging.rb:28:in `tagged'
+activesupport (5.2.0) lib/active_support/tagged_logging.rb:71:in `tagged'
+railties (5.2.0) lib/rails/rack/logger.rb:26:in `call'
+sprockets-rails (3.2.1) lib/sprockets/rails/quiet_assets.rb:13:in `call'
+actionpack (5.2.0) lib/action_dispatch/middleware/remote_ip.rb:81:in `call'
+actionpack (5.2.0) lib/action_dispatch/middleware/request_id.rb:27:in `call'
+rack (2.0.5) lib/rack/method_override.rb:22:in `call'
+rack (2.0.5) lib/rack/runtime.rb:22:in `call'
+activesupport (5.2.0) lib/active_support/cache/strategy/local_cache_middleware.rb:29:in `call'
+actionpack (5.2.0) lib/action_dispatch/middleware/executor.rb:14:in `call'
+actionpack (5.2.0) lib/action_dispatch/middleware/static.rb:127:in `call'
+rack (2.0.5) lib/rack/sendfile.rb:111:in `call'
+railties (5.2.0) lib/rails/engine.rb:524:in `call'
+puma (3.11.4) lib/puma/configuration.rb:225:in `call'
+puma (3.11.4) lib/puma/server.rb:632:in `handle_request'
+puma (3.11.4) lib/puma/server.rb:446:in `process_client'
+puma (3.11.4) lib/puma/server.rb:306:in `block in run'
+puma (3.11.4) lib/puma/thread_pool.rb:120:in `block in spawn_thread'
+Started GET "/rooms/1/reservations" for 127.0.0.1 at 2018-06-02 02:19:38 +0200
+  
+ActionController::RoutingError (uninitialized constant RoomController):
+  
+bootsnap (1.3.0) lib/bootsnap/load_path_cache/core_ext/active_support.rb:53:in `block in load_missing_constant'
+bootsnap (1.3.0) lib/bootsnap/load_path_cache/core_ext/active_support.rb:8:in `without_bootsnap_cache'
+bootsnap (1.3.0) lib/bootsnap/load_path_cache/core_ext/active_support.rb:53:in `rescue in load_missing_constant'
+bootsnap (1.3.0) lib/bootsnap/load_path_cache/core_ext/active_support.rb:42:in `load_missing_constant'
+activesupport (5.2.0) lib/active_support/inflector/methods.rb:283:in `const_get'
+activesupport (5.2.0) lib/active_support/inflector/methods.rb:283:in `block in constantize'
+activesupport (5.2.0) lib/active_support/inflector/methods.rb:281:in `each'
+activesupport (5.2.0) lib/active_support/inflector/methods.rb:281:in `inject'
+activesupport (5.2.0) lib/active_support/inflector/methods.rb:281:in `constantize'
+actionpack (5.2.0) lib/action_dispatch/http/request.rb:88:in `controller_class_for'
+actionpack (5.2.0) lib/action_dispatch/http/request.rb:81:in `controller_class'
+actionpack (5.2.0) lib/action_dispatch/routing/route_set.rb:46:in `controller'
+actionpack (5.2.0) lib/action_dispatch/routing/route_set.rb:32:in `serve'
+actionpack (5.2.0) lib/action_dispatch/journey/router.rb:52:in `block in serve'
+actionpack (5.2.0) lib/action_dispatch/journey/router.rb:35:in `each'
+actionpack (5.2.0) lib/action_dispatch/journey/router.rb:35:in `serve'
+actionpack (5.2.0) lib/action_dispatch/routing/route_set.rb:840:in `call'
+rack (2.0.5) lib/rack/tempfile_reaper.rb:15:in `call'
+rack (2.0.5) lib/rack/etag.rb:25:in `call'
+rack (2.0.5) lib/rack/conditional_get.rb:25:in `call'
+rack (2.0.5) lib/rack/head.rb:12:in `call'
+actionpack (5.2.0) lib/action_dispatch/http/content_security_policy.rb:18:in `call'
+rack (2.0.5) lib/rack/session/abstract/id.rb:232:in `context'
+rack (2.0.5) lib/rack/session/abstract/id.rb:226:in `call'
+actionpack (5.2.0) lib/action_dispatch/middleware/cookies.rb:670:in `call'
+activerecord (5.2.0) lib/active_record/migration.rb:559:in `call'
+actionpack (5.2.0) lib/action_dispatch/middleware/callbacks.rb:28:in `block in call'
+activesupport (5.2.0) lib/active_support/callbacks.rb:98:in `run_callbacks'
+actionpack (5.2.0) lib/action_dispatch/middleware/callbacks.rb:26:in `call'
+actionpack (5.2.0) lib/action_dispatch/middleware/executor.rb:14:in `call'
+actionpack (5.2.0) lib/action_dispatch/middleware/debug_exceptions.rb:61:in `call'
+web-console (3.6.2) lib/web_console/middleware.rb:135:in `call_app'
+web-console (3.6.2) lib/web_console/middleware.rb:30:in `block in call'
+web-console (3.6.2) lib/web_console/middleware.rb:20:in `catch'
+web-console (3.6.2) lib/web_console/middleware.rb:20:in `call'
+actionpack (5.2.0) lib/action_dispatch/middleware/show_exceptions.rb:33:in `call'
+railties (5.2.0) lib/rails/rack/logger.rb:38:in `call_app'
+railties (5.2.0) lib/rails/rack/logger.rb:26:in `block in call'
+activesupport (5.2.0) lib/active_support/tagged_logging.rb:71:in `block in tagged'
+activesupport (5.2.0) lib/active_support/tagged_logging.rb:28:in `tagged'
+activesupport (5.2.0) lib/active_support/tagged_logging.rb:71:in `tagged'
+railties (5.2.0) lib/rails/rack/logger.rb:26:in `call'
+sprockets-rails (3.2.1) lib/sprockets/rails/quiet_assets.rb:13:in `call'
+actionpack (5.2.0) lib/action_dispatch/middleware/remote_ip.rb:81:in `call'
+actionpack (5.2.0) lib/action_dispatch/middleware/request_id.rb:27:in `call'
+rack (2.0.5) lib/rack/method_override.rb:22:in `call'
+rack (2.0.5) lib/rack/runtime.rb:22:in `call'
+activesupport (5.2.0) lib/active_support/cache/strategy/local_cache_middleware.rb:29:in `call'
+actionpack (5.2.0) lib/action_dispatch/middleware/executor.rb:14:in `call'
+actionpack (5.2.0) lib/action_dispatch/middleware/static.rb:127:in `call'
+rack (2.0.5) lib/rack/sendfile.rb:111:in `call'
+railties (5.2.0) lib/rails/engine.rb:524:in `call'
+puma (3.11.4) lib/puma/configuration.rb:225:in `call'
+puma (3.11.4) lib/puma/server.rb:632:in `handle_request'
+puma (3.11.4) lib/puma/server.rb:446:in `process_client'
+puma (3.11.4) lib/puma/server.rb:306:in `block in run'
+puma (3.11.4) lib/puma/thread_pool.rb:120:in `block in spawn_thread'
+Started GET "/rooms/1/" for 127.0.0.1 at 2018-06-02 02:19:42 +0200
+Processing by RoomsController#show as HTML
+  Parameters: {"id"=>"1"}
+  [1m[36mRoom Load (0.2ms)[0m  [1m[34mSELECT  "rooms".* FROM "rooms" WHERE "rooms"."id" = ? LIMIT ?[0m  [["id", 1], ["LIMIT", 1]]
+  ↳ app/controllers/rooms_controller.rb:87
+  Rendering rooms/show.html.haml within layouts/application
+  [1m[36mPower Load (0.1ms)[0m  [1m[34mSELECT "powers".* FROM "powers" WHERE "powers"."room_id" = ?[0m  [["room_id", 1]]
+  ↳ app/views/rooms/show.html.haml:35
+  Rendered rooms/show.html.haml within layouts/application (8.2ms)
+  Rendered layouts/_navbar.html.haml (3.4ms)
+Completed 200 OK in 62ms (Views: 33.4ms | ActiveRecord: 1.2ms)
+
+
+Started GET "/rooms/1/.json" for 127.0.0.1 at 2018-06-02 02:19:43 +0200
+  
+ActionController::RoutingError (No route matches [GET] "/rooms/1/.json"):
+  
+actionpack (5.2.0) lib/action_dispatch/middleware/debug_exceptions.rb:65:in `call'
+web-console (3.6.2) lib/web_console/middleware.rb:135:in `call_app'
+web-console (3.6.2) lib/web_console/middleware.rb:30:in `block in call'
+web-console (3.6.2) lib/web_console/middleware.rb:20:in `catch'
+web-console (3.6.2) lib/web_console/middleware.rb:20:in `call'
+actionpack (5.2.0) lib/action_dispatch/middleware/show_exceptions.rb:33:in `call'
+railties (5.2.0) lib/rails/rack/logger.rb:38:in `call_app'
+railties (5.2.0) lib/rails/rack/logger.rb:26:in `block in call'
+activesupport (5.2.0) lib/active_support/tagged_logging.rb:71:in `block in tagged'
+activesupport (5.2.0) lib/active_support/tagged_logging.rb:28:in `tagged'
+activesupport (5.2.0) lib/active_support/tagged_logging.rb:71:in `tagged'
+railties (5.2.0) lib/rails/rack/logger.rb:26:in `call'
+sprockets-rails (3.2.1) lib/sprockets/rails/quiet_assets.rb:13:in `call'
+actionpack (5.2.0) lib/action_dispatch/middleware/remote_ip.rb:81:in `call'
+actionpack (5.2.0) lib/action_dispatch/middleware/request_id.rb:27:in `call'
+rack (2.0.5) lib/rack/method_override.rb:22:in `call'
+rack (2.0.5) lib/rack/runtime.rb:22:in `call'
+activesupport (5.2.0) lib/active_support/cache/strategy/local_cache_middleware.rb:29:in `call'
+actionpack (5.2.0) lib/action_dispatch/middleware/executor.rb:14:in `call'
+actionpack (5.2.0) lib/action_dispatch/middleware/static.rb:127:in `call'
+rack (2.0.5) lib/rack/sendfile.rb:111:in `call'
+railties (5.2.0) lib/rails/engine.rb:524:in `call'
+puma (3.11.4) lib/puma/configuration.rb:225:in `call'
+puma (3.11.4) lib/puma/server.rb:632:in `handle_request'
+puma (3.11.4) lib/puma/server.rb:446:in `process_client'
+puma (3.11.4) lib/puma/server.rb:306:in `block in run'
+puma (3.11.4) lib/puma/thread_pool.rb:120:in `block in spawn_thread'
+Started GET "/rooms/1/.json" for 127.0.0.1 at 2018-06-02 02:19:43 +0200
+  
+ActionController::RoutingError (No route matches [GET] "/rooms/1/.json"):
+  
+actionpack (5.2.0) lib/action_dispatch/middleware/debug_exceptions.rb:65:in `call'
+web-console (3.6.2) lib/web_console/middleware.rb:135:in `call_app'
+web-console (3.6.2) lib/web_console/middleware.rb:30:in `block in call'
+web-console (3.6.2) lib/web_console/middleware.rb:20:in `catch'
+web-console (3.6.2) lib/web_console/middleware.rb:20:in `call'
+actionpack (5.2.0) lib/action_dispatch/middleware/show_exceptions.rb:33:in `call'
+railties (5.2.0) lib/rails/rack/logger.rb:38:in `call_app'
+railties (5.2.0) lib/rails/rack/logger.rb:26:in `block in call'
+activesupport (5.2.0) lib/active_support/tagged_logging.rb:71:in `block in tagged'
+activesupport (5.2.0) lib/active_support/tagged_logging.rb:28:in `tagged'
+activesupport (5.2.0) lib/active_support/tagged_logging.rb:71:in `tagged'
+railties (5.2.0) lib/rails/rack/logger.rb:26:in `call'
+sprockets-rails (3.2.1) lib/sprockets/rails/quiet_assets.rb:13:in `call'
+actionpack (5.2.0) lib/action_dispatch/middleware/remote_ip.rb:81:in `call'
+actionpack (5.2.0) lib/action_dispatch/middleware/request_id.rb:27:in `call'
+rack (2.0.5) lib/rack/method_override.rb:22:in `call'
+rack (2.0.5) lib/rack/runtime.rb:22:in `call'
+activesupport (5.2.0) lib/active_support/cache/strategy/local_cache_middleware.rb:29:in `call'
+actionpack (5.2.0) lib/action_dispatch/middleware/executor.rb:14:in `call'
+actionpack (5.2.0) lib/action_dispatch/middleware/static.rb:127:in `call'
+rack (2.0.5) lib/rack/sendfile.rb:111:in `call'
+railties (5.2.0) lib/rails/engine.rb:524:in `call'
+puma (3.11.4) lib/puma/configuration.rb:225:in `call'
+puma (3.11.4) lib/puma/server.rb:632:in `handle_request'
+puma (3.11.4) lib/puma/server.rb:446:in `process_client'
+puma (3.11.4) lib/puma/server.rb:306:in `block in run'
+puma (3.11.4) lib/puma/thread_pool.rb:120:in `block in spawn_thread'
+Started GET "/rooms/1" for 127.0.0.1 at 2018-06-02 02:19:51 +0200
+Processing by RoomsController#show as HTML
+  Parameters: {"id"=>"1"}
+  [1m[36mRoom Load (0.1ms)[0m  [1m[34mSELECT  "rooms".* FROM "rooms" WHERE "rooms"."id" = ? LIMIT ?[0m  [["id", 1], ["LIMIT", 1]]
+  ↳ app/controllers/rooms_controller.rb:87
+  Rendering rooms/show.html.haml within layouts/application
+  [1m[36mPower Load (0.1ms)[0m  [1m[34mSELECT "powers".* FROM "powers" WHERE "powers"."room_id" = ?[0m  [["room_id", 1]]
+  ↳ app/views/rooms/show.html.haml:35
+  Rendered rooms/show.html.haml within layouts/application (6.4ms)
+  Rendered layouts/_navbar.html.haml (6.5ms)
+Completed 200 OK in 39ms (Views: 36.7ms | ActiveRecord: 0.2ms)
+
+
+Started GET "/rooms/1.json" for 127.0.0.1 at 2018-06-02 02:19:51 +0200
+Processing by RoomsController#show as JSON
+  Parameters: {"id"=>"1"}
+  [1m[36mRoom Load (0.1ms)[0m  [1m[34mSELECT  "rooms".* FROM "rooms" WHERE "rooms"."id" = ? LIMIT ?[0m  [["id", 1], ["LIMIT", 1]]
+  ↳ app/controllers/rooms_controller.rb:87
+  Rendering rooms/show.json.jbuilder
+  Rendered rooms/_room.json.jbuilder (1.0ms)
+  Rendered rooms/show.json.jbuilder (2.1ms)
+Completed 200 OK in 5ms (Views: 3.5ms | ActiveRecord: 0.1ms)
+
+
+Started GET "/rooms/1.json" for 127.0.0.1 at 2018-06-02 02:19:51 +0200
+Processing by RoomsController#show as JSON
+  Parameters: {"id"=>"1"}
+  [1m[36mRoom Load (0.1ms)[0m  [1m[34mSELECT  "rooms".* FROM "rooms" WHERE "rooms"."id" = ? LIMIT ?[0m  [["id", 1], ["LIMIT", 1]]
+  ↳ app/controllers/rooms_controller.rb:87
+  Rendering rooms/show.json.jbuilder
+  Rendered rooms/_room.json.jbuilder (0.8ms)
+  Rendered rooms/show.json.jbuilder (2.0ms)
+Completed 200 OK in 5ms (Views: 3.4ms | ActiveRecord: 0.1ms)
+
+
+Started GET "/rooms/1/reservations" for 127.0.0.1 at 2018-06-02 02:19:58 +0200
+  
+ActionController::RoutingError (uninitialized constant RoomController):
+  
+bootsnap (1.3.0) lib/bootsnap/load_path_cache/core_ext/active_support.rb:53:in `block in load_missing_constant'
+bootsnap (1.3.0) lib/bootsnap/load_path_cache/core_ext/active_support.rb:8:in `without_bootsnap_cache'
+bootsnap (1.3.0) lib/bootsnap/load_path_cache/core_ext/active_support.rb:53:in `rescue in load_missing_constant'
+bootsnap (1.3.0) lib/bootsnap/load_path_cache/core_ext/active_support.rb:42:in `load_missing_constant'
+activesupport (5.2.0) lib/active_support/inflector/methods.rb:283:in `const_get'
+activesupport (5.2.0) lib/active_support/inflector/methods.rb:283:in `block in constantize'
+activesupport (5.2.0) lib/active_support/inflector/methods.rb:281:in `each'
+activesupport (5.2.0) lib/active_support/inflector/methods.rb:281:in `inject'
+activesupport (5.2.0) lib/active_support/inflector/methods.rb:281:in `constantize'
+actionpack (5.2.0) lib/action_dispatch/http/request.rb:88:in `controller_class_for'
+actionpack (5.2.0) lib/action_dispatch/http/request.rb:81:in `controller_class'
+actionpack (5.2.0) lib/action_dispatch/routing/route_set.rb:46:in `controller'
+actionpack (5.2.0) lib/action_dispatch/routing/route_set.rb:32:in `serve'
+actionpack (5.2.0) lib/action_dispatch/journey/router.rb:52:in `block in serve'
+actionpack (5.2.0) lib/action_dispatch/journey/router.rb:35:in `each'
+actionpack (5.2.0) lib/action_dispatch/journey/router.rb:35:in `serve'
+actionpack (5.2.0) lib/action_dispatch/routing/route_set.rb:840:in `call'
+rack (2.0.5) lib/rack/tempfile_reaper.rb:15:in `call'
+rack (2.0.5) lib/rack/etag.rb:25:in `call'
+rack (2.0.5) lib/rack/conditional_get.rb:25:in `call'
+rack (2.0.5) lib/rack/head.rb:12:in `call'
+actionpack (5.2.0) lib/action_dispatch/http/content_security_policy.rb:18:in `call'
+rack (2.0.5) lib/rack/session/abstract/id.rb:232:in `context'
+rack (2.0.5) lib/rack/session/abstract/id.rb:226:in `call'
+actionpack (5.2.0) lib/action_dispatch/middleware/cookies.rb:670:in `call'
+activerecord (5.2.0) lib/active_record/migration.rb:559:in `call'
+actionpack (5.2.0) lib/action_dispatch/middleware/callbacks.rb:28:in `block in call'
+activesupport (5.2.0) lib/active_support/callbacks.rb:98:in `run_callbacks'
+actionpack (5.2.0) lib/action_dispatch/middleware/callbacks.rb:26:in `call'
+actionpack (5.2.0) lib/action_dispatch/middleware/executor.rb:14:in `call'
+actionpack (5.2.0) lib/action_dispatch/middleware/debug_exceptions.rb:61:in `call'
+web-console (3.6.2) lib/web_console/middleware.rb:135:in `call_app'
+web-console (3.6.2) lib/web_console/middleware.rb:30:in `block in call'
+web-console (3.6.2) lib/web_console/middleware.rb:20:in `catch'
+web-console (3.6.2) lib/web_console/middleware.rb:20:in `call'
+actionpack (5.2.0) lib/action_dispatch/middleware/show_exceptions.rb:33:in `call'
+railties (5.2.0) lib/rails/rack/logger.rb:38:in `call_app'
+railties (5.2.0) lib/rails/rack/logger.rb:26:in `block in call'
+activesupport (5.2.0) lib/active_support/tagged_logging.rb:71:in `block in tagged'
+activesupport (5.2.0) lib/active_support/tagged_logging.rb:28:in `tagged'
+activesupport (5.2.0) lib/active_support/tagged_logging.rb:71:in `tagged'
+railties (5.2.0) lib/rails/rack/logger.rb:26:in `call'
+sprockets-rails (3.2.1) lib/sprockets/rails/quiet_assets.rb:13:in `call'
+actionpack (5.2.0) lib/action_dispatch/middleware/remote_ip.rb:81:in `call'
+actionpack (5.2.0) lib/action_dispatch/middleware/request_id.rb:27:in `call'
+rack (2.0.5) lib/rack/method_override.rb:22:in `call'
+rack (2.0.5) lib/rack/runtime.rb:22:in `call'
+activesupport (5.2.0) lib/active_support/cache/strategy/local_cache_middleware.rb:29:in `call'
+actionpack (5.2.0) lib/action_dispatch/middleware/executor.rb:14:in `call'
+actionpack (5.2.0) lib/action_dispatch/middleware/static.rb:127:in `call'
+rack (2.0.5) lib/rack/sendfile.rb:111:in `call'
+railties (5.2.0) lib/rails/engine.rb:524:in `call'
+puma (3.11.4) lib/puma/configuration.rb:225:in `call'
+puma (3.11.4) lib/puma/server.rb:632:in `handle_request'
+puma (3.11.4) lib/puma/server.rb:446:in `process_client'
+puma (3.11.4) lib/puma/server.rb:306:in `block in run'
+puma (3.11.4) lib/puma/thread_pool.rb:120:in `block in spawn_thread'
+Started GET "/rooms/1/reservations.json" for 127.0.0.1 at 2018-06-02 02:20:01 +0200
+  
+ActionController::RoutingError (uninitialized constant RoomController):
+  
+bootsnap (1.3.0) lib/bootsnap/load_path_cache/core_ext/active_support.rb:53:in `block in load_missing_constant'
+bootsnap (1.3.0) lib/bootsnap/load_path_cache/core_ext/active_support.rb:8:in `without_bootsnap_cache'
+bootsnap (1.3.0) lib/bootsnap/load_path_cache/core_ext/active_support.rb:53:in `rescue in load_missing_constant'
+bootsnap (1.3.0) lib/bootsnap/load_path_cache/core_ext/active_support.rb:42:in `load_missing_constant'
+activesupport (5.2.0) lib/active_support/inflector/methods.rb:283:in `const_get'
+activesupport (5.2.0) lib/active_support/inflector/methods.rb:283:in `block in constantize'
+activesupport (5.2.0) lib/active_support/inflector/methods.rb:281:in `each'
+activesupport (5.2.0) lib/active_support/inflector/methods.rb:281:in `inject'
+activesupport (5.2.0) lib/active_support/inflector/methods.rb:281:in `constantize'
+actionpack (5.2.0) lib/action_dispatch/http/request.rb:88:in `controller_class_for'
+actionpack (5.2.0) lib/action_dispatch/http/request.rb:81:in `controller_class'
+actionpack (5.2.0) lib/action_dispatch/routing/route_set.rb:46:in `controller'
+actionpack (5.2.0) lib/action_dispatch/routing/route_set.rb:32:in `serve'
+actionpack (5.2.0) lib/action_dispatch/journey/router.rb:52:in `block in serve'
+actionpack (5.2.0) lib/action_dispatch/journey/router.rb:35:in `each'
+actionpack (5.2.0) lib/action_dispatch/journey/router.rb:35:in `serve'
+actionpack (5.2.0) lib/action_dispatch/routing/route_set.rb:840:in `call'
+rack (2.0.5) lib/rack/tempfile_reaper.rb:15:in `call'
+rack (2.0.5) lib/rack/etag.rb:25:in `call'
+rack (2.0.5) lib/rack/conditional_get.rb:25:in `call'
+rack (2.0.5) lib/rack/head.rb:12:in `call'
+actionpack (5.2.0) lib/action_dispatch/http/content_security_policy.rb:18:in `call'
+rack (2.0.5) lib/rack/session/abstract/id.rb:232:in `context'
+rack (2.0.5) lib/rack/session/abstract/id.rb:226:in `call'
+actionpack (5.2.0) lib/action_dispatch/middleware/cookies.rb:670:in `call'
+activerecord (5.2.0) lib/active_record/migration.rb:559:in `call'
+actionpack (5.2.0) lib/action_dispatch/middleware/callbacks.rb:28:in `block in call'
+activesupport (5.2.0) lib/active_support/callbacks.rb:98:in `run_callbacks'
+actionpack (5.2.0) lib/action_dispatch/middleware/callbacks.rb:26:in `call'
+actionpack (5.2.0) lib/action_dispatch/middleware/executor.rb:14:in `call'
+actionpack (5.2.0) lib/action_dispatch/middleware/debug_exceptions.rb:61:in `call'
+web-console (3.6.2) lib/web_console/middleware.rb:135:in `call_app'
+web-console (3.6.2) lib/web_console/middleware.rb:30:in `block in call'
+web-console (3.6.2) lib/web_console/middleware.rb:20:in `catch'
+web-console (3.6.2) lib/web_console/middleware.rb:20:in `call'
+actionpack (5.2.0) lib/action_dispatch/middleware/show_exceptions.rb:33:in `call'
+railties (5.2.0) lib/rails/rack/logger.rb:38:in `call_app'
+railties (5.2.0) lib/rails/rack/logger.rb:26:in `block in call'
+activesupport (5.2.0) lib/active_support/tagged_logging.rb:71:in `block in tagged'
+activesupport (5.2.0) lib/active_support/tagged_logging.rb:28:in `tagged'
+activesupport (5.2.0) lib/active_support/tagged_logging.rb:71:in `tagged'
+railties (5.2.0) lib/rails/rack/logger.rb:26:in `call'
+sprockets-rails (3.2.1) lib/sprockets/rails/quiet_assets.rb:13:in `call'
+actionpack (5.2.0) lib/action_dispatch/middleware/remote_ip.rb:81:in `call'
+actionpack (5.2.0) lib/action_dispatch/middleware/request_id.rb:27:in `call'
+rack (2.0.5) lib/rack/method_override.rb:22:in `call'
+rack (2.0.5) lib/rack/runtime.rb:22:in `call'
+activesupport (5.2.0) lib/active_support/cache/strategy/local_cache_middleware.rb:29:in `call'
+actionpack (5.2.0) lib/action_dispatch/middleware/executor.rb:14:in `call'
+actionpack (5.2.0) lib/action_dispatch/middleware/static.rb:127:in `call'
+rack (2.0.5) lib/rack/sendfile.rb:111:in `call'
+railties (5.2.0) lib/rails/engine.rb:524:in `call'
+puma (3.11.4) lib/puma/configuration.rb:225:in `call'
+puma (3.11.4) lib/puma/server.rb:632:in `handle_request'
+puma (3.11.4) lib/puma/server.rb:446:in `process_client'
+puma (3.11.4) lib/puma/server.rb:306:in `block in run'
+puma (3.11.4) lib/puma/thread_pool.rb:120:in `block in spawn_thread'
+Started GET "/rooms/1" for 127.0.0.1 at 2018-06-02 02:24:24 +0200
+Processing by RoomsController#show as HTML
+  Parameters: {"id"=>"1"}
+  [1m[36mRoom Load (0.1ms)[0m  [1m[34mSELECT  "rooms".* FROM "rooms" WHERE "rooms"."id" = ? LIMIT ?[0m  [["id", 1], ["LIMIT", 1]]
+  ↳ app/controllers/rooms_controller.rb:87
+  Rendering rooms/show.html.haml within layouts/application
+  [1m[36mPower Load (0.1ms)[0m  [1m[34mSELECT "powers".* FROM "powers" WHERE "powers"."room_id" = ?[0m  [["room_id", 1]]
+  ↳ app/views/rooms/show.html.haml:35
+  Rendered rooms/show.html.haml within layouts/application (6.1ms)
+  Rendered layouts/_navbar.html.haml (8.6ms)
+Completed 200 OK in 37ms (Views: 35.1ms | ActiveRecord: 0.2ms)
+
+
+Started GET "/rooms/1.json" for 127.0.0.1 at 2018-06-02 02:24:24 +0200
+Processing by RoomsController#show as JSON
+  Parameters: {"id"=>"1"}
+  [1m[36mRoom Load (0.1ms)[0m  [1m[34mSELECT  "rooms".* FROM "rooms" WHERE "rooms"."id" = ? LIMIT ?[0m  [["id", 1], ["LIMIT", 1]]
+  ↳ app/controllers/rooms_controller.rb:87
+  Rendering rooms/show.json.jbuilder
+  Rendered rooms/_room.json.jbuilder (132.7ms)
+  Rendered rooms/show.json.jbuilder (133.3ms)
+Completed 500 Internal Server Error in 136ms (ActiveRecord: 0.1ms)
+
+
+  
+ActionView::Template::Error (undefined local variable or method `reservations' for #<#<Class:0x00007f0e5413fc18>:0x00007f0e682c7900>):
+    1: json.extract! room, :id, :name, :description, :address, :user_id, :max_participants, :latitude, :longitude, :time_from, :time_to, :avatar_file, :avatar_size, :avatar_updated_at, :datetime, :created_at, :updated_at, :event, reservations
+    2: json.url room_url(room, format: :json)
+  
+app/views/rooms/_room.json.jbuilder:1:in `_app_views_rooms__room_json_jbuilder__1493732618670520309_69849860800120'
+app/views/rooms/show.json.jbuilder:1:in `_app_views_rooms_show_json_jbuilder___88181787042839316_69849925756320'
+Started GET "/rooms/1.json" for 127.0.0.1 at 2018-06-02 02:24:24 +0200
+Processing by RoomsController#show as JSON
+  Parameters: {"id"=>"1"}
+  [1m[36mRoom Load (0.1ms)[0m  [1m[34mSELECT  "rooms".* FROM "rooms" WHERE "rooms"."id" = ? LIMIT ?[0m  [["id", 1], ["LIMIT", 1]]
+  ↳ app/controllers/rooms_controller.rb:87
+  Rendering rooms/show.json.jbuilder
+  Rendered rooms/_room.json.jbuilder (129.2ms)
+  Rendered rooms/show.json.jbuilder (129.6ms)
+Completed 500 Internal Server Error in 132ms (ActiveRecord: 0.1ms)
+
+
+  
+ActionView::Template::Error (undefined local variable or method `reservations' for #<#<Class:0x00007f0e5413fc18>:0x00007f0e65b2a410>):
+    1: json.extract! room, :id, :name, :description, :address, :user_id, :max_participants, :latitude, :longitude, :time_from, :time_to, :avatar_file, :avatar_size, :avatar_updated_at, :datetime, :created_at, :updated_at, :event, reservations
+    2: json.url room_url(room, format: :json)
+  
+app/views/rooms/_room.json.jbuilder:1:in `_app_views_rooms__room_json_jbuilder__1493732618670520309_69849906673060'
+app/views/rooms/show.json.jbuilder:1:in `_app_views_rooms_show_json_jbuilder___88181787042839316_69849906282580'
+Started GET "/rooms/1.json" for 127.0.0.1 at 2018-06-02 02:24:27 +0200
+Processing by RoomsController#show as JSON
+  Parameters: {"id"=>"1"}
+  [1m[36mRoom Load (0.2ms)[0m  [1m[34mSELECT  "rooms".* FROM "rooms" WHERE "rooms"."id" = ? LIMIT ?[0m  [["id", 1], ["LIMIT", 1]]
+  ↳ app/controllers/rooms_controller.rb:87
+  Rendering rooms/show.json.jbuilder
+  Rendered rooms/_room.json.jbuilder (111.1ms)
+  Rendered rooms/show.json.jbuilder (111.9ms)
+Completed 500 Internal Server Error in 116ms (ActiveRecord: 0.2ms)
+
+
+  
+ActionView::Template::Error (undefined local variable or method `reservations' for #<#<Class:0x00007f0e5413fc18>:0x00007f0e661e6970>):
+    1: json.extract! room, :id, :name, :description, :address, :user_id, :max_participants, :latitude, :longitude, :time_from, :time_to, :avatar_file, :avatar_size, :avatar_updated_at, :datetime, :created_at, :updated_at, :event, reservations
+    2: json.url room_url(room, format: :json)
+  
+app/views/rooms/_room.json.jbuilder:1:in `_app_views_rooms__room_json_jbuilder__1493732618670520309_69849909812220'
+app/views/rooms/show.json.jbuilder:1:in `_app_views_rooms_show_json_jbuilder___88181787042839316_69849909770580'
+Started GET "/rooms/1.json" for 127.0.0.1 at 2018-06-02 02:36:39 +0200
+Processing by RoomsController#show as JSON
+  Parameters: {"id"=>"1"}
+  [1m[36mRoom Load (0.1ms)[0m  [1m[34mSELECT  "rooms".* FROM "rooms" WHERE "rooms"."id" = ? LIMIT ?[0m  [["id", 1], ["LIMIT", 1]]
+  ↳ app/controllers/rooms_controller.rb:87
+  Rendering rooms/show.json.jbuilder
+  [1m[36mReservation Load (0.1ms)[0m  [1m[34mSELECT "reservations".* FROM "reservations" WHERE "reservations"."room_id" = ?[0m  [["room_id", 1]]
+  ↳ /usr/lib/ruby/gems/2.5.0/gems/jbuilder-2.7.0/lib/jbuilder.rb:297
+  Rendered rooms/_room.json.jbuilder (4.0ms)
+  Rendered rooms/show.json.jbuilder (4.7ms)
+Completed 200 OK in 21ms (Views: 5.6ms | ActiveRecord: 1.0ms)
+
+
+  [1m[36mUser Load (0.1ms)[0m  [1m[34mSELECT  "users".* FROM "users" WHERE "users"."id" = ? LIMIT ?[0m  [["id", 1], ["LIMIT", 1]]
+  [1m[36mRoom Load (0.8ms)[0m  [1m[34mSELECT  "rooms".* FROM "rooms" LIMIT ?[0m  [["LIMIT", 11]]
+  [1m[36mRoom Load (0.7ms)[0m  [1m[34mSELECT  "rooms".* FROM "rooms" WHERE "rooms"."id" = ? LIMIT ?[0m  [["id", 1], ["LIMIT", 1]]
+  [1m[36mReservation Load (0.1ms)[0m  [1m[34mSELECT  "reservations".* FROM "reservations" WHERE "reservations"."room_id" = ? LIMIT ?[0m  [["room_id", 1], ["LIMIT", 11]]
+  [1m[35m (0.2ms)[0m  [1m[36mbegin transaction[0m
+  [1m[36mUser Load (0.4ms)[0m  [1m[34mSELECT  "users".* FROM "users" WHERE "users"."id" = ? LIMIT ?[0m  [["id", 1], ["LIMIT", 1]]
+  [1m[36mReservation Create (1.4ms)[0m  [1m[32mINSERT INTO "reservations" ("user_id", "room_id", "created_at", "updated_at") VALUES (?, ?, ?, ?)[0m  [["user_id", 1], ["room_id", 1], ["created_at", "2018-06-02 00:38:11.206653"], ["updated_at", "2018-06-02 00:38:11.206653"]]
+  [1m[35m (337.0ms)[0m  [1m[36mcommit transaction[0m
+  [1m[36mReservation Load (0.7ms)[0m  [1m[34mSELECT "reservations".* FROM "reservations" WHERE "reservations"."room_id" = ?[0m  [["room_id", 1]]
+Started GET "/rooms/1.json" for 127.0.0.1 at 2018-06-02 02:38:35 +0200
+Processing by RoomsController#show as JSON
+  Parameters: {"id"=>"1"}
+  [1m[36mRoom Load (0.1ms)[0m  [1m[34mSELECT  "rooms".* FROM "rooms" WHERE "rooms"."id" = ? LIMIT ?[0m  [["id", 1], ["LIMIT", 1]]
+  ↳ app/controllers/rooms_controller.rb:87
+  Rendering rooms/show.json.jbuilder
+  [1m[36mReservation Load (0.1ms)[0m  [1m[34mSELECT "reservations".* FROM "reservations" WHERE "reservations"."room_id" = ?[0m  [["room_id", 1]]
+  ↳ /usr/lib/ruby/gems/2.5.0/gems/jbuilder-2.7.0/lib/jbuilder.rb:297
+  Rendered rooms/_room.json.jbuilder (24.8ms)
+  Rendered rooms/show.json.jbuilder (25.7ms)
+Completed 500 Internal Server Error in 29ms (ActiveRecord: 0.5ms)
+
+
+  
+ActionView::Template::Error (Missing partial reservations/_reservation with {:locale=>[:en], :formats=>[:json], :variants=>[], :handlers=>[:jbuilder]}. Searched in:
+  * "/home/daniele/Inline-LASESI/app/views"
+):
+    1: json.extract! room, :id, :name, :description, :address, :user_id, :max_participants, :latitude, :longitude, :time_from, :time_to, :avatar_file, :avatar_size, :avatar_updated_at, :datetime, :created_at, :updated_at, :event
+    2: json.reservations room.reservations, partial: 'reservations/reservation', as: :reservation
+    3: json.url room_url(room, format: :json)
+  
+app/views/rooms/_room.json.jbuilder:2:in `_app_views_rooms__room_json_jbuilder__1493732618670520309_69849926649080'
+app/views/rooms/show.json.jbuilder:1:in `_app_views_rooms_show_json_jbuilder___88181787042839316_69849926713680'
+Started GET "/rooms/1.json" for 127.0.0.1 at 2018-06-02 02:39:01 +0200
+Processing by RoomsController#show as JSON
+  Parameters: {"id"=>"1"}
+  [1m[36mRoom Load (0.1ms)[0m  [1m[34mSELECT  "rooms".* FROM "rooms" WHERE "rooms"."id" = ? LIMIT ?[0m  [["id", 1], ["LIMIT", 1]]
+  ↳ app/controllers/rooms_controller.rb:87
+  Rendering rooms/show.json.jbuilder
+  [1m[36mReservation Load (0.1ms)[0m  [1m[34mSELECT "reservations".* FROM "reservations" WHERE "reservations"."room_id" = ?[0m  [["room_id", 1]]
+  ↳ /usr/lib/ruby/gems/2.5.0/gems/jbuilder-2.7.0/lib/jbuilder.rb:297
+  Rendered rooms/_room.json.jbuilder (2.2ms)
+  Rendered rooms/show.json.jbuilder (2.7ms)
+Completed 500 Internal Server Error in 5ms (ActiveRecord: 0.2ms)
+
+
+  
+ActionView::Template::Error (Missing partial rooms/_reservation with {:locale=>[:en], :formats=>[:json], :variants=>[], :handlers=>[:jbuilder]}. Searched in:
+  * "/home/daniele/Inline-LASESI/app/views"
+):
+    1: json.extract! room, :id, :name, :description, :address, :user_id, :max_participants, :latitude, :longitude, :time_from, :time_to, :avatar_file, :avatar_size, :avatar_updated_at, :datetime, :created_at, :updated_at, :event
+    2: json.reservations room.reservations, partial: 'rooms/reservation', as: :reservation
+    3: json.url room_url(room, format: :json)
+  
+app/views/rooms/_room.json.jbuilder:2:in `_app_views_rooms__room_json_jbuilder__1493732618670520309_69849905816280'
+app/views/rooms/show.json.jbuilder:1:in `_app_views_rooms_show_json_jbuilder___88181787042839316_69849905919140'
+Started GET "/rooms/1.json" for 127.0.0.1 at 2018-06-02 02:39:16 +0200
+Processing by RoomsController#show as JSON
+  Parameters: {"id"=>"1"}
+  [1m[36mRoom Load (0.6ms)[0m  [1m[34mSELECT  "rooms".* FROM "rooms" WHERE "rooms"."id" = ? LIMIT ?[0m  [["id", 1], ["LIMIT", 1]]
+  ↳ app/controllers/rooms_controller.rb:87
+  Rendering rooms/show.json.jbuilder
+  [1m[36mReservation Load (0.5ms)[0m  [1m[34mSELECT "reservations".* FROM "reservations" WHERE "reservations"."room_id" = ?[0m  [["room_id", 1]]
+  ↳ /usr/lib/ruby/gems/2.5.0/gems/jbuilder-2.7.0/lib/jbuilder.rb:297
+  Rendered rooms/_reservations.json.jbuilder (0.5ms)
+  Rendered rooms/_room.json.jbuilder (6.4ms)
+  Rendered rooms/show.json.jbuilder (8.9ms)
+Completed 200 OK in 19ms (Views: 12.5ms | ActiveRecord: 1.1ms)
+
+
+Started GET "/rooms/1.json" for 127.0.0.1 at 2018-06-02 02:39:25 +0200
+Processing by RoomsController#show as JSON
+  Parameters: {"id"=>"1"}
+  [1m[36mRoom Load (0.3ms)[0m  [1m[34mSELECT  "rooms".* FROM "rooms" WHERE "rooms"."id" = ? LIMIT ?[0m  [["id", 1], ["LIMIT", 1]]
+  ↳ app/controllers/rooms_controller.rb:87
+  Rendering rooms/show.json.jbuilder
+  [1m[36mReservation Load (0.3ms)[0m  [1m[34mSELECT "reservations".* FROM "reservations" WHERE "reservations"."room_id" = ?[0m  [["room_id", 1]]
+  ↳ /usr/lib/ruby/gems/2.5.0/gems/jbuilder-2.7.0/lib/jbuilder.rb:297
+  Rendered rooms/_reservations.json.jbuilder (1.0ms)
+  Rendered rooms/_room.json.jbuilder (6.3ms)
+  Rendered rooms/show.json.jbuilder (8.6ms)
+Completed 200 OK in 15ms (Views: 11.6ms | ActiveRecord: 0.5ms)
+
+
+Started GET "/rooms/1.json" for 127.0.0.1 at 2018-06-02 02:45:18 +0200
+Processing by RoomsController#show as JSON
+  Parameters: {"id"=>"1"}
+  [1m[36mRoom Load (0.1ms)[0m  [1m[34mSELECT  "rooms".* FROM "rooms" WHERE "rooms"."id" = ? LIMIT ?[0m  [["id", 1], ["LIMIT", 1]]
+  ↳ app/controllers/rooms_controller.rb:87
+  Rendering rooms/show.json.jbuilder
+  [1m[36mReservation Load (0.3ms)[0m  [1m[34mSELECT "reservations".* FROM "reservations" WHERE "reservations"."room_id" = ? ORDER BY created_at[0m  [["room_id", 1]]
+  ↳ /usr/lib/ruby/gems/2.5.0/gems/jbuilder-2.7.0/lib/jbuilder.rb:297
+  Rendered rooms/_reservations.json.jbuilder (0.3ms)
+  Rendered rooms/_room.json.jbuilder (11.1ms)
+  Rendered rooms/show.json.jbuilder (11.9ms)
+Completed 200 OK in 29ms (Views: 12.8ms | ActiveRecord: 1.4ms)
+
+
+Started GET "/rooms/1.json" for 127.0.0.1 at 2018-06-02 02:45:45 +0200
+Processing by RoomsController#show as JSON
+  Parameters: {"id"=>"1"}
+  [1m[36mRoom Load (0.9ms)[0m  [1m[34mSELECT  "rooms".* FROM "rooms" WHERE "rooms"."id" = ? LIMIT ?[0m  [["id", 1], ["LIMIT", 1]]
+  ↳ app/controllers/rooms_controller.rb:87
+  Rendering rooms/show.json.jbuilder
+  [1m[36mReservation Load (0.4ms)[0m  [1m[34mSELECT "reservations".* FROM "reservations" WHERE "reservations"."room_id" = ? ORDER BY created_at[0m  [["room_id", 1]]
+  ↳ /usr/lib/ruby/gems/2.5.0/gems/jbuilder-2.7.0/lib/jbuilder.rb:297
+  Rendered rooms/_reservations.json.jbuilder (0.5ms)
+  Rendered rooms/_room.json.jbuilder (5.9ms)
+  Rendered rooms/show.json.jbuilder (8.1ms)
+Completed 200 OK in 23ms (Views: 14.3ms | ActiveRecord: 1.3ms)
+
+
+Started GET "/rooms/1.json" for 127.0.0.1 at 2018-06-02 02:47:11 +0200
+Processing by RoomsController#show as JSON
+  Parameters: {"id"=>"1"}
+  [1m[36mRoom Load (0.3ms)[0m  [1m[34mSELECT  "rooms".* FROM "rooms" WHERE "rooms"."id" = ? LIMIT ?[0m  [["id", 1], ["LIMIT", 1]]
+  ↳ app/controllers/rooms_controller.rb:87
+  Rendering rooms/show.json.jbuilder
+  [1m[36mReservation Load (0.2ms)[0m  [1m[34mSELECT "reservations".* FROM "reservations" WHERE "reservations"."room_id" = ? ORDER BY created_at[0m  [["room_id", 1]]
+  ↳ /usr/lib/ruby/gems/2.5.0/gems/jbuilder-2.7.0/lib/jbuilder.rb:297
+  Rendered rooms/_reservations.json.jbuilder (0.3ms)
+  Rendered rooms/_room.json.jbuilder (3.2ms)
+  Rendered rooms/show.json.jbuilder (4.5ms)
+Completed 200 OK in 9ms (Views: 6.3ms | ActiveRecord: 0.5ms)
+
+
