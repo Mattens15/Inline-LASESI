@@ -26,6 +26,7 @@ gem 'haml-rails'
 gem 'bootstrap'
 gem 'omniauth'
 gem 'omniauth-facebook'
+gem 'devise_invitable'
 # Use Redis adapter to run Action Cable in production
 # gem 'redis', '~> 4.0'
 # Use ActiveModel has_secure_password
