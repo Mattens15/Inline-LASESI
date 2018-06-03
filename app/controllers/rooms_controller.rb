@@ -29,13 +29,9 @@ class RoomsController < ApplicationController
     @room = Room.new(room_params)
     
     #AL MOMENTO SENZA LA DEFINIZIONE DELLA SESSIONE, E' MEGLIO COMMENTARLO
-    #@room.powers.create(self.id, current_user.id)
+    #@room.add_room_host(current_user.id)
     respond_to do |format|
       if @room.save
-        cal = Inline::Application.config.cal
-        cal.insert_event(Rails.application.secrets.google_calendar_id, @room.update_event)
-        @event_list = cal.list_events(Rails.application.secrets.google_calendar_id)
-        
         format.html { redirect_to @room, notice: 'Room was successfully created.' }
         format.json { render :show, status: :created, location: @room }
       else
@@ -75,6 +71,7 @@ class RoomsController < ApplicationController
     
     @room.destroy if(current_user.id == @room.user_id)
     #DISTRUZIONE EVENTO
+    
     respond_to do |format|
       format.html { redirect_to rooms_url, notice: 'Room was successfully destroyed.' }
       format.json { head :no_content }
@@ -89,6 +86,6 @@ class RoomsController < ApplicationController
 
     # Never trust parameters from the scary internet, only allow the white list through.
     def room_params
-      params.require(:room).permit(:name, :description, :address, :max_participants, :latitude, :longitude, :time_from, :time_to, :avatar_file, :avatar_size, :avatar_updated_at, :datetime)
+      params.require(:room).permit(:name, :description, :recurrence, :address, :max_participants, :latitude, :longitude, :time_from, :time_to, :avatar_file, :avatar_size, :avatar_updated_at, :datetime)
     end
 end

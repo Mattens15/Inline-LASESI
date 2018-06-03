@@ -38,6 +38,7 @@ gem 'bootsnap', '>= 1.1.0', require: false
 group :development, :test do
   # Call 'byebug' anywhere in the code to stop execution and get a debugger console
   gem 'byebug', platforms: [:mri, :mingw, :x64_mingw]
+  gem 'rspec-rails', '~> 3.7'
 end
 
 group :development do
@@ -55,6 +56,9 @@ gem 'haml-rails'
 gem 'bootstrap'
 gem 'mapbox-gl-rails'
 gem 'capybara'
+gem 'omniauth'
+gem 'omniauth-facebook'
+gem 'devise_invitable'
 gem 'bcrypt', '~> 3.1.7'
 gem 'google-api-client', '~> 0.9.18'
 gem 'googleauth'
@@ -65,9 +69,3 @@ group :test do
   gem 'database_cleaner'
   gem 'rails-controller-testing'
 end
-
-
-group :development, :test do
-  gem 'rspec-rails', '~> 3.7'
-end
-

@@ -8426,3 +8426,2600 @@ Processing by RoomsController#show as JSON
 Completed 200 OK in 9ms (Views: 6.3ms | ActiveRecord: 0.5ms)
 
 
+Started GET "/" for 127.0.0.1 at 2018-06-03 00:49:33 +0200
+  [1m[35m (1.0ms)[0m  [1m[34mSELECT "schema_migrations"."version" FROM "schema_migrations" ORDER BY "schema_migrations"."version" ASC[0m
+  ↳ /usr/lib/ruby/gems/2.5.0/gems/web-console-3.6.2/lib/web_console/middleware.rb:135
+Processing by MapboxController#show as HTML
+  [1m[36mRoom Load (0.7ms)[0m  [1m[34mSELECT "rooms".* FROM "rooms"[0m
+  ↳ app/controllers/mapbox_controller.rb:8
+  Rendering mapbox/show.html.haml within layouts/application
+  Rendered mapbox/show.html.haml within layouts/application (29.7ms)
+  Rendered layouts/_navbar.html.haml (53.0ms)
+Completed 200 OK in 1681ms (Views: 1624.3ms | ActiveRecord: 1.0ms)
+
+
+Started GET "/dashboard.json" for 127.0.0.1 at 2018-06-03 00:49:39 +0200
+Processing by MapboxController#show as JSON
+  [1m[36mRoom Load (0.2ms)[0m  [1m[34mSELECT "rooms".* FROM "rooms"[0m
+  ↳ app/controllers/mapbox_controller.rb:8
+Completed 200 OK in 2ms (Views: 0.1ms | ActiveRecord: 0.2ms)
+
+
+Started GET "/rooms/1" for 127.0.0.1 at 2018-06-03 00:49:48 +0200
+Processing by RoomsController#show as HTML
+  Parameters: {"id"=>"1"}
+  [1m[36mRoom Load (0.8ms)[0m  [1m[34mSELECT  "rooms".* FROM "rooms" WHERE "rooms"."id" = ? LIMIT ?[0m  [["id", 1], ["LIMIT", 1]]
+  ↳ app/controllers/rooms_controller.rb:87
+  Rendering rooms/show.html.haml within layouts/application
+  [1m[36mPower Load (55.0ms)[0m  [1m[34mSELECT "powers".* FROM "powers" WHERE "powers"."room_id" = ?[0m  [["room_id", 1]]
+  ↳ app/views/rooms/show.html.haml:35
+  Rendered rooms/show.html.haml within layouts/application (305.2ms)
+  Rendered layouts/_navbar.html.haml (4.1ms)
+Completed 200 OK in 387ms (Views: 309.0ms | ActiveRecord: 56.9ms)
+
+
+Started GET "/rooms/1.json" for 127.0.0.1 at 2018-06-03 00:49:48 +0200
+Processing by RoomsController#show as JSON
+  Parameters: {"id"=>"1"}
+  [1m[36mRoom Load (0.1ms)[0m  [1m[34mSELECT  "rooms".* FROM "rooms" WHERE "rooms"."id" = ? LIMIT ?[0m  [["id", 1], ["LIMIT", 1]]
+  ↳ app/controllers/rooms_controller.rb:87
+  Rendering rooms/show.json.jbuilder
+  [1m[36mReservation Load (26.9ms)[0m  [1m[34mSELECT "reservations".* FROM "reservations" WHERE "reservations"."room_id" = ? ORDER BY created_at[0m  [["room_id", 1]]
+  ↳ /usr/lib/ruby/gems/2.5.0/gems/jbuilder-2.7.0/lib/jbuilder.rb:297
+  Rendered rooms/_reservations.json.jbuilder (0.6ms)
+  Rendered rooms/_room.json.jbuilder (69.6ms)
+  Rendered rooms/show.json.jbuilder (85.9ms)
+Completed 200 OK in 107ms (Views: 59.9ms | ActiveRecord: 29.7ms)
+
+
+Started GET "/rooms/1.json" for 127.0.0.1 at 2018-06-03 00:49:48 +0200
+Processing by RoomsController#show as JSON
+  Parameters: {"id"=>"1"}
+  [1m[36mRoom Load (0.2ms)[0m  [1m[34mSELECT  "rooms".* FROM "rooms" WHERE "rooms"."id" = ? LIMIT ?[0m  [["id", 1], ["LIMIT", 1]]
+  ↳ app/controllers/rooms_controller.rb:87
+  Rendering rooms/show.json.jbuilder
+  [1m[36mReservation Load (0.2ms)[0m  [1m[34mSELECT "reservations".* FROM "reservations" WHERE "reservations"."room_id" = ? ORDER BY created_at[0m  [["room_id", 1]]
+  ↳ /usr/lib/ruby/gems/2.5.0/gems/jbuilder-2.7.0/lib/jbuilder.rb:297
+  Rendered rooms/_reservations.json.jbuilder (0.4ms)
+  Rendered rooms/_room.json.jbuilder (2.7ms)
+  Rendered rooms/show.json.jbuilder (3.6ms)
+Completed 200 OK in 7ms (Views: 4.8ms | ActiveRecord: 0.4ms)
+
+
+Started GET "/rooms/" for 127.0.0.1 at 2018-06-03 00:49:58 +0200
+Processing by RoomsController#index as HTML
+  Rendering rooms/index.html.haml within layouts/application
+  [1m[36mRoom Load (0.4ms)[0m  [1m[34mSELECT "rooms".* FROM "rooms"[0m
+  ↳ app/views/rooms/index.html.haml:23
+  Rendered rooms/index.html.haml within layouts/application (13.4ms)
+  Rendered layouts/_navbar.html.haml (3.7ms)
+Completed 200 OK in 163ms (Views: 51.2ms | ActiveRecord: 0.4ms)
+
+
+Started GET "/rooms/new" for 127.0.0.1 at 2018-06-03 00:50:01 +0200
+Processing by RoomsController#new as HTML
+  Rendering rooms/new.html.haml within layouts/application
+  Rendered rooms/_form.html.haml (35.4ms)
+  Rendered rooms/new.html.haml within layouts/application (47.4ms)
+  Rendered layouts/_navbar.html.haml (3.8ms)
+Completed 200 OK in 117ms (Views: 73.7ms | ActiveRecord: 0.0ms)
+
+
+Started POST "/rooms" for 127.0.0.1 at 2018-06-03 00:50:29 +0200
+Processing by RoomsController#create as HTML
+  Parameters: {"utf8"=>"✓", "authenticity_token"=>"kThmBjw6VfjKp2UhRy2YDqnZSdEEM5USgXEv8CKEvJCpTwKm9NhhgGzkoyJCbv0WAPPSz1zaQk7+1euwzC3JkQ==", "room"=>{"name"=>"Daniele's room", "time_from"=>"2018-06-12 12:00", "time_to"=>"2018-06-20 12:00", "description"=>"", "max_participants"=>"25", "address"=>"", "latitude"=>"", "longitude"=>"", "recurrence"=>"true"}, "commit"=>"Save"}
+Unpermitted parameter: :recurrence
+  [1m[35m (0.2ms)[0m  [1m[36mbegin transaction[0m
+  ↳ app/controllers/rooms_controller.rb:34
+  [1m[35m (0.1ms)[0m  [1m[31mrollback transaction[0m
+  ↳ app/controllers/rooms_controller.rb:34
+  Rendering rooms/new.html.haml within layouts/application
+  Rendered rooms/_form.html.haml (10.6ms)
+  Rendered rooms/new.html.haml within layouts/application (15.1ms)
+  Rendered layouts/_navbar.html.haml (3.5ms)
+Completed 200 OK in 66ms (Views: 44.5ms | ActiveRecord: 0.3ms)
+
+
+  [1m[36mUser Load (158.4ms)[0m  [1m[34mSELECT  "users".* FROM "users" WHERE "users"."id" = ? LIMIT ?[0m  [["id", 1], ["LIMIT", 1]]
+  [1m[35m (0.3ms)[0m  [1m[36mbegin transaction[0m
+  [1m[36mRoom Create (200.3ms)[0m  [1m[32mINSERT INTO "rooms" ("name", "max_participants", "time_from", "time_to", "event", "user_id", "created_at", "updated_at") VALUES (?, ?, ?, ?, ?, ?, ?, ?)[0m  [["name", "Antoniooooo"], ["max_participants", 15], ["time_from", "2018-06-05 15:10:00"], ["time_to", "2018-06-05 15:30:00"], ["event", "{\"end\":{\"date_time\":\"2018-06-05T15:30:00+00:00\"},\"start\":{\"date_time\":\"2018-06-05T15:10:00+00:00\"},\"summary\":\"Antoniooooo\"}"], ["user_id", 1], ["created_at", "2018-06-02 22:52:12.463281"], ["updated_at", "2018-06-02 22:52:12.463281"]]
+  [1m[35m (195.6ms)[0m  [1m[36mcommit transaction[0m
+Started GET "/rooms" for 127.0.0.1 at 2018-06-03 00:52:17 +0200
+Processing by RoomsController#index as HTML
+  Rendering rooms/index.html.haml within layouts/application
+  [1m[36mRoom Load (0.2ms)[0m  [1m[34mSELECT "rooms".* FROM "rooms"[0m
+  ↳ app/views/rooms/index.html.haml:23
+  Rendered rooms/index.html.haml within layouts/application (4.2ms)
+  Rendered layouts/_navbar.html.haml (3.5ms)
+Completed 200 OK in 32ms (Views: 30.4ms | ActiveRecord: 0.2ms)
+
+
+Started GET "/rooms/2" for 127.0.0.1 at 2018-06-03 00:52:20 +0200
+Processing by RoomsController#show as HTML
+  Parameters: {"id"=>"2"}
+  [1m[36mRoom Load (0.2ms)[0m  [1m[34mSELECT  "rooms".* FROM "rooms" WHERE "rooms"."id" = ? LIMIT ?[0m  [["id", 2], ["LIMIT", 1]]
+  ↳ app/controllers/rooms_controller.rb:87
+  Rendering rooms/show.html.haml within layouts/application
+  [1m[36mPower Load (0.1ms)[0m  [1m[34mSELECT "powers".* FROM "powers" WHERE "powers"."room_id" = ?[0m  [["room_id", 2]]
+  ↳ app/views/rooms/show.html.haml:35
+  Rendered rooms/show.html.haml within layouts/application (10.6ms)
+  Rendered layouts/_navbar.html.haml (3.3ms)
+Completed 200 OK in 39ms (Views: 36.2ms | ActiveRecord: 0.3ms)
+
+
+Started GET "/rooms/2.json" for 127.0.0.1 at 2018-06-03 00:52:20 +0200
+Processing by RoomsController#show as JSON
+  Parameters: {"id"=>"2"}
+  [1m[36mRoom Load (0.1ms)[0m  [1m[34mSELECT  "rooms".* FROM "rooms" WHERE "rooms"."id" = ? LIMIT ?[0m  [["id", 2], ["LIMIT", 1]]
+  ↳ app/controllers/rooms_controller.rb:87
+  Rendering rooms/show.json.jbuilder
+  [1m[36mReservation Load (0.2ms)[0m  [1m[34mSELECT "reservations".* FROM "reservations" WHERE "reservations"."room_id" = ? ORDER BY created_at[0m  [["room_id", 2]]
+  ↳ /usr/lib/ruby/gems/2.5.0/gems/jbuilder-2.7.0/lib/jbuilder.rb:297
+  Rendered rooms/_room.json.jbuilder (3.6ms)
+  Rendered rooms/show.json.jbuilder (4.7ms)
+Completed 200 OK in 7ms (Views: 6.1ms | ActiveRecord: 0.3ms)
+
+
+Started GET "/rooms/2.json" for 127.0.0.1 at 2018-06-03 00:52:20 +0200
+Processing by RoomsController#show as JSON
+  Parameters: {"id"=>"2"}
+  [1m[36mRoom Load (0.1ms)[0m  [1m[34mSELECT  "rooms".* FROM "rooms" WHERE "rooms"."id" = ? LIMIT ?[0m  [["id", 2], ["LIMIT", 1]]
+  ↳ app/controllers/rooms_controller.rb:87
+  Rendering rooms/show.json.jbuilder
+  [1m[36mReservation Load (0.1ms)[0m  [1m[34mSELECT "reservations".* FROM "reservations" WHERE "reservations"."room_id" = ? ORDER BY created_at[0m  [["room_id", 2]]
+  ↳ /usr/lib/ruby/gems/2.5.0/gems/jbuilder-2.7.0/lib/jbuilder.rb:297
+  Rendered rooms/_room.json.jbuilder (1.4ms)
+  Rendered rooms/show.json.jbuilder (3.0ms)
+Completed 200 OK in 5ms (Views: 4.1ms | ActiveRecord: 0.3ms)
+
+
+Started GET "/rooms/" for 127.0.0.1 at 2018-06-03 00:53:03 +0200
+Processing by RoomsController#index as HTML
+  Rendering rooms/index.html.haml within layouts/application
+  [1m[36mRoom Load (0.2ms)[0m  [1m[34mSELECT "rooms".* FROM "rooms"[0m
+  ↳ app/views/rooms/index.html.haml:23
+  Rendered rooms/index.html.haml within layouts/application (3.8ms)
+  Rendered layouts/_navbar.html.haml (3.7ms)
+Completed 200 OK in 31ms (Views: 29.7ms | ActiveRecord: 0.2ms)
+
+
+Started GET "/rooms/new" for 127.0.0.1 at 2018-06-03 00:53:07 +0200
+Processing by RoomsController#new as HTML
+  Rendering rooms/new.html.haml within layouts/application
+  Rendered rooms/_form.html.haml (11.6ms)
+  Rendered rooms/new.html.haml within layouts/application (17.8ms)
+  Rendered layouts/_navbar.html.haml (3.7ms)
+Completed 200 OK in 45ms (Views: 43.4ms | ActiveRecord: 0.0ms)
+
+
+Started GET "/" for 127.0.0.1 at 2018-06-03 19:17:45 +0200
+  [1m[35m (0.1ms)[0m  [1m[34mSELECT "schema_migrations"."version" FROM "schema_migrations" ORDER BY "schema_migrations"."version" ASC[0m
+  ↳ /usr/lib/ruby/gems/2.5.0/gems/web-console-3.6.2/lib/web_console/middleware.rb:135
+Processing by MapboxController#show as HTML
+Completed 500 Internal Server Error in 25ms (ActiveRecord: 0.0ms)
+
+
+  
+SyntaxError (/home/daniele/Inline-LASESI/app/models/room.rb:87: syntax error, unexpected tSTRING_BEG, expecting '}'
+...    visibility: self.private? 'private':'public',
+...                              ^
+/home/daniele/Inline-LASESI/app/models/room.rb:87: syntax error, unexpected ',', expecting keyword_end
+...lf.private? 'private':'public',
+...                              ^
+/home/daniele/Inline-LASESI/app/models/room.rb:100: syntax error, unexpected '\n', expecting =>
+...ame, email: current_user.email)
+...                               ^):
+  
+app/models/room.rb:87: syntax error, unexpected tSTRING_BEG, expecting '}'
+app/models/room.rb:87: syntax error, unexpected ',', expecting keyword_end
+app/models/room.rb:100: syntax error, unexpected '\n', expecting =>
+app/controllers/mapbox_controller.rb:4:in `show'
+Started GET "/" for 127.0.0.1 at 2018-06-03 19:18:09 +0200
+Processing by MapboxController#show as HTML
+Completed 500 Internal Server Error in 1ms (ActiveRecord: 0.0ms)
+
+
+  
+SyntaxError (/home/daniele/Inline-LASESI/app/models/room.rb:100: syntax error, unexpected '\n', expecting =>
+...ame, email: current_user.email)
+...                               ^):
+  
+app/models/room.rb:100: syntax error, unexpected '\n', expecting =>
+app/controllers/mapbox_controller.rb:4:in `show'
+Started GET "/" for 127.0.0.1 at 2018-06-03 19:18:58 +0200
+Processing by MapboxController#show as HTML
+  [1m[36mRoom Load (17.4ms)[0m  [1m[34mSELECT "rooms".* FROM "rooms"[0m
+  ↳ app/controllers/mapbox_controller.rb:8
+  Rendering mapbox/show.html.haml within layouts/application
+  Rendered mapbox/show.html.haml within layouts/application (81.7ms)
+  Rendered layouts/_navbar.html.haml (13.7ms)
+Completed 200 OK in 4263ms (Views: 3190.2ms | ActiveRecord: 19.9ms)
+
+
+Started GET "/dashboard.json" for 127.0.0.1 at 2018-06-03 19:19:03 +0200
+Processing by MapboxController#show as JSON
+  [1m[36mRoom Load (0.2ms)[0m  [1m[34mSELECT "rooms".* FROM "rooms"[0m
+  ↳ app/controllers/mapbox_controller.rb:8
+Completed 200 OK in 3ms (Views: 0.1ms | ActiveRecord: 0.2ms)
+
+
+Started GET "/rooms/new" for 127.0.0.1 at 2018-06-03 19:19:09 +0200
+Processing by RoomsController#new as HTML
+  Rendering rooms/new.html.haml within layouts/application
+  Rendered rooms/_form.html.haml (68.2ms)
+  Rendered rooms/new.html.haml within layouts/application (97.9ms)
+  Rendered layouts/_navbar.html.haml (4.5ms)
+Completed 200 OK in 204ms (Views: 152.7ms | ActiveRecord: 0.0ms)
+
+
+Started GET "/rooms/new" for 127.0.0.1 at 2018-06-03 19:19:39 +0200
+Processing by RoomsController#new as HTML
+Completed 500 Internal Server Error in 1ms (ActiveRecord: 0.0ms)
+
+
+  
+SyntaxError (/home/daniele/Inline-LASESI/app/models/room.rb:100: syntax error, unexpected '\n', expecting =>
+...ame, email: current_user.email)
+...                               ^):
+  
+app/models/room.rb:100: syntax error, unexpected '\n', expecting =>
+app/controllers/rooms_controller.rb:19:in `new'
+Started GET "/rooms/new" for 127.0.0.1 at 2018-06-03 19:22:16 +0200
+Processing by RoomsController#new as HTML
+Completed 500 Internal Server Error in 1ms (ActiveRecord: 0.0ms)
+
+
+  
+SyntaxError (/home/daniele/Inline-LASESI/app/models/room.rb:100: syntax error, unexpected '\n', expecting =>
+...ame, email: current_user.email)
+...                               ^):
+  
+app/models/room.rb:100: syntax error, unexpected '\n', expecting =>
+app/controllers/rooms_controller.rb:19:in `new'
+Started GET "/rooms/new" for 127.0.0.1 at 2018-06-03 19:23:29 +0200
+Processing by RoomsController#new as HTML
+  Rendering rooms/new.html.haml within layouts/application
+  Rendered rooms/_form.html.haml (8.0ms)
+  Rendered rooms/new.html.haml within layouts/application (10.8ms)
+  Rendered layouts/_navbar.html.haml (3.8ms)
+Completed 200 OK in 47ms (Views: 32.8ms | ActiveRecord: 0.5ms)
+
+
+Started GET "/" for 127.0.0.1 at 2018-06-03 22:07:19 +0200
+  [1m[35m (0.1ms)[0m  [1m[34mSELECT "schema_migrations"."version" FROM "schema_migrations" ORDER BY "schema_migrations"."version" ASC[0m
+  ↳ /usr/lib/ruby/gems/2.5.0/gems/web-console-3.6.2/lib/web_console/middleware.rb:135
+Processing by MapboxController#show as HTML
+Completed 500 Internal Server Error in 89ms (ActiveRecord: 1.4ms)
+
+
+  
+NoMethodError (undefined method `befor_destroy' for #<Class:0x00007fc780c97620>):
+  
+app/models/room.rb:3:in `<class:Room>'
+app/models/room.rb:1:in `<main>'
+app/controllers/mapbox_controller.rb:4:in `show'
+Started GET "/" for 127.0.0.1 at 2018-06-03 22:07:30 +0200
+Processing by MapboxController#show as HTML
+  [1m[36mRoom Load (51.2ms)[0m  [1m[34mSELECT "rooms".* FROM "rooms"[0m
+  ↳ app/controllers/mapbox_controller.rb:8
+  Rendering mapbox/show.html.haml within layouts/application
+  Rendered mapbox/show.html.haml within layouts/application (190.5ms)
+  Rendered layouts/_navbar.html.haml (21.5ms)
+Completed 200 OK in 5953ms (Views: 4232.4ms | ActiveRecord: 54.0ms)
+
+
+Started GET "/dashboard.json" for 127.0.0.1 at 2018-06-03 22:07:48 +0200
+Processing by MapboxController#show as JSON
+  [1m[36mRoom Load (0.2ms)[0m  [1m[34mSELECT "rooms".* FROM "rooms"[0m
+  ↳ app/controllers/mapbox_controller.rb:8
+Completed 200 OK in 1ms (Views: 0.1ms | ActiveRecord: 0.2ms)
+
+
+Started GET "/" for 127.0.0.1 at 2018-06-03 22:15:29 +0200
+Processing by MapboxController#show as HTML
+  [1m[36mRoom Load (0.2ms)[0m  [1m[34mSELECT "rooms".* FROM "rooms"[0m
+  ↳ app/controllers/mapbox_controller.rb:8
+  Rendering mapbox/show.html.haml within layouts/application
+  Rendered mapbox/show.html.haml within layouts/application (4.3ms)
+  Rendered layouts/_navbar.html.haml (3.2ms)
+Completed 200 OK in 39ms (Views: 24.6ms | ActiveRecord: 0.5ms)
+
+
+Started GET "/dashboard.json" for 127.0.0.1 at 2018-06-03 22:15:32 +0200
+Processing by MapboxController#show as JSON
+  [1m[36mRoom Load (0.2ms)[0m  [1m[34mSELECT "rooms".* FROM "rooms"[0m
+  ↳ app/controllers/mapbox_controller.rb:8
+Completed 200 OK in 1ms (Views: 0.1ms | ActiveRecord: 0.2ms)
+
+
+Started GET "/" for 127.0.0.1 at 2018-06-03 22:19:46 +0200
+Processing by MapboxController#show as HTML
+  [1m[36mRoom Load (0.1ms)[0m  [1m[34mSELECT "rooms".* FROM "rooms"[0m
+  ↳ app/controllers/mapbox_controller.rb:8
+  Rendering mapbox/show.html.haml within layouts/application
+  Rendered mapbox/show.html.haml within layouts/application (5.1ms)
+  Rendered layouts/_navbar.html.haml (4.0ms)
+Completed 200 OK in 50ms (Views: 27.5ms | ActiveRecord: 0.6ms)
+
+
+Started GET "/dashboard.json" for 127.0.0.1 at 2018-06-03 22:19:46 +0200
+Processing by MapboxController#show as JSON
+  [1m[36mRoom Load (0.2ms)[0m  [1m[34mSELECT "rooms".* FROM "rooms"[0m
+  ↳ app/controllers/mapbox_controller.rb:8
+Completed 200 OK in 1ms (Views: 0.1ms | ActiveRecord: 0.2ms)
+
+
+Started GET "/rooms/new" for 127.0.0.1 at 2018-06-03 22:19:49 +0200
+Processing by RoomsController#new as HTML
+  Rendering rooms/new.html.haml within layouts/application
+  Rendered rooms/_form.html.haml (390.4ms)
+  Rendered rooms/new.html.haml within layouts/application (407.6ms)
+  Rendered layouts/_navbar.html.haml (4.5ms)
+Completed 200 OK in 500ms (Views: 465.3ms | ActiveRecord: 0.0ms)
+
+
+Started POST "/rooms" for 127.0.0.1 at 2018-06-03 22:20:26 +0200
+Processing by RoomsController#create as HTML
+  Parameters: {"utf8"=>"✓", "authenticity_token"=>"3nrz5og2nR9GukRjfbvgZum+Yl2MznB4dZoiVu57cvuQbNYaeVhURNTRmXZMOecopeg7IpKwiOO3rb9wE06DKw==", "room"=>{"name"=>"Danielelelele", "time_from"=>"2018-06-13 12:00", "time_to"=>"2018-06-21 12:00", "description"=>"Room bellissima di Daniele FEdeli Bella  wajò", "max_participants"=>"", "address"=>"via Di Vallelunga, 00068 Rignano Flaminio Roma, Italy", "latitude"=>"42.189579", "longitude"=>"12.49696", "recurrence"=>"true"}, "commit"=>"Save"}
+Completed 500 Internal Server Error in 76ms (ActiveRecord: 0.0ms)
+
+
+  
+NameError (undefined local variable or method `current_user' for #<RoomsController:0x00007fc785959d78>):
+  
+app/controllers/rooms_controller.rb:32:in `create'
+Started POST "/rooms" for 127.0.0.1 at 2018-06-03 22:20:55 +0200
+Processing by RoomsController#create as HTML
+  Parameters: {"utf8"=>"✓", "authenticity_token"=>"3nrz5og2nR9GukRjfbvgZum+Yl2MznB4dZoiVu57cvuQbNYaeVhURNTRmXZMOecopeg7IpKwiOO3rb9wE06DKw==", "room"=>{"name"=>"Danielelelele", "time_from"=>"2018-06-13 12:00", "time_to"=>"2018-06-21 12:00", "description"=>"Room bellissima di Daniele FEdeli Bella  wajò", "max_participants"=>"", "address"=>"via Di Vallelunga, 00068 Rignano Flaminio Roma, Italy", "latitude"=>"42.189579", "longitude"=>"12.49696", "recurrence"=>"true"}, "commit"=>"Save"}
+  [1m[35m (0.0ms)[0m  [1m[36mbegin transaction[0m
+  ↳ app/controllers/rooms_controller.rb:34
+  [1m[35m (0.2ms)[0m  [1m[31mrollback transaction[0m
+  ↳ app/controllers/rooms_controller.rb:34
+  Rendering rooms/new.html.haml within layouts/application
+  Rendered rooms/_form.html.haml (13.9ms)
+  Rendered rooms/new.html.haml within layouts/application (21.8ms)
+  Rendered layouts/_navbar.html.haml (3.2ms)
+Completed 200 OK in 2604ms (Views: 46.8ms | ActiveRecord: 0.8ms)
+
+
+Started POST "/rooms" for 127.0.0.1 at 2018-06-03 22:21:32 +0200
+Processing by RoomsController#create as HTML
+  Parameters: {"utf8"=>"✓", "authenticity_token"=>"5N0uTVe7ct945sxjgZzR69FjJa5TrdlHIea8pjWYi6GqywuxptW7hOqNEXawHtalnTV80U3TIdzj0SGAyK16cQ==", "room"=>{"name"=>"Danielelelele", "time_from"=>"2018-06-13 12:00", "time_to"=>"2018-06-21 12:00", "description"=>"Room bellissima di Daniele FEdeli Bella  wajò", "max_participants"=>"15", "address"=>"via Di Vallelunga, 00068 Rignano Flaminio Roma, Italy", "latitude"=>"42.189579", "longitude"=>"12.49696", "recurrence"=>"true"}, "commit"=>"Save"}
+  [1m[35m (0.1ms)[0m  [1m[36mbegin transaction[0m
+  ↳ app/controllers/rooms_controller.rb:34
+  [1m[36mRoom Create (1454.2ms)[0m  [1m[32mINSERT INTO "rooms" ("name", "description", "max_participants", "address", "latitude", "longitude", "time_from", "time_to", "recurrence", "created_at", "updated_at") VALUES (?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?)[0m  [["name", "Danielelelele"], ["description", "Room bellissima di Daniele FEdeli Bella  wajò"], ["max_participants", 15], ["address", "via Di Vallelunga, 00068 Rignano Flaminio Roma, Italy"], ["latitude", 42.189579], ["longitude", 12.49696], ["time_from", "2018-06-13 12:00:00"], ["time_to", "2018-06-21 12:00:00"], ["recurrence", "true"], ["created_at", "2018-06-03 20:21:32.372997"], ["updated_at", "2018-06-03 20:21:32.372997"]]
+  ↳ app/controllers/rooms_controller.rb:34
+  [1m[35m (0.5ms)[0m  [1m[31mrollback transaction[0m
+  ↳ app/controllers/rooms_controller.rb:34
+Completed 500 Internal Server Error in 1485ms (ActiveRecord: 1455.4ms)
+
+
+  
+NoMethodError (undefined method `user' for #<Room:0x00005562e913c210>):
+  
+app/models/room.rb:82:in `update_event'
+app/models/room.rb:2:in `block in <class:Room>'
+app/controllers/rooms_controller.rb:34:in `block in create'
+app/controllers/rooms_controller.rb:33:in `create'
+Started POST "/rooms" for 127.0.0.1 at 2018-06-03 22:22:17 +0200
+Processing by RoomsController#create as HTML
+  Parameters: {"utf8"=>"✓", "authenticity_token"=>"5N0uTVe7ct945sxjgZzR69FjJa5TrdlHIea8pjWYi6GqywuxptW7hOqNEXawHtalnTV80U3TIdzj0SGAyK16cQ==", "room"=>{"name"=>"Danielelelele", "time_from"=>"2018-06-13 12:00", "time_to"=>"2018-06-21 12:00", "description"=>"Room bellissima di Daniele FEdeli Bella  wajò", "max_participants"=>"15", "address"=>"via Di Vallelunga, 00068 Rignano Flaminio Roma, Italy", "latitude"=>"42.189579", "longitude"=>"12.49696", "recurrence"=>"true"}, "commit"=>"Save"}
+  [1m[35m (0.0ms)[0m  [1m[36mbegin transaction[0m
+  ↳ app/controllers/rooms_controller.rb:34
+  [1m[36mRoom Create (0.2ms)[0m  [1m[32mINSERT INTO "rooms" ("name", "description", "max_participants", "address", "latitude", "longitude", "time_from", "time_to", "recurrence", "created_at", "updated_at") VALUES (?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?)[0m  [["name", "Danielelelele"], ["description", "Room bellissima di Daniele FEdeli Bella  wajò"], ["max_participants", 15], ["address", "via Di Vallelunga, 00068 Rignano Flaminio Roma, Italy"], ["latitude", 42.189579], ["longitude", 12.49696], ["time_from", "2018-06-13 12:00:00"], ["time_to", "2018-06-21 12:00:00"], ["recurrence", "true"], ["created_at", "2018-06-03 20:22:17.540071"], ["updated_at", "2018-06-03 20:22:17.540071"]]
+  ↳ app/controllers/rooms_controller.rb:34
+  [1m[35m (0.1ms)[0m  [1m[31mrollback transaction[0m
+  ↳ app/controllers/rooms_controller.rb:34
+Completed 500 Internal Server Error in 18ms (ActiveRecord: 0.8ms)
+
+
+  
+NoMethodError (undefined method `user' for #<Room:0x00007fc785339538>):
+  
+app/models/room.rb:82:in `update_event'
+app/models/room.rb:2:in `block in <class:Room>'
+app/controllers/rooms_controller.rb:34:in `block in create'
+app/controllers/rooms_controller.rb:33:in `create'
+Started GET "/rooms" for 127.0.0.1 at 2018-06-03 22:22:20 +0200
+Processing by RoomsController#index as HTML
+  Rendering rooms/index.html.haml within layouts/application
+  [1m[36mRoom Load (0.5ms)[0m  [1m[34mSELECT "rooms".* FROM "rooms"[0m
+  ↳ app/views/rooms/index.html.haml:23
+  Rendered rooms/index.html.haml within layouts/application (17.2ms)
+  Rendered layouts/_navbar.html.haml (3.8ms)
+Completed 200 OK in 91ms (Views: 58.1ms | ActiveRecord: 0.5ms)
+
+
+Started GET "/rooms/new" for 127.0.0.1 at 2018-06-03 22:22:23 +0200
+Processing by RoomsController#new as HTML
+  Rendering rooms/new.html.haml within layouts/application
+  Rendered rooms/_form.html.haml (12.9ms)
+  Rendered rooms/new.html.haml within layouts/application (17.5ms)
+  Rendered layouts/_navbar.html.haml (3.7ms)
+Completed 200 OK in 44ms (Views: 42.2ms | ActiveRecord: 0.0ms)
+
+
+Started GET "/rooms/new" for 127.0.0.1 at 2018-06-03 22:23:01 +0200
+Processing by RoomsController#new as HTML
+  Rendering rooms/new.html.haml within layouts/application
+  Rendered rooms/_form.html.haml (20.5ms)
+  Rendered rooms/new.html.haml within layouts/application (25.6ms)
+Started GET "/rooms/new" for 127.0.0.1 at 2018-06-03 22:23:01 +0200
+Processing by RoomsController#new as HTML
+  Rendering rooms/new.html.haml within layouts/application
+  Rendered rooms/_form.html.haml (13.5ms)
+  Rendered rooms/new.html.haml within layouts/application (17.0ms)
+  Rendered layouts/_navbar.html.haml (6.8ms)
+Completed 200 OK in 118ms (Views: 116.4ms | ActiveRecord: 0.0ms)
+
+
+  Rendered layouts/_navbar.html.haml (7.3ms)
+Completed 200 OK in 88ms (Views: 87.6ms | ActiveRecord: 0.0ms)
+
+
+Started POST "/rooms" for 127.0.0.1 at 2018-06-03 22:23:54 +0200
+Processing by RoomsController#create as HTML
+  Parameters: {"utf8"=>"✓", "authenticity_token"=>"pU6PMBAJVpf3bUbSBAZjeq4kTo3tAH0hZ7OONKMLqGXrWKrM4WefzGUGm8c1hGQ04nIX8vN+hbqlhBMSXj5ZtQ==", "room"=>{"name"=>"Daniele's room", "time_from"=>"2018-06-07 15:00", "time_to"=>"2018-06-10 15:00", "description"=>"Room Bellissima prova 123", "max_participants"=>"12", "address"=>"via Di Vallelunga, 00068 Rignano Flaminio Roma, Italy", "latitude"=>"42.189579", "longitude"=>"12.49696", "recurrence"=>"true"}, "commit"=>"Save"}
+  [1m[35m (0.0ms)[0m  [1m[36mbegin transaction[0m
+  ↳ app/controllers/rooms_controller.rb:34
+  [1m[36mRoom Create (0.2ms)[0m  [1m[32mINSERT INTO "rooms" ("name", "description", "max_participants", "address", "latitude", "longitude", "time_from", "time_to", "recurrence", "created_at", "updated_at") VALUES (?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?)[0m  [["name", "Daniele's room"], ["description", "Room Bellissima prova 123"], ["max_participants", 12], ["address", "via Di Vallelunga, 00068 Rignano Flaminio Roma, Italy"], ["latitude", 42.189579], ["longitude", 12.49696], ["time_from", "2018-06-07 15:00:00"], ["time_to", "2018-06-10 15:00:00"], ["recurrence", "true"], ["created_at", "2018-06-03 20:23:54.321682"], ["updated_at", "2018-06-03 20:23:54.321682"]]
+  ↳ app/controllers/rooms_controller.rb:34
+  [1m[35m (0.1ms)[0m  [1m[31mrollback transaction[0m
+  ↳ app/controllers/rooms_controller.rb:34
+Completed 500 Internal Server Error in 4ms (ActiveRecord: 0.3ms)
+
+
+  
+NoMethodError (undefined method `user' for #<Room:0x00007fc7852b2790>):
+  
+app/models/room.rb:82:in `update_event'
+app/models/room.rb:2:in `block in <class:Room>'
+app/controllers/rooms_controller.rb:34:in `block in create'
+app/controllers/rooms_controller.rb:33:in `create'
+Started POST "/rooms" for 127.0.0.1 at 2018-06-03 22:24:12 +0200
+Processing by RoomsController#create as HTML
+  Parameters: {"utf8"=>"✓", "authenticity_token"=>"pU6PMBAJVpf3bUbSBAZjeq4kTo3tAH0hZ7OONKMLqGXrWKrM4WefzGUGm8c1hGQ04nIX8vN+hbqlhBMSXj5ZtQ==", "room"=>{"name"=>"Daniele's room", "time_from"=>"2018-06-07 15:00", "time_to"=>"2018-06-10 15:00", "description"=>"Room Bellissima prova 123", "max_participants"=>"12", "address"=>"via Di Vallelunga, 00068 Rignano Flaminio Roma, Italy", "latitude"=>"42.189579", "longitude"=>"12.49696", "recurrence"=>"true"}, "commit"=>"Save"}
+  [1m[35m (0.1ms)[0m  [1m[36mbegin transaction[0m
+  ↳ app/controllers/rooms_controller.rb:34
+  [1m[36mRoom Create (0.2ms)[0m  [1m[32mINSERT INTO "rooms" ("name", "description", "max_participants", "address", "latitude", "longitude", "time_from", "time_to", "recurrence", "created_at", "updated_at") VALUES (?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?)[0m  [["name", "Daniele's room"], ["description", "Room Bellissima prova 123"], ["max_participants", 12], ["address", "via Di Vallelunga, 00068 Rignano Flaminio Roma, Italy"], ["latitude", 42.189579], ["longitude", 12.49696], ["time_from", "2018-06-07 15:00:00"], ["time_to", "2018-06-10 15:00:00"], ["recurrence", "true"], ["created_at", "2018-06-03 20:24:13.002874"], ["updated_at", "2018-06-03 20:24:13.002874"]]
+  ↳ app/controllers/rooms_controller.rb:34
+  [1m[35m (0.1ms)[0m  [1m[31mrollback transaction[0m
+  ↳ app/controllers/rooms_controller.rb:34
+Completed 500 Internal Server Error in 18ms (ActiveRecord: 0.9ms)
+
+
+  
+NoMethodError (undefined method `Creator' for Google::Apis::CalendarV3::Event:Class):
+  
+app/models/room.rb:82:in `update_event'
+app/models/room.rb:2:in `block in <class:Room>'
+app/controllers/rooms_controller.rb:34:in `block in create'
+app/controllers/rooms_controller.rb:33:in `create'
+Started POST "/rooms" for 127.0.0.1 at 2018-06-03 22:24:53 +0200
+Processing by RoomsController#create as HTML
+  Parameters: {"utf8"=>"✓", "authenticity_token"=>"pU6PMBAJVpf3bUbSBAZjeq4kTo3tAH0hZ7OONKMLqGXrWKrM4WefzGUGm8c1hGQ04nIX8vN+hbqlhBMSXj5ZtQ==", "room"=>{"name"=>"Daniele's room", "time_from"=>"2018-06-07 15:00", "time_to"=>"2018-06-10 15:00", "description"=>"Room Bellissima prova 123", "max_participants"=>"12", "address"=>"via Di Vallelunga, 00068 Rignano Flaminio Roma, Italy", "latitude"=>"42.189579", "longitude"=>"12.49696", "recurrence"=>"true"}, "commit"=>"Save"}
+  [1m[35m (0.0ms)[0m  [1m[36mbegin transaction[0m
+  ↳ app/controllers/rooms_controller.rb:34
+  [1m[36mRoom Create (0.2ms)[0m  [1m[32mINSERT INTO "rooms" ("name", "description", "max_participants", "address", "latitude", "longitude", "time_from", "time_to", "recurrence", "created_at", "updated_at") VALUES (?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?)[0m  [["name", "Daniele's room"], ["description", "Room Bellissima prova 123"], ["max_participants", 12], ["address", "via Di Vallelunga, 00068 Rignano Flaminio Roma, Italy"], ["latitude", 42.189579], ["longitude", 12.49696], ["time_from", "2018-06-07 15:00:00"], ["time_to", "2018-06-10 15:00:00"], ["recurrence", "true"], ["created_at", "2018-06-03 20:24:53.154504"], ["updated_at", "2018-06-03 20:24:53.154504"]]
+  ↳ app/controllers/rooms_controller.rb:34
+  [1m[35m (0.1ms)[0m  [1m[31mrollback transaction[0m
+  ↳ app/controllers/rooms_controller.rb:34
+Completed 500 Internal Server Error in 18ms (ActiveRecord: 0.7ms)
+
+
+  
+NoMethodError (undefined method `Creator' for Google::Apis::CalendarV3::Event:Class):
+  
+app/models/room.rb:82:in `update_event'
+app/models/room.rb:2:in `block in <class:Room>'
+app/controllers/rooms_controller.rb:34:in `block in create'
+app/controllers/rooms_controller.rb:33:in `create'
+Started GET "/rooms" for 127.0.0.1 at 2018-06-03 22:27:31 +0200
+Processing by RoomsController#index as HTML
+  Rendering rooms/index.html.haml within layouts/application
+  [1m[36mRoom Load (0.2ms)[0m  [1m[34mSELECT "rooms".* FROM "rooms"[0m
+  ↳ app/views/rooms/index.html.haml:23
+  Rendered rooms/index.html.haml within layouts/application (14.0ms)
+  Rendered layouts/_navbar.html.haml (3.7ms)
+Completed 200 OK in 41ms (Views: 36.1ms | ActiveRecord: 0.6ms)
+
+
+Started GET "/rooms/new" for 127.0.0.1 at 2018-06-03 22:27:34 +0200
+Processing by RoomsController#new as HTML
+  Rendering rooms/new.html.haml within layouts/application
+  Rendered rooms/_form.html.haml (12.3ms)
+  Rendered rooms/new.html.haml within layouts/application (18.3ms)
+  Rendered layouts/_navbar.html.haml (4.6ms)
+Completed 200 OK in 54ms (Views: 51.8ms | ActiveRecord: 0.0ms)
+
+
+Started POST "/rooms" for 127.0.0.1 at 2018-06-03 22:28:14 +0200
+Processing by RoomsController#create as HTML
+  Parameters: {"utf8"=>"✓", "authenticity_token"=>"CZifmpmxXloOG49ks8IeRGV4m0J68lF+qLhpuIjfdp9HjrpmaN+XAZxwUnGCQBkKKS7CPWSMqeVqj/SedeqHTw==", "room"=>{"name"=>"Daniele's room", "time_from"=>"2018-06-10 19:00", "time_to"=>"2018-06-13 19:00", "description"=>"Prova123", "max_participants"=>"55", "address"=>"Rignano Flaminio, Roma, Italy", "latitude"=>"42.2", "longitude"=>"12.48333", "recurrence"=>"true"}, "commit"=>"Save"}
+  [1m[35m (0.1ms)[0m  [1m[36mbegin transaction[0m
+  ↳ app/controllers/rooms_controller.rb:34
+  [1m[36mRoom Create (0.3ms)[0m  [1m[32mINSERT INTO "rooms" ("name", "description", "max_participants", "address", "latitude", "longitude", "time_from", "time_to", "recurrence", "created_at", "updated_at") VALUES (?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?)[0m  [["name", "Daniele's room"], ["description", "Prova123"], ["max_participants", 55], ["address", "Rignano Flaminio, Roma, Italy"], ["latitude", 42.2], ["longitude", 12.48333], ["time_from", "2018-06-10 19:00:00"], ["time_to", "2018-06-13 19:00:00"], ["recurrence", "true"], ["created_at", "2018-06-03 20:28:14.588536"], ["updated_at", "2018-06-03 20:28:14.588536"]]
+  ↳ app/controllers/rooms_controller.rb:34
+  [1m[35m (0.2ms)[0m  [1m[31mrollback transaction[0m
+  ↳ app/controllers/rooms_controller.rb:34
+Completed 500 Internal Server Error in 7ms (ActiveRecord: 0.5ms)
+
+
+  
+NameError (undefined local variable or method `create_attendees' for #<Room:0x00007fc7703334e0>):
+  
+app/models/room.rb:89:in `update_event'
+app/models/room.rb:2:in `block in <class:Room>'
+app/controllers/rooms_controller.rb:34:in `block in create'
+app/controllers/rooms_controller.rb:33:in `create'
+Started POST "/rooms" for 127.0.0.1 at 2018-06-03 22:28:33 +0200
+Processing by RoomsController#create as HTML
+  Parameters: {"utf8"=>"✓", "authenticity_token"=>"CZifmpmxXloOG49ks8IeRGV4m0J68lF+qLhpuIjfdp9HjrpmaN+XAZxwUnGCQBkKKS7CPWSMqeVqj/SedeqHTw==", "room"=>{"name"=>"Daniele's room", "time_from"=>"2018-06-10 19:00", "time_to"=>"2018-06-13 19:00", "description"=>"Prova123", "max_participants"=>"55", "address"=>"Rignano Flaminio, Roma, Italy", "latitude"=>"42.2", "longitude"=>"12.48333", "recurrence"=>"true"}, "commit"=>"Save"}
+  [1m[35m (0.0ms)[0m  [1m[36mbegin transaction[0m
+  ↳ app/controllers/rooms_controller.rb:34
+  [1m[36mRoom Create (0.2ms)[0m  [1m[32mINSERT INTO "rooms" ("name", "description", "max_participants", "address", "latitude", "longitude", "time_from", "time_to", "recurrence", "created_at", "updated_at") VALUES (?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?)[0m  [["name", "Daniele's room"], ["description", "Prova123"], ["max_participants", 55], ["address", "Rignano Flaminio, Roma, Italy"], ["latitude", 42.2], ["longitude", 12.48333], ["time_from", "2018-06-10 19:00:00"], ["time_to", "2018-06-13 19:00:00"], ["recurrence", "true"], ["created_at", "2018-06-03 20:28:33.772494"], ["updated_at", "2018-06-03 20:28:33.772494"]]
+  ↳ app/controllers/rooms_controller.rb:34
+  [1m[35m (0.1ms)[0m  [1m[31mrollback transaction[0m
+  ↳ app/controllers/rooms_controller.rb:34
+Completed 500 Internal Server Error in 18ms (ActiveRecord: 0.9ms)
+
+
+  
+NoMethodError (undefined method `create_attendees' for #<Room:0x00007fc7859789d0>):
+  
+app/models/room.rb:89:in `update_event'
+app/models/room.rb:2:in `block in <class:Room>'
+app/controllers/rooms_controller.rb:34:in `block in create'
+app/controllers/rooms_controller.rb:33:in `create'
+Started POST "/rooms" for 127.0.0.1 at 2018-06-03 22:28:55 +0200
+Processing by RoomsController#create as HTML
+  Parameters: {"utf8"=>"✓", "authenticity_token"=>"CZifmpmxXloOG49ks8IeRGV4m0J68lF+qLhpuIjfdp9HjrpmaN+XAZxwUnGCQBkKKS7CPWSMqeVqj/SedeqHTw==", "room"=>{"name"=>"Daniele's room", "time_from"=>"2018-06-10 19:00", "time_to"=>"2018-06-13 19:00", "description"=>"Prova123", "max_participants"=>"55", "address"=>"Rignano Flaminio, Roma, Italy", "latitude"=>"42.2", "longitude"=>"12.48333", "recurrence"=>"true"}, "commit"=>"Save"}
+  [1m[35m (0.0ms)[0m  [1m[36mbegin transaction[0m
+  ↳ app/controllers/rooms_controller.rb:34
+  [1m[36mRoom Create (0.2ms)[0m  [1m[32mINSERT INTO "rooms" ("name", "description", "max_participants", "address", "latitude", "longitude", "time_from", "time_to", "recurrence", "created_at", "updated_at") VALUES (?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?)[0m  [["name", "Daniele's room"], ["description", "Prova123"], ["max_participants", 55], ["address", "Rignano Flaminio, Roma, Italy"], ["latitude", 42.2], ["longitude", 12.48333], ["time_from", "2018-06-10 19:00:00"], ["time_to", "2018-06-13 19:00:00"], ["recurrence", "true"], ["created_at", "2018-06-03 20:28:55.079876"], ["updated_at", "2018-06-03 20:28:55.079876"]]
+  ↳ app/controllers/rooms_controller.rb:34
+  [1m[36mReservation Load (51.0ms)[0m  [1m[34mSELECT "reservations".* FROM "reservations" WHERE "reservations"."room_id" = ? ORDER BY created_at[0m  [["room_id", 3]]
+  ↳ app/models/room.rb:106
+  [1m[35m (2.3ms)[0m  [1m[31mrollback transaction[0m
+  ↳ app/controllers/rooms_controller.rb:34
+Completed 500 Internal Server Error in 2070ms (ActiveRecord: 55.3ms)
+
+
+  
+NoMethodError (undefined method `event_if' for #<Room:0x00007fc780f1ddb8>):
+  
+app/models/room.rb:93:in `update_event'
+app/models/room.rb:2:in `block in <class:Room>'
+app/controllers/rooms_controller.rb:34:in `block in create'
+app/controllers/rooms_controller.rb:33:in `create'
+Started POST "/rooms" for 127.0.0.1 at 2018-06-03 22:29:11 +0200
+Processing by RoomsController#create as HTML
+  Parameters: {"utf8"=>"✓", "authenticity_token"=>"CZifmpmxXloOG49ks8IeRGV4m0J68lF+qLhpuIjfdp9HjrpmaN+XAZxwUnGCQBkKKS7CPWSMqeVqj/SedeqHTw==", "room"=>{"name"=>"Daniele's room", "time_from"=>"2018-06-10 19:00", "time_to"=>"2018-06-13 19:00", "description"=>"Prova123", "max_participants"=>"55", "address"=>"Rignano Flaminio, Roma, Italy", "latitude"=>"42.2", "longitude"=>"12.48333", "recurrence"=>"true"}, "commit"=>"Save"}
+  [1m[35m (0.0ms)[0m  [1m[36mbegin transaction[0m
+  ↳ app/controllers/rooms_controller.rb:34
+  [1m[36mRoom Create (0.2ms)[0m  [1m[32mINSERT INTO "rooms" ("name", "description", "max_participants", "address", "latitude", "longitude", "time_from", "time_to", "recurrence", "created_at", "updated_at") VALUES (?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?)[0m  [["name", "Daniele's room"], ["description", "Prova123"], ["max_participants", 55], ["address", "Rignano Flaminio, Roma, Italy"], ["latitude", 42.2], ["longitude", 12.48333], ["time_from", "2018-06-10 19:00:00"], ["time_to", "2018-06-13 19:00:00"], ["recurrence", "true"], ["created_at", "2018-06-03 20:29:11.849221"], ["updated_at", "2018-06-03 20:29:11.849221"]]
+  ↳ app/controllers/rooms_controller.rb:34
+  [1m[36mReservation Load (0.1ms)[0m  [1m[34mSELECT "reservations".* FROM "reservations" WHERE "reservations"."room_id" = ? ORDER BY created_at[0m  [["room_id", 3]]
+  ↳ app/models/room.rb:106
+  [1m[35m (0.1ms)[0m  [1m[31mrollback transaction[0m
+  ↳ app/controllers/rooms_controller.rb:34
+Completed 500 Internal Server Error in 22ms (ActiveRecord: 1.1ms)
+
+
+  
+NoMethodError (undefined method `event_id' for #<Room:0x00007fc785410bc8>):
+  
+app/models/room.rb:93:in `update_event'
+app/models/room.rb:2:in `block in <class:Room>'
+app/controllers/rooms_controller.rb:34:in `block in create'
+app/controllers/rooms_controller.rb:33:in `create'
+  [1m[35m (0.1ms)[0m  [1m[34mSELECT "schema_migrations"."version" FROM "schema_migrations" ORDER BY "schema_migrations"."version" ASC[0m
+  ↳ /usr/lib/ruby/gems/2.5.0/gems/bootsnap-1.3.0/lib/bootsnap/load_path_cache/core_ext/kernel_require.rb:21
+  [1m[35m (496.9ms)[0m  [1m[34mSELECT "ar_internal_metadata"."value" FROM "ar_internal_metadata" WHERE "ar_internal_metadata"."key" = ?[0m  [["key", "environment"]]
+  ↳ /usr/lib/ruby/gems/2.5.0/gems/bootsnap-1.3.0/lib/bootsnap/load_path_cache/core_ext/kernel_require.rb:21
+  [1m[35m (0.3ms)[0m  [1m[34mSELECT "schema_migrations"."version" FROM "schema_migrations" ORDER BY "schema_migrations"."version" ASC[0m
+  ↳ /usr/lib/ruby/gems/2.5.0/gems/bootsnap-1.3.0/lib/bootsnap/load_path_cache/core_ext/kernel_require.rb:21
+  [1m[35m (0.1ms)[0m  [1m[34mSELECT "ar_internal_metadata"."value" FROM "ar_internal_metadata" WHERE "ar_internal_metadata"."key" = ?[0m  [["key", "environment"]]
+  ↳ /usr/lib/ruby/gems/2.5.0/gems/bootsnap-1.3.0/lib/bootsnap/load_path_cache/core_ext/kernel_require.rb:21
+  [1m[35m (0.1ms)[0m  [1m[34mSELECT "schema_migrations"."version" FROM "schema_migrations" ORDER BY "schema_migrations"."version" ASC[0m
+  ↳ /usr/lib/ruby/gems/2.5.0/gems/bootsnap-1.3.0/lib/bootsnap/load_path_cache/core_ext/kernel_require.rb:21
+  [1m[35m (0.1ms)[0m  [1m[34mSELECT "ar_internal_metadata"."value" FROM "ar_internal_metadata" WHERE "ar_internal_metadata"."key" = ?[0m  [["key", "environment"]]
+  ↳ /usr/lib/ruby/gems/2.5.0/gems/bootsnap-1.3.0/lib/bootsnap/load_path_cache/core_ext/kernel_require.rb:21
+  [1m[35m (0.0ms)[0m  [1m[34mSELECT sqlite_version(*)[0m
+  ↳ /usr/lib/ruby/gems/2.5.0/gems/bootsnap-1.3.0/lib/bootsnap/load_path_cache/core_ext/kernel_require.rb:21
+  [1m[35m (2069.9ms)[0m  [1m[35mCREATE TABLE "schema_migrations" ("version" varchar NOT NULL PRIMARY KEY)[0m
+  ↳ /usr/lib/ruby/gems/2.5.0/gems/bootsnap-1.3.0/lib/bootsnap/load_path_cache/core_ext/kernel_require.rb:21
+  [1m[35m (1100.8ms)[0m  [1m[35mCREATE TABLE "ar_internal_metadata" ("key" varchar NOT NULL PRIMARY KEY, "value" varchar, "created_at" datetime NOT NULL, "updated_at" datetime NOT NULL)[0m
+  ↳ /usr/lib/ruby/gems/2.5.0/gems/bootsnap-1.3.0/lib/bootsnap/load_path_cache/core_ext/kernel_require.rb:21
+  [1m[35m (0.4ms)[0m  [1m[34mSELECT "schema_migrations"."version" FROM "schema_migrations" ORDER BY "schema_migrations"."version" ASC[0m
+  ↳ /usr/lib/ruby/gems/2.5.0/gems/bootsnap-1.3.0/lib/bootsnap/load_path_cache/core_ext/kernel_require.rb:21
+Migrating to CreateRooms (20180521135820)
+  [1m[35m (0.3ms)[0m  [1m[36mbegin transaction[0m
+  ↳ /usr/lib/ruby/gems/2.5.0/gems/bootsnap-1.3.0/lib/bootsnap/load_path_cache/core_ext/kernel_require.rb:21
+  [1m[35m (0.4ms)[0m  [1m[35mCREATE TABLE "rooms" ("id" integer PRIMARY KEY AUTOINCREMENT NOT NULL, "name" varchar, "description" varchar, "fifo" boolean, "max_participants" integer, "address" varchar, "latitude" float, "longitude" float, "private" boolean, "max_unjoin_time" time, "avatar_file" varchar, "avatar_size" float, "avatar_updated_at" varchar, "time_from" datetime, "time_to" datetime, "recurrence" varchar, "event" json, "event_id" integer, "user_id" integer, "created_at" datetime NOT NULL, "updated_at" datetime NOT NULL)[0m
+  ↳ db/migrate/20180521135820_create_rooms.rb:3
+  [1m[35m (0.1ms)[0m  [1m[35mCREATE  INDEX "index_rooms_on_user_id" ON "rooms" ("user_id")[0m
+  ↳ db/migrate/20180521135820_create_rooms.rb:3
+  [1m[36mActiveRecord::SchemaMigration Create (0.2ms)[0m  [1m[32mINSERT INTO "schema_migrations" ("version") VALUES (?)[0m  [["version", "20180521135820"]]
+  ↳ /usr/lib/ruby/gems/2.5.0/gems/bootsnap-1.3.0/lib/bootsnap/load_path_cache/core_ext/kernel_require.rb:21
+  [1m[35m (1018.9ms)[0m  [1m[36mcommit transaction[0m
+  ↳ /usr/lib/ruby/gems/2.5.0/gems/bootsnap-1.3.0/lib/bootsnap/load_path_cache/core_ext/kernel_require.rb:21
+Migrating to CreateUsers (20180528143008)
+  [1m[35m (0.2ms)[0m  [1m[36mbegin transaction[0m
+  ↳ /usr/lib/ruby/gems/2.5.0/gems/bootsnap-1.3.0/lib/bootsnap/load_path_cache/core_ext/kernel_require.rb:21
+  [1m[35m (1.0ms)[0m  [1m[35mCREATE TABLE "users" ("id" integer PRIMARY KEY AUTOINCREMENT NOT NULL, "username" varchar, "email" varchar, "password_digest" varchar, "admin" boolean, "facebook" json, "google" json, "rating" json, "invitations" json, "created_at" datetime NOT NULL, "updated_at" datetime NOT NULL)[0m
+  ↳ db/migrate/20180528143008_create_users.rb:3
+  [1m[36mActiveRecord::SchemaMigration Create (0.1ms)[0m  [1m[32mINSERT INTO "schema_migrations" ("version") VALUES (?)[0m  [["version", "20180528143008"]]
+  ↳ /usr/lib/ruby/gems/2.5.0/gems/bootsnap-1.3.0/lib/bootsnap/load_path_cache/core_ext/kernel_require.rb:21
+  [1m[35m (1324.2ms)[0m  [1m[36mcommit transaction[0m
+  ↳ /usr/lib/ruby/gems/2.5.0/gems/bootsnap-1.3.0/lib/bootsnap/load_path_cache/core_ext/kernel_require.rb:21
+Migrating to CreateReservations (20180528233547)
+  [1m[35m (0.2ms)[0m  [1m[36mbegin transaction[0m
+  ↳ /usr/lib/ruby/gems/2.5.0/gems/bootsnap-1.3.0/lib/bootsnap/load_path_cache/core_ext/kernel_require.rb:21
+  [1m[35m (1.1ms)[0m  [1m[35mCREATE TABLE "reservations" ("id" integer PRIMARY KEY AUTOINCREMENT NOT NULL, "user_id" integer, "room_id" integer, "created_at" datetime NOT NULL, "updated_at" datetime NOT NULL, CONSTRAINT "fk_rails_48a92fce51"
+FOREIGN KEY ("user_id")
+  REFERENCES "users" ("id")
+, CONSTRAINT "fk_rails_78d1025283"
+FOREIGN KEY ("room_id")
+  REFERENCES "rooms" ("id")
+)[0m
+  ↳ db/migrate/20180528233547_create_reservations.rb:3
+  [1m[35m (0.1ms)[0m  [1m[35mCREATE  INDEX "index_reservations_on_user_id" ON "reservations" ("user_id")[0m
+  ↳ db/migrate/20180528233547_create_reservations.rb:3
+  [1m[35m (0.1ms)[0m  [1m[35mCREATE  INDEX "index_reservations_on_room_id" ON "reservations" ("room_id")[0m
+  ↳ db/migrate/20180528233547_create_reservations.rb:3
+  [1m[35m (0.1ms)[0m  [1m[35mCREATE UNIQUE INDEX "index_reservations_on_user_id_and_room_id" ON "reservations" ("user_id", "room_id")[0m
+  ↳ db/migrate/20180528233547_create_reservations.rb:9
+  [1m[36mActiveRecord::SchemaMigration Create (0.1ms)[0m  [1m[32mINSERT INTO "schema_migrations" ("version") VALUES (?)[0m  [["version", "20180528233547"]]
+  ↳ /usr/lib/ruby/gems/2.5.0/gems/bootsnap-1.3.0/lib/bootsnap/load_path_cache/core_ext/kernel_require.rb:21
+  [1m[35m (1217.6ms)[0m  [1m[36mcommit transaction[0m
+  ↳ /usr/lib/ruby/gems/2.5.0/gems/bootsnap-1.3.0/lib/bootsnap/load_path_cache/core_ext/kernel_require.rb:21
+Migrating to CreatePowers (20180528233631)
+  [1m[35m (0.1ms)[0m  [1m[36mbegin transaction[0m
+  ↳ /usr/lib/ruby/gems/2.5.0/gems/bootsnap-1.3.0/lib/bootsnap/load_path_cache/core_ext/kernel_require.rb:21
+  [1m[35m (0.3ms)[0m  [1m[35mCREATE TABLE "powers" ("id" integer PRIMARY KEY AUTOINCREMENT NOT NULL, "user_id" integer, "room_id" integer, "created_at" datetime NOT NULL, "updated_at" datetime NOT NULL, CONSTRAINT "fk_rails_c88e5c76c3"
+FOREIGN KEY ("user_id")
+  REFERENCES "users" ("id")
+, CONSTRAINT "fk_rails_c47f771459"
+FOREIGN KEY ("room_id")
+  REFERENCES "rooms" ("id")
+)[0m
+  ↳ db/migrate/20180528233631_create_powers.rb:3
+  [1m[35m (0.1ms)[0m  [1m[35mCREATE  INDEX "index_powers_on_user_id" ON "powers" ("user_id")[0m
+  ↳ db/migrate/20180528233631_create_powers.rb:3
+  [1m[35m (0.1ms)[0m  [1m[35mCREATE  INDEX "index_powers_on_room_id" ON "powers" ("room_id")[0m
+  ↳ db/migrate/20180528233631_create_powers.rb:3
+  [1m[35m (0.1ms)[0m  [1m[35mCREATE UNIQUE INDEX "index_powers_on_user_id_and_room_id" ON "powers" ("user_id", "room_id")[0m
+  ↳ db/migrate/20180528233631_create_powers.rb:9
+  [1m[36mActiveRecord::SchemaMigration Create (0.1ms)[0m  [1m[32mINSERT INTO "schema_migrations" ("version") VALUES (?)[0m  [["version", "20180528233631"]]
+  ↳ /usr/lib/ruby/gems/2.5.0/gems/bootsnap-1.3.0/lib/bootsnap/load_path_cache/core_ext/kernel_require.rb:21
+  [1m[35m (1142.8ms)[0m  [1m[36mcommit transaction[0m
+  ↳ /usr/lib/ruby/gems/2.5.0/gems/bootsnap-1.3.0/lib/bootsnap/load_path_cache/core_ext/kernel_require.rb:21
+  [1m[36mActiveRecord::InternalMetadata Load (0.1ms)[0m  [1m[34mSELECT  "ar_internal_metadata".* FROM "ar_internal_metadata" WHERE "ar_internal_metadata"."key" = ? LIMIT ?[0m  [["key", "environment"], ["LIMIT", 1]]
+  ↳ /usr/lib/ruby/gems/2.5.0/gems/bootsnap-1.3.0/lib/bootsnap/load_path_cache/core_ext/kernel_require.rb:21
+  [1m[35m (0.0ms)[0m  [1m[36mbegin transaction[0m
+  ↳ /usr/lib/ruby/gems/2.5.0/gems/bootsnap-1.3.0/lib/bootsnap/load_path_cache/core_ext/kernel_require.rb:21
+  [1m[36mActiveRecord::InternalMetadata Create (0.2ms)[0m  [1m[32mINSERT INTO "ar_internal_metadata" ("key", "value", "created_at", "updated_at") VALUES (?, ?, ?, ?)[0m  [["key", "environment"], ["value", "development"], ["created_at", "2018-06-03 20:30:04.301084"], ["updated_at", "2018-06-03 20:30:04.301084"]]
+  ↳ /usr/lib/ruby/gems/2.5.0/gems/bootsnap-1.3.0/lib/bootsnap/load_path_cache/core_ext/kernel_require.rb:21
+  [1m[35m (895.3ms)[0m  [1m[36mcommit transaction[0m
+  ↳ /usr/lib/ruby/gems/2.5.0/gems/bootsnap-1.3.0/lib/bootsnap/load_path_cache/core_ext/kernel_require.rb:21
+  [1m[35m (0.4ms)[0m  [1m[34mSELECT "schema_migrations"."version" FROM "schema_migrations" ORDER BY "schema_migrations"."version" ASC[0m
+  ↳ /usr/lib/ruby/gems/2.5.0/gems/bootsnap-1.3.0/lib/bootsnap/load_path_cache/core_ext/kernel_require.rb:21
+Started POST "/rooms" for 127.0.0.1 at 2018-06-03 22:30:16 +0200
+  [1m[35m (0.1ms)[0m  [1m[34mSELECT "schema_migrations"."version" FROM "schema_migrations" ORDER BY "schema_migrations"."version" ASC[0m
+  ↳ /usr/lib/ruby/gems/2.5.0/gems/web-console-3.6.2/lib/web_console/middleware.rb:135
+Processing by RoomsController#create as HTML
+  Parameters: {"utf8"=>"✓", "authenticity_token"=>"CZifmpmxXloOG49ks8IeRGV4m0J68lF+qLhpuIjfdp9HjrpmaN+XAZxwUnGCQBkKKS7CPWSMqeVqj/SedeqHTw==", "room"=>{"name"=>"Daniele's room", "time_from"=>"2018-06-10 19:00", "time_to"=>"2018-06-13 19:00", "description"=>"Prova123", "max_participants"=>"55", "address"=>"Rignano Flaminio, Roma, Italy", "latitude"=>"42.2", "longitude"=>"12.48333", "recurrence"=>"true"}, "commit"=>"Save"}
+  [1m[35m (0.1ms)[0m  [1m[36mbegin transaction[0m
+  ↳ app/controllers/rooms_controller.rb:34
+  [1m[36mRoom Create (0.2ms)[0m  [1m[32mINSERT INTO "rooms" ("name", "description", "max_participants", "address", "latitude", "longitude", "time_from", "time_to", "recurrence", "created_at", "updated_at") VALUES (?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?)[0m  [["name", "Daniele's room"], ["description", "Prova123"], ["max_participants", 55], ["address", "Rignano Flaminio, Roma, Italy"], ["latitude", 42.2], ["longitude", 12.48333], ["time_from", "2018-06-10 19:00:00"], ["time_to", "2018-06-13 19:00:00"], ["recurrence", "true"], ["created_at", "2018-06-03 20:30:16.238237"], ["updated_at", "2018-06-03 20:30:16.238237"]]
+  ↳ app/controllers/rooms_controller.rb:34
+  [1m[36mReservation Load (0.2ms)[0m  [1m[34mSELECT "reservations".* FROM "reservations" WHERE "reservations"."room_id" = ? ORDER BY created_at[0m  [["room_id", 1]]
+  ↳ app/models/room.rb:106
+Sending HTTP post https://www.googleapis.com/calendar/v3/calendars/inline%40inline-205713.iam.gserviceaccount.com/events?
+400
+#<Hurley::Response POST https://www.googleapis.com/calendar/v3/calendars/inline%40inline-205713.iam.gserviceaccount.com/events == 400 (181 bytes) 415ms>
+Caught error required: Missing end time.
+Error - #<Google::Apis::ClientError: required: Missing end time.>
+
+  [1m[35m (0.6ms)[0m  [1m[31mrollback transaction[0m
+  ↳ app/controllers/rooms_controller.rb:34
+Completed 500 Internal Server Error in 897ms (ActiveRecord: 1.7ms)
+
+
+  
+Google::Apis::ClientError (required: Missing end time.):
+  
+app/models/room.rb:94:in `update_event'
+app/models/room.rb:2:in `block in <class:Room>'
+app/controllers/rooms_controller.rb:34:in `block in create'
+app/controllers/rooms_controller.rb:33:in `create'
+Started POST "/rooms" for 127.0.0.1 at 2018-06-03 22:30:47 +0200
+Processing by RoomsController#create as HTML
+  Parameters: {"utf8"=>"✓", "authenticity_token"=>"CZifmpmxXloOG49ks8IeRGV4m0J68lF+qLhpuIjfdp9HjrpmaN+XAZxwUnGCQBkKKS7CPWSMqeVqj/SedeqHTw==", "room"=>{"name"=>"Daniele's room", "time_from"=>"2018-06-10 19:00", "time_to"=>"2018-06-13 19:00", "description"=>"Prova123", "max_participants"=>"55", "address"=>"Rignano Flaminio, Roma, Italy", "latitude"=>"42.2", "longitude"=>"12.48333", "recurrence"=>"true"}, "commit"=>"Save"}
+  [1m[35m (0.0ms)[0m  [1m[36mbegin transaction[0m
+  ↳ app/controllers/rooms_controller.rb:34
+  [1m[36mRoom Create (0.2ms)[0m  [1m[32mINSERT INTO "rooms" ("name", "description", "max_participants", "address", "latitude", "longitude", "time_from", "time_to", "recurrence", "created_at", "updated_at") VALUES (?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?)[0m  [["name", "Daniele's room"], ["description", "Prova123"], ["max_participants", 55], ["address", "Rignano Flaminio, Roma, Italy"], ["latitude", 42.2], ["longitude", 12.48333], ["time_from", "2018-06-10 19:00:00"], ["time_to", "2018-06-13 19:00:00"], ["recurrence", "true"], ["created_at", "2018-06-03 20:30:57.409724"], ["updated_at", "2018-06-03 20:30:57.409724"]]
+  ↳ app/controllers/rooms_controller.rb:34
+  [1m[36mReservation Load (0.1ms)[0m  [1m[34mSELECT "reservations".* FROM "reservations" WHERE "reservations"."room_id" = ? ORDER BY created_at[0m  [["room_id", 1]]
+  ↳ app/models/room.rb:106
+Sending HTTP post https://www.googleapis.com/calendar/v3/calendars/inline%40inline-205713.iam.gserviceaccount.com/events?
+400
+#<Hurley::Response POST https://www.googleapis.com/calendar/v3/calendars/inline%40inline-205713.iam.gserviceaccount.com/events == 400 (181 bytes) 202ms>
+Caught error required: Missing end time.
+Error - #<Google::Apis::ClientError: required: Missing end time.>
+
+  [1m[35m (0.5ms)[0m  [1m[31mrollback transaction[0m
+  ↳ app/controllers/rooms_controller.rb:34
+Completed 500 Internal Server Error in 235ms (ActiveRecord: 1.4ms)
+
+
+  
+Google::Apis::ClientError (required: Missing end time.):
+  
+app/models/room.rb:94:in `update_event'
+app/models/room.rb:2:in `block in <class:Room>'
+app/controllers/rooms_controller.rb:34:in `block in create'
+app/controllers/rooms_controller.rb:33:in `create'
+Started POST "/rooms" for 127.0.0.1 at 2018-06-03 22:32:28 +0200
+Processing by RoomsController#create as HTML
+  Parameters: {"utf8"=>"✓", "authenticity_token"=>"CZifmpmxXloOG49ks8IeRGV4m0J68lF+qLhpuIjfdp9HjrpmaN+XAZxwUnGCQBkKKS7CPWSMqeVqj/SedeqHTw==", "room"=>{"name"=>"Daniele's room", "time_from"=>"2018-06-10 19:00", "time_to"=>"2018-06-13 19:00", "description"=>"Prova123", "max_participants"=>"55", "address"=>"Rignano Flaminio, Roma, Italy", "latitude"=>"42.2", "longitude"=>"12.48333", "recurrence"=>"true"}, "commit"=>"Save"}
+  [1m[35m (0.1ms)[0m  [1m[36mbegin transaction[0m
+  ↳ app/controllers/rooms_controller.rb:34
+  [1m[36mRoom Create (0.2ms)[0m  [1m[32mINSERT INTO "rooms" ("name", "description", "max_participants", "address", "latitude", "longitude", "time_from", "time_to", "recurrence", "created_at", "updated_at") VALUES (?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?)[0m  [["name", "Daniele's room"], ["description", "Prova123"], ["max_participants", 55], ["address", "Rignano Flaminio, Roma, Italy"], ["latitude", 42.2], ["longitude", 12.48333], ["time_from", "2018-06-10 19:00:00"], ["time_to", "2018-06-13 19:00:00"], ["recurrence", "true"], ["created_at", "2018-06-03 20:32:28.859354"], ["updated_at", "2018-06-03 20:32:28.859354"]]
+  ↳ app/controllers/rooms_controller.rb:34
+Sending HTTP post https://www.googleapis.com/calendar/v3/calendars/inline%40inline-205713.iam.gserviceaccount.com/events?
+400
+#<Hurley::Response POST https://www.googleapis.com/calendar/v3/calendars/inline%40inline-205713.iam.gserviceaccount.com/events == 400 (181 bytes) 232ms>
+Caught error required: Missing end time.
+Error - #<Google::Apis::ClientError: required: Missing end time.>
+
+  [1m[35m (0.5ms)[0m  [1m[31mrollback transaction[0m
+  ↳ app/controllers/rooms_controller.rb:34
+Completed 500 Internal Server Error in 267ms (ActiveRecord: 1.4ms)
+
+
+  
+Google::Apis::ClientError (required: Missing end time.):
+  
+app/models/room.rb:94:in `update_event'
+app/models/room.rb:2:in `block in <class:Room>'
+app/controllers/rooms_controller.rb:34:in `block in create'
+app/controllers/rooms_controller.rb:33:in `create'
+Started POST "/rooms" for 127.0.0.1 at 2018-06-03 22:32:56 +0200
+Processing by RoomsController#create as HTML
+  Parameters: {"utf8"=>"✓", "authenticity_token"=>"CZifmpmxXloOG49ks8IeRGV4m0J68lF+qLhpuIjfdp9HjrpmaN+XAZxwUnGCQBkKKS7CPWSMqeVqj/SedeqHTw==", "room"=>{"name"=>"Daniele's room", "time_from"=>"2018-06-10 19:00", "time_to"=>"2018-06-13 19:00", "description"=>"Prova123", "max_participants"=>"55", "address"=>"Rignano Flaminio, Roma, Italy", "latitude"=>"42.2", "longitude"=>"12.48333", "recurrence"=>"true"}, "commit"=>"Save"}
+  [1m[35m (0.1ms)[0m  [1m[36mbegin transaction[0m
+  ↳ app/controllers/rooms_controller.rb:34
+  [1m[36mRoom Create (0.2ms)[0m  [1m[32mINSERT INTO "rooms" ("name", "description", "max_participants", "address", "latitude", "longitude", "time_from", "time_to", "recurrence", "created_at", "updated_at") VALUES (?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?)[0m  [["name", "Daniele's room"], ["description", "Prova123"], ["max_participants", 55], ["address", "Rignano Flaminio, Roma, Italy"], ["latitude", 42.2], ["longitude", 12.48333], ["time_from", "2018-06-10 19:00:00"], ["time_to", "2018-06-13 19:00:00"], ["recurrence", "true"], ["created_at", "2018-06-03 20:32:56.154141"], ["updated_at", "2018-06-03 20:32:56.154141"]]
+  ↳ app/controllers/rooms_controller.rb:34
+Sending HTTP post https://www.googleapis.com/calendar/v3/calendars/inline%40inline-205713.iam.gserviceaccount.com/events?
+400
+#<Hurley::Response POST https://www.googleapis.com/calendar/v3/calendars/inline%40inline-205713.iam.gserviceaccount.com/events == 400 (181 bytes) 405ms>
+Caught error required: Missing end time.
+Error - #<Google::Apis::ClientError: required: Missing end time.>
+
+  [1m[35m (2.6ms)[0m  [1m[31mrollback transaction[0m
+  ↳ app/controllers/rooms_controller.rb:34
+Completed 500 Internal Server Error in 442ms (ActiveRecord: 3.7ms)
+
+
+  
+Google::Apis::ClientError (required: Missing end time.):
+  
+app/models/room.rb:94:in `update_event'
+app/models/room.rb:2:in `block in <class:Room>'
+app/controllers/rooms_controller.rb:34:in `block in create'
+app/controllers/rooms_controller.rb:33:in `create'
+Started POST "/rooms" for 127.0.0.1 at 2018-06-03 22:34:47 +0200
+Processing by RoomsController#create as HTML
+  Parameters: {"utf8"=>"✓", "authenticity_token"=>"CZifmpmxXloOG49ks8IeRGV4m0J68lF+qLhpuIjfdp9HjrpmaN+XAZxwUnGCQBkKKS7CPWSMqeVqj/SedeqHTw==", "room"=>{"name"=>"Daniele's room", "time_from"=>"2018-06-10 19:00", "time_to"=>"2018-06-13 19:00", "description"=>"Prova123", "max_participants"=>"55", "address"=>"Rignano Flaminio, Roma, Italy", "latitude"=>"42.2", "longitude"=>"12.48333", "recurrence"=>"true"}, "commit"=>"Save"}
+  [1m[35m (0.0ms)[0m  [1m[36mbegin transaction[0m
+  ↳ app/controllers/rooms_controller.rb:34
+  [1m[36mRoom Create (0.2ms)[0m  [1m[32mINSERT INTO "rooms" ("name", "description", "max_participants", "address", "latitude", "longitude", "time_from", "time_to", "recurrence", "created_at", "updated_at") VALUES (?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?)[0m  [["name", "Daniele's room"], ["description", "Prova123"], ["max_participants", 55], ["address", "Rignano Flaminio, Roma, Italy"], ["latitude", 42.2], ["longitude", 12.48333], ["time_from", "2018-06-10 19:00:00"], ["time_to", "2018-06-13 19:00:00"], ["recurrence", "true"], ["created_at", "2018-06-03 20:34:47.639637"], ["updated_at", "2018-06-03 20:34:47.639637"]]
+  ↳ app/controllers/rooms_controller.rb:34
+Sending HTTP post https://www.googleapis.com/calendar/v3/calendars/inline%40inline-205713.iam.gserviceaccount.com/events?
+400
+#<Hurley::Response POST https://www.googleapis.com/calendar/v3/calendars/inline%40inline-205713.iam.gserviceaccount.com/events == 400 (181 bytes) 250ms>
+Caught error required: Missing end time.
+Error - #<Google::Apis::ClientError: required: Missing end time.>
+
+  [1m[35m (0.5ms)[0m  [1m[31mrollback transaction[0m
+  ↳ app/controllers/rooms_controller.rb:34
+Completed 500 Internal Server Error in 283ms (ActiveRecord: 1.2ms)
+
+
+  
+Google::Apis::ClientError (required: Missing end time.):
+  
+app/models/room.rb:94:in `update_event'
+app/models/room.rb:2:in `block in <class:Room>'
+app/controllers/rooms_controller.rb:34:in `block in create'
+app/controllers/rooms_controller.rb:33:in `create'
+Started GET "/rooms" for 127.0.0.1 at 2018-06-03 22:37:20 +0200
+Processing by RoomsController#index as HTML
+  Rendering rooms/index.html.haml within layouts/application
+  [1m[36mRoom Load (0.1ms)[0m  [1m[34mSELECT "rooms".* FROM "rooms"[0m
+  ↳ app/views/rooms/index.html.haml:23
+  Rendered rooms/index.html.haml within layouts/application (4.8ms)
+  Rendered layouts/_navbar.html.haml (9.0ms)
+Completed 200 OK in 268ms (Views: 264.4ms | ActiveRecord: 0.3ms)
+
+
+Started GET "/rooms/new" for 127.0.0.1 at 2018-06-03 22:37:23 +0200
+Processing by RoomsController#new as HTML
+  Rendering rooms/new.html.haml within layouts/application
+  Rendered rooms/_form.html.haml (23.1ms)
+  Rendered rooms/new.html.haml within layouts/application (30.1ms)
+  Rendered layouts/_navbar.html.haml (4.6ms)
+Completed 200 OK in 98ms (Views: 65.4ms | ActiveRecord: 1.1ms)
+
+
+Started POST "/rooms" for 127.0.0.1 at 2018-06-03 22:37:35 +0200
+Processing by RoomsController#create as HTML
+  Parameters: {"utf8"=>"✓", "authenticity_token"=>"2noYIfM7paLwp9Th7cMGKXCnqH3c7lOqwIfdBdSTTHaUbD3dAlVs+WLMCfTcQQFnPPHxAsKQqzECsEAjKaa9pg==", "room"=>{"name"=>"Prova", "time_from"=>"2018-06-06 12:00", "time_to"=>"2018-06-07 12:00", "description"=>"", "max_participants"=>"333", "address"=>"", "latitude"=>"", "longitude"=>"", "recurrence"=>"true"}, "commit"=>"Save"}
+  [1m[35m (0.1ms)[0m  [1m[36mbegin transaction[0m
+  ↳ app/controllers/rooms_controller.rb:34
+  [1m[36mRoom Create (0.5ms)[0m  [1m[32mINSERT INTO "rooms" ("name", "description", "max_participants", "address", "time_from", "time_to", "recurrence", "created_at", "updated_at") VALUES (?, ?, ?, ?, ?, ?, ?, ?, ?)[0m  [["name", "Prova"], ["description", ""], ["max_participants", 333], ["address", ""], ["time_from", "2018-06-06 12:00:00"], ["time_to", "2018-06-07 12:00:00"], ["recurrence", "true"], ["created_at", "2018-06-03 20:37:35.201679"], ["updated_at", "2018-06-03 20:37:35.201679"]]
+  ↳ app/controllers/rooms_controller.rb:34
+Sending HTTP post https://www.googleapis.com/calendar/v3/calendars/inline%40inline-205713.iam.gserviceaccount.com/events?
+400
+#<Hurley::Response POST https://www.googleapis.com/calendar/v3/calendars/inline%40inline-205713.iam.gserviceaccount.com/events == 400 (181 bytes) 241ms>
+Caught error required: Missing end time.
+Error - #<Google::Apis::ClientError: required: Missing end time.>
+
+  [1m[35m (8.7ms)[0m  [1m[31mrollback transaction[0m
+  ↳ app/controllers/rooms_controller.rb:34
+Completed 500 Internal Server Error in 271ms (ActiveRecord: 9.4ms)
+
+
+  
+Google::Apis::ClientError (required: Missing end time.):
+  
+app/models/room.rb:94:in `update_event'
+app/models/room.rb:2:in `block in <class:Room>'
+app/controllers/rooms_controller.rb:34:in `block in create'
+app/controllers/rooms_controller.rb:33:in `create'
+Started GET "/rooms" for 127.0.0.1 at 2018-06-03 22:37:58 +0200
+Processing by RoomsController#index as HTML
+  Rendering rooms/index.html.haml within layouts/application
+  [1m[36mRoom Load (0.1ms)[0m  [1m[34mSELECT "rooms".* FROM "rooms"[0m
+  ↳ app/views/rooms/index.html.haml:23
+  Rendered rooms/index.html.haml within layouts/application (4.6ms)
+  Rendered layouts/_navbar.html.haml (3.6ms)
+Completed 200 OK in 38ms (Views: 33.6ms | ActiveRecord: 0.3ms)
+
+
+Started GET "/rooms/new" for 127.0.0.1 at 2018-06-03 22:38:00 +0200
+Processing by RoomsController#new as HTML
+  Rendering rooms/new.html.haml within layouts/application
+  Rendered rooms/_form.html.haml (9.4ms)
+  Rendered rooms/new.html.haml within layouts/application (12.5ms)
+  Rendered layouts/_navbar.html.haml (3.5ms)
+Completed 200 OK in 56ms (Views: 35.2ms | ActiveRecord: 0.6ms)
+
+
+Started POST "/rooms" for 127.0.0.1 at 2018-06-03 22:38:12 +0200
+Processing by RoomsController#create as HTML
+  Parameters: {"utf8"=>"✓", "authenticity_token"=>"UaOPDLKA7JHNlCrYD5P7L718bvtITF5m+fh1vRZryTsftarwQ+4lyl//980+Efxh8So3hFYypv07z+ib61446w==", "room"=>{"name"=>"asd", "time_from"=>"2018-06-08 12:00", "time_to"=>"2018-06-11 12:00", "description"=>"", "max_participants"=>"15", "address"=>"", "latitude"=>"", "longitude"=>"", "recurrence"=>"true"}, "commit"=>"Save"}
+  [1m[35m (0.1ms)[0m  [1m[36mbegin transaction[0m
+  ↳ app/controllers/rooms_controller.rb:34
+  [1m[35m (0.0ms)[0m  [1m[31mrollback transaction[0m
+  ↳ app/controllers/rooms_controller.rb:34
+  Rendering rooms/new.html.haml within layouts/application
+  Rendered rooms/_form.html.haml (10.4ms)
+  Rendered rooms/new.html.haml within layouts/application (13.1ms)
+  Rendered layouts/_navbar.html.haml (3.7ms)
+Completed 200 OK in 41ms (Views: 37.6ms | ActiveRecord: 0.1ms)
+
+
+Started POST "/rooms" for 127.0.0.1 at 2018-06-03 22:38:16 +0200
+Processing by RoomsController#create as HTML
+  Parameters: {"utf8"=>"✓", "authenticity_token"=>"9NEX3mG6h5WNAaq7cnajFBA5zQ5F3qMER2ogaC05FRG6xzIikNROzh9qd65D9KRaXG+UcVugW5+FXb1O0AzkwQ==", "room"=>{"name"=>"asdddd", "time_from"=>"2018-06-08 12:00", "time_to"=>"2018-06-11 12:00", "description"=>"", "max_participants"=>"15", "address"=>"", "latitude"=>"", "longitude"=>"", "recurrence"=>"true"}, "commit"=>"Save"}
+  [1m[35m (0.2ms)[0m  [1m[36mbegin transaction[0m
+  ↳ app/controllers/rooms_controller.rb:34
+  [1m[36mRoom Create (0.4ms)[0m  [1m[32mINSERT INTO "rooms" ("name", "description", "max_participants", "address", "time_from", "time_to", "recurrence", "created_at", "updated_at") VALUES (?, ?, ?, ?, ?, ?, ?, ?, ?)[0m  [["name", "asdddd"], ["description", ""], ["max_participants", 15], ["address", ""], ["time_from", "2018-06-08 12:00:00"], ["time_to", "2018-06-11 12:00:00"], ["recurrence", "true"], ["created_at", "2018-06-03 20:38:16.900775"], ["updated_at", "2018-06-03 20:38:16.900775"]]
+  ↳ app/controllers/rooms_controller.rb:34
+Sending HTTP post https://www.googleapis.com/calendar/v3/calendars/inline%40inline-205713.iam.gserviceaccount.com/events?
+400
+#<Hurley::Response POST https://www.googleapis.com/calendar/v3/calendars/inline%40inline-205713.iam.gserviceaccount.com/events == 400 (181 bytes) 418ms>
+Caught error required: Missing end time.
+Error - #<Google::Apis::ClientError: required: Missing end time.>
+
+  [1m[35m (0.5ms)[0m  [1m[31mrollback transaction[0m
+  ↳ app/controllers/rooms_controller.rb:34
+Completed 500 Internal Server Error in 445ms (ActiveRecord: 1.1ms)
+
+
+  
+Google::Apis::ClientError (required: Missing end time.):
+  
+app/models/room.rb:94:in `update_event'
+app/models/room.rb:2:in `block in <class:Room>'
+app/controllers/rooms_controller.rb:34:in `block in create'
+app/controllers/rooms_controller.rb:33:in `create'
+Started POST "/rooms" for 127.0.0.1 at 2018-06-03 22:39:37 +0200
+Processing by RoomsController#create as HTML
+  Parameters: {"utf8"=>"✓", "authenticity_token"=>"9NEX3mG6h5WNAaq7cnajFBA5zQ5F3qMER2ogaC05FRG6xzIikNROzh9qd65D9KRaXG+UcVugW5+FXb1O0AzkwQ==", "room"=>{"name"=>"asdddd", "time_from"=>"2018-06-08 12:00", "time_to"=>"2018-06-11 12:00", "description"=>"", "max_participants"=>"15", "address"=>"", "latitude"=>"", "longitude"=>"", "recurrence"=>"true"}, "commit"=>"Save"}
+  [1m[35m (0.1ms)[0m  [1m[36mbegin transaction[0m
+  ↳ app/controllers/rooms_controller.rb:34
+  [1m[36mRoom Create (0.2ms)[0m  [1m[32mINSERT INTO "rooms" ("name", "description", "max_participants", "address", "time_from", "time_to", "recurrence", "created_at", "updated_at") VALUES (?, ?, ?, ?, ?, ?, ?, ?, ?)[0m  [["name", "asdddd"], ["description", ""], ["max_participants", 15], ["address", ""], ["time_from", "2018-06-08 12:00:00"], ["time_to", "2018-06-11 12:00:00"], ["recurrence", "true"], ["created_at", "2018-06-03 20:39:37.963221"], ["updated_at", "2018-06-03 20:39:37.963221"]]
+  ↳ app/controllers/rooms_controller.rb:34
+Sending HTTP post https://www.googleapis.com/calendar/v3/calendars/inline%40inline-205713.iam.gserviceaccount.com/events?
+400
+#<Hurley::Response POST https://www.googleapis.com/calendar/v3/calendars/inline%40inline-205713.iam.gserviceaccount.com/events == 400 (181 bytes) 296ms>
+Caught error required: Missing end time.
+Error - #<Google::Apis::ClientError: required: Missing end time.>
+
+  [1m[35m (0.4ms)[0m  [1m[31mrollback transaction[0m
+  ↳ app/controllers/rooms_controller.rb:34
+Completed 500 Internal Server Error in 329ms (ActiveRecord: 1.2ms)
+
+
+  
+Google::Apis::ClientError (required: Missing end time.):
+  
+app/models/room.rb:94:in `update_event'
+app/models/room.rb:2:in `block in <class:Room>'
+app/controllers/rooms_controller.rb:34:in `block in create'
+app/controllers/rooms_controller.rb:33:in `create'
+Started POST "/rooms" for 127.0.0.1 at 2018-06-03 22:41:29 +0200
+Processing by RoomsController#create as HTML
+  Parameters: {"utf8"=>"✓", "authenticity_token"=>"9NEX3mG6h5WNAaq7cnajFBA5zQ5F3qMER2ogaC05FRG6xzIikNROzh9qd65D9KRaXG+UcVugW5+FXb1O0AzkwQ==", "room"=>{"name"=>"asdddd", "time_from"=>"2018-06-08 12:00", "time_to"=>"2018-06-11 12:00", "description"=>"", "max_participants"=>"15", "address"=>"", "latitude"=>"", "longitude"=>"", "recurrence"=>"true"}, "commit"=>"Save"}
+  [1m[35m (0.0ms)[0m  [1m[36mbegin transaction[0m
+  ↳ app/controllers/rooms_controller.rb:34
+  [1m[36mRoom Create (0.2ms)[0m  [1m[32mINSERT INTO "rooms" ("name", "description", "max_participants", "address", "time_from", "time_to", "recurrence", "created_at", "updated_at") VALUES (?, ?, ?, ?, ?, ?, ?, ?, ?)[0m  [["name", "asdddd"], ["description", ""], ["max_participants", 15], ["address", ""], ["time_from", "2018-06-08 12:00:00"], ["time_to", "2018-06-11 12:00:00"], ["recurrence", "true"], ["created_at", "2018-06-03 20:41:29.106749"], ["updated_at", "2018-06-03 20:41:29.106749"]]
+  ↳ app/controllers/rooms_controller.rb:34
+Sending HTTP post https://www.googleapis.com/calendar/v3/calendars/inline%40inline-205713.iam.gserviceaccount.com/events?
+400
+#<Hurley::Response POST https://www.googleapis.com/calendar/v3/calendars/inline%40inline-205713.iam.gserviceaccount.com/events == 400 (181 bytes) 248ms>
+Caught error required: Missing end time.
+Error - #<Google::Apis::ClientError: required: Missing end time.>
+
+  [1m[35m (0.5ms)[0m  [1m[31mrollback transaction[0m
+  ↳ app/controllers/rooms_controller.rb:34
+Completed 500 Internal Server Error in 285ms (ActiveRecord: 1.2ms)
+
+
+  
+Google::Apis::ClientError (required: Missing end time.):
+  
+app/models/room.rb:94:in `update_event'
+app/models/room.rb:2:in `block in <class:Room>'
+app/controllers/rooms_controller.rb:34:in `block in create'
+app/controllers/rooms_controller.rb:33:in `create'
+Started POST "/rooms" for 127.0.0.1 at 2018-06-03 22:41:48 +0200
+Processing by RoomsController#create as HTML
+  Parameters: {"utf8"=>"✓", "authenticity_token"=>"9NEX3mG6h5WNAaq7cnajFBA5zQ5F3qMER2ogaC05FRG6xzIikNROzh9qd65D9KRaXG+UcVugW5+FXb1O0AzkwQ==", "room"=>{"name"=>"asdddd", "time_from"=>"2018-06-08 12:00", "time_to"=>"2018-06-11 12:00", "description"=>"", "max_participants"=>"15", "address"=>"", "latitude"=>"", "longitude"=>"", "recurrence"=>"true"}, "commit"=>"Save"}
+  [1m[35m (0.1ms)[0m  [1m[36mbegin transaction[0m
+  ↳ app/controllers/rooms_controller.rb:34
+  [1m[36mRoom Create (0.2ms)[0m  [1m[32mINSERT INTO "rooms" ("name", "description", "max_participants", "address", "time_from", "time_to", "recurrence", "created_at", "updated_at") VALUES (?, ?, ?, ?, ?, ?, ?, ?, ?)[0m  [["name", "asdddd"], ["description", ""], ["max_participants", 15], ["address", ""], ["time_from", "2018-06-08 12:00:00"], ["time_to", "2018-06-11 12:00:00"], ["recurrence", "true"], ["created_at", "2018-06-03 20:41:48.269540"], ["updated_at", "2018-06-03 20:41:48.269540"]]
+  ↳ app/controllers/rooms_controller.rb:34
+Sending HTTP post https://www.googleapis.com/calendar/v3/calendars/inline%40inline-205713.iam.gserviceaccount.com/events?
+400
+#<Hurley::Response POST https://www.googleapis.com/calendar/v3/calendars/inline%40inline-205713.iam.gserviceaccount.com/events == 400 (181 bytes) 386ms>
+Caught error required: Missing end time.
+Error - #<Google::Apis::ClientError: required: Missing end time.>
+
+  [1m[35m (0.5ms)[0m  [1m[31mrollback transaction[0m
+  ↳ app/controllers/rooms_controller.rb:34
+Completed 500 Internal Server Error in 426ms (ActiveRecord: 1.6ms)
+
+
+  
+Google::Apis::ClientError (required: Missing end time.):
+  
+app/models/room.rb:94:in `update_event'
+app/models/room.rb:2:in `block in <class:Room>'
+app/controllers/rooms_controller.rb:34:in `block in create'
+app/controllers/rooms_controller.rb:33:in `create'
+Started POST "/rooms" for 127.0.0.1 at 2018-06-03 22:43:26 +0200
+Processing by RoomsController#create as HTML
+  Parameters: {"utf8"=>"✓", "authenticity_token"=>"9NEX3mG6h5WNAaq7cnajFBA5zQ5F3qMER2ogaC05FRG6xzIikNROzh9qd65D9KRaXG+UcVugW5+FXb1O0AzkwQ==", "room"=>{"name"=>"asdddd", "time_from"=>"2018-06-08 12:00", "time_to"=>"2018-06-11 12:00", "description"=>"", "max_participants"=>"15", "address"=>"", "latitude"=>"", "longitude"=>"", "recurrence"=>"true"}, "commit"=>"Save"}
+  [1m[35m (0.0ms)[0m  [1m[36mbegin transaction[0m
+  ↳ app/controllers/rooms_controller.rb:34
+  [1m[36mRoom Create (0.2ms)[0m  [1m[32mINSERT INTO "rooms" ("name", "description", "max_participants", "address", "time_from", "time_to", "recurrence", "created_at", "updated_at") VALUES (?, ?, ?, ?, ?, ?, ?, ?, ?)[0m  [["name", "asdddd"], ["description", ""], ["max_participants", 15], ["address", ""], ["time_from", "2018-06-08 12:00:00"], ["time_to", "2018-06-11 12:00:00"], ["recurrence", "true"], ["created_at", "2018-06-03 20:43:26.541744"], ["updated_at", "2018-06-03 20:43:26.541744"]]
+  ↳ app/controllers/rooms_controller.rb:34
+Sending HTTP post https://www.googleapis.com/calendar/v3/calendars/inline%40inline-205713.iam.gserviceaccount.com/events?
+400
+#<Hurley::Response POST https://www.googleapis.com/calendar/v3/calendars/inline%40inline-205713.iam.gserviceaccount.com/events == 400 (181 bytes) 284ms>
+Caught error required: Missing end time.
+Error - #<Google::Apis::ClientError: required: Missing end time.>
+
+  [1m[35m (0.4ms)[0m  [1m[31mrollback transaction[0m
+  ↳ app/controllers/rooms_controller.rb:34
+Completed 500 Internal Server Error in 315ms (ActiveRecord: 1.1ms)
+
+
+  
+Google::Apis::ClientError (required: Missing end time.):
+  
+app/models/room.rb:94:in `update_event'
+app/models/room.rb:2:in `block in <class:Room>'
+app/controllers/rooms_controller.rb:34:in `block in create'
+app/controllers/rooms_controller.rb:33:in `create'
+Started GET "/rooms" for 127.0.0.1 at 2018-06-03 22:44:24 +0200
+Processing by RoomsController#index as HTML
+  Rendering rooms/index.html.haml within layouts/application
+  [1m[36mRoom Load (0.1ms)[0m  [1m[34mSELECT "rooms".* FROM "rooms"[0m
+  ↳ app/views/rooms/index.html.haml:23
+  Rendered rooms/index.html.haml within layouts/application (7.3ms)
+  Rendered layouts/_navbar.html.haml (8.0ms)
+Completed 200 OK in 65ms (Views: 58.7ms | ActiveRecord: 0.3ms)
+
+
+Started GET "/rooms/new" for 127.0.0.1 at 2018-06-03 22:44:26 +0200
+Processing by RoomsController#new as HTML
+  Rendering rooms/new.html.haml within layouts/application
+  Rendered rooms/_form.html.haml (9.7ms)
+  Rendered rooms/new.html.haml within layouts/application (12.4ms)
+  Rendered layouts/_navbar.html.haml (3.8ms)
+Completed 200 OK in 56ms (Views: 34.9ms | ActiveRecord: 0.5ms)
+
+
+Started POST "/rooms" for 127.0.0.1 at 2018-06-03 22:44:39 +0200
+Processing by RoomsController#create as HTML
+  Parameters: {"utf8"=>"✓", "authenticity_token"=>"tEibP7xh6LbSoXusgw3KV8+q4laqtMWVpKbydUh9kIH6Xr7DTQ8h7UDKprmyj80Zg/y7KbTKPQ5mkW9TtUhhUQ==", "room"=>{"name"=>"Abaco", "time_from"=>"2018-06-04 12:00", "time_to"=>"2018-06-12 12:00", "description"=>"zxdfsf", "max_participants"=>"4", "address"=>"", "latitude"=>"", "longitude"=>"", "recurrence"=>"true"}, "commit"=>"Save"}
+  [1m[35m (0.1ms)[0m  [1m[36mbegin transaction[0m
+  ↳ app/controllers/rooms_controller.rb:34
+  [1m[36mRoom Create (0.3ms)[0m  [1m[32mINSERT INTO "rooms" ("name", "description", "max_participants", "address", "time_from", "time_to", "recurrence", "created_at", "updated_at") VALUES (?, ?, ?, ?, ?, ?, ?, ?, ?)[0m  [["name", "Abaco"], ["description", "zxdfsf"], ["max_participants", 4], ["address", ""], ["time_from", "2018-06-04 12:00:00"], ["time_to", "2018-06-12 12:00:00"], ["recurrence", "true"], ["created_at", "2018-06-03 20:44:39.898718"], ["updated_at", "2018-06-03 20:44:39.898718"]]
+  ↳ app/controllers/rooms_controller.rb:34
+  [1m[35m (0.1ms)[0m  [1m[31mrollback transaction[0m
+  ↳ app/controllers/rooms_controller.rb:34
+Completed 500 Internal Server Error in 6ms (ActiveRecord: 0.5ms)
+
+
+  
+NoMethodError (undefined method `now' for Date:Class):
+  
+app/models/room.rb:75:in `update_event'
+app/models/room.rb:2:in `block in <class:Room>'
+app/controllers/rooms_controller.rb:34:in `block in create'
+app/controllers/rooms_controller.rb:33:in `create'
+Started POST "/rooms" for 127.0.0.1 at 2018-06-03 22:44:52 +0200
+Processing by RoomsController#create as HTML
+  Parameters: {"utf8"=>"✓", "authenticity_token"=>"tEibP7xh6LbSoXusgw3KV8+q4laqtMWVpKbydUh9kIH6Xr7DTQ8h7UDKprmyj80Zg/y7KbTKPQ5mkW9TtUhhUQ==", "room"=>{"name"=>"Abaco", "time_from"=>"2018-06-04 12:00", "time_to"=>"2018-06-12 12:00", "description"=>"zxdfsf", "max_participants"=>"4", "address"=>"", "latitude"=>"", "longitude"=>"", "recurrence"=>"true"}, "commit"=>"Save"}
+  [1m[35m (0.0ms)[0m  [1m[36mbegin transaction[0m
+  ↳ app/controllers/rooms_controller.rb:34
+  [1m[36mRoom Create (0.2ms)[0m  [1m[32mINSERT INTO "rooms" ("name", "description", "max_participants", "address", "time_from", "time_to", "recurrence", "created_at", "updated_at") VALUES (?, ?, ?, ?, ?, ?, ?, ?, ?)[0m  [["name", "Abaco"], ["description", "zxdfsf"], ["max_participants", 4], ["address", ""], ["time_from", "2018-06-04 12:00:00"], ["time_to", "2018-06-12 12:00:00"], ["recurrence", "true"], ["created_at", "2018-06-03 20:44:52.457575"], ["updated_at", "2018-06-03 20:44:52.457575"]]
+  ↳ app/controllers/rooms_controller.rb:34
+  [1m[35m (0.1ms)[0m  [1m[31mrollback transaction[0m
+  ↳ app/controllers/rooms_controller.rb:34
+Completed 500 Internal Server Error in 23ms (ActiveRecord: 1.1ms)
+
+
+  
+NoMethodError (undefined method `now' for Date:Class):
+  
+app/models/room.rb:75:in `update_event'
+app/models/room.rb:2:in `block in <class:Room>'
+app/controllers/rooms_controller.rb:34:in `block in create'
+app/controllers/rooms_controller.rb:33:in `create'
+Started POST "/rooms" for 127.0.0.1 at 2018-06-03 22:45:02 +0200
+Processing by RoomsController#create as HTML
+  Parameters: {"utf8"=>"✓", "authenticity_token"=>"tEibP7xh6LbSoXusgw3KV8+q4laqtMWVpKbydUh9kIH6Xr7DTQ8h7UDKprmyj80Zg/y7KbTKPQ5mkW9TtUhhUQ==", "room"=>{"name"=>"Abaco", "time_from"=>"2018-06-04 12:00", "time_to"=>"2018-06-12 12:00", "description"=>"zxdfsf", "max_participants"=>"4", "address"=>"", "latitude"=>"", "longitude"=>"", "recurrence"=>"true"}, "commit"=>"Save"}
+  [1m[35m (0.0ms)[0m  [1m[36mbegin transaction[0m
+  ↳ app/controllers/rooms_controller.rb:34
+  [1m[36mRoom Create (0.2ms)[0m  [1m[32mINSERT INTO "rooms" ("name", "description", "max_participants", "address", "time_from", "time_to", "recurrence", "created_at", "updated_at") VALUES (?, ?, ?, ?, ?, ?, ?, ?, ?)[0m  [["name", "Abaco"], ["description", "zxdfsf"], ["max_participants", 4], ["address", ""], ["time_from", "2018-06-04 12:00:00"], ["time_to", "2018-06-12 12:00:00"], ["recurrence", "true"], ["created_at", "2018-06-03 20:45:02.289078"], ["updated_at", "2018-06-03 20:45:02.289078"]]
+  ↳ app/controllers/rooms_controller.rb:34
+Sending HTTP post https://www.googleapis.com/calendar/v3/calendars/inline%40inline-205713.iam.gserviceaccount.com/events?
+400
+#<Hurley::Response POST https://www.googleapis.com/calendar/v3/calendars/inline%40inline-205713.iam.gserviceaccount.com/events == 400 (181 bytes) 236ms>
+Caught error required: Missing end time.
+Error - #<Google::Apis::ClientError: required: Missing end time.>
+
+  [1m[35m (2.6ms)[0m  [1m[31mrollback transaction[0m
+  ↳ app/controllers/rooms_controller.rb:34
+Completed 500 Internal Server Error in 270ms (ActiveRecord: 3.3ms)
+
+
+  
+Google::Apis::ClientError (required: Missing end time.):
+  
+app/models/room.rb:95:in `update_event'
+app/models/room.rb:2:in `block in <class:Room>'
+app/controllers/rooms_controller.rb:34:in `block in create'
+app/controllers/rooms_controller.rb:33:in `create'
+Started POST "/rooms" for 127.0.0.1 at 2018-06-03 22:46:15 +0200
+Processing by RoomsController#create as HTML
+  Parameters: {"utf8"=>"✓", "authenticity_token"=>"tEibP7xh6LbSoXusgw3KV8+q4laqtMWVpKbydUh9kIH6Xr7DTQ8h7UDKprmyj80Zg/y7KbTKPQ5mkW9TtUhhUQ==", "room"=>{"name"=>"Abaco", "time_from"=>"2018-06-04 12:00", "time_to"=>"2018-06-12 12:00", "description"=>"zxdfsf", "max_participants"=>"4", "address"=>"", "latitude"=>"", "longitude"=>"", "recurrence"=>"true"}, "commit"=>"Save"}
+  [1m[35m (0.0ms)[0m  [1m[36mbegin transaction[0m
+  ↳ app/controllers/rooms_controller.rb:34
+  [1m[36mRoom Create (0.2ms)[0m  [1m[32mINSERT INTO "rooms" ("name", "description", "max_participants", "address", "time_from", "time_to", "recurrence", "created_at", "updated_at") VALUES (?, ?, ?, ?, ?, ?, ?, ?, ?)[0m  [["name", "Abaco"], ["description", "zxdfsf"], ["max_participants", 4], ["address", ""], ["time_from", "2018-06-04 12:00:00"], ["time_to", "2018-06-12 12:00:00"], ["recurrence", "true"], ["created_at", "2018-06-03 20:46:15.362642"], ["updated_at", "2018-06-03 20:46:15.362642"]]
+  ↳ app/controllers/rooms_controller.rb:34
+Sending HTTP post https://www.googleapis.com/calendar/v3/calendars/inline%40inline-205713.iam.gserviceaccount.com/events?
+400
+#<Hurley::Response POST https://www.googleapis.com/calendar/v3/calendars/inline%40inline-205713.iam.gserviceaccount.com/events == 400 (181 bytes) 720ms>
+Caught error required: Missing end time.
+Error - #<Google::Apis::ClientError: required: Missing end time.>
+
+  [1m[35m (2.3ms)[0m  [1m[31mrollback transaction[0m
+  ↳ app/controllers/rooms_controller.rb:34
+Completed 500 Internal Server Error in 751ms (ActiveRecord: 3.1ms)
+
+
+  
+Google::Apis::ClientError (required: Missing end time.):
+  
+app/models/room.rb:95:in `update_event'
+app/models/room.rb:2:in `block in <class:Room>'
+app/controllers/rooms_controller.rb:34:in `block in create'
+app/controllers/rooms_controller.rb:33:in `create'
+Started POST "/rooms" for 127.0.0.1 at 2018-06-03 22:46:28 +0200
+Processing by RoomsController#create as HTML
+  Parameters: {"utf8"=>"✓", "authenticity_token"=>"tEibP7xh6LbSoXusgw3KV8+q4laqtMWVpKbydUh9kIH6Xr7DTQ8h7UDKprmyj80Zg/y7KbTKPQ5mkW9TtUhhUQ==", "room"=>{"name"=>"Abaco", "time_from"=>"2018-06-04 12:00", "time_to"=>"2018-06-12 12:00", "description"=>"zxdfsf", "max_participants"=>"4", "address"=>"", "latitude"=>"", "longitude"=>"", "recurrence"=>"true"}, "commit"=>"Save"}
+  [1m[35m (0.0ms)[0m  [1m[36mbegin transaction[0m
+  ↳ app/controllers/rooms_controller.rb:34
+  [1m[36mRoom Create (0.4ms)[0m  [1m[32mINSERT INTO "rooms" ("name", "description", "max_participants", "address", "time_from", "time_to", "recurrence", "created_at", "updated_at") VALUES (?, ?, ?, ?, ?, ?, ?, ?, ?)[0m  [["name", "Abaco"], ["description", "zxdfsf"], ["max_participants", 4], ["address", ""], ["time_from", "2018-06-04 12:00:00"], ["time_to", "2018-06-12 12:00:00"], ["recurrence", "true"], ["created_at", "2018-06-03 20:46:28.521599"], ["updated_at", "2018-06-03 20:46:28.521599"]]
+  ↳ app/controllers/rooms_controller.rb:34
+Sending HTTP post https://www.googleapis.com/calendar/v3/calendars/inline%40inline-205713.iam.gserviceaccount.com/events?
+400
+#<Hurley::Response POST https://www.googleapis.com/calendar/v3/calendars/inline%40inline-205713.iam.gserviceaccount.com/events == 400 (181 bytes) 1896ms>
+Caught error required: Missing end time.
+Error - #<Google::Apis::ClientError: required: Missing end time.>
+
+  [1m[35m (0.6ms)[0m  [1m[31mrollback transaction[0m
+  ↳ app/controllers/rooms_controller.rb:34
+Completed 500 Internal Server Error in 1933ms (ActiveRecord: 1.6ms)
+
+
+  
+Google::Apis::ClientError (required: Missing end time.):
+  
+app/models/room.rb:95:in `update_event'
+app/models/room.rb:2:in `block in <class:Room>'
+app/controllers/rooms_controller.rb:34:in `block in create'
+app/controllers/rooms_controller.rb:33:in `create'
+Started POST "/rooms" for 127.0.0.1 at 2018-06-03 22:47:03 +0200
+Processing by RoomsController#create as HTML
+  Parameters: {"utf8"=>"✓", "authenticity_token"=>"tEibP7xh6LbSoXusgw3KV8+q4laqtMWVpKbydUh9kIH6Xr7DTQ8h7UDKprmyj80Zg/y7KbTKPQ5mkW9TtUhhUQ==", "room"=>{"name"=>"Abaco", "time_from"=>"2018-06-04 12:00", "time_to"=>"2018-06-12 12:00", "description"=>"zxdfsf", "max_participants"=>"4", "address"=>"", "latitude"=>"", "longitude"=>"", "recurrence"=>"true"}, "commit"=>"Save"}
+  [1m[35m (0.0ms)[0m  [1m[36mbegin transaction[0m
+  ↳ app/controllers/rooms_controller.rb:34
+  [1m[36mRoom Create (0.3ms)[0m  [1m[32mINSERT INTO "rooms" ("name", "description", "max_participants", "address", "time_from", "time_to", "recurrence", "created_at", "updated_at") VALUES (?, ?, ?, ?, ?, ?, ?, ?, ?)[0m  [["name", "Abaco"], ["description", "zxdfsf"], ["max_participants", 4], ["address", ""], ["time_from", "2018-06-04 12:00:00"], ["time_to", "2018-06-12 12:00:00"], ["recurrence", "true"], ["created_at", "2018-06-03 20:47:03.210633"], ["updated_at", "2018-06-03 20:47:03.210633"]]
+  ↳ app/controllers/rooms_controller.rb:34
+Sending HTTP post https://www.googleapis.com/calendar/v3/calendars/inline%40inline-205713.iam.gserviceaccount.com/events?
+400
+#<Hurley::Response POST https://www.googleapis.com/calendar/v3/calendars/inline%40inline-205713.iam.gserviceaccount.com/events == 400 (181 bytes) 599ms>
+Caught error required: Missing end time.
+Error - #<Google::Apis::ClientError: required: Missing end time.>
+
+  [1m[35m (0.6ms)[0m  [1m[31mrollback transaction[0m
+  ↳ app/controllers/rooms_controller.rb:34
+Completed 500 Internal Server Error in 632ms (ActiveRecord: 1.3ms)
+
+
+  
+Google::Apis::ClientError (required: Missing end time.):
+  
+app/models/room.rb:97:in `update_event'
+app/models/room.rb:2:in `block in <class:Room>'
+app/controllers/rooms_controller.rb:34:in `block in create'
+app/controllers/rooms_controller.rb:33:in `create'
+Started GET "/rooms" for 127.0.0.1 at 2018-06-03 22:47:08 +0200
+Processing by RoomsController#index as HTML
+  Rendering rooms/index.html.haml within layouts/application
+  [1m[36mRoom Load (0.2ms)[0m  [1m[34mSELECT "rooms".* FROM "rooms"[0m
+  ↳ app/views/rooms/index.html.haml:23
+  Rendered rooms/index.html.haml within layouts/application (4.4ms)
+  Rendered layouts/_navbar.html.haml (3.7ms)
+Completed 200 OK in 38ms (Views: 36.5ms | ActiveRecord: 0.2ms)
+
+
+Started GET "/rooms/new" for 127.0.0.1 at 2018-06-03 22:47:10 +0200
+Processing by RoomsController#new as HTML
+  Rendering rooms/new.html.haml within layouts/application
+  Rendered rooms/_form.html.haml (12.6ms)
+  Rendered rooms/new.html.haml within layouts/application (19.5ms)
+  Rendered layouts/_navbar.html.haml (3.5ms)
+Completed 200 OK in 51ms (Views: 48.5ms | ActiveRecord: 0.0ms)
+
+
+Started POST "/rooms" for 127.0.0.1 at 2018-06-03 22:47:21 +0200
+Processing by RoomsController#create as HTML
+  Parameters: {"utf8"=>"✓", "authenticity_token"=>"iqfel2+6gWrWwxggkeqDgouN53Tjmzuh1sn/x0YXmpPEsftrntRIMUSoxTWgaITMx9u+C/3lwzoU/mLhuyJrQw==", "room"=>{"name"=>"Ciaociao123", "time_from"=>"2018-06-05 12:00", "time_to"=>"2018-06-11 12:00", "description"=>"", "max_participants"=>"5", "address"=>"", "latitude"=>"", "longitude"=>"", "recurrence"=>"true"}, "commit"=>"Save"}
+  [1m[35m (0.1ms)[0m  [1m[36mbegin transaction[0m
+  ↳ app/controllers/rooms_controller.rb:34
+  [1m[36mRoom Create (0.5ms)[0m  [1m[32mINSERT INTO "rooms" ("name", "description", "max_participants", "address", "time_from", "time_to", "recurrence", "created_at", "updated_at") VALUES (?, ?, ?, ?, ?, ?, ?, ?, ?)[0m  [["name", "Ciaociao123"], ["description", ""], ["max_participants", 5], ["address", ""], ["time_from", "2018-06-05 12:00:00"], ["time_to", "2018-06-11 12:00:00"], ["recurrence", "true"], ["created_at", "2018-06-03 20:47:21.356517"], ["updated_at", "2018-06-03 20:47:21.356517"]]
+  ↳ app/controllers/rooms_controller.rb:34
+Sending HTTP post https://www.googleapis.com/calendar/v3/calendars/inline%40inline-205713.iam.gserviceaccount.com/events?
+400
+#<Hurley::Response POST https://www.googleapis.com/calendar/v3/calendars/inline%40inline-205713.iam.gserviceaccount.com/events == 400 (181 bytes) 315ms>
+Caught error required: Missing end time.
+Error - #<Google::Apis::ClientError: required: Missing end time.>
+
+  [1m[35m (0.5ms)[0m  [1m[31mrollback transaction[0m
+  ↳ app/controllers/rooms_controller.rb:34
+Completed 500 Internal Server Error in 335ms (ActiveRecord: 1.1ms)
+
+
+  
+Google::Apis::ClientError (required: Missing end time.):
+  
+app/models/room.rb:97:in `update_event'
+app/models/room.rb:2:in `block in <class:Room>'
+app/controllers/rooms_controller.rb:34:in `block in create'
+app/controllers/rooms_controller.rb:33:in `create'
+Started POST "/rooms" for 127.0.0.1 at 2018-06-03 22:47:46 +0200
+Processing by RoomsController#create as HTML
+  Parameters: {"utf8"=>"✓", "authenticity_token"=>"iqfel2+6gWrWwxggkeqDgouN53Tjmzuh1sn/x0YXmpPEsftrntRIMUSoxTWgaITMx9u+C/3lwzoU/mLhuyJrQw==", "room"=>{"name"=>"Ciaociao123", "time_from"=>"2018-06-05 12:00", "time_to"=>"2018-06-11 12:00", "description"=>"", "max_participants"=>"5", "address"=>"", "latitude"=>"", "longitude"=>"", "recurrence"=>"true"}, "commit"=>"Save"}
+  [1m[35m (0.1ms)[0m  [1m[36mbegin transaction[0m
+  ↳ app/controllers/rooms_controller.rb:34
+  [1m[36mRoom Create (0.2ms)[0m  [1m[32mINSERT INTO "rooms" ("name", "description", "max_participants", "address", "time_from", "time_to", "recurrence", "created_at", "updated_at") VALUES (?, ?, ?, ?, ?, ?, ?, ?, ?)[0m  [["name", "Ciaociao123"], ["description", ""], ["max_participants", 5], ["address", ""], ["time_from", "2018-06-05 12:00:00"], ["time_to", "2018-06-11 12:00:00"], ["recurrence", "true"], ["created_at", "2018-06-03 20:47:47.046305"], ["updated_at", "2018-06-03 20:47:47.046305"]]
+  ↳ app/controllers/rooms_controller.rb:34
+#<Google::Apis::CalendarV3::Event:0x00007f566d120f28>
+{"end"=>{"date"=>"2018-06-03"}, "start"=>{"date"=>"2018-06-03"}}
+Sending HTTP post https://www.googleapis.com/calendar/v3/calendars/inline%40inline-205713.iam.gserviceaccount.com/events?
+400
+#<Hurley::Response POST https://www.googleapis.com/calendar/v3/calendars/inline%40inline-205713.iam.gserviceaccount.com/events == 400 (181 bytes) 273ms>
+Caught error required: Missing end time.
+Error - #<Google::Apis::ClientError: required: Missing end time.>
+
+  [1m[35m (0.5ms)[0m  [1m[31mrollback transaction[0m
+  ↳ app/controllers/rooms_controller.rb:34
+Completed 500 Internal Server Error in 305ms (ActiveRecord: 1.2ms)
+
+
+  
+Google::Apis::ClientError (required: Missing end time.):
+  
+app/models/room.rb:99:in `update_event'
+app/models/room.rb:2:in `block in <class:Room>'
+app/controllers/rooms_controller.rb:34:in `block in create'
+app/controllers/rooms_controller.rb:33:in `create'
+Started GET "/rooms" for 127.0.0.1 at 2018-06-03 22:47:57 +0200
+Processing by RoomsController#index as HTML
+  Rendering rooms/index.html.haml within layouts/application
+  [1m[36mRoom Load (0.2ms)[0m  [1m[34mSELECT "rooms".* FROM "rooms"[0m
+  ↳ app/views/rooms/index.html.haml:23
+  Rendered rooms/index.html.haml within layouts/application (9.8ms)
+  Rendered layouts/_navbar.html.haml (9.4ms)
+Completed 200 OK in 73ms (Views: 71.2ms | ActiveRecord: 0.2ms)
+
+
+Started GET "/rooms/new" for 127.0.0.1 at 2018-06-03 22:48:07 +0200
+Processing by RoomsController#new as HTML
+  Rendering rooms/new.html.haml within layouts/application
+  Rendered rooms/_form.html.haml (26.5ms)
+  Rendered rooms/new.html.haml within layouts/application (40.2ms)
+  Rendered layouts/_navbar.html.haml (4.7ms)
+Completed 200 OK in 75ms (Views: 71.8ms | ActiveRecord: 0.0ms)
+
+
+Started POST "/rooms" for 127.0.0.1 at 2018-06-03 22:48:52 +0200
+Processing by RoomsController#create as HTML
+  Parameters: {"utf8"=>"✓", "authenticity_token"=>"LsgA+UFYVm9n+5stGMapdZ45UIFCxmSpBltZabEeNKtg3iUFsDafNPWQRjgpRK470m8J/ly4nDLEbMRPTCvFew==", "room"=>{"name"=>"Daniele's room", "time_from"=>"2018-06-05 12:00", "time_to"=>"2018-06-10 12:00", "description"=>"Room molto bella che fa la cacca", "max_participants"=>"15", "address"=>"", "latitude"=>"", "longitude"=>"", "recurrence"=>"true"}, "commit"=>"Save"}
+  [1m[35m (0.1ms)[0m  [1m[36mbegin transaction[0m
+  ↳ app/controllers/rooms_controller.rb:34
+  [1m[36mRoom Create (0.4ms)[0m  [1m[32mINSERT INTO "rooms" ("name", "description", "max_participants", "address", "time_from", "time_to", "recurrence", "created_at", "updated_at") VALUES (?, ?, ?, ?, ?, ?, ?, ?, ?)[0m  [["name", "Daniele's room"], ["description", "Room molto bella che fa la cacca"], ["max_participants", 15], ["address", ""], ["time_from", "2018-06-05 12:00:00"], ["time_to", "2018-06-10 12:00:00"], ["recurrence", "true"], ["created_at", "2018-06-03 20:48:52.036673"], ["updated_at", "2018-06-03 20:48:52.036673"]]
+  ↳ app/controllers/rooms_controller.rb:34
+#<Google::Apis::CalendarV3::Event:0x00007f566c1722e8>
+{"end"=>{"date"=>"2018-06-03"}, "start"=>{"date"=>"2018-06-03"}}
+Sending HTTP post https://www.googleapis.com/calendar/v3/calendars/inline%40inline-205713.iam.gserviceaccount.com/events?
+400
+#<Hurley::Response POST https://www.googleapis.com/calendar/v3/calendars/inline%40inline-205713.iam.gserviceaccount.com/events == 400 (181 bytes) 318ms>
+Caught error required: Missing end time.
+Error - #<Google::Apis::ClientError: required: Missing end time.>
+
+  [1m[35m (0.2ms)[0m  [1m[31mrollback transaction[0m
+  ↳ app/controllers/rooms_controller.rb:34
+Completed 500 Internal Server Error in 336ms (ActiveRecord: 0.7ms)
+
+
+  
+Google::Apis::ClientError (required: Missing end time.):
+  
+app/models/room.rb:99:in `update_event'
+app/models/room.rb:2:in `block in <class:Room>'
+app/controllers/rooms_controller.rb:34:in `block in create'
+app/controllers/rooms_controller.rb:33:in `create'
+Started POST "/rooms" for 127.0.0.1 at 2018-06-03 22:49:56 +0200
+Processing by RoomsController#create as HTML
+  Parameters: {"utf8"=>"✓", "authenticity_token"=>"LsgA+UFYVm9n+5stGMapdZ45UIFCxmSpBltZabEeNKtg3iUFsDafNPWQRjgpRK470m8J/ly4nDLEbMRPTCvFew==", "room"=>{"name"=>"Daniele's room", "time_from"=>"2018-06-05 12:00", "time_to"=>"2018-06-10 12:00", "description"=>"Room molto bella che fa la cacca", "max_participants"=>"15", "address"=>"", "latitude"=>"", "longitude"=>"", "recurrence"=>"true"}, "commit"=>"Save"}
+  [1m[35m (0.0ms)[0m  [1m[36mbegin transaction[0m
+  ↳ app/controllers/rooms_controller.rb:34
+  [1m[36mRoom Create (0.2ms)[0m  [1m[32mINSERT INTO "rooms" ("name", "description", "max_participants", "address", "time_from", "time_to", "recurrence", "created_at", "updated_at") VALUES (?, ?, ?, ?, ?, ?, ?, ?, ?)[0m  [["name", "Daniele's room"], ["description", "Room molto bella che fa la cacca"], ["max_participants", 15], ["address", ""], ["time_from", "2018-06-05 12:00:00"], ["time_to", "2018-06-10 12:00:00"], ["recurrence", "true"], ["created_at", "2018-06-03 20:49:56.125737"], ["updated_at", "2018-06-03 20:49:56.125737"]]
+  ↳ app/controllers/rooms_controller.rb:34
+#<Google::Apis::CalendarV3::Event:0x00007f566cda2d38>
+{"end"=>{"date"=>"2018-06-03"}, "start"=>{"date"=>"2018-06-03"}}
+Sending HTTP post https://www.googleapis.com/calendar/v3/calendars/inline%40inline-205713.iam.gserviceaccount.com/events?
+200
+#<Hurley::Response POST https://www.googleapis.com/calendar/v3/calendars/inline%40inline-205713.iam.gserviceaccount.com/events == 200 (730 bytes) 579ms>
+Success - #<Google::Apis::CalendarV3::Event:0x00007f56688d2190
+ @created=Sun, 03 Jun 2018 20:49:56 +0000,
+ @creator=
+  #<Google::Apis::CalendarV3::Event::Creator:0x00007f56688a3ca0
+   @email="inline@inline-205713.iam.gserviceaccount.com",
+   @self=true>,
+ @end=
+  #<Google::Apis::CalendarV3::EventDateTime:0x00007f566888da40
+   @date="2018-06-03">,
+ @etag="\"3056117993002000\"",
+ @html_link=
+  "https://www.google.com/calendar/event?eid=cGloMWF2dmRvbmw5OXBta2k1aWY4c2ptZzQgaW5saW5lQGlubGluZS0yMDU3MTMuaWFtLmdzZXJ2aWNlYWNjb3VudC5jb20",
+ @i_cal_uid="pih1avvdonl99pmki5if8sjmg4@google.com",
+ @id="pih1avvdonl99pmki5if8sjmg4",
+ @kind="calendar#event",
+ @organizer=
+  #<Google::Apis::CalendarV3::Event::Organizer:0x00007f566884bb90
+   @email="inline@inline-205713.iam.gserviceaccount.com",
+   @self=true>,
+ @reminders=
+  #<Google::Apis::CalendarV3::Event::Reminders:0x00007f5668828280
+   @use_default=true>,
+ @sequence=0,
+ @start=
+  #<Google::Apis::CalendarV3::EventDateTime:0x00007f56687fa808
+   @date="2018-06-03">,
+ @status="confirmed",
+ @updated=Sun, 03 Jun 2018 20:49:56 +0000>
+
+  [1m[35m (1173.0ms)[0m  [1m[36mcommit transaction[0m
+  ↳ app/controllers/rooms_controller.rb:34
+Redirected to http://localhost:3000/rooms/1
+Completed 302 Found in 1798ms (ActiveRecord: 1173.7ms)
+
+
+Started GET "/rooms/1" for 127.0.0.1 at 2018-06-03 22:49:58 +0200
+Processing by RoomsController#show as HTML
+  Parameters: {"id"=>"1"}
+  [1m[36mRoom Load (0.8ms)[0m  [1m[34mSELECT  "rooms".* FROM "rooms" WHERE "rooms"."id" = ? LIMIT ?[0m  [["id", 1], ["LIMIT", 1]]
+  ↳ app/controllers/rooms_controller.rb:84
+  Rendering rooms/show.html.haml within layouts/application
+  [1m[36mPower Load (0.5ms)[0m  [1m[34mSELECT "powers".* FROM "powers" WHERE "powers"."room_id" = ?[0m  [["room_id", 1]]
+  ↳ app/views/rooms/show.html.haml:35
+  Rendered rooms/show.html.haml within layouts/application (169.6ms)
+  Rendered layouts/_navbar.html.haml (10.0ms)
+Completed 200 OK in 403ms (Views: 228.5ms | ActiveRecord: 2.2ms)
+
+
+Started GET "/rooms/1.json" for 127.0.0.1 at 2018-06-03 22:49:59 +0200
+Processing by RoomsController#show as JSON
+  Parameters: {"id"=>"1"}
+  [1m[36mRoom Load (0.1ms)[0m  [1m[34mSELECT  "rooms".* FROM "rooms" WHERE "rooms"."id" = ? LIMIT ?[0m  [["id", 1], ["LIMIT", 1]]
+  ↳ app/controllers/rooms_controller.rb:84
+  Rendering rooms/show.json.jbuilder
+  Rendered rooms/_room.json.jbuilder (6.9ms)
+  Rendered rooms/show.json.jbuilder (154.3ms)
+Completed 500 Internal Server Error in 625ms (ActiveRecord: 0.1ms)
+
+
+  
+ActionView::Template::Error (undefined method `datetime' for #<Room:0x00007f5661787670>):
+    1: json.extract! room, :id, :name, :description, :address, :user_id, :max_participants, :latitude, :longitude, :time_from, :time_to, :avatar_file, :avatar_size, :avatar_updated_at, :datetime, :created_at, :updated_at, :event
+    2: json.reservations room.reservations, partial: 'rooms/reservations', as: :reservation
+    3: json.url room_url(room, format: :json)
+  
+app/views/rooms/_room.json.jbuilder:1:in `_app_views_rooms__room_json_jbuilder__3738840644081550959_70004489249500'
+app/views/rooms/show.json.jbuilder:1:in `_app_views_rooms_show_json_jbuilder___2188575844370857750_70004489596500'
+Started GET "/rooms/1" for 127.0.0.1 at 2018-06-03 22:51:42 +0200
+Processing by RoomsController#show as HTML
+  Parameters: {"id"=>"1"}
+  [1m[36mRoom Load (0.1ms)[0m  [1m[34mSELECT  "rooms".* FROM "rooms" WHERE "rooms"."id" = ? LIMIT ?[0m  [["id", 1], ["LIMIT", 1]]
+  ↳ app/controllers/rooms_controller.rb:84
+  Rendering rooms/show.html.haml within layouts/application
+  [1m[36mPower Load (0.1ms)[0m  [1m[34mSELECT "powers".* FROM "powers" WHERE "powers"."room_id" = ?[0m  [["room_id", 1]]
+  ↳ app/views/rooms/show.html.haml:35
+  Rendered rooms/show.html.haml within layouts/application (8.0ms)
+  Rendered layouts/_navbar.html.haml (3.5ms)
+Completed 200 OK in 45ms (Views: 29.8ms | ActiveRecord: 0.8ms)
+
+
+Started GET "/rooms/1.json" for 127.0.0.1 at 2018-06-03 22:51:42 +0200
+Processing by RoomsController#show as JSON
+  Parameters: {"id"=>"1"}
+  [1m[36mRoom Load (0.1ms)[0m  [1m[34mSELECT  "rooms".* FROM "rooms" WHERE "rooms"."id" = ? LIMIT ?[0m  [["id", 1], ["LIMIT", 1]]
+  ↳ app/controllers/rooms_controller.rb:84
+  Rendering rooms/show.json.jbuilder
+  Rendered rooms/_room.json.jbuilder (1.5ms)
+  Rendered rooms/show.json.jbuilder (2.1ms)
+Completed 500 Internal Server Error in 4ms (ActiveRecord: 0.1ms)
+
+
+  
+ActionView::Template::Error (undefined method `datetime' for #<Room:0x00007f5660464f98>):
+    1: json.extract! room, :id, :name, :description, :address, :user_id, :max_participants, :latitude, :longitude, :time_from, :time_to, :avatar_file, :avatar_size, :avatar_updated_at, :datetime, :created_at, :updated_at, :event
+    2: json.reservations room.reservations, partial: 'rooms/reservations', as: :reservation
+    3: json.url room_url(room, format: :json)
+  
+app/views/rooms/_room.json.jbuilder:1:in `_app_views_rooms__room_json_jbuilder__3738840644081550959_70004479585040'
+app/views/rooms/show.json.jbuilder:1:in `_app_views_rooms_show_json_jbuilder___2188575844370857750_70004547465920'
+Started GET "/rooms/1" for 127.0.0.1 at 2018-06-03 22:51:44 +0200
+Processing by RoomsController#show as HTML
+  Parameters: {"id"=>"1"}
+  [1m[36mRoom Load (0.3ms)[0m  [1m[34mSELECT  "rooms".* FROM "rooms" WHERE "rooms"."id" = ? LIMIT ?[0m  [["id", 1], ["LIMIT", 1]]
+  ↳ app/controllers/rooms_controller.rb:84
+  Rendering rooms/show.html.haml within layouts/application
+  [1m[36mPower Load (0.1ms)[0m  [1m[34mSELECT "powers".* FROM "powers" WHERE "powers"."room_id" = ?[0m  [["room_id", 1]]
+  ↳ app/views/rooms/show.html.haml:35
+  Rendered rooms/show.html.haml within layouts/application (13.2ms)
+  Rendered layouts/_navbar.html.haml (3.7ms)
+Completed 200 OK in 49ms (Views: 44.6ms | ActiveRecord: 0.4ms)
+
+
+Started GET "/rooms/1.json" for 127.0.0.1 at 2018-06-03 22:51:44 +0200
+Processing by RoomsController#show as JSON
+  Parameters: {"id"=>"1"}
+  [1m[36mRoom Load (0.2ms)[0m  [1m[34mSELECT  "rooms".* FROM "rooms" WHERE "rooms"."id" = ? LIMIT ?[0m  [["id", 1], ["LIMIT", 1]]
+  ↳ app/controllers/rooms_controller.rb:84
+  Rendering rooms/show.json.jbuilder
+  Rendered rooms/_room.json.jbuilder (1.0ms)
+  Rendered rooms/show.json.jbuilder (1.5ms)
+Completed 500 Internal Server Error in 4ms (ActiveRecord: 0.2ms)
+
+
+  
+ActionView::Template::Error (undefined method `datetime' for #<Room:0x00007f5684091c80>):
+    1: json.extract! room, :id, :name, :description, :address, :user_id, :max_participants, :latitude, :longitude, :time_from, :time_to, :avatar_file, :avatar_size, :avatar_updated_at, :datetime, :created_at, :updated_at, :event
+    2: json.reservations room.reservations, partial: 'rooms/reservations', as: :reservation
+    3: json.url room_url(room, format: :json)
+  
+app/views/rooms/_room.json.jbuilder:1:in `_app_views_rooms__room_json_jbuilder__3738840644081550959_70004779542840'
+app/views/rooms/show.json.jbuilder:1:in `_app_views_rooms_show_json_jbuilder___2188575844370857750_70004779549880'
+Started GET "/rooms/1" for 127.0.0.1 at 2018-06-03 22:51:45 +0200
+Processing by RoomsController#show as HTML
+  Parameters: {"id"=>"1"}
+  [1m[36mRoom Load (0.3ms)[0m  [1m[34mSELECT  "rooms".* FROM "rooms" WHERE "rooms"."id" = ? LIMIT ?[0m  [["id", 1], ["LIMIT", 1]]
+  ↳ app/controllers/rooms_controller.rb:84
+  Rendering rooms/show.html.haml within layouts/application
+  [1m[36mPower Load (0.3ms)[0m  [1m[34mSELECT "powers".* FROM "powers" WHERE "powers"."room_id" = ?[0m  [["room_id", 1]]
+  ↳ app/views/rooms/show.html.haml:35
+  Rendered rooms/show.html.haml within layouts/application (9.4ms)
+  Rendered layouts/_navbar.html.haml (3.9ms)
+Completed 200 OK in 43ms (Views: 41.0ms | ActiveRecord: 0.5ms)
+
+
+Started GET "/rooms/1.json" for 127.0.0.1 at 2018-06-03 22:51:45 +0200
+Processing by RoomsController#show as JSON
+  Parameters: {"id"=>"1"}
+  [1m[36mRoom Load (0.1ms)[0m  [1m[34mSELECT  "rooms".* FROM "rooms" WHERE "rooms"."id" = ? LIMIT ?[0m  [["id", 1], ["LIMIT", 1]]
+  ↳ app/controllers/rooms_controller.rb:84
+  Rendering rooms/show.json.jbuilder
+  Rendered rooms/_room.json.jbuilder (2.0ms)
+  Rendered rooms/show.json.jbuilder (2.7ms)
+Completed 500 Internal Server Error in 5ms (ActiveRecord: 0.1ms)
+
+
+  
+ActionView::Template::Error (undefined method `datetime' for #<Room:0x00007f566cfcd1d0>):
+    1: json.extract! room, :id, :name, :description, :address, :user_id, :max_participants, :latitude, :longitude, :time_from, :time_to, :avatar_file, :avatar_size, :avatar_updated_at, :datetime, :created_at, :updated_at, :event
+    2: json.reservations room.reservations, partial: 'rooms/reservations', as: :reservation
+    3: json.url room_url(room, format: :json)
+  
+app/views/rooms/_room.json.jbuilder:1:in `_app_views_rooms__room_json_jbuilder__3738840644081550959_70004586014340'
+app/views/rooms/show.json.jbuilder:1:in `_app_views_rooms_show_json_jbuilder___2188575844370857750_70004586186680'
+Started GET "/rooms/1" for 127.0.0.1 at 2018-06-03 22:51:45 +0200
+Processing by RoomsController#show as HTML
+  Parameters: {"id"=>"1"}
+  [1m[36mRoom Load (0.2ms)[0m  [1m[34mSELECT  "rooms".* FROM "rooms" WHERE "rooms"."id" = ? LIMIT ?[0m  [["id", 1], ["LIMIT", 1]]
+  ↳ app/controllers/rooms_controller.rb:84
+  Rendering rooms/show.html.haml within layouts/application
+  [1m[36mPower Load (0.2ms)[0m  [1m[34mSELECT "powers".* FROM "powers" WHERE "powers"."room_id" = ?[0m  [["room_id", 1]]
+  ↳ app/views/rooms/show.html.haml:35
+  Rendered rooms/show.html.haml within layouts/application (8.5ms)
+  Rendered layouts/_navbar.html.haml (3.9ms)
+Completed 200 OK in 39ms (Views: 36.7ms | ActiveRecord: 0.4ms)
+
+
+Started GET "/rooms/1.json" for 127.0.0.1 at 2018-06-03 22:51:46 +0200
+Processing by RoomsController#show as JSON
+  Parameters: {"id"=>"1"}
+  [1m[36mRoom Load (0.2ms)[0m  [1m[34mSELECT  "rooms".* FROM "rooms" WHERE "rooms"."id" = ? LIMIT ?[0m  [["id", 1], ["LIMIT", 1]]
+  ↳ app/controllers/rooms_controller.rb:84
+  Rendering rooms/show.json.jbuilder
+  Rendered rooms/_room.json.jbuilder (1.4ms)
+  Rendered rooms/show.json.jbuilder (2.0ms)
+Completed 500 Internal Server Error in 4ms (ActiveRecord: 0.2ms)
+
+
+  
+ActionView::Template::Error (undefined method `datetime' for #<Room:0x00007f5661f4df80>):
+    1: json.extract! room, :id, :name, :description, :address, :user_id, :max_participants, :latitude, :longitude, :time_from, :time_to, :avatar_file, :avatar_size, :avatar_updated_at, :datetime, :created_at, :updated_at, :event
+    2: json.reservations room.reservations, partial: 'rooms/reservations', as: :reservation
+    3: json.url room_url(room, format: :json)
+  
+app/views/rooms/_room.json.jbuilder:1:in `_app_views_rooms__room_json_jbuilder__3738840644081550959_70004493642600'
+app/views/rooms/show.json.jbuilder:1:in `_app_views_rooms_show_json_jbuilder___2188575844370857750_70004493674020'
+Started GET "/rooms/1" for 127.0.0.1 at 2018-06-03 22:51:46 +0200
+Processing by RoomsController#show as HTML
+  Parameters: {"id"=>"1"}
+  [1m[36mRoom Load (0.3ms)[0m  [1m[34mSELECT  "rooms".* FROM "rooms" WHERE "rooms"."id" = ? LIMIT ?[0m  [["id", 1], ["LIMIT", 1]]
+  ↳ app/controllers/rooms_controller.rb:84
+  Rendering rooms/show.html.haml within layouts/application
+  [1m[36mPower Load (0.2ms)[0m  [1m[34mSELECT "powers".* FROM "powers" WHERE "powers"."room_id" = ?[0m  [["room_id", 1]]
+  ↳ app/views/rooms/show.html.haml:35
+  Rendered rooms/show.html.haml within layouts/application (8.3ms)
+  Rendered layouts/_navbar.html.haml (3.8ms)
+Completed 200 OK in 38ms (Views: 35.5ms | ActiveRecord: 0.5ms)
+
+
+Started GET "/rooms/1.json" for 127.0.0.1 at 2018-06-03 22:51:46 +0200
+Processing by RoomsController#show as JSON
+  Parameters: {"id"=>"1"}
+  [1m[36mRoom Load (0.1ms)[0m  [1m[34mSELECT  "rooms".* FROM "rooms" WHERE "rooms"."id" = ? LIMIT ?[0m  [["id", 1], ["LIMIT", 1]]
+  ↳ app/controllers/rooms_controller.rb:84
+  Rendering rooms/show.json.jbuilder
+  Rendered rooms/_room.json.jbuilder (1.0ms)
+  Rendered rooms/show.json.jbuilder (1.5ms)
+Completed 500 Internal Server Error in 4ms (ActiveRecord: 0.1ms)
+
+
+  
+ActionView::Template::Error (undefined method `datetime' for #<Room:0x00007f56681e6ed0>):
+    1: json.extract! room, :id, :name, :description, :address, :user_id, :max_participants, :latitude, :longitude, :time_from, :time_to, :avatar_file, :avatar_size, :avatar_updated_at, :datetime, :created_at, :updated_at, :event
+    2: json.reservations room.reservations, partial: 'rooms/reservations', as: :reservation
+    3: json.url room_url(room, format: :json)
+  
+app/views/rooms/_room.json.jbuilder:1:in `_app_views_rooms__room_json_jbuilder__3738840644081550959_70004545125380'
+app/views/rooms/show.json.jbuilder:1:in `_app_views_rooms_show_json_jbuilder___2188575844370857750_70004545365080'
+Started GET "/rooms/" for 127.0.0.1 at 2018-06-03 22:51:49 +0200
+Processing by RoomsController#index as HTML
+  Rendering rooms/index.html.haml within layouts/application
+  [1m[36mRoom Load (0.2ms)[0m  [1m[34mSELECT "rooms".* FROM "rooms"[0m
+  ↳ app/views/rooms/index.html.haml:23
+  Rendered rooms/index.html.haml within layouts/application (5.6ms)
+Completed 500 Internal Server Error in 8ms (ActiveRecord: 0.2ms)
+
+
+  
+ActionView::Template::Error (undefined method `datetime' for #<Room:0x00007f5674e21900>):
+    32:         %td= room.avatar_file
+    33:         %td= room.avatar_size
+    34:         %td= room.avatar_updated_at
+    35:         %td= room.datetime
+    36:         %td= link_to 'Show', room
+    37:         %td= link_to 'Edit', edit_room_path(room)
+    38:         %td= link_to 'Destroy', room, method: :delete, data: { confirm: 'Are you sure?' }
+  
+app/views/rooms/index.html.haml:35:in `block in _app_views_rooms_index_html_haml___2768192910414733087_70004652589940'
+app/views/rooms/index.html.haml:23:in `_app_views_rooms_index_html_haml___2768192910414733087_70004652589940'
+Started GET "/rooms" for 127.0.0.1 at 2018-06-03 22:52:09 +0200
+Processing by RoomsController#index as HTML
+  Rendering rooms/index.html.haml within layouts/application
+  [1m[36mRoom Load (0.2ms)[0m  [1m[34mSELECT "rooms".* FROM "rooms"[0m
+  ↳ app/views/rooms/index.html.haml:23
+  Rendered rooms/index.html.haml within layouts/application (5.5ms)
+Completed 500 Internal Server Error in 8ms (ActiveRecord: 0.2ms)
+
+
+  
+ActionView::Template::Error (undefined method `datetime' for #<Room:0x00007f56611e23f0>):
+    32:         %td= room.avatar_file
+    33:         %td= room.avatar_size
+    34:         %td= room.avatar_updated_at
+    35:         %td= room.datetime
+    36:         %td= link_to 'Show', room
+    37:         %td= link_to 'Edit', edit_room_path(room)
+    38:         %td= link_to 'Destroy', room, method: :delete, data: { confirm: 'Are you sure?' }
+  
+app/views/rooms/index.html.haml:35:in `block in _app_views_rooms_index_html_haml___2768192910414733087_70004490240040'
+app/views/rooms/index.html.haml:23:in `_app_views_rooms_index_html_haml___2768192910414733087_70004490240040'
+Started GET "/rooms/new" for 127.0.0.1 at 2018-06-03 22:52:12 +0200
+Processing by RoomsController#new as HTML
+  Rendering rooms/new.html.haml within layouts/application
+  Rendered rooms/_form.html.haml (13.1ms)
+  Rendered rooms/new.html.haml within layouts/application (18.4ms)
+  Rendered layouts/_navbar.html.haml (3.6ms)
+Completed 200 OK in 52ms (Views: 50.7ms | ActiveRecord: 0.0ms)
+
+
+Started POST "/rooms" for 127.0.0.1 at 2018-06-03 22:53:45 +0200
+Processing by RoomsController#create as HTML
+  Parameters: {"utf8"=>"✓", "authenticity_token"=>"DHp56fr5hSU+Vm6gj57Q0IxonejPtnb3iLcBbg4qYgJCbFwVC5dMfqw9s7W+HNeewD7El9HIjmxKgJxI8x+T0g==", "room"=>{"name"=>"Danieligno pane e vino", "time_from"=>"2018-06-04 12:00", "time_to"=>"2018-06-13 12:00", "description"=>"Room creata da taniuska", "max_participants"=>"33", "address"=>"via Mantegna, 00068 Rignano Flaminio Roma, Italy", "latitude"=>"42.202632", "longitude"=>"12.483617", "recurrence"=>"true"}, "commit"=>"Save"}
+  [1m[35m (0.1ms)[0m  [1m[36mbegin transaction[0m
+  ↳ app/controllers/rooms_controller.rb:34
+  [1m[36mRoom Create (0.4ms)[0m  [1m[32mINSERT INTO "rooms" ("name", "description", "max_participants", "address", "latitude", "longitude", "time_from", "time_to", "recurrence", "created_at", "updated_at") VALUES (?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?)[0m  [["name", "Danieligno pane e vino"], ["description", "Room creata da taniuska"], ["max_participants", 33], ["address", "via Mantegna, 00068 Rignano Flaminio Roma, Italy"], ["latitude", 42.202632], ["longitude", 12.483617], ["time_from", "2018-06-04 12:00:00"], ["time_to", "2018-06-13 12:00:00"], ["recurrence", "true"], ["created_at", "2018-06-03 20:53:45.252126"], ["updated_at", "2018-06-03 20:53:45.252126"]]
+  ↳ app/controllers/rooms_controller.rb:34
+  [1m[36mReservation Load (0.2ms)[0m  [1m[34mSELECT "reservations".* FROM "reservations" WHERE "reservations"."room_id" = ? ORDER BY created_at[0m  [["room_id", 2]]
+  ↳ app/models/room.rb:112
+#<Google::Apis::CalendarV3::Event:0x00007f56750143c0>
+{"attendees"=>[], "description"=>"Room creata da taniuska", "end"=>{"date"=>"2018-06-03"}, "location"=>"via Mantegna, 00068 Rignano Flaminio Roma, Italy", "recurrence"=>"true", "start"=>{"date"=>"2018-06-03"}, "summary"=>"Danieligno pane e vino", "visibility"=>"public"}
+  [1m[35m (0.2ms)[0m  [1m[31mrollback transaction[0m
+  ↳ app/controllers/rooms_controller.rb:34
+Completed 500 Internal Server Error in 30ms (ActiveRecord: 1.0ms)
+
+
+  
+NoMethodError (undefined method `each' for "true":String):
+  
+app/models/room.rb:99:in `update_event'
+app/models/room.rb:2:in `block in <class:Room>'
+app/controllers/rooms_controller.rb:34:in `block in create'
+app/controllers/rooms_controller.rb:33:in `create'
+Started POST "/rooms" for 127.0.0.1 at 2018-06-03 22:54:31 +0200
+Processing by RoomsController#create as HTML
+  Parameters: {"utf8"=>"✓", "authenticity_token"=>"DHp56fr5hSU+Vm6gj57Q0IxonejPtnb3iLcBbg4qYgJCbFwVC5dMfqw9s7W+HNeewD7El9HIjmxKgJxI8x+T0g==", "room"=>{"name"=>"Danieligno pane e vino", "time_from"=>"2018-06-04 12:00", "time_to"=>"2018-06-13 12:00", "description"=>"Room creata da taniuska", "max_participants"=>"33", "address"=>"via Mantegna, 00068 Rignano Flaminio Roma, Italy", "latitude"=>"42.202632", "longitude"=>"12.483617", "recurrence"=>"true"}, "commit"=>"Save"}
+  [1m[35m (0.0ms)[0m  [1m[36mbegin transaction[0m
+  ↳ app/controllers/rooms_controller.rb:34
+  [1m[36mRoom Create (0.2ms)[0m  [1m[32mINSERT INTO "rooms" ("name", "description", "max_participants", "address", "latitude", "longitude", "time_from", "time_to", "recurrence", "created_at", "updated_at") VALUES (?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?)[0m  [["name", "Danieligno pane e vino"], ["description", "Room creata da taniuska"], ["max_participants", 33], ["address", "via Mantegna, 00068 Rignano Flaminio Roma, Italy"], ["latitude", 42.202632], ["longitude", 12.483617], ["time_from", "2018-06-04 12:00:00"], ["time_to", "2018-06-13 12:00:00"], ["recurrence", "true"], ["created_at", "2018-06-03 20:54:31.664281"], ["updated_at", "2018-06-03 20:54:31.664281"]]
+  ↳ app/controllers/rooms_controller.rb:34
+  [1m[35m (0.1ms)[0m  [1m[31mrollback transaction[0m
+  ↳ app/controllers/rooms_controller.rb:34
+Completed 500 Internal Server Error in 20ms (ActiveRecord: 0.8ms)
+
+
+  
+ArgumentError (wrong number of arguments (given 1, expected 0)):
+  
+app/models/room.rb:112:in `render_attendees'
+app/models/room.rb:90:in `update_event'
+app/models/room.rb:2:in `block in <class:Room>'
+app/controllers/rooms_controller.rb:34:in `block in create'
+app/controllers/rooms_controller.rb:33:in `create'
+Started POST "/rooms" for 127.0.0.1 at 2018-06-03 22:54:45 +0200
+Processing by RoomsController#create as HTML
+  Parameters: {"utf8"=>"✓", "authenticity_token"=>"DHp56fr5hSU+Vm6gj57Q0IxonejPtnb3iLcBbg4qYgJCbFwVC5dMfqw9s7W+HNeewD7El9HIjmxKgJxI8x+T0g==", "room"=>{"name"=>"Danieligno pane e vino", "time_from"=>"2018-06-04 12:00", "time_to"=>"2018-06-13 12:00", "description"=>"Room creata da taniuska", "max_participants"=>"33", "address"=>"via Mantegna, 00068 Rignano Flaminio Roma, Italy", "latitude"=>"42.202632", "longitude"=>"12.483617", "recurrence"=>"true"}, "commit"=>"Save"}
+  [1m[35m (0.0ms)[0m  [1m[36mbegin transaction[0m
+  ↳ app/controllers/rooms_controller.rb:34
+  [1m[36mRoom Create (0.2ms)[0m  [1m[32mINSERT INTO "rooms" ("name", "description", "max_participants", "address", "latitude", "longitude", "time_from", "time_to", "recurrence", "created_at", "updated_at") VALUES (?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?)[0m  [["name", "Danieligno pane e vino"], ["description", "Room creata da taniuska"], ["max_participants", 33], ["address", "via Mantegna, 00068 Rignano Flaminio Roma, Italy"], ["latitude", 42.202632], ["longitude", 12.483617], ["time_from", "2018-06-04 12:00:00"], ["time_to", "2018-06-13 12:00:00"], ["recurrence", "true"], ["created_at", "2018-06-03 20:54:45.718287"], ["updated_at", "2018-06-03 20:54:45.718287"]]
+  ↳ app/controllers/rooms_controller.rb:34
+#<Reservation::ActiveRecord_Associations_CollectionProxy:0x00007f5661ff5708>
+  [1m[36mReservation Load (0.1ms)[0m  [1m[34mSELECT "reservations".* FROM "reservations" WHERE "reservations"."room_id" = ? ORDER BY created_at[0m  [["room_id", 2]]
+  ↳ app/models/room.rb:113
+#<Google::Apis::CalendarV3::Event:0x00007f5661fec0b8>
+{"attendees"=>[], "description"=>"Room creata da taniuska", "end"=>{"date"=>"2018-06-03"}, "location"=>"via Mantegna, 00068 Rignano Flaminio Roma, Italy", "recurrence"=>"true", "start"=>{"date"=>"2018-06-03"}, "summary"=>"Danieligno pane e vino", "visibility"=>"public"}
+  [1m[35m (0.1ms)[0m  [1m[31mrollback transaction[0m
+  ↳ app/controllers/rooms_controller.rb:34
+Completed 500 Internal Server Error in 25ms (ActiveRecord: 1.4ms)
+
+
+  
+NoMethodError (undefined method `each' for "true":String):
+  
+app/models/room.rb:99:in `update_event'
+app/models/room.rb:2:in `block in <class:Room>'
+app/controllers/rooms_controller.rb:34:in `block in create'
+app/controllers/rooms_controller.rb:33:in `create'
+Started POST "/rooms" for 127.0.0.1 at 2018-06-03 22:55:41 +0200
+Processing by RoomsController#create as HTML
+  Parameters: {"utf8"=>"✓", "authenticity_token"=>"DHp56fr5hSU+Vm6gj57Q0IxonejPtnb3iLcBbg4qYgJCbFwVC5dMfqw9s7W+HNeewD7El9HIjmxKgJxI8x+T0g==", "room"=>{"name"=>"Danieligno pane e vino", "time_from"=>"2018-06-04 12:00", "time_to"=>"2018-06-13 12:00", "description"=>"Room creata da taniuska", "max_participants"=>"33", "address"=>"via Mantegna, 00068 Rignano Flaminio Roma, Italy", "latitude"=>"42.202632", "longitude"=>"12.483617", "recurrence"=>"true"}, "commit"=>"Save"}
+  [1m[35m (0.1ms)[0m  [1m[36mbegin transaction[0m
+  ↳ app/controllers/rooms_controller.rb:34
+  [1m[36mRoom Create (0.2ms)[0m  [1m[32mINSERT INTO "rooms" ("name", "description", "max_participants", "address", "latitude", "longitude", "time_from", "time_to", "recurrence", "created_at", "updated_at") VALUES (?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?)[0m  [["name", "Danieligno pane e vino"], ["description", "Room creata da taniuska"], ["max_participants", 33], ["address", "via Mantegna, 00068 Rignano Flaminio Roma, Italy"], ["latitude", 42.202632], ["longitude", 12.483617], ["time_from", "2018-06-04 12:00:00"], ["time_to", "2018-06-13 12:00:00"], ["recurrence", "true"], ["created_at", "2018-06-03 20:55:41.089046"], ["updated_at", "2018-06-03 20:55:41.089046"]]
+  ↳ app/controllers/rooms_controller.rb:34
+#<Reservation::ActiveRecord_Associations_CollectionProxy:0x00007f5668fb0188>
+#<Google::Apis::CalendarV3::Event:0x00007f5668fa1c50>
+{"attendees"=>true, "description"=>"Room creata da taniuska", "end"=>{"date"=>"2018-06-03"}, "location"=>"via Mantegna, 00068 Rignano Flaminio Roma, Italy", "recurrence"=>"true", "start"=>{"date"=>"2018-06-03"}, "summary"=>"Danieligno pane e vino", "visibility"=>"public"}
+  [1m[35m (0.1ms)[0m  [1m[31mrollback transaction[0m
+  ↳ app/controllers/rooms_controller.rb:34
+Completed 500 Internal Server Error in 23ms (ActiveRecord: 0.9ms)
+
+
+  
+NoMethodError (undefined method `each' for true:TrueClass):
+  
+app/models/room.rb:99:in `update_event'
+app/models/room.rb:2:in `block in <class:Room>'
+app/controllers/rooms_controller.rb:34:in `block in create'
+app/controllers/rooms_controller.rb:33:in `create'
+Started POST "/rooms" for 127.0.0.1 at 2018-06-03 22:56:00 +0200
+Processing by RoomsController#create as HTML
+  Parameters: {"utf8"=>"✓", "authenticity_token"=>"DHp56fr5hSU+Vm6gj57Q0IxonejPtnb3iLcBbg4qYgJCbFwVC5dMfqw9s7W+HNeewD7El9HIjmxKgJxI8x+T0g==", "room"=>{"name"=>"Danieligno pane e vino", "time_from"=>"2018-06-04 12:00", "time_to"=>"2018-06-13 12:00", "description"=>"Room creata da taniuska", "max_participants"=>"33", "address"=>"via Mantegna, 00068 Rignano Flaminio Roma, Italy", "latitude"=>"42.202632", "longitude"=>"12.483617", "recurrence"=>"true"}, "commit"=>"Save"}
+  [1m[35m (0.1ms)[0m  [1m[36mbegin transaction[0m
+  ↳ app/controllers/rooms_controller.rb:34
+  [1m[36mRoom Create (0.2ms)[0m  [1m[32mINSERT INTO "rooms" ("name", "description", "max_participants", "address", "latitude", "longitude", "time_from", "time_to", "recurrence", "created_at", "updated_at") VALUES (?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?)[0m  [["name", "Danieligno pane e vino"], ["description", "Room creata da taniuska"], ["max_participants", 33], ["address", "via Mantegna, 00068 Rignano Flaminio Roma, Italy"], ["latitude", 42.202632], ["longitude", 12.483617], ["time_from", "2018-06-04 12:00:00"], ["time_to", "2018-06-13 12:00:00"], ["recurrence", "true"], ["created_at", "2018-06-03 20:56:00.383337"], ["updated_at", "2018-06-03 20:56:00.383337"]]
+  ↳ app/controllers/rooms_controller.rb:34
+#<Reservation::ActiveRecord_Associations_CollectionProxy:0x00007f5661ff2120>
+#<Google::Apis::CalendarV3::Event:0x00007f5661ff0e88>
+{"attendees"=>true, "description"=>"Room creata da taniuska", "end"=>{"date"=>"2018-06-03"}, "location"=>"via Mantegna, 00068 Rignano Flaminio Roma, Italy", "recurrence"=>"true", "start"=>{"date"=>"2018-06-03"}, "summary"=>"Danieligno pane e vino", "visibility"=>"public"}
+  [1m[35m (0.1ms)[0m  [1m[31mrollback transaction[0m
+  ↳ app/controllers/rooms_controller.rb:34
+Completed 500 Internal Server Error in 5ms (ActiveRecord: 0.4ms)
+
+
+  
+NoMethodError (undefined method `each' for true:TrueClass):
+  
+app/models/room.rb:99:in `update_event'
+app/models/room.rb:2:in `block in <class:Room>'
+app/controllers/rooms_controller.rb:34:in `block in create'
+app/controllers/rooms_controller.rb:33:in `create'
+Started POST "/rooms" for 127.0.0.1 at 2018-06-03 22:58:06 +0200
+Processing by RoomsController#create as HTML
+  Parameters: {"utf8"=>"✓", "authenticity_token"=>"DHp56fr5hSU+Vm6gj57Q0IxonejPtnb3iLcBbg4qYgJCbFwVC5dMfqw9s7W+HNeewD7El9HIjmxKgJxI8x+T0g==", "room"=>{"name"=>"Danieligno pane e vino", "time_from"=>"2018-06-04 12:00", "time_to"=>"2018-06-13 12:00", "description"=>"Room creata da taniuska", "max_participants"=>"33", "address"=>"via Mantegna, 00068 Rignano Flaminio Roma, Italy", "latitude"=>"42.202632", "longitude"=>"12.483617", "recurrence"=>"true"}, "commit"=>"Save"}
+  [1m[35m (0.0ms)[0m  [1m[36mbegin transaction[0m
+  ↳ app/controllers/rooms_controller.rb:34
+  [1m[36mRoom Create (0.2ms)[0m  [1m[32mINSERT INTO "rooms" ("name", "description", "max_participants", "address", "latitude", "longitude", "time_from", "time_to", "recurrence", "created_at", "updated_at") VALUES (?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?)[0m  [["name", "Danieligno pane e vino"], ["description", "Room creata da taniuska"], ["max_participants", 33], ["address", "via Mantegna, 00068 Rignano Flaminio Roma, Italy"], ["latitude", 42.202632], ["longitude", 12.483617], ["time_from", "2018-06-04 12:00:00"], ["time_to", "2018-06-13 12:00:00"], ["recurrence", "true"], ["created_at", "2018-06-03 20:58:06.543340"], ["updated_at", "2018-06-03 20:58:06.543340"]]
+  ↳ app/controllers/rooms_controller.rb:34
+#<Reservation::ActiveRecord_Associations_CollectionProxy:0x00007f56680c2018>
+#<Google::Apis::CalendarV3::Event:0x00007f5668c3aeb8>
+{"attendees"=>true, "description"=>"Room creata da taniuska", "end"=>{"date"=>"2018-06-03"}, "location"=>"via Mantegna, 00068 Rignano Flaminio Roma, Italy", "recurrence"=>"true", "start"=>{"date"=>"2018-06-03"}, "summary"=>"Danieligno pane e vino"}
+  [1m[35m (0.1ms)[0m  [1m[31mrollback transaction[0m
+  ↳ app/controllers/rooms_controller.rb:34
+Completed 500 Internal Server Error in 22ms (ActiveRecord: 0.8ms)
+
+
+  
+NoMethodError (undefined method `each' for true:TrueClass):
+  
+app/models/room.rb:99:in `update_event'
+app/models/room.rb:2:in `block in <class:Room>'
+app/controllers/rooms_controller.rb:34:in `block in create'
+app/controllers/rooms_controller.rb:33:in `create'
+Started POST "/rooms" for 127.0.0.1 at 2018-06-03 22:58:34 +0200
+Processing by RoomsController#create as HTML
+  Parameters: {"utf8"=>"✓", "authenticity_token"=>"DHp56fr5hSU+Vm6gj57Q0IxonejPtnb3iLcBbg4qYgJCbFwVC5dMfqw9s7W+HNeewD7El9HIjmxKgJxI8x+T0g==", "room"=>{"name"=>"Danieligno pane e vino", "time_from"=>"2018-06-04 12:00", "time_to"=>"2018-06-13 12:00", "description"=>"Room creata da taniuska", "max_participants"=>"33", "address"=>"via Mantegna, 00068 Rignano Flaminio Roma, Italy", "latitude"=>"42.202632", "longitude"=>"12.483617", "recurrence"=>"true"}, "commit"=>"Save"}
+  [1m[35m (0.0ms)[0m  [1m[36mbegin transaction[0m
+  ↳ app/controllers/rooms_controller.rb:34
+  [1m[36mRoom Create (0.2ms)[0m  [1m[32mINSERT INTO "rooms" ("name", "description", "max_participants", "address", "latitude", "longitude", "time_from", "time_to", "recurrence", "created_at", "updated_at") VALUES (?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?)[0m  [["name", "Danieligno pane e vino"], ["description", "Room creata da taniuska"], ["max_participants", 33], ["address", "via Mantegna, 00068 Rignano Flaminio Roma, Italy"], ["latitude", 42.202632], ["longitude", 12.483617], ["time_from", "2018-06-04 12:00:00"], ["time_to", "2018-06-13 12:00:00"], ["recurrence", "true"], ["created_at", "2018-06-03 20:58:34.301798"], ["updated_at", "2018-06-03 20:58:34.301798"]]
+  ↳ app/controllers/rooms_controller.rb:34
+#<Google::Apis::CalendarV3::Event:0x00007f5674e39de8>
+{"description"=>"Room creata da taniuska", "end"=>{"date"=>"2018-06-03"}, "location"=>"via Mantegna, 00068 Rignano Flaminio Roma, Italy", "recurrence"=>"true", "start"=>{"date"=>"2018-06-03"}, "summary"=>"Danieligno pane e vino"}
+  [1m[35m (0.1ms)[0m  [1m[31mrollback transaction[0m
+  ↳ app/controllers/rooms_controller.rb:34
+Completed 500 Internal Server Error in 25ms (ActiveRecord: 0.9ms)
+
+
+  
+NoMethodError (undefined method `each' for "true":String):
+  
+app/models/room.rb:99:in `update_event'
+app/models/room.rb:2:in `block in <class:Room>'
+app/controllers/rooms_controller.rb:34:in `block in create'
+app/controllers/rooms_controller.rb:33:in `create'
+Started POST "/rooms" for 127.0.0.1 at 2018-06-03 22:58:45 +0200
+Processing by RoomsController#create as HTML
+  Parameters: {"utf8"=>"✓", "authenticity_token"=>"DHp56fr5hSU+Vm6gj57Q0IxonejPtnb3iLcBbg4qYgJCbFwVC5dMfqw9s7W+HNeewD7El9HIjmxKgJxI8x+T0g==", "room"=>{"name"=>"Danieligno pane e vino", "time_from"=>"2018-06-04 12:00", "time_to"=>"2018-06-13 12:00", "description"=>"Room creata da taniuska", "max_participants"=>"33", "address"=>"via Mantegna, 00068 Rignano Flaminio Roma, Italy", "latitude"=>"42.202632", "longitude"=>"12.483617", "recurrence"=>"true"}, "commit"=>"Save"}
+  [1m[35m (0.1ms)[0m  [1m[36mbegin transaction[0m
+  ↳ app/controllers/rooms_controller.rb:34
+  [1m[36mRoom Create (0.2ms)[0m  [1m[32mINSERT INTO "rooms" ("name", "description", "max_participants", "address", "latitude", "longitude", "time_from", "time_to", "recurrence", "created_at", "updated_at") VALUES (?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?)[0m  [["name", "Danieligno pane e vino"], ["description", "Room creata da taniuska"], ["max_participants", 33], ["address", "via Mantegna, 00068 Rignano Flaminio Roma, Italy"], ["latitude", 42.202632], ["longitude", 12.483617], ["time_from", "2018-06-04 12:00:00"], ["time_to", "2018-06-13 12:00:00"], ["recurrence", "true"], ["created_at", "2018-06-03 20:58:45.903159"], ["updated_at", "2018-06-03 20:58:45.903159"]]
+  ↳ app/controllers/rooms_controller.rb:34
+#<Google::Apis::CalendarV3::Event:0x00007f5660cf7e58>
+{"description"=>"Room creata da taniuska", "end"=>{"date"=>"2018-06-03"}, "location"=>"via Mantegna, 00068 Rignano Flaminio Roma, Italy", "start"=>{"date"=>"2018-06-03"}, "summary"=>"Danieligno pane e vino"}
+Sending HTTP post https://www.googleapis.com/calendar/v3/calendars/inline%40inline-205713.iam.gserviceaccount.com/events?
+200
+#<Hurley::Response POST https://www.googleapis.com/calendar/v3/calendars/inline%40inline-205713.iam.gserviceaccount.com/events == 200 (876 bytes) 831ms>
+Success - #<Google::Apis::CalendarV3::Event:0x00007f5660c2bb78
+ @created=Sun, 03 Jun 2018 20:58:46 +0000,
+ @creator=
+  #<Google::Apis::CalendarV3::Event::Creator:0x00007f5660c15af8
+   @email="inline@inline-205713.iam.gserviceaccount.com",
+   @self=true>,
+ @description="Room creata da taniuska",
+ @end=
+  #<Google::Apis::CalendarV3::EventDateTime:0x00007f5660c022c8
+   @date="2018-06-03">,
+ @etag="\"3056119053174000\"",
+ @html_link=
+  "https://www.google.com/calendar/event?eid=Z2hlaGw2cGxkNnJqdGV1ZGFlZWgwNG1kYTQgaW5saW5lQGlubGluZS0yMDU3MTMuaWFtLmdzZXJ2aWNlYWNjb3VudC5jb20",
+ @i_cal_uid="ghehl6pld6rjteudaeeh04mda4@google.com",
+ @id="ghehl6pld6rjteudaeeh04mda4",
+ @kind="calendar#event",
+ @location="via Mantegna, 00068 Rignano Flaminio Roma, Italy",
+ @organizer=
+  #<Google::Apis::CalendarV3::Event::Organizer:0x00007f5660bce7c0
+   @email="inline@inline-205713.iam.gserviceaccount.com",
+   @self=true>,
+ @reminders=
+  #<Google::Apis::CalendarV3::Event::Reminders:0x00007f5660ba63d8
+   @use_default=true>,
+ @sequence=0,
+ @start=
+  #<Google::Apis::CalendarV3::EventDateTime:0x00007f5660b9ebb0
+   @date="2018-06-03">,
+ @status="confirmed",
+ @summary="Danieligno pane e vino",
+ @updated=Sun, 03 Jun 2018 20:58:46 +0000>
+
+  [1m[35m (1404.5ms)[0m  [1m[36mcommit transaction[0m
+  ↳ app/controllers/rooms_controller.rb:34
+Redirected to http://localhost:3000/rooms/2
+Completed 302 Found in 2282ms (ActiveRecord: 1405.3ms)
+
+
+Started GET "/rooms/2" for 127.0.0.1 at 2018-06-03 22:58:48 +0200
+Processing by RoomsController#show as HTML
+  Parameters: {"id"=>"2"}
+  [1m[36mRoom Load (0.8ms)[0m  [1m[34mSELECT  "rooms".* FROM "rooms" WHERE "rooms"."id" = ? LIMIT ?[0m  [["id", 2], ["LIMIT", 1]]
+  ↳ app/controllers/rooms_controller.rb:84
+  Rendering rooms/show.html.haml within layouts/application
+  [1m[36mPower Load (0.1ms)[0m  [1m[34mSELECT "powers".* FROM "powers" WHERE "powers"."room_id" = ?[0m  [["room_id", 2]]
+  ↳ app/views/rooms/show.html.haml:35
+  Rendered rooms/show.html.haml within layouts/application (16.0ms)
+  Rendered layouts/_navbar.html.haml (3.8ms)
+Completed 200 OK in 59ms (Views: 51.8ms | ActiveRecord: 1.2ms)
+
+
+Started GET "/rooms/2.json" for 127.0.0.1 at 2018-06-03 22:58:49 +0200
+Processing by RoomsController#show as JSON
+  Parameters: {"id"=>"2"}
+  [1m[36mRoom Load (0.1ms)[0m  [1m[34mSELECT  "rooms".* FROM "rooms" WHERE "rooms"."id" = ? LIMIT ?[0m  [["id", 2], ["LIMIT", 1]]
+  ↳ app/controllers/rooms_controller.rb:84
+  Rendering rooms/show.json.jbuilder
+  Rendered rooms/_room.json.jbuilder (1.9ms)
+  Rendered rooms/show.json.jbuilder (2.8ms)
+Completed 500 Internal Server Error in 5ms (ActiveRecord: 0.1ms)
+
+
+  
+ActionView::Template::Error (undefined method `datetime' for #<Room:0x00007f5674df18e0>):
+    1: json.extract! room, :id, :name, :description, :address, :user_id, :max_participants, :latitude, :longitude, :time_from, :time_to, :avatar_file, :avatar_size, :avatar_updated_at, :datetime, :created_at, :updated_at, :event
+    2: json.reservations room.reservations, partial: 'rooms/reservations', as: :reservation
+    3: json.url room_url(room, format: :json)
+  
+app/views/rooms/_room.json.jbuilder:1:in `_app_views_rooms__room_json_jbuilder__3738840644081550959_70004652275340'
+app/views/rooms/show.json.jbuilder:1:in `_app_views_rooms_show_json_jbuilder___2188575844370857750_70004652343560'
+Started GET "/rooms/2" for 127.0.0.1 at 2018-06-03 22:59:37 +0200
+Processing by RoomsController#show as HTML
+  Parameters: {"id"=>"2"}
+  [1m[36mRoom Load (0.1ms)[0m  [1m[34mSELECT  "rooms".* FROM "rooms" WHERE "rooms"."id" = ? LIMIT ?[0m  [["id", 2], ["LIMIT", 1]]
+  ↳ app/controllers/rooms_controller.rb:84
+  Rendering rooms/show.html.haml within layouts/application
+  [1m[36mPower Load (0.1ms)[0m  [1m[34mSELECT "powers".* FROM "powers" WHERE "powers"."room_id" = ?[0m  [["room_id", 2]]
+  ↳ app/views/rooms/show.html.haml:35
+  Rendered rooms/show.html.haml within layouts/application (16.4ms)
+  Rendered layouts/_navbar.html.haml (3.9ms)
+Completed 200 OK in 57ms (Views: 39.3ms | ActiveRecord: 0.9ms)
+
+
+Started GET "/rooms/2.json" for 127.0.0.1 at 2018-06-03 22:59:38 +0200
+Processing by RoomsController#show as JSON
+  Parameters: {"id"=>"2"}
+  [1m[36mRoom Load (0.2ms)[0m  [1m[34mSELECT  "rooms".* FROM "rooms" WHERE "rooms"."id" = ? LIMIT ?[0m  [["id", 2], ["LIMIT", 1]]
+  ↳ app/controllers/rooms_controller.rb:84
+  Rendering rooms/show.json.jbuilder
+  Rendered rooms/_room.json.jbuilder (1.4ms)
+  Rendered rooms/show.json.jbuilder (2.1ms)
+Completed 500 Internal Server Error in 5ms (ActiveRecord: 0.2ms)
+
+
+  
+ActionView::Template::Error (undefined method `datetime' for #<Room:0x00007f56741ed8a0>):
+    1: json.extract! room, :id, :name, :description, :address, :user_id, :max_participants, :latitude, :longitude, :time_from, :time_to, :avatar_file, :avatar_size, :avatar_updated_at, :datetime, :created_at, :updated_at, :event
+    2: json.reservations room.reservations, partial: 'rooms/reservations', as: :reservation
+    3: json.url room_url(room, format: :json)
+  
+app/views/rooms/_room.json.jbuilder:1:in `_app_views_rooms__room_json_jbuilder__3738840644081550959_70004649116100'
+app/views/rooms/show.json.jbuilder:1:in `_app_views_rooms_show_json_jbuilder___2188575844370857750_70004646044360'
+Started GET "/rooms/new" for 127.0.0.1 at 2018-06-03 22:59:43 +0200
+Processing by RoomsController#new as HTML
+  Rendering rooms/new.html.haml within layouts/application
+  Rendered rooms/_form.html.haml (13.5ms)
+  Rendered rooms/new.html.haml within layouts/application (17.5ms)
+  Rendered layouts/_navbar.html.haml (3.6ms)
+Completed 200 OK in 52ms (Views: 50.6ms | ActiveRecord: 0.0ms)
+
+
+Started POST "/rooms" for 127.0.0.1 at 2018-06-03 22:59:59 +0200
+Processing by RoomsController#create as HTML
+  Parameters: {"utf8"=>"✓", "authenticity_token"=>"7vyNFBNZWKG1nP4DV06qltBawoRurLe8eSPLtdcALByg6qjo4jeR+if3IxZmzK3YnAyb+3DSTye7FFaTKjXdzA==", "room"=>{"name"=>"Daniele's roomdadadaads", "time_from"=>"2018-06-26 12:00", "time_to"=>"2018-06-26 12:00", "description"=>"abaco", "max_participants"=>"35", "address"=>"", "latitude"=>"", "longitude"=>"", "recurrence"=>"true"}, "commit"=>"Save"}
+  [1m[35m (0.1ms)[0m  [1m[36mbegin transaction[0m
+  ↳ app/controllers/rooms_controller.rb:34
+  [1m[36mRoom Create (0.6ms)[0m  [1m[32mINSERT INTO "rooms" ("name", "description", "max_participants", "address", "time_from", "time_to", "recurrence", "created_at", "updated_at") VALUES (?, ?, ?, ?, ?, ?, ?, ?, ?)[0m  [["name", "Daniele's roomdadadaads"], ["description", "abaco"], ["max_participants", 35], ["address", ""], ["time_from", "2018-06-26 12:00:00"], ["time_to", "2018-06-26 12:00:00"], ["recurrence", "true"], ["created_at", "2018-06-03 20:59:59.663943"], ["updated_at", "2018-06-03 20:59:59.663943"]]
+  ↳ app/controllers/rooms_controller.rb:34
+#<Reservation::ActiveRecord_Associations_CollectionProxy:0x00007f5674fb33b8>
+  [1m[36mReservation Load (0.1ms)[0m  [1m[34mSELECT "reservations".* FROM "reservations" WHERE "reservations"."room_id" = ? ORDER BY created_at[0m  [["room_id", 3]]
+  ↳ app/models/room.rb:113
+#<Google::Apis::CalendarV3::Event:0x00007f5674fa7928>
+{"attendees"=>[], "description"=>"abaco", "end"=>{"date"=>"2018-06-03"}, "location"=>"", "start"=>{"date"=>"2018-06-03"}, "summary"=>"Daniele's roomdadadaads", "visibility"=>"public"}
+Sending HTTP post https://www.googleapis.com/calendar/v3/calendars/inline%40inline-205713.iam.gserviceaccount.com/events?
+200
+#<Hurley::Response POST https://www.googleapis.com/calendar/v3/calendars/inline%40inline-205713.iam.gserviceaccount.com/events == 200 (819 bytes) 6394ms>
+Success - #<Google::Apis::CalendarV3::Event:0x00007f5674f84dd8
+ @created=Sun, 03 Jun 2018 21:00:00 +0000,
+ @creator=
+  #<Google::Apis::CalendarV3::Event::Creator:0x00007f5674f80030
+   @email="inline@inline-205713.iam.gserviceaccount.com",
+   @self=true>,
+ @description="abaco",
+ @end=
+  #<Google::Apis::CalendarV3::EventDateTime:0x00007f5674f7d9c0
+   @date="2018-06-03">,
+ @etag="\"3056119200976000\"",
+ @html_link=
+  "https://www.google.com/calendar/event?eid=NWtobDU1MDhqZ2djcXZlMW5kZWViZHE0dGcgaW5saW5lQGlubGluZS0yMDU3MTMuaWFtLmdzZXJ2aWNlYWNjb3VudC5jb20",
+ @i_cal_uid="5khl5508jggcqve1ndeebdq4tg@google.com",
+ @id="5khl5508jggcqve1ndeebdq4tg",
+ @kind="calendar#event",
+ @organizer=
+  #<Google::Apis::CalendarV3::Event::Organizer:0x00007f5674f78c68
+   @email="inline@inline-205713.iam.gserviceaccount.com",
+   @self=true>,
+ @reminders=
+  #<Google::Apis::CalendarV3::Event::Reminders:0x00007f5674f75a68
+   @use_default=true>,
+ @sequence=0,
+ @start=
+  #<Google::Apis::CalendarV3::EventDateTime:0x00007f5674f739c0
+   @date="2018-06-03">,
+ @status="confirmed",
+ @summary="Daniele's roomdadadaads",
+ @updated=Sun, 03 Jun 2018 21:00:00 +0000,
+ @visibility="public">
+
+  [1m[35m (855.8ms)[0m  [1m[36mcommit transaction[0m
+  ↳ app/controllers/rooms_controller.rb:34
+Redirected to http://localhost:3000/rooms/3
+Completed 302 Found in 7289ms (ActiveRecord: 856.7ms)
+
+
+Started GET "/rooms/3" for 127.0.0.1 at 2018-06-03 23:00:06 +0200
+Processing by RoomsController#show as HTML
+  Parameters: {"id"=>"3"}
+  [1m[36mRoom Load (0.7ms)[0m  [1m[34mSELECT  "rooms".* FROM "rooms" WHERE "rooms"."id" = ? LIMIT ?[0m  [["id", 3], ["LIMIT", 1]]
+  ↳ app/controllers/rooms_controller.rb:84
+  Rendering rooms/show.html.haml within layouts/application
+  [1m[36mPower Load (0.2ms)[0m  [1m[34mSELECT "powers".* FROM "powers" WHERE "powers"."room_id" = ?[0m  [["room_id", 3]]
+  ↳ app/views/rooms/show.html.haml:35
+  Rendered rooms/show.html.haml within layouts/application (13.8ms)
+  Rendered layouts/_navbar.html.haml (3.5ms)
+Completed 200 OK in 52ms (Views: 45.2ms | ActiveRecord: 1.0ms)
+
+
+Started GET "/rooms/3.json" for 127.0.0.1 at 2018-06-03 23:00:07 +0200
+Processing by RoomsController#show as JSON
+  Parameters: {"id"=>"3"}
+  [1m[36mRoom Load (0.1ms)[0m  [1m[34mSELECT  "rooms".* FROM "rooms" WHERE "rooms"."id" = ? LIMIT ?[0m  [["id", 3], ["LIMIT", 1]]
+  ↳ app/controllers/rooms_controller.rb:84
+  Rendering rooms/show.json.jbuilder
+  Rendered rooms/_room.json.jbuilder (1.0ms)
+  Rendered rooms/show.json.jbuilder (1.5ms)
+Completed 500 Internal Server Error in 4ms (ActiveRecord: 0.1ms)
+
+
+  
+ActionView::Template::Error (undefined method `datetime' for #<Room:0x00007f5661eec780>):
+    1: json.extract! room, :id, :name, :description, :address, :user_id, :max_participants, :latitude, :longitude, :time_from, :time_to, :avatar_file, :avatar_size, :avatar_updated_at, :datetime, :created_at, :updated_at, :event
+    2: json.reservations room.reservations, partial: 'rooms/reservations', as: :reservation
+    3: json.url room_url(room, format: :json)
+  
+app/views/rooms/_room.json.jbuilder:1:in `_app_views_rooms__room_json_jbuilder__3738840644081550959_70004493442880'
+app/views/rooms/show.json.jbuilder:1:in `_app_views_rooms_show_json_jbuilder___2188575844370857750_70004493466120'
+Started GET "/rooms/3.json" for 127.0.0.1 at 2018-06-03 23:02:19 +0200
+Processing by RoomsController#show as JSON
+  Parameters: {"id"=>"3"}
+  [1m[36mRoom Load (0.1ms)[0m  [1m[34mSELECT  "rooms".* FROM "rooms" WHERE "rooms"."id" = ? LIMIT ?[0m  [["id", 3], ["LIMIT", 1]]
+  ↳ app/controllers/rooms_controller.rb:84
+  Rendering rooms/show.json.jbuilder
+  Rendered rooms/_room.json.jbuilder (1.1ms)
+  Rendered rooms/show.json.jbuilder (1.8ms)
+Completed 500 Internal Server Error in 24ms (ActiveRecord: 0.9ms)
+
+
+  
+ActionView::Template::Error (undefined method `datetime' for #<Room:0x00007f5674f89798>):
+    1: json.extract! room, :id, :name, :description, :address, :user_id, :max_participants, :latitude, :longitude, :time_from, :time_to, :avatar_file, :avatar_size, :avatar_updated_at, :datetime, :created_at, :updated_at, :event
+    2: json.reservations room.reservations, partial: 'rooms/reservations', as: :reservation
+    3: json.url room_url(room, format: :json)
+  
+app/views/rooms/_room.json.jbuilder:1:in `_app_views_rooms__room_json_jbuilder__3738840644081550959_70004653161000'
+app/views/rooms/show.json.jbuilder:1:in `_app_views_rooms_show_json_jbuilder___2188575844370857750_70004653179300'
+Started GET "/rooms/3.json" for 127.0.0.1 at 2018-06-03 23:03:04 +0200
+Processing by RoomsController#show as JSON
+  Parameters: {"id"=>"3"}
+  [1m[36mRoom Load (0.1ms)[0m  [1m[34mSELECT  "rooms".* FROM "rooms" WHERE "rooms"."id" = ? LIMIT ?[0m  [["id", 3], ["LIMIT", 1]]
+  ↳ app/controllers/rooms_controller.rb:84
+  Rendering rooms/show.json.jbuilder
+  [1m[36mReservation Load (0.2ms)[0m  [1m[34mSELECT "reservations".* FROM "reservations" WHERE "reservations"."room_id" = ? ORDER BY created_at[0m  [["room_id", 3]]
+  ↳ /usr/lib/ruby/gems/2.5.0/gems/jbuilder-2.7.0/lib/jbuilder.rb:297
+  Rendered rooms/_room.json.jbuilder (25.8ms)
+  Rendered rooms/show.json.jbuilder (27.1ms)
+Completed 200 OK in 30ms (Views: 28.1ms | ActiveRecord: 0.5ms)
+
+
+Started GET "/rooms/3" for 127.0.0.1 at 2018-06-03 23:03:24 +0200
+Processing by RoomsController#show as HTML
+  Parameters: {"id"=>"3"}
+  [1m[36mRoom Load (0.6ms)[0m  [1m[34mSELECT  "rooms".* FROM "rooms" WHERE "rooms"."id" = ? LIMIT ?[0m  [["id", 3], ["LIMIT", 1]]
+  ↳ app/controllers/rooms_controller.rb:84
+  Rendering rooms/show.html.haml within layouts/application
+  [1m[36mPower Load (0.1ms)[0m  [1m[34mSELECT "powers".* FROM "powers" WHERE "powers"."room_id" = ?[0m  [["room_id", 3]]
+  ↳ app/views/rooms/show.html.haml:35
+  Rendered rooms/show.html.haml within layouts/application (12.2ms)
+  Rendered layouts/_navbar.html.haml (5.3ms)
+Completed 200 OK in 54ms (Views: 51.1ms | ActiveRecord: 0.9ms)
+
+
+Started GET "/rooms/3.json" for 127.0.0.1 at 2018-06-03 23:03:24 +0200
+Processing by RoomsController#show as JSON
+  Parameters: {"id"=>"3"}
+  [1m[36mRoom Load (0.1ms)[0m  [1m[34mSELECT  "rooms".* FROM "rooms" WHERE "rooms"."id" = ? LIMIT ?[0m  [["id", 3], ["LIMIT", 1]]
+  ↳ app/controllers/rooms_controller.rb:84
+  Rendering rooms/show.json.jbuilder
+  [1m[36mReservation Load (0.2ms)[0m  [1m[34mSELECT "reservations".* FROM "reservations" WHERE "reservations"."room_id" = ? ORDER BY created_at[0m  [["room_id", 3]]
+  ↳ /usr/lib/ruby/gems/2.5.0/gems/jbuilder-2.7.0/lib/jbuilder.rb:297
+  Rendered rooms/_room.json.jbuilder (1.8ms)
+  Rendered rooms/show.json.jbuilder (2.8ms)
+Completed 200 OK in 5ms (Views: 4.1ms | ActiveRecord: 0.3ms)
+
+
+Started GET "/rooms/new" for 127.0.0.1 at 2018-06-03 23:04:41 +0200
+Processing by RoomsController#new as HTML
+  Rendering rooms/new.html.haml within layouts/application
+  Rendered rooms/_form.html.haml (10.8ms)
+  Rendered rooms/new.html.haml within layouts/application (14.7ms)
+  Rendered layouts/_navbar.html.haml (4.2ms)
+Completed 200 OK in 41ms (Views: 39.7ms | ActiveRecord: 0.0ms)
+
+
+Started POST "/rooms" for 127.0.0.1 at 2018-06-03 23:05:05 +0200
+Processing by RoomsController#create as HTML
+  Parameters: {"utf8"=>"✓", "authenticity_token"=>"lzqVUTT5m/69QDZ6Log9RkXvDzS1TFwg8btbk9s9CBDZLLCtxZdSpS8r628fCjoICblWS6sypLszjMa1Jgj5wA==", "room"=>{"name"=>"Daniele prova", "time_from"=>"2018-06-19 16:00", "time_to"=>"2018-06-26 16:00", "description"=>"Room di prova", "max_participants"=>"32", "address"=>"", "latitude"=>"", "longitude"=>"", "recurrence"=>"true"}, "commit"=>"Save"}
+  [1m[35m (0.1ms)[0m  [1m[36mbegin transaction[0m
+  ↳ app/controllers/rooms_controller.rb:34
+  [1m[36mRoom Create (0.4ms)[0m  [1m[32mINSERT INTO "rooms" ("name", "description", "max_participants", "address", "time_from", "time_to", "recurrence", "created_at", "updated_at") VALUES (?, ?, ?, ?, ?, ?, ?, ?, ?)[0m  [["name", "Daniele prova"], ["description", "Room di prova"], ["max_participants", 32], ["address", ""], ["time_from", "2018-06-19 16:00:00"], ["time_to", "2018-06-26 16:00:00"], ["recurrence", "true"], ["created_at", "2018-06-03 21:05:05.402535"], ["updated_at", "2018-06-03 21:05:05.402535"]]
+  ↳ app/controllers/rooms_controller.rb:34
+  [1m[35m (0.2ms)[0m  [1m[31mrollback transaction[0m
+  ↳ app/controllers/rooms_controller.rb:34
+Completed 500 Internal Server Error in 6ms (ActiveRecord: 0.6ms)
+
+
+  
+NoMethodError (undefined method `todatetime' for Tue, 19 Jun 2018 16:00:00 UTC +00:00:Time):
+  
+app/models/room.rb:84:in `update_event'
+app/models/room.rb:2:in `block in <class:Room>'
+app/controllers/rooms_controller.rb:34:in `block in create'
+app/controllers/rooms_controller.rb:33:in `create'
+Started POST "/rooms" for 127.0.0.1 at 2018-06-03 23:05:30 +0200
+Processing by RoomsController#create as HTML
+  Parameters: {"utf8"=>"✓", "authenticity_token"=>"lzqVUTT5m/69QDZ6Log9RkXvDzS1TFwg8btbk9s9CBDZLLCtxZdSpS8r628fCjoICblWS6sypLszjMa1Jgj5wA==", "room"=>{"name"=>"Daniele prova", "time_from"=>"2018-06-19 16:00", "time_to"=>"2018-06-26 16:00", "description"=>"Room di prova", "max_participants"=>"32", "address"=>"", "latitude"=>"", "longitude"=>"", "recurrence"=>"true"}, "commit"=>"Save"}
+  [1m[35m (0.0ms)[0m  [1m[36mbegin transaction[0m
+  ↳ app/controllers/rooms_controller.rb:34
+  [1m[36mRoom Create (0.2ms)[0m  [1m[32mINSERT INTO "rooms" ("name", "description", "max_participants", "address", "time_from", "time_to", "recurrence", "created_at", "updated_at") VALUES (?, ?, ?, ?, ?, ?, ?, ?, ?)[0m  [["name", "Daniele prova"], ["description", "Room di prova"], ["max_participants", 32], ["address", ""], ["time_from", "2018-06-19 16:00:00"], ["time_to", "2018-06-26 16:00:00"], ["recurrence", "true"], ["created_at", "2018-06-03 21:05:30.154664"], ["updated_at", "2018-06-03 21:05:30.154664"]]
+  ↳ app/controllers/rooms_controller.rb:34
+#<Reservation::ActiveRecord_Associations_CollectionProxy:0x00007f5674e51588>
+  [1m[36mReservation Load (0.1ms)[0m  [1m[34mSELECT "reservations".* FROM "reservations" WHERE "reservations"."room_id" = ? ORDER BY created_at[0m  [["room_id", 4]]
+  ↳ app/models/room.rb:113
+#<Google::Apis::CalendarV3::Event:0x00007f5674e41d18>
+{"attendees"=>[], "description"=>"Room di prova", "end"=>{"date_time"=>"2018-06-26T16:00:00+00:00"}, "location"=>"", "start"=>{"date_time"=>"2018-06-19T16:00:00+00:00"}, "summary"=>"Daniele prova", "visibility"=>"public"}
+Sending HTTP post https://www.googleapis.com/calendar/v3/calendars/inline%40inline-205713.iam.gserviceaccount.com/events?
+200
+#<Hurley::Response POST https://www.googleapis.com/calendar/v3/calendars/inline%40inline-205713.iam.gserviceaccount.com/events == 200 (845 bytes) 843ms>
+Success - #<Google::Apis::CalendarV3::Event:0x00007f5674e07c58
+ @created=Sun, 03 Jun 2018 21:05:30 +0000,
+ @creator=
+  #<Google::Apis::CalendarV3::Event::Creator:0x00007f5674e02438
+   @email="inline@inline-205713.iam.gserviceaccount.com",
+   @self=true>,
+ @description="Room di prova",
+ @end=
+  #<Google::Apis::CalendarV3::EventDateTime:0x00007f5674dff7d8
+   @date_time=Tue, 26 Jun 2018 16:00:00 +0000>,
+ @etag="\"3056119861238000\"",
+ @html_link=
+  "https://www.google.com/calendar/event?eid=MzBpdGZldWJldDJkY3NydGJrOWdqaXJlOWcgaW5saW5lQGlubGluZS0yMDU3MTMuaWFtLmdzZXJ2aWNlYWNjb3VudC5jb20",
+ @i_cal_uid="30itfeubet2dcsrtbk9gjire9g@google.com",
+ @id="30itfeubet2dcsrtbk9gjire9g",
+ @kind="calendar#event",
+ @organizer=
+  #<Google::Apis::CalendarV3::Event::Organizer:0x00007f5674df81e0
+   @email="inline@inline-205713.iam.gserviceaccount.com",
+   @self=true>,
+ @reminders=
+  #<Google::Apis::CalendarV3::Event::Reminders:0x00007f5674df49f0
+   @use_default=true>,
+ @sequence=0,
+ @start=
+  #<Google::Apis::CalendarV3::EventDateTime:0x00007f5674df1f20
+   @date_time=Tue, 19 Jun 2018 16:00:00 +0000>,
+ @status="confirmed",
+ @summary="Daniele prova",
+ @updated=Sun, 03 Jun 2018 21:05:30 +0000,
+ @visibility="public">
+
+  [1m[35m (1051.1ms)[0m  [1m[36mcommit transaction[0m
+  ↳ app/controllers/rooms_controller.rb:34
+Redirected to http://localhost:3000/rooms/4
+Completed 302 Found in 1942ms (ActiveRecord: 1052.5ms)
+
+
+Started GET "/rooms/4" for 127.0.0.1 at 2018-06-03 23:05:32 +0200
+Processing by RoomsController#show as HTML
+  Parameters: {"id"=>"4"}
+  [1m[36mRoom Load (0.6ms)[0m  [1m[34mSELECT  "rooms".* FROM "rooms" WHERE "rooms"."id" = ? LIMIT ?[0m  [["id", 4], ["LIMIT", 1]]
+  ↳ app/controllers/rooms_controller.rb:84
+  Rendering rooms/show.html.haml within layouts/application
+  [1m[36mPower Load (0.1ms)[0m  [1m[34mSELECT "powers".* FROM "powers" WHERE "powers"."room_id" = ?[0m  [["room_id", 4]]
+  ↳ app/views/rooms/show.html.haml:35
+  Rendered rooms/show.html.haml within layouts/application (16.0ms)
+  Rendered layouts/_navbar.html.haml (4.0ms)
+Completed 200 OK in 50ms (Views: 43.9ms | ActiveRecord: 0.9ms)
+
+
+Started GET "/rooms/4.json" for 127.0.0.1 at 2018-06-03 23:05:34 +0200
+Processing by RoomsController#show as JSON
+  Parameters: {"id"=>"4"}
+  [1m[36mRoom Load (0.2ms)[0m  [1m[34mSELECT  "rooms".* FROM "rooms" WHERE "rooms"."id" = ? LIMIT ?[0m  [["id", 4], ["LIMIT", 1]]
+  ↳ app/controllers/rooms_controller.rb:84
+  Rendering rooms/show.json.jbuilder
+  [1m[36mReservation Load (0.1ms)[0m  [1m[34mSELECT "reservations".* FROM "reservations" WHERE "reservations"."room_id" = ? ORDER BY created_at[0m  [["room_id", 4]]
+  ↳ /usr/lib/ruby/gems/2.5.0/gems/jbuilder-2.7.0/lib/jbuilder.rb:297
+  Rendered rooms/_room.json.jbuilder (2.1ms)
+  Rendered rooms/show.json.jbuilder (3.0ms)
+Completed 200 OK in 6ms (Views: 4.2ms | ActiveRecord: 0.3ms)
+
+
+Started GET "/rooms/" for 127.0.0.1 at 2018-06-03 23:06:51 +0200
+Processing by RoomsController#index as HTML
+  Rendering rooms/index.html.haml within layouts/application
+  [1m[36mRoom Load (0.3ms)[0m  [1m[34mSELECT "rooms".* FROM "rooms"[0m
+  ↳ app/views/rooms/index.html.haml:23
+  Rendered rooms/index.html.haml within layouts/application (7.9ms)
+Completed 500 Internal Server Error in 11ms (ActiveRecord: 0.3ms)
+
+
+  
+ActionView::Template::Error (undefined method `datetime' for #<Room:0x00007f5668339f08>):
+    32:         %td= room.avatar_file
+    33:         %td= room.avatar_size
+    34:         %td= room.avatar_updated_at
+    35:         %td= room.datetime
+    36:         %td= link_to 'Show', room
+    37:         %td= link_to 'Edit', edit_room_path(room)
+    38:         %td= link_to 'Destroy', room, method: :delete, data: { confirm: 'Are you sure?' }
+  
+app/views/rooms/index.html.haml:35:in `block in _app_views_rooms_index_html_haml___2768192910414733087_70004550448820'
+app/views/rooms/index.html.haml:23:in `_app_views_rooms_index_html_haml___2768192910414733087_70004550448820'
+Started GET "/rooms/" for 127.0.0.1 at 2018-06-03 23:07:21 +0200
+Processing by RoomsController#index as HTML
+  Rendering rooms/index.html.haml within layouts/application
+  [1m[36mRoom Load (0.2ms)[0m  [1m[34mSELECT "rooms".* FROM "rooms"[0m
+  ↳ app/views/rooms/index.html.haml:22
+  Rendered rooms/index.html.haml within layouts/application (6.3ms)
+  Rendered layouts/_navbar.html.haml (3.9ms)
+Completed 200 OK in 35ms (Views: 34.1ms | ActiveRecord: 0.2ms)
+
+
+Started GET "/rooms/4" for 127.0.0.1 at 2018-06-03 23:07:25 +0200
+Processing by RoomsController#show as HTML
+  Parameters: {"id"=>"4"}
+  [1m[36mRoom Load (0.4ms)[0m  [1m[34mSELECT  "rooms".* FROM "rooms" WHERE "rooms"."id" = ? LIMIT ?[0m  [["id", 4], ["LIMIT", 1]]
+  ↳ app/controllers/rooms_controller.rb:84
+  Rendering rooms/show.html.haml within layouts/application
+  [1m[36mPower Load (0.2ms)[0m  [1m[34mSELECT "powers".* FROM "powers" WHERE "powers"."room_id" = ?[0m  [["room_id", 4]]
+  ↳ app/views/rooms/show.html.haml:35
+  Rendered rooms/show.html.haml within layouts/application (11.2ms)
+  Rendered layouts/_navbar.html.haml (4.0ms)
+Completed 200 OK in 46ms (Views: 41.7ms | ActiveRecord: 0.6ms)
+
+
+Started GET "/rooms/4.json" for 127.0.0.1 at 2018-06-03 23:07:26 +0200
+Processing by RoomsController#show as JSON
+  Parameters: {"id"=>"4"}
+  [1m[36mRoom Load (0.2ms)[0m  [1m[34mSELECT  "rooms".* FROM "rooms" WHERE "rooms"."id" = ? LIMIT ?[0m  [["id", 4], ["LIMIT", 1]]
+  ↳ app/controllers/rooms_controller.rb:84
+  Rendering rooms/show.json.jbuilder
+  [1m[36mReservation Load (0.1ms)[0m  [1m[34mSELECT "reservations".* FROM "reservations" WHERE "reservations"."room_id" = ? ORDER BY created_at[0m  [["room_id", 4]]
+  ↳ /usr/lib/ruby/gems/2.5.0/gems/jbuilder-2.7.0/lib/jbuilder.rb:297
+  Rendered rooms/_room.json.jbuilder (1.6ms)
+  Rendered rooms/show.json.jbuilder (2.8ms)
+Completed 200 OK in 6ms (Views: 4.2ms | ActiveRecord: 0.4ms)
+
+
+Started GET "/rooms/4" for 127.0.0.1 at 2018-06-03 23:07:32 +0200
+Processing by RoomsController#show as HTML
+  Parameters: {"id"=>"4"}
+  [1m[36mRoom Load (1.1ms)[0m  [1m[34mSELECT  "rooms".* FROM "rooms" WHERE "rooms"."id" = ? LIMIT ?[0m  [["id", 4], ["LIMIT", 1]]
+  ↳ app/controllers/rooms_controller.rb:84
+  Rendering rooms/show.html.haml within layouts/application
+  [1m[36mPower Load (0.2ms)[0m  [1m[34mSELECT "powers".* FROM "powers" WHERE "powers"."room_id" = ?[0m  [["room_id", 4]]
+  ↳ app/views/rooms/show.html.haml:35
+  Rendered rooms/show.html.haml within layouts/application (16.9ms)
+Started GET "/rooms/4.json" for 127.0.0.1 at 2018-06-03 23:07:32 +0200
+Processing by RoomsController#show as JSON
+  Parameters: {"id"=>"4"}
+  [1m[36mRoom Load (0.8ms)[0m  [1m[34mSELECT  "rooms".* FROM "rooms" WHERE "rooms"."id" = ? LIMIT ?[0m  [["id", 4], ["LIMIT", 1]]
+  ↳ app/controllers/rooms_controller.rb:84
+  Rendering rooms/show.json.jbuilder
+  [1m[36mReservation Load (0.1ms)[0m  [1m[34mSELECT "reservations".* FROM "reservations" WHERE "reservations"."room_id" = ? ORDER BY created_at[0m  [["room_id", 4]]
+  ↳ /usr/lib/ruby/gems/2.5.0/gems/jbuilder-2.7.0/lib/jbuilder.rb:297
+  Rendered rooms/_room.json.jbuilder (7.7ms)
+  Rendered rooms/show.json.jbuilder (8.9ms)
+Completed 200 OK in 13ms (Views: 10.0ms | ActiveRecord: 0.9ms)
+
+
+  Rendered layouts/_navbar.html.haml (3.8ms)
+Completed 200 OK in 82ms (Views: 75.3ms | ActiveRecord: 1.3ms)
+
+
+Started GET "/rooms/4.json" for 127.0.0.1 at 2018-06-03 23:07:32 +0200
+Processing by RoomsController#show as JSON
+  Parameters: {"id"=>"4"}
+  [1m[36mRoom Load (0.4ms)[0m  [1m[34mSELECT  "rooms".* FROM "rooms" WHERE "rooms"."id" = ? LIMIT ?[0m  [["id", 4], ["LIMIT", 1]]
+  ↳ app/controllers/rooms_controller.rb:84
+  Rendering rooms/show.json.jbuilder
+  [1m[36mReservation Load (0.2ms)[0m  [1m[34mSELECT "reservations".* FROM "reservations" WHERE "reservations"."room_id" = ? ORDER BY created_at[0m  [["room_id", 4]]
+  ↳ /usr/lib/ruby/gems/2.5.0/gems/jbuilder-2.7.0/lib/jbuilder.rb:297
+  Rendered rooms/_room.json.jbuilder (3.0ms)
+  Rendered rooms/show.json.jbuilder (4.9ms)
+Completed 200 OK in 10ms (Views: 7.3ms | ActiveRecord: 0.6ms)
+
+
+Started GET "/rooms/2" for 127.0.0.1 at 2018-06-03 23:07:40 +0200
+Processing by RoomsController#show as HTML
+  Parameters: {"id"=>"2"}
+  [1m[36mRoom Load (0.4ms)[0m  [1m[34mSELECT  "rooms".* FROM "rooms" WHERE "rooms"."id" = ? LIMIT ?[0m  [["id", 2], ["LIMIT", 1]]
+  ↳ app/controllers/rooms_controller.rb:84
+  Rendering rooms/show.html.haml within layouts/application
+  [1m[36mPower Load (0.2ms)[0m  [1m[34mSELECT "powers".* FROM "powers" WHERE "powers"."room_id" = ?[0m  [["room_id", 2]]
+  ↳ app/views/rooms/show.html.haml:35
+  Rendered rooms/show.html.haml within layouts/application (13.9ms)
+  Rendered layouts/_navbar.html.haml (3.6ms)
+Completed 200 OK in 46ms (Views: 42.7ms | ActiveRecord: 0.5ms)
+
+
+Started GET "/rooms/2.json" for 127.0.0.1 at 2018-06-03 23:07:40 +0200
+Processing by RoomsController#show as JSON
+  Parameters: {"id"=>"2"}
+  [1m[36mRoom Load (0.1ms)[0m  [1m[34mSELECT  "rooms".* FROM "rooms" WHERE "rooms"."id" = ? LIMIT ?[0m  [["id", 2], ["LIMIT", 1]]
+  ↳ app/controllers/rooms_controller.rb:84
+  Rendering rooms/show.json.jbuilder
+  [1m[36mReservation Load (0.2ms)[0m  [1m[34mSELECT "reservations".* FROM "reservations" WHERE "reservations"."room_id" = ? ORDER BY created_at[0m  [["room_id", 2]]
+  ↳ /usr/lib/ruby/gems/2.5.0/gems/jbuilder-2.7.0/lib/jbuilder.rb:297
+  Rendered rooms/_room.json.jbuilder (2.5ms)
+  Rendered rooms/show.json.jbuilder (4.3ms)
+Completed 200 OK in 9ms (Views: 8.0ms | ActiveRecord: 0.3ms)
+
+
+Started GET "/rooms/1" for 127.0.0.1 at 2018-06-03 23:07:48 +0200
+Processing by RoomsController#show as HTML
+  Parameters: {"id"=>"1"}
+  [1m[36mRoom Load (0.8ms)[0m  [1m[34mSELECT  "rooms".* FROM "rooms" WHERE "rooms"."id" = ? LIMIT ?[0m  [["id", 1], ["LIMIT", 1]]
+  ↳ app/controllers/rooms_controller.rb:84
+  Rendering rooms/show.html.haml within layouts/application
+  [1m[36mPower Load (0.2ms)[0m  [1m[34mSELECT "powers".* FROM "powers" WHERE "powers"."room_id" = ?[0m  [["room_id", 1]]
+  ↳ app/views/rooms/show.html.haml:35
+  Rendered rooms/show.html.haml within layouts/application (12.3ms)
+  Rendered layouts/_navbar.html.haml (3.8ms)
+Completed 200 OK in 48ms (Views: 42.8ms | ActiveRecord: 1.0ms)
+
+
+Started GET "/rooms/1.json" for 127.0.0.1 at 2018-06-03 23:07:48 +0200
+Processing by RoomsController#show as JSON
+  Parameters: {"id"=>"1"}
+  [1m[36mRoom Load (0.2ms)[0m  [1m[34mSELECT  "rooms".* FROM "rooms" WHERE "rooms"."id" = ? LIMIT ?[0m  [["id", 1], ["LIMIT", 1]]
+  ↳ app/controllers/rooms_controller.rb:84
+  Rendering rooms/show.json.jbuilder
+  [1m[36mReservation Load (0.2ms)[0m  [1m[34mSELECT "reservations".* FROM "reservations" WHERE "reservations"."room_id" = ? ORDER BY created_at[0m  [["room_id", 1]]
+  ↳ /usr/lib/ruby/gems/2.5.0/gems/jbuilder-2.7.0/lib/jbuilder.rb:297
+  Rendered rooms/_room.json.jbuilder (3.1ms)
+  Rendered rooms/show.json.jbuilder (4.3ms)
+Completed 200 OK in 7ms (Views: 5.2ms | ActiveRecord: 0.3ms)
+
+
+Started GET "/" for 127.0.0.1 at 2018-06-03 23:19:31 +0200
+  
+ActionController::RoutingError (uninitialized constant StaticPagesController):
+  
+bootsnap (1.3.0) lib/bootsnap/load_path_cache/core_ext/active_support.rb:53:in `block in load_missing_constant'
+bootsnap (1.3.0) lib/bootsnap/load_path_cache/core_ext/active_support.rb:8:in `without_bootsnap_cache'
+bootsnap (1.3.0) lib/bootsnap/load_path_cache/core_ext/active_support.rb:53:in `rescue in load_missing_constant'
+bootsnap (1.3.0) lib/bootsnap/load_path_cache/core_ext/active_support.rb:42:in `load_missing_constant'
+activesupport (5.2.0) lib/active_support/inflector/methods.rb:283:in `const_get'
+activesupport (5.2.0) lib/active_support/inflector/methods.rb:283:in `block in constantize'
+activesupport (5.2.0) lib/active_support/inflector/methods.rb:281:in `each'
+activesupport (5.2.0) lib/active_support/inflector/methods.rb:281:in `inject'
+activesupport (5.2.0) lib/active_support/inflector/methods.rb:281:in `constantize'
+actionpack (5.2.0) lib/action_dispatch/http/request.rb:88:in `controller_class_for'
+actionpack (5.2.0) lib/action_dispatch/http/request.rb:81:in `controller_class'
+actionpack (5.2.0) lib/action_dispatch/routing/route_set.rb:46:in `controller'
+actionpack (5.2.0) lib/action_dispatch/routing/route_set.rb:32:in `serve'
+actionpack (5.2.0) lib/action_dispatch/journey/router.rb:52:in `block in serve'
+actionpack (5.2.0) lib/action_dispatch/journey/router.rb:35:in `each'
+actionpack (5.2.0) lib/action_dispatch/journey/router.rb:35:in `serve'
+actionpack (5.2.0) lib/action_dispatch/routing/route_set.rb:840:in `call'
+rack (2.0.5) lib/rack/tempfile_reaper.rb:15:in `call'
+rack (2.0.5) lib/rack/etag.rb:25:in `call'
+rack (2.0.5) lib/rack/conditional_get.rb:25:in `call'
+rack (2.0.5) lib/rack/head.rb:12:in `call'
+actionpack (5.2.0) lib/action_dispatch/http/content_security_policy.rb:18:in `call'
+rack (2.0.5) lib/rack/session/abstract/id.rb:232:in `context'
+rack (2.0.5) lib/rack/session/abstract/id.rb:226:in `call'
+actionpack (5.2.0) lib/action_dispatch/middleware/cookies.rb:670:in `call'
+activerecord (5.2.0) lib/active_record/migration.rb:559:in `call'
+actionpack (5.2.0) lib/action_dispatch/middleware/callbacks.rb:28:in `block in call'
+activesupport (5.2.0) lib/active_support/callbacks.rb:98:in `run_callbacks'
+actionpack (5.2.0) lib/action_dispatch/middleware/callbacks.rb:26:in `call'
+actionpack (5.2.0) lib/action_dispatch/middleware/executor.rb:14:in `call'
+actionpack (5.2.0) lib/action_dispatch/middleware/debug_exceptions.rb:61:in `call'
+web-console (3.6.2) lib/web_console/middleware.rb:135:in `call_app'
+web-console (3.6.2) lib/web_console/middleware.rb:30:in `block in call'
+web-console (3.6.2) lib/web_console/middleware.rb:20:in `catch'
+web-console (3.6.2) lib/web_console/middleware.rb:20:in `call'
+actionpack (5.2.0) lib/action_dispatch/middleware/show_exceptions.rb:33:in `call'
+railties (5.2.0) lib/rails/rack/logger.rb:38:in `call_app'
+railties (5.2.0) lib/rails/rack/logger.rb:26:in `block in call'
+activesupport (5.2.0) lib/active_support/tagged_logging.rb:71:in `block in tagged'
+activesupport (5.2.0) lib/active_support/tagged_logging.rb:28:in `tagged'
+activesupport (5.2.0) lib/active_support/tagged_logging.rb:71:in `tagged'
+railties (5.2.0) lib/rails/rack/logger.rb:26:in `call'
+sprockets-rails (3.2.1) lib/sprockets/rails/quiet_assets.rb:13:in `call'
+actionpack (5.2.0) lib/action_dispatch/middleware/remote_ip.rb:81:in `call'
+actionpack (5.2.0) lib/action_dispatch/middleware/request_id.rb:27:in `call'
+rack (2.0.5) lib/rack/method_override.rb:22:in `call'
+rack (2.0.5) lib/rack/runtime.rb:22:in `call'
+activesupport (5.2.0) lib/active_support/cache/strategy/local_cache_middleware.rb:29:in `call'
+actionpack (5.2.0) lib/action_dispatch/middleware/executor.rb:14:in `call'
+actionpack (5.2.0) lib/action_dispatch/middleware/static.rb:127:in `call'
+rack (2.0.5) lib/rack/sendfile.rb:111:in `call'
+railties (5.2.0) lib/rails/engine.rb:524:in `call'
+puma (3.11.4) lib/puma/configuration.rb:225:in `call'
+puma (3.11.4) lib/puma/server.rb:632:in `handle_request'
+puma (3.11.4) lib/puma/server.rb:446:in `process_client'
+puma (3.11.4) lib/puma/server.rb:306:in `block in run'
+puma (3.11.4) lib/puma/thread_pool.rb:120:in `block in spawn_thread'
+Started GET "/login" for 127.0.0.1 at 2018-06-03 23:19:40 +0200
+Processing by SessionsController#new as HTML
+  Rendering sessions/new.html.haml within layouts/application
+  Rendered sessions/new.html.haml within layouts/application (182.0ms)
+Completed 200 OK in 205ms (Views: 204.1ms | ActiveRecord: 0.0ms)
+
+
+Started POST "/login" for 127.0.0.1 at 2018-06-03 23:19:50 +0200
+Processing by SessionsController#create as HTML
+  Parameters: {"utf8"=>"✓", "authenticity_token"=>"dcou6L11QWzjTG90I1ZwsA1CJggO4qQlnTxRB0rBbO0Fu2AxQisYOyt42yldgiIOB8xkB0Kvi9IDYDnMVL5FVA==", "session"=>{"email"=>"danieligno10@gmail.com", "password"=>"[FILTERED]", "remember_me"=>"0"}, "commit"=>"Log in"}
+Completed 500 Internal Server Error in 4ms (ActiveRecord: 0.1ms)
+
+
+  
+ActiveRecord::StatementInvalid (Could not find table 'users'):
+  
+app/controllers/sessions_controller.rb:6:in `create'
+Started GET "/signup" for 127.0.0.1 at 2018-06-03 23:22:06 +0200
+Processing by UsersController#new as HTML
+Completed 500 Internal Server Error in 1ms (ActiveRecord: 0.1ms)
+
+
+  
+ActiveRecord::StatementInvalid (Could not find table 'users'):
+  
+app/controllers/users_controller.rb:11:in `new'
+Started GET "/signup" for 127.0.0.1 at 2018-06-03 23:22:35 +0200
+Processing by UsersController#new as HTML
+Completed 500 Internal Server Error in 1ms (ActiveRecord: 0.1ms)
+
+
+  
+ActiveRecord::StatementInvalid (Could not find table 'users'):
+  
+app/controllers/users_controller.rb:11:in `new'
+Started GET "/signup" for 127.0.0.1 at 2018-06-03 23:22:39 +0200
+Processing by UsersController#new as HTML
+Completed 500 Internal Server Error in 1ms (ActiveRecord: 0.1ms)
+
+
+  
+ActiveRecord::StatementInvalid (Could not find table 'users'):
+  
+app/controllers/users_controller.rb:11:in `new'
+Started GET "/" for 127.0.0.1 at 2018-06-03 23:22:43 +0200
+  
+ActionController::RoutingError (uninitialized constant StaticPagesController):
+  
+bootsnap (1.3.0) lib/bootsnap/load_path_cache/core_ext/active_support.rb:53:in `block in load_missing_constant'
+bootsnap (1.3.0) lib/bootsnap/load_path_cache/core_ext/active_support.rb:8:in `without_bootsnap_cache'
+bootsnap (1.3.0) lib/bootsnap/load_path_cache/core_ext/active_support.rb:53:in `rescue in load_missing_constant'
+bootsnap (1.3.0) lib/bootsnap/load_path_cache/core_ext/active_support.rb:42:in `load_missing_constant'
+activesupport (5.2.0) lib/active_support/inflector/methods.rb:283:in `const_get'
+activesupport (5.2.0) lib/active_support/inflector/methods.rb:283:in `block in constantize'
+activesupport (5.2.0) lib/active_support/inflector/methods.rb:281:in `each'
+activesupport (5.2.0) lib/active_support/inflector/methods.rb:281:in `inject'
+activesupport (5.2.0) lib/active_support/inflector/methods.rb:281:in `constantize'
+actionpack (5.2.0) lib/action_dispatch/http/request.rb:88:in `controller_class_for'
+actionpack (5.2.0) lib/action_dispatch/http/request.rb:81:in `controller_class'
+actionpack (5.2.0) lib/action_dispatch/routing/route_set.rb:46:in `controller'
+actionpack (5.2.0) lib/action_dispatch/routing/route_set.rb:32:in `serve'
+actionpack (5.2.0) lib/action_dispatch/journey/router.rb:52:in `block in serve'
+actionpack (5.2.0) lib/action_dispatch/journey/router.rb:35:in `each'
+actionpack (5.2.0) lib/action_dispatch/journey/router.rb:35:in `serve'
+actionpack (5.2.0) lib/action_dispatch/routing/route_set.rb:840:in `call'
+rack (2.0.5) lib/rack/tempfile_reaper.rb:15:in `call'
+rack (2.0.5) lib/rack/etag.rb:25:in `call'
+rack (2.0.5) lib/rack/conditional_get.rb:25:in `call'
+rack (2.0.5) lib/rack/head.rb:12:in `call'
+actionpack (5.2.0) lib/action_dispatch/http/content_security_policy.rb:18:in `call'
+rack (2.0.5) lib/rack/session/abstract/id.rb:232:in `context'
+rack (2.0.5) lib/rack/session/abstract/id.rb:226:in `call'
+actionpack (5.2.0) lib/action_dispatch/middleware/cookies.rb:670:in `call'
+activerecord (5.2.0) lib/active_record/migration.rb:559:in `call'
+actionpack (5.2.0) lib/action_dispatch/middleware/callbacks.rb:28:in `block in call'
+activesupport (5.2.0) lib/active_support/callbacks.rb:98:in `run_callbacks'
+actionpack (5.2.0) lib/action_dispatch/middleware/callbacks.rb:26:in `call'
+actionpack (5.2.0) lib/action_dispatch/middleware/executor.rb:14:in `call'
+actionpack (5.2.0) lib/action_dispatch/middleware/debug_exceptions.rb:61:in `call'
+web-console (3.6.2) lib/web_console/middleware.rb:135:in `call_app'
+web-console (3.6.2) lib/web_console/middleware.rb:30:in `block in call'
+web-console (3.6.2) lib/web_console/middleware.rb:20:in `catch'
+web-console (3.6.2) lib/web_console/middleware.rb:20:in `call'
+actionpack (5.2.0) lib/action_dispatch/middleware/show_exceptions.rb:33:in `call'
+railties (5.2.0) lib/rails/rack/logger.rb:38:in `call_app'
+railties (5.2.0) lib/rails/rack/logger.rb:26:in `block in call'
+activesupport (5.2.0) lib/active_support/tagged_logging.rb:71:in `block in tagged'
+activesupport (5.2.0) lib/active_support/tagged_logging.rb:28:in `tagged'
+activesupport (5.2.0) lib/active_support/tagged_logging.rb:71:in `tagged'
+railties (5.2.0) lib/rails/rack/logger.rb:26:in `call'
+sprockets-rails (3.2.1) lib/sprockets/rails/quiet_assets.rb:13:in `call'
+actionpack (5.2.0) lib/action_dispatch/middleware/remote_ip.rb:81:in `call'
+actionpack (5.2.0) lib/action_dispatch/middleware/request_id.rb:27:in `call'
+rack (2.0.5) lib/rack/method_override.rb:22:in `call'
+rack (2.0.5) lib/rack/runtime.rb:22:in `call'
+activesupport (5.2.0) lib/active_support/cache/strategy/local_cache_middleware.rb:29:in `call'
+actionpack (5.2.0) lib/action_dispatch/middleware/executor.rb:14:in `call'
+actionpack (5.2.0) lib/action_dispatch/middleware/static.rb:127:in `call'
+rack (2.0.5) lib/rack/sendfile.rb:111:in `call'
+railties (5.2.0) lib/rails/engine.rb:524:in `call'
+puma (3.11.4) lib/puma/configuration.rb:225:in `call'
+puma (3.11.4) lib/puma/server.rb:632:in `handle_request'
+puma (3.11.4) lib/puma/server.rb:446:in `process_client'
+puma (3.11.4) lib/puma/server.rb:306:in `block in run'
+puma (3.11.4) lib/puma/thread_pool.rb:120:in `block in spawn_thread'
+Started GET "/register" for 127.0.0.1 at 2018-06-03 23:22:46 +0200
+  
+ActionController::RoutingError (No route matches [GET] "/register"):
+  
+actionpack (5.2.0) lib/action_dispatch/middleware/debug_exceptions.rb:65:in `call'
+web-console (3.6.2) lib/web_console/middleware.rb:135:in `call_app'
+web-console (3.6.2) lib/web_console/middleware.rb:30:in `block in call'
+web-console (3.6.2) lib/web_console/middleware.rb:20:in `catch'
+web-console (3.6.2) lib/web_console/middleware.rb:20:in `call'
+actionpack (5.2.0) lib/action_dispatch/middleware/show_exceptions.rb:33:in `call'
+railties (5.2.0) lib/rails/rack/logger.rb:38:in `call_app'
+railties (5.2.0) lib/rails/rack/logger.rb:26:in `block in call'
+activesupport (5.2.0) lib/active_support/tagged_logging.rb:71:in `block in tagged'
+activesupport (5.2.0) lib/active_support/tagged_logging.rb:28:in `tagged'
+activesupport (5.2.0) lib/active_support/tagged_logging.rb:71:in `tagged'
+railties (5.2.0) lib/rails/rack/logger.rb:26:in `call'
+sprockets-rails (3.2.1) lib/sprockets/rails/quiet_assets.rb:13:in `call'
+actionpack (5.2.0) lib/action_dispatch/middleware/remote_ip.rb:81:in `call'
+actionpack (5.2.0) lib/action_dispatch/middleware/request_id.rb:27:in `call'
+rack (2.0.5) lib/rack/method_override.rb:22:in `call'
+rack (2.0.5) lib/rack/runtime.rb:22:in `call'
+activesupport (5.2.0) lib/active_support/cache/strategy/local_cache_middleware.rb:29:in `call'
+actionpack (5.2.0) lib/action_dispatch/middleware/executor.rb:14:in `call'
+actionpack (5.2.0) lib/action_dispatch/middleware/static.rb:127:in `call'
+rack (2.0.5) lib/rack/sendfile.rb:111:in `call'
+railties (5.2.0) lib/rails/engine.rb:524:in `call'
+puma (3.11.4) lib/puma/configuration.rb:225:in `call'
+puma (3.11.4) lib/puma/server.rb:632:in `handle_request'
+puma (3.11.4) lib/puma/server.rb:446:in `process_client'
+puma (3.11.4) lib/puma/server.rb:306:in `block in run'
+puma (3.11.4) lib/puma/thread_pool.rb:120:in `block in spawn_thread'
+Started GET "/signuo" for 127.0.0.1 at 2018-06-03 23:23:12 +0200
+  
+ActionController::RoutingError (No route matches [GET] "/signuo"):
+  
+actionpack (5.2.0) lib/action_dispatch/middleware/debug_exceptions.rb:65:in `call'
+web-console (3.6.2) lib/web_console/middleware.rb:135:in `call_app'
+web-console (3.6.2) lib/web_console/middleware.rb:30:in `block in call'
+web-console (3.6.2) lib/web_console/middleware.rb:20:in `catch'
+web-console (3.6.2) lib/web_console/middleware.rb:20:in `call'
+actionpack (5.2.0) lib/action_dispatch/middleware/show_exceptions.rb:33:in `call'
+railties (5.2.0) lib/rails/rack/logger.rb:38:in `call_app'
+railties (5.2.0) lib/rails/rack/logger.rb:26:in `block in call'
+activesupport (5.2.0) lib/active_support/tagged_logging.rb:71:in `block in tagged'
+activesupport (5.2.0) lib/active_support/tagged_logging.rb:28:in `tagged'
+activesupport (5.2.0) lib/active_support/tagged_logging.rb:71:in `tagged'
+railties (5.2.0) lib/rails/rack/logger.rb:26:in `call'
+sprockets-rails (3.2.1) lib/sprockets/rails/quiet_assets.rb:13:in `call'
+actionpack (5.2.0) lib/action_dispatch/middleware/remote_ip.rb:81:in `call'
+actionpack (5.2.0) lib/action_dispatch/middleware/request_id.rb:27:in `call'
+rack (2.0.5) lib/rack/method_override.rb:22:in `call'
+rack (2.0.5) lib/rack/runtime.rb:22:in `call'
+activesupport (5.2.0) lib/active_support/cache/strategy/local_cache_middleware.rb:29:in `call'
+actionpack (5.2.0) lib/action_dispatch/middleware/executor.rb:14:in `call'
+actionpack (5.2.0) lib/action_dispatch/middleware/static.rb:127:in `call'
+rack (2.0.5) lib/rack/sendfile.rb:111:in `call'
+railties (5.2.0) lib/rails/engine.rb:524:in `call'
+puma (3.11.4) lib/puma/configuration.rb:225:in `call'
+puma (3.11.4) lib/puma/server.rb:632:in `handle_request'
+puma (3.11.4) lib/puma/server.rb:446:in `process_client'
+puma (3.11.4) lib/puma/server.rb:306:in `block in run'
+puma (3.11.4) lib/puma/thread_pool.rb:120:in `block in spawn_thread'
+Started GET "/signup" for 127.0.0.1 at 2018-06-03 23:23:14 +0200
+Processing by UsersController#new as HTML
+Completed 500 Internal Server Error in 2ms (ActiveRecord: 0.2ms)
+
+
+  
+ActiveRecord::StatementInvalid (Could not find table 'users'):
+  
+app/controllers/users_controller.rb:11:in `new'
+Started GET "/signup" for 127.0.0.1 at 2018-06-03 23:23:36 +0200
+Processing by UsersController#new as HTML
+Completed 500 Internal Server Error in 2ms (ActiveRecord: 0.2ms)
+
+
+  
+ActiveRecord::StatementInvalid (Could not find table 'users'):
+  
+app/controllers/users_controller.rb:11:in `new'
+Started GET "/signup" for 127.0.0.1 at 2018-06-03 23:23:37 +0200
+Processing by UsersController#new as HTML
+Completed 500 Internal Server Error in 2ms (ActiveRecord: 0.2ms)
+
+
+  
+ActiveRecord::StatementInvalid (Could not find table 'users'):
+  
+app/controllers/users_controller.rb:11:in `new'
+Started GET "/signup" for 127.0.0.1 at 2018-06-03 23:24:08 +0200
+Processing by UsersController#new as HTML
+Completed 500 Internal Server Error in 1ms (ActiveRecord: 0.1ms)
+
+
+  
+ActiveRecord::StatementInvalid (Could not find table 'users'):
+  
+app/controllers/users_controller.rb:11:in `new'
+Started GET "/signup" for 127.0.0.1 at 2018-06-03 23:24:18 +0200
+Processing by UsersController#new as HTML
+Completed 500 Internal Server Error in 1ms (ActiveRecord: 0.1ms)
+
+
+  
+ActiveRecord::StatementInvalid (Could not find table 'users'):
+  
+app/controllers/users_controller.rb:11:in `new'
+Started GET "/signup" for 127.0.0.1 at 2018-06-03 23:25:20 +0200
+Processing by UsersController#new as HTML
+Completed 500 Internal Server Error in 2ms (ActiveRecord: 0.3ms)
+
+
+  
+ActiveRecord::StatementInvalid (Could not find table 'users'):
+  
+app/controllers/users_controller.rb:11:in `new'
+Started GET "/signup" for 127.0.0.1 at 2018-06-03 23:25:43 +0200
+  [1m[35m (0.1ms)[0m  [1m[34mSELECT "schema_migrations"."version" FROM "schema_migrations" ORDER BY "schema_migrations"."version" ASC[0m
+  ↳ /usr/lib/ruby/gems/2.5.0/gems/web-console-3.6.2/lib/web_console/middleware.rb:135
+  
+ActionController::RoutingError (No route matches [GET] "/signup"):
+  
+actionpack (5.2.0) lib/action_dispatch/middleware/debug_exceptions.rb:65:in `call'
+web-console (3.6.2) lib/web_console/middleware.rb:135:in `call_app'
+web-console (3.6.2) lib/web_console/middleware.rb:30:in `block in call'
+web-console (3.6.2) lib/web_console/middleware.rb:20:in `catch'
+web-console (3.6.2) lib/web_console/middleware.rb:20:in `call'
+actionpack (5.2.0) lib/action_dispatch/middleware/show_exceptions.rb:33:in `call'
+railties (5.2.0) lib/rails/rack/logger.rb:38:in `call_app'
+railties (5.2.0) lib/rails/rack/logger.rb:26:in `block in call'
+activesupport (5.2.0) lib/active_support/tagged_logging.rb:71:in `block in tagged'
+activesupport (5.2.0) lib/active_support/tagged_logging.rb:28:in `tagged'
+activesupport (5.2.0) lib/active_support/tagged_logging.rb:71:in `tagged'
+railties (5.2.0) lib/rails/rack/logger.rb:26:in `call'
+sprockets-rails (3.2.1) lib/sprockets/rails/quiet_assets.rb:13:in `call'
+actionpack (5.2.0) lib/action_dispatch/middleware/remote_ip.rb:81:in `call'
+actionpack (5.2.0) lib/action_dispatch/middleware/request_id.rb:27:in `call'
+rack (2.0.5) lib/rack/method_override.rb:22:in `call'
+rack (2.0.5) lib/rack/runtime.rb:22:in `call'
+activesupport (5.2.0) lib/active_support/cache/strategy/local_cache_middleware.rb:29:in `call'
+actionpack (5.2.0) lib/action_dispatch/middleware/executor.rb:14:in `call'
+actionpack (5.2.0) lib/action_dispatch/middleware/static.rb:127:in `call'
+rack (2.0.5) lib/rack/sendfile.rb:111:in `call'
+railties (5.2.0) lib/rails/engine.rb:524:in `call'
+puma (3.11.4) lib/puma/configuration.rb:225:in `call'
+puma (3.11.4) lib/puma/server.rb:632:in `handle_request'
+puma (3.11.4) lib/puma/server.rb:446:in `process_client'
+puma (3.11.4) lib/puma/server.rb:306:in `block in run'
+puma (3.11.4) lib/puma/thread_pool.rb:120:in `block in spawn_thread'
+Started GET "/signup" for 127.0.0.1 at 2018-06-03 23:25:46 +0200
+  
+ActionController::RoutingError (No route matches [GET] "/signup"):
+  
+actionpack (5.2.0) lib/action_dispatch/middleware/debug_exceptions.rb:65:in `call'
+web-console (3.6.2) lib/web_console/middleware.rb:135:in `call_app'
+web-console (3.6.2) lib/web_console/middleware.rb:30:in `block in call'
+web-console (3.6.2) lib/web_console/middleware.rb:20:in `catch'
+web-console (3.6.2) lib/web_console/middleware.rb:20:in `call'
+actionpack (5.2.0) lib/action_dispatch/middleware/show_exceptions.rb:33:in `call'
+railties (5.2.0) lib/rails/rack/logger.rb:38:in `call_app'
+railties (5.2.0) lib/rails/rack/logger.rb:26:in `block in call'
+activesupport (5.2.0) lib/active_support/tagged_logging.rb:71:in `block in tagged'
+activesupport (5.2.0) lib/active_support/tagged_logging.rb:28:in `tagged'
+activesupport (5.2.0) lib/active_support/tagged_logging.rb:71:in `tagged'
+railties (5.2.0) lib/rails/rack/logger.rb:26:in `call'
+sprockets-rails (3.2.1) lib/sprockets/rails/quiet_assets.rb:13:in `call'
+actionpack (5.2.0) lib/action_dispatch/middleware/remote_ip.rb:81:in `call'
+actionpack (5.2.0) lib/action_dispatch/middleware/request_id.rb:27:in `call'
+rack (2.0.5) lib/rack/method_override.rb:22:in `call'
+rack (2.0.5) lib/rack/runtime.rb:22:in `call'
+activesupport (5.2.0) lib/active_support/cache/strategy/local_cache_middleware.rb:29:in `call'
+actionpack (5.2.0) lib/action_dispatch/middleware/executor.rb:14:in `call'
+actionpack (5.2.0) lib/action_dispatch/middleware/static.rb:127:in `call'
+rack (2.0.5) lib/rack/sendfile.rb:111:in `call'
+railties (5.2.0) lib/rails/engine.rb:524:in `call'
+puma (3.11.4) lib/puma/configuration.rb:225:in `call'
+puma (3.11.4) lib/puma/server.rb:632:in `handle_request'
+puma (3.11.4) lib/puma/server.rb:446:in `process_client'
+puma (3.11.4) lib/puma/server.rb:306:in `block in run'
+puma (3.11.4) lib/puma/thread_pool.rb:120:in `block in spawn_thread'

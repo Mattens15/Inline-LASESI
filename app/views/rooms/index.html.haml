@@ -14,7 +14,6 @@
       %th Avatar file
       %th Avatar size
       %th Avatar updated at
-      %th Datetime
       %th
       %th
       %th
@@ -32,7 +31,6 @@
         %td= room.avatar_file
         %td= room.avatar_size
         %td= room.avatar_updated_at
-        %td= room.datetime
         %td= link_to 'Show', room
         %td= link_to 'Edit', edit_room_path(room)
         %td= link_to 'Destroy', room, method: :delete, data: { confirm: 'Are you sure?' }
