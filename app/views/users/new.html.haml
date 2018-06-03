@@ -11,21 +11,7 @@
   %body
     .container-fluid{:style => "padding-left:10%;padding-right:10%;"}
       .row
-        .col-lg-6{:style => "margin-top:5%"}
-          %center>
-            %h3 Login
-            %br/
-            %form{:action => "", :method => "post", :name => "login", :style => "width:60%"}
-              .form-group
-                %h3 Email
-                %input.form-control{:name => "email", :placeholder => "prova@example.com", :required => "", :type => "email"}/
-              .form-group
-                %h3 Password
-                %input.form-control{:name => "password", :required => "", :type => "password"}/
-                = link_to "(forgot password)", new_password_reset_path
-              %input.btn.btn-sm.btn-success{:type => "submit", :value => "Invia"}/
-              %input.btn.btn-sm.btn-danger{:type => "reset", :value => "Reset"}/
-        .col-lg-6{:style => "margin-top:5%"}
+        .col-lg-12{:style => "margin-top:5%"}
           %center
             %h3 SignUp
             %br/
