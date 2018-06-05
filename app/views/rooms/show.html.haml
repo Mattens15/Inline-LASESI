@@ -40,12 +40,13 @@
         CODA
       %ol#userlist
       
-      .container#joindiv
-        -if !current_user.nil? && current_user.reservations.find_by(room_id: @room.id).nil?
-          =render 'join'
-        -else
-          =render 'unjoin'
-          
+      -if current_user != @room.user
+        .container#joindiv
+          -if !current_user.nil? && current_user.reservations.find_by(room_id: @room.id).nil?
+            =render 'join'
+          -else
+            =render 'unjoin'
+            
     .col-3.border-left
       %h4.text-center.my-auto.border-bottom
         CHAT
