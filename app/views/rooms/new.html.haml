@@ -25,9 +25,11 @@
       $('#lons_input').val('');
       $('#lats_input').val('');
     });
+    
+    
     var dateFrom = $("#inputdateFrom").flatpickr({ 
       enableTime: true,
-      minDate: Date.now(),
+      minDate: "today",
       altInput: true,
       altFromat: "F j, Y",
       dateFormat: 'Y-m-d H:i',

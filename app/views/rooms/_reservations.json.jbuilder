@@ -1,1 +1,1 @@
-json.(reservation, :id, :user_id, :room_id, :created_at)
+json.(reservation, :id, :user, :room_id, :created_at)

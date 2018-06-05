@@ -38,8 +38,14 @@
     .col-6
       %h4.text-center.my-auto.border-bottom
         CODA
-        %table.table
-          %tbody
+      %ol#userlist
+      
+      .container#joindiv
+        -if !current_user.nil? && current_user.reservations.find_by(room_id: @room.id).nil?
+          =render 'join'
+        -else
+          =render 'unjoin'
+          
     .col-3.border-left
       %h4.text-center.my-auto.border-bottom
         CHAT
@@ -70,5 +76,44 @@
       minDate: room_json.time_to,
       maxDate: room_json.time_to,
       defaultDate: room_json.time_to
-    })  
+    })
+  
+  getPartecipants();
   });
+
+  function getPartecipants(){ 
+      //queries the server every 2 second to check for updates in the queue
+      setTimeout(function(){
+        var json = init(document.URL+'.json');
+        var array = [];
+        for(var i = 0; i < json.reservations.length; i++){
+          array[i] = json.reservations[i].user.username;
+        }
+        updateList(array);
+        getPartecipants();
+      }, 3000);
+    }
+    
+  function updateList(list){
+    for (var i = 0; i < list.length; i++) {
+      if($("#element"+i).length){
+      //if elem exists update it
+        if ($("#element"+i).html() != list[i]){
+          console.log('Diverso!');
+          $("#element"+i).children().html(list[i]);
+        }
+      }
+      else{
+      //else create it
+        $("#userlist").append("<li>"+list[i]+"</li>");
+        var item = $("#userlist").children().last()
+        item.attr("id","element"+i);
+      }
+    }
+    //remove old elements 
+    if($("#userlist").length > list.length){
+      for (var i = list.length; i < $("#userlist").length; i++) {
+        $("#element"+i).remove();
+      }
+    }
+  }

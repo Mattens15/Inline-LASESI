@@ -11,13 +11,14 @@
 // about supported directives.
 //
 //= require jquery
+//= require jquery-ujs
 //= require flatpickr
 //= require activestorage
+//= require bootstrap
 //= require turbolinks
 //= require bootstrap
 //= require mapbox-gl
 //= require_tree 
-
 
 var map;
 
@@ -137,7 +138,7 @@ function render_map_for_room(){
   
 }
 
-//FUNZIONE USATA PER RENDERIZZARE LA MAPPA IN MAP#SHOW
+//FUNZIONE USATA PER RENDERIZZARE LA MAPPA IN DASHBOARD
 function render_map(stores){
   
   //AUTORIZE AND CREATE THE MAP
@@ -236,9 +237,11 @@ function render_map(stores){
       geolocate.on('geolocate', function(ev){
         var searchResult = ev.coords;
         
+        console.log(searchResult);
         var options = {units: 'kilometers'};
         stores.features.forEach(function(store){
           var actual_coord = [searchResult.longitude, searchResult.latitude];
+          console.log(actual_coord);
           Object.defineProperty(store.properties, 'distance', {
             value: turf.distance(actual_coord, store.geometry, options),
             writable: true,
@@ -294,12 +297,18 @@ function render_map(stores){
       //COME SOPRA, SOLO CHE CON LA GEOLOCALIZZAZIONE
       geocoder.on('result', function(ev) {
         var searchResult = ev.result.geometry;
-        
+
         map.getSource('single-point').setData(searchResult);
         var options = {units: 'kilometers'};
         stores.features.forEach(function(store){
+          console.log(JSON.stringify(store.geometry));  
+          if(store.geometry.coordinates[0] == 0 && store.geometry.coordinates[1] == 0){
+            return;
+          }
+          
           Object.defineProperty(store.properties, 'distance', {
-            value: turf.distance(searchResult, store.geometry, options),
+            
+            value: turf.distance(searchResult.coordinates, store.geometry, options),
             writable: true,
             enumerable: true,
             configurable: true
@@ -519,7 +528,13 @@ function buildObjectForMap(path){
   var rooms_json = init(path);
   var array_obj = []
   for(var i = 0; i < rooms_json.length; i++){
-    var coord = [rooms_json[i].longitude, rooms_json[i].latitude];
+    if(rooms_json[i].longitude == null|| rooms_json[i].latitude == null){
+      console.log('Trovata room senza location: '+rooms_json[i].name);
+      var coord = [0, 0];  
+    }
+    else{
+      var coord = [rooms_json[i].longitude, rooms_json[i].latitude];
+    }
     array_obj[i] = {
       "type": "Feature",
       "geometry": 
@@ -565,12 +580,18 @@ function init(path_JSON){
 };
 
 //CENTRA E ZOMMA SU CURRENT FEATURE
-//CENTRA E ZOMMA SU CURRENT FEATURE
 function flyToStore(currentFeature) {
-  map.flyTo({
-    center: currentFeature.geometry.coordinates,
-    zoom: 16
-  });
+  if(currentFeature.geometry.coordinates[0] == 0 && currentFeature.geometry.coordinates[1] == 0)
+  {
+    alert(currentFeature.properties.title+' non ha una location!');
+  }
+  
+  else{
+    map.flyTo({
+      center: currentFeature.geometry.coordinates,
+      zoom: 16
+    });
+  }
 }
 
 //CREA DIV E INSIERISCE LE ROOM VISIBILI
@@ -582,7 +603,7 @@ function buildMarker(stores){
       el.id = "marker-" + i;
       el.className = 'marker';
       el.innerHTML = marker.geometry.coordinates;
-      $(el).hide;
+      //$(el).hide;
       // Add markers to the map at all points
       new mapboxgl.Marker(el, {offset: [0, 0]})
           .setLngLat(marker.geometry.coordinates)
