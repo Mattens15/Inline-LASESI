@@ -28,6 +28,7 @@
       %input.text-center#dateEvent_to{:type => 'text'}
       
       %h4.text-center.my-3
+
         Room host:
         
       %table.table
@@ -35,6 +36,7 @@
         -@room.powers.each do |p|
           %tr
             %td.text-center=link_to p.user.username, user_path(p.user) 
+      %button.btn.btn-secondary.btn-sm Remind me
     .col-6
       %h4.text-center.my-auto.border-bottom
         CODA
@@ -54,6 +56,7 @@
         
 :javascript
   $(document).ready(function(){
+    updateList(getRoomJSON());
     var room_json = init(document.URL+'.json');
     if($('#map').length) {
       render_map_for_room_show(document.URL+'.json');
@@ -81,22 +84,28 @@
   
   getPartecipants();
   });
-
-  function getPartecipants(){ 
-      //queries the server every 2 second to check for updates in the queue
-      setTimeout(function(){
-        var json = init(document.URL+'.json');
+  function getRoomJSON(){
+  var json = init(document.URL+'.json');
         var array = [];
         for(var i = 0; i < json.reservations.length; i++){
           array[i] = json.reservations[i].user.username;
         }
-        updateList(array);
+
+
+    return array
+  }
+  function getPartecipants(){ 
+      //queries the server every 2 second to check for updates in the queue
+      setTimeout(function(){
+        
+        updateList(getRoomJSON());
         getPartecipants();
       }, 3000);
     }
     
   function updateList(list){
     for (var i = 0; i < list.length; i++) {
+    
       if($("#element"+i).length){
       //if elem exists update it
         if ($("#element"+i).html() != list[i]){
@@ -112,8 +121,8 @@
       }
     }
     //remove old elements 
-    if($("#userlist").length > list.length){
-      for (var i = list.length; i < $("#userlist").length; i++) {
+    if($("#userlist").children().length > list.length){
+      for (var i = list.length; i < $("#userlist").children().length; i++) {
         $("#element"+i).remove();
       }
     }
