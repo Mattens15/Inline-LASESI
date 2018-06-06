@@ -25,6 +25,7 @@ ActiveRecord::Schema.define(version: 2018_06_03_192349) do
   create_table "reservations", force: :cascade do |t|
     t.integer "user_id"
     t.integer "room_id"
+    t.boolean "reminder", default: false
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
     t.index ["room_id"], name: "index_reservations_on_room_id"

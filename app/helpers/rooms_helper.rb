@@ -10,6 +10,11 @@ module RoomsHelper
     current_user.admin? || current_user.powers.exists?(room_id: @room.id)
   end
   
+  def can_i_reserve?
+    @room = Room.find(params[:id])
+    !current_user.powers.exists?(room_id: @room.id)
+  end
+  
   def do_i_have_superpower?
     @room = Room.find(params[:id])
     ( current_user.admin? || @room.user.id = current_user.id )

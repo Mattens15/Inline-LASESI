@@ -21,7 +21,7 @@ Rails.application.routes.draw do
   resources :rooms
   resources :users
   resources :password_resets,     only: [:new, :create, :edit, :update]
-  resources :reservations,       only: [:create, :destroy, :edit]
+  resources :reservations
 
 end
 	

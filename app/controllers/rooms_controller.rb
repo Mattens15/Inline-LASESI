@@ -45,7 +45,7 @@ class RoomsController < ApplicationController
   # PATCH/PUT /rooms/1
   # PATCH/PUT /rooms/1.json
   def update
-    #MODIFICA EVENTO
+    @room = Room.find(params[:id])
     respond_to do |format|
       if @room.update(room_params)
         format.html { redirect_to @room, notice: 'Room was successfully updated.' }
@@ -91,3 +91,4 @@ class RoomsController < ApplicationController
       redirect_to(root_url) unless (current_user.powers.exists?(room_id: @room.id))
     end
 end
+

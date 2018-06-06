@@ -4,7 +4,8 @@ class ReservationsController < ApplicationController
   
   def create
     @room = Room.find(params[:room_id])
-    if(current_user != @room.user)
+    
+    if(current_user != @room.user && @room.reservations.count < @room.max_participants)
       current_user.reservations.create(room_id: @room.id)
     else
       flash[:danger] = 'Can\'t join if you are a room host!'
@@ -16,8 +17,13 @@ class ReservationsController < ApplicationController
     end
     
   end
+  
 
   def update
+    @reservation = Reservation.find(params[:id])
+    @room = Room.find(params[:room_id])
+    @reservation.update(reminder: !@reservation.reminder)
+      
   end
 
   def destroy
@@ -34,6 +40,7 @@ class ReservationsController < ApplicationController
   end
   
   private
+ 
     def logged_in_user
       unless logged_in?
         store_location

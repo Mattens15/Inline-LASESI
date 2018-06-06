@@ -1,0 +1,10 @@
+
+=form_for(current_user.reservations.find_by(room_id: @room.id), html: { method: :patch}, remote: true) do |f|
+  =hidden_field_tag :room_id, @room.id
+  =hidden_field_tag :user_id, current_user.id
+  =hidden_field_tag :reminder, !current_user.reservations.find_by(room_id: @room.id)
+  .form-group
+    -if !current_user.reservations.find_by(room_id: @room.id).reminder
+      = f.submit "Remind me", class: "btn btn-success"
+    -else
+      = f.submit "No email", class: "btn btn-success"
