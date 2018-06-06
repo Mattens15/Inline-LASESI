@@ -48,8 +48,7 @@ ActiveRecord::Schema.define(version: 2018_06_03_192349) do
     t.datetime "time_from"
     t.datetime "time_to"
     t.string "recurrence"
-    t.json "event"
-    t.integer "event_id"
+    t.string "event_id"
     t.integer "user_id"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false

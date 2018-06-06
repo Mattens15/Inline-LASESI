@@ -40,14 +40,20 @@
     .col-6
       %h4.text-center.my-auto.border-bottom
         CODA
-      %ol#userlist
+      %ul.list-group#userlist{:style => 'padding-top: 10px;'}
       
-      -if current_user != @room.user
-        .container#joindiv
-          -if !current_user.nil? && current_user.reservations.find_by(room_id: @room.id).nil?
-            =render 'join'
+      .container.text-center#joindiv{:style => 'margin-top: 10px;'}
+        -if can_delete?
+          -if current_user != @room.user && !current_user.powers.exists?(room_id: @room.id)
+            -if !current_user.nil? && current_user.reservations.find_by(room_id: @room.id).nil?
+              =render 'join'
+            -else
+              =render 'unjoin'
           -else
-            =render 'unjoin'
+            %button.btn.btn-primary{:disabled => ''} You can't join!
+        -else
+          %button.btn.btn-primary{:disabled => ''}
+            Tempo scaduto!
             
     .col-3.border-left
       %h4.text-center.my-auto.border-bottom

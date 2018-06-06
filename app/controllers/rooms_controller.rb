@@ -32,7 +32,7 @@ class RoomsController < ApplicationController
     
     respond_to do |format|
       if @room.save
-        @room.add_room_host(current_user, current_user)
+        Power.create(room_id: @room.id, user_id: current_user.id)
         format.html { redirect_to @room, notice: 'Room was successfully created.' }
         format.json { render :show, status: :created, location: @room }
       else

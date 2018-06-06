@@ -20,8 +20,7 @@ class CreateRooms < ActiveRecord::Migration[5.2]
       t.datetime :time_from
       t.datetime :time_to
       t.string :recurrence
-      t.json :event
-      t.integer :event_id
+      t.string :event_id
       
       t.belongs_to :user
       t.timestamps
