@@ -1,10 +1,9 @@
 - if current_user.nil?
   .form-group
-  = link_to "Join", login_path, class: "btn btn-primary"
+    = link_to "Join", login_path, class: "btn btn-primary btn-block"
 - else
   = form_for(current_user.reservations.build(room_id: @room.id), remote: true) do |f|
     = hidden_field_tag :room_id, @room.id
     .form-group
-      = f.submit "Join", class: "btn btn-primary", onclick: "updateList(getRoomJSON());"
+      = f.submit "Join", class: "btn btn-primary btn-block", onclick: "updateList(getRoomJSON());"
   
-

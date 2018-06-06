@@ -1,3 +1,4 @@
 = form_for(current_user.reservations.find_by(room_id: @room.id), html: { method: :delete}, remote: true) do |f|
   .form-group
-    = f.submit "Unjoin", class: "btn btn-danger", onclick: "updateList(getRoomJSON());"
+    = f.submit "Unjoin", class: "btn btn-danger btn-block", onclick: "updateList(getRoomJSON());"
+  

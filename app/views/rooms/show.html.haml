@@ -56,8 +56,8 @@
             %button.btn.btn-primary{:disabled => ''}
               Tempo scaduto!
         .col.text-center#reminderdiv{:style => 'margin-top: 10px;'}
-          =render 'remind'
-          
+          -if current_user.reservations.exists?(room_id: @room.id)
+            =render 'remind'
     .col-3.border-left
       %h4.text-center.my-auto.border-bottom
         CHAT
@@ -93,6 +93,7 @@
   
   getPartecipants();
   });
+  
   function getRoomJSON(){
   var json = init(document.URL+'.json');
         var array = [];
@@ -102,6 +103,7 @@
 
     return array
   }
+  
   function getPartecipants(){ 
       //queries the server every 2 second to check for updates in the queue
       setTimeout(function(){
