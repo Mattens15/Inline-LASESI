@@ -116,12 +116,17 @@ GEM
     diff-lcs (1.3)
     erubi (1.7.1)
     erubis (2.7.0)
+    et-orbi (1.1.2)
+      tzinfo
     execjs (2.7.0)
     faraday (0.12.2)
       multipart-post (>= 1.2, < 3)
     ffi (1.9.25)
     flatpickr_rails (1.1.0)
       railties (>= 3.0)
+    fugit (1.1.1)
+      et-orbi (~> 1.1, >= 1.1.1)
+      raabro (~> 1.1)
     gherkin (5.1.0)
     globalid (0.4.1)
       activesupport (>= 4.2.0)
@@ -219,6 +224,7 @@ GEM
     popper_js (1.12.9)
     public_suffix (3.0.2)
     puma (3.11.4)
+    raabro (1.1.5)
     rack (2.0.5)
     rack-test (1.0.0)
       rack (>= 1.0, < 3)
@@ -281,6 +287,8 @@ GEM
     ruby_parser (3.11.0)
       sexp_processor (~> 4.9)
     rubyzip (1.2.1)
+    rufus-scheduler (3.5.0)
+      fugit (~> 1.1, >= 1.1.1)
     sass (3.5.6)
       sass-listen (~> 4.0.0)
     sass-listen (4.0.0)
@@ -366,6 +374,7 @@ DEPENDENCIES
   rails (~> 5.2.0)
   rails-controller-testing
   rspec-rails (~> 3.7)
+  rufus-scheduler (~> 3.5)
   sass-rails (~> 5.0)
   selenium-webdriver
   spring
