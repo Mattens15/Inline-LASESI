@@ -3,16 +3,12 @@ Feature:Pin an address on a map
 	I want to use mapbox 
 	So that i can pin an address on a map
 
+@javascript
 Scenario:
-	Given I am Room Host
-	And I have logged in
-	And I am creating an event
-	When I insert an address
-	Then I should see a marker on map
-
-Scenario:
-	Given I am Room Host
-	And I have logged in
-	And I am modifying an event
-	When i insert an address
-	Then i should see a marker on map 
+	Given I am a registered user
+	And I log in
+  When I click create a room
+  And I click on map_control
+	And I search a location
+	And I save
+	Then room contains coordinates

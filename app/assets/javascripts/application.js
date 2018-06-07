@@ -76,6 +76,22 @@ function render_map_for_room_show(path_JSON){
           'text-anchor': 'top'
         }
     });
+    
+    function buildMarker(stores){
+      stores.features.forEach(function(marker, i) {
+				var el = document.createElement('div');
+				el.id = "marker-0";
+				el.className = 'marker';
+				el.innerHTML = 'I\' here for testing!';
+				// Add markers to the map at all points
+				new mapboxgl.Marker(el, {offset: [0, 0]})
+						.setLngLat(marker.geometry.coordinates)
+						.addTo(map);
+			
+      });
+    }
+    
+    buildMarker(stores);
   });
   
   
@@ -89,7 +105,8 @@ function render_map_for_room(){
     style: 'mapbox://styles/mapbox/streets-v8',
     center: [12.48197078704834,41.893460648167355],
     zoom: 15,
-    attributionControl: false
+    attributionControl: false,
+    hash:true
   });
   
   map.on('load', function(e) {
@@ -115,7 +132,7 @@ function render_map_for_room(){
     geocoder = new MapboxGeocoder({
       accessToken: mapboxgl.accessToken
     });
-  
+		
     document.getElementById('geocoder').appendChild(geocoder.onAdd(map));
     
     geocoder.on('result', function(ev){
@@ -377,13 +394,11 @@ function render_map(stores){
           el.id = "marker-" + i;
           el.className = 'marker';
           console.log('Mi trovo a: '+el);
-          
+					el.innerHTML = 'I\' here for testing!';
           // Add markers to the map at all points
-          console.log(map);
           new mapboxgl.Marker(el, {offset: [0, 0]})
               .setLngLat(marker.geometry.coordinates)
               .addTo(map);
-          console.log('Marker '+i+' aggiunto!');
         }
         
       });

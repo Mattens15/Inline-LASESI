@@ -20,31 +20,31 @@ When /^(?:I )create a room$/ do
                               :time_to => '2018-06-09 12:00', 
                               :max_participants => 5,
                               :latitude => 41.908339,
-                              :longitutde => 12.479098
-                              :address => 'via delBabuino, 00187 Roma Roma, Italy")
+                              :longitude => 12.479098,
+                              :address => 'via delBabuino, 00187 Roma Roma, Italy')
 end
 
-When /^I visit (.+)$/ do |page_name|
-  visit "/#{page_name}"
+When /^I visit (.*)$/ do |page_name|
+  @port = Capybara.current_session.server.port
+  Capybara.default_max_wait_time = 10
+  if(page_name == 'dashboard')
+		visit "http://127.0.0.1:#{@port}/#{page_name}/#16/41.908339/12.479098"
+	else
+		 visit "http://127.0.0.1:#{@port}/#{page_name}"
+	end
 end
 
-
-And /^(?:|I )search a location$/ do |element|
-  visit "/#16/41.908339/12.479098'"
+And /^I fill (.*)/ do |element|
+	fill_in 'radius', :with => 5
 end
-
+ 
+And /^I search a location$/ do
+	visit "http://127.0.0.1:#{@port}/#9.21/41.876/12.5324"
+end
 
 #THEN 
 
-Then /^(?:|I )should be on (.+) $/ do |page_name|
-  current_path = URI.parse(current_url).select(:path, :query).compact.join('?')
-  if defined?(Spec::Rails::Matchers)
-    current_path.should == path_to(page_name)
-  else
-    assert_equal path_to(page_name), current_path
-  end
-end
-
-Then /^(?:|I ) should see (.+)$/ do |element|
-  pending "not implemented yet"
+Then /^I should see marker$/ do	
+  expect(page.find('#map')).not_to be nil
+  expect(page.find('#marker-0')).not_to be nil
 end

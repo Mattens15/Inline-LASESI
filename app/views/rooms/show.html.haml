@@ -12,7 +12,7 @@
     .col-3.border-right
       %h4.text-center.my-auto.border-bottom
         Info
-      -if @room.address.nil?
+      -if !@room.address.nil?
         .row#map.mx-auto{:style=>'width: 100%; height: 200px; margin: 5%;'}
         %label
           Address:
@@ -44,9 +44,9 @@
       %ul.list-group#userlist{:style => 'padding-top: 10px;'}
       .row
         .col.text-center#joindiv{:style => 'margin-top: 10px;'}
-          -if can_delete?
-            -if current_user != @room.user && !current_user.powers.exists?(room_id: @room.id)
-              -if !current_user.nil? && current_user.reservations.find_by(room_id: @room.id).nil?
+          -if can_delete? && current_user.nil?
+            -if current_user.nil? || current_user != @room.user && !current_user.powers.exists?(room_id: @room.id)
+              -if current_user.nil? || current_user.reservations.find_by(room_id: @room.id).nil?
                 =render 'join'
               -else
                 =render 'unjoin'
@@ -56,7 +56,7 @@
             %button.btn.btn-primary{:disabled => ''}
               Tempo scaduto!
         .col.text-center#reminderdiv{:style => 'margin-top: 10px;'}
-          -if current_user.reservations.exists?(room_id: @room.id)
+          -if !current_user.nil? && current_user.reservations.exists?(room_id: @room.id)
             =render 'remind'
     .col-3.border-left
       %h4.text-center.my-auto.border-bottom
