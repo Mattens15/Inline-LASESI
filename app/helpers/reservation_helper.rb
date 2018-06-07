@@ -1,6 +1,6 @@
 module ReservationHelper
    def can_delete?
     room = Room.find(params[:id])
-    room.time_from > DateTime.current
+    DateTime.current < room.time_from
   end
 end

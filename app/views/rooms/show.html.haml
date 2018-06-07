@@ -12,7 +12,7 @@
     .col-3.border-right
       %h4.text-center.my-auto.border-bottom
         Info
-      -if !@room.address.nil?
+      -if !has_no_location
         .row#map.mx-auto{:style=>'width: 100%; height: 200px; margin: 5%;'}
         %label
           Address:
@@ -44,17 +44,18 @@
       %ul.list-group#userlist{:style => 'padding-top: 10px;'}
       .row
         .col.text-center#joindiv{:style => 'margin-top: 10px;'}
-          -if can_delete? && current_user.nil?
-            -if current_user.nil? || current_user != @room.user && !current_user.powers.exists?(room_id: @room.id)
-              -if current_user.nil? || current_user.reservations.find_by(room_id: @room.id).nil?
-                =render 'join'
-              -else
-                =render 'unjoin'
+          -if can_i_reserve?
+            -if can_delete?
+              =render 'join'
             -else
-              %button.btn.btn-primary{:disabled => ''} You can't join!
+              %button.btn.btn-danger{:disabled => ''}
+                Tempo scaduto!
           -else
-            %button.btn.btn-primary{:disabled => ''}
-              Tempo scaduto!
+            -if do_i_have_powers?
+              %button.btn.btn-danger{:disabled => ''} 
+                You have powers!
+            -else
+              =render 'unjoin' 
         .col.text-center#reminderdiv{:style => 'margin-top: 10px;'}
           -if !current_user.nil? && current_user.reservations.exists?(room_id: @room.id)
             =render 'remind'
@@ -64,11 +65,16 @@
       
         
 :javascript
+
+  var url = getRightUrl();
+  
   $(document).ready(function(){
+
     updateList(getRoomJSON());
-    var room_json = init(document.URL+'.json');
-    if($('#map').length) {
-      render_map_for_room_show(document.URL+'.json');
+    var room_json = init(url+'.json');
+    if($('#map').length) {      
+      render_map_for_room_show(url+'.json');
+      $('.marker').hide();
     }
     
     var dateFrom = $("#dateEvent_from").flatpickr({ 
@@ -95,7 +101,7 @@
   });
   
   function getRoomJSON(){
-  var json = init(document.URL+'.json');
+  var json = init(url+'.json');
         var array = [];
         for(var i = 0; i < json.reservations.length; i++){
           array[i] = json.reservations[i].user.username;
@@ -106,8 +112,7 @@
   
   function getPartecipants(){ 
       //queries the server every 2 second to check for updates in the queue
-      setTimeout(function(){
-        
+      setTimeout(function(){    
         updateList(getRoomJSON());
         getPartecipants();
       }, 3000);

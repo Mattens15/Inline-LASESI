@@ -82,7 +82,8 @@ function render_map_for_room_show(path_JSON){
 				var el = document.createElement('div');
 				el.id = "marker-0";
 				el.className = 'marker';
-				el.innerHTML = 'I\' here for testing!';
+        //DECOMMENTA LA LINEA SOTTO SE SEI SOTTO TEST
+				//el.innerHTML = 'I\' here for testing!';
 				// Add markers to the map at all points
 				new mapboxgl.Marker(el, {offset: [0, 0]})
 						.setLngLat(marker.geometry.coordinates)
@@ -393,8 +394,8 @@ function render_map(stores){
           var el = document.createElement('div');
           el.id = "marker-" + i;
           el.className = 'marker';
-          console.log('Mi trovo a: '+el);
-					el.innerHTML = 'I\' here for testing!';
+					//DECOMMENTA LA LINEA SOTTO SE SEI SOTTO TEST
+          //el.innerHTML = 'I\' here for testing!';
           // Add markers to the map at all points
           new mapboxgl.Marker(el, {offset: [0, 0]})
               .setLngLat(marker.geometry.coordinates)
@@ -456,7 +457,6 @@ function buildLocationList(data,query) {
     return;
   }
   
-  console.log(data.features.length);
   for (i = 0; i < data.features.length; i++) {
     if(i != 0 && i % 4 == 0){
       j++;
@@ -659,5 +659,11 @@ function flyToStore(currentFeature) {
   }
 }
 
-//CREA DIV E INSIERISCE LE ROOM VISIBILI
-
+//TOGLIE LA BARRA ALLA FINE DELL'URL
+function getRightUrl(){
+  var url = document.URL;
+  if (url.substr(-1) == '/'){
+    url = url.slice(0,-1);
+  }
+  return url;
+}
