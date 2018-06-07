@@ -6,6 +6,7 @@ Feature:See rooms in a certain location
 Scenario:
 	Given I am a registered user
         And I log in
-	When I visit the map page
-	And I search a location
-	Then I should see markers
+	When I create a room
+	And I visit dashboard
+        And I fill the location search bar
+	Then I should see marker

@@ -20,7 +20,6 @@
 //= require mapbox-gl
 //= require_tree 
 
-var map;
 
 //FUNZIONA USATA PER RENDERIZZARE MAPPA IN ROOM#SHOW
 function render_map_for_room_show(path_JSON){
@@ -148,9 +147,11 @@ function render_map(stores){
     style: 'mapbox://styles/mapbox/streets-v8',
     center: [12.48197078704834,41.893460648167355],
     zoom: 15,
-    attributionControl: false
+    attributionControl: false,
+    hash: true
   });
   
+  var complete_stores = buildObjectForMap('/rooms.json', 1);
   //SPOSTO LE INFO DI MAPBOX IN ALTO A DESTRA
   map.addControl(new mapboxgl.AttributionControl(), 'top-left');
   
@@ -164,7 +165,7 @@ function render_map(stores){
       });
       
       //COSTRUISCO I DIV
-      buildLocationList(stores, false);
+      buildLocationList(complete_stores, false);
       
       //AGGIUNGO SORGENTE SENZA PUNTI
       map.addSource('single-point', {
@@ -231,17 +232,20 @@ function render_map(stores){
       map.on('mouseleave', 'locations', function () {
         map.getCanvas().style.cursor = '';
       });
-     
+   
+      //QUANDO IL GEOCODER È VUOTO
+      geocoder.on('clear', function(){
+        buildLocationList(complete_stores, false);  
+      });
+      
       //QUANDO GEOLOCALIZZO DEFINISCO LA DISTANZA TRA LA LOCALITÀ CERCATA E LE ROOM
       //LE ORDINO E SCARTO QUELLE FUORI DAL RAGGIO DI RICERCA
       geolocate.on('geolocate', function(ev){
         var searchResult = ev.coords;
         
-        console.log(searchResult);
         var options = {units: 'kilometers'};
         stores.features.forEach(function(store){
           var actual_coord = [searchResult.longitude, searchResult.latitude];
-          console.log(actual_coord);
           Object.defineProperty(store.properties, 'distance', {
             value: turf.distance(actual_coord, store.geometry, options),
             writable: true,
@@ -294,14 +298,17 @@ function render_map(stores){
         sortLonLat(0);
       });
       
+      geolocate.on('trackuserlocationend', function(){
+        buildLocationList(complete_stores, false);
+      });
+      
       //COME SOPRA, SOLO CHE CON LA GEOLOCALIZZAZIONE
       geocoder.on('result', function(ev) {
         var searchResult = ev.result.geometry;
 
         map.getSource('single-point').setData(searchResult);
         var options = {units: 'kilometers'};
-        stores.features.forEach(function(store){
-          console.log(JSON.stringify(store.geometry));  
+        complete_stores.features.forEach(function(store){
           if(store.geometry.coordinates[0] == 0 && store.geometry.coordinates[1] == 0){
             return;
           }
@@ -332,7 +339,7 @@ function render_map(stores){
           listings.removeChild(listings.firstChild);
         }
   
-        buildLocationList(stores, true);
+        buildLocationList(complete_stores, true);
         
         function sortLonLat(storeIdentifier) {
           var lats = [stores.features[storeIdentifier].geometry.coordinates[1], searchResult.coordinates[1]]
@@ -353,16 +360,36 @@ function render_map(stores){
         sortLonLat(0);
   
       });
-      
-      
+  
       $('#searchbyname_form').keyup(function(){
         updateByParam()
       });
         
     
     //COSTRUISCO ELEMENTI HTML PER OGNI ROOM
-    buildMarker(stores);
     
+    
+    function buildMarker(stores){
+      stores.features.forEach(function(marker, i) {
+        if(stores.features[i].properties.visible){
+          // Create an img element for the marker
+          var el = document.createElement('div');
+          el.id = "marker-" + i;
+          el.className = 'marker';
+          console.log('Mi trovo a: '+el);
+          
+          // Add markers to the map at all points
+          console.log(map);
+          new mapboxgl.Marker(el, {offset: [0, 0]})
+              .setLngLat(marker.geometry.coordinates)
+              .addTo(map);
+          console.log('Marker '+i+' aggiunto!');
+        }
+        
+      });
+    }
+    
+    buildMarker(stores);
     //USATA PER DISEGNARE UN CERCHIO DI RAGGIO (VALUE OF FORM RADIUS)
     //DA OTTIMIZZARE SICURAMENTE VISTO CHE RIMUOVE LAYER E LO RICREA
     //INVECE DI CAMBIARE I DATI
@@ -390,33 +417,41 @@ function render_map(stores){
           'fill-opacity': 0.2
         }
       });
-    }
+    }  
     
   });
 }
 
 //COSTRUISCE I DIV PER LE ROOM
 function buildLocationList(data,query) {
+  var header = document.getElementById('num_rooms');
+  header.innerHTML = '';
   var toremove = document.getElementById('listings');
   while(toremove != null && toremove.hasChildNodes()){
     toremove.removeChild(toremove.childNodes[0]);
   }
   var j = 0;
   var count = 0;
-  if(document.getElementById('radius').value < 0.1){
+  
+  if(document.getElementById('radius').value < 0.1 && query){
     var listings = document.getElementById('listings');
     var alert = listings.appendChild(document.createElement('div'));
     alert.className = 'alert alert-danger text-center';
     alert.innerHTML = 'Il raggio deve essere un numero reale maggiore o uguale a 0.1';
     return;
   }
+  
+  console.log(data.features.length);
   for (i = 0; i < data.features.length; i++) {
     if(i != 0 && i % 4 == 0){
       j++;
     }
     var currentFeature = data.features[i];
     var prop = currentFeature.properties;
-    if(prop.distance < 0 || prop.distance > document.getElementById('radius').value || !prop.visible) continue;
+    if(query && (currentFeature.geometry.coordinates[0] == 0 || currentFeature.geometry.coordinates[1] == 0)) continue;
+    if(query && (prop.distance < 0 || prop.distance > document.getElementById('radius').value || !prop.visible)) {
+      continue;
+    }
     count++;
     var listings = document.getElementById('listings');
     var card_deck;
@@ -453,11 +488,7 @@ function buildLocationList(data,query) {
       details.innerHTML += '<br><small>'+prop.description+'</small>';
     }
     
-    if (prop.phone) {
-      details.innerHTML += ' &middot; ' + prop.phoneFormatted;
-    }
-    
-    if (prop.distance) {
+    if (prop.distance && query) {
       var roundedDistance = Math.round(prop.distance*100)/100;
       details.innerHTML += '<p><strong>' + roundedDistance + ' kilometers away</strong></p>';
     }
@@ -504,12 +535,12 @@ function buildLocationList(data,query) {
 //USATA NELLE FUNZIONI JQUERY
 //SERVE PER SELEZIONARE LE ROOM TRAMITE ESPRESSIONE REGOLARE
 function updateByParam(){
-  var data = buildObjectForMap('/dashboard.json');
+  var data = buildObjectForMap('/dashboard.json', 1);
   if($('#searchbyname_form').val() != ""){
-    for(var i=0; i<data.features.length; i++){
+    for(var i=0; i < data.features.length; i++){
       var contained = document.getElementById('searchbyname_form').value
-      data.features[i].properties.visible = data.features[i].properties.title.indexOf(contained) > 0 ? true:false;
-      console.log('Form value: '+document.getElementById('searchbyname_form').value +'\nNome: '+ data.features[i].properties.title+'\n\tVisible: '+data.features[i].properties.visible);
+      var regex = new RegExp('(.*)'+contained+'(.*)', 'i');
+      data.features[i].properties.visible = regex.test(data.features[i].properties.title);
     }
   
   }
@@ -522,18 +553,34 @@ function updateByParam(){
   buildLocationList(data,false);
 }
 
+function retriveCoords(mode){
+  var coords;
+  if(mode > 0){
+    coords = [0, 0];
+  } 
+  else{
+    coords = [null, null];
+  }
+  
+  return coords;
+}
 //USATA PER COSTRUIRE UN OGGETTO GEOJSON PER LA MAPPA
 //PATH = PATH DEL JSON
-function buildObjectForMap(path){
+//MODE = 1 / 0
+//0 SCARTA TUTTE LE ROOM CHE NON HANNO LOCATION
+//1 PRENDE TUTTE LE LOCATION
+function buildObjectForMap(path, mode){
   var rooms_json = init(path);
   var array_obj = []
-  for(var i = 0; i < rooms_json.length; i++){
+  var length = rooms_json.length;
+  for(var i = 0; i < length; i++){
+    var coord;
     if(rooms_json[i].longitude == null|| rooms_json[i].latitude == null){
-      console.log('Trovata room senza location: '+rooms_json[i].name);
-      var coord = [0, 0];  
+      coord = retriveCoords(mode);
+      if(coord[1] == null || coord[0] == null) continue;
     }
     else{
-      var coord = [rooms_json[i].longitude, rooms_json[i].latitude];
+      coord = [rooms_json[i].longitude, rooms_json[i].latitude];
     }
     array_obj[i] = {
       "type": "Feature",
@@ -552,13 +599,16 @@ function buildObjectForMap(path){
           "visible": true
         }
     };
+    
   }
+  
+  array_obj = array_obj.filter(function(n){ return n != undefined});
+  
   
   var stores = {
     "type": "FeatureCollection",
     "features": array_obj
   }
-  buildMarker(stores);
   return stores;
 }
 
@@ -595,19 +645,4 @@ function flyToStore(currentFeature) {
 }
 
 //CREA DIV E INSIERISCE LE ROOM VISIBILI
-function buildMarker(stores){
-  stores.features.forEach(function(marker, i) {
-    if(!stores.features[i].properties.visible){
-      // Create an img element for the marker
-      var el = document.createElement('div');
-      el.id = "marker-" + i;
-      el.className = 'marker';
-      el.innerHTML = marker.geometry.coordinates;
-      //$(el).hide;
-      // Add markers to the map at all points
-      new mapboxgl.Marker(el, {offset: [0, 0]})
-          .setLngLat(marker.geometry.coordinates)
-          .addTo(map);
-    }
-  });
-}
+

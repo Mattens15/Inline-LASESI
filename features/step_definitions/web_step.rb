@@ -3,24 +3,40 @@
 
 require 'uri'
 
+#GIVEN
 
 Given /^(?:I )am a registered user$/ do
-  User.create!({:id => 1, :email => "example@mail.com", :password => '123456'})
+  @user = User.create!(:username => 'Topo gigio', :email => "example@mail.com", :password => '12345678', :password_confirmation => '12345678')
 end
 
-And /^(?:I )log in$/do
-  pending "not implemented yet"
+And /^(?:I )log in$/ do
+  @user.authenticate(:email => 'example@mail.com', :password => '12345678')
 end
 
-When /^I visit the map page$/ do
-  visit map_path
+#WHEN 
+When /^(?:I )create a room$/ do
+  @room = @user.rooms.create!(:name => 'Room prova1', 
+                              :time_from => '2018-06-08 12:00', 
+                              :time_to => '2018-06-09 12:00', 
+                              :max_participants => 5,
+                              :latitude => 41.908339,
+                              :longitutde => 12.479098
+                              :address => 'via delBabuino, 00187 Roma Roma, Italy")
 end
+
+When /^I visit (.+)$/ do |page_name|
+  visit "/#{page_name}"
+end
+
 
 And /^(?:|I )search a location$/ do |element|
-  pending "not implemented yet"
+  visit "/#16/41.908339/12.479098'"
 end
 
-Then /^(?:|I )should be on (.+)$/ do |page_name|
+
+#THEN 
+
+Then /^(?:|I )should be on (.+) $/ do |page_name|
   current_path = URI.parse(current_url).select(:path, :query).compact.join('?')
   if defined?(Spec::Rails::Matchers)
     current_path.should == path_to(page_name)

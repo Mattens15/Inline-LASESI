@@ -24,5 +24,7 @@
   .container#listings
   
   :javascript
-    render_map(buildObjectForMap('/dashboard.json'));
+    $(document).ready(function(){
+      render_map(buildObjectForMap('/rooms.json')); 
+    });
   
