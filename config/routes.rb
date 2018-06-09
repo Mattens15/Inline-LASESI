@@ -1,5 +1,6 @@
 Rails.application.routes.draw do
   
+  resources :swap_reservations
   get 'powers/create'
   get 'powers/destroy'
   get 'reservation/create'

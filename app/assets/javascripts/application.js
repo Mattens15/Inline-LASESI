@@ -83,7 +83,7 @@ function render_map_for_room_show(path_JSON){
 				el.id = "marker-0";
 				el.className = 'marker';
         //DECOMMENTA LA LINEA SOTTO SE SEI SOTTO TEST
-				//el.innerHTML = 'I\' here for testing!';
+				el.innerHTML = 'I\' here for testing!';
 				// Add markers to the map at all points
 				new mapboxgl.Marker(el, {offset: [0, 0]})
 						.setLngLat(marker.geometry.coordinates)
@@ -395,7 +395,7 @@ function render_map(stores){
           el.id = "marker-" + i;
           el.className = 'marker';
 					//DECOMMENTA LA LINEA SOTTO SE SEI SOTTO TEST
-          //el.innerHTML = 'I\' here for testing!';
+          el.innerHTML = 'I\' here for testing!';
           // Add markers to the map at all points
           new mapboxgl.Marker(el, {offset: [0, 0]})
               .setLngLat(marker.geometry.coordinates)

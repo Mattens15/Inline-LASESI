@@ -10,14 +10,17 @@ Given /^(?:I )am a registered user$/ do
 end
 
 And /^(?:I )log in$/ do
-  @user.authenticate(:email => 'example@mail.com', :password => '12345678')
+  visit @localhost_url+"login"
+  fill_in "session_email", :with => @user.email
+  fill_in "session_password", :with => @user.password
+  click_button('Log in')
 end
 
 #WHEN 
 When /^(?:I )create a room$/ do
   @room = @user.rooms.create!(:name => 'Room prova1', 
                               :time_from => '2018-06-08 12:00', 
-                              :time_to => '2018-06-09 12:00', 
+                              :time_to => '2018-06-08 14:00', 
                               :max_participants => 5,
                               :latitude => 41.908339,
                               :longitude => 12.479098,
@@ -25,12 +28,10 @@ When /^(?:I )create a room$/ do
 end
 
 When /^I visit (.*)$/ do |page_name|
-  @port = Capybara.current_session.server.port
-  Capybara.default_max_wait_time = 10
   if(page_name == 'dashboard')
-		visit "http://127.0.0.1:#{@port}/#{page_name}/#16/41.908339/12.479098"
+		visit @localhost_url+"#{page_name}/#16/41.908339/12.479098"
 	else
-		 visit "http://127.0.0.1:#{@port}/#{page_name}"
+		 visit @localhost_url+"/#{page_name}"
 	end
 end
 
@@ -47,4 +48,15 @@ end
 Then /^I should see marker$/ do	
   expect(page.find('#map')).not_to be nil
   expect(page.find('#marker-0')).not_to be nil
+end
+
+Then /^I should see calendar$/ do	
+  expect(page.find('#inputdateFrom', :visible => false)).not_to be nil
+  expect(page.find('#inputdateTo', :visible => false)).not_to be nil
+end
+
+Then /^I can choose a date and time$/ do
+  within ".row" do
+    click_on "input"
+  end
 end

@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2018_06_03_192349) do
+ActiveRecord::Schema.define(version: 2018_06_08_180534) do
 
   create_table "powers", force: :cascade do |t|
     t.integer "user_id"
@@ -26,6 +26,7 @@ ActiveRecord::Schema.define(version: 2018_06_03_192349) do
     t.integer "user_id"
     t.integer "room_id"
     t.boolean "reminder", default: false
+    t.integer "position"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
     t.index ["room_id"], name: "index_reservations_on_room_id"
@@ -54,6 +55,17 @@ ActiveRecord::Schema.define(version: 2018_06_03_192349) do
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
     t.index ["user_id"], name: "index_rooms_on_user_id"
+  end
+
+  create_table "swap_reservations", force: :cascade do |t|
+    t.integer "active_user_id"
+    t.integer "passive_user_id"
+    t.integer "reservation_id"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+    t.index ["active_user_id"], name: "index_swap_reservations_on_active_user_id"
+    t.index ["passive_user_id"], name: "index_swap_reservations_on_passive_user_id"
+    t.index ["reservation_id"], name: "index_swap_reservations_on_reservation_id"
   end
 
   create_table "users", force: :cascade do |t|

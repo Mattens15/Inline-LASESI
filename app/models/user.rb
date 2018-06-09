@@ -6,6 +6,7 @@ class User < ApplicationRecord
     validates :email, presence:   true,
                       format:     { with: VALID_EMAIL_REGEX },
                       uniqueness: { case_sensitive: false }
+                      
     has_secure_password
     validates :password, length: { minimum: 8,maximum:15 }, confirmation: {case_sensitive:true},allow_blank: true; 
     validates :password_confirmation, presence: true;
@@ -13,6 +14,8 @@ class User < ApplicationRecord
     has_many :rooms, dependent: :destroy
     has_many :powers, dependent: :destroy
     has_many :reservations, dependent: :destroy
+    has_many :active_swap,  through: :swap_reservations, source: :active_user, dependent: :destroy
+    has_many :passive_swap, through: :swap_reservations, source: :passive_user, dependent: :destroy
     
     def User.digest(string)
         cost = ActiveModel::SecurePassword.min_cost ? BCrypt::Engine::MIN_COST :

@@ -45,36 +45,31 @@ module Inline
       html_tag
     }
     
+    puts 'Starting calendar'
     #INIZIALIZZAZIONE CALENDAR
     Inline::Application.configure do
+      require 'googleauth'
       require 'google/apis/calendar_v3'
-      require 'google/api_client/auth/key_utils'
-      
-      keypath = Rails.root.join('config','key.p12').to_s
-      key = Google::APIClient::KeyUtils::load_from_pkcs12(keypath, 'notasecret')
-    
-      client_options = {
-        :token_credential_uri => 'https://accounts.google.com/o/oauth2/token',
-        :audience             => 'https://accounts.google.com/o/oauth2/token',
-        :scope                => 'https://www.googleapis.com/auth/calendar',
-        :issuer               => 'inline@inline-205713.iam.gserviceaccount.com',
-        :sub                  => 'inline@inline-205713.iam.gserviceaccount.com',
-        :signing_key          => key      
-      }
-      
       cal = Google::Apis::CalendarV3::CalendarService.new
-      cal.authorization = Signet::OAuth2::Client.new(client_options).tap{ |auth| auth.fetch_access_token! }
+      
+      keypath = Rails.root.join('config','key.json')
+      
+      scope = 'https://www.googleapis.com/auth/calendar'
+      authorization =  Google::Auth::ServiceAccountCredentials.make_creds(
+        json_key_io: File.open(keypath),
+        scope: scope
+      )
+      
+      cal.authorization = authorization
+      puts cal.authorization.fetch_access_token!
       
       config.cal = cal
-      #USATO PER CONDIVIDERE IL CALENDARIO
-      #rule = Google::Apis::CalendarV3::AclRule.new(
-      #  scope: {
-      #    type: 'user',
-      #    value: 'danieligno10@gmail.com'
-      #  },
-      #  role: 'owner'  
-      #)
-      #cal.insert_acl('primary', rule)
+      #RESET CALENDAR
+      #event_list = cal.list_events(Rails.application.secrets.google_calendar_id)
+      #event_list.items.each do |event|
+      #  cal.delete_event(Rails.application.secrets.google_calendar_id, event.id)
+      #  puts 'Eliminato'
+      #end
     end
     config.action_view.embed_authenticity_token_in_remote_forms = true
   end

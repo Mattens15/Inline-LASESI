@@ -1,3 +1,4 @@
+#USER STORY: 17 TAIGA
 Feature: See rooms near me
   As a USER 
   i want to USE MAPBOX 
@@ -8,7 +9,5 @@ Scenario:
   Given I am a registered user
 	And I log in
   When I create a room
-  And I visit dashboard
-  And I fill the radius
-  And I search a location
-  Then I should see marker
+  And I check calendar events
+  Then I should see event on calendar

@@ -1,14 +1,14 @@
 require "rufus-scheduler"
-@@promemoria=Hash.new 
+PROMEMORIA = Hash.new 
 	#scorre lista room
 
 routine=Rufus::Scheduler.new
 
 routine.every "5m" do
-	room.all.each do |stanza|   
-		if !promemoria.key?(stanza.id)
+	Room.all.each do |stanza|   
+		if !PROMEMORIA.key?(stanza.id)
 			schedule=Rufus::Scheduler.new
-			promemoria[stanza.id]=schedule
+			PROMEMORIA[stanza.id]=schedule
 
 			schedule.at stanza.time_from do #bisognerebbe settare quando si vuole ricevere la mail 
 				stanza.reservations.map do |relazione|
@@ -24,8 +24,8 @@ routine.every "5m" do
 	end
 	
 	#se evento non esiste più elimina il reminder
-	promemoria.each do |key,value|
-		room.all.each do |s|
+	PROMEMORIA.each do |key,value|
+		Room.all.each do |s|
 			if key===s.id
 				break
 			else

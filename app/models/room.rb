@@ -47,7 +47,6 @@ class Room < ApplicationRecord
   
   #DISTRUGGE EVENTO SUL CALENDAR
   def event_destroy
-    logger.debug "Id evento #{self.event_id}"
     cal = Inline::Application.config.cal
     cal.delete_event(Rails.application.secrets.google_calendar_id, self.event_id)
   end
