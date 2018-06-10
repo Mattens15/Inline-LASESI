@@ -5,11 +5,13 @@
     .media-body
       %h3.text-center.my-3
         =@room.name
+       
       %p.text-center
         =@room.description
       
   .row
     .col-3.border-right
+      =link_to ".", url_for({:controller => 'rooms', :action => 'index_reservation', :id => @room.id}), method: :patch, remote: true, class: 'index-reservation'
       %h4.text-center.my-auto.border-bottom
         Info
       -if !has_no_location
@@ -42,6 +44,9 @@
       %h4.text-center.my-auto.border-bottom
         CODA
       %ul.list-group#userlist{:style => 'padding-top: 10px;'}
+        
+        
+        
       .row
         .col.text-center#joindiv{:style => 'margin-top: 10px;'}
           -if can_i_reserve?
@@ -69,7 +74,8 @@
   var url = getRightUrl();
   
   $(document).ready(function(){
-    updateList(getRoomJSON());
+    $(".index-reservation").click();
+    getPartecipants();
     var room_json = init(url+'.json');
     if($('#map').length) {      
       render_map_for_room_show(url+'.json');
@@ -96,11 +102,10 @@
       defaultDate: room_json.time_to
     })
   
-  getPartecipants();
   });
   
   function getRoomJSON(){
-  var json = init(url+'.json');
+        var json = init(url+'.json');
         var array = [];
         for(var i = 0; i < json.reservations.length; i++){
           array[i] = json.reservations[i].user.username;
@@ -110,35 +115,7 @@
   }
   
   function getPartecipants(){ 
-      //queries the server every 2 second to check for updates in the queue
-      setTimeout(function(){    
-        updateList(getRoomJSON());
-        getPartecipants();
-      }, 3000);
-    }
-    
-  function updateList(list){
-    for (var i = 0; i < list.length; i++) {
-    
-      if($("#element"+i).length){
-      //if elem exists update it
-        if ($("#element"+i).html() != list[i]){
-          console.log('Diverso!');
-          $("#element"+i).children().html(list[i]);
-        }
-      }
-      else{
-      //else create it
-        $("#userlist").append("<li>"+list[i]+"</li>");
-        var item = $("#userlist").children().last()
-        item.attr("id","element"+i);
-        item.attr("class","list-group-item text-center");
-      }
-    }
-    //remove old elements 
-    if($("#userlist").children().length > list.length){
-      for (var i = list.length; i < $("#userlist").children().length; i++) {
-        $("#element"+i).remove();
-      }
-    }
+    setInterval(function(){
+      $(".index-reservation").click();
+    }, 1000);
   }

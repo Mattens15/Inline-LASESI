@@ -1,4 +1,5 @@
 class Reservation < ApplicationRecord
+  before_save {self.position = room.reservations.count + 1 if self.position.nil?}
   belongs_to :user
   belongs_to :room
   

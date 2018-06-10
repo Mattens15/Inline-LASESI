@@ -7,11 +7,16 @@ class RoomsController < ApplicationController
   def index
     @rooms = Room.all
   end
-
+  
+  def index_reservation
+    @room = Room.find(params[:id])
+  end
+  
   # GET /rooms/1
   # GET /rooms/1.json
   def show
     @room = Room.find(params[:id])
+    @reservations = @room.reservations
   end
 
   # GET /rooms/new

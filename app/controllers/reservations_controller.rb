@@ -1,6 +1,11 @@
 class ReservationsController < ApplicationController
-  before_action :logged_in_user
+  before_action :logged_in_user, expect: [:index]
   skip_before_action :verify_authenticity_token
+  
+  def index
+    @room = Room.find(params[:room_id])
+    @reservation = @room.reservations
+  end
   
   def create
     @room = Room.find(params[:room_id])
@@ -23,7 +28,6 @@ class ReservationsController < ApplicationController
     @reservation = Reservation.find(params[:id])
     @room = Room.find(params[:room_id])
     @reservation.update(reminder: !@reservation.reminder)
-      
   end
 
   def destroy
