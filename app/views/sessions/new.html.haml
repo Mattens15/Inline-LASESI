@@ -23,4 +23,8 @@
               = f.label :remember_me, class: "checkbox inline" do
                 = f.check_box :remember_me
                 %span Remember me on this computer
+              = link_to "(forgot password)", new_password_reset_path
+              /= f.label :attribute, "${1/[[:alpha:]]+|(_)/(?1: :\u)/g"}
               = f.submit "Log in", class: "btn btn-primary"
+            %p
+              New user? #{link_to "Sign up now!", signup_path}

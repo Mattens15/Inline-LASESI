@@ -42,9 +42,13 @@ GEM
       i18n (>= 0.7, < 2)
       minitest (~> 5.1)
       tzinfo (~> 1.1)
+    addressable (2.5.2)
+      public_suffix (>= 2.0.2, < 4.0)
+    ansi (1.5.0)
     arel (9.0.0)
     autoprefixer-rails (8.5.1)
       execjs
+    backports (3.11.3)
     bcrypt (3.1.7)
     bindex (0.5.0)
     bootsnap (1.3.0)
@@ -55,6 +59,13 @@ GEM
       sass (>= 3.5.2)
     builder (3.2.3)
     byebug (10.0.2)
+    capybara (3.2.1)
+      addressable
+      mini_mime (>= 0.1.3)
+      nokogiri (~> 1.8)
+      rack (>= 1.6.0)
+      rack-test (>= 0.6.3)
+      xpath (~> 3.1)
     coffee-rails (4.2.2)
       coffee-script (>= 2.2.0)
       railties (>= 4.0.0)
@@ -64,6 +75,22 @@ GEM
     coffee-script-source (1.12.2)
     concurrent-ruby (1.0.5)
     crass (1.0.4)
+    cucumber (3.1.1)
+      builder (>= 2.1.2)
+      cucumber-core (~> 3.1.0)
+      cucumber-expressions (~> 6.0.0)
+      cucumber-wire (~> 0.0.1)
+      diff-lcs (~> 1.3)
+      gherkin (~> 5.1.0)
+      multi_json (>= 1.7.5, < 2.0)
+      multi_test (>= 0.1.2)
+    cucumber-core (3.1.0)
+      backports (>= 3.8.0)
+      cucumber-tag_expressions (~> 1.1.0)
+      gherkin (>= 5.0.0)
+    cucumber-expressions (6.0.0)
+    cucumber-tag_expressions (1.1.1)
+    cucumber-wire (0.0.1)
     devise (4.4.3)
       bcrypt (~> 3.0)
       orm_adapter (~> 0.1)
@@ -73,12 +100,16 @@ GEM
     devise_invitable (1.7.4)
       actionmailer (>= 4.1.0)
       devise (>= 4.0.0)
+    diff-lcs (1.3)
     erubi (1.7.1)
     erubis (2.7.0)
     execjs (2.7.0)
+    faker (1.8.7)
+      i18n (>= 0.7)
     faraday (0.12.2)
       multipart-post (>= 1.2, < 3)
     ffi (1.9.23)
+    gherkin (5.1.0)
     globalid (0.4.1)
       activesupport (>= 4.2.0)
     haml (5.0.4)
@@ -118,8 +149,14 @@ GEM
     mini_mime (1.0.0)
     mini_portile2 (2.3.0)
     minitest (5.11.3)
+    minitest-reporters (1.3.0)
+      ansi
+      builder
+      minitest (>= 5.0)
+      ruby-progressbar
     msgpack (1.2.4)
     multi_json (1.13.1)
+    multi_test (0.1.2)
     multi_xml (0.6.0)
     multipart-post (2.0.0)
     nio4r (2.3.1)
@@ -141,6 +178,7 @@ GEM
       omniauth (~> 1.2)
     orm_adapter (0.5.0)
     popper_js (1.12.9)
+    public_suffix (3.0.2)
     puma (3.11.4)
     rack (2.0.5)
     rack-test (1.0.0)
@@ -176,6 +214,24 @@ GEM
     responders (2.4.0)
       actionpack (>= 4.2.0, < 5.3)
       railties (>= 4.2.0, < 5.3)
+    rspec-core (3.7.1)
+      rspec-support (~> 3.7.0)
+    rspec-expectations (3.7.0)
+      diff-lcs (>= 1.2.0, < 2.0)
+      rspec-support (~> 3.7.0)
+    rspec-mocks (3.7.0)
+      diff-lcs (>= 1.2.0, < 2.0)
+      rspec-support (~> 3.7.0)
+    rspec-rails (3.7.2)
+      actionpack (>= 3.0)
+      activesupport (>= 3.0)
+      railties (>= 3.0)
+      rspec-core (~> 3.7.0)
+      rspec-expectations (~> 3.7.0)
+      rspec-mocks (~> 3.7.0)
+      rspec-support (~> 3.7.0)
+    rspec-support (3.7.1)
+    ruby-progressbar (1.9.0)
     ruby_dep (1.5.0)
     ruby_parser (3.11.0)
       sexp_processor (~> 4.9)
@@ -205,6 +261,7 @@ GEM
       sprockets (>= 3.0.0)
     sqlite3 (1.3.13)
     temple (0.8.0)
+    test_helper (0.0.1)
     thor (0.20.0)
     thread_safe (0.3.6)
     tilt (2.0.8)
@@ -225,6 +282,8 @@ GEM
     websocket-driver (0.7.0)
       websocket-extensions (>= 0.1.0)
     websocket-extensions (0.1.3)
+    xpath (3.1.0)
+      nokogiri (~> 1.8)
 
 PLATFORMS
   ruby
@@ -234,19 +293,26 @@ DEPENDENCIES
   bootsnap (>= 1.1.0)
   bootstrap
   byebug
+  capybara
   coffee-rails (~> 4.2)
+  cucumber
   devise_invitable
+  faker
   haml-rails
   jbuilder (~> 2.5)
   listen (>= 3.0.5, < 3.2)
+  minitest
+  minitest-reporters
   omniauth
   omniauth-facebook
   puma (~> 3.11)
   rails (~> 5.2.0)
+  rspec-rails
   sass-rails (~> 5.0)
   spring
   spring-watcher-listen (~> 2.0.0)
   sqlite3
+  test_helper
   turbolinks (~> 5)
   tzinfo-data
   uglifier (>= 1.3.0)
