@@ -1,6 +1,6 @@
 -provide(:title, @room.name)
 %br
-.container{:style => 'padding-left: 0px; padding-right: 0px;'}
+.container-fluid
   .page-header.media
     .media-body
       %h3.text-center.my-3
@@ -11,7 +11,7 @@
       
   .row
     .col-3.border-right
-      =link_to ".", url_for({:controller => 'rooms', :action => 'index_reservation', :id => @room.id}), method: :patch, remote: true, class: 'index-reservation'
+      /=link_to ".", url_for({:controller => 'rooms', :action => 'index_reservation', :id => @room.id}), method: :patch, remote: true, class: 'index-reservation'
       %h4.text-center.my-auto.border-bottom
         Info
       -if !has_no_location
@@ -33,44 +33,72 @@
 
         Room host:
         
-      %table.table
-        %tbody
-        -@room.powers.each do |p|
-          %tr
-            %td.text-center=link_to p.user.username, user_path(p.user)
-      
-          
-    .col-6
+        %table.table
+          %tbody
+          -@room.powers.each do |p|
+            %tr
+              %td.text-center=link_to p.user.username, user_path(p.user)   
+    .col-5 
       %h4.text-center.my-auto.border-bottom
         CODA
       %ul.list-group#userlist{:style => 'padding-top: 10px;'}
         
-        
-        
-      .row
-        .col.text-center#joindiv{:style => 'margin-top: 10px;'}
-          -if can_i_reserve?
-            -if can_delete?
-              =render 'join'
-            -else
-              %button.btn.btn-danger{:disabled => ''}
-                Tempo scaduto!
+      .col.text-center#joindiv{:style => 'margin-top: 10px;'}
+        -if can_i_reserve?
+          -if can_delete?
+            =render 'join'
           -else
-            -if do_i_have_powers?
-              %button.btn.btn-danger{:disabled => ''} 
-                You have powers!
-            -else
-              =render 'unjoin' 
-        .col.text-center#reminderdiv{:style => 'margin-top: 10px;'}
-          -if !current_user.nil? && current_user.reservations.exists?(room_id: @room.id)
-            =render 'remind'
-    .col-3.border-left
-      %h4.text-center.my-auto.border-bottom
-        CHAT
+            %button.btn.btn-danger{:disabled => ''}
+              Tempo scaduto!
+        -else
+          -if do_i_have_powers?
+            %button.btn.btn-danger{:disabled => ''} 
+              You have powers!
+          -else
+            =render 'unjoin' 
+      .col.text-center#reminderdiv{:style => 'margin-top: 10px;'}
+        -if !current_user.nil? && current_user.reservations.exists?(room_id: @room.id)
+          =render 'remind' 
+        
       
         
-:javascript
+   
 
+
+
+
+
+    .col-3.border-left
+
+      %h4.text-center.my-auto.border-bottom
+        CHAT
+
+      .div{:style=>"overflow-y:scroll; height: 60%;"}
+        -@room.messages.each do |m|
+          
+        
+          %p
+            %strong 
+              =link_to User.find(m.user_id).username, user_path(m.user) 
+            
+
+            =m.body 
+      = form_for(current_user.messages.build(room_id: @room.id), remote: true) do |f|
+        = hidden_field_tag :room_id, @room.id
+        .input-group.mb-3
+          .form-group
+            =f.text_field :body, class: "form-control",placeholder: "Insert your message...", autocomplete: "off",id:"chat_input"
+            .input-group-append
+              = f.button "Invia", class: "btn btn-primary btn-block"
+
+    
+    
+      
+    
+         
+:javascript
+  
+  
   var url = getRightUrl();
   
   $(document).ready(function(){

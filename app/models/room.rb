@@ -21,6 +21,10 @@ class Room < ApplicationRecord
   has_many :powers, dependent: :destroy
   has_many :reservations, dependent: :destroy
   
+  #chat
+  has_many :messages
+  
+  
   
   #CREA UN EVENTO ALLA CREAZIONE DELLA ROOM
   def update_event
