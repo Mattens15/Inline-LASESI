@@ -93,7 +93,7 @@ class RoomsController < ApplicationController
     
      def correct_user
       @room = Room.find(params[:id])
-      redirect_to(root_url) unless (current_user.powers.exists?(room_id: @room.id))
+      redirect_to(root_url) unless (!current_user.nil? && current_user.powers.exists?(room_id: @room.id))
     end
 end
 

@@ -73,14 +73,14 @@
       %h4.text-center.my-auto.border-bottom
         CHAT
 
-      .div{:style=>"overflow-y:scroll; height: 60%;"}
+      .div{:style=>"overflow-y:scroll; height: 60%;padding-bottom:10px;"}
         -@room.messages.each do |m|
           
         
           %p
             %strong 
               =link_to User.find(m.user_id).username, user_path(m.user) 
-            
+
 
             =m.body 
       = form_for(current_user.messages.build(room_id: @room.id), remote: true) do |f|

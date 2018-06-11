@@ -9,6 +9,16 @@ RSpec.configure do |config|
     mocks.verify_partial_doubles = true
   end
   
+  config.before(:suite) do
+    DatabaseCleaner.strategy = :transaction
+  end
+
+  config.around(:each) do |example|
+    DatabaseCleaner.cleaning do
+      example.run
+    end
+  end
+  
   config.disable_monkey_patching!
   config.shared_context_metadata_behavior = :apply_to_host_groups
   config.include Capybara::DSL
