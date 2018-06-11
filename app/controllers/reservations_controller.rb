@@ -10,7 +10,7 @@ class ReservationsController < ApplicationController
   def create
     @room = Room.find(params[:room_id])
     
-    if(current_user != @room.user && @room.reservations.count < @room.max_participants)
+    if(current_user != @room.user && @room.reservations.count < @room.max_participants && DateTime.current < @room.max_unjoin_time)
       current_user.reservations.create(room_id: @room.id)
     else
       flash[:danger] = 'Can\'t join if you are a room host!'

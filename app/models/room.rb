@@ -1,7 +1,14 @@
 class Room < ApplicationRecord
-  after_save{ update_event if self.event_id.nil?
-              self.max_unjoin_time = self.time_from - 60*60 if self.max_unjoin_time.nil? }
-              
+  
+  before_save{  
+      
+      adjust_time if self.event_id.nil?
+    }
+  after_save{ 
+      update_event if self.event_id.nil? 
+      change_unjoin_time if max_unjoin_time.nil? 
+    }
+    
   before_destroy{ event_destroy }
   
   VALID_ROOM_NAME = /[a-zA-Z]/i
@@ -21,6 +28,17 @@ class Room < ApplicationRecord
   has_many :powers, dependent: :destroy
   has_many :reservations, dependent: :destroy
   
+  def adjust_time
+    self.time_to = Time.use_zone('Europe/Rome'){ Time.zone.local_to_utc(self.time_to) }.localtime
+    self.time_from = Time.use_zone('Europe/Rome'){ Time.zone.local_to_utc(self.time_from) }.localtime
+  end
+  
+  def change_unjoin_time
+    puts Time.at((Time.parse(self.time_from.to_s) - 1.hour).to_i)
+    max_unjoin_time = Time.at((Time.parse(self.time_from.to_s) - 1.hour).to_i)
+    self.update(max_unjoin_time: max_unjoin_time)
+    puts max_unjoin_time
+  end
   
   #CREA UN EVENTO ALLA CREAZIONE DELLA ROOM
   def update_event
@@ -40,8 +58,13 @@ class Room < ApplicationRecord
       visibility: self.private ? 'private':'public',
     })
     cal = Inline::Application.config.cal
-    event = cal.insert_event('inline@inline-205713.iam.gserviceaccount.com', event)
-    self.update(event_id: event.id)
+    if self.event_id.nil?
+      event = cal.insert_event('inline@inline-205713.iam.gserviceaccount.com', event)
+      self.update(event_id: event.id)
+      
+    else
+      
+    end
   end
   
   

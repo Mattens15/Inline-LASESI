@@ -60,12 +60,14 @@ ActiveRecord::Schema.define(version: 2018_06_08_180534) do
   create_table "swap_reservations", force: :cascade do |t|
     t.integer "active_user_id"
     t.integer "passive_user_id"
-    t.integer "reservation_id"
+    t.integer "active_reservation_id"
+    t.integer "passive_reservation_id"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
+    t.index ["active_reservation_id"], name: "index_swap_reservations_on_active_reservation_id"
     t.index ["active_user_id"], name: "index_swap_reservations_on_active_user_id"
+    t.index ["passive_reservation_id"], name: "index_swap_reservations_on_passive_reservation_id"
     t.index ["passive_user_id"], name: "index_swap_reservations_on_passive_user_id"
-    t.index ["reservation_id"], name: "index_swap_reservations_on_reservation_id"
   end
 
   create_table "users", force: :cascade do |t|
