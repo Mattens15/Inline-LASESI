@@ -43,7 +43,7 @@ ActiveRecord::Schema.define(version: 2018_06_08_180534) do
     t.float "latitude"
     t.float "longitude"
     t.boolean "private"
-    t.time "max_unjoin_time"
+    t.datetime "max_unjoin_time"
     t.string "avatar_file"
     t.float "avatar_size"
     t.string "avatar_updated_at"

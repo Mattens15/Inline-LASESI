@@ -1,52 +1,42 @@
 require 'rails_helper'
 
 RSpec.describe PowersController, type: :controller do
-
-  describe "GET #create" do
+  before(:all) do
+    @user = FactoryBot.create(:user)
+    @owner = FactoryBot.create(:owner)
+    @room = @owner.rooms.create!(attributes_for(:valid_room))
+  end
+  
+  after(:all) do
+    @room.destroy!
+  end
+  
+  describe "POST #create" do
     it "returns http success" do
-      get :create
-      expect(response).to have_http_status(:success)
+      allow(controller).to receive(:logged_in?).and_return(true)
+      allow(controller).to receive(:current_user).and_return(@owner)
+      allow(controller).to receive(:correct_user).and_return(true)
+      
+      expect{post :create, 
+            params: {room_id: @room.id, 
+            user_id: @user.id}}.to change {@user.powers.count}.by(1)
+      expect(response).to redirect_to(edit_room_path(@room.id))
     end
   end
 
   describe "GET #destroy" do
+    let!(:powers){Power.create!(room_id: @room.id, user_id: @user.id)}
     it "returns http success" do
-      get :destroy
-      expect(response).to have_http_status(:success)
-    end
-  end
-
-  context "Trying to add another room host" do
-  describe "as non-owner" do
-    it "should not add another room host" do
-      owner = User.new(:username => 'Antonio', :email => 'danieligno10@gmail.com', :password => '12341234', :password_confirmation => '12341234')
-      user = User.new(:username => 'Marco', :email => 'marco@gmail.com', :password => '12341234', :password_confirmation => '12341234')
+      allow(controller).to receive(:logged_in?).and_return(true)
+      allow(controller).to receive(:current_user).and_return(@owner)
+      allow(controller).to receive(:correct_user).and_return(true)
       
-      expect(owner.save).to be true
-      expect(user.save).to be true
+      expect{get :destroy, 
+            params: {id: powers.id}
+            }.to change {@user.powers.count}.by(-1)
+      expect(response).to redirect_to(edit_room_path(@room.id))
       
-      room = owner.rooms.build(:name => 'Abaco', :max_participants => 1, :time_from => '2018-06-19 19:10', :time_to => '2018-06-19 22:10')
-      expect(room.save).to be true
-      
-      expect{room.add_room_host(user, owner)}.to raise_error(RuntimeError)
     end
   end
   
-  describe "as owner" do
-    it "should not add another room host" do
-      owner = User.new(:username => 'Antonio', :email => 'danieligno10@gmail.com', :password => '12341234', :password_confirmation => '12341234')
-      user = User.new(:username => 'Marco', :email => 'marco@gmail.com', :password => '12341234', :password_confirmation => '12341234')
-      
-      expect(owner.save).to be true
-      expect(user.save).to be true
-      
-      room = owner.rooms.build(:name => 'Abaco', :max_participants => 1, :time_from => '2018-06-19 19:10', :time_to => '2018-06-19 22:10')
-      expect(room.save).to be true
-      
-      room.add_room_host(owner, user)
-      
-      expect(room.powers.exists?(user_id: user.id)).to be true
-    end
-  end
-
 end

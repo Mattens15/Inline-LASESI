@@ -79,6 +79,7 @@ RSpec.describe Room, type: :model do
     it "should fill it by itself" do
       room = @user.rooms.create!(attributes_for(:valid_room))
       expect(room.max_unjoin_time).not_to be nil
+      expect(room.max_unjoin_time).to eq Time.at((Time.parse(room.time_from.to_s) - 1.hour).to_i)
     end
   end
 end

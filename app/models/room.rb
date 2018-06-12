@@ -1,7 +1,6 @@
 class Room < ApplicationRecord
   
   before_save{  
-      
       adjust_time if self.event_id.nil?
     }
   after_save{ 
@@ -34,10 +33,7 @@ class Room < ApplicationRecord
   end
   
   def change_unjoin_time
-    puts Time.at((Time.parse(self.time_from.to_s) - 1.hour).to_i)
-    max_unjoin_time = Time.at((Time.parse(self.time_from.to_s) - 1.hour).to_i)
-    self.update(max_unjoin_time: max_unjoin_time)
-    puts max_unjoin_time
+    self.update(max_unjoin_time: Time.at((Time.parse(self.time_from.to_s) - 1.hour).to_i))
   end
   
   #CREA UN EVENTO ALLA CREAZIONE DELLA ROOM
@@ -59,11 +55,12 @@ class Room < ApplicationRecord
     })
     cal = Inline::Application.config.cal
     if self.event_id.nil?
-      event = cal.insert_event('inline@inline-205713.iam.gserviceaccount.com', event)
+      event = cal.insert_event('primary', event)
       self.update(event_id: event.id)
       
     else
-      
+      event = cal.update_event('primary', self.event_id, event)
+      self.update(event_id: event.id)
     end
   end
   
@@ -71,6 +68,7 @@ class Room < ApplicationRecord
   #DISTRUGGE EVENTO SUL CALENDAR
   def event_destroy
     cal = Inline::Application.config.cal
-    cal.delete_event(Rails.application.secrets.google_calendar_id, self.event_id)
+    events = cal.list_events('primary')
+    cal.delete_event('primary', event_id) if events.items.any? { |ev| ev.id == self.event_id}
   end
 end

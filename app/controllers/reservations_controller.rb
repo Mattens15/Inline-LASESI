@@ -32,8 +32,8 @@ class ReservationsController < ApplicationController
 
   def destroy
     @room = Reservation.find(params[:id]).room
-    if(@room.nil?)
-      flash[:danger] = 'You was not in queue!'
+    if(@room.nil? || @room.max_unjoin_time < Time.now)
+      flash[:danger] = 'You was not in queue or the time has expired!'
     else
       current_user.reservations.find_by(room_id: @room.id).destroy!
     end
