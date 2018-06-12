@@ -27,6 +27,7 @@ class Room < ApplicationRecord
   has_many :powers, dependent: :destroy
   has_many :reservations, dependent: :destroy
   
+<<<<<<< HEAD
   def adjust_time
     self.time_to = Time.use_zone('Europe/Rome'){ Time.zone.local_to_utc(self.time_to) }.localtime
     self.time_from = Time.use_zone('Europe/Rome'){ Time.zone.local_to_utc(self.time_from) }.localtime
@@ -35,6 +36,12 @@ class Room < ApplicationRecord
   def change_unjoin_time
     self.update(max_unjoin_time: Time.at((Time.parse(self.time_from.to_s) - 1.hour).to_i))
   end
+=======
+  #chat
+  has_many :messages
+  
+  
+>>>>>>> e5a6cecb95e465cc6493763b0e1a9edfbb9d4890
   
   #CREA UN EVENTO ALLA CREAZIONE DELLA ROOM
   def update_event

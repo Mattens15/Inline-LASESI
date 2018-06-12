@@ -24,9 +24,11 @@ Rails.application.routes.draw do
   end
   
   resources :rooms
-  resources :users
+  resources :users do
+    resources :messages
+  end  
   resources :password_resets,     only: [:new, :create, :edit, :update]
   resources :reservations
-
+  resources :messages
 end
 	
