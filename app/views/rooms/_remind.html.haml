@@ -1,10 +1,12 @@
 -if current_user.reservations.exists?(room_id: @room.id)
-  =form_for(current_user.reservations.find_by(room_id: @room.id), html: { method: :patch}, remote: true) do |f|
+  -@reservation = current_user.reservations.find_by(room_id: @room.id)
+  =form_for([@room, @reservation], html: { method: :patch}, remote: true) do |f|
+    
     =hidden_field_tag :room_id, @room.id
     =hidden_field_tag :user_id, current_user.id
-    =hidden_field_tag :reminder, !current_user.reservations.find_by(room_id: @room.id)
+    =hidden_field_tag :reminder, !@reservation.reminder
     .form-group
-      -if !current_user.reservations.find_by(room_id: @room.id).reminder
+      -if !@reservation.reminder
         = f.submit "I want notification", class: "btn btn-success btn-block"
       -else
         = f.submit "I don't want notification", class: "btn btn-danger btn-block"

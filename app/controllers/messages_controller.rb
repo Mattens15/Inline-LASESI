@@ -1,7 +1,10 @@
 class MessagesController < ApplicationController
 	before_action :authenticate_user!
 	before_action :set_room
-
+	def index
+		@messages = @room.messages
+	end
+	
 	def create
 		@message = @room.messages.new(message_params)
 		@message.user = current_user

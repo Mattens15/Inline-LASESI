@@ -65,7 +65,6 @@ ActiveRecord::Schema.define(version: 2018_06_11_154925) do
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
     t.index ["user_id"], name: "index_rooms_on_user_id"
-    t.index ["message_id"], name: "index_rooms_on_message_id"
   end
 
   create_table "swap_reservations", force: :cascade do |t|
