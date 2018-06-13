@@ -323,6 +323,7 @@ DEPENDENCIES
   cucumber-rails
   database_cleaner
   devise_invitable
+  factory_bot
   factory_bot_rails (~> 4.0)
   faker
   haml-rails

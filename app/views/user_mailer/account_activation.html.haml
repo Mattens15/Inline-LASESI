@@ -3,6 +3,5 @@
   Hi #{@user.username},
 %p
   Welcome to the Sample App! Click on the link below to activate your account:
-  = link_to "Activate", edit_account_activation_url(@user.activation_token, |
-  email: @user.email)                                                     |
+  = link_to "Activate", edit_account_activation_url(@user.activation_token,email: @user.email)                                                
   

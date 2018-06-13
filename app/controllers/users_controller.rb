@@ -22,7 +22,7 @@ class UsersController < ApplicationController
       /
       @user.send_activation_email
       flash[:info] = "Please check your email to activate your account."
-      redirect_to root_url
+      redirect_to @user
     else
       render 'new'
     end
@@ -47,11 +47,11 @@ class UsersController < ApplicationController
       render 'edit'
     end
   end
-
+  
   private
 
     def user_params
-      params.require(:user).permit(:username,:email,:admin,:password,:password_confirmation)
+      params.require(:user).permit(:username,:email,:password,:password_confirmation)
     end
 
     def logged_in_user
