@@ -1,35 +1,35 @@
 -provide(:title, @room.name)
 %br
-.container-fluid
-  .page-header.media
-    .media-body
-      %h3.text-center.my-3
-        =@room.name
-       
-      %p.text-center
-        =@room.description
-      
-  .row
-    .col-3.border-right
-      /=link_to ".", url_for({:controller => 'rooms', :action => 'index_reservation', :id => @room.id}), method: :patch, remote: true, class: 'index-reservation'
-      %h4.text-center.my-auto.border-bottom
-        Info
-      -if !has_no_location
-        .row#map.mx-auto{:style=>'width: 100%; height: 200px; margin: 5%;'}
-        %label
-          Address:
-        =@room.address
-      
-      
-      %label.mx-auto
-        Da:
-      %input.text-center#dateEvent_from{:type => 'text'}
-      %br
-      %label.mx-auto
-        A:
-      %input.text-center#dateEvent_to{:type => 'text'}
-      
-      %h4.text-center.my-3
+.container-fluid{:style => 'padding-left: 15%; padding-right: 15%;'}
+	.page-header.media
+		.media-body
+			/=link_to ".", url_for({:controller => 'rooms', :action => 'index_reservation', :id => @room.id}), method: :patch, remote: true, class: 'index-reservation'
+			%h3.text-center.my-3
+				=@room.name
+			 
+			%p.text-center
+				=@room.description
+			
+	.row
+		.col-3.border-right
+			%h4.text-center.my-auto.border-bottom
+				Info
+			-if !has_no_location
+				.row#map.mx-auto{:style=>'width: 100%; height: 200px; margin: 5%;'}
+				%label
+					Address:
+				=@room.address
+			
+			
+			%label.mx-auto
+				Da:
+			%input.text-center#dateEvent_from{:type => 'text'}
+			%br
+			%label.mx-auto
+				A:
+			%input.text-center#dateEvent_to{:type => 'text'}
+			
+			%h4.text-center.my-3
 
         Room host:
         
@@ -144,11 +144,103 @@
           array[i] = json.reservations[i].user.username;
         }
 
-    return array
-  }
-  
-  function getPartecipants(){ 
-    setInterval(function(){
-      $(".index-reservation").click();
-    }, 1000);
-  }
+				Room host:
+				
+				%table.table
+					%tbody
+					-@room.powers.each do |p|
+						%tr
+							%td.text-center=link_to p.user.username, user_path(p.user)   
+		.col-5 
+			%h4.text-center.my-auto.border-bottom
+				CODA
+			%ul.list-group.userlist#userlist{:style => 'padding-top: 10px;'}
+				=render 'reservated'
+			.col.text-center#joindiv{:style => 'margin-top: 10px;'}
+				-if can_i_reserve?
+					-if can_delete?
+						=render 'join'
+					-else
+						%button.btn.btn-danger.btn-lg{:disabled => ''}
+							Tempo scaduto!
+				-else
+					-if do_i_have_powers?
+						%button.btn.btn-danger.btn-lg{:disabled => ''} 
+							You have powers!
+					-else
+						=render 'unjoin' 
+			.col.text-center#reminderdiv{:style => 'margin-top: 10px;'}
+				-if !current_user.nil? && current_user.reservations.exists?(room_id: @room.id)
+					=render 'remind' 
+		.col-3.border-left
+			%h4.text-center.my-auto.border-bottom
+				CHAT
+			.div{:style=>"overflow-y:scroll; height: 60%;"}
+				-@room.messages.each do |m|	
+					%p
+						%strong 
+							=link_to User.find(m.user_id).username, user_path(m.user) 
+						=m.body
+			-if current_user
+				= form_for([@room, Message.new], remote: true) do |f|
+					= hidden_field_tag :user_id, current_user.id
+					.input-group.mb-3
+						=f.text_field :body, class: "form-control",placeholder: "Insert your message...", autocomplete: "off",id:"chat_input"
+						.input-group-append
+							= f.button "Invia", class: "btn btn-primary btn-block"
+			-else
+				.input-group.mb-3
+					%input#chat_input{:type => 'text', :placeholder => 'Insert your message...', :autocomplete => 'off'}
+					.input-group-append
+						%button.btn.btn-primary.btn-block{:disabled => ''}
+							Disabled
+					%small
+						Log in and join the queue first!
+:javascript
+	var url = getRightUrl();
+	
+	$(document).ready(function(){
+		setInterval(refreshingPartial, 1000);
+		var room_json = init(url+'.json');
+		if($('#map').length) {      
+			render_map_for_room_show(url+'.json');
+			$('.marker').hide();
+		}
+		
+		var dateFrom = $("#dateEvent_from").flatpickr({ 
+			enableTime: true,
+			altInput: true,
+			altFromat: "F j, Y",
+			dateFormat: 'Y-m-d H:i',
+			minDate: room_json.time_from,
+			maxDate: room_json.time_from,
+			defaultDate: room_json.time_from,
+		});
+		
+		var dateFrom = $("#dateEvent_to").flatpickr({ 
+			enableTime: true,
+			altInput: true,
+			altFromat: "F j, Y",
+			dateFormat: 'Y-m-d H:i',
+			minDate: room_json.time_to,
+			maxDate: room_json.time_to,
+			defaultDate: room_json.time_to
+		})
+	
+	});
+	
+	function getRoomJSON(){
+				var json = init(url+'.json');
+				var array = [];
+				for(var i = 0; i < json.reservations.length; i++){
+					array[i] = json.reservations[i].user.username;
+				}
+
+
+		return array
+	}
+	
+	
+	function refreshingPartial(){
+		$('#userlist').load(getRightUrl()+'/reservations')
+	}

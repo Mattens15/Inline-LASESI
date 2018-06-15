@@ -28,77 +28,89 @@ RSpec.describe RoomsController, type: :controller do
   # This should return the minimal set of attributes required to create a valid
   # Room. As you add validations to Room, be sure to
   # adjust the attributes here as well.
-  let(:valid_attributes) {
-    skip("Add a hash of attributes valid for your model")
-  }
-
-  let(:invalid_attributes) {
-    skip("Add a hash of attributes invalid for your model")
-  }
-
-  # This should return the minimal set of values that should be in the session
-  # in order to pass any filters (e.g. authentication) defined in
-  # RoomsController. Be sure to keep this updated too.
-  let(:valid_session) { {} }
+  before(:all) do
+    @valid_attributes = FactoryBot.attributes_for(:valid_room)
+    @invalid_attributes = FactoryBot.attributes_for(:invalid_room_param)
+    @user = FactoryBot.create(:user)
+  end
+  
 
   describe "GET #index" do
     it "returns a success response" do
-      room = Room.create! valid_attributes
-      get :index, params: {}, session: valid_session
+      @room = @user.rooms.create! @valid_attributes
+      get :index, params: {}
       expect(response).to be_successful
+      @room.destroy!
     end
   end
 
   describe "GET #show" do
     context "with valid id" do
       it "returns a success response" do
-        room = Room.create! valid_attributes
-        get :show, params: {id: room.to_param}, session: valid_session
+        room = @user.rooms.create! @valid_attributes
+        get :show, params: {id: room.to_param}
         expect(response).to be_successful
+        room.destroy!
       end
     end
     
     context "with invalid id" do
       it "shows error page" do
-        get :show, params: {id: invalid_attributes}, session: valid_session
-        expect(response).to be_success
+        id = 32
+        expect{get :show, params: {id: id}}.to raise_error(ActiveRecord::RecordNotFound)
+        expect(response).to be_successful
       end
     end
   end
 
   describe "GET #new" do
     it "returns a success response" do
-      get :new, params: {}, session: valid_session
+      allow(controller).to receive(:current_user).and_return(@user);
+      get :new, params: {}
       expect(response).to be_successful
     end
   end
 
   describe "GET #edit" do
     it "returns a success response" do
-      room = Room.create! valid_attributes
-      get :edit, params: {id: room.to_param}, session: valid_session
-      expect(response).to be_success
+      allow(controller).to receive(:current_user).and_return(@user)
+      allow(controller).to receive(:logged_in?).and_return(true)
+      allow(controller).to receive(:correct_user).and_return(true)
+  
+      room = @user.rooms.create! @valid_attributes
+      get :edit, params: {id: room.to_param}
+      expect(response).to be_successful
+      room.destroy!
     end
   end
 
   describe "POST #create" do
     context "with valid params" do
+      
+      
       it "creates a new Room" do
+        allow(controller).to receive(:logged_in?).and_return(true)
+        allow(controller).to receive(:current_user).and_return(@user)
         expect {
-          post :create, params: {room: valid_attributes}, session: valid_session
+          post :create, params: {room: @valid_attributes}
         }.to change(Room, :count).by(1)
+        
       end
 
       it "redirects to the created room" do
-        post :create, params: {room: valid_attributes}, session: valid_session
+        allow(controller).to receive(:logged_in?).and_return(true)
+        allow(controller).to receive(:current_user).and_return(@user)
+        post :create, params: {room: @valid_attributes}
         expect(response).to redirect_to(Room.last)
       end
     end
 
     context "with invalid params" do
       it "returns a success response (i.e. to display the 'new' template)" do
-        post :create, params: {room: invalid_attributes}, session: valid_session
-        expect(response).to be_success
+        allow(controller).to receive(:logged_in?).and_return(true)
+        allow(controller).to receive(:current_user).and_return(@user)
+        post :create, params: {room: @invalid_attributes}
+        expect(response).to be_successful
       end
     end
   end
@@ -106,44 +118,52 @@ RSpec.describe RoomsController, type: :controller do
   describe "PUT #update" do
     context "with valid params" do
       let(:new_attributes) {
-        skip("Add a hash of attributes valid for your model")
+        {'name' => 'AOOOOO'}
       }
 
       it "updates the requested room" do
-        room = Room.create! valid_attributes
-        put :update, params: {id: room.to_param, room: new_attributes}, session: valid_session
+        allow(controller).to receive(:logged_in?).and_return(true)
+        allow(controller).to receive(:current_user).and_return(@user)
+        
+        room = @user.rooms.create! @valid_attributes
+        put :update, params: {id: room.to_param, room: new_attributes}
         room.reload
-        skip("Add assertions for updated state")
+        expect(room.name).to eq new_attributes['name']
+        room.destroy!
       end
 
       it "redirects to the room" do
-        room = Room.create! valid_attributes
-        put :update, params: {id: room.to_param, room: valid_attributes}, session: valid_session
+        room = @user.rooms.create! @valid_attributes
+        put :update, params: {id: room.to_param, room: @valid_attributes}
         expect(response).to redirect_to(room)
+        room.destroy!
       end
     end
 
     context "with invalid params" do
       it "returns a success response (i.e. to display the 'edit' template)" do
-        room = Room.create! valid_attributes
-        put :update, params: {id: room.to_param, room: invalid_attributes}, session: valid_session
-        expect(response).to be_success
+        room = @user.rooms.create! @valid_attributes
+        put :update, params: {id: room.to_param, room: @invalid_attributes}
+        expect(response).to be_successful
       end
     end
   end
 
   describe "DELETE #destroy" do
     it "destroys the requested room" do
-      room = Room.create! valid_attributes
+      allow(controller).to receive(:logged_in?).and_return(true)
+      allow(controller).to receive(:current_user).and_return(@user)
+      allow(controller).to receive(:correct_user).and_return(true)
+      room = @user.rooms.create! @valid_attributes
       expect {
-        delete :destroy, params: {id: room.to_param}, session: valid_session
+        delete :destroy, params: {id: room.id}
       }.to change(Room, :count).by(-1)
     end
 
     it "redirects to the rooms list" do
-      room = Room.create! valid_attributes
-      delete :destroy, params: {id: room.to_param}, session: valid_session
-      expect(response).to redirect_to(rooms_url)
+      room = @user.rooms.create! @valid_attributes
+      delete :destroy, params: {id: room.to_param}
+      expect(response).to redirect_to(root_url)
     end
   end
 

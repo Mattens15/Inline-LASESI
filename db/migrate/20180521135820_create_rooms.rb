@@ -11,7 +11,7 @@ class CreateRooms < ActiveRecord::Migration[5.2]
       t.float :longitude
       
       t.boolean :private, deafult: false
-      t.time :max_unjoin_time
+      t.datetime :max_unjoin_time
       
       t.string :avatar_file
       t.float :avatar_size

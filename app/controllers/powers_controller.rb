@@ -7,30 +7,32 @@ class PowersController < ApplicationController
   def create
     @user = User.find(params[:user_id])
     @room = Room.find(params[:room_id])
-    
-    if(current_user.powers.exists?(@room))
-      @user.powers.create(room_id: @room.id)
-      redirect_to edit_room
-    else
-      flash[:error] = 'Non hai i poteri, come ci sei arrivato qui?!'
-    end
-      
+    puts "AO IO VADO"
+  
+    @user.powers.create!(room_id: @room.id)
+    logger.debug "AZZI IO LHO CREATA"
+    redirect_to edit_room_path(@room.id)
+  
   end
 
   def destroy
-    @room = Powers.find(params[:room_id]).room
-    @user = Powers.find(params[:user_id]).user
-    if(!@room.nil? && current_user.powers.exists?(room_id: @room.id)
-     @user.powers.find_by(:room_id: @room_id).destroy!
-     redirect_to edit_room
-    else
-      flash[:error] = 'Precondizioni non valide!'
-    end
+    @power = Power.find(params[:id])
+    @power.destroy!
+    redirect_to edit_room_path(@power.room.id)
   end
   
   private
-    def correct_user
-      @room = Room.find(params[:id])
-      redirect @room unless current_user.powers.exists?(params[room_id: @room.id]) || current_user.admin?
+  def logged_in_user
+    unless logged_in?
+      store_location
+      flash[:danger] = "Please log in."
+      redirect_to login_url
     end
+  end
+    
+  def correct_user
+    @room = Room.find(params[:id])
+    redirect edit_room_path(@room.id) unless current_user.rooms.find(id: @room.id) || current_user.admin?
+  end
+  
 end

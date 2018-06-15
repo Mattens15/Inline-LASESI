@@ -1,12 +1,6 @@
 Rails.application.routes.draw do
   
-  resources :swap_reservations
-  get 'powers/create'
-  get 'powers/destroy'
-  get 'reservation/create'
-  get 'reservation/update'
-  get 'reservation/destroy'
-	root                     'mapbox#show'
+  root                     'mapbox#show'
   get 'dashboard'				=> 'mapbox#show'
   get 'sessions/new'
   get 'password_resets/new'
@@ -18,15 +12,20 @@ Rails.application.routes.draw do
   get 'login'   => 'sessions#new'
   post'login'   => 'sessions#create'
   get 'logout'  => 'sessions#destroy'
+  
   scope :ujs, defaults: {format: :ujs} do
     patch 'room_index_reservation' => 'rooms#index_reservation'
   end
-  resources :rooms
-  resources :users do
-    resources :messages
-  end  
+  
+  resources :swap_reservations
   resources :password_resets,     only: [:new, :create, :edit, :update]
-  resources :reservations
-  resources :messages
+  
+  resources :users
+  resources :rooms do
+    resources :powers
+    resources :messages
+    resources :reservations
+  end
+
 end
 	

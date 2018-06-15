@@ -1,0 +1,14 @@
+-@room.reservations.each do |r|
+  %li.list-group-item
+    .row
+      .col-1.my-auto.border-right
+        =r.position
+      .col-9.my-auto
+        =link_to r.user.username, user_path(r.user)
+      .col-2.my-auto
+        -if !current_user || !current_user.powers.exists?(room_id: @room.id)
+          %btn.btn.btn-success.float-sm-right
+            Ask swap
+        -else
+          %btn.btn.btn-success.float-sm-right
+            Rate user

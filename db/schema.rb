@@ -53,7 +53,7 @@ ActiveRecord::Schema.define(version: 2018_06_11_154925) do
     t.float "latitude"
     t.float "longitude"
     t.boolean "private"
-    t.time "max_unjoin_time"
+    t.datetime "max_unjoin_time"
     t.string "avatar_file"
     t.float "avatar_size"
     t.string "avatar_updated_at"
@@ -65,7 +65,6 @@ ActiveRecord::Schema.define(version: 2018_06_11_154925) do
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
     t.index ["user_id"], name: "index_rooms_on_user_id"
-    t.index ["message_id"], name: "index_rooms_on_message_id"
   end
 
   create_table "swap_reservations", force: :cascade do |t|
