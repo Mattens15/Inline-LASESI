@@ -73,15 +73,16 @@
       %h4.text-center.my-auto.border-bottom
         CHAT
 
-      .div{:style=>"overflow-y:scroll; height: 60%;padding-bottom:10px;"}
+      .div{:style=>"overflow-y:scroll; height: 100%;padding-bottom:10px;",:id=>"messages_div"}
         -@room.messages.each do |m|
           
         
           %p
-            %strong 
+            %strong
+              
               =link_to User.find(m.user_id).username, user_path(m.user) 
 
-
+            
             =m.body 
       = form_for(current_user.messages.build(room_id: @room.id), remote: true) do |f|
         = hidden_field_tag :room_id, @room.id
@@ -99,9 +100,12 @@
 :javascript
   
   
+  
   var url = getRightUrl();
   
   $(document).ready(function(){
+    //focusing last elements
+    
     $(".index-reservation").click();
     getPartecipants();
     var room_json = init(url+'.json');
@@ -120,6 +124,7 @@
       defaultDate: room_json.time_from,
     });
     
+
     var dateFrom = $("#dateEvent_to").flatpickr({ 
       enableTime: true,
       altInput: true,
