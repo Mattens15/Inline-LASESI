@@ -30,7 +30,7 @@ function render_map_for_room_show(path_JSON){
     container: 'map',
     style: 'mapbox://styles/mapbox/streets-v8',
     center: [rooms_json.longitude, rooms_json.latitude],
-    zoom: 12,
+    zoom: 15,
     attributionControl: false,
     interactive: false
   });
@@ -83,7 +83,7 @@ function render_map_for_room_show(path_JSON){
 				el.id = "marker-0";
 				el.className = 'marker';
         //DECOMMENTA LA LINEA SOTTO SE SEI SOTTO TEST
-				el.innerHTML = 'I\' here for testing!';
+				//el.innerHTML = 'I\' here for testing!';
 				// Add markers to the map at all points
 				new mapboxgl.Marker(el, {offset: [0, 0]})
 						.setLngLat(marker.geometry.coordinates)
@@ -107,7 +107,8 @@ function render_map_for_room(){
     center: [12.48197078704834,41.893460648167355],
     zoom: 15,
     attributionControl: false,
-    hash:true
+    //DECOMMENTA SE SEI IN FASE DI TEST
+    //hash:true
   });
   
   map.on('load', function(e) {
@@ -166,7 +167,7 @@ function render_map(stores){
     center: [12.48197078704834,41.893460648167355],
     zoom: 15,
     attributionControl: false,
-    hash: true
+    //hash: true
   });
   
   var complete_stores = buildObjectForMap('/rooms.json', 1);
@@ -464,7 +465,7 @@ function buildLocationList(data,query) {
     var currentFeature = data.features[i];
     var prop = currentFeature.properties;
     if(query && (currentFeature.geometry.coordinates[0] == 0 || currentFeature.geometry.coordinates[1] == 0)) continue;
-    if(query && (prop.distance < 0 || prop.distance > document.getElementById('radius').value || !prop.visible)) {
+    if(prop.distance < 0 || prop.distance > document.getElementById('radius').value || !prop.visible) {
       continue;
     }
     count++;

@@ -1,10 +1,10 @@
 class ReservationsController < ApplicationController
-  before_action :logged_in_user, expect: [:index]
+  before_action :logged_in_user, only: [:create]
   before_action :set_room
+  before_action :correct_user, only: [:destroy, :update]
   skip_before_action :verify_authenticity_token
+
   def index
-    @room = Room.find(params[:room_id])
-    @reservation = @room.reservations
     render :layout => false
     respond_to do |format|
       format.html
@@ -13,24 +13,42 @@ class ReservationsController < ApplicationController
   end
   
   def create
-    @room = Room.find(params[:room_id])
-    
-    if(current_user != @room.user && @room.reservations.count < @room.max_participants && DateTime.current < @room.max_unjoin_time)
-      @reservation = @room.reservations.create(:user_id => current_user.id)
+    @reservation = @room.reservations.new(:user_id => params[:user_id], :position => params[:position])
+    if(checkValidation)
+      if @reservation.save!
+        respond_to do |format|
+          format.js
+          format.html
+        end
+      else
+        respond_to do |format|
+          format.js {render :js => "alert('Errore! Qualcosa è andato storto!');"}
+        end
+      end
+
+      
+
     else
-      flash[:danger] = 'Can\'t join if you are a room host!'
-    end
-    
-    respond_to do |format|
-      format.html {@room}
-      format.js 
+      if(@room.powers.exists?(user_id: @reservation.user_id)) 
+        respond_to do |format|
+          format.js {render :js =>  "alert('Errore! Sei un room host!');"}
+        end
+      elsif(@room.reservations.count > @room.max_participants)
+        respond_to do |format|
+          format.js {render :js =>  "alert('Errore! Coda piena');"}
+        end
+      else
+        respond_to do |format|
+          format.js {render :js =>  "alert('Errore! Tempo scaduto!');"}
+        end
+      end
+      
     end
     
   end
   
 
   def update
-    @reservation = Reservation.find(params[:id])
     @reservation.update(reminder: params[:reminder])
   end
 
@@ -38,7 +56,8 @@ class ReservationsController < ApplicationController
     if(@room.nil? || @room.max_unjoin_time < Time.now)
       flash[:danger] = 'You was not in queue or the time has expired!'
     else
-      current_user.reservations.find_by(room_id: @room.id).destroy!
+      @position = @reservation.position
+      @reservation.destroy!
     end
     respond_to do |format|
       format.html { redirect_to @room}
@@ -47,6 +66,14 @@ class ReservationsController < ApplicationController
   end
   
   private
+    def correct_user
+      @reservation = Reservation.find(params[:id])
+      redirect_to @room unless !current_user || @reservation.user_id == current_user.id || current_user.powers.exists?(room_id: @room.id) || current_user.admin?
+    end
+
+    def checkValidation
+      !@room.powers.exists?(user_id: @reservation.user_id) && @room.reservations.count < @room.max_participants && DateTime.current < @room.max_unjoin_time
+    end
 
     def set_room
       @room = Room.find(params[:room_id])

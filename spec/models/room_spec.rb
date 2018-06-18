@@ -1,57 +1,61 @@
 require 'rails_helper'
 
 RSpec.describe Room, type: :model do
-  before(:all) do
+  before(:each) do
     @user = FactoryBot.create(:user)
+  end
+
+  after(:each) do
+    @user.destroy! if @user
   end
   
   context "Creating a invalid room" do
   
     describe "When i put a blank name" do
-      it "should not save" do
-        room = Room.new(:name => '', :max_participants => 2, :time_from => Time.now, :time_to => Time.now + 60*60)
+      it "should not be valid" do
+        room = @user.rooms.build(:name => '', :max_participants => 2, :time_from => Time.now, :time_to => Time.now + 60*60)
         expect(room).not_to be_valid
       end
     end
     
     describe "When i put a invalid name" do
-      it "should not save" do
-        room = Room.new(:name => 'aaa___----??', :max_participants => 2, :time_from => Time.now, :time_to => Time.now + 60*60)
+      it "should not be valid" do
+        room = @user.rooms.build(:name => '//aaa___----??', :max_participants => 2, :time_from => Time.now, :time_to => Time.now + 60*60)
         expect(room).not_to be_valid
       end
     end
     
     describe "When i put a looong name" do
       it "should not be valid" do
-        room = Room.new(:name => 'aaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa', :max_participants => 2, :time_from => Time.now, :time_to => Time.now + 60*60)
+        room = @user.rooms.build(:name => 'aaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa', :max_participants => 2, :time_from => Time.now, :time_to => Time.now + 60*60)
         expect(room).not_to be_valid
       end
     end
     
     describe "When i put a short name" do
       it "should not be valid" do
-        room = Room.new(:name => 'a', :max_participants => 2, :time_from => Time.now, :time_to => Time.now + 60*60)
+        room = @user.rooms.build(:name => 'a', :max_participants => 2, :time_from => Time.now, :time_to => Time.now + 60*60)
         expect(room).not_to be_valid
       end
     end
     
     describe "When i don't fill max_participants" do
       it "should not be valid" do
-        room = Room.new(:name => 'Antoninino', :time_from => Time.now, :time_to => Time.now + 60*60)
+        room = @user.rooms.build(:name => 'Antoninino', :time_from => Time.now, :time_to => Time.now + 60*60)
         expect(room).not_to be_valid
       end
     end
     
     describe "When i fill max_participants with a value lower than 1" do
       it "should not be valid" do
-        room = Room.new(:name => 'Antoninino', :max_participants => 0, :time_from => Time.now, :time_to => Time.now + 60*60)
+        room = @user.rooms.build(:name => 'Antoninino', :max_participants => 0, :time_from => Time.now, :time_to => Time.now + 60*60)
         expect(room).not_to be_valid
       end
     end
     
     describe "When i don't fill time" do
       it "should not be valid" do
-        room = Room.new(:name => 'Provarspec', :max_participants => 15, :time_from => Time.now, :time_to => Time.now + 60*60);
+        room = @user.rooms.build(:name => 'Provarspec', :max_participants => 15);
         expect(room).not_to be_valid
       end
     end

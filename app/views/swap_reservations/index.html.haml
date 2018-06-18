@@ -1,0 +1,8 @@
+IN ARRIVO
+-@incoming.each do |i|
+    =i.active_user 
+    =i.accept
+%br
+In uscita
+-@outgoing.each do |i|
+    =i.active_user.username

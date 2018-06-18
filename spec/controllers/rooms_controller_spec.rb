@@ -28,19 +28,22 @@ RSpec.describe RoomsController, type: :controller do
   # This should return the minimal set of attributes required to create a valid
   # Room. As you add validations to Room, be sure to
   # adjust the attributes here as well.
-  before(:all) do
+  before(:each) do
     @valid_attributes = FactoryBot.attributes_for(:valid_room)
     @invalid_attributes = FactoryBot.attributes_for(:invalid_room_param)
     @user = FactoryBot.create(:user)
   end
   
+  after(:each) do
+    @user.destroy! if @user
+  end
 
   describe "GET #index" do
     it "returns a success response" do
-      @room = @user.rooms.create! @valid_attributes
+      room = @user.rooms.create! @valid_attributes
       get :index, params: {}
       expect(response).to be_successful
-      @room.destroy!
+      room.destroy!
     end
   end
 

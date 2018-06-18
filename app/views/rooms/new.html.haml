@@ -3,62 +3,7 @@
   %h4.text-center
     Creazione room
   %br
-  =render 'form'
+  =render 'form_new'
 
-:javascript
-  $(document).ready(function(){
-    render_map_for_room();
-    
-    $('#map_div').hide();
-    
-    $('#map_control').on('click', function(){
-      $('#map_div').toggle();
-    });
-    
-    
-    $('#addr_input').hide();
-    $('#lons_input').hide();
-    $('#lats_input').hide();
-    
-    $('#reset_location').on('click', function(){
-      $('#addr_input').val('');
-      $('#lons_input').val('');
-      $('#lats_input').val('');
-    });
-    
-    
-    var dateFrom = $("#inputdateFrom").flatpickr({ 
-      enableTime: true,
-      minDate: "today",
-      altInput: true,
-      altFromat: "F j, Y",
-      dateFormat: 'Y-m-d H:i',
-      onChange(selectedDates, dateStr, instance){
-        changeDateMinTo(selectedDates)
-      }
-    });
-    
-    var dateTo = $("#inputdateTo").flatpickr({
-      enableTime: true,
-      altInput: true,
-      altFromat: "F j, Y",
-      dateFormat: 'Y-m-d H:i',
-      onChange(selectedDates, dateStr, instance){
-        changeDateMaxFrom(selectedDates)
-      }
-    });
 
-    
-    function changeDateMinTo(date){
-      dateTo.set('minDate', date[0])
-    };
-    
-    function changeDateMaxFrom(date){
-      dateFrom.set('maxDate', date[0])
-    };
-    
-  });
-
-  
-  
   

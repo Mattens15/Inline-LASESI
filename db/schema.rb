@@ -75,6 +75,7 @@ ActiveRecord::Schema.define(version: 2018_06_11_154925) do
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
     t.index ["active_reservation_id"], name: "index_swap_reservations_on_active_reservation_id"
+    t.index ["active_user_id", "passive_user_id", "passive_reservation_id", "active_reservation_id"], name: "swap_reservations_id", unique: true
     t.index ["active_user_id"], name: "index_swap_reservations_on_active_user_id"
     t.index ["passive_reservation_id"], name: "index_swap_reservations_on_passive_reservation_id"
     t.index ["passive_user_id"], name: "index_swap_reservations_on_passive_user_id"

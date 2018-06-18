@@ -5,20 +5,28 @@ class SwapReservationsController < ApplicationController
   #ACTIVE USER IS THE ONE WHO SEND THE REQUEST
   #PASSIVE USER IS THE ONE WHO RECEIVE REQUEST
   def index
-    @incoming = current_user.passive_swap
-    @outgoing = current_user.active_swap
+    @incoming = current_user.passive_requests
+    @outgoing = current_user.active_requests
   end
   
   def create
+    passive_reservation = Reservation.find(params[:reservation_id])
+    room = passive_reservation.room
     active_user = current_user
-    passive_user = User.find(params[:passive_user_id])
-    reservation = Reservation.find(params[:reservation_id])
-    @reservation_swap = active_user.active_swap.build(passive_user: passive_user,
-                                                      reservation: reservation)
-    if @reservation_swap.save
-      render :show, status: :create, location: @friend_request
-    else
-      render json: @swap_reservation.errors, status: :unprocessable_entinty
+    if Reservation.exists?(room_id: room.id, user_id: active_user.id)
+      active_reservation = Reservation.find_by(room_id: room.id, user_id: active_user.id)
+
+      @reservation_swap = SwapReservation.new(passive_user_id: params[:passive_user_id],
+                                              active_user_id: current_user.id,
+                                              passive_reservation_id: params[:reservation_id], 
+                                              active_reservation_id: active_reservation)
+      if  @reservation_swap.save!
+        respond_to do |format|
+          format.html
+        end
+      else
+        flash[:danger] = 'Errore nella creazione'
+      end
     end
   end
   
@@ -32,7 +40,10 @@ class SwapReservationsController < ApplicationController
   end
   
   private
-  
+  def validationparams
+    @reservation_swap.passive_user_id != @reservation_swap.active_user_id && @reservation_swap.passive_reservation_id != @reservation_swap.active_reservation_id
+  end
+
   def set_reservation_swap
     @reservation_swap = SwapReservation.find(params[:id])
   end

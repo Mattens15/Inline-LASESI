@@ -3,7 +3,6 @@
 .container-fluid{:style => 'padding-left: 15%; padding-right: 15%;'}
 	.page-header.media
 		.media-body
-			/=link_to ".", url_for({:controller => 'rooms', :action => 'index_reservation', :id => @room.id}), method: :patch, remote: true, class: 'index-reservation'
 			%h3.text-center.my-3
 				=@room.name
 			 
@@ -31,147 +30,36 @@
 			
 			%h4.text-center.my-3
 
-        Room host:
-        
-        %table.table
-          %tbody
-          -@room.powers.each do |p|
-            %tr
-              %td.text-center=link_to p.user.username, user_path(p.user)   
-    .col-5 
-      %h4.text-center.my-auto.border-bottom
-        CODA
-      %ul.list-group#userlist{:style => 'padding-top: 10px;'}
-        
-      .col.text-center#joindiv{:style => 'margin-top: 10px;'}
-        -if can_i_reserve?
-          -if can_delete?
-            =render 'join'
-          -else
-            %button.btn.btn-danger{:disabled => ''}
-              Tempo scaduto!
-        -else
-          -if do_i_have_powers?
-            %button.btn.btn-danger{:disabled => ''} 
-              You have powers!
-          -else
-            =render 'unjoin' 
-      .col.text-center#reminderdiv{:style => 'margin-top: 10px;'}
-        -if !current_user.nil? && current_user.reservations.exists?(room_id: @room.id)
-          =render 'remind' 
-        
-      
-        
-   
-
-
-
-
-
-    .col-3.border-left
-
-      %h4.text-center.my-auto.border-bottom
-        CHAT
-
-      .div{:style=>"overflow-y:scroll; height: 100%;padding-bottom:10px;",:id=>"messages_div"}
-        -@room.messages.each do |m|
-          
-        
-          %p
-            %strong
-              
-              =link_to User.find(m.user_id).username, user_path(m.user) 
-
-            
-            =m.body 
-      = form_for(current_user.messages.build(room_id: @room.id), remote: true) do |f|
-        = hidden_field_tag :room_id, @room.id
-        .input-group.mb-3
-          .form-group
-            =f.text_field :body, class: "form-control",placeholder: "Insert your message...", autocomplete: "off",id:"chat_input"
-            .input-group-append
-              = f.button "Invia", class: "btn btn-primary btn-block"
-
-    
-    
-      
-    
-         
-:javascript
-  
-  
-  
-  var url = getRightUrl();
-  
-  $(document).ready(function(){
-    //focusing last elements
-    
-    $(".index-reservation").click();
-    getPartecipants();
-    var room_json = init(url+'.json');
-    if($('#map').length) {      
-      render_map_for_room_show(url+'.json');
-      $('.marker').hide();
-    }
-    
-    var dateFrom = $("#dateEvent_from").flatpickr({ 
-      enableTime: true,
-      altInput: true,
-      altFromat: "F j, Y",
-      dateFormat: 'Y-m-d H:i',
-      minDate: room_json.time_from,
-      maxDate: room_json.time_from,
-      defaultDate: room_json.time_from,
-    });
-    
-
-    var dateFrom = $("#dateEvent_to").flatpickr({ 
-      enableTime: true,
-      altInput: true,
-      altFromat: "F j, Y",
-      dateFormat: 'Y-m-d H:i',
-      minDate: room_json.time_to,
-      maxDate: room_json.time_to,
-      defaultDate: room_json.time_to
-    })
-  
-  });
-  
-  function getRoomJSON(){
-        var json = init(url+'.json');
-        var array = [];
-        for(var i = 0; i < json.reservations.length; i++){
-          array[i] = json.reservations[i].user.username;
-        }
-
 				Room host:
 				
 				%table.table
 					%tbody
 					-@room.powers.each do |p|
 						%tr
-							%td.text-center=link_to p.user.username, user_path(p.user)   
-		.col-5 
+							%td.text-center
+								=link_to p.user.username, user_path(p.user)   
+		.col-6
 			%h4.text-center.my-auto.border-bottom
 				CODA
 			%ul.list-group.userlist#userlist{:style => 'padding-top: 10px;'}
-				=render 'reservated'
-			.col.text-center#joindiv{:style => 'margin-top: 10px;'}
-				-if can_i_reserve?
-					-if can_delete?
-						=render 'join'
+			
+			-if @room.fifo
+				#joindiv{:style => 'margin-top: 10px;'}
+					-if can_i_reserve?
+						-if can_delete?
+							=render 'join'
+						-else
+							%button.btn.btn-danger.btn-lg{:disabled => ''}
+								Tempo scaduto!
 					-else
-						%button.btn.btn-danger.btn-lg{:disabled => ''}
-							Tempo scaduto!
-				-else
-					-if do_i_have_powers?
-						%button.btn.btn-danger.btn-lg{:disabled => ''} 
-							You have powers!
-					-else
-						=render 'unjoin' 
-			.col.text-center#reminderdiv{:style => 'margin-top: 10px;'}
-				-if !current_user.nil? && current_user.reservations.exists?(room_id: @room.id)
-					=render 'remind' 
+						-if do_i_have_powers?
+							%button.btn.btn-danger.btn-lg{:disabled => ''} 
+								You have powers!
+						-else
+							=render 'unjoin' 
+				#reminderdiv{:style => 'margin-top: 10px'}
+					-if !current_user.nil? && current_user.reservations.exists?(room_id: @room.id)
+						=render 'remind' 
 		.col-3.border-left
 			%h4.text-center.my-auto.border-bottom
 				CHAT
@@ -198,14 +86,12 @@
 						Log in and join the queue first!
 :javascript
 	var url = getRightUrl();
-	
-	$(document).ready(function(){
-		setInterval(refreshingPartial, 1000);
+	setRightUrl();
+
+	$(document).ready(function(){	
+		refreshingPartial();
+		getParticipants();
 		var room_json = init(url+'.json');
-		if($('#map').length) {      
-			render_map_for_room_show(url+'.json');
-			$('.marker').hide();
-		}
 		
 		var dateFrom = $("#dateEvent_from").flatpickr({ 
 			enableTime: true,
@@ -226,21 +112,26 @@
 			maxDate: room_json.time_to,
 			defaultDate: room_json.time_to
 		})
-	
+
+		if($('#map').length) {      
+			render_map_for_room_show(url+'.json');
+			$('.marker').hide();
+		}
 	});
 	
-	function getRoomJSON(){
-				var json = init(url+'.json');
-				var array = [];
-				for(var i = 0; i < json.reservations.length; i++){
-					array[i] = json.reservations[i].user.username;
-				}
+	function getParticipants(){
+		setTimeout(function(){
+			refreshingPartial();
+			getParticipants();
+		}, 5000);
 
-
-		return array
-	}
-	
-	
+	}	
 	function refreshingPartial(){
-		$('#userlist').load(getRightUrl()+'/reservations')
+		setTimeout(function(){
+			$('#userlist').load(url+'/reservations')
+		}, 200);
+	}
+
+	function setRightUrl(){
+		if(document.URL.substr(-1) == '#') window.location = document.URL.slice(0,-1);
 	}

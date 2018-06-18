@@ -5,10 +5,9 @@
     =hidden_field_tag :room_id, @room.id
     =hidden_field_tag :user_id, current_user.id
     =hidden_field_tag :reminder, !@reservation.reminder
-    .form-group
-      -if !@reservation.reminder
-        = f.submit "I want notification", class: "btn btn-success btn-block"
-      -else
-        = f.submit "I don't want notification", class: "btn btn-danger btn-block"
+    -if !@reservation.reminder
+      = f.submit "Email", class: "btn btn-success btn-block btn-sm"
+    -else
+      = f.submit "Email", class: "btn btn-danger btn-block btn-sm"
 
 

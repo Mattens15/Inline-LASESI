@@ -1,9 +1,0 @@
-=stylesheet_link_tag 'navbar'
-%nav.navbar.navbar-default
-  .container-fluid
-    .navbar-header
-      =image_tag("logo.png")
-      =image_tag("mail.svg",class:"navicon")
-      =image_tag("person.svg",class:"navicon")
-    %button.btn.btn-success#create Create a room
-     

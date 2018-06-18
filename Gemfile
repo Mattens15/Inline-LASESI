@@ -31,6 +31,8 @@ group :development, :test do
   gem 'selenium-webdriver'
   gem 'capybara'
   gem "factory_bot_rails", "~> 4.0"
+  gem 'database_cleaner'
+  gem 'rails-controller-testing'
 end
 
 group :development do
@@ -38,11 +40,6 @@ group :development do
   gem 'listen', '>= 3.0.5', '< 3.2'
   gem 'spring'
   gem 'spring-watcher-listen', '~> 2.0.0'
-end
-
-group :test do
-  gem 'database_cleaner'
-  gem 'rails-controller-testing'
 end
 
 gem "rufus-scheduler", "~> 3.5"

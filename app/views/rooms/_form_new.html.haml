@@ -1,0 +1,145 @@
+= form_for @room do |f|
+  - if @room.errors.any?
+    .mx-auto.form-group
+      %h4.text-center
+        = "#{pluralize(@room.errors.count, "error")} on the form:"
+      %ul.mx-auto{:style => 'padding-left: 0px;'}
+        - @room.errors.full_messages.each do |message|
+          .text-center.alert.alert-danger= message
+  
+  .form-group.row
+    %label.mx-auto
+      Nome della stanza
+    = f.text_field :name, class: 'form-control'
+  .row
+    .col-6
+      .row
+        %label.mx-auto 
+          Time from
+      .row
+        = f.text_field :time_from, class: 'form-control', id: 'inputdateFrom'
+    .col-6
+      .row
+        %label.mx-auto
+          Time to
+      .row
+        = f.text_field :time_to, class: 'form-control', id: 'inputdateTo'
+  %br
+
+  .fomr-group.row
+    %label.mx-auto
+      Scegli il tipo di coda
+  .form-group.row
+    .col-6.text-center
+      = f.radio_button :fifo, 'true', :checked => 'true'
+      = f.label :fifo_true, 'First in first out'
+    .col-6.text.text-center
+      = f.radio_button :fifo, 'false'
+      = f.label :fifo_false, 'Choose your time'
+  .form-group.row
+    %label.mx-auto
+      Descrizione della room (Massimo 140 caratteri)
+    = f.text_area :description, class: 'form-control', style: 'resize:none;'
+  .row
+    .col-6
+      .row
+        %label.mx-auto
+          La tua stanza ha una location?
+      .row
+        .btn.btn-dark.form-control#map_control
+          Click me!
+    .col-6
+      .form-group.row
+        %label.mx-auto
+          Numero partecipanti massimo (Minimo 1)
+        = f.text_field :max_participants, class: 'form-control'
+   
+  .form-group.row#address
+    = f.text_field :address, class: 'form-control', id: 'addr_input'
+    = f.text_field :latitude, class: 'form-control', id: 'lats_input'
+    = f.text_field :longitude, class: 'form-control', id: 'lons_input'
+    
+  .row#map_div{:style => 'margin-bottom: 2rem;'}
+    %h5.mx-auto
+      Cerca la tua location qui!
+    #map{:style=>'width: 100%; height: 300px; margin-top: 1%;'}
+    .row#geocoder{:style => 'width: 100%; margin-top: 1rem;'}
+    %small.mx-auto{:style => 'margin-bottom: 1rem;'}
+      Perfavore, non essere generico nella scelta della location per aiutare i tuoi partecipanti! Ex: Meglio Roma via del corso invece che Roma!
+    
+    .row.mx-auto
+      .col
+        .row
+          %label.mx-auto
+            Hai selezionato una località ma vuoi fare la room senza location?
+        .row
+          .btn.btn-warning.mx-auto#reset_location{:style => 'width: 70%;'}
+            Reset location!
+        .row
+          %small.mx-auto
+            Anche se la barra di ricerca conserva ancora la tua città, la tua location è stata cancellata. 
+            
+  .form-group.row
+    %br
+    %label Vuoi rendere l'evento ricorrente? 
+    = f.select(:recurrence, [['', true], ['Ogni giorno', false], ['Ogni settimana', false], ['Ogni mese', false]], {}, {:class=>"form-control"})
+    %small Attenzione! Non è possibile scegliere l'ora degli eventi ripetuti. L'ora rimarrà quella scelta per la creazione della room!
+  .form-group.row
+    = f.submit 'Save', class: 'btn btn-success mx-auto form-control'
+
+
+:javascript
+  $(document).ready(function(){
+    render_map_for_room();
+    
+    $('#map_div').hide();
+    
+    $('#map_control').on('click', function(){
+      $('#map_div').toggle();
+    });
+    
+    $('#addr_input').hide();
+    $('#lons_input').hide();
+    $('#lats_input').hide();
+    
+    $('#reset_location').on('click', function(){
+      $('#addr_input').val('');
+      $('#lons_input').val('');
+      $('#lats_input').val('');
+    });
+    
+    
+    var dateFrom = $("#inputdateFrom").flatpickr({ 
+      enableTime: true,
+      minDate: 'today',
+      altInput: true,
+      altFromat: "F j, Y",
+      dateFormat: 'Y-m-d H:i',
+      onChange(selectedDates, dateStr, instance){
+        changeDateMinTo(selectedDates)
+      }
+    });
+    
+    var dateTo = $("#inputdateTo").flatpickr({
+      enableTime: true,
+      altInput: true,
+      altFromat: "F j, Y",
+      dateFormat: 'Y-m-d H:i',
+      onChange(selectedDates, dateStr, instance){
+        changeDateMaxFrom(selectedDates)
+      }
+    });
+
+    
+    function changeDateMinTo(date){
+      dateTo.set('minDate', date[0])
+    };
+    
+    function changeDateMaxFrom(date){
+      dateFrom.set('maxDate', date[0])
+    };
+    
+  });
+
+  
+  

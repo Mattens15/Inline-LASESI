@@ -17,14 +17,15 @@ Rails.application.routes.draw do
     patch 'room_index_reservation' => 'rooms#index_reservation'
   end
   
-  resources :swap_reservations
-  resources :password_resets,     only: [:new, :create, :edit, :update]
   
+  resources :password_resets,     only: [:new, :create, :edit, :update]
   resources :users
   resources :rooms do
     resources :powers
     resources :messages
-    resources :reservations
+    resources :reservations do
+      resources :swap_reservations
+    end
   end
 
 end

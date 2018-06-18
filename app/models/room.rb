@@ -10,7 +10,7 @@ class Room < ApplicationRecord
     
   before_destroy{ event_destroy }
   
-  VALID_ROOM_NAME = /[a-zA-Z]/i
+  VALID_ROOM_NAME = /\A[a-z0-9\s]+\Z/i
   validates :user_id, presence: true
   
   validates :time_to, presence: true

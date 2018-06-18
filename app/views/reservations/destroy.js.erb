@@ -1,4 +1,10 @@
-content = "<%= escape_javascript(render('rooms/join')) %>"
-$("#joindiv").html(content);
-content = "<%= escape_javascript(render('rooms/remind')) %>"
-$("#reminderdiv").html(content);
+<% if @room.fifo %>
+  content = "<%= escape_javascript(render('rooms/join')) %>"
+  $("#joindiv").html(content);
+  content = "<%= escape_javascript(render('rooms/remind')) %>"
+  $("#reminderdiv").html(content);
+<% else %>
+  
+  content = "<%= escape_javascript(render(:partial => 'freespace', locals: {position: @position})) %>"
+  $("#reservations_div").html(content);
+<% end%>

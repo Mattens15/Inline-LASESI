@@ -11,12 +11,16 @@ class User < ApplicationRecord
     validates :password, length: { minimum: 8,maximum:15 }, confirmation: {case_sensitive:true},allow_blank: true; 
     validates :password_confirmation, presence: true;
   
-    has_many :rooms, dependent: :destroy #through: :chatroom_users
+    has_many :rooms, dependent: :destroy
+    
     has_many :powers, dependent: :destroy
     has_many :reservations, dependent: :destroy
-    has_many :active_swap,  through: :swap_reservations, source: :active_user, dependent: :destroy
-    has_many :passive_swap, through: :swap_reservations, source: :passive_user, dependent: :destroy
+
+    has_many :active_requests, class_name: 'SwapReservation', :foreign_key => 'active_user'
+    has_many :passive_requests, class_name: 'SwapReservation', :foreign_key => 'passive_user'
+    
     has_many :messages
+    
     def User.digest(string)
         cost = ActiveModel::SecurePassword.min_cost ? BCrypt::Engine::MIN_COST :
                                                       BCrypt::Engine.cost
