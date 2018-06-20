@@ -12,10 +12,4 @@
     = hidden_field_tag :user_id, current_user.id
     = hidden_field_tag :position, current_user.id
     .form-group
-      = f.submit "Join", class: "btn btn-primary btn-block", id: 'joinbutton'
-
-
-  :javascript
-    $('#joinbutton').click(function(){
-      refreshingPartial();
-    });
+      = f.submit "Join", class: "btn btn-primary btn-block", id: 'joinbutton',  onclick: 'refreshingPartial()'

@@ -49,7 +49,11 @@ class ReservationsController < ApplicationController
   
 
   def update
-    @reservation.update(reminder: params[:reminder])
+    if params[:reminder]
+      @reservation.update(reminder: params[:reminder])
+    else
+      @reservation.update(position: params[:position])
+    end
   end
 
   def destroy

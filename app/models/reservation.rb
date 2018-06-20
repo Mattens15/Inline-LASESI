@@ -12,6 +12,6 @@ class Reservation < ApplicationRecord
   validates :room, presence: true
 
   def setPosition
-    self.position = room.reservations.count + 1 if self.position.nil?
+    self.position = room.reservations.where(:position => !nil).count + 1 unless self.position 
   end
 end

@@ -52,7 +52,7 @@ class RoomsController < ApplicationController
   def update
     @room = Room.find(params[:id])
     respond_to do |format|
-      if inTime && @room.update(room_params)
+      if @room.update(room_params)
         format.html { redirect_to @room, notice: 'Room was successfully updated.' }
         format.json { render :show, status: :ok, location: @room }
       else
@@ -83,7 +83,7 @@ class RoomsController < ApplicationController
 
     # Never trust parameters from the scary internet, only allow the white list through.
     def room_params
-      params.require(:room).permit(:name, :description, :recurrence, :address, :max_participants, :latitude, :longitude, :time_from, :time_to, :avatar_file, :avatar_size, :avatar_updated_at, :datetime, :user_id, :fifo)
+      params.require(:room).permit(:name, :description, :recurrence, :address, :max_participants, :latitude, :longitude, :time_from, :time_to, :avatar_file, :avatar_size, :avatar_updated_at, :datetime, :user_id, :fifo, :private)
     end
     
     def logged_in_user
@@ -94,9 +94,6 @@ class RoomsController < ApplicationController
       end
     end
     
-    def inTime
-      return DateTime.current < @room.max_unjoin_time
-    end
      def correct_user
       @room = Room.find(params[:id])
       redirect_to(root_url) unless (!current_user.nil? && current_user.powers.exists?(room_id: @room.id))

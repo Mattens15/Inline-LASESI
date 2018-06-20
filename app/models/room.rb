@@ -3,6 +3,7 @@ class Room < ApplicationRecord
   before_save{  
       adjust_time if self.event_id.nil?
     }
+
   after_save{ 
       update_event if self.event_id.nil? 
       change_unjoin_time if max_unjoin_time.nil? 
@@ -61,11 +62,14 @@ class Room < ApplicationRecord
       visibility: self.private ? 'private':'public',
     })
     cal = Inline::Application.config.cal
+    #cal.authorization.update!(session[:authorization])
     if self.event_id.nil?
+
       event = cal.insert_event('primary', event)
       self.update(event_id: event.id)
       
     else
+    
       event = cal.update_event('primary', self.event_id, event)
       self.update(event_id: event.id)
     end
@@ -75,7 +79,7 @@ class Room < ApplicationRecord
   #DISTRUGGE EVENTO SUL CALENDAR
   def event_destroy
     cal = Inline::Application.config.cal
-    events = cal.list_events('primary')
-    cal.delete_event('primary', event_id) if events.items.any? { |ev| ev.id == self.event_id}
+    #cal.authorization.update!(session[:authorization])
+    cal.delete_event('primary', event_id)
   end
 end

@@ -591,6 +591,7 @@ function buildObjectForMap(path, mode){
   var length = rooms_json.length;
   for(var i = 0; i < length; i++){
     var coord;
+    if(rooms_json[i].private) continue;
     if(rooms_json[i].longitude == null|| rooms_json[i].latitude == null){
       coord = retriveCoords(mode);
       if(coord[1] == null || coord[0] == null) continue;

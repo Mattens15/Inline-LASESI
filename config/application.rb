@@ -45,32 +45,48 @@ module Inline
       html_tag
     }
     
-    puts 'Starting calendar'
+    puts '=>Starting calendar'
     #INIZIALIZZAZIONE CALENDAR
     Inline::Application.configure do
       require 'googleauth'
       require 'google/apis/calendar_v3'
-      cal = Google::Apis::CalendarV3::CalendarService.new
-      
+      require 'google/api_client/client_secrets'
       keypath = Rails.root.join('config','key.json')
-      
-      scope = 'https://www.googleapis.com/auth/calendar'
+  
+      scope = ['https://www.googleapis.com/auth/calendar']
       authorization =  Google::Auth::ServiceAccountCredentials.make_creds(
-        json_key_io: File.open(keypath),
+        json_key_io: keypath,
         scope: scope
       )
+
+      # Clone and set the subject
+      auth_client = authorization.dup
+      auth_client.sub = 'inline@inline-205713.iam.gserviceaccount.com'
+      auth_client.fetch_access_token!
+
+      # Initialize the API
+      service = Google::Apis::CalendarV3::CalendarService.new
+      service.authorization = auth_client
       
-      cal.authorization = authorization
-      puts cal.authorization.fetch_access_token!
-      
-      config.cal = cal
+      rule = Google::Apis::CalendarV3::AclRule.new(
+        scope: {
+          type: 'user',
+          value: 'danieligno10@gmail.com'
+        },
+        role: 'owner'  
+      )
+      #service.insert_acl('inline@inline-205713.iam.gserviceaccount.com', rule)
+
+      config.cal = service
       #RESET CALENDAR
-      #event_list = cal.list_events(Rails.application.secrets.google_calendar_id)
-      #event_list.items.each do |event|
-      #  cal.delete_event(Rails.application.secrets.google_calendar_id, event.id)
-      #  puts 'Eliminato'
+      #puts 'Reset eventi in corso...'
+      #calendar_list = service.list_events('inline@inline-205713.iam.gserviceaccount.com', single_events: true)
+      #calendar_list.items.each do |e|
+      #  service.delete_event('inline@inline-205713.iam.gserviceaccount.com', e.id)
+      #  puts "Eliminato #{e.id}"
       #end
     end
+  
     config.action_view.embed_authenticity_token_in_remote_forms = true
   end
 end

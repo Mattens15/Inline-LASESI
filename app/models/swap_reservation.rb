@@ -11,15 +11,19 @@ class SwapReservation < ApplicationRecord
   validates :active_user_id, presence: true
   validates :passive_user_id, presence: true
   
+  #SERVER PER ACCETTARE UNA RICHIESTA DI SCAMBIO CODA
   def accept
-    temp = passive_reservation.position
-    passive_reservation.position = active_reservation.position
-    active_reservation.position = temp
+    active_pos                    = active_reservation.position
+    passive_pos                   = passive_reservation.position
+
+    passive_reservation.update!(:position => active_pos)
+    active_reservation.update!(:position => passive_pos)
+   
     #ADESSO CHE ABBIAMO SCAMBIATO LE POSIZIONI DISTRUGGIAMO TUTTE 
     #LE RICHIESTE ATTIVE E PASSIVE DI QUESTE PRENOTAZIONI
-    passive_reservation.active_requests.destroy_all!
-    passive_reservation.passive_requests.destroy_all!
-    active_reservation.active_requests.destroy_all!
-    active_reservation.passive_requests.destroy_all!
+    passive_reservation.active_requests.destroy_all
+    passive_reservation.passive_requests.destroy_all
+    active_reservation.active_requests.destroy_all
+    active_reservation.passive_requests.destroy_all
   end
 end

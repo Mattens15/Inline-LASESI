@@ -3,10 +3,10 @@
     = hidden_field_tag :user_id, current_user.id
     = hidden_field_tag :position, position + 1
     = hidden_field_tag :room_id, params[:room_id]
-    = f.submit "Join", class: "buttonreservation  btn btn-primary btn-block", id: "joinbutton-#{position+1}", onclick: 'refreshingPartial()'
+    = f.submit "Prenotati #{position+1})", class: "buttonreservation  btn btn-outline-primary btn-block", id: "joinbutton-#{position+1}", onclick: 'refreshingPartial()'
 -else
   
   =link_to login_path do
-    .btn.btn-primary.btn-block
+    .btn.btn-outline-danger.btn-block
       Log in
 

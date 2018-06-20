@@ -4,22 +4,18 @@ class SwapReservationsController < ApplicationController
   
   #ACTIVE USER IS THE ONE WHO SEND THE REQUEST
   #PASSIVE USER IS THE ONE WHO RECEIVE REQUEST
-  def index
-    @incoming = current_user.passive_requests
-    @outgoing = current_user.active_requests
-  end
   
   def create
     passive_reservation = Reservation.find(params[:reservation_id])
     room = passive_reservation.room
     active_user = current_user
-    if Reservation.exists?(room_id: room.id, user_id: active_user.id)
+    if Reservation.exists?(room_id: room.id, user_id: active_user.id) && DateTime.current < room.max_unjoin_time
       active_reservation = Reservation.find_by(room_id: room.id, user_id: active_user.id)
-
-      @reservation_swap = SwapReservation.new(passive_user_id: params[:passive_user_id],
+      passive_user = Reservation.find(params[:reservation_id]).user
+      @reservation_swap = SwapReservation.new(passive_user_id: passive_user.id,
                                               active_user_id: current_user.id,
                                               passive_reservation_id: params[:reservation_id], 
-                                              active_reservation_id: active_reservation)
+                                              active_reservation_id: active_reservation.id)
       if  @reservation_swap.save!
         respond_to do |format|
           format.html
@@ -30,8 +26,11 @@ class SwapReservationsController < ApplicationController
     end
   end
   
-  def update
+  def update 
     @reservation_swap.accept
+    respond_to do |format|
+      format.html
+    end
   end
   
   def destroy

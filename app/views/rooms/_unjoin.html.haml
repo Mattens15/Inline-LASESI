@@ -1,9 +1,3 @@
 = form_for([@room, current_user.reservations.find_by(room_id: @room.id)], html: { method: :delete}, remote: true) do |f|
   .form-group
-    = f.submit "Unjoin", class: "btn btn-danger btn-block", id: 'unjoinbutton'
-
-:javascript
-  $('#unjoinbutton').click(function(){
-    refreshingPartial();
-  });
-  
+    = f.submit "Unjoin", class: "btn btn-danger btn-block", id: 'unjoinbutton', onclick: 'refreshingPartial()'

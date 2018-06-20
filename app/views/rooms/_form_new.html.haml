@@ -1,93 +1,74 @@
-= form_for @room do |f|
-  - if @room.errors.any?
-    .mx-auto.form-group
-      %h4.text-center
-        = "#{pluralize(@room.errors.count, "error")} on the form:"
-      %ul.mx-auto{:style => 'padding-left: 0px;'}
-        - @room.errors.full_messages.each do |message|
-          .text-center.alert.alert-danger= message
-  
-  .form-group.row
-    %label.mx-auto
-      Nome della stanza
-    = f.text_field :name, class: 'form-control'
-  .row
-    .col-6
-      .row
-        %label.mx-auto 
-          Time from
-      .row
-        = f.text_field :time_from, class: 'form-control', id: 'inputdateFrom'
-    .col-6
-      .row
-        %label.mx-auto
-          Time to
-      .row
-        = f.text_field :time_to, class: 'form-control', id: 'inputdateTo'
-  %br
-
-  .fomr-group.row
-    %label.mx-auto
-      Scegli il tipo di coda
-  .form-group.row
-    .col-6.text-center
-      = f.radio_button :fifo, 'true', :checked => 'true'
-      = f.label :fifo_true, 'First in first out'
-    .col-6.text.text-center
-      = f.radio_button :fifo, 'false'
-      = f.label :fifo_false, 'Choose your time'
-  .form-group.row
-    %label.mx-auto
-      Descrizione della room (Massimo 140 caratteri)
-    = f.text_area :description, class: 'form-control', style: 'resize:none;'
-  .row
-    .col-6
-      .row
-        %label.mx-auto
-          La tua stanza ha una location?
-      .row
-        .btn.btn-dark.form-control#map_control
-          Click me!
-    .col-6
+%h1 Crea la stanza
+%hr/
+.row
+  .col-md-12.personal-info
+    = form_for @room do |f|
+      - if @room.errors.any?
+        .mx-auto.form-group
+          %h4.text-center
+            = "#{pluralize(@room.errors.count, "error")} on the form:"
+          %ul.mx-auto{:style => 'padding-left: 0px;'}
+            - @room.errors.full_messages.each do |message|
+              .text-center.alert.alert-danger= message  
+      
       .form-group.row
-        %label.mx-auto
-          Numero partecipanti massimo (Minimo 1)
-        = f.text_field :max_participants, class: 'form-control'
-   
-  .form-group.row#address
-    = f.text_field :address, class: 'form-control', id: 'addr_input'
-    = f.text_field :latitude, class: 'form-control', id: 'lats_input'
-    = f.text_field :longitude, class: 'form-control', id: 'lons_input'
-    
-  .row#map_div{:style => 'margin-bottom: 2rem;'}
-    %h5.mx-auto
-      Cerca la tua location qui!
-    #map{:style=>'width: 100%; height: 300px; margin-top: 1%;'}
-    .row#geocoder{:style => 'width: 100%; margin-top: 1rem;'}
-    %small.mx-auto{:style => 'margin-bottom: 1rem;'}
-      Perfavore, non essere generico nella scelta della location per aiutare i tuoi partecipanti! Ex: Meglio Roma via del corso invece che Roma!
-    
-    .row.mx-auto
-      .col
-        .row
-          %label.mx-auto
-            Hai selezionato una località ma vuoi fare la room senza location?
-        .row
-          .btn.btn-warning.mx-auto#reset_location{:style => 'width: 70%;'}
-            Reset location!
-        .row
-          %small.mx-auto
-            Anche se la barra di ricerca conserva ancora la tua città, la tua location è stata cancellata. 
-            
-  .form-group.row
-    %br
-    %label Vuoi rendere l'evento ricorrente? 
-    = f.select(:recurrence, [['', true], ['Ogni giorno', false], ['Ogni settimana', false], ['Ogni mese', false]], {}, {:class=>"form-control"})
-    %small Attenzione! Non è possibile scegliere l'ora degli eventi ripetuti. L'ora rimarrà quella scelta per la creazione della room!
-  .form-group.row
-    = f.submit 'Save', class: 'btn btn-success mx-auto form-control'
-
-
+        %label.col-lg-3 Nome Stanza:
+        .col-lg-9
+          = f.text_field :name, class: 'form-control'
+      .form-group.row
+        %label.col-lg-3.control-label Tipo di coda:
+        .col-lg-9
+          .row
+            .col-lg-6
+              = f.radio_button :fifo, true, :checked => 'true'
+              %label.control-label First in first out
+            .col-lg-6
+              = f.radio_button :fifo, false
+              %label.control-label Choose your position
+      .form-group.row
+        %label.col-lg-3 Max partecipanti
+        .col-lg-9
+          = f.text_field :max_participants, class: 'form-control'
+      .form-group.row
+        %label.col-lg-3.control-label Descrizione:
+        .col-lg-9
+          = f.text_area :description, class: 'form-control', style: 'resize:none;'
+      .form-group.row
+        = f.text_field :address   , class: 'form-control', id: 'addr_input'
+        = f.text_field :latitude  , class: 'form-control', id: 'lats_input'
+        = f.text_field :longitude , class: 'form-control', id: 'lons_input'
+      .form-group.row
+        %label.col-lg-3.control-label Location: 
+        #geocoder.col-lg-9
+      .form-group.row
+        #map
+      .form-group.row
+        %label.col-lg-3.control-label Visibilità stanza:
+        .col-lg-9
+          .row
+            .col-lg-6
+              = f.radio_button :private, false
+              %label.control-label Publica
+            .col-lg-6
+              = f.radio_button :private, true
+              %label.control-label Privata
+      .form-group.row
+        %label.col-lg-3.control-label Definizione temporale:
+        .col-lg-9
+          .row
+            .col-lg-6
+              = f.text_field :time_from, class: 'form-control', id: 'inputdateFrom'
+            .col-lg-6
+              = f.text_field :time_to, class: 'form-control', id: 'inputdateTo'
+      .form-group.row
+        .col-lg-3
+        .col-lg-9
+          =f.submit 'Submit', class: 'btn btn-primary'
+          %span
+          =button_tag 'Cancel', type: 'reset', class: 'btn btn-default'
+          
+%hr/
+ 
 :javascript
   $(document).ready(function(){
     render_map_for_room();
@@ -140,6 +121,3 @@
     };
     
   });
-
-  
-  

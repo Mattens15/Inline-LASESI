@@ -12,13 +12,21 @@ FactoryBot.define do
     password  "12341234"
     password_confirmation  "12341234"
   end
-  
+
+  factory :user3, class: User do
+    username "DajeGiggiooo"
+    email "Dajegiggio@gmail.com"
+    password "12341234"
+    password_confirmation "12341234"
+  end
+
   factory :owner, class: User do
     username  "Owner"
     email     "Owner@gmail.com"
     password  "12341234"
     password_confirmation  "12341234"
   end
+  
   
   factory :valid_room, class: Room do
     name             'Abaco'

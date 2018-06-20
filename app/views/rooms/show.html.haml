@@ -1,6 +1,6 @@
 -provide(:title, @room.name)
-%br
 .container-fluid{:style => 'padding-left: 15%; padding-right: 15%;'}
+	
 	.page-header.media
 		.media-body
 			%h3.text-center.my-3
@@ -8,11 +8,15 @@
 			 
 			%p.text-center
 				=@room.description
-			
-	.row
-		.col-3.border-right
+	.row.body-room
+		.col-3.border-right.fixed-size-room
+			-if do_i_matter?
+				=link_to 'Edit room', edit_room_path	
 			%h4.text-center.my-auto.border-bottom
 				Info
+			%h5.text-center.my-2
+				Partecipanti massimi:
+				=@room.max_participants
 			-if !has_no_location
 				.row#map.mx-auto{:style=>'width: 100%; height: 200px; margin: 5%;'}
 				%label
@@ -39,12 +43,10 @@
 							%td.text-center
 								=link_to p.user.username, user_path(p.user)   
 		.col-6
-			%h4.text-center.my-auto.border-bottom
-				CODA
-			%ul.list-group.userlist#userlist{:style => 'padding-top: 10px;'}
+			%ul.list-group.userlist#userlist.fixed-size-room
 			
 			-if @room.fifo
-				#joindiv{:style => 'margin-top: 10px;'}
+				#joindiv
 					-if can_i_reserve?
 						-if can_delete?
 							=render 'join'
@@ -61,9 +63,7 @@
 					-if !current_user.nil? && current_user.reservations.exists?(room_id: @room.id)
 						=render 'remind' 
 		.col-3.border-left
-			%h4.text-center.my-auto.border-bottom
-				CHAT
-			.div{:style=>"overflow-y:scroll; height: 60%;"}
+			.div.fixed-size-room
 				-@room.messages.each do |m|	
 					%p
 						%strong 
@@ -88,12 +88,16 @@
 	var url = getRightUrl();
 	setRightUrl();
 
-	$(document).ready(function(){	
+	$(document).ready(function(){
+		console.log('Reaady');
+		
+		
 		refreshingPartial();
 		getParticipants();
-		var room_json = init(url+'.json');
 		
-		var dateFrom = $("#dateEvent_from").flatpickr({ 
+		var room_json = init(url+'.json');
+
+		$("#dateEvent_from").flatpickr({ 
 			enableTime: true,
 			altInput: true,
 			altFromat: "F j, Y",
@@ -103,7 +107,7 @@
 			defaultDate: room_json.time_from,
 		});
 		
-		var dateFrom = $("#dateEvent_to").flatpickr({ 
+		$("#dateEvent_to").flatpickr({ 
 			enableTime: true,
 			altInput: true,
 			altFromat: "F j, Y",
@@ -117,6 +121,8 @@
 			render_map_for_room_show(url+'.json');
 			$('.marker').hide();
 		}
+
+		console.log('Fine esecuzione');
 	});
 	
 	function getParticipants(){

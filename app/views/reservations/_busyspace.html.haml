@@ -8,8 +8,6 @@
     -if !current_user || reservation.user.id != current_user.id
       -if current_user && current_user.reservations.exists?(room_id: params[:room_id])
         =form_for([@room, reservation, SwapReservation.new], html: {class: 'form-inline'}, remote: true) do |f|
-          =hidden_field_tag :passive_user_id, reservation.user_id
-          =hidden_field_tag :active_reservation_id, current_user.reservations.find_by(room: params[:room_id]).id
           =hidden_field_tag :passive_reservation_id, reservation.id
           =image_submit_tag('swap.ico', class: 'reservation_icon mx-auto', :alt => 'Swap', :title => 'Richiedi lo scambio')
     -elsif reservation.user.id == current_user.id 
