@@ -25,7 +25,6 @@ RSpec.describe UsersController, type: :controller do
 
     describe "POST #create" do
         it "returns a http success" do
-            #expect{post :create, params:{user: {username:"mario",email:"mario.rossi@gmail.com",password:"bana12345",password_confirmation:"bana12345"}}}.to change(User, :count).by(1)
             expect{post :create,params: {user: @valid_attributes}}.to change(User, :count).by(1)
         end
     end

@@ -23,3 +23,4 @@
             .col-lg-6
                 %label
                     %h2 ID
+                    = Digest::MD5.hexdigest(@user.id)

@@ -10,12 +10,11 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2018_06_11_071244) do
+ActiveRecord::Schema.define(version: 2018_06_14_080846) do
 
   create_table "users", force: :cascade do |t|
     t.string "username"
     t.string "email"
-    t.string "password"
     t.json "facebook"
     t.json "google"
     t.json "rating"

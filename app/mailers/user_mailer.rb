@@ -1,5 +1,5 @@
 class UserMailer < ApplicationMailer
-  default from: "noreply@example.com"
+  default from: "attenni.1655314@studenti.uniroma1.it"
 
   def account_activation(user)
     @user=user
