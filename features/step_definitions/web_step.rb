@@ -28,17 +28,21 @@ When /^(?:I )create a room$/ do
 end
 
 When /^I visit (.*)$/ do |page_name|
-  if(page_name == 'dashboard')
-		visit @localhost_url+"#{page_name}/#16/41.908339/12.479098"
-	else
-		 visit @localhost_url+"/#{page_name}"
-	end
+	visit @localhost_url+"/#{page_name}"
 end
 
-And /^I fill (.*)/ do |element|
-	fill_in 'radius', :with => 5
+And /^I fill (.*) with (.*)/ do |element, value|
+	fill_in element, :with => value
 end
- 
+
+And /^I pick the first one/ do
+  find(:css, 'suggestrions').click
+end
+
+And /^I click (.*)/ do |element|
+  click_on(element)
+end
+
 And /^I search a location$/ do
 	visit "http://127.0.0.1:#{@port}/#9.21/41.876/12.5324"
 end
@@ -48,15 +52,4 @@ end
 Then /^I should see marker$/ do	
   expect(page.find('#map')).not_to be nil
   expect(page.find('#marker-0')).not_to be nil
-end
-
-Then /^I should see calendar$/ do	
-  expect(page.find('#inputdateFrom', :visible => false)).not_to be nil
-  expect(page.find('#inputdateTo', :visible => false)).not_to be nil
-end
-
-Then /^I can choose a date and time$/ do
-  within ".row" do
-    click_on "input"
-  end
 end

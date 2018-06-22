@@ -1,7 +1,7 @@
 Before do |scenario|
   @port = Capybara.current_session.server.port
   @localhost_url = "http://127.0.0.1:#{@port}/"
-  Capybara.default_max_wait_time = 100
+  Capybara.default_max_wait_time = 5
 end
 
 
@@ -12,11 +12,10 @@ After do |scenario|
   # the #failed?, #passed? and #exception methods.
   puts "Procedo all'eliminazione dei residui dello scenario"
   cal = Inline::Application.config.cal
-  puts "ID evento #{@room.event_id}"
-  cal.delete_event('primary', @room.event_id)
+  cal.delete_event('primary', @room.event_id) unless !@room
   
-  if scenario.failed?
-    subject = "[Project X] #{scenario.exception.message}"
-    send_failure_email(subject)
-  end
+  #if scenario.failed?
+  #  subject = "[Project X] #{scenario.exception.message}"
+  #  send_failure_email(subject)
+  #end
 end

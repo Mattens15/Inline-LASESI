@@ -12,4 +12,6 @@ Scenario:
   And I log in
 	When I create a room
 	And I visit dashboard
+	And I fill Search with Via del babuino
+	And I pick the first one
 	Then I should see marker

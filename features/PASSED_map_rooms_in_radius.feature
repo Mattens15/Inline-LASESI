@@ -9,5 +9,6 @@ Scenario:
   Given I am a registered user
 	And I log in
   When I create a room
-  And I check calendar events
-  Then I should see event on calendar
+  And I visit dashboard
+  And I fill radius with 5
+  Then I should see marker

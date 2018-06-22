@@ -8,8 +8,14 @@ Feature:Pin an address on a map
 Scenario:
 	Given I am a registered user
 	And I log in
-  When I click create a room
-  And I click on map_control
-	And I search a location
-	And I save
+  
+	When I click create
+	
+	And I fill room_name with Giorgio
+	And I fill room_max_participants with 5
+	And I fill Data inizio... with today
+	And I fill Data fine... with today
+	And I fill Search with Via del babuino
+	And I click Submit
+
 	Then room contains coordinates

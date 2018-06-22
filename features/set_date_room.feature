@@ -9,6 +9,5 @@ Scenario:
   Given I am a registered user
   And I log in
   When I visit rooms/new
-  Then I should see calendar
   And I can choose a date and time
   And I can choose to set and event recurrent
