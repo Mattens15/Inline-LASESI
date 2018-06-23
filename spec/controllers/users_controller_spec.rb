@@ -28,4 +28,19 @@ RSpec.describe UsersController, type: :controller do
             expect{post :create,params: {user: @valid_attributes}}.to change(User, :count).by(1)
         end
     end
+
+    describe "GET #edit" do
+        context "with valid id" do
+            it "return a http success" do
+                get :edit, params:{id:@user.id}
+                expect(response).to be_successful
+            end
+        end
+    end
+
+    describe "POST #edit" do
+        it "returns a http success" do
+            expect(post :create,params: {user: @valid_attributes}).to be_successful
+        end
+    end
 end

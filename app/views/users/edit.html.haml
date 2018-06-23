@@ -10,18 +10,19 @@
     %script{:crossorigin => "anonymous", :integrity => "sha384-vBWWzlZJ8ea9aCX4pEW3rVHjgjt7zpkNpZk+02D9phzyeVkE+jo0ieGizqPLForn", :src => "https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0-alpha.6/js/bootstrap.min.js"}
   %body
     .container-fluid{:style => "padding-left:10%;padding-right:10%;"}
-        - provide(:title, "Edit user")
-        %h1 Update your profile
-        .row
-            .col-lg-12
-                = form_for(@user) do |f|
-                = render 'shared/error_messages'
-                = f.label :username
-                = f.text_field :username, class: 'form-control'
-                = f.label :email
-                = f.email_field :email, class: 'form-control'
-                = f.label :password
-                = f.password_field :password, class: 'form-control'
-                = f.label :password_confirmation, "Confirmation"
-                = f.password_field :password_confirmation, class: 'form-control'
-                = f.submit "Save changes", class: "btn btn-primary"
+      - provide(:title, "Edit user")
+      .row
+        .col-lg-12
+          = form_for(@user) do |f|
+            %br
+            = render 'shared/error_messages'
+            = f.label :username
+            = f.text_field :username, class: 'form-control'
+            = f.label :email
+            = f.email_field :email, class: 'form-control'
+            = f.label :password
+            = f.password_field :password, class: 'form-control'
+            = f.label :password_confirmation
+            = f.password_field :password_confirmation, class: 'form-control'
+            %br
+            = f.submit "Save changes", class: "btn btn-success"

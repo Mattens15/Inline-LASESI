@@ -8,19 +8,26 @@
         %meta{:content => "width=device-width, initial-scale=1", :name => "viewport"}/
         %link{:crossorigin => "anonymous", :href => "https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0-alpha.6/css/bootstrap.min.css", :integrity => "sha384-rwoIResjU2yc3z8GV/NPeZWAv56rSmLldC3R/AZzGRnGxQQKnKkoFVhFQhNUwEyJ", :rel => "stylesheet"}/
         %script{:src => "https://ajax.googleapis.com/ajax/libs/jquery/3.2.1/jquery.min.js"}
+        %script{:src => "https://cdnjs.cloudflare.com/ajax/libs/crypto-js/3.1.9-1/md5.min.js"}
         %script{:crossorigin => "anonymous", :integrity => "sha384-vBWWzlZJ8ea9aCX4pEW3rVHjgjt7zpkNpZk+02D9phzyeVkE+jo0ieGizqPLForn", :src => "https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0-alpha.6/js/bootstrap.min.js"}
     %body
         .container-fluid
             .row
-            .col-lg-6
-                %label
-                    %h2 USERNAME:
-                    = @user.username
-                %br/
-                %label  
-                    %h2 EMAIL
-                    = @user.email
-            .col-lg-6
-                %label
-                    %h2 ID
-                    = Digest::MD5.hexdigest(@user.id)
+                .col-lg-6
+                    %label
+                        %h2 USERNAME:
+                        = @user.username
+                    %br
+                    %label  
+                        %h2 EMAIL
+                        = @user.email
+                .col-lg-6
+                    %label
+                        %h2 ID
+                        = @user.id
+                    %br
+                    %label
+                        %h2 REFERRAL LINK
+                        http://inlineapp.com/
+                        =@hashed
+

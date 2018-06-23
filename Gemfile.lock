@@ -322,7 +322,8 @@ DEPENDENCIES
   coffee-rails (~> 4.2)
   cucumber-rails
   database_cleaner
-  devise_invitable
+  devise (~> 4.2)
+  devise_invitable (~> 1.7.0)
   factory_bot
   factory_bot_rails (~> 4.0)
   faker
