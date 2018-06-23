@@ -34,13 +34,14 @@ class RoomsController < ApplicationController
   def create
     @room = current_user.rooms.build(room_params)
     #AL MOMENTO SENZA LA DEFINIZIONE DELLA SESSIONE, E' MEGLIO COMMENTARLO
-    
-    respond_to do |format|
-      if @room.save
-        Power.create(room_id: @room.id, user_id: current_user.id)
+    if @room.save
+      @power = Power.create!(room_id: @room.id, user_id: current_user.id)
+      respond_to do |format|
         format.html { redirect_to @room, notice: 'Room was successfully created.' }
         format.json { render :show, status: :created, location: @room }
-      else
+      end
+    else
+      respond_to do |format|
         format.html { render :new }
         format.json { render json: @room.errors, status: :unprocessable_entity }
       end

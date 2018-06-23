@@ -9,27 +9,31 @@ class PowersController < ApplicationController
   def create
     @user = User.find_by(username: params[:power][:user_id])
     if !@user
-      respond_to do |format|
-        flash[:danger] = 'Utente non trovato!'
-        format.html {redirect_to edit_room_path(@room)}
-      end
+      flash[:danger] = 'Utente non trovato!'
     else
       if @user.powers.exists?(room_id: @room.id)
         flash[:danger] = 'L\'utente ha già i poteri'
-        redirect_to edit_room_path(@room)
       else
         @user.powers.create!(room_id: @room.id)
-
         flash[:success] = 'Utente aggiunto'
-        redirect_to {edit_room_path(@room)}
       end 
+    end
+
+    respond_to do |format|
+      format.html {redirect_to edit_room_path(@room)}
     end
   end
 
   def destroy
     @power = Power.find(params[:id])
-    @power.destroy!
-    redirect_to edit_room_path(@room)
+    if @power.destroy!
+      flash[:success] = 'Room host eliminato'
+    else
+      flash[:danger] = 'Errore eliminazione'
+    end
+    respond_to do |format|
+      format.html {redirect_to edit_room_path(@room)}
+    end
   end
   
   private
@@ -47,7 +51,7 @@ class PowersController < ApplicationController
   end
     
   def correct_user
-    redirect_to edit_room_path(@room) unless current_user.powers.exists?(@room.id)
+    redirect_to edit_room_path(@room) unless ( current_user.rooms.exists?(@room.id) || current_user.powers.exists?(@room.id) || current_user.admin? )
   end
   
 end

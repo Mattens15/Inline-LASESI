@@ -45,8 +45,7 @@ RSpec.describe ReservationsController, type: :controller do
     end
   end
   
-  context "Destroying reservation" do
-    
+  context "Destroying reservation" do  
     describe "as non-reserved" do
       it "should raise record not found" do
         params = {id: 1, room_id: 5888}
