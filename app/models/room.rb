@@ -79,7 +79,7 @@ class Room < ApplicationRecord
   #DISTRUGGE EVENTO SUL CALENDAR
   def event_destroy
     cal = Inline::Application.config.cal
-    #cal.authorization.update!(session[:authorization])
-    cal.delete_event('primary', event_id)
+    event = cal.get_event('primary', event_id)
+    cal.delete_event('primary', event_id) unless event.nil?
   end
 end

@@ -6,10 +6,6 @@ end
 
 
 After do |scenario|
-  # Do something after each scenario.
-  # The +scenario+ argument is optional, but
-  # if you use it, you can inspect status with
-  # the #failed?, #passed? and #exception methods.
   puts "Procedo all'eliminazione dei residui dello scenario"
   cal = Inline::Application.config.cal
   cal.delete_event('primary', @room.event_id) unless !@room

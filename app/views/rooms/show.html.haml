@@ -8,10 +8,11 @@
 			 
 			%p.text-center
 				=@room.description
+		-if do_i_matter?
+			=link_to 'Edit room', edit_room_path	
 	.row.body-room
+		
 		.col-3.border-right.fixed-size-room
-			-if do_i_matter?
-				=link_to 'Edit room', edit_room_path	
 			%h4.text-center.my-auto.border-bottom
 				Info
 			%h5.text-center.my-2

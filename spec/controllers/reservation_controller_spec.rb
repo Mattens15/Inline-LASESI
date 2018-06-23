@@ -9,15 +9,7 @@ RSpec.describe ReservationsController, type: :controller do
     @room_invalid_time = @owner.rooms.create!(attributes_for(:invalid_room))
     @reserved = FactoryBot.create(:user2)
   end
-  
-  after(:each) do
-    @room.destroy!
-    @owner.destroy!
-    @room.destroy!
-    @reserved.destroy!
-    @room_invalid_time.destroy!
-  end
-  
+    
   context "Creating reservation" do
     describe "as room host" do
       it "should don't let me take part" do

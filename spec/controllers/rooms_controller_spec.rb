@@ -34,16 +34,12 @@ RSpec.describe RoomsController, type: :controller do
     @user = FactoryBot.create(:user)
   end
   
-  after(:each) do
-    @user.destroy! if @user
-  end
-
   describe "GET #index" do
     it "returns a success response" do
       room = @user.rooms.create! @valid_attributes
       get :index, params: {}
       expect(response).to be_successful
-      room.destroy!
+      #room.destroy!
     end
   end
 
@@ -53,7 +49,7 @@ RSpec.describe RoomsController, type: :controller do
         room = @user.rooms.create! @valid_attributes
         get :show, params: {id: room.to_param}
         expect(response).to be_successful
-        room.destroy!
+        #room.destroy!
       end
     end
     
@@ -83,7 +79,7 @@ RSpec.describe RoomsController, type: :controller do
       room = @user.rooms.create! @valid_attributes
       get :edit, params: {id: room.to_param}
       expect(response).to be_successful
-      room.destroy!
+      #room.destroy!
     end
   end
 
@@ -132,14 +128,14 @@ RSpec.describe RoomsController, type: :controller do
         put :update, params: {id: room.to_param, room: new_attributes}
         room.reload
         expect(room.name).to eq new_attributes['name']
-        room.destroy!
+        #room.destroy!
       end
 
       it "redirects to the room" do
         room = @user.rooms.create! @valid_attributes
         put :update, params: {id: room.to_param, room: @valid_attributes}
         expect(response).to redirect_to(room)
-        room.destroy!
+        #room.destroy!
       end
     end
 

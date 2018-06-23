@@ -10,13 +10,7 @@ RSpec.describe SwapReservationsController, type: :controller do
     @active_user_reservation = @active_user.reservations.create!(room_id: @room.id)
     @passive_user_reservation = @passive_user.reservations.create!(room_id: @room.id)
   end
-
-  after(:each) do
-    @owner.destroy!
-    @active_user.destroy!
-    @passive_user.destroy!
-  end
-
+  
   describe "Creating new swapreservation" do
     context "With all params" do
       it "should be fine" do

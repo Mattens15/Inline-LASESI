@@ -3,11 +3,27 @@
 .row
   / left column
   .col-md-3
-    .text-center
-      %img.avatar.img-circle{:alt => "avatar", :src => "//placehold.it/100"}/
-      %h6 Upload a different photo...
-      %input.form-control{:type => "file"}/
-    
+    .row
+      %img.avatar.mx-auto.img-circle{:alt => "avatar", :src => "//placehold.it/100"}/
+    .row.mt-2
+      =form_for([@room, Power.new]) do |f|
+        .input-group.mb-3
+          =f.text_field :user_id, class: 'form-control', placeholder: 'Room host username'
+          .input-group-append
+            =f.submit 'Add', class: 'btn btn-outline-primary'
+    .row{style: 'margin-top: -5%'}
+      %ul.list-group.list-group-flush.col-12
+        -@room.powers.each do |p|
+          %li.list-group-item
+            .row
+              .col-9.text-right.my-auto
+                =link_to p.user.username, user_path(p.user)
+              .col-3.text-left.my-auto
+                -if p.user != current_user && p.user != @room.user
+                  =form_for([@room, p.user.powers.find_by(room_id: @room.id)], html: {method: :delete}) do |f|
+                    =f.submit 'x', class: 'btn btn-sm btn-danger', id: 'add_button'
+                -else
+                  %input.btn.btn-sm.btn-danger{type: 'submit', disabled: '', value: 'x', title: 'Non puoi rimuovere questo utente'}
   / edit form column
   .col-md-9.personal-info
     %h3 Personal info
