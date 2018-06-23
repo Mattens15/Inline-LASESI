@@ -64,19 +64,14 @@
 					-if !current_user.nil? && current_user.reservations.exists?(room_id: @room.id)
 						=render 'remind' 
 		.col-3.border-left
-			.div.fixed-size-room
-				-@room.messages.each do |m|	
-					%p
-						%strong 
-							=link_to User.find(m.user_id).username, user_path(m.user) 
-						=m.body
+			#messages{:style =>'overflow-y:scroll;height:70vh'}
 			-if current_user
 				= form_for([@room, Message.new], remote: true) do |f|
 					= hidden_field_tag :user_id, current_user.id
 					.input-group.mb-3
 						=f.text_field :body, class: "form-control",placeholder: "Insert your message...", autocomplete: "off",id:"chat_input"
 						.input-group-append
-							= f.button "Invia", class: "btn btn-primary btn-block"
+							= f.button "Invia", class: "btn btn-primary btn-block",id:"chat_btn"
 			-else
 				.input-group.mb-3
 					%input#chat_input{:type => 'text', :placeholder => 'Insert your message...', :autocomplete => 'off'}
@@ -87,13 +82,28 @@
 						Log in and join the queue first!
 :javascript
 	var url = getRightUrl();
+	var scroll= true;
 	setRightUrl();
-
+	
+	$("#messages").scroll(function(e){
+		//da capire se triggerato da umano o funzione
+		scroll=false;
+		//dopo 5 secondi ristora scroll al fondo
+		//quando invia messaggio resetta l'input
+	});
+	
+	$("#new_message").submit(function(e){
+		e.preventDefault(); 
+		this.submit();
+		$("#chat_input").val("");
+		$('#messages').load(url+'/messages');
+	})
 	$(document).ready(function(){
-		console.log('Reaady');
+		
 		
 		refreshingPartial();
 		getParticipants();
+		scrollDown();
 		
 		var room_json = init(url+'.json');
 
@@ -122,22 +132,32 @@
 			$('.marker').hide();
 		}
 
-		console.log('Fine esecuzione');
+		
 	});
 	
 	function getParticipants(){
 		setTimeout(function(){
 			refreshingPartial();
 			getParticipants();
-		}, 5000);
+		}, 1000);
 
 	}	
 	function refreshingPartial(){
 		setTimeout(function(){
-			$('#userlist').load(url+'/reservations')
+			$('#userlist').load(url+'/reservations');
+			$('#messages').load(url+'/messages');
+			
+			if (scroll){
+				scrollDown();}
+			
 		}, 200);
 	}
 
+	function scrollDown(){
+		
+
+		$('#messages').stop().animate({scrollTop: $('#messages')[0].scrollHeight},100)
+	}
 	function setRightUrl(){
 		if(document.URL.substr(-1) == '#') window.location = document.URL.slice(0,-1);
 	}

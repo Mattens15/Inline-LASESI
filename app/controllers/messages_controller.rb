@@ -2,6 +2,7 @@ class MessagesController < ApplicationController
 	before_action :authenticate_user!
 	before_action :set_room
 	def index
+		render :layout => false
 		@messages = @room.messages
 	end
 	
@@ -9,7 +10,7 @@ class MessagesController < ApplicationController
 		@message = @room.messages.new(message_params)
 		@message.user = current_user
 		if @message.save!
-			redirect_to @room
+			
 		else
 			flash[:danger] = "Errore creazione"
 		end
