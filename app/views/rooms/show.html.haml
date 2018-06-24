@@ -85,18 +85,16 @@
 	var scroll= true;
 	setRightUrl();
 	
-	$("#messages").scroll(function(e){
-		//da capire se triggerato da umano o funzione
-		scroll=false;
-		//dopo 5 secondi ristora scroll al fondo
-		//quando invia messaggio resetta l'input
-	});
+	//prevent scroll if reading older messages
+	$("#messages").mouseenter(function(){scroll=false});
+	$("#messages").delay(10000).mouseleave(function(){scroll=true;})
 	
 	$("#new_message").submit(function(e){
 		e.preventDefault(); 
 		this.submit();
 		$("#chat_input").val("");
 		$('#messages').load(url+'/messages');
+		scrollDown(1);
 	})
 	$(document).ready(function(){
 		
@@ -104,7 +102,7 @@
 		
 		refreshingPartial();
 		getParticipants();
-		scrollDown();
+		scrollDown(10);
 		
 		var room_json = init(url+'.json');
 
@@ -149,16 +147,20 @@
 			$('#messages').load(url+'/messages');
 			
 			if (scroll){
-				scrollDown();}
+				scrollDown(500);}
 			
 		}, 200);
 	}
 
-	function scrollDown(){
+	function scrollDown(speed){
 		
 
-		$('#messages').stop().animate({scrollTop: $('#messages')[0].scrollHeight},100)
+		$('#messages').stop().animate({scrollTop: $('#messages')[0].scrollHeight},speed)
 	}
 	function setRightUrl(){
 		if(document.URL.substr(-1) == '#') window.location = document.URL.slice(0,-1);
+	}
+	function sleep_ms(millisecs) {
+	var initiation = new Date().getTime();
+	while ((new Date().getTime() - initiation) <millisecs);
 	}
