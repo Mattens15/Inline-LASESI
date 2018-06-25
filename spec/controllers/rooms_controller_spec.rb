@@ -55,9 +55,9 @@ RSpec.describe RoomsController, type: :controller do
     
     context "with invalid id" do
       it "shows error page" do
-        id = 32
-        expect{get :show, params: {id: id}}.to render_template(:file => "#{Rails.root}/public/404.html")
-        expect(response).to be_successful
+        id = Room.count + 1
+        expect{get :show, params: {id: id}}.not_to raise_error
+        expect(response).to render_template(:file => "#{Rails.root}/public/404.html.haml")
       end
     end
   end

@@ -487,7 +487,7 @@ function buildLocationList(data,query) {
     card_deck = listings.children[j];
       
     var card = card_deck.appendChild(document.createElement('div'));
-    card.className = 'card mx-2';
+    card.className = 'card';
     
     var card_body = card.appendChild(document.createElement('div'));
     card_body.className = 'card-body';
