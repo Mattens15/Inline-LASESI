@@ -5,10 +5,6 @@ RSpec.describe Room, type: :model do
     @user = FactoryBot.create(:user)
   end
 
-  after(:each) do
-    @user.destroy! if @user
-  end
-  
   context "Creating a invalid room" do
   
     describe "When i put a blank name" do

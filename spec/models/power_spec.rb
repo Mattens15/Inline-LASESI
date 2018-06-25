@@ -6,13 +6,7 @@ RSpec.describe Power, type: :model do
     @user   = FactoryBot.create(:user)
     @room   = @owner.rooms.create(attributes_for(:valid_room))
   end
-
-  after(:each) do
-    @owner.destroy!
-    @user.destroy!
-    @room.destroy!
-  end
-
+  
   context "New powers" do
     describe "with all params" do
       it "should be fine" do

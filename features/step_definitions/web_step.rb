@@ -27,7 +27,7 @@ end
 
 
 And /^(?:I )log in$/ do
-  visit @localhost_url+"login"
+  visit @test_url+"login"
   fill_in "session_email", :with => @user.email
   fill_in "session_password", :with => @user.password
   click_button('Log in')
@@ -45,7 +45,7 @@ When /^(?:I )create a room$/ do
 end
 
 When /^I visit (.*)$/ do |page_name|
-	visit @localhost_url+"/#{page_name}"
+	visit @test_url+"#{page_name}"
 end
 
 And /^I fill (.*) with (.*)/ do |element, value|
@@ -94,15 +94,11 @@ And /^I select TimeTo/ do
   end
 end
 
-And /^I search a location$/ do
-	visit "http://127.0.0.1:#{@port}/#9.21/41.876/12.5324"
-end
-
 #THEN 
 
 Then /^I should see marker$/ do	
   expect(page.find('#map')).not_to be nil
-  expect(page.find('#marker-0')).not_to be nil
+  expect(page.find('#marker-0', visible: 'false')).not_to be nil
 end
 
 Then /^room has coordinates/ do

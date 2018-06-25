@@ -7,12 +7,6 @@ RSpec.describe Reservation, type: :model do
     @user = FactoryBot.create(:user)
   end
 
-  after(:each) do
-    @room.destroy!
-    @owner.destroy!
-    @user.destroy!
-  end
-
   context "Create reservation" do
     describe "without room" do
       it "should not be valid"do

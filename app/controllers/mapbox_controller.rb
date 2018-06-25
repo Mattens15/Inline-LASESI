@@ -6,7 +6,7 @@ class MapboxController < ApplicationController
     @roomlist = []
         
     @room.each do |r|
-      next if r.private && !current_user.admin?
+      next if r.private && current_user && !current_user.admin?
       @roomlist << {
        :id   => r.id,
        :name => r.name,

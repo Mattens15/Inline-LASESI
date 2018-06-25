@@ -1,7 +1,7 @@
 Before do |scenario|
   @port = Capybara.current_session.server.port
-  @localhost_url = "http://127.0.0.1:#{@port}/"
-  Capybara.default_max_wait_time = 5
+  @test_url = "http://127.0.0.1:#{@port}/"
+  Capybara.default_max_wait_time = 100
 end
 
 
