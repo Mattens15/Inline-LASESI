@@ -1,0 +1,11 @@
+<% if @room.fifo %>
+  content = "<%= escape_javascript(render('rooms/unjoin')) %>"
+  $("#joindiv").html(content);
+  content = "<%= escape_javascript(render('rooms/remind')) %>"
+  $("#reminderdiv").html(content);
+<% else %>
+  
+  content = "<%= escape_javascript(render(:partial => 'busyspace', locals: {reservation: @reservation})) %>"
+  $("#reservations_div-<%@reservation.position%>").html(content);
+<% end%>
+

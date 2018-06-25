@@ -1,22 +1,24 @@
 Rails.application.routes.draw do
-<<<<<<< HEAD
-  root 'static_pages#home'
-  get  '/help',    to: 'static_pages#help'
-  get  '/about',   to: 'static_pages#about'
-  get  '/contact', to: 'static_pages#contact'
-  get  '/signup',  to: 'users#signup'
-  post '/signup',  to: 'users#create'
-  resources :users
-end
-=======
+  root                     'mapbox#show'
+  get 'dashboard'				=> 'mapbox#show'
+  get 'sessions/new'
+  get 'password_resets/new'
+  get 'password_resets/edit'
+  get 'help'    => 'static_pages#help'
+  get 'about'   => 'static_pages#about'
+  get 'contact' => 'static_pages#contact'
+  get 'signup'  => 'users#new'
+  get 'login'   => 'sessions#new'
+  post'login'   => 'sessions#create'
+  get 'logout'  => 'sessions#destroy'
   get 'home/show'
-  # For details on the DSL available within this file, see http://guides.rubyonrails.org/routing.html
-
-get 'auth/:provider/callback' => 'sessions#callback' #facebook routing
-
-end
-
-GoogleAuthExample::Application.routes.draw do
+  get 'auth/:provider/callback' => 'sessions#callback' #facebook routing
+  
+  scope :ujs, defaults: {format: :ujs} do
+    patch 'room_index_reservation' => 'rooms#index_reservation'
+  end
+  
+  GoogleAuthExample::Application.routes.draw do
   get 'auth/:provider/callback', to: 'sessions#create'
   get 'auth/failure', to: redirect('/')
   get 'signout', to: 'sessions#destroy', as: 'signout'
@@ -25,5 +27,14 @@ GoogleAuthExample::Application.routes.draw do
   resource :home, only: [:show]
 
   root to: "home#show"
+  
+  resources :password_resets,     only: [:new, :create, :edit, :update]
+  resources :users
+  resources :rooms do
+    resources :powers
+    resources :messages
+    resources :reservations do
+      resources :swap_reservations
+    end
+  end
 end
->>>>>>> d9e106925122d18f3578b170d0e2516e04ff563a

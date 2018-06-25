@@ -1,0 +1,5 @@
+-@room.messages.each do |m|
+    %p
+        %strong 
+            =link_to User.find(m.user_id).username, user_path(m.user) 
+        =m.body

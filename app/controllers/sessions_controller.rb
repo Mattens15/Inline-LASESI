@@ -12,15 +12,6 @@ class SessionsController < ApplicationController
   end
 end
 
-
-
-
-
-
-
-
-
-
 # sessions_controller facebook
 def callback
   if user = User.from_omniauth(env["omniauth.auth"])

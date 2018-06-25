@@ -1,0 +1,14 @@
+=stylesheet_link_tag 'navbar'
+%nav.navbar.navbar-default{:role => 'navigation'}
+  .navbar-header
+    =link_to (root_path) do
+      =image_tag("logo.png")
+  .float-sm-right
+    -if current_user
+      =link_to ('#') do
+        =image_tag("mail.svg",class:"navicon1")
+      =link_to (current_user) do
+        =image_tag("person.svg",class:"navicon2")
+      =link_to (new_room_path) do
+        %button.btn.btn-success#create Create a room
+

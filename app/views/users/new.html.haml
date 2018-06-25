@@ -1,0 +1,23 @@
+
+.container-fluid{:style => "padding-left:10%;padding-right:10%;"}
+  .row
+    .col-lg-12{:style => "margin-top:5%"}
+      %center
+        %h3 SignUp
+        %br/
+        = form_for(@user) do |f|
+          = render 'shared/error_messages'
+          .form-group
+            %h3 Username
+            %input.form-control{:maxlength => "20",:id => "user_username", :name => "user[username]", :required => "", :type => "username"}/
+          .form-group
+            %h3 Email
+            %input.form-control{:maxlength => "50",:id => "user_email", :name => "user[email]", :placeholder => "prova@example.com", :required => "", :type => "email"}/
+          .form-group
+            %h3 Password
+            %input.form-control{:maxlength => "30",:id => "user_password", :name => "user[password]", :required => "", :type => "password"}/
+          .form-group
+            %h3 Password Confirmation
+            %input.form-control{:maxlength => "30",:id => "user_passwordconfirmation", :name => "user[password_confirmation]", :required => "", :type => "password"}/
+          %input.btn.btn-sm.btn-success{:type => "submit", :value => "Invia"}/
+          %input.btn.btn-sm.btn-danger{:type => "reset", :value => "Reset"}/

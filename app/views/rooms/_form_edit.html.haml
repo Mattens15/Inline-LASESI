@@ -1,0 +1,99 @@
+%h1 Modifica la room
+%hr/
+.row
+  / left column
+  .col-md-3
+    .row
+      %img.avatar.mx-auto.img-circle{:alt => "avatar", :src => "//placehold.it/100"}/
+    .row.mt-2
+      =form_for([@room, Power.new]) do |f|
+        .input-group.mb-3
+          =f.text_field :user_id, class: 'form-control', placeholder: 'Room host username'
+          .input-group-append
+            =f.submit 'Add', class: 'btn btn-outline-primary'
+    .row{style: 'margin-top: -5%'}
+      %ul.list-group.list-group-flush.col-12
+        -@room.powers.each do |p|
+          %li.list-group-item
+            .row
+              .col-9.text-right.my-auto
+                =link_to p.user.username, user_path(p.user)
+              .col-3.text-left.my-auto
+                -if p.user != current_user && p.user != @room.user
+                  =form_for([@room, p.user.powers.find_by(room_id: @room.id)], html: {method: :delete}) do |f|
+                    =f.submit 'x', class: 'btn btn-sm btn-danger', id: 'add_button'
+                -else
+                  %input.btn.btn-sm.btn-danger{type: 'submit', disabled: '', value: 'x', title: 'Non puoi rimuovere questo utente'}
+  / edit form column
+  .col-md-9.personal-info
+    %h3 Personal info
+    = form_for @room do |f|
+      - if @room.errors.any?
+        .mx-auto.form-group
+          %h4.text-center
+            = "#{pluralize(@room.errors.count, "error")} on the form:"
+          %ul.mx-auto{:style => 'padding-left: 0px;'}
+            - @room.errors.full_messages.each do |message|
+              .text-center.alert.alert-danger= message  
+      
+      .form-group.row
+        %label.col-lg-3 Nome Stanza:
+        .col-lg-9
+          = f.text_field :name, class: 'form-control', :disabled => ''
+      .form-group.row
+        %label.col-lg-3.control-label Descrizione:
+        .col-lg-9
+          = f.text_area :description, class: 'form-control', style: 'resize:none;'
+      .form-group.row
+        = f.text_field :address   , class: 'form-control', id: 'addr_input'
+        = f.text_field :latitude  , class: 'form-control', id: 'lats_input'
+        = f.text_field :longitude , class: 'form-control', id: 'lons_input'
+      .form-group.row
+        %label.col-lg-3.control-label Location: 
+        
+        #geocoder.col-lg-9
+      .form-group.row
+        %label.col-lg-3.control-label Max unjoin time:
+        .col-lg-9
+          = f.text_field :max_unjoin_time, class:'form-control', id: 'unjointime'
+      .form-group.row
+        #map
+      .form-group.row
+        %label.col-lg-3.control-label Visibilità stanza:
+        .col-lg-9.row
+          .col-lg-6.text-center
+            = f.radio_button :private, false, :checked => !@room.private
+            %label.control-label Publica
+          .col-lg-6.text-center
+            = f.radio_button :private, true, :checked => @room.private
+            %label.control-label Privata
+      
+      .form-group.text-center
+        =f.submit 'Save changes', class: 'btn btn-primary'
+        %span
+        =button_tag 'Cancel', type: 'reset', class: 'btn btn-default'
+          
+%hr/
+  
+:javascript
+  $(document).ready(function(){
+    render_map_for_room();
+    $('#map').hide();
+    $('#addr_input').hide();
+    $('#lons_input').hide();
+    $('#lats_input').hide();
+    
+    
+    var dateFrom = $("#unjointime").flatpickr({ 
+      enableTime: true,
+      minDate: 'today',
+      altInput: true,
+      altFromat: "F j, Y",
+      dateFormat: 'Y-m-d H:i',
+    });
+
+    
+  });
+
+  
+  
