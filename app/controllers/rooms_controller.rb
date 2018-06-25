@@ -9,7 +9,7 @@ class RoomsController < ApplicationController
   end
   
   def index_reservation
-    @room = Room.find(params[:id]) or not_found
+    @room = Room.find(params[:id])
   end
   
   # GET /rooms/1
