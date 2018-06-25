@@ -1,5 +1,4 @@
 Rails.application.routes.draw do
-  
   root                     'mapbox#show'
   get 'dashboard'				=> 'mapbox#show'
   get 'sessions/new'
@@ -12,11 +11,22 @@ Rails.application.routes.draw do
   get 'login'   => 'sessions#new'
   post'login'   => 'sessions#create'
   get 'logout'  => 'sessions#destroy'
+  get 'home/show'
+  get 'auth/:provider/callback' => 'sessions#callback' #facebook routing
   
   scope :ujs, defaults: {format: :ujs} do
     patch 'room_index_reservation' => 'rooms#index_reservation'
   end
   
+  GoogleAuthExample::Application.routes.draw do
+  get 'auth/:provider/callback', to: 'sessions#create'
+  get 'auth/failure', to: redirect('/')
+  get 'signout', to: 'sessions#destroy', as: 'signout'
+
+  resources :sessions, only: [:create, :destroy]
+  resource :home, only: [:show]
+
+  root to: "home#show"
   
   resources :password_resets,     only: [:new, :create, :edit, :update]
   resources :users
@@ -27,6 +37,4 @@ Rails.application.routes.draw do
       resources :swap_reservations
     end
   end
-
 end
-	

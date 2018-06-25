@@ -2,6 +2,12 @@ source 'https://rubygems.org'
 git_source(:github) { |repo| "https://github.com/#{repo}.git" }
 
 ruby '2.5.1'
+#gem for  facebook autentification
+gem 'omniauth' 
+gem 'omniauth-facebook', '~> 3.0.0'
+#gem for google autentification
+gem "omniauth-google-oauth2", "~> 0.2.1"
+
 
 gem 'rails', '~> 5.2.0'
 gem 'sqlite3'
