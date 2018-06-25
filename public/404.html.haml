@@ -1,0 +1,41 @@
+
+.error
+  .error-code.m-b-10.m-t-20
+    404
+    %i.fa.fa-warning
+  %h3.font-bold We couldn't find the page..
+  .error-desc
+    Sorry, but the page you are looking for was either not found or does not exist.
+    %br/
+    Try refreshing the page or click the button below to go back to the Homepage.
+    %div
+      =link_to 'Go back to Homepage', root_url
+:css
+  .error {
+    margin: 0 auto;
+    text-align: center;
+  }
+  
+  .error-code {
+    bottom: 60%;
+    color: #2d353c;
+    font-size: 150px;
+    line-height: 100px;
+  }
+  
+  .error-desc {
+    font-size: 15px;
+    color: #647788;
+  }
+  
+  .m-b-10 {
+    margin-bottom: 10px!important;
+  }
+  
+  .m-b-20 {
+    margin-bottom: 20px!important;
+  }
+  
+  .m-t-20 {
+    margin-top: 20px!important;
+  }
