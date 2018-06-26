@@ -1,14 +1,15 @@
 class Room < ApplicationRecord
   
-  before_validation { avatar.clear if delete_avatar == '1' }
-
   before_save {adjust_time unless event_id }
 
-  after_save  { update_event unless event_id
-                change_unjoin_time unless max_unjoin_time
-              }
-    
-  before_destroy{ event_destroy }
+  after_save{ 
+    update_event unless event_id
+    change_unjoin_time unless max_unjoin_time
+  }
+  
+  before_destroy{ 
+    event_destroy 
+  }
   
   VALID_ROOM_NAME = /\A[a-z0-9\s]+\Z/i
   validates :user_id, presence: true
@@ -30,8 +31,9 @@ class Room < ApplicationRecord
   #chat
   has_many :messages
   
-  has_attached_file :avatar, styles: {thumb: "100x100>"}, default_url: '//placehold.it/200'
-  validates_attachment_content_type :avatar, content_type: /\Aimage\/.*\z/
+  has_attached_file :avatar, default_url: '//placehold.it/200'
+  validates_attachment_content_type :avatar, content_type: /\Aimage\/.*\z/,
+                                    size: {in: 0..1024.kilobytes}
   attr_accessor :delete_avatar
 
   def adjust_time
@@ -82,5 +84,7 @@ class Room < ApplicationRecord
     event = cal.get_event('primary', event_id)
     cal.delete_event('primary', event_id) unless event.nil?
   end
+
+  
 
 end

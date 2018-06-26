@@ -5,9 +5,7 @@
   .col-md-3
     .row
       .container.text-center
-        =form_for @room do |f|
-          =f.hidden_field :delete_avatar, value: '1'
-          =f.submit 'Ripristina immagine predefinita', class: 'btn btn-outline-danger'
+        =link_to 'Ripristina immagine predefinita', {action: :destroy_avatar, id:@room.id}, :method => :put
       %img.mx-auto.img-thumbnail{:alt => "avatar", :src => "#{@room.avatar.url}", :style => 'width: 200px; height: 200px'}
       = form_for @room, html: { multipart: true } do |f|
         .form-group

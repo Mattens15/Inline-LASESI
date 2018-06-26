@@ -45,7 +45,13 @@ When /^(?:I )create a room$/ do
 end
 
 When /^I visit (.*)$/ do |page_name|
-	visit @test_url+"#{page_name}"
+  sleep 1
+  if page_name == 'room edit'
+    room = Room.take
+    visit @test_url+"rooms/#{room.id}/edit"
+  else
+    visit @test_url+"#{page_name}"
+  end
 end
 
 And /^I fill (.*) with (.*)/ do |element, value|
@@ -94,6 +100,10 @@ And /^I select TimeTo/ do
   end
 end
 
+And /^I attach a file/ do
+  page.attach_file('room[avatar]', "#{Rails.root}/public/testing_avatar.png")
+end
+
 #THEN 
 
 Then /^I should see marker$/ do	
@@ -102,7 +112,7 @@ Then /^I should see marker$/ do
 end
 
 Then /^room has coordinates/ do
-  room = Room.take
+  room = Room.first
   expect(room.latitude).not_to be nil
   expect(room.longitude).not_to be nil
   expect(room.address).not_to be nil
@@ -123,4 +133,21 @@ Then /^(.+) should be room host/ do |username|
   room = Room.take
   expect(user).not_to be nil
   expect(Power.exists?(user_id: user.id, room_id: room.id))
+end
+
+Then /^Room should have avatar/ do
+  room = Room.take
+  expect(room.avatar).not_to be nil
+end
+
+Then /^Room should not have avatar/ do
+  room = Room.take
+  expect(room.avatar.url).to eq('//placehold.it/200')
+end
+
+
+Then /^I should see 404/ do
+  element = page.find('.error-code')
+  expect(element).not_to be nil
+  expect(element.text).to eq('404')
 end

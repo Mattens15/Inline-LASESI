@@ -55,7 +55,7 @@ class RoomsController < ApplicationController
     respond_to do |format|
       if @room.update(room_params)
         flash[:success] = 'Room updated!'
-        format.html { render :edit, notice: 'Room was successfully updated.' }
+        format.html { redirect_to edit_room_path(@room), notice: 'Room was successfully updated.' }
         format.json { render :edit, status: :ok, location: @room }
       else
         flash[:danger] = 'Tempo scaduto o parametri non validi!'
@@ -75,6 +75,13 @@ class RoomsController < ApplicationController
       format.html { redirect_to rooms_url, notice: 'Room was successfully destroyed.' }
       format.json { head :no_content }
     end
+  end
+
+  def destroy_avatar
+    @room = Room.find(params[:id])
+    @room.avatar.destroy
+    @room.save!
+    redirect_to edit_room_path(@room)
   end
 
   private

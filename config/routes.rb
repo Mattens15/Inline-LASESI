@@ -12,7 +12,7 @@ Rails.application.routes.draw do
   post'login'   => 'sessions#create'
   get 'logout'  => 'sessions#destroy'
   get 'auth/:provider/callback' => 'sessions#callback'
-
+  put 'destroy_avatar' => 'rooms#destroy_avatar'
   resources :sessions, only: [:create, :destroy]
   resource :home, only: [:show]
   resources :password_resets,     only: [:new, :create, :edit, :update]
