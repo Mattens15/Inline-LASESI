@@ -4,7 +4,20 @@
   / left column
   .col-md-3
     .row
-      %img.avatar.mx-auto.img-circle{:alt => "avatar", :src => "//placehold.it/100"}/
+      .container.text-center
+        =form_for @room do |f|
+          =f.hidden_field :delete_avatar, value: '1'
+          =f.submit 'Ripristina immagine predefinita', class: 'btn btn-outline-danger'
+      %img.mx-auto.img-thumbnail{:alt => "avatar", :src => "#{@room.avatar.url}", :style => 'width: 200px; height: 200px'}
+      = form_for @room, html: { multipart: true } do |f|
+        .form-group
+          = f.file_field :avatar, :title => "Search for a file to add", id: 'file_input', :style => "width:  100%;"
+        %small
+          L'immagine caricata verrà usata solo come thumbnail, dimensione consigliata 200x200
+        .form-group
+          = f.submit 'Upload', class: 'btn btn-outline-primary'
+        
+  
     .row.mt-2
       =form_for([@room, Power.new]) do |f|
         .input-group.mb-3
@@ -74,7 +87,7 @@
         =button_tag 'Cancel', type: 'reset', class: 'btn btn-default'
           
 %hr/
-  
+
 :javascript
   $(document).ready(function(){
     render_map_for_room();
@@ -82,7 +95,6 @@
     $('#addr_input').hide();
     $('#lons_input').hide();
     $('#lats_input').hide();
-    
     
     var dateFrom = $("#unjointime").flatpickr({ 
       enableTime: true,
@@ -94,6 +106,3 @@
 
     
   });
-
-  
-  

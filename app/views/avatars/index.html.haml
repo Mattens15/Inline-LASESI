@@ -1,0 +1,8 @@
+.page-header
+  %h1 Upload Photo
+.media
+  - @avatars.each do |avatar|
+    .media-left
+      / Renders image
+      = link_to image_tag(avatar.image.url, class: 'media-object'), avatar.image.url, target: '_blank'
+    

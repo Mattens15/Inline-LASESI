@@ -11,16 +11,13 @@ Rails.application.routes.draw do
   get 'login'   => 'sessions#new'
   post'login'   => 'sessions#create'
   get 'logout'  => 'sessions#destroy'
-  get 'auth/:provider/callback' => 'sessions#callback' #facebook routing
-  
-  scope :ujs, defaults: {format: :ujs} do
-    patch 'room_index_reservation' => 'rooms#index_reservation'
-  end
+  get 'auth/:provider/callback' => 'sessions#callback'
 
   resources :sessions, only: [:create, :destroy]
   resource :home, only: [:show]
   resources :password_resets,     only: [:new, :create, :edit, :update]
   resources :users
+  resources :avatars
   resources :rooms do
     resources :powers
     resources :messages
@@ -31,5 +28,6 @@ Rails.application.routes.draw do
 
 
   #SE NON CI SONO ALTRE ROUTES, SIGNIFICA CHE L'ELEMENTO NON ESISTE ->
+  #
   match '*path' => 'application#render_404', via: :all
 end

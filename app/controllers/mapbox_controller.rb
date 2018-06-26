@@ -17,8 +17,7 @@ class MapboxController < ApplicationController
        :longitude => r.longitude,
        :time_from => r.time_from,
        :time_to => r.time_to,
-       :avatar_file => r.avatar_file,
-       :avatar_size => r.avatar_size
+       :avatar => r.avatar
       }
     end
     
