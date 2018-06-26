@@ -1,9 +1,8 @@
 Before do |scenario|
   @port = Capybara.current_session.server.port
   @test_url = "http://127.0.0.1:#{@port}/"
-  Capybara.default_max_wait_time = 100
+  Capybara.default_max_wait_time = 7
 end
-
 
 After do |scenario|
   puts "Procedo all'eliminazione dei residui dello scenario"

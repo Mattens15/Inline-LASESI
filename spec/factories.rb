@@ -43,11 +43,9 @@ FactoryBot.define do
   end
   
   factory :invalid_room_param, class: Room do
-    id               75
     name             'Abac24342384903849034852490841094709184132o'
-    max_participants 0
     time_from        Time.now - 60
-    time_to          Time.now + 60
+    time_to          Time.now + 6000
   end
 end
 

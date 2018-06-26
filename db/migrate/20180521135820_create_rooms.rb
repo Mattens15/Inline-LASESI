@@ -13,10 +13,6 @@ class CreateRooms < ActiveRecord::Migration[5.2]
       t.boolean :private, deafult: false
       t.datetime :max_unjoin_time
       
-      t.string :avatar_file
-      t.float :avatar_size
-      t.string :avatar_updated_at
-      
       t.datetime :time_from
       t.datetime :time_to
       t.string :recurrence

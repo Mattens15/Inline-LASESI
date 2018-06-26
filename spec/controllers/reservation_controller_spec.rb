@@ -47,12 +47,12 @@ RSpec.describe ReservationsController, type: :controller do
   
   context "Destroying reservation" do  
     describe "as non-reserved" do
-      it "should raise record not found" do
+      it "should not change the count" do
         params = {id: 1, room_id: 5888}
         
         allow(controller).to receive(:current_user).and_return(@user);
         
-        expect{delete :destroy, xhr: true, params: params, format: :js}.to raise_error(ActiveRecord::RecordNotFound)
+        expect{delete :destroy, xhr: true, params: params, format: :js}.not_to change(Reservation, :count)
       end
     end
     

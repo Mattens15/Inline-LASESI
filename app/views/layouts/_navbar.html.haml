@@ -1,4 +1,4 @@
-=stylesheet_link_tag 'navbar'
+
 %nav.navbar.navbar-default{:role => 'navigation'}
   .navbar-header
     =link_to (root_path) do
@@ -11,4 +11,10 @@
         =image_tag("person.svg",class:"navicon2")
       =link_to (new_room_path) do
         %button.btn.btn-success#create Create a room
+    -else
+      =link_to signup_path do
+        %button.btn.btn-primary Sign up
+      =link_to login_path do
+        %button.btn.btn-outline-primary Log in
+      
 

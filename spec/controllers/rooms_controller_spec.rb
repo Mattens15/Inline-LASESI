@@ -55,9 +55,9 @@ RSpec.describe RoomsController, type: :controller do
     
     context "with invalid id" do
       it "shows error page" do
-        id = 32
-        expect{get :show, params: {id: id}}.to raise_error(ActiveRecord::RecordNotFound)
-        expect(response).to be_successful
+        id = Room.count + 1
+        expect{get :show, params: {id: id}}.not_to raise_error
+        expect(response).to render_template(:file => "#{Rails.root}/public/404.html.haml")
       end
     end
   end
@@ -134,7 +134,7 @@ RSpec.describe RoomsController, type: :controller do
       it "redirects to the room" do
         room = @user.rooms.create! @valid_attributes
         put :update, params: {id: room.to_param, room: @valid_attributes}
-        expect(response).to redirect_to(room)
+        expect(response).to be_successful
         #room.destroy!
       end
     end
@@ -144,6 +144,9 @@ RSpec.describe RoomsController, type: :controller do
         room = @user.rooms.create! @valid_attributes
         put :update, params: {id: room.to_param, room: @invalid_attributes}
         expect(response).to be_successful
+        expect(room.name).not_to eq(@invalid_attributes => :name)
+        expect(room.time_from).not_to eq(@invalid_attributes => :time_from)
+        expect(room.time_to).not_to eq(@invalid_attributes => :time_to)
       end
     end
   end

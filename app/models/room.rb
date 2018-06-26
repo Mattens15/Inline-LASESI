@@ -1,15 +1,15 @@
 class Room < ApplicationRecord
   
-  before_save{  
-      adjust_time if self.event_id.nil?
-    }
+  before_save {adjust_time unless event_id }
 
   after_save{ 
-      update_event if self.event_id.nil? 
-      change_unjoin_time if max_unjoin_time.nil? 
-    }
-    
-  before_destroy{ event_destroy }
+    update_event unless event_id
+    change_unjoin_time unless max_unjoin_time
+  }
+  
+  before_destroy{ 
+    event_destroy 
+  }
   
   VALID_ROOM_NAME = /\A[a-z0-9\s]+\Z/i
   validates :user_id, presence: true
@@ -28,11 +28,13 @@ class Room < ApplicationRecord
   has_many :powers, dependent: :destroy
   has_many :reservations, dependent: :destroy
 
-  
-
   #chat
   has_many :messages
   
+  has_attached_file :avatar, default_url: '//placehold.it/200'
+  validates_attachment_content_type :avatar, content_type: /\Aimage\/.*\z/,
+                                    size: {in: 0..1024.kilobytes}
+  attr_accessor :delete_avatar
 
   def adjust_time
     self.time_to = Time.use_zone('Europe/Rome'){ Time.zone.local_to_utc(self.time_to) }.localtime
@@ -82,4 +84,7 @@ class Room < ApplicationRecord
     event = cal.get_event('primary', event_id)
     cal.delete_event('primary', event_id) unless event.nil?
   end
+
+  
+
 end
