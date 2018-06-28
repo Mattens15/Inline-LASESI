@@ -14,8 +14,7 @@ RSpec.describe SessionsController, type: :controller do
     end
 
     describe "POST #create" do
-        it "returns a http success" do
-            allow(@user).to receive(:activated?).and_return(true); 
+        it "returns a http success" do 
             expect(post :create, params:{session: {email:"mario.rossi@gmail.com",password:"bana12345"}}).to be_successful
         end
     end

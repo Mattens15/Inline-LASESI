@@ -1,0 +1,14 @@
+!!!5
+%html
+  %head
+    %title Inline
+    %meta{:charset => "utf-8"}/
+  %body
+    .container-fluid
+      .row
+        .col-lg-12
+          %center
+            %p WELCOME TO INLINE APP
+            %br/
+            %button.btn.btn-primary.btn-inline{:name => "signup", :type => "button", :value => "Sign Up", :onclick =>"windows.location.href='users#new'"}/
+            %button.btn.btn-success.btn-inline{:name => "login", :type => "button", :value => "Login", :onclick => "window.location.href='session#new'"}/
