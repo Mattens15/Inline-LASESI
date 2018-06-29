@@ -1,6 +1,13 @@
 @import 'bootstrap';
 @import 'flatpickr';
 @import 'mapbox-gl';
+@import 'recurring_select';
+@import 'simple_calendar';
+
+.google-icon{
+  width: 1rem;
+  height: 1rem;
+}
 
 .card{
   width: 24%;

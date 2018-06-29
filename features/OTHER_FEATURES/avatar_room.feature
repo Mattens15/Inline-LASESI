@@ -1,4 +1,3 @@
-
 Feature:Add and remove avatar in a room
 
 @javascript

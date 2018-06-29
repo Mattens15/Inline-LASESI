@@ -12,15 +12,6 @@
 
 ActiveRecord::Schema.define(version: 2018_06_25_230738) do
 
-  create_table "avatars", force: :cascade do |t|
-    t.datetime "created_at", null: false
-    t.datetime "updated_at", null: false
-    t.string "image_file_name"
-    t.string "image_content_type"
-    t.integer "image_file_size"
-    t.datetime "image_updated_at"
-  end
-
   create_table "messages", force: :cascade do |t|
     t.integer "room_id"
     t.integer "user_id"
@@ -65,7 +56,7 @@ ActiveRecord::Schema.define(version: 2018_06_25_230738) do
     t.datetime "max_unjoin_time"
     t.datetime "time_from"
     t.datetime "time_to"
-    t.string "recurrence"
+    t.text "recurrence"
     t.string "event_id"
     t.integer "user_id"
     t.datetime "created_at", null: false

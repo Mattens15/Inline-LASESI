@@ -25,7 +25,12 @@
   
   :javascript
     $(document).ready(function(){
-      render_map(buildObjectForMap('/dashboard.json', 0));
+      var protocol = window.location.protocol;
+      var hostname = window.location.hostname;
+      var port     = window.location.port;
+
+      var url = protocol+'//'+hostname+':'+port+'/dashboard.json'
+      render_map(buildObjectForMap(url), 0);
     });
   
 		

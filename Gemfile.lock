@@ -1,3 +1,14 @@
+GIT
+  remote: https://github.com/gafemoyano/recurring_select
+  revision: 40c4f4122a2f2f30213eaeb86ae38bed89e6bab1
+  specs:
+    recurring_select (2.0.0)
+      coffee-rails (>= 3.1)
+      ice_cube (>= 0.11)
+      jquery-rails (>= 3.0)
+      rails (>= 3.2)
+      sass-rails (>= 4.0)
+
 GEM
   remote: https://rubygems.org/
   specs:
@@ -45,7 +56,7 @@ GEM
     addressable (2.5.2)
       public_suffix (>= 2.0.2, < 4.0)
     arel (9.0.0)
-    autoprefixer-rails (8.6.0)
+    autoprefixer-rails (8.6.4)
       execjs
     backports (3.11.3)
     bcrypt (3.1.7)
@@ -58,7 +69,7 @@ GEM
       sass (>= 3.5.2)
     builder (3.2.3)
     byebug (10.0.2)
-    capybara (3.2.0)
+    capybara (3.3.1)
       addressable
       mini_mime (>= 0.1.3)
       nokogiri (~> 1.8)
@@ -90,7 +101,7 @@ GEM
       backports (>= 3.8.0)
       cucumber-tag_expressions (~> 1.1.0)
       gherkin (>= 5.0.0)
-    cucumber-expressions (6.0.0)
+    cucumber-expressions (6.0.1)
     cucumber-rails (1.6.0)
       capybara (>= 1.1.2, < 4)
       cucumber (>= 3.0.2, < 4)
@@ -100,6 +111,8 @@ GEM
     cucumber-tag_expressions (1.1.1)
     cucumber-wire (0.0.1)
     database_cleaner (1.7.0)
+    declarative (0.0.10)
+    declarative-option (0.1.0)
     devise (4.4.3)
       bcrypt (~> 3.0)
       orm_adapter (~> 0.1)
@@ -125,21 +138,19 @@ GEM
     ffi (1.9.25)
     flatpickr_rails (1.1.0)
       railties (>= 3.0)
-    fugit (1.1.1)
+    fugit (1.1.3)
       et-orbi (~> 1.1, >= 1.1.1)
       raabro (~> 1.1)
     gherkin (5.1.0)
     globalid (0.4.1)
       activesupport (>= 4.2.0)
-    google-api-client (0.9.28)
-      addressable (~> 2.3)
-      googleauth (~> 0.5)
-      httpclient (~> 2.7)
-      hurley (~> 0.1)
-      memoist (~> 0.11)
-      mime-types (>= 1.6)
-      representable (~> 2.3.0)
-      retriable (~> 2.0)
+    google-api-client (0.23.0)
+      addressable (~> 2.5, >= 2.5.1)
+      googleauth (>= 0.5, < 0.7.0)
+      httpclient (>= 2.8.1, < 3.0)
+      mime-types (~> 3.0)
+      representable (~> 3.0)
+      retriable (>= 2.0, < 4.0)
     googleauth (0.6.2)
       faraday (~> 0.12)
       jwt (>= 1.4, < 3.0)
@@ -164,12 +175,16 @@ GEM
       nokogiri (>= 1.6.0)
       ruby_parser (~> 3.5)
     httpclient (2.8.3)
-    hurley (0.2)
     i18n (1.0.1)
       concurrent-ruby (~> 1.0)
+    ice_cube (0.16.2)
     jbuilder (2.7.0)
       activesupport (>= 4.2.0)
       multi_json (>= 1.2)
+    jquery-rails (4.3.3)
+      rails-dom-testing (>= 1, < 3)
+      railties (>= 4.2.0)
+      thor (>= 0.14, < 2.0)
     jwt (1.5.6)
     listen (3.1.5)
       rb-fsevent (~> 0.9, >= 0.9.4)
@@ -184,7 +199,7 @@ GEM
       nokogiri (>= 1.5.9)
     mail (2.7.0)
       mini_mime (>= 0.1.1)
-    mapbox-gl-rails (0.45.0)
+    mapbox-gl-rails (0.46.0)
       railties (>= 3.2, < 5.3)
     marcel (0.3.2)
       mimemagic (~> 0.3.2)
@@ -203,7 +218,7 @@ GEM
     multi_xml (0.6.0)
     multipart-post (2.0.0)
     nio4r (2.3.1)
-    nokogiri (1.8.2)
+    nokogiri (1.8.3)
       mini_portile2 (~> 2.3.0)
     oauth2 (1.4.0)
       faraday (>= 0.8, < 0.13)
@@ -236,7 +251,7 @@ GEM
     popper_js (1.12.9)
     public_suffix (3.0.2)
     puma (3.11.4)
-    raabro (1.1.5)
+    raabro (1.1.6)
     rack (2.0.5)
     rack-test (1.0.0)
       rack (>= 1.0, < 3)
@@ -273,12 +288,14 @@ GEM
     rb-inotify (0.9.10)
       ffi (>= 0.5.0, < 2)
     redis (3.3.5)
-    representable (2.3.0)
-      uber (~> 0.0.7)
+    representable (3.0.4)
+      declarative (< 0.1.0)
+      declarative-option (< 0.2.0)
+      uber (< 0.2.0)
     responders (2.4.0)
       actionpack (>= 4.2.0, < 5.3)
       railties (>= 4.2.0, < 5.3)
-    retriable (2.1.0)
+    retriable (3.1.2)
     rspec-core (3.7.1)
       rspec-support (~> 3.7.0)
     rspec-expectations (3.7.0)
@@ -313,7 +330,7 @@ GEM
       sprockets (>= 2.8, < 4.0)
       sprockets-rails (>= 2.0, < 4.0)
       tilt (>= 1.1, < 3)
-    selenium-webdriver (3.12.0)
+    selenium-webdriver (3.13.0)
       childprocess (~> 0.5)
       rubyzip (~> 1.2)
     sexp_processor (4.11.0)
@@ -322,12 +339,17 @@ GEM
       faraday (~> 0.9)
       jwt (>= 1.5, < 3.0)
       multi_json (~> 1.10)
+    signet-rails (0.0.8)
+      rack
+      signet
+    simple_calendar (2.2.7)
+      rails (>= 3.0)
     spring (2.0.2)
       activesupport (>= 4.2)
     spring-watcher-listen (2.0.1)
       listen (>= 2.7, < 4.0)
       spring (>= 1.2, < 3.0)
-    sprockets (3.7.1)
+    sprockets (3.7.2)
       concurrent-ruby (~> 1.0)
       rack (> 1, < 3)
     sprockets-rails (3.2.1)
@@ -346,8 +368,8 @@ GEM
     turbolinks-source (5.1.0)
     tzinfo (1.2.5)
       thread_safe (~> 0.1)
-    uber (0.0.15)
-    uglifier (4.1.11)
+    uber (0.1.0)
+    uglifier (4.1.12)
       execjs (>= 0.3.0, < 3)
     warden (1.2.7)
       rack (>= 1.0)
@@ -377,9 +399,10 @@ DEPENDENCIES
   devise_invitable
   factory_bot_rails (~> 4.0)
   flatpickr_rails
-  google-api-client (~> 0.9.18)
+  google-api-client
   googleauth
   haml-rails
+  ice_cube
   jbuilder (~> 2.5)
   listen (>= 3.0.5, < 3.2)
   mapbox-gl-rails
@@ -390,11 +413,14 @@ DEPENDENCIES
   puma (~> 3.11)
   rails (~> 5.2.0)
   rails-controller-testing
+  recurring_select!
   redis (~> 3.0)
   rspec-rails (~> 3.7)
   rufus-scheduler (~> 3.5)
   sass-rails (~> 5.0)
   selenium-webdriver
+  signet-rails
+  simple_calendar
   spring
   spring-watcher-listen (~> 2.0.0)
   sqlite3

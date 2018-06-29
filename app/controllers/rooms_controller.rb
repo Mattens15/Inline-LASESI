@@ -5,11 +5,7 @@ class RoomsController < ApplicationController
   # GET /rooms
   # GET /rooms.json
   def index
-    @rooms = Room.all
-  end
-  
-  def index_reservation
-    @room = Room.find(params[:id])
+    @rooms = Room.all 
   end
   
   # GET /rooms/1
@@ -92,7 +88,7 @@ class RoomsController < ApplicationController
 
     # Never trust parameters from the scary internet, only allow the white list through.
     def room_params
-      params.require(:room).permit(:name, :description, :recurrence, :address, :max_participants, :latitude, :longitude, :time_from, :time_to, :avatar, :datetime, :user_id, :fifo, :private, :delete_avatar)
+      params.require(:room).permit(:name, :description, :recurrence, :address, :max_participants, :latitude, :longitude, :time_from, :time_to, :avatar, :datetime, :user_id, :fifo, :private, :delete_avatar, :recurrence)
     end
     
     def logged_in_user

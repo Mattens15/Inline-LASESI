@@ -1,40 +1,5 @@
-%h1 Listing rooms
+=month_calendar start_date_param: :time_from do |day|
+  %div
+    %strong= day.to_s(:long)
+  
 
-%table
-  %thead
-    %tr
-      %th Name
-      %th Description
-      %th Max participants
-      %th Latitude
-      %th Longitude
-      %th Notes
-      %th Time from
-      %th Time to
-      %th Avatar file
-      %th Avatar size
-      %th Avatar updated at
-      %th
-      %th
-      %th
-
-  %tbody
-    -Room.all.each do |room|
-      %tr
-        %td= room.name
-        %td= room.description
-        %td= room.max_participants
-        %td= room.latitude
-        %td= room.longitude
-        %td= room.time_from
-        %td= room.time_to
-        %td= room.avatar_file
-        %td= room.avatar_size
-        %td= room.avatar_updated_at
-        %td= link_to 'Show', room
-        %td= link_to 'Edit', edit_room_path(room)
-        %td= link_to 'Destroy', room, method: :delete, data: { confirm: 'Are you sure?' }
-
-%br
-
-= link_to 'New Room', new_room_path

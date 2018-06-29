@@ -23,12 +23,18 @@ gem 'bootstrap'
 
 gem 'devise_invitable'
 gem 'mapbox-gl-rails'
-gem 'google-api-client', '~> 0.9.18'
+gem 'signet-rails'
+#gem 'google-api-client', '~> 0.9.18', require: 'google/apis/calendar_v3'
+gem 'google-api-client'
 gem 'googleauth'
 gem 'flatpickr_rails'
 gem 'bcrypt',               '3.1.7'
 gem 'bootsnap', '>= 1.1.0', require: false
 gem "paperclip"
+gem 'ice_cube'
+gem 'recurring_select',  git: 'https://github.com/gafemoyano/recurring_select'
+gem "simple_calendar"
+
 
 group :development, :test do
   gem 'byebug', platforms: [:mri, :mingw, :x64_mingw]

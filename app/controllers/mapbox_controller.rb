@@ -3,11 +3,10 @@ class MapboxController < ApplicationController
 	def show
     @room = Room.all
     
-    @roomlist = []
-        
+    roomlist = []  
     @room.each do |r|
-      next if r.private && current_user && !current_user.admin?
-      @roomlist << {
+      next if r.private && !current_user.nil? && !current_user.admin?
+      roomlist << {
        :id   => r.id,
        :name => r.name,
        :description => r.description,
@@ -24,7 +23,7 @@ class MapboxController < ApplicationController
     respond_to do |format|
       format.html
       format.json{
-        render :json => @roomlist.to_json
+        render :json => roomlist.to_json
       }
     end
 	end

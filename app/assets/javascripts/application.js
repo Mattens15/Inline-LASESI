@@ -12,6 +12,7 @@
 //
 //= require jquery
 //= require jquery-ujs
+//= require recurring_select
 //= require flatpickr
 //= require activestorage
 //= require bootstrap
@@ -633,7 +634,6 @@ function buildObjectForMap(path, mode){
 //CHIAMATA IN BUILDOBJECTFORMAP
 function init(path_JSON){
   var json = function () {
-    var jsonTemp = null;
     $.ajax({
         'async': false,
         'url': path_JSON,
@@ -648,11 +648,9 @@ function init(path_JSON){
 
 //CENTRA E ZOMMA SU CURRENT FEATURE
 function flyToStore(currentFeature) {
-  if(currentFeature.geometry.coordinates[0] == 0 && currentFeature.geometry.coordinates[1] == 0)
-  {
+  if(currentFeature.geometry.coordinates[0] == 0 && currentFeature.geometry.coordinates[1] == 0){
     alert(currentFeature.properties.title+' non ha una location!');
   }
-  
   else{
     map.flyTo({
       center: currentFeature.geometry.coordinates,
@@ -663,9 +661,15 @@ function flyToStore(currentFeature) {
 
 //TOGLIE LA BARRA ALLA FINE DELL'URL
 function getRightUrl(){
-  var url = document.URL;
-  if (url.substr(-1) == '/'){
-    url = url.slice(0,-1);
+  var protocol = window.location.protocol;
+  var hostname = window.location.hostname;
+  var port     = window.location.port;
+  if(window.location.pathname != undefined){
+    var pathname = window.location.pathname
+    if (pathname.substr(-1) == '/'){
+      pathname = pathname.slice(0,-1);
+    }
+    return protocol+'//'+hostname+':'+port+pathname;
   }
-  return url;
+  return protocol+'//'+hostname+':'+port;
 }
