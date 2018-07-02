@@ -1,13 +1,12 @@
 -provide(:title, @room.name)
 .container-fluid{:style => 'padding-left: 15%; padding-right: 15%;'}
-	
-	.page-header.media
-		.media-body
-			%h3.text-center.my-3
-				=@room.name
-			 
-			%p.text-center
-				=@room.description
+	%center
+		=link_to do 
+			%img.rounded-circle{src: "#{@room.avatar.url}", width: "140", height: "140"}
+		%h2
+			=@room.name
+		%h5
+			=@room.description
 		-if do_i_matter?
 			=link_to 'Edit room', edit_room_path	
 	.row.body-room
@@ -41,7 +40,10 @@
 					-@room.powers.each do |p|
 						%tr
 							%td.text-center
-								=link_to p.user.username, user_path(p.user)   
+								=link_to p.user.username, user_path(p.user)  
+			
+			=link_to 'Aggiungi evento al tuo calendar', {controller: 'calendars', action: 'add_event', room_id: @room.id}, :method => 'post'
+			=image_tag('google-icon.png', class: 'google-icon')
 		.col-6
 			%ul.list-group.userlist#userlist.fixed-size-room
 			
@@ -80,12 +82,7 @@
 					%small
 						Log in and join the queue first!
 	
-		
-	=form_tag(room_add_event_path(@room.id)) do
-		=submit_tag 'Add event to your calendar!'
 	
-	/=link_to 'Aggiungi questo evento al tuo calendar!', action: 'add_event', controller: 'calendars'
-	/=image_tag('google-icon.png', class: 'google-icon')
 :javascript
 	var url = getRightUrl();
 	var scroll= true;

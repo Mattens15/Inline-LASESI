@@ -19,36 +19,38 @@ class CalendarsController < ApplicationController
   def add_event
     client = Signet::OAuth2::Client.new(client_options)
     client.update!(session[:authorization])
-
+    
     service = Google::Apis::CalendarV3::CalendarService.new
     service.authorization = client
 
     cal = Inline::Application.config.cal
     @room = Room.find(cookies[:room_id])
-    
-    event = cal.get_event('primary', @room.event_id)
 
-    duplicate = false
-    events = service.list_events('primary')
-    events.items.each do |ev|
-      duplicate = checkEquality(ev, @room) || duplicate
-      break if duplicate
-    end
-    puts "DUPLICATE DICE CHE è #{duplicate}"
-    if !duplicate
-      service.insert_event('primary', event)
-      flash[:success] = 'Evento aggiunto'
-    else
-      flash[:warning] = 'Evento già esistente'
-    end
+    service.insert_event('primary', create_event(@room))
+    flash[:success] = 'Evento aggiunto'
     redirect_to room_path(cookies[:room_id])
+  rescue Google::Apis::AuthorizationError
+    redirect
   end
   
   private
-  def checkEquality(event, room)
-    event.id == room.event_id
-   end
-
+  def create_event(room)
+    Google::Apis::CalendarV3::Event.new({
+      #NOME DESCRIZIONE E LOCATION DELL'EVENTO
+      summary: room.name,
+      description: room.description,
+      location: room.address,
+      
+      #DATI DEL CREATORE, INIZIO EVENTO, FINE EVENTO
+      organizer: {email: room.user.email, display_name: room.user.username},
+      start: Google::Apis::CalendarV3::EventDateTime.new(date_time: room.time_from.to_datetime.rfc3339),
+      end: Google::Apis::CalendarV3::EventDateTime.new(date_time: room.time_to.to_datetime.rfc3339),
+      
+      #RICCORRENZA VISIBILITÀ E PARTECIPANTI EVENTO
+      visibility: room.private ? 'private':'public'
+    })
+  end
+  
   def authentication
     cookies[:room_id] = params[:room_id]
     redirect_to redirect_path unless session[:authorization]

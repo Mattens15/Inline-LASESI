@@ -54,8 +54,8 @@ class Room < ApplicationRecord
       
       #DATI DEL CREATORE, INIZIO EVENTO, FINE EVENTO
       organizer: {email: self.user.email, display_name: self.user.username},
-      start: Google::Apis::CalendarV3::EventDateTime.new(date_time: self.time_from.to_datetime.rfc3339, time_zone: 'Europe/Rome'),
-      end: Google::Apis::CalendarV3::EventDateTime.new(date_time: self.time_to.to_datetime.rfc3339, time_zone: 'Europe/Rome'),
+      start:  Google::Apis::CalendarV3::EventDateTime.new(date_time: self.time_from.to_datetime.rfc3339),
+      end:    Google::Apis::CalendarV3::EventDateTime.new(date_time: self.time_to.to_datetime.rfc3339),
       
       #RICCORRENZA VISIBILITÀ E PARTECIPANTI EVENTO
       #recurrence: self.recurrence,
@@ -88,7 +88,8 @@ class Room < ApplicationRecord
 
   serialize :recurrence, Hash
   def recurrence=(value)
-    if RecurringSelect.is_valid_rule?(value)
+    if value != 'null' && RecurringSelect.is_valid_rule?(value)
+      puts "VALUE: #{value}"
       super(RecurringSelect.dirty_hash_to_rule(value).to_hash)
     else
       super(nil)
@@ -107,7 +108,7 @@ class Room < ApplicationRecord
       schedule.occurrences(end_date).map do |date|
         #LE SETTIAMO PRIVATE PER NON INTASARE.
         logger.debug "DATAA #{date}"
-        user.rooms.create!(name: name, time_from: date, 
+        new_room = user.rooms.create!(name: name, time_from: date, 
                             time_to: date + difference, 
                             description: description,
                             address: address,
@@ -116,6 +117,7 @@ class Room < ApplicationRecord
                             fifo: fifo, private: true,
                             max_participants: max_participants
                           )
+        user.powers.create!(room_id: new_room.id)
       end
     end
   end

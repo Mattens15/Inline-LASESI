@@ -1,5 +1,5 @@
 GIT
-  remote: https://github.com/gafemoyano/recurring_select
+  remote: https://github.com/DanieleFedeli/recurring_select
   revision: 40c4f4122a2f2f30213eaeb86ae38bed89e6bab1
   specs:
     recurring_select (2.0.0)
@@ -369,7 +369,7 @@ GEM
     tzinfo (1.2.5)
       thread_safe (~> 0.1)
     uber (0.1.0)
-    uglifier (4.1.12)
+    uglifier (4.1.13)
       execjs (>= 0.3.0, < 3)
     warden (1.2.7)
       rack (>= 1.0)

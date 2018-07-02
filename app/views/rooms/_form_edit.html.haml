@@ -1,4 +1,8 @@
-%h1 Modifica la room
+.row
+  .col-lg-9
+    %h1 Modifica la room
+  .col-lg-3.text-right
+    =link_to 'Go back to the room', @room
 %hr/
 .row
   / left column
@@ -15,7 +19,6 @@
         .form-group
           = f.submit 'Upload', class: 'btn btn-outline-primary'
         
-  
     .row.mt-2
       =form_for([@room, Power.new]) do |f|
         .input-group.mb-3
@@ -35,6 +38,8 @@
                     =f.submit 'x', class: 'btn btn-sm btn-danger', id: 'add_button'
                 -else
                   %input.btn.btn-sm.btn-danger{type: 'submit', disabled: '', value: 'x', title: 'Non puoi rimuovere questo utente'}
+      .row.my-auto
+        =link_to "Cancella la room", {action: :destroy}, :method => :delete
   / edit form column
   .col-md-9.personal-info
     %h3 Personal info
@@ -100,7 +105,5 @@
       altInput: true,
       altFromat: "F j, Y",
       dateFormat: 'Y-m-d H:i',
-    });
-
-    
+    });  
   });
