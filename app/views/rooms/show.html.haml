@@ -98,15 +98,12 @@
 		$('#messages').load(url+'/messages');
 		scrollDown(1);
 	})
-	$(document).ready(function(){
-		
-		
+
+	$(document).ready(function(){	
 		refreshingPartial();
 		getParticipants();
 		scrollDown(10);
-		
 		var room_json = init(url+'.json');
-
 		$("#dateEvent_from").flatpickr({ 
 			enableTime: true,
 			altInput: true,
@@ -116,7 +113,6 @@
 			maxDate: room_json.time_from,
 			defaultDate: room_json.time_from,
 		});
-		
 		$("#dateEvent_to").flatpickr({ 
 			enableTime: true,
 			altInput: true,

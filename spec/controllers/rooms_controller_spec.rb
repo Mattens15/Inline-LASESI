@@ -134,7 +134,7 @@ RSpec.describe RoomsController, type: :controller do
       it "redirects to the room" do
         room = @user.rooms.create! @valid_attributes
         put :update, params: {id: room.to_param, room: @valid_attributes}
-        expect(response).to be_successful
+        expect(response).to redirect_to(edit_room_path(room.hash_id))
         #room.destroy!
       end
     end

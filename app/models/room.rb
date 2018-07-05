@@ -1,6 +1,8 @@
 class Room < ApplicationRecord
+  include Friendlyable
+  
   before_save {adjust_time unless event_id }
-
+  
   after_save{ 
     update_event unless event_id
     change_unjoin_time unless max_unjoin_time
@@ -89,7 +91,6 @@ class Room < ApplicationRecord
   serialize :recurrence, Hash
   def recurrence=(value)
     if value != 'null' && RecurringSelect.is_valid_rule?(value)
-      puts "VALUE: #{value}"
       super(RecurringSelect.dirty_hash_to_rule(value).to_hash)
     else
       super(nil)

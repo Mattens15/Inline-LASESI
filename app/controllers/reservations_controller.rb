@@ -80,7 +80,7 @@ class ReservationsController < ApplicationController
     end
 
     def set_room
-      @room = Room.find(params[:room_id])
+      @room = Room.friendly.find(params[:room_id])
     end
 
     def logged_in_user

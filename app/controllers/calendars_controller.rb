@@ -24,11 +24,11 @@ class CalendarsController < ApplicationController
     service.authorization = client
 
     cal = Inline::Application.config.cal
-    @room = Room.find(cookies[:room_id])
+    @room = Room.friendly.find(cookies[:room_id])
 
     service.insert_event('primary', create_event(@room))
     flash[:success] = 'Evento aggiunto'
-    redirect_to room_path(cookies[:room_id])
+    redirect_to @room
   rescue Google::Apis::AuthorizationError
     redirect
   end

@@ -5,17 +5,14 @@ class MapboxController < ApplicationController
     
     roomlist = []  
     @room.each do |r|
-      next if r.private && !current_user.nil? && !current_user.admin?
+      next if r.private && (!current_user || !current_user.admin?)
       roomlist << {
-       :id   => r.id,
+       :id   => r.hash_id,
        :name => r.name,
        :description => r.description,
        :address => r.address,
-       :owner => r.user_id,
        :latitude => r.latitude,
        :longitude => r.longitude,
-       :time_from => r.time_from,
-       :time_to => r.time_to,
        :avatar => r.avatar
       }
     end

@@ -1,7 +1,8 @@
+
 - provide(:title, "Find the nearest room");
 .container
-  #map{:style=>'width: 100%; height: 300px; margin-top: 1%;'}
-  .row{:style => 'text-align: center;'}
+  #map{:style=>'width: 100%; height: 300px'}
+  .row.text-center.my-2
     .col-4
       %label
         Insert your radius:
@@ -14,9 +15,9 @@
         .col-2#geolocate.my-auto
     .col-4
       =label_tag 'Search room!'
-      .row{:style => 'margin-top: -2px;'}
+      .row
         .col-12
-          %input.col-xs-6.form-control#searchbyname_form{:type => 'text-field'}
+          %input.form-control#searchbyname_form{:type => 'text-field'}
     
   %br
   .container.header.text-center
@@ -24,12 +25,18 @@
   .container#listings
   
   :javascript
-    $(document).ready(function(){
-      var protocol = window.location.protocol;
-      var hostname = window.location.hostname;
-      var port     = window.location.port;
 
-      var url = protocol+'//'+hostname+':'+port+'/dashboard.json'
+    var protocol = window.location.protocol;
+    var hostname = window.location.hostname;
+    var port     = window.location.port;
+    var url = protocol+'//'+hostname+':'+port+'/dashboard.json'
+    $(document).ready(function(){
+      
+
+      $('#geocoder').empty();
+      $('#geolocate').empty();
+      $('#map').empty();
+      
       render_map(buildObjectForMap(url), 0);
     });
   

@@ -4,9 +4,6 @@ Rails.application.routes.draw do
   get 'sessions/new'
   get 'password_resets/new'
   get 'password_resets/edit'
-  get 'help'    => 'static_pages#help'
-  get 'about'   => 'static_pages#about'
-  get 'contact' => 'static_pages#contact'
   get 'signup'  => 'users#new'
   get 'login'   => 'sessions#new'
   post'login'   => 'sessions#create'
@@ -31,5 +28,5 @@ Rails.application.routes.draw do
   end
   
   #SE NON CI SONO ALTRE ROUTES, SIGNIFICA CHE L'ELEMENTO NON ESISTE ->
-  #match '*path' => 'application#render_404', via: :all
+  match '*path' => 'application#render_404', via: :all
 end

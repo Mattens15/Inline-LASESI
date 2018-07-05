@@ -13,7 +13,7 @@ RSpec.describe PowersController, type: :controller do
       
       expect{post :create, 
             params: {room_id: @room.id, power: {user_id: @user.username}}}.to change {@user.powers.count}.by(1)
-      expect(response).to redirect_to(edit_room_path(@room.id))
+      expect(response).to redirect_to(edit_room_path(@room.hash_id))
     end
   end
 
@@ -25,7 +25,7 @@ RSpec.describe PowersController, type: :controller do
       expect{delete :destroy, 
             params: {room_id: @room.id, id: powers.id}
             }.to change {@user.powers.count}.by(-1)
-      expect(response).to redirect_to(edit_room_path(@room.id))
+      expect(response).to redirect_to(edit_room_path(@room.hash_id))
       
     end
   end
@@ -36,7 +36,7 @@ RSpec.describe PowersController, type: :controller do
       expect{post :create, 
         params: {room_id: @room.id, 
         user_id: @user.id}}.to change {@user.powers.count}.by(0)
-      expect(response).to redirect_to(edit_room_path(@room.id))
+      expect(response).to redirect_to(edit_room_path(@room.hash_id))
     end
   end
 
@@ -48,7 +48,7 @@ RSpec.describe PowersController, type: :controller do
       expect{delete :destroy, 
             params: {room_id: @room.id, id: powers.id}
             }.to change {@user.powers.count}.by(0)
-      expect(response).to redirect_to(edit_room_path(@room.id))
+      expect(response).to redirect_to(edit_room_path(@room.hash_id))
     end
   end
 end

@@ -138,6 +138,8 @@ GEM
     ffi (1.9.25)
     flatpickr_rails (1.1.0)
       railties (>= 3.0)
+    friendly_id (5.1.0)
+      activerecord (>= 4.0.0)
     fugit (1.1.3)
       et-orbi (~> 1.1, >= 1.1.1)
       raabro (~> 1.1)
@@ -399,6 +401,7 @@ DEPENDENCIES
   devise_invitable
   factory_bot_rails (~> 4.0)
   flatpickr_rails
+  friendly_id (~> 5.1.0)
   google-api-client
   googleauth
   haml-rails

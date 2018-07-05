@@ -33,7 +33,7 @@ gem "paperclip"
 gem 'ice_cube'
 gem 'recurring_select',  git: 'https://github.com/DanieleFedeli/recurring_select'
 gem "simple_calendar"
-
+gem 'friendly_id', '~> 5.1.0'
 
 group :development, :test do
   gem 'byebug', platforms: [:mri, :mingw, :x64_mingw]
