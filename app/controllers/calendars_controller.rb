@@ -13,7 +13,7 @@ class CalendarsController < ApplicationController
     client.code = params[:code]
     response = client.fetch_access_token!
     session[:authorization] = response
-    redirect_to room_url(cookies[:room_id])
+    redirect_to room_path(cookies[:room_id])
   end
 
   def add_event
@@ -53,6 +53,7 @@ class CalendarsController < ApplicationController
   
   def authentication
     cookies[:room_id] = params[:room_id]
+    puts "ROOM_ID: #{params[:room_id]}"
     redirect_to redirect_path unless session[:authorization]
   end
 

@@ -42,7 +42,7 @@
 							%td.text-center
 								=link_to p.user.username, user_path(p.user)  
 			
-			=link_to 'Aggiungi evento al tuo calendar', {controller: 'calendars', action: 'add_event', room_id: @room.id}, :method => 'post'
+			=link_to 'Aggiungi evento al tuo calendar', {controller: 'calendars', action: 'add_event', room_id: @room.hash_id}, :method => 'post'
 			=image_tag('google-icon.png', class: 'google-icon')
 		.col-6
 			%ul.list-group.userlist#userlist.fixed-size-room
@@ -86,7 +86,6 @@
 :javascript
 	var url = getRightUrl();
 	var scroll= true;
-	console.log(url);
 	//prevent scroll if reading older messages
 	$("#messages").mouseenter(function(){scroll=false});
 	$("#messages").delay(10000).mouseleave(function(){scroll=true;})

@@ -1,5 +1,5 @@
 class MessagesController < ApplicationController
-	before_action :authenticate_user!
+	before_action :authenticate_user!, only: [create]
 	before_action :set_room
 	def index
 		render :layout => false
