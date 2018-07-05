@@ -5,6 +5,7 @@ class UsersController < ApplicationController
   
     def show
       @user = User.find(params[:id])
+      @events = @user.reservations.map{ |r| r.room}
       @hashed=Digest::MD5.hexdigest(@user.id.to_s)
     end
   

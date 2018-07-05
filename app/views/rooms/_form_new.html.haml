@@ -61,6 +61,10 @@
             .col-lg-6#time_to_div
               = f.text_field :time_to, class: 'form-control', id: 'inputdateTo', :placeholder => 'Data fine...'
       .form-group.row
+        %label.col-lg-3.control-label Ricorrenza evento:
+        .col-lg-9
+          = f.select_recurring :recurrence, nil, :allow_blank => 'true'
+      .form-group.row
         .col-lg-3
         .col-lg-9
           =f.submit 'Submit', class: 'btn btn-primary'
@@ -72,7 +76,7 @@
 :javascript
   $(document).ready(function(){
     render_map_for_room();
-    
+    $('#room_recurrence').addClass("form-control")
     $('#map_div').hide();
     
     $('#map_control').on('click', function(){

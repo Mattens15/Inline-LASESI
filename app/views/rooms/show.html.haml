@@ -1,17 +1,15 @@
 -provide(:title, @room.name)
 .container-fluid{:style => 'padding-left: 15%; padding-right: 15%;'}
-	
-	.page-header.media
-		.media-body
-			%h3.text-center.my-3
-				=@room.name
-			 
-			%p.text-center
-				=@room.description
+	%center
+		=link_to do 
+			%img.rounded-circle{src: "#{@room.avatar.url}", width: "140", height: "140"}
+		%h2
+			=@room.name
+		%h5
+			=@room.description
 		-if do_i_matter?
 			=link_to 'Edit room', edit_room_path	
 	.row.body-room
-		
 		.col-3.border-right.fixed-size-room
 			%h4.text-center.my-auto.border-bottom
 				Info
@@ -42,7 +40,10 @@
 					-@room.powers.each do |p|
 						%tr
 							%td.text-center
-								=link_to p.user.username, user_path(p.user)   
+								=link_to p.user.username, user_path(p.user)  
+			
+			=link_to 'Aggiungi evento al tuo calendar', {controller: 'calendars', action: 'add_event', room_id: @room.hash_id}, :method => 'post'
+			=image_tag('google-icon.png', class: 'google-icon')
 		.col-6
 			%ul.list-group.userlist#userlist.fixed-size-room
 			
@@ -80,11 +81,11 @@
 							Disabled
 					%small
 						Log in and join the queue first!
+	
+	
 :javascript
 	var url = getRightUrl();
 	var scroll= true;
-	setRightUrl();
-	
 	//prevent scroll if reading older messages
 	$("#messages").mouseenter(function(){scroll=false});
 	$("#messages").delay(10000).mouseleave(function(){scroll=true;})
@@ -96,15 +97,12 @@
 		$('#messages').load(url+'/messages');
 		scrollDown(1);
 	})
-	$(document).ready(function(){
-		
-		
+
+	$(document).ready(function(){	
 		refreshingPartial();
 		getParticipants();
 		scrollDown(10);
-		
 		var room_json = init(url+'.json');
-
 		$("#dateEvent_from").flatpickr({ 
 			enableTime: true,
 			altInput: true,
@@ -114,7 +112,6 @@
 			maxDate: room_json.time_from,
 			defaultDate: room_json.time_from,
 		});
-		
 		$("#dateEvent_to").flatpickr({ 
 			enableTime: true,
 			altInput: true,
@@ -137,18 +134,19 @@
 		setTimeout(function(){
 			refreshingPartial();
 			getParticipants();
-		}, 1000);
+		}, 5000);
 
 	}	
 	function refreshingPartial(){
 		setTimeout(function(){
+			console.log(url);
 			$('#userlist').load(url+'/reservations');
 			$('#messages').load(url+'/messages');
 			
 			if (scroll){
 				scrollDown(500);}
 			
-		}, 200);
+		}, 500);
 	}
 
 	function scrollDown(speed){
@@ -156,9 +154,7 @@
 
 		$('#messages').stop().animate({scrollTop: $('#messages')[0].scrollHeight},speed)
 	}
-	function setRightUrl(){
-		if(document.URL.substr(-1) == '#') window.location = document.URL.slice(0,-1);
-	}
+
 	function sleep_ms(millisecs) {
 	var initiation = new Date().getTime();
 	while ((new Date().getTime() - initiation) <millisecs);

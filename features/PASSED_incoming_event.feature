@@ -6,9 +6,10 @@ Feature: See incoming events
 
 Scenario:
   Given I am a registered user
+  And a room already exists
+  And I am alreay reserved
+  
   When I log in
-  And I visit the users/1
-  #Then I should see Calendar
-  #And incoming events
+  And I visit my profile
 
-#STILL NO IMPLEMENTED
+  Then I should see room name

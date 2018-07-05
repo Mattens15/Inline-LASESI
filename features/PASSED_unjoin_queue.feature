@@ -8,7 +8,6 @@ Feature:
 Scenario:
   Given I am a registered user
   And a room already exists
-  
   And I am alreay reserved
   And I log in
   And I visit rooms/1

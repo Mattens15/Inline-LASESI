@@ -1,5 +1,5 @@
 class MessagesController < ApplicationController
-	before_action :authenticate_user!
+	before_action :authenticate_user!, only: [create]
 	before_action :set_room
 	def index
 		render :layout => false
@@ -19,11 +19,11 @@ class MessagesController < ApplicationController
 
 	private
 		def set_room
-			@room=Room.find(params[:room_id])
+			@room = Room.friendly.find(params[:room_id])
 		end
 
 		def authenticate_user!
-			redirect_to login if !current_user
+			redirect_to login_path if !current_user
 		end
 
 		def message_params

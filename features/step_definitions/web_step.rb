@@ -45,10 +45,11 @@ When /^(?:I )create a room$/ do
 end
 
 When /^I visit (.*)$/ do |page_name|
-  sleep 1
   if page_name == 'room edit'
     room = Room.take
     visit @test_url+"rooms/#{room.id}/edit"
+  elsif page_name == 'my profile'
+    page.find('.navicon2').click
   else
     visit @test_url+"#{page_name}"
   end
@@ -68,6 +69,13 @@ end
 
 And /^I click (.*)/ do |element|
   click_on(element)
+end
+
+And /^I select the recurrence/ do
+  page.find(:xpath,"//*[text()='Ricorrenza evento:']").click
+  page.find(:xpath,"//*[text()='Set schedule...']").click
+  expect(page.find('.rs_dialog_holder')).not_to be nil
+  click_on('OK')
 end
 
 And /^I select TimeFrom/ do
@@ -119,6 +127,7 @@ Then /^room has coordinates/ do
 end
 
 Then /^I should be reserved/ do
+  sleep 2
   room = Room.take
   expect(room.reservations.exists?(user_id: @user.id)).to be true
 end
@@ -145,9 +154,21 @@ Then /^Room should not have avatar/ do
   expect(room.avatar.url).to eq('//placehold.it/200')
 end
 
-
 Then /^I should see 404/ do
   element = page.find('.error-code')
   expect(element).not_to be nil
   expect(element.text).to eq('404')
+end
+
+Then /^Room should have multiple instances/ do
+  expect(Room.all.count).to be > 1
+end
+
+Then /^I should be on room page/ do
+  expect(page.find(:xpath,"//*[text()='Room was successfully created.']")).not_to be nil
+end
+
+Then /^I should see room name/ do
+  room = Room.take
+  expect(page.find(:xpath,"//*[text()='#{room.name}']")).not_to be nil
 end

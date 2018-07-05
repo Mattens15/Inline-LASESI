@@ -1,10 +1,12 @@
 class Room < ApplicationRecord
+  include Friendlyable
   
   before_save {adjust_time unless event_id }
-
+  
   after_save{ 
     update_event unless event_id
     change_unjoin_time unless max_unjoin_time
+    schedule
   }
   
   before_destroy{ 
@@ -27,8 +29,6 @@ class Room < ApplicationRecord
   belongs_to :user
   has_many :powers, dependent: :destroy
   has_many :reservations, dependent: :destroy
-
-  #chat
   has_many :messages
   
   has_attached_file :avatar, default_url: '//placehold.it/200'
@@ -56,8 +56,8 @@ class Room < ApplicationRecord
       
       #DATI DEL CREATORE, INIZIO EVENTO, FINE EVENTO
       organizer: {email: self.user.email, display_name: self.user.username},
-      start: Google::Apis::CalendarV3::EventDateTime.new(date_time: self.time_from.to_datetime.rfc3339, time_zone: 'Europe/Rome'),
-      end: Google::Apis::CalendarV3::EventDateTime.new(date_time: self.time_to.to_datetime.rfc3339, time_zone: 'Europe/Rome'),
+      start:  Google::Apis::CalendarV3::EventDateTime.new(date_time: self.time_from.to_datetime.rfc3339),
+      end:    Google::Apis::CalendarV3::EventDateTime.new(date_time: self.time_to.to_datetime.rfc3339),
       
       #RICCORRENZA VISIBILITÀ E PARTECIPANTI EVENTO
       #recurrence: self.recurrence,
@@ -77,14 +77,50 @@ class Room < ApplicationRecord
     end
   end
   
-  
-  #DISTRUGGE EVENTO SUL CALENDAR
+    #DISTRUGGE EVENTO SUL CALENDAR
   def event_destroy
     cal = Inline::Application.config.cal
     event = cal.get_event('primary', event_id)
     cal.delete_event('primary', event_id) unless event.nil?
   end
 
-  
+  def rule
+    IceCube::Rule.from_hash recurrence
+  end
+
+  serialize :recurrence, Hash
+  def recurrence=(value)
+    if value != 'null' && RecurringSelect.is_valid_rule?(value)
+      super(RecurringSelect.dirty_hash_to_rule(value).to_hash)
+    else
+      super(nil)
+    end
+  end
+
+  def schedule
+    if recurrence.empty?
+      [self]
+    else
+      schedule = IceCube::Schedule.new(time_from)
+      schedule.add_recurrence_rule(rule)
+      start_date  = time_from.beginning_of_month.beginning_of_week 
+      end_date    = time_from + 60*60*24*30 #UN MESE DOPO (60 s * 60 m * 24 h * 30g)
+      difference  = time_to - time_from
+      schedule.occurrences(end_date).map do |date|
+        #LE SETTIAMO PRIVATE PER NON INTASARE.
+        logger.debug "DATAA #{date}"
+        new_room = user.rooms.create!(name: name, time_from: date, 
+                            time_to: date + difference, 
+                            description: description,
+                            address: address,
+                            longitude: longitude,
+                            latitude: latitude,
+                            fifo: fifo, private: true,
+                            max_participants: max_participants
+                          )
+        user.powers.create!(room_id: new_room.id)
+      end
+    end
+  end
 
 end

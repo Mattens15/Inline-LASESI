@@ -4,7 +4,7 @@ PROMEMORIA = Hash.new
 
 routine=Rufus::Scheduler.new
 
-routine.every "5m" do
+routine.every "30m" do
 	Room.all.each do |stanza|   
 		if !PROMEMORIA.key?(stanza.id)
 			schedule=Rufus::Scheduler.new
@@ -20,9 +20,8 @@ routine.every "5m" do
 					end
 				end
 			end
-		end
+		end		
 	end
-	
 	#se evento non esiste più elimina il reminder
 	PROMEMORIA.each do |key,value|
 		Room.all.each do |s|
@@ -36,3 +35,11 @@ routine.every "5m" do
 	end
 end
 
+routine.every '1day' do
+	puts 'Cleaning up expired rooms...'
+	tollerance = Time.now + 60 * 60 * 24 * 7 #NEXT WEEK
+	Room.all.each do |r|
+		r.destroy! if tollerance < r.time_to
+	end
+	puts '...Done!'
+end

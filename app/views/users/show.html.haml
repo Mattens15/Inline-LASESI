@@ -1,14 +1,24 @@
 
-.container-fluid
-    .row
-    .col-lg-6
-        %label
-            %h2 USERNAME:
-            = @user.username
-        %br/
-        %label  
-            %h2 EMAIL
-            = @user.email
-    .col-lg-6
-        %label
-            %h2 ID
+.container
+	.row
+	.col-lg-6
+		%label
+			%h2 USERNAME:
+			= @user.username
+		%br/
+		%label  
+			%h2 EMAIL
+			= @user.email
+	.col-lg-6
+		%label
+			%h2 ID
+
+	.row
+		.col-12
+			=month_calendar(attribute: :time_from, end_attribute: :time_to, events: @events) do |day, events|
+				%div
+					%strong= day.to_s(:long)
+					-events.each do |event|
+						%div
+							= link_to event.name, event
+		
