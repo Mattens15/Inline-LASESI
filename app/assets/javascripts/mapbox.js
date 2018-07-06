@@ -10,7 +10,15 @@ function render_map(stores){
     attributionControl: false,
   });
   
-  var complete_stores = buildObjectForMap('/rooms.json', 1);
+  var protocol = window.location.protocol;
+  var hostname = window.location.hostname;
+  var port     = window.location.port;
+  var url = protocol+'//'+hostname+':'+port+'/dashboard.json'
+  var complete_stores = buildObjectForMap(url, 1);
+  
+  //COSTRUISCO I DIV
+  buildLocationList(complete_stores, false);
+
   //SPOSTO LE INFO DI MAPBOX IN ALTO A DESTRA
   map.addControl(new mapboxgl.AttributionControl(), 'top-left');
   
@@ -21,9 +29,8 @@ function render_map(stores){
       "type": "geojson",
       "data": stores
     });
-    //COSTRUISCO I DIV
-    buildLocationList(complete_stores, false);
-    
+
+      
     //AGGIUNGO SORGENTE SENZA PUNTI
     map.addSource('single-point', {
       'type': 'geojson',
@@ -217,7 +224,7 @@ function render_map(stores){
     });
 
     $('#searchbyname_form').keyup(function(){
-      updateByParam();
+      updateByParam(complete_stores);
     });
       
   
@@ -288,22 +295,24 @@ function buildLocationList(data,query) {
     alert.innerHTML = 'Il raggio deve essere un numero reale maggiore o uguale a 0.1';
     return;
   }
-  
+
   for (var i = 0; i < data.features.length; i++) {
+
     if(i !== 0 && i % 4 === 0){
       j++;
     }
+
     var currentFeature = data.features[i];
     var prop = currentFeature.properties;
+    
+    if(!prop.visible) continue;
     if(query && (currentFeature.geometry.coordinates[0] === 0 || currentFeature.geometry.coordinates[1] === 0)) continue;
-    if(prop.distance < 0 || prop.distance > document.getElementById('radius').value || !prop.visible) {
-      continue;
-    }
+    if(query && (prop.distance < 0 || prop.distance > document.getElementById('radius').value )) continue;
     count++;
     var listings;
     listings = document.getElementById('listings');
-    var card_deck;
     
+    var card_deck;
     if(!listings.hasChildNodes()){
       var child = listings.appendChild(document.createElement('div'));
       child.className = 'row my-2 divCard';
@@ -319,11 +328,27 @@ function buildLocationList(data,query) {
     card_deck = listings.children[j];
       
     var card = card_deck.appendChild(document.createElement('div'));
-    card.className = 'card';
-    
-    var img = card.appendChild(document.createElement('img'));
+    card.className = 'col-xl-2 col-lg-3 col-md-4 col-sm-6 col-xs-6 col-12 rooms';
+
+    var figure = card.appendChild(document.createElement('figure'));
+
+    var img = figure.appendChild(document.createElement('img'));
     img.src = prop.avatar
-    img.className = 'card-img-top'
+    img.className = 'mx-auto'
+
+    var figcaption = figure.appendChild(document.createElement('figcaption'));
+    
+    var created_by = figcaption.appendChild(document.createElement('h3'));
+    var room_host  = prop.room_host
+    
+    created_by.innerHTML = room_host.length > 1 ? 'Roomhosts: ' : 'Roomhost: '
+
+    
+    for(var k = 0; k < room_host.length; k++){
+      var span = figcaption.appendChild(document.createElement('span'));
+      span.innerHTML = "<span><a href = "+room_host[k].url+">"+room_host[k].username+"</a></span>"
+      var br = figcaption.appendChild(document.createElement('br'));
+    }
 
     var card_body = card.appendChild(document.createElement('div'));
     card_body.className = 'card-body';
@@ -344,12 +369,6 @@ function buildLocationList(data,query) {
         var clickedListing = data.features[this.dataPosition];
         // 1. Fly to the point
         flyToStore(clickedListing);
-        // 3. Highlight listing in sidebar (and remove highlight for all other listings)
-        var activeItem = document.getElementsByClassName('active');
-        if (activeItem[0]) {
-            activeItem[0].classList.remove('active');
-        }
-        this.parentNode.classList.add('active');
       });
     }
     else details.innerHTML = 'Room senza location';
@@ -390,13 +409,16 @@ function buildLocationList(data,query) {
 
 //USATA NELLE FUNZIONI JQUERY
 //SERVE PER SELEZIONARE LE ROOM TRAMITE ESPRESSIONE REGOLARE
-function updateByParam(){
-  var data = buildObjectForMap('/dashboard.json', 1);
+function updateByParam(stores){
+  var data = stores
   if($('#searchbyname_form').val() !== ""){
     for(var i=0; i < data.features.length; i++){
+
       var contained = document.getElementById('searchbyname_form').value
       var regex = new RegExp('(.*)'+contained+'(.*)', 'i');
+      console.log('Sto comparando: '+regex+' con '+ data.features[i].properties.title);
       data.features[i].properties.visible = regex.test(data.features[i].properties.title);
+      console.log('Result: '+data.features[i].properties.visible);
     }
   
   }
@@ -407,7 +429,7 @@ function updateByParam(){
     }
   }
   
-  buildLocationList(data,false);
+  buildLocationList(data, false);
 }
 
 //CORREGGE COORDINATE NULLE

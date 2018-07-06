@@ -39,7 +39,7 @@ class PowersController < ApplicationController
   private
 
   def set_room
-    @room = Room.find(params[:room_id]) unless @room
+    @room = Room.friendly.find(params[:room_id]) unless @room
   end
 
   def logged_in_user
