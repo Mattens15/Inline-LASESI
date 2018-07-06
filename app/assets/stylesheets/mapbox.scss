@@ -9,7 +9,7 @@
 }
 
 #map{
-  min-height: 20rem;
+  height: 20rem;
 }
 
 .rooms_not_hover{
@@ -79,7 +79,8 @@ figcaption {
 	padding: 20px;
 	background: #ffffff;
   color: #ed4e6e;
-  overflow: auto
+  overflow-y: auto;
+  overflow-x: hidden;
 }
 
 figcaption h3 {

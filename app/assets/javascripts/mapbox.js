@@ -224,7 +224,7 @@ function render_map(stores){
     });
 
     $('#searchbyname_form').keyup(function(){
-      updateByParam(complete_stores);
+      updateByParam(complete_stores, $('.rooms').length);
     });
       
   
@@ -295,8 +295,8 @@ function buildLocationList(data,query) {
     alert.innerHTML = 'Il raggio deve essere un numero reale maggiore o uguale a 0.1';
     return;
   }
-
-  for (var i = 0; i < data.features.length; i++) {
+  var i;
+  for (i = 0; i < data.features.length; i++) {
 
     if(i !== 0 && i % 4 === 0){
       j++;
@@ -330,6 +330,9 @@ function buildLocationList(data,query) {
     var card = card_deck.appendChild(document.createElement('div'));
     card.className = 'col-xl-2 col-lg-3 col-md-4 col-sm-6 col-xs-6 col-12 rooms';
 
+    card.addEventListener('mouseenter', handlerin);
+    card.addEventListener('mouseleave', handlerout);
+
     var figure = card.appendChild(document.createElement('figure'));
 
     var img = figure.appendChild(document.createElement('img'));
@@ -343,7 +346,6 @@ function buildLocationList(data,query) {
     
     created_by.innerHTML = room_host.length > 1 ? 'Roomhosts: ' : 'Roomhost: '
 
-    
     for(var k = 0; k < room_host.length; k++){
       var span = figcaption.appendChild(document.createElement('span'));
       span.innerHTML = "<span><a href = "+room_host[k].url+">"+room_host[k].username+"</a></span>"
@@ -387,7 +389,6 @@ function buildLocationList(data,query) {
     link_to.className = 'card-link';
     link_to.innerHTML = 'Visita la room';
     
-    
   }
 
   if(query){
@@ -405,31 +406,40 @@ function buildLocationList(data,query) {
     
     header.innerHTML = prefix+count+suffix+' nel raggio di '+document.getElementById('radius').value+' km.';
   }
+
 }
 
 //USATA NELLE FUNZIONI JQUERY
 //SERVE PER SELEZIONARE LE ROOM TRAMITE ESPRESSIONE REGOLARE
-function updateByParam(stores){
+function updateByParam(stores, size){
+  var visible = 0;
   var data = stores
   if($('#searchbyname_form').val() !== ""){
     for(var i=0; i < data.features.length; i++){
 
       var contained = document.getElementById('searchbyname_form').value
       var regex = new RegExp('(.*)'+contained+'(.*)', 'i');
-      console.log('Sto comparando: '+regex+' con '+ data.features[i].properties.title);
+      
       data.features[i].properties.visible = regex.test(data.features[i].properties.title);
-      console.log('Result: '+data.features[i].properties.visible);
-    }
-  
+      data.features[i].properties.visible ? visible++ : visible;    
+    }    
   }
+  
   else{
     var i;
     for(i = 0; i<data.features.length; i++){
       data.features[i].properties.visible = true;
+      visible++;
     }
   }
-  
-  buildLocationList(data, false);
+
+  //count the visible
+  if(size != visible){
+    $('#listings').animate({opacity: 0}, 200);
+    setTimeout(function(){
+      $('#listings').animate({opacity: 1}, 200, buildLocationList(data, false))
+    }, 200);
+  }
 }
 
 //CORREGGE COORDINATE NULLE
@@ -456,3 +466,15 @@ function flyToStore(currentFeature) {
     pitch: 45
   });
 }
+
+var handlerin = function(){
+  $('.rooms').addClass('rooms_not_hover');
+  $(this).addClass('rooms_hover');
+  $('.rooms').removeClass('no_focus');
+};
+
+var handlerout = function(){
+  $('.rooms').removeClass('rooms_not_hover');
+  $(this).removeClass('rooms_hover');
+  $('.rooms').addClass('no_focus');
+};

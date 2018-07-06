@@ -7,7 +7,7 @@ class PowersController < ApplicationController
   
   
   def create
-    @user = User.find_by!(username: params[:power][:user_id])
+    @user = User.find_by(username: params[:power][:user_id])
     if !@user
       flash[:danger] = 'Utente non trovato!'
     else

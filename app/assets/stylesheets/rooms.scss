@@ -18,12 +18,26 @@
   max-width: none;
 }
 
-.body-room{
-  height: 70vh;
-}
 
 .fixed-size-room{
-  margin-top: 10px; 
-  height: 65vh; 
   overflow-y: auto;
+}
+
+#roomavatar{
+  height: 200px;
+  width: auto;
+  max-width: 100%;
+}
+
+#infodiv #map{
+  height: 200px;
+  width: auto;
+  max-width: 100%;
+
+  margin-top: 5px;
+  margin-bottom: 5;
+}
+
+#mapdiv #map{
+  height: 0px;
 }

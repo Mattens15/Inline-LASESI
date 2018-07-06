@@ -25,53 +25,16 @@
   .container-fluid.header.text-center
     %h5#num_rooms
   .container-fluid#listings
-  
   :javascript
 
     var protocol = window.location.protocol;
     var hostname = window.location.hostname;
     var port     = window.location.port;
     var url = protocol+'//'+hostname+':'+port+'/dashboard.json'
-    $(document).ready(async function(){
+    $(document).ready(function(){
       $('#geocoder').empty();
       $('#geolocate').empty();
       $('#map').empty();
       render_map(buildObjectForMap(url), 0);
-
-      var binded = false;
-      function add_handler(){
-        if($('.rooms').length > 0){
-          var handelerin = function(){
-            $('.rooms').removeClass('no_focus');  
-            $('.rooms').addClass('rooms_not_hover');
-            $(this).addClass('rooms_hover');
-          };
-
-          var handlerout = function(){
-            $('.rooms').removeClass('rooms_not_hover');
-            $(this).removeClass('rooms_hover');
-            $('.rooms').addClass('no_focus');
-          };
-
-          
-          $('.rooms').on({
-            mouseenter: handelerin,
-            mouseleave: handlerout
-          });
-
-          binded = true;
-        }
-      };
-
-      
-      while(!binded){
-        add_handler();
-        await sleep(500);
-      }
     });
-
-    function sleep(ms) {
-      return new Promise(resolve => setTimeout(resolve, ms));
-    }
-  
 		

@@ -3,4 +3,4 @@
 //
 //= require action_cable
 //= require_self
-//= require_tree ./channels
+//= require_tree 

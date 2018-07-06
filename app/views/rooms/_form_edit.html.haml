@@ -26,6 +26,7 @@
           .input-group-append
             =f.submit 'Add', class: 'btn btn-outline-primary'
     .row{style: 'margin-top: -5%'}
+      =link_to "Cancella la room", {action: :destroy}, :method => :delete
       %ul.list-group.list-group-flush.col-12
         -@room.powers.each do |p|
           %li.list-group-item
@@ -38,8 +39,8 @@
                     =f.submit 'x', class: 'btn btn-sm btn-danger', id: 'add_button'
                 -else
                   %input.btn.btn-sm.btn-danger{type: 'submit', disabled: '', value: 'x', title: 'Non puoi rimuovere questo utente'}
-      .row.my-auto
-        =link_to "Cancella la room", {action: :destroy}, :method => :delete
+
+      
   / edit form column
   .col-md-9.personal-info
     %h3 Personal info
