@@ -1,5 +1,10 @@
 - provide(:title, "Find the nearest room");
+-if current_user.admin==true
+    
+  .dashboard{:style=>"background-color:#f2f2f2;height:200px;"}
+    %h1 Admin dashboard
 .container
+  
   #map{:style=>'width: 100%; height: 300px; margin-top: 1%;'}
   .row{:style => 'text-align: center;'}
     .col-4

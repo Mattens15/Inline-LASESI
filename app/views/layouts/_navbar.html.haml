@@ -5,7 +5,7 @@
       =image_tag("logo.png")
   .float-sm-right
     -if current_user
-      =link_to ('#') do
+      =link_to ('/conversations') do
         =image_tag("mail.svg",class:"navicon1")
       =link_to (current_user) do
         =image_tag("person.svg",class:"navicon2")

@@ -1,0 +1,17 @@
+%div{align: "center"}
+  %h1
+    = current_user.username
+    's conversations
+  %form
+    %button.btn.btn-primary.btn-sm{type: "submit",formaction: "conversations/new"} New Conversation
+  .container
+    .row
+      
+    %ul.list-group
+      
+      - @conversations.each do |c|
+        %li.list-group-item.d-flex.justify-content-between.align-items-center
+          - (c.participants - [current_user]).each do |r|
+            %strong= r.username
+            
+          = link_to c.subject, conversation_path(c)

@@ -26,6 +26,9 @@ Rails.application.routes.draw do
     end
   end
 
+  resources :conversations do
+    resource :directs
+  end
 
   #SE NON CI SONO ALTRE ROUTES, SIGNIFICA CHE L'ELEMENTO NON ESISTE ->
   #
