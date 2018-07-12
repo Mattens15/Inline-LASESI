@@ -27,17 +27,20 @@
   height: 200px;
   width: auto;
   max-width: 100%;
+  //margin-bottom: 5%;
 }
 
 #infodiv #map{
   height: 200px;
   width: auto;
   max-width: 100%;
-
-  margin-top: 5px;
-  margin-bottom: 5;
+  margin-bottom: 5%;
 }
 
 #mapdiv #map{
   height: 0px;
+}
+
+.row img{
+  margin: 5%;
 }

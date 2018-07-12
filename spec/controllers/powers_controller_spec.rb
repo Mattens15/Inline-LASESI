@@ -41,12 +41,11 @@ RSpec.describe PowersController, type: :controller do
   end
 
   describe "DELETE #destroy as non-room host" do
-    let!(:powers){Power.create!(room_id: @room.id, user_id: @owner.id)}
     it "returns http success" do
       allow(controller).to receive(:current_user).and_return(@user)
       
       expect{delete :destroy, 
-            params: {room_id: @room.id, id: powers.id}
+            params: {room_id: @room.id, id: @room.powers.take.id}
             }.to change {@user.powers.count}.by(0)
       expect(response).to redirect_to(edit_room_path(@room.hash_id))
     end

@@ -29,9 +29,7 @@ class RoomsController < ApplicationController
   # POST /rooms.json
   def create
     @room = current_user.rooms.build(room_params)
-    #AL MOMENTO SENZA LA DEFINIZIONE DELLA SESSIONE, E' MEGLIO COMMENTARLO
     if @room.save
-      @power = Power.create!(room_id: @room.id, user_id: current_user.id)
       respond_to do |format|
         format.html { redirect_to @room, notice: 'Room was successfully created.' }
         format.json { render :show, status: :created, location: @room }
@@ -50,10 +48,10 @@ class RoomsController < ApplicationController
     respond_to do |format|
       if @room.update(room_params)
         flash[:success] = 'Room updated!'
-        format.html { redirect_to edit_room_path(@room), notice: 'Room was successfully updated.' }
+        format.html { redirect_to edit_room_path(@room), success: 'Room was successfully updated.' }
         format.json { render :edit, status: :ok, location: @room }
       else
-        flash[:danger] = 'Tempo scaduto o parametri non validi!'
+        flash[:danger] = 'Parametri non validi!'
         format.html { render :edit }
         format.json { render json: @room.errors, status: :unprocessable_entity }
       end

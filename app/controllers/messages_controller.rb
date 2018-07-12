@@ -1,19 +1,22 @@
 class MessagesController < ApplicationController
-	before_action :authenticate_user!, only: [create]
 	before_action :set_room
+
 	def index
 		render :layout => false
 		@messages = @room.messages
 	end
 	
 	def create
-		@message = @room.messages.new(message_params)
+		@message = @room.messages.build(message_params)
 		@message.user = current_user
-		if @message.save!
-			
-		else
+		if !@message.save
 			flash[:danger] = "Errore creazione"
 		end
+
+		respond_to do |format|
+			format.html
+		end
+
 	end
 
 

@@ -3,15 +3,14 @@ class Room < ApplicationRecord
   
   before_save {adjust_time unless event_id }
   
-  after_save{ 
+  after_save{
+    Power.create(room_id: id, user_id: self.user_id) if self.powers.empty?
     update_event unless event_id
     change_unjoin_time unless max_unjoin_time
     schedule
   }
   
-  before_destroy{ 
-    event_destroy 
-  }
+  before_destroy  {event_destroy}
   
   VALID_ROOM_NAME = /\A[a-z0-9\s]+\Z/i
   validates :user_id, presence: true
@@ -118,7 +117,6 @@ class Room < ApplicationRecord
                             fifo: fifo, private: true,
                             max_participants: max_participants
                           )
-        user.powers.create!(room_id: new_room.id)
       end
     end
   end

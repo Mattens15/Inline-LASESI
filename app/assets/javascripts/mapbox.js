@@ -285,9 +285,6 @@ function buildLocationList(data,query) {
   while(toremove !== null && toremove.hasChildNodes()){
     toremove.removeChild(toremove.childNodes[0]);
   }
-  var j = 0;
-  var count = 0;
-  
   if(document.getElementById('radius').value < 0.1 && query){
     var listings = document.getElementById('listings');
     var alert = listings.appendChild(document.createElement('div'));
@@ -295,39 +292,24 @@ function buildLocationList(data,query) {
     alert.innerHTML = 'Il raggio deve essere un numero reale maggiore o uguale a 0.1';
     return;
   }
+  
   var i;
+  var listings;
+  listings = document.getElementById('listings');
+  
+  var card_deck = listings.appendChild(document.createElement('div'));
+  card_deck.className = 'card-deck'
+
   for (i = 0; i < data.features.length; i++) {
-
-    if(i !== 0 && i % 4 === 0){
-      j++;
-    }
-
     var currentFeature = data.features[i];
     var prop = currentFeature.properties;
     
     if(!prop.visible) continue;
     if(query && (currentFeature.geometry.coordinates[0] === 0 || currentFeature.geometry.coordinates[1] === 0)) continue;
     if(query && (prop.distance < 0 || prop.distance > document.getElementById('radius').value )) continue;
-    count++;
-    var listings;
-    listings = document.getElementById('listings');
     
-    var card_deck;
-    if(!listings.hasChildNodes()){
-      var child = listings.appendChild(document.createElement('div'));
-      child.className = 'row my-2 divCard';
-      child.id = 'deck-'+j;
-    }
-    
-    if(listings.children.length - 1 < j){
-      var added = listings.appendChild(document.createElement('div'));
-      added.className = 'row my-2 divCard';
-      added.id = 'deck-'+j
-    }
-  
-    card_deck = listings.children[j];
-      
     var card = card_deck.appendChild(document.createElement('div'));
+    
     card.className = 'col-xl-2 col-lg-3 col-md-4 col-sm-6 col-xs-6 col-12 rooms';
 
     card.addEventListener('mouseenter', handlerin);
@@ -348,7 +330,7 @@ function buildLocationList(data,query) {
 
     for(var k = 0; k < room_host.length; k++){
       var span = figcaption.appendChild(document.createElement('span'));
-      span.innerHTML = "<span><a href = "+room_host[k].url+">"+room_host[k].username+"</a></span>"
+      span.innerHTML = "<a href = "+room_host[k].url+">"+room_host[k].username+"</a>"
       var br = figcaption.appendChild(document.createElement('br'));
     }
 

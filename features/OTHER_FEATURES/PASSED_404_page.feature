@@ -1,5 +1,5 @@
 Feature:Render 404 PAGE if i got error
-@javascript
+
 Scenario:
   Given I am a registered user
   And I log in
