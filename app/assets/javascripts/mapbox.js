@@ -10,7 +10,15 @@ function render_map(stores){
     attributionControl: false,
   });
   
-  var complete_stores = buildObjectForMap('/rooms.json', 1);
+  var protocol = window.location.protocol;
+  var hostname = window.location.hostname;
+  var port     = window.location.port;
+  var url = protocol+'//'+hostname+':'+port+'/dashboard.json'
+  var complete_stores = buildObjectForMap(url, 1);
+  
+  //COSTRUISCO I DIV
+  buildLocationList(complete_stores, false);
+
   //SPOSTO LE INFO DI MAPBOX IN ALTO A DESTRA
   map.addControl(new mapboxgl.AttributionControl(), 'top-left');
   
@@ -21,9 +29,8 @@ function render_map(stores){
       "type": "geojson",
       "data": stores
     });
-    //COSTRUISCO I DIV
-    buildLocationList(complete_stores, false);
-    
+
+      
     //AGGIUNGO SORGENTE SENZA PUNTI
     map.addSource('single-point', {
       'type': 'geojson',
@@ -217,7 +224,7 @@ function render_map(stores){
     });
 
     $('#searchbyname_form').keyup(function(){
-      updateByParam();
+      updateByParam(complete_stores, $('.rooms').length);
     });
       
   
@@ -278,9 +285,6 @@ function buildLocationList(data,query) {
   while(toremove !== null && toremove.hasChildNodes()){
     toremove.removeChild(toremove.childNodes[0]);
   }
-  var j = 0;
-  var count = 0;
-  
   if(document.getElementById('radius').value < 0.1 && query){
     var listings = document.getElementById('listings');
     var alert = listings.appendChild(document.createElement('div'));
@@ -289,41 +293,46 @@ function buildLocationList(data,query) {
     return;
   }
   
-  for (var i = 0; i < data.features.length; i++) {
-    if(i !== 0 && i % 4 === 0){
-      j++;
-    }
+  var i;
+  var listings;
+  listings = document.getElementById('listings');
+  
+  var card_deck = listings.appendChild(document.createElement('div'));
+  card_deck.className = 'card-deck'
+
+  for (i = 0; i < data.features.length; i++) {
     var currentFeature = data.features[i];
     var prop = currentFeature.properties;
+    
+    if(!prop.visible) continue;
     if(query && (currentFeature.geometry.coordinates[0] === 0 || currentFeature.geometry.coordinates[1] === 0)) continue;
-    if(prop.distance < 0 || prop.distance > document.getElementById('radius').value || !prop.visible) {
-      continue;
-    }
-    count++;
-    var listings;
-    listings = document.getElementById('listings');
-    var card_deck;
+    if(query && (prop.distance < 0 || prop.distance > document.getElementById('radius').value )) continue;
     
-    if(!listings.hasChildNodes()){
-      var child = listings.appendChild(document.createElement('div'));
-      child.className = 'row my-2 divCard';
-      child.id = 'deck-'+j;
-    }
-    
-    if(listings.children.length - 1 < j){
-      var added = listings.appendChild(document.createElement('div'));
-      added.className = 'row my-2 divCard';
-      added.id = 'deck-'+j
-    }
-  
-    card_deck = listings.children[j];
-      
     var card = card_deck.appendChild(document.createElement('div'));
-    card.className = 'card';
     
-    var img = card.appendChild(document.createElement('img'));
+    card.className = 'col-xl-2 col-lg-3 col-md-4 col-sm-6 col-xs-6 col-12 rooms';
+
+    card.addEventListener('mouseenter', handlerin);
+    card.addEventListener('mouseleave', handlerout);
+
+    var figure = card.appendChild(document.createElement('figure'));
+
+    var img = figure.appendChild(document.createElement('img'));
     img.src = prop.avatar
-    img.className = 'card-img-top'
+    img.className = 'mx-auto'
+
+    var figcaption = figure.appendChild(document.createElement('figcaption'));
+    
+    var created_by = figcaption.appendChild(document.createElement('h3'));
+    var room_host  = prop.room_host
+    
+    created_by.innerHTML = room_host.length > 1 ? 'Roomhosts: ' : 'Roomhost: '
+
+    for(var k = 0; k < room_host.length; k++){
+      var span = figcaption.appendChild(document.createElement('span'));
+      span.innerHTML = "<a href = "+room_host[k].url+">"+room_host[k].username+"</a>"
+      var br = figcaption.appendChild(document.createElement('br'));
+    }
 
     var card_body = card.appendChild(document.createElement('div'));
     card_body.className = 'card-body';
@@ -344,12 +353,6 @@ function buildLocationList(data,query) {
         var clickedListing = data.features[this.dataPosition];
         // 1. Fly to the point
         flyToStore(clickedListing);
-        // 3. Highlight listing in sidebar (and remove highlight for all other listings)
-        var activeItem = document.getElementsByClassName('active');
-        if (activeItem[0]) {
-            activeItem[0].classList.remove('active');
-        }
-        this.parentNode.classList.add('active');
       });
     }
     else details.innerHTML = 'Room senza location';
@@ -368,7 +371,6 @@ function buildLocationList(data,query) {
     link_to.className = 'card-link';
     link_to.innerHTML = 'Visita la room';
     
-    
   }
 
   if(query){
@@ -386,28 +388,40 @@ function buildLocationList(data,query) {
     
     header.innerHTML = prefix+count+suffix+' nel raggio di '+document.getElementById('radius').value+' km.';
   }
+
 }
 
 //USATA NELLE FUNZIONI JQUERY
 //SERVE PER SELEZIONARE LE ROOM TRAMITE ESPRESSIONE REGOLARE
-function updateByParam(){
-  var data = buildObjectForMap('/dashboard.json', 1);
+function updateByParam(stores, size){
+  var visible = 0;
+  var data = stores
   if($('#searchbyname_form').val() !== ""){
     for(var i=0; i < data.features.length; i++){
+
       var contained = document.getElementById('searchbyname_form').value
       var regex = new RegExp('(.*)'+contained+'(.*)', 'i');
+      
       data.features[i].properties.visible = regex.test(data.features[i].properties.title);
-    }
-  
+      data.features[i].properties.visible ? visible++ : visible;    
+    }    
   }
+  
   else{
     var i;
     for(i = 0; i<data.features.length; i++){
       data.features[i].properties.visible = true;
+      visible++;
     }
   }
-  
-  buildLocationList(data,false);
+
+  //count the visible
+  if(size != visible){
+    $('#listings').animate({opacity: 0}, 200);
+    setTimeout(function(){
+      $('#listings').animate({opacity: 1}, 200, buildLocationList(data, false))
+    }, 200);
+  }
 }
 
 //CORREGGE COORDINATE NULLE
@@ -434,3 +448,15 @@ function flyToStore(currentFeature) {
     pitch: 45
   });
 }
+
+var handlerin = function(){
+  $('.rooms').addClass('rooms_not_hover');
+  $(this).addClass('rooms_hover');
+  $('.rooms').removeClass('no_focus');
+};
+
+var handlerout = function(){
+  $('.rooms').removeClass('rooms_not_hover');
+  $(this).removeClass('rooms_hover');
+  $('.rooms').addClass('no_focus');
+};

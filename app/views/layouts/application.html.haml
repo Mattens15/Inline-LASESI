@@ -18,9 +18,9 @@
     = stylesheet_link_tag 'navbar'
 
   %body
-    =render "layouts/navbar"
+    = render "layouts/navbar"
     .container#flash_div
       - flash.each do |message_type, message|
         %div{class: "alert alert-#{message_type}"}= message
     = yield
-    /= render 'layouts/footer'
+    = render 'layouts/footer'

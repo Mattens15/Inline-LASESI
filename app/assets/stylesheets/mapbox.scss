@@ -1,17 +1,44 @@
 // Place all the styles related to the mapbox controller here.
 // They will automatically be included in application.css.
 // You can use Sass (SCSS) here: http://sass-lang.com/
-
 @import 'mapbox-gl';
-.card{
-  width: 24%;
-  margin-left: 0.5%;
-  margin-right: 0.5%;
+
+#bigone{
+  padding-left: 10%;
+  padding-right: 10%;
+}
+
+#map{
+  height: 20rem;
+}
+
+.rooms_not_hover{
+  z-index: 0;
+  transform: scale(0.9,0.9);
+  transition: transform 0.5s;
+}
+
+.rooms_hover{
+  z-index: 5;
+  transform: scale(1.10,1.10);
+  transition: transform 0.5s;
+  box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2), 0 6px 20px 0 rgba(0, 0, 0, 0.19);
+}
+
+.no_focus{
+  width: inherit;
+  transform: initial;
+  transition: transform 0.5s;
+}
+
+#geolocate .mapboxgl-ctrl{
+  width: 30px;
+  height: 30px;
+  //height: 100%;
 }
 
 .mapboxgl-ctrl-geocoder{
-  width:105%;
-  min-width: none;
+  min-width: 0;
   height: 36px !important;
 }
 
@@ -23,8 +50,62 @@
   position: absolute;
   bottom: 10px;
 }
-.card-img-top{
-  width: 100%;
-  height: 200px;
+
+figure {
+  overflow: hidden;
+  margin: 0;
+	position: relative;
 }
 
+figure img {
+  transition: transform 0.5s;
+  width: auto;
+  height: 200px;
+	display: block;
+	position: relative;
+}
+
+figure:hover img{
+	transform: translateY(-100%);
+}
+
+figcaption {
+	width: 100%;
+	opacity: 0;
+	transform: translateY(100%);
+  transition: transform 0.4s, opacity 0.1s 0.3s;
+  position: absolute;
+	left: 0;
+	padding: 20px;
+	background: #ffffff;
+  color: #ed4e6e;
+  overflow-y: auto;
+  overflow-x: hidden;
+}
+
+figcaption h3 {
+	margin: 0;
+	padding: 0;
+	color: rgb(34, 34, 34);
+}
+
+
+figure:hover figcaption{
+	opacity: 1;
+	transform: translateY(-100%);
+	transition: transform 0.4s, opacity 0.1s;
+}
+
+figcaption a, figcaption a:hover{
+  text-decoration: none;
+  width: 100%;
+	bottom: 20px;
+  right: 20px;
+  text-align: center;
+  margin-top: 5px;
+	padding: 5px 10px;
+	border-radius: 2px;
+	display: inline-block;
+	background: #ed4e6e;
+	color: #fff;
+}

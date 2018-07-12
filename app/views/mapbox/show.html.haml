@@ -1,29 +1,30 @@
 
 - provide(:title, "Find the nearest room");
-.container
-  #map{:style=>'width: 100%; height: 300px'}
+.container-fluid#bigone
+  .row
+    .col-xl-12.col-lg-12.col-md-12.col-sm-12.col-12
+      #map
   .row.text-center.my-2
-    .col-4
+    .col-xl-4.col-lg-4.col-md-4.col-sm-12.col-xs-12
       %label
         Insert your radius:
       %input.form-control{:type => 'number', :step => '0.1', :id => 'radius', :value => '', :placeholder => 'Insert your radius...', :value => '5', :min => '0.1'}
-    .col-4
+    .col-xl-4.col-lg-4.col-md-4.col-sm-12.col-xs-12
       %label
         Find location: 
       .row
-        .col-10#geocoder
-        .col-2#geolocate.my-auto
-    .col-4
+        .col-xl-10.col-lg-10.col-md-10.col-sm-10.col-xs-10.col-10#geocoder
+        .col-xl-2.col-lg-2.col-md-2.col-sm-2.col-xs-2.col-2#geolocate.my-auto
+    .col-xl-4.col-lg-4.col-md-4.col-sm-12.col-xs-12
       =label_tag 'Search room!'
       .row
-        .col-12
+        .col-xl-12.col-lg-12.col-md-12.col-sm-12.col-xs-12
           %input.form-control#searchbyname_form{:type => 'text-field'}
     
   %br
-  .container.header.text-center
+  .container-fluid.header.text-center
     %h5#num_rooms
-  .container#listings
-  
+  .container-fluid#listings
   :javascript
 
     var protocol = window.location.protocol;
@@ -31,13 +32,9 @@
     var port     = window.location.port;
     var url = protocol+'//'+hostname+':'+port+'/dashboard.json'
     $(document).ready(function(){
-      
-
       $('#geocoder').empty();
       $('#geolocate').empty();
       $('#map').empty();
-      
       render_map(buildObjectForMap(url), 0);
     });
-  
 		

@@ -7,7 +7,7 @@ class PowersController < ApplicationController
   
   
   def create
-    @user = User.find_by!(username: params[:power][:user_id])
+    @user = User.find_by(username: params[:power][:user_id])
     if !@user
       flash[:danger] = 'Utente non trovato!'
     else
@@ -39,7 +39,7 @@ class PowersController < ApplicationController
   private
 
   def set_room
-    @room = Room.find(params[:room_id]) unless @room
+    @room = Room.friendly.find(params[:room_id]) unless @room
   end
 
   def logged_in_user

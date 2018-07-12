@@ -15,56 +15,52 @@ class ReservationsController < ApplicationController
   def create
     @reservation = @room.reservations.new(:user_id => params[:user_id], :position => params[:position])
     if(checkValidation)
-      if @reservation.save!
-        respond_to do |format|
-          format.js
-          format.html
-        end
+      if !User.find(params[:user_id]).reservations.exists?(room_id: @room.id) && @reservation.save!
+        flash.now[:success] = 'Prenotazione effettuata'
       else
-        respond_to do |format|
-          format.js {render :js => "alert('Errore! Qualcosa è andato storto!');"}
-        end
+        flash.now[:warning] = 'Errore! Qualcosa è andato storto'
       end
-
-      
 
     else
       if(@room.powers.exists?(user_id: @reservation.user_id)) 
-        respond_to do |format|
-          format.js {render :js =>  "alert('Errore! Sei un room host!');"}
-        end
+        flash.now[:danger] = 'Errore! Sei un room host!'
       elsif(@room.reservations.count > @room.max_participants)
-        respond_to do |format|
-          format.js {render :js =>  "alert('Errore! Coda piena');"}
-        end
+        flash.now[:danger] = 'Errore! Coda piena'
       else
-        respond_to do |format|
-          format.js {render :js =>  "alert('Errore! Tempo scaduto!');"}
-        end
+        flash.now[:danger] = 'Errore! Tempo scaduto'
       end
-      
+    end
+    
+    respond_to do |format|
+      format.js
     end
     
   end
   
 
   def update
+
     if params[:reminder]
+      flash.now[:success] = 'Reminder aggiornato!'
       @reservation.update(reminder: params[:reminder])
     else
+      flash.now[:success] = 'Posizione aggiornata!'
       @reservation.update(position: params[:position])
     end
+    
   end
 
   def destroy
     if(@room.nil? || @room.max_unjoin_time < Time.now)
-      flash[:danger] = 'You was not in queue or the time has expired!'
+      flash.now[:danger] = 'Non eri in coda il tempo per cancellare la prenotazione è scaduto!'
     else
       @position = @reservation.position
       @reservation.destroy!
+      flash.now[:success] = 'Prenotazione cancellata!'
     end
+
     respond_to do |format|
-      format.html { redirect_to @room}
+      format.html
       format.js
     end
   end
@@ -86,7 +82,7 @@ class ReservationsController < ApplicationController
     def logged_in_user
       unless logged_in?
         store_location
-        flash[:danger] = "Please log in."
+        flash.now[:danger] = "Devi essere loggato per eseguire l'azione"
         redirect_to login_url
       end
     end

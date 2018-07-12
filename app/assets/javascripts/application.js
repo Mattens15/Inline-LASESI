@@ -32,8 +32,7 @@ function buildObjectForMap(path, mode){
   
   for(var i = 0; i < length; i++){
     var coord;
-    if(rooms_json[i].private) continue;
-    if(rooms_json[i].longitude == null|| rooms_json[i].latitude == null){
+    if(rooms_json[i].longitude == null || rooms_json[i].latitude == null){
       coord = retriveCoords(mode);
       if(coord[1] == null || coord[0] == null) continue;
     }
@@ -51,19 +50,18 @@ function buildObjectForMap(path, mode){
         }, 
       "properties": 
         {
-          "id": rooms_json[i].hash_id,
+          "id": rooms_json[i].id,
           "title": rooms_json[i].name,
           "address": rooms_json[i].address,
-          "owner": rooms_json[i].user_id,
           "description": rooms_json[i].description,
           "visible": true,
-          "avatar": rooms_json[i].avatar
+          "avatar": rooms_json[i].avatar,
+          "room_host": rooms_json[i].room_host
         }
     };  
   }
 
   array_obj = array_obj.filter(function(n){ return n != undefined});
-  
   var stores = {
     "type": "FeatureCollection",
     "features": array_obj

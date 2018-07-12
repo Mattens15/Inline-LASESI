@@ -4,6 +4,13 @@
   .col-lg-3.text-right
     =link_to 'Go back to the room', @room
 %hr/
+
+#unjointime_hidden
+  =@room.max_unjoin_time
+
+#timefrom_hidden
+  =@room.time_from
+  
 .row
   / left column
   .col-md-3
@@ -26,6 +33,7 @@
           .input-group-append
             =f.submit 'Add', class: 'btn btn-outline-primary'
     .row{style: 'margin-top: -5%'}
+      =link_to "Cancella la room", {action: :destroy}, :method => :delete
       %ul.list-group.list-group-flush.col-12
         -@room.powers.each do |p|
           %li.list-group-item
@@ -38,8 +46,8 @@
                     =f.submit 'x', class: 'btn btn-sm btn-danger', id: 'add_button'
                 -else
                   %input.btn.btn-sm.btn-danger{type: 'submit', disabled: '', value: 'x', title: 'Non puoi rimuovere questo utente'}
-      .row.my-auto
-        =link_to "Cancella la room", {action: :destroy}, :method => :delete
+
+      
   / edit form column
   .col-md-9.personal-info
     %h3 Personal info
@@ -92,16 +100,23 @@
 %hr/
 
 :javascript
+  
   $(document).ready(function(){
-    render_map_for_room();
-    $('#map').hide();
     $('#addr_input').hide();
     $('#lons_input').hide();
-    $('#lats_input').hide();
+    $('#lats_input').hide();  
+    $('#timefrom_hidden').hide();  
+    $('#unjointime_hidden').hide();  
+    render_map_for_room();
+    $('#map').hide();
     
+    var time_from = $('#timefrom_hidden').html();
+    var max_unjoin_time = $('#unjointime_hidden').html();
     var dateFrom = $("#unjointime").flatpickr({ 
       enableTime: true,
       minDate: 'today',
+      currentDate: max_unjoin_time,
+      maxDate: time_from,
       altInput: true,
       altFromat: "F j, Y",
       dateFormat: 'Y-m-d H:i',

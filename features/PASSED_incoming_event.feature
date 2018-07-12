@@ -4,6 +4,7 @@ Feature: See incoming events
   I want to USE GOOGLE CALENDAR 
   So that i can SEE INCOMING EVENTS
 
+#@javascript
 Scenario:
   Given I am a registered user
   And a room already exists

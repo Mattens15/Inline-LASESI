@@ -17,4 +17,3 @@ Scenario:
   And I click Submit
   Then I should be on room page
   And Room should have multiple instances
-#STILL NO IMPLEMENTED
