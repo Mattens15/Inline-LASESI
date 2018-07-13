@@ -15,7 +15,8 @@ class MessagesController < ApplicationController
 			flash[:danger] = "Errore creazione"
 		end
 	end
-
+    
+    
 
 	private
 		def set_room

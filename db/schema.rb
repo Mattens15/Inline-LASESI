@@ -12,9 +12,11 @@
 
 ActiveRecord::Schema.define(version: 2018_07_02_234121) do
 
-  create_table "messages", force: :cascade do |t|
+  create_table "messages", id: false, force: :cascade do |t|
     t.integer "room_id"
     t.integer "user_id"
+    t.integer "id"
+    t.boolean "pinned", default: false
     t.text "body"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
@@ -52,7 +54,7 @@ ActiveRecord::Schema.define(version: 2018_07_02_234121) do
     t.string "address"
     t.float "latitude"
     t.float "longitude"
-    t.boolean "private"
+    t.boolean "private", default: false
     t.datetime "max_unjoin_time"
     t.datetime "time_from"
     t.datetime "time_to"
@@ -91,6 +93,7 @@ ActiveRecord::Schema.define(version: 2018_07_02_234121) do
     t.json "google"
     t.json "rating"
     t.json "invitations"
+    t.integer "rooms_attended", default: 0
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
     t.string "password_digest"

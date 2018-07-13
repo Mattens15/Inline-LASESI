@@ -11,7 +11,7 @@ class CreateUsers < ActiveRecord::Migration[5.2]
       t.json :google
       t.json :rating
       t.json :invitations
-
+      t.integer :rooms_attended,default: false
       t.timestamps
     end
   end
