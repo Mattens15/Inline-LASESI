@@ -20,7 +20,6 @@ gem 'turbolinks', '~> 5'
 gem 'jbuilder', '~> 2.5'
 gem 'haml-rails'
 gem 'bootstrap'
-
 gem 'devise_invitable'
 gem 'mapbox-gl-rails'
 gem 'signet-rails'
@@ -54,3 +53,4 @@ group :development do
 end
 
 gem "rufus-scheduler", "~> 3.5"
+gem "colorize"

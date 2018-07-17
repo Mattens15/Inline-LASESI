@@ -16,8 +16,16 @@ class MessagesController < ApplicationController
 		end
 	end
     
-    
+    def pin
+      oldone = messages.find_by(pinned: true).pinned = false
+      oldone.save
+      newone = messages.find(params[:id])
+      newone.pinned= true
+      newone.save
+    end
+    def edit
 
+    end
 	private
 		def set_room
 			@room = Room.friendly.find(params[:room_id])

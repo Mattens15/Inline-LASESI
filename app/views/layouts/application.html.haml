@@ -18,8 +18,8 @@
     = stylesheet_link_tag 'navbar'
 
   %body
-    /-if current_user.isadmin
-    / =render "layouts/dashboard"
+    -if current_user.admin
+      =render "layouts/dashboard"
 
     -if $should_be_offline==false
       =render "layouts/navbar"
@@ -28,6 +28,6 @@
         - flash.each do |message_type, message|
           %div{class: "alert alert-#{message_type}"}= message
       = yield
-    -else 
+    
     /=render "layouts/maintenance"
     /= render 'layouts/footer'
