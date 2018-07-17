@@ -20,6 +20,8 @@ gem 'turbolinks', '~> 5'
 gem 'jbuilder', '~> 2.5'
 gem 'haml-rails'
 gem 'bootstrap'
+gem 'mailboxer', github: "mailboxer/mailboxer"
+
 gem 'devise_invitable'
 gem 'mapbox-gl-rails'
 gem 'signet-rails'

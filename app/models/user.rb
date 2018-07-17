@@ -1,5 +1,6 @@
 class User < ApplicationRecord
     attr_accessor :remember_token
+
     before_save { email.downcase! }
     validates :username, presence: true, length: { maximum: 50 }, uniqueness: true;
     VALID_EMAIL_REGEX = /\A[\w+\-.]+@[a-z\d\-]+(\.[a-z\d\-]+)*\.[a-z]+\z/i
@@ -20,6 +21,8 @@ class User < ApplicationRecord
     has_many :passive_requests, class_name: 'SwapReservation', :foreign_key => 'passive_user'
     
     has_many :messages
+
+    acts_as_messageable
     
     def User.digest(string)
         cost = ActiveModel::SecurePassword.min_cost ? BCrypt::Engine::MIN_COST :

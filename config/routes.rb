@@ -26,7 +26,13 @@ Rails.application.routes.draw do
       resources :swap_reservations
     end
   end
-  
+
+
+  resources :conversations do
+    resource :directs
+  end
+
+
   #SE NON CI SONO ALTRE ROUTES, SIGNIFICA CHE L'ELEMENTO NON ESISTE ->
   match '*path' => 'application#render_404', via: :all
 end
