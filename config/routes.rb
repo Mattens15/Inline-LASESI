@@ -12,6 +12,8 @@ Rails.application.routes.draw do
   get '/redirect', to: 'calendars#redirect', as: 'redirect'
   get '/callback', to: 'calendars#callback', as: 'callback'
   put 'destroy_avatar' => 'rooms#destroy_avatar'
+  
+
 
   resources :sessions, only: [:create, :destroy]
   resource :home, only: [:show]
@@ -34,5 +36,6 @@ Rails.application.routes.draw do
 
 
   #SE NON CI SONO ALTRE ROUTES, SIGNIFICA CHE L'ELEMENTO NON ESISTE ->
+  match '/change'=>'application#change_availability', via: :all
   match '*path' => 'application#render_404', via: :all
 end

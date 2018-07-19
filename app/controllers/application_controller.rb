@@ -17,7 +17,23 @@ class ApplicationController < ActionController::Base
       format.all { render nothing: true, status: 404 }
     end
   end
-
+  
+  def change_availability 
+    if current_user && current_user.admin
+      if $should_be_offline
+        $should_be_offline=false
+        puts "Website is now suspended...".red
+      else
+        $should_be_offline=true
+        puts "Website has been restored!".green
+      end
+    end
+    
+      
+    redirect_to "/"
+    
+    
+  end
   def set_no_cache
     response.headers["Cache-Control"] = "no-cache, no-store, max-age=0, must-revalidate"
     response.headers["Pragma"] = "no-cache"

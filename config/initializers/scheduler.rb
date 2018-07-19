@@ -7,12 +7,12 @@ routine=Rufus::Scheduler.new
 routine.every "5m" do
 	puts "Checking if reminders need to be sent!".yellow
 	Room.all.each do |stanza|   
-		if stanza.date_from.past?
-			s.reservations.map do |r|
+		if stanza.time_from.past?
+			stanza.reservations.map do |r|
 				r.each do |user|
 					if user.reminder
 						ReminderMailer.reminder_email(user)
-						puts"Sending a reminder to #{user.username}..."
+						puts"Sending a reminder to #{user.username}...".green
 					end
 				end
 			end
@@ -22,7 +22,7 @@ routine.every "5m" do
 end
 
 routine.every '1day' do
-	puts 'Cleaning up expired rooms...'
+	puts 'Cleaning up expired rooms...'.cyan
 	tollerance = Time.now + 60 * 60 * 24 * 7 #NEXT WEEK
 	Room.all.each do |r|
 		r.destroy! if tollerance < r.time_to

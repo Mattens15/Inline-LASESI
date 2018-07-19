@@ -18,7 +18,7 @@
     = stylesheet_link_tag 'navbar'
 
   %body
-    -if current_user.admin
+    -if current_user && current_user.admin
       =render "layouts/dashboard"
 
     -if $should_be_offline==false
@@ -28,8 +28,8 @@
         - flash.each do |message_type, message|
           %div{class: "alert alert-#{message_type}"}= message
       = yield
-    
-    /=render "layouts/maintenance"
+    -else
+      =render "layouts/maintenance"
     /= render 'layouts/footer'
 
     /= debug(params) if Rails.env.development?

@@ -1,5 +1,4 @@
 GIT
-
   remote: https://github.com/DanieleFedeli/recurring_select
   revision: 40c4f4122a2f2f30213eaeb86ae38bed89e6bab1
   specs:
@@ -9,14 +8,6 @@ GIT
       jquery-rails (>= 3.0)
       rails (>= 3.2)
       sass-rails (>= 4.0)
-
-  remote: https://github.com/mailboxer/mailboxer.git
-  revision: 03543e8a06dea8c9bfb52963da8abbf1157d5d21
-  specs:
-    mailboxer (0.15.1)
-      carrierwave (>= 0.5.8)
-      rails (>= 5.0.0)
-
 
 GEM
   remote: https://rubygems.org/
@@ -215,6 +206,9 @@ GEM
       nokogiri (>= 1.5.9)
     mail (2.7.0)
       mini_mime (>= 0.1.1)
+    mailboxer (0.15.1)
+      carrierwave (>= 0.5.8)
+      rails (>= 5.0.0)
     mapbox-gl-rails (0.46.0)
       railties (>= 3.2, < 5.3)
     marcel (0.3.2)
@@ -423,7 +417,7 @@ DEPENDENCIES
   ice_cube
   jbuilder (~> 2.5)
   listen (>= 3.0.5, < 3.2)
-  mailboxer!
+  mailboxer
   mapbox-gl-rails
   omniauth
   omniauth-facebook (~> 3.0.0)

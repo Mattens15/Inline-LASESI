@@ -2,6 +2,12 @@
   %h1 Admin's Dashboard
   .tools{:style=>"padding-left:10px;padding-top:10px;"}
     -if $should_be_offline==true
-      %button.btn.btn-success Restore website 
+      =link_to "/change" do
+        %button.btn.btn-success Restore website
+      
+       
     -else
-      %button.btn.btn-danger Suspend website
+      
+      =link_to "/change" do
+        %button.btn.btn-danger Suspend website
+

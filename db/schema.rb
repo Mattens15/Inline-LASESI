@@ -10,17 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-
 ActiveRecord::Schema.define(version: 2018_07_05_145630) do
-
-  create_table "avatars", force: :cascade do |t|
-    t.datetime "created_at", null: false
-    t.datetime "updated_at", null: false
-    t.string "image_file_name"
-    t.string "image_content_type"
-    t.integer "image_file_size"
-    t.datetime "image_updated_at"
-  end
 
   create_table "mailboxer_conversation_opt_outs", force: :cascade do |t|
     t.string "unsubscriber_type"
@@ -76,7 +66,7 @@ ActiveRecord::Schema.define(version: 2018_07_05_145630) do
     t.index ["receiver_id", "receiver_type"], name: "index_mailboxer_receipts_on_receiver_id_and_receiver_type"
   end
 
-  create_table "messages", force: :cascade do |t|
+  create_table "messages", id: false, force: :cascade do |t|
     t.integer "room_id"
     t.integer "user_id"
     t.integer "id"
