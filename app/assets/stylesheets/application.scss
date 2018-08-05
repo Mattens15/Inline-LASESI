@@ -1,0 +1,40 @@
+/*
+*= require_self
+*= require_tree
+*/
+@import 'bootstrap';
+
+html {
+    overflow-y: auto;
+    height: 100%;
+    background-color: black;
+}
+
+
+.container-fluid{
+    padding-left: 15%;
+    padding-right: 15%;
+}
+
+
+.row{
+    height: auto;
+    padding: inherit;
+}
+
+.col{
+    height: auto;
+    padding: inherit;
+}
+
+
+h1{
+    font-size: 1.2em;
+    font-weight: bold;
+    color: black;
+}
+
+h2{
+    font-size: 1em;
+    color: darkslategray;
+}
