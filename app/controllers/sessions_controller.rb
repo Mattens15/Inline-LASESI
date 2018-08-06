@@ -17,7 +17,8 @@ class SessionsController < ApplicationController
 
   def destroy
     log_out if logged_in?
-    redirect_to 'signup'
+    @current_user = nil
+    redirect_to 'login'
   end
   
 end

@@ -15,11 +15,16 @@
             = render 'shared/error_messages'
             = f.label :username
             = f.text_field :username, class: 'form-control'
+            %br
             = f.label :email
             = f.email_field :email, class: 'form-control'
+            %br
             = f.label :password
             = f.password_field :password, class: 'form-control'
+            %br
             = f.label :password_confirmation
             = f.password_field :password_confirmation, class: 'form-control'
             %br
-            = f.submit "Save changes", class: "btn btn-success"
+            = f.submit "Save changes", class: "btn btn-success", :data => {:confirm => "Are you sure of the changes?"}
+            =link_to @user ,:data => {:confirm => "Are you sure to discard the changes?"} do  
+              %input.btn.btn-danger{:type =>"submit", :value => "Discard"}/

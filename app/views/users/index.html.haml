@@ -10,7 +10,11 @@
       .row
         .col-lg-12
           %center
-            %p WELCOME TO INLINE APP
-            %br/
-            %button.btn.btn-primary.btn-inline{:name => "signup", :type => "button", :value => "Sign Up", :onclick =>"windows.location.href='users#new'"}/
-            %button.btn.btn-success.btn-inline{:name => "login", :type => "button", :value => "Login", :onclick => "window.location.href='session#new'"}/
+            %h1 WELCOME TO INLINE APP
+            %br
+            =link_to login_path(@session) do   
+              %input.btn.btn-success{:type => 'submit', :value => 'login'}/
+            =link_to signup_path(@user) do   
+              %input.btn.btn-primary{:type => 'submit', :value => 'signup'}/
+            
+            
