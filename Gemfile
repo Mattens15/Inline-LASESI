@@ -32,6 +32,7 @@ group :development, :test do
   gem 'cucumber-rails', require: false
   gem 'selenium-webdriver'
   gem 'capybara'
+  gem 'poltergeist'
   gem 'factory_bot_rails', '~> 4.0'
   gem 'factory_bot'
 end
