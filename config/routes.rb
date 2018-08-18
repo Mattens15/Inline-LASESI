@@ -1,4 +1,5 @@
 Rails.application.routes.draw do
+  post '/rate' => 'rater#create', :as => 'rate'
   default_url_options :host => "localhost"
   root             'users#index'
   get 'help'    => 'static_pages#help'

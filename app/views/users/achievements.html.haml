@@ -1,0 +1,21 @@
+!!!5
+%html{:lang => "it"}
+  %head
+    %meta{:content => "text/html; charset=UTF-8", "http-equiv" => "Content-Type"}/
+    %title Your Achievements Inline
+    %meta{:charset => "utf-8"}/
+    %meta{:content => "width=device-width, initial-scale=1", :name => "viewport"}/
+  %body
+    .container-fluid{:style => 'padding-left: 15%,padding-right:15%'}
+        .row
+            .col-lg-12
+                %h1 Hey #{@user.username}, here are your achievements:
+            %br
+            .col-lg-6
+                %label
+                    %h1 Your XP:
+                        .progress.progress-bar.progress-bar-striped.active{"aria-valuemax" => "100", "aria-valuemin" => "0", "aria-valuenow" => "40", :role => "progressbar", :style => "width:40%"} 0%
+            .col-lg-6
+                %label
+                    %h1 Your rating:   
+                        = rating_for @user, 'rating'

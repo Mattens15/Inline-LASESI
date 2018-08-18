@@ -1,5 +1,7 @@
 class User < ApplicationRecord
     attr_accessor :remember_token, :reset_token
+    ratyrate_rater
+    ratyrate_rateable "ranking"
     before_save :downcase_email
     validates :username, presence: true, :length => { :maximum => 20 }, uniqueness: true;
     VALID_EMAIL_REGEX = /\A[\w+\-.]+@[a-z\d\-]+(\.[a-z\d\-]+)*\.[a-z]+\z/i
