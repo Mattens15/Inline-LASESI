@@ -1,5 +1,6 @@
 class User < ApplicationRecord
     attr_accessor :remember_token, :reset_token
+    has_many :achievements
     ratyrate_rater
     ratyrate_rateable "ranking"
     before_save :downcase_email
@@ -32,6 +33,14 @@ class User < ApplicationRecord
         UserMailer.password_reset(self).deliver_now
     end
 
+    def award(achievement)
+        achievements << achievement.new
+    end
+
+    def awarded?(achievement)
+        achievements.count(:conditions => { :type => achievement }) > 0
+    end
+
     def send_activation_email
         UserMailer.account_activation(self).deliver_now
     end
@@ -60,4 +69,15 @@ class User < ApplicationRecord
         def downcase_email
             self.email = email.downcase
         end
+end
+
+class Achievement < ActiveRecord::Base
+    belongs_to :user
+end
+
+class AchievementSystem < Achievement
+    
+    def self.check_conditions_for(user)
+        #implement condition
+    end
 end
