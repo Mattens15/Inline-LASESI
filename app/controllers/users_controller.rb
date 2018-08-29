@@ -1,5 +1,5 @@
 class UsersController < ApplicationController
-  before_action :logged_in_user, only: [:edit, :update, :destroy, :achievements]
+  before_action :logged_in_user, only: [:edit, :update, :destroy]
   before_action :correct_user,   only: [:edit, :update]
 
   def show
@@ -30,11 +30,6 @@ class UsersController < ApplicationController
 
   def edit
     @user = User.find(params[:id])
-  end
-
-  def achievements
-    @user =User.find(params[:id])
-    render 'achievements'
   end
 
   def update
