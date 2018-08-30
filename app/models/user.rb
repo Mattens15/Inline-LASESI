@@ -1,5 +1,6 @@
 class User < ApplicationRecord
-    attr_accessor :remember_token, :reset_token
+    attr_accessor :remember_token, :activation_token, :reset_token
+    before_create :create_activation_digest
     has_many :achievements
     ratyrate_rater
     ratyrate_rateable "ranking"
@@ -45,6 +46,11 @@ class User < ApplicationRecord
         UserMailer.account_activation(self).deliver_now
     end
 
+    def activate
+        update_attribute(:activated,    true)
+        update_attribute(:activated_at, Time.zone.now)
+    end
+
     def remember
         self.remember_token = User.new_token
         update_attribute(:remember_digest, User.digest(remember_token))
@@ -68,6 +74,11 @@ class User < ApplicationRecord
 
         def downcase_email
             self.email = email.downcase
+        end
+
+        def create_activation_digest
+            self.activation_token  = User.new_token
+            self.activation_digest = User.digest(activation_token)
         end
 end
 
