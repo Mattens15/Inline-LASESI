@@ -1,4 +1,20 @@
 Rails.application.routes.draw do
+# gestione sessione omniauth
+
+  get 'sessions_omniauth/new'
+  get 'sessions_omniauth/create'
+  get 'sessions_omniauth/failure'
+  get '/login_facebook', :to =>'sessions_omniauth#new', :as => :login_facebook
+  get '/auth/:provider/callback', :to =>'sessions_omniauth#create'
+  get '/auth/failure', :to => 'sessions_omniaut#failure'
+  get '/logout_facebook', :to => 'sessions_omniauth#destroy'
+  get 'signup_omniauth', :to =>'users_omniauth#new'
+  get 'signup_omniauth', :to =>'users_omniauth#create'
+
+
+#fine gestione sessione omniauth
+
+
   post '/rate' => 'rater#create', :as => 'rate'
   default_url_options :host => "localhost"
   root             'users#index'

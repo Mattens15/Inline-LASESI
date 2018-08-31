@@ -27,5 +27,7 @@
                 %span.h2 Remember me on this computer
                 = f.submit "Log in", class: "btn btn-success", style: "margin-left: 5%"
               =link_to "(forgot password?)", new_password_reset_path
+              = link_to "Connect With Facebook", "/auth/facebook"
+              = link_to "Connect With Google", "/auth/facebook"
             %p
               New user? #{link_to "Sign up now!", signup_path}

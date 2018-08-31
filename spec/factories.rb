@@ -1,4 +1,13 @@
 FactoryBot.define do
+  factory :autorization do
+    provider "MyString"
+    uid "MyString"
+    user_id 1
+  end
+  factory :user_omniauth do
+    name "MyString"
+    email "MyString"
+  end
 
     factory :user, class: User do
       username  "Marco"
