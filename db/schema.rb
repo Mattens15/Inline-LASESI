@@ -10,9 +10,9 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2018_08_31_090748) do
+ActiveRecord::Schema.define(version: 2018_08_31_153335) do
 
-  create_table "autorizations", force: :cascade do |t|
+  create_table "authorizations", force: :cascade do |t|
     t.string "provider"
     t.string "uid"
     t.integer "user_id"
@@ -50,13 +50,6 @@ ActiveRecord::Schema.define(version: 2018_08_31_090748) do
     t.datetime "updated_at", null: false
     t.index ["cacheable_id", "cacheable_type"], name: "index_rating_caches_on_cacheable_id_and_cacheable_type"
     t.index ["cacheable_type", "cacheable_id"], name: "index_rating_caches_on_cacheable_type_and_cacheable_id"
-  end
-
-  create_table "user_omniauths", force: :cascade do |t|
-    t.string "name"
-    t.string "email"
-    t.datetime "created_at", null: false
-    t.datetime "updated_at", null: false
   end
 
   create_table "users", force: :cascade do |t|
