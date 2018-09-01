@@ -7,7 +7,7 @@ Rails.application.routes.draw do
   get '/login_facebook', :to =>'sessions_omniauth#new', :as => :login_facebook
   get '/auth/:provider/callback', :to =>'sessions_omniauth#create'
   get '/auth/failure', :to => 'sessions_omniaut#failure'
-  get '/logout_facebook', :to => 'sessions_omniauth#destroy'
+  delete '/logout_omniauth', :to => 'sessions_omniauth#destroy'
   get 'signup_omniauth', :to =>'users_omniauth#new'
   get 'signup_omniauth', :to =>'users_omniauth#create'
 
