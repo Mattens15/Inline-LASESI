@@ -6,7 +6,7 @@ Rails.application.routes.draw do
   get 'sessions_omniauth/failure'
   get '/login_omniauth', :to =>'sessions_omniauth#new', :as => :login_omniauth
   get '/auth/:provider/callback', :to =>'sessions_omniauth#create'
-  get '/auth/failure', :to => 'sessions_omniaut#failure'
+  get '/auth/failure', :to => 'sessions_omniauth#failure'
   get '/logout_omniauth', :to => 'sessions_omniauth#destroy'
   delete '/logout_omniauth', :to => 'sessions_omniauth#destroy'
   get 'signup_omniauth', :to =>'users_omniauth#new'

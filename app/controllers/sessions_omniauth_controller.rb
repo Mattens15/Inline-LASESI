@@ -7,9 +7,11 @@ class SessionsOmniauthController < ApplicationController
  
   #@authorization = Authorization.find_by_provider_and_uid(auth_hash["provider"], auth_hash["uid"])
   if UserOmniauth.find_by_email(auth_hash['info']['email'])
-    flash[:success]="Ben tornato #{auth_hash['info']['name']}!"
+    user_aux=UserOmniauth.find_by_email(auth_hash['info']['email'])
+    session[:user_id]=user_aux.uid
+    flash[:success]="Ben tornato #{auth_hash['info']['name']} al momento tipo user: #{user_aux.getRole}!"
   else
-    user = UserOmniauth.new :name => auth_hash["info"]["name"], :email => auth_hash["info"]["email"]
+    user = UserOmniauth.new :name => auth_hash["info"]["name"], :email => auth_hash["info"]["email"], :uid =>auth_hash['info']['uid']
     #user.authorizations.build :provider => auth_hash["provider"], :uid => auth_hash["uid"]
     user.save
  
@@ -18,9 +20,14 @@ class SessionsOmniauthController < ApplicationController
   end
 
   def failure
+    flash[:failure]="Errore nella tua autentificazione via facebook o google"
   end
   def destroy
     session[:user_id] = nil
     flash[:success]= "Logout effetuato con successo!"  
-  end 
+  end
+  
+  
+
+
 end
