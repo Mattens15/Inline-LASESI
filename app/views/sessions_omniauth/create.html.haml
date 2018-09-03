@@ -1,6 +1,7 @@
 %h1 SessionsOmniauth#create
 %p Find me in app/views/sessions_omniauth/create.html.haml
-= form_for(:session, url: login_path) do |f|
+= form_for(:session, url: logout_omniauth_path) do |f|
              
-              = link_to "Home", "/login"
+              = link_to "Logout", "/logout_omniauth"
+              
              

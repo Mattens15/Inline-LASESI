@@ -193,6 +193,12 @@ GEM
       rack (>= 1.6.2, < 3)
     omniauth-facebook (5.0.0)
       omniauth-oauth2 (~> 1.2)
+    omniauth-google-oauth2 (0.2.8)
+      addressable (~> 2.3)
+      jwt (~> 1.0)
+      multi_json (~> 1.3)
+      omniauth (>= 1.1.1)
+      omniauth-oauth2 (>= 1.1.1)
     omniauth-oauth2 (1.5.0)
       oauth2 (~> 1.1)
       omniauth (~> 1.2)
@@ -348,6 +354,7 @@ DEPENDENCIES
   minitest-reporters
   omniauth
   omniauth-facebook
+  omniauth-google-oauth2 (~> 0.2.1)
   poltergeist
   puma (~> 3.11)
   rails (~> 5.2.0)
