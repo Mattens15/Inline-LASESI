@@ -1,0 +1,9 @@
+content = ''
+
+<% flash.each do |message_type, message| %>
+  content += '<div class="alert alert-<%= message_type %>"><%= message %></div>'
+<% end %>
+$('#flash_div').html(content);
+
+content = "<%= escape_javascript(render('rooms/remind')) %>"
+$("#reminderdiv").html(content);

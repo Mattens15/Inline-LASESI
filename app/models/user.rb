@@ -1,23 +1,6 @@
 class User < ApplicationRecord
-    enum role: [:user_normale, :admin]
-    after_initialize :set_default_role, :if => :new_record?
-
-    def set_default_role
-      self.role ||= :user_normale
-    end
-
-    def getRole
-        if(self.admin?)
-         return "admin"
-        else
-         return "user normale"
-        end
-         
-     end
- 
-
-
-    attr_accessor :remember_token, :reset_token
+    attr_accessor :remember_token, :activation_token, :reset_token
+    before_create :create_activation_digest
     has_many :achievements
     ratyrate_rater
     ratyrate_rateable "ranking"
@@ -27,10 +10,21 @@ class User < ApplicationRecord
     validates :email, presence:   true,
                       format:     { with: VALID_EMAIL_REGEX },
                       uniqueness: { case_sensitive: false }
+                      
     has_secure_password
     validates :password, length: { minimum: 8,maximum:15 }, confirmation: {case_sensitive:true},allow_blank: true; 
     validates :password_confirmation, presence: true,allow_blank: true;
+  
+    has_many :rooms, dependent: :destroy
+    
+    has_many :powers, dependent: :destroy
+    has_many :reservations, dependent: :destroy
 
+    has_many :active_requests, class_name: 'SwapReservation', :foreign_key => 'active_user'
+    has_many :passive_requests, class_name: 'SwapReservation', :foreign_key => 'passive_user'
+    
+    has_many :messages
+    
     def User.digest(string)
         cost = ActiveModel::SecurePassword.min_cost ? BCrypt::Engine::MIN_COST :
                                                       BCrypt::Engine.cost
@@ -46,6 +40,20 @@ class User < ApplicationRecord
         update_attribute(:reset_digest,  User.digest(reset_token))
         update_attribute(:reset_sent_at, Time.zone.now)    
     end
+      enum role: [:user_normale, :admin]
+    after_initialize :set_default_role, :if => :new_record?
+
+    def set_default_role
+      self.role ||= :user_normale
+    end
+
+    def getRole
+        if(self.admin?)
+         return "admin"
+        else
+         return "user normale"
+        end 
+     end
     
     def send_password_reset_email
         UserMailer.password_reset(self).deliver_now
@@ -61,6 +69,11 @@ class User < ApplicationRecord
 
     def send_activation_email
         UserMailer.account_activation(self).deliver_now
+    end
+
+    def activate
+        update_attribute(:activated,    true)
+        update_attribute(:activated_at, Time.zone.now)
     end
 
     def remember
@@ -87,15 +100,14 @@ class User < ApplicationRecord
         def downcase_email
             self.email = email.downcase
         end
+
+        def create_activation_digest
+            self.activation_token  = User.new_token
+            self.activation_digest = User.digest(activation_token)
+        end
 end
 
 class Achievement < ActiveRecord::Base
     belongs_to :user
 end
 
-class AchievementSystem < Achievement
-    
-    def self.check_conditions_for(user)
-        #implement condition
-    end
-end

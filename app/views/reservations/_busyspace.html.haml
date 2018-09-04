@@ -1,0 +1,23 @@
+
+.row
+  .col-1.my-auto.border-right
+    =reservation.position
+  .col-7.my-auto.text-left
+    =link_to reservation.user.username, user_path(reservation.user)
+  .col-4.my-auto.text-center
+    -if !current_user || reservation.user.id != current_user.id
+      -if current_user && current_user.reservations.exists?(room_id: params[:room_id])
+        =form_for([@room, reservation, SwapReservation.new], html: {class: 'form-inline'}, remote: true) do |f|
+          =hidden_field_tag :passive_reservation_id, reservation.id
+          =image_submit_tag('swap.ico', class: 'reservation_icon mx-auto', :alt => 'Swap', :title => 'Richiedi lo scambio')
+    -elsif reservation.user.id == current_user.id 
+      .row
+        .col-6.my-auto
+          = form_for([@room, current_user.reservations.find_by(room_id: @room.id)], html: {method: :delete}, remote: true) do |f|
+            = f.submit "Unjoin", class: "btn btn-danger btn-block btn-sm", id: "unjoinbutton", onclick: 'refreshingPartial()'
+        .col-6.my-auto
+          =render 'rooms/remind' 
+    -else
+      %btn.btn.btn-primary{:disabled => ''}
+        Log in first
+      

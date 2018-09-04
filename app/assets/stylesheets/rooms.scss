@@ -1,0 +1,46 @@
+// Place all the styles related to the Rooms controller here.
+// They will automatically be included in application.css.
+// You can use Sass (SCSS) here: http://sass-lang.com/
+@import 'flatpickr';
+@import 'recurring_select';
+.google-icon{
+  width: 1rem;
+  height: 1rem;
+}
+
+.reservation_icon{
+  height:24px;
+  width:24px;
+}
+
+.mapboxgl-ctrl-geocoder{
+  width: 100%;
+  max-width: none;
+}
+
+
+.fixed-size-room{
+  overflow-y: auto;
+}
+
+#roomavatar{
+  height: 200px;
+  width: auto;
+  max-width: 100%;
+  //margin-bottom: 5%;
+}
+
+#infodiv #map{
+  height: 200px;
+  width: auto;
+  max-width: 100%;
+  margin-bottom: 5%;
+}
+
+#mapdiv #map{
+  height: 0px;
+}
+
+.row img{
+  margin: 5%;
+}

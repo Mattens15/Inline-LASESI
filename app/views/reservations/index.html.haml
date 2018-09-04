@@ -1,0 +1,27 @@
+-if @room.fifo
+  -@room.reservations.each do |r|
+    %li.list-group-item
+      .row
+        .col-1.my-auto.border-right
+          =r.position
+        .col-9.my-auto
+          =link_to r.user.username, user_path(r.user)
+        .col-2.my-auto.text-center
+          -if !current_user || !current_user.powers.exists?(room_id: @room.id)
+            -if r.user != current_user && current_user.reservations.exists?(room_id: @room.id)
+              =form_for([@room, r, SwapReservation.new], remote: true) do |f|
+                =hidden_field_tag :passive_user_id, r.user_id
+                =hidden_field_tag :active_reservation_id, current_user.reservations.find_by(room: params[:room_id]).id
+                =hidden_field_tag :passive_reservation_id, r.id
+                =image_submit_tag('swap.ico', class: 'reservation_icon', :alt => 'Swap', :title => 'Richiedi lo scambio')
+          -else
+            =image_tag('rate.ico', class: 'reservation_icon', :alt => 'Vota', :title => 'Vota user')
+-else
+  -@room.max_participants.times do |i|
+    %li.list-group-item.text-center
+      -reservation_id = "reservations_div-#{i+1}"
+      %div{class: 'container', id: reservation_id}
+        -if !@room.reservations.exists?(position: i+1)
+          =render 'freespace', :position => i
+        -else
+          =render 'busyspace', :reservation => @room.reservations.find_by(position: i+1)

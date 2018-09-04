@@ -1,0 +1,17 @@
+content = ''
+
+<% flash.each do |message_type, message| %>
+  content += '<div class="alert alert-<%= message_type %>"><%= message %></div>'
+<% end %>
+$('#flash_div').html(content);
+
+<% if @room.fifo %>
+  content = "<%= escape_javascript(render('rooms/join')) %>"
+  $("#joindiv").html(content);
+  content = "<%= escape_javascript(render('rooms/remind')) %>"
+  $("#reminderdiv").html(content);
+<% else %>
+  
+  content = "<%= escape_javascript(render(:partial => 'freespace', locals: {position: @position})) %>"
+  $("#reservations_div").html(content);
+<% end%>

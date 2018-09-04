@@ -1,3 +1,16 @@
 %html
-  %body
-    = yield
+  %head
+    %body
+    =image_tag("logo.png")
+    %h2
+      Hey there #{@user.username},
+    %p
+      Just a quick reminder that your event #{room.name}
+      %b 
+      is coming up soon. Make sure you're there by #{room.time_from}
+      %br/
+    %p
+      
+    %p Have a great day!
+    %br
+    %b The Inline Team

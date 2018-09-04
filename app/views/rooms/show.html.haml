@@ -1,0 +1,164 @@
+-provide(:title, @room.name)
+.container-fluid{:style => 'padding-left: 15%; padding-right: 15%;'}
+	%center
+		%h2
+			=@room.name
+		%h5
+			=@room.description
+		-if do_i_matter?
+			=link_to 'Edit room', edit_room_path
+	.row.body-room
+		.col-xl-3.col-lg-3.col-md-3.col-sm-12.col-12.border-right.text-center#infodiv
+			%h4.text-center.my-auto.border-bottom
+				Info
+			%h5.text-center.my-2
+				Partecipanti massimi:
+				=@room.max_participants
+			%img#roomavatar{src: "#{@room.avatar.url}"}
+			-if !has_no_location				
+				.row#map.mx-auto
+				=@room.address
+				%br
+			
+			%br
+			.row
+				.col-xl-2.col-lg-2.col-md-2.col-sm-2.col-2.my-auto
+					%label.my-auto
+						Start:
+				.col-xl-10.col-lg-10.col-md-10.col-sm-10.col-10
+					%input.text-center#dateEvent_from{:type => 'text'}
+			%br
+			.row
+				.col-xl-2.col-lg-2.col-md-2.col-sm-2.col-2.my-auto
+					%label.my-auto
+						End:
+				.col-xl-10.col-lg-10.col-md-10.col-sm-10.col-10
+					%input.text-center#dateEvent_to{:type => 'text'}
+		
+			%h4.text-center.my-3
+
+				Room host:
+				
+				%table.table
+					%tbody
+					-@room.powers.each do |p|
+						%tr
+							%td.text-center
+								=link_to p.user.username, user_path(p.user)  
+			
+			=link_to 'Aggiungi evento al tuo calendar', {controller: 'calendars', action: 'add_event', room_id: @room.hash_id}, :method => 'post'
+			=image_tag('google-icon.png', class: 'google-icon')
+		.col-xl-6.col-lg-6.col-md-6.col-sm-12.col-12
+			%ul.list-group.userlist#userlist.fixed-size-room		
+			-if @room.fifo
+				#joindiv
+					-if can_i_reserve?
+						-if can_delete?
+							=render 'join'
+						-else
+							%button.btn.btn-danger.btn-lg{:disabled => ''}
+								Tempo scaduto!
+					-else
+						-if do_i_have_powers?
+							
+						-else
+							=render 'unjoin' 
+				#reminderdiv{:style => 'margin-top: 10px'}
+					-if !current_user.nil? && current_user.reservations.exists?(room_id: @room.id)
+						=render 'remind' 
+		.col-xl-3.col-lg-3.col-md-3.col-sm-12.col-12.border-left
+			#messages.fixed-size-room
+			-if current_user
+				= form_for([@room, Message.new], remote: true) do |f|
+					= hidden_field_tag :user_id, current_user.id
+					.input-group.mb-3
+						=f.text_field :body, class: "form-control",placeholder: "Insert your message...", autocomplete: "off",id:"chat_input"
+						.input-group-append
+							= f.button "Invia", class: "btn btn-primary btn-block",id:"chat_btn"
+			-else
+				.input-group.mb-3
+					%input#chat_input{:type => 'text', :placeholder => 'Insert your message...', :autocomplete => 'off'}
+					.input-group-append
+						%button.btn.btn-primary.btn-block{:disabled => ''}
+							Disabled
+					%small
+						Log in and join the queue first!
+	
+	
+:javascript
+	var url = getRightUrl();
+	var scroll= true;
+	
+	
+
+	$("#messages").mouseenter(function(){scroll=false});
+	$("#messages").delay(10000).mouseleave(function(){scroll=true;})
+	
+	$("#new_message").submit(function(e){
+		e.preventDefault(); 
+		this.submit();
+		$("#chat_input").val("");
+		$('#messages').load(url+'/messages');
+		scrollDown(1);
+	})
+
+	$(document).ready(function(){	
+		refreshingPartial();
+		getParticipants();
+		scrollDown(10);
+		var room_json = init(url+'.json');
+		$("#dateEvent_from").flatpickr({ 
+			enableTime: true,
+			altInput: true,
+			altFromat: "F j, Y",
+			dateFormat: 'Y-m-d H:i',
+			minDate: room_json.time_from,
+			maxDate: room_json.time_from,
+			defaultDate: room_json.time_from,
+		});
+		$("#dateEvent_to").flatpickr({ 
+			enableTime: true,
+			altInput: true,
+			altFromat: "F j, Y",
+			dateFormat: 'Y-m-d H:i',
+			minDate: room_json.time_to,
+			maxDate: room_json.time_to,
+			defaultDate: room_json.time_to
+		})
+
+		if($('#map').length) {      
+			render_map_for_room_show(url+'.json');
+			$('.marker').hide();
+		}
+
+		//SETTIAMO L'ALTEZZA AL VALORE DI INFO
+		var height = $("#infodiv").height();
+		
+		$(".fixed-size-room").height(height);
+	});
+	
+	function getParticipants(){
+		setTimeout(function(){
+			refreshingPartial();
+			getParticipants();
+		}, 5000);
+
+	}	
+	function refreshingPartial(){
+		setTimeout(function(){
+			$('#userlist').load(url+'/reservations');
+			$('#messages').load(url+'/messages');
+			if (scroll){
+				scrollDown(500);}
+			
+		}, 2000);
+	}
+
+	function scrollDown(speed){
+		$('#messages').stop().animate({scrollTop: $('#messages')[0].scrollHeight},speed)
+	}
+
+	function sleep_ms(millisecs) {
+	var initiation = new Date().getTime();
+	while ((new Date().getTime() - initiation) <millisecs);
+	}

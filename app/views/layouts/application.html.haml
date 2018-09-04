@@ -7,17 +7,20 @@
       | Inline
     = csrf_meta_tags
     = csp_meta_tag
-
+   
     <script src="https://cdn.jsdelivr.net/npm/flatpickr"></script>
     <script src='https://npmcdn.com/@turf/turf/turf.min.js'></script>
     <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/flatpickr/dist/flatpickr.min.css">
+    %script{src: "https://api.mapbox.com/mapbox-gl-js/plugins/mapbox-gl-geocoder/v2.2.0/mapbox-gl-geocoder.min.js"}
+    %link{href: "https://api.mapbox.com/mapbox-gl-js/plugins/mapbox-gl-geocoder/v2.2.0/mapbox-gl-geocoder.css", rel: "stylesheet", type: "text/css"}/
     = stylesheet_link_tag    'application', media: 'all', 'data-turbolinks-track': 'reload'
     = javascript_include_tag 'application', 'data-turbolinks-track': 'reload'
+    = stylesheet_link_tag 'navbar'
+
   %body
-    /= render 'layouts/header'
-    .container
+    = render "layouts/navbar"
+    .container#flash_div
       - flash.each do |message_type, message|
         %div{class: "alert alert-#{message_type}"}= message
-      = yield
-      /= render 'layouts/footer'
-      /= debug(params) if Rails.env.development?
+    = yield
+    = render 'layouts/footer'

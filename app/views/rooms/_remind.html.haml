@@ -1,0 +1,13 @@
+-if current_user.reservations.exists?(room_id: @room.id)
+  -@reservation = current_user.reservations.find_by(room_id: @room.id)
+  =form_for([@room, @reservation], html: { method: :patch}, remote: true) do |f|
+    
+    =hidden_field_tag :room_id, @room.id
+    =hidden_field_tag :user_id, current_user.id
+    =hidden_field_tag :reminder, !@reservation.reminder
+    -if !@reservation.reminder
+      = f.submit "Email", class: "btn btn-success btn-block btn-sm", onclick: 'refreshingPartial()'
+    -else
+      = f.submit "Email", class: "btn btn-danger btn-block btn-sm", onclick: 'refreshingPartial()'
+
+

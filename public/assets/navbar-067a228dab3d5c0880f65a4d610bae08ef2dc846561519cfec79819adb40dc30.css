@@ -1,0 +1,21 @@
+/* line 1, /home/daniele/Inline-LASESI/app/assets/stylesheets/navbar.scss */
+.navbar {
+  background: white;
+}
+
+/* line 4, /home/daniele/Inline-LASESI/app/assets/stylesheets/navbar.scss */
+.navicon1 {
+  margin-top: 1px;
+  position: relative;
+  height: 26px;
+  width: 26px;
+  margin-right: 20px;
+}
+
+/* line 12, /home/daniele/Inline-LASESI/app/assets/stylesheets/navbar.scss */
+.navicon2 {
+  position: relative;
+  height: 24px;
+  width: 24px;
+  margin-right: 20px;
+}

@@ -165,11 +165,13 @@ Then /^Room should have multiple instances/ do
 end
 
 Then /^I should be on room page/ do
-  expect(page.find(:xpath,"//*[text()='Room was successfully created.']")).not_to be nil
+  expect(page).to have_text("Room was successfully created.")
 end
 
 Then /^I should see room name/ do
-  room = Room.take
-  expect(page.find(:xpath,"//*[text()='#{room.name}']")).not_to be nil
+  
+  within('.start-date') do
+    room = Room.take
+    expect(page).to have_text("#{room.name}", maximum: 2)
+  end
 end
-
