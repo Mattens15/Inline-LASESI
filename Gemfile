@@ -43,7 +43,7 @@ group :development, :test do
   gem 'cucumber-rails', require: false
   gem 'selenium-webdriver'
   gem 'capybara'
-  gem "factory_bot_rails", "~> 4.0"
+  gem "factory_bot_rails", "~> 4.0", :require => false
   gem 'database_cleaner'
   gem 'rails-controller-testing'
 end

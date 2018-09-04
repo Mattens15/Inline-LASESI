@@ -1,4 +1,5 @@
 require 'rails_helper'
+reuqire 'factory_bot_rails'
 
 # Specs in this file have access to a helper object that includes
 # the UsersHelper. For example:
