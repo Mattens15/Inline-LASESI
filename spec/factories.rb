@@ -4,9 +4,9 @@ FactoryBot.define do
     uid "MyString"
     user_id 1
   end
-  factory :user_omniauth do
-    name "MyString"
-    email "MyString"
+  factory :user3,class: UserOmniauth do
+    name "Mihai Zapodeanu"
+    email "zapo93@hotmail.it"
   end
 
     factory :user, class: User do
@@ -22,6 +22,7 @@ FactoryBot.define do
       password  "123412345"
       password_confirmation  "123412345"
     end
+    
     
 end
   

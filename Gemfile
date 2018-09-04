@@ -26,7 +26,11 @@ gem 'bootsnap', '>= 1.1.0', require: false
 gem 'jquery-rails', '~> 4.3', '>= 4.3.3'
 gem 'rails-ujs', '~> 0.1.0'
 gem 'ratyrate'
-gem "omniauth-google-oauth2", "~> 0.2.1"
+gem 'omniauth-oauth2', '~> 1.3.1'
+gem 'omniauth-google-oauth2'
+
+gem 'activeadmin-sqlpage'
+
 
 
 gem 'thin'

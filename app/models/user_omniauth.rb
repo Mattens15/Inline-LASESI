@@ -1,8 +1,9 @@
 class UserOmniauth < ApplicationRecord
     has_many :authorizations
     validates :name, :email, :presence => true
+    
 
-    enum role: [:user_normale,:admin]
+    enum role: [:user_normale, :admin]
     after_initialize :set_default_role, :if => :new_record?
 
     def set_default_role
