@@ -5,10 +5,6 @@ ruby '2.5.1'
 #gem for  facebook autentification
 gem 'omniauth' 
 gem 'omniauth-facebook', '~> 3.0.0'
-#gem for google autentification
-gem "omniauth-google-oauth2", "~> 0.2.1"
-
-
 gem 'rails', '~> 5.2.0'
 gem 'sqlite3'
 gem 'puma', '~> 3.11'
@@ -20,7 +16,6 @@ gem 'turbolinks', '~> 5'
 gem 'jbuilder', '~> 2.5'
 gem 'haml-rails'
 gem 'bootstrap'
-
 gem 'devise_invitable'
 gem 'mapbox-gl-rails'
 gem 'signet-rails'
@@ -29,6 +24,13 @@ gem 'googleauth'
 gem 'flatpickr_rails'
 gem 'bcrypt',               '3.1.7'
 gem 'bootsnap', '>= 1.1.0', require: false
+gem 'jquery-rails', '~> 4.3', '>= 4.3.3'
+gem 'rails-ujs', '~> 0.1.0'
+gem 'ratyrate'
+gem 'omniauth-oauth2', '~> 1.3.1'
+gem 'omniauth-google-oauth2'
+gem 'activeadmin-sqlpage'
+gem 'thin'
 gem "paperclip"
 gem 'ice_cube'
 gem 'recurring_select',  git: 'https://github.com/DanieleFedeli/recurring_select'

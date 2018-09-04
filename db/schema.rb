@@ -9,7 +9,15 @@
 # you'll amass, the slower it'll run and the greater likelihood for issues).
 #
 # It's strongly recommended that you check this file into your version control system.
+ActiveRecord::Schema.define(version: 2018_09_01_142000) do
 
+  create_table "authorizations", force: :cascade do |t|
+    t.string "provider"
+    t.string "uid"
+    t.integer "user_id"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+  end
 ActiveRecord::Schema.define(version: 2018_07_02_234121) do
 
   create_table "messages", force: :cascade do |t|
@@ -82,7 +90,7 @@ ActiveRecord::Schema.define(version: 2018_07_02_234121) do
     t.index ["passive_reservation_id"], name: "index_swap_reservations_on_passive_reservation_id"
     t.index ["passive_user_id"], name: "index_swap_reservations_on_passive_user_id"
 ActiveRecord::Schema.define(version: 2018_08_30_211737) do
-
+    
   create_table "average_caches", force: :cascade do |t|
     t.integer "rater_id"
     t.string "rateable_type"
@@ -159,7 +167,11 @@ ActiveRecord::Schema.define(version: 2018_08_30_211737) do
     t.index ["cacheable_id", "cacheable_type"], name: "index_rating_caches_on_cacheable_id_and_cacheable_type"
     t.index ["cacheable_type", "cacheable_id"], name: "index_rating_caches_on_cacheable_type_and_cacheable_id"
   end
-
+  
+  create_table "user_omniauths", force: :cascade do |t|
+    t.string "name"
+    t.string "email"
+    t.string "uid"
   create_table "sashes", force: :cascade do |t|
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
