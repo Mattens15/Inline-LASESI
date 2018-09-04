@@ -1,10 +1,13 @@
 Rails.application.routes.draw do
+  post '/rate' => 'rater#create', :as => 'rate'
+  default_url_options :host => "localhost"
   root                     'mapbox#show'
   get 'dashboard'				=> 'mapbox#show'
   get 'sessions/new'
   get 'password_resets/new'
   get 'password_resets/edit'
   get 'signup'  => 'users#new'
+  delete 'destroy' => 'users#destroy'
   get 'login'   => 'sessions#new'
   post'login'   => 'sessions#create'
   get 'logout'  => 'sessions#destroy'
@@ -16,6 +19,7 @@ Rails.application.routes.draw do
   resources :sessions, only: [:create, :destroy]
   resource :home, only: [:show]
   resources :password_resets,     only: [:new, :create, :edit, :update]
+  resources :account_activations, only: [:edit]
   resources :users
   resources :avatars
   resources :rooms do

@@ -1,17 +1,30 @@
-
-.container-fluid{:style => "padding-left:10%;padding-right:10%;"}
-    - provide(:title, "Edit user")
-    %h1 Update your profile
-    .row
+!!!5
+%html{:lang => "it"}
+  %head
+    %meta{:content => "text/html; charset=UTF-8", "http-equiv" => "Content-Type"}/
+    %title SignUp Inline
+    %meta{:charset => "utf-8"}/
+    %meta{:content => "width=device-width, initial-scale=1", :name => "viewport"}/
+  %body
+    .container-fluid{:style => "padding-left:10%;padding-right:10%;"}
+      - provide(:title, "Edit user")
+      .row
         .col-lg-12
-            = form_for(@user) do |f|
+          = form_for(@user) do |f|
+            %br
             = render 'shared/error_messages'
             = f.label :username
             = f.text_field :username, class: 'form-control'
+            %br
             = f.label :email
             = f.email_field :email, class: 'form-control'
+            %br
             = f.label :password
             = f.password_field :password, class: 'form-control'
-            = f.label :password_confirmation, "Confirmation"
+            %br
+            = f.label :password_confirmation
             = f.password_field :password_confirmation, class: 'form-control'
-            = f.submit "Save changes", class: "btn btn-primary"
+            %br
+            = f.submit "Save changes", class: "btn btn-success", :data => {:confirm => "Are you sure of the changes?"}
+            =link_to @user ,:data => {:confirm => "Are you sure to discard the changes?"} do  
+              %input.btn.btn-danger{:type =>"submit", :value => "Discard"}/
