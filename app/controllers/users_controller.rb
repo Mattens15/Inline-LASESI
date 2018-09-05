@@ -47,54 +47,17 @@ class UsersController < ApplicationController
     def user_params
       params.require(:user).permit(:username,:email,:password,:password_confirmation)
     end
-  
-    def create
-      @user = User.new(user_params)    
-      if @user.save
-        log_in @user
-        flash[:success] = "Welcome to the Inline App!"
-        redirect_to @user
-      else
-        render 'new'
+
+    def logged_in_user
+      unless logged_in?
+        store_location
+        flash[:danger] = "Please log in."
+        redirect_to login_url
       end
     end
-  
-    def destroy
-      User.find(params[:id]).destroy
-      flash[:success] = "User deleted"
-      redirect_to users_url
-    end
-  
-    def edit
+
+    def correct_user
       @user = User.find(params[:id])
+      redirect_to(root_url) unless @user == current_user
     end
-  
-    def update
-      @user = User.find(params[:id])
-      if @user.update_attributes(user_params)
-        flash[:success] = "Profile updated"
-        redirect_to @user
-      else
-        render 'edit'
-      end
-    end
-    
-    private
-  
-      def user_params
-        params.require(:user).permit(:username,:email,:password,:password_confirmation)
-      end
-  
-      def logged_in_user
-        unless logged_in?
-          store_location
-          flash[:danger] = "Please log in."
-          redirect_to login_url
-        end
-      end
-  
-      def correct_user
-        @user = User.find(params[:id])
-        redirect_to(root_url) unless @user == current_user
-      end
-  end
+end
