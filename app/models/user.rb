@@ -40,20 +40,7 @@ class User < ApplicationRecord
         update_attribute(:reset_digest,  User.digest(reset_token))
         update_attribute(:reset_sent_at, Time.zone.now)    
     end
-      enum role: [:user_normale, :admin]
-    after_initialize :set_default_role, :if => :new_record?
-
-    def set_default_role
-      self.role ||= :user_normale
-    end
-
-    def getRole
-        if(self.admin?)
-         return "admin"
-        else
-         return "user normale"
-        end 
-     end
+      
     
     def send_password_reset_email
         UserMailer.password_reset(self).deliver_now

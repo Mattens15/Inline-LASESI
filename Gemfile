@@ -4,7 +4,7 @@ git_source(:github) { |repo| "https://github.com/#{repo}.git" }
 ruby '2.5.1'
 #gem for  facebook autentification
 gem 'omniauth' 
-gem 'omniauth-facebook', '~> 3.0.0'
+gem 'omniauth-facebook', '~> 4.0.0'
 gem 'rails', '~> 5.2.0'
 gem 'sqlite3'
 gem 'puma', '~> 3.11'
