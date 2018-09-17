@@ -12089,3 +12089,2792 @@ Processing by MapboxController#show as JSON
 Completed 200 OK in 10ms (Views: 0.3ms | ActiveRecord: 1.3ms)
 
 
+  [1m[35m (1.2ms)[0m  [1m[34mSELECT "schema_migrations"."version" FROM "schema_migrations" ORDER BY "schema_migrations"."version" ASC[0m
+  ↳ /home/mattens/.rvm/gems/ruby-2.5.1/bin/rake:23
+Migrating to ActsAsVotableMigration (20180917144905)
+  [1m[35m (0.2ms)[0m  [1m[36mbegin transaction[0m
+  ↳ /home/mattens/.rvm/gems/ruby-2.5.1/bin/rake:23
+  [1m[35m (0.3ms)[0m  [1m[34mSELECT sqlite_version(*)[0m
+  ↳ db/migrate/20180917144905_acts_as_votable_migration.rb:3
+  [1m[35m (1.1ms)[0m  [1m[35mCREATE TABLE "votes" ("id" integer PRIMARY KEY AUTOINCREMENT NOT NULL, "votable_type" varchar, "votable_id" integer, "voter_type" varchar, "voter_id" integer, "vote_flag" boolean, "vote_scope" varchar, "vote_weight" integer, "created_at" datetime, "updated_at" datetime)[0m
+  ↳ db/migrate/20180917144905_acts_as_votable_migration.rb:3
+  [1m[35m (0.5ms)[0m  [1m[35mCREATE  INDEX "index_votes_on_voter_id_and_voter_type_and_vote_scope" ON "votes" ("voter_id", "voter_type", "vote_scope")[0m
+  ↳ db/migrate/20180917144905_acts_as_votable_migration.rb:15
+  [1m[35m (0.3ms)[0m  [1m[35mCREATE  INDEX "index_votes_on_votable_id_and_votable_type_and_vote_scope" ON "votes" ("votable_id", "votable_type", "vote_scope")[0m
+  ↳ db/migrate/20180917144905_acts_as_votable_migration.rb:16
+  [1m[36mActiveRecord::SchemaMigration Create (0.5ms)[0m  [1m[32mINSERT INTO "schema_migrations" ("version") VALUES (?)[0m  [["version", "20180917144905"]]
+  ↳ /home/mattens/.rvm/gems/ruby-2.5.1/bin/rake:23
+  [1m[35m (132.7ms)[0m  [1m[36mcommit transaction[0m
+  ↳ /home/mattens/.rvm/gems/ruby-2.5.1/bin/rake:23
+  [1m[36mActiveRecord::InternalMetadata Load (8.5ms)[0m  [1m[34mSELECT  "ar_internal_metadata".* FROM "ar_internal_metadata" WHERE "ar_internal_metadata"."key" = ? LIMIT ?[0m  [["key", "environment"], ["LIMIT", 1]]
+  ↳ /home/mattens/.rvm/gems/ruby-2.5.1/bin/rake:23
+  [1m[35m (0.2ms)[0m  [1m[36mbegin transaction[0m
+  ↳ /home/mattens/.rvm/gems/ruby-2.5.1/bin/rake:23
+  [1m[35m (0.3ms)[0m  [1m[36mcommit transaction[0m
+  ↳ /home/mattens/.rvm/gems/ruby-2.5.1/bin/rake:23
+  [1m[35m (0.7ms)[0m  [1m[34mSELECT "schema_migrations"."version" FROM "schema_migrations" ORDER BY "schema_migrations"."version" ASC[0m
+  ↳ /home/mattens/.rvm/gems/ruby-2.5.1/bin/rake:23
+  [1m[35m (0.1ms)[0m  [1m[34mSELECT "schema_migrations"."version" FROM "schema_migrations" ORDER BY "schema_migrations"."version" ASC[0m
+  ↳ /home/mattens/.rvm/gems/ruby-2.5.1/bin/rake:23
+Migrating to AddCachedVotesToUser (20180917145413)
+  [1m[35m (0.1ms)[0m  [1m[36mbegin transaction[0m
+  ↳ /home/mattens/.rvm/gems/ruby-2.5.1/bin/rake:23
+  [1m[35m (0.5ms)[0m  [1m[35mALTER TABLE "posts" ADD "cached_votes_total" integer DEFAULT 0[0m
+  ↳ db/migrate/20180917145413_add_cached_votes_to_user.rb:4
+  [1m[35m (0.1ms)[0m  [1m[31mrollback transaction[0m
+  ↳ /home/mattens/.rvm/gems/ruby-2.5.1/bin/rake:23
+  [1m[35m (0.1ms)[0m  [1m[34mSELECT "schema_migrations"."version" FROM "schema_migrations" ORDER BY "schema_migrations"."version" ASC[0m
+  ↳ /home/mattens/.rvm/gems/ruby-2.5.1/bin/rake:23
+Migrating to AddCachedVotesToUser (20180917145413)
+  [1m[35m (0.1ms)[0m  [1m[36mbegin transaction[0m
+  ↳ /home/mattens/.rvm/gems/ruby-2.5.1/bin/rake:23
+  [1m[35m (0.5ms)[0m  [1m[35mALTER TABLE "users" ADD "cached_votes_total" integer DEFAULT 0[0m
+  ↳ db/migrate/20180917145413_add_cached_votes_to_user.rb:4
+  [1m[35m (0.3ms)[0m  [1m[35mALTER TABLE "users" ADD "cached_votes_score" integer DEFAULT 0[0m
+  ↳ db/migrate/20180917145413_add_cached_votes_to_user.rb:5
+  [1m[35m (0.3ms)[0m  [1m[35mALTER TABLE "users" ADD "cached_votes_up" integer DEFAULT 0[0m
+  ↳ db/migrate/20180917145413_add_cached_votes_to_user.rb:6
+  [1m[35m (0.3ms)[0m  [1m[35mALTER TABLE "users" ADD "cached_votes_down" integer DEFAULT 0[0m
+  ↳ db/migrate/20180917145413_add_cached_votes_to_user.rb:7
+  [1m[35m (0.3ms)[0m  [1m[35mALTER TABLE "users" ADD "cached_weighted_score" integer DEFAULT 0[0m
+  ↳ db/migrate/20180917145413_add_cached_votes_to_user.rb:8
+  [1m[35m (0.3ms)[0m  [1m[35mALTER TABLE "users" ADD "cached_weighted_total" integer DEFAULT 0[0m
+  ↳ db/migrate/20180917145413_add_cached_votes_to_user.rb:9
+  [1m[35m (0.5ms)[0m  [1m[35mALTER TABLE "users" ADD "cached_weighted_average" float DEFAULT 0.0[0m
+  ↳ db/migrate/20180917145413_add_cached_votes_to_user.rb:10
+  [1m[36mActiveRecord::SchemaMigration Create (0.5ms)[0m  [1m[32mINSERT INTO "schema_migrations" ("version") VALUES (?)[0m  [["version", "20180917145413"]]
+  ↳ /home/mattens/.rvm/gems/ruby-2.5.1/bin/rake:23
+  [1m[35m (100.5ms)[0m  [1m[36mcommit transaction[0m
+  ↳ /home/mattens/.rvm/gems/ruby-2.5.1/bin/rake:23
+  [1m[36mActiveRecord::InternalMetadata Load (0.4ms)[0m  [1m[34mSELECT  "ar_internal_metadata".* FROM "ar_internal_metadata" WHERE "ar_internal_metadata"."key" = ? LIMIT ?[0m  [["key", "environment"], ["LIMIT", 1]]
+  ↳ /home/mattens/.rvm/gems/ruby-2.5.1/bin/rake:23
+  [1m[35m (0.2ms)[0m  [1m[36mbegin transaction[0m
+  ↳ /home/mattens/.rvm/gems/ruby-2.5.1/bin/rake:23
+  [1m[35m (0.1ms)[0m  [1m[36mcommit transaction[0m
+  ↳ /home/mattens/.rvm/gems/ruby-2.5.1/bin/rake:23
+  [1m[35m (0.4ms)[0m  [1m[34mSELECT "schema_migrations"."version" FROM "schema_migrations" ORDER BY "schema_migrations"."version" ASC[0m
+  ↳ /home/mattens/.rvm/gems/ruby-2.5.1/bin/rake:23
+Started GET "/" for 127.0.0.1 at 2018-09-17 20:55:42 +0200
+  [1m[35m (0.3ms)[0m  [1m[34mSELECT "schema_migrations"."version" FROM "schema_migrations" ORDER BY "schema_migrations"."version" ASC[0m
+  ↳ vendor/bundle/gems/activerecord-5.2.0/lib/active_record/log_subscriber.rb:98
+Processing by MapboxController#show as HTML
+  [1m[36mRoom Load (0.2ms)[0m  [1m[34mSELECT "rooms".* FROM "rooms"[0m
+  ↳ app/controllers/mapbox_controller.rb:6
+  [1m[36mPower Load (0.1ms)[0m  [1m[34mSELECT "powers".* FROM "powers" WHERE "powers"."room_id" = ?[0m  [["room_id", 1]]
+  ↳ app/controllers/mapbox_controller.rb:10
+  [1m[36mUser Load (0.4ms)[0m  [1m[34mSELECT  "users".* FROM "users" WHERE "users"."id" = ? LIMIT ?[0m  [["id", 1], ["LIMIT", 1]]
+  ↳ app/controllers/mapbox_controller.rb:13
+  [1m[36mPower Load (0.1ms)[0m  [1m[34mSELECT "powers".* FROM "powers" WHERE "powers"."room_id" = ?[0m  [["room_id", 2]]
+  ↳ app/controllers/mapbox_controller.rb:10
+  [1m[36mCACHE User Load (0.0ms)[0m  [1m[34mSELECT  "users".* FROM "users" WHERE "users"."id" = ? LIMIT ?[0m  [["id", 1], ["LIMIT", 1]]
+  ↳ app/controllers/mapbox_controller.rb:13
+  [1m[36mPower Load (0.1ms)[0m  [1m[34mSELECT "powers".* FROM "powers" WHERE "powers"."room_id" = ?[0m  [["room_id", 3]]
+  ↳ app/controllers/mapbox_controller.rb:10
+  [1m[36mCACHE User Load (0.0ms)[0m  [1m[34mSELECT  "users".* FROM "users" WHERE "users"."id" = ? LIMIT ?[0m  [["id", 1], ["LIMIT", 1]]
+  ↳ app/controllers/mapbox_controller.rb:13
+  [1m[36mPower Load (0.2ms)[0m  [1m[34mSELECT "powers".* FROM "powers" WHERE "powers"."room_id" = ?[0m  [["room_id", 4]]
+  ↳ app/controllers/mapbox_controller.rb:10
+  [1m[36mCACHE User Load (0.0ms)[0m  [1m[34mSELECT  "users".* FROM "users" WHERE "users"."id" = ? LIMIT ?[0m  [["id", 1], ["LIMIT", 1]]
+  ↳ app/controllers/mapbox_controller.rb:13
+  [1m[36mPower Load (0.1ms)[0m  [1m[34mSELECT "powers".* FROM "powers" WHERE "powers"."room_id" = ?[0m  [["room_id", 5]]
+  ↳ app/controllers/mapbox_controller.rb:10
+  [1m[36mCACHE User Load (0.0ms)[0m  [1m[34mSELECT  "users".* FROM "users" WHERE "users"."id" = ? LIMIT ?[0m  [["id", 1], ["LIMIT", 1]]
+  ↳ app/controllers/mapbox_controller.rb:13
+  [1m[36mPower Load (0.1ms)[0m  [1m[34mSELECT "powers".* FROM "powers" WHERE "powers"."room_id" = ?[0m  [["room_id", 6]]
+  ↳ app/controllers/mapbox_controller.rb:10
+  [1m[36mCACHE User Load (0.0ms)[0m  [1m[34mSELECT  "users".* FROM "users" WHERE "users"."id" = ? LIMIT ?[0m  [["id", 1], ["LIMIT", 1]]
+  ↳ app/controllers/mapbox_controller.rb:13
+  [1m[36mPower Load (0.1ms)[0m  [1m[34mSELECT "powers".* FROM "powers" WHERE "powers"."room_id" = ?[0m  [["room_id", 7]]
+  ↳ app/controllers/mapbox_controller.rb:10
+  [1m[36mCACHE User Load (0.0ms)[0m  [1m[34mSELECT  "users".* FROM "users" WHERE "users"."id" = ? LIMIT ?[0m  [["id", 1], ["LIMIT", 1]]
+  ↳ app/controllers/mapbox_controller.rb:13
+  Rendering mapbox/show.html.haml within layouts/application
+  Rendered mapbox/show.html.haml within layouts/application (13.7ms)
+  [1m[36mUser Load (0.2ms)[0m  [1m[34mSELECT  "users".* FROM "users" WHERE "users"."id" = ? LIMIT ?[0m  [["id", 6], ["LIMIT", 1]]
+  ↳ app/controllers/application_controller.rb:10
+  Rendered layouts/_navbar.html.haml (8.7ms)
+  Rendered layouts/_footer.html.haml (15.2ms)
+Completed 200 OK in 1069ms (Views: 816.9ms | ActiveRecord: 4.4ms)
+
+
+Started GET "/dashboard.json" for 127.0.0.1 at 2018-09-17 20:55:43 +0200
+Processing by MapboxController#show as JSON
+  [1m[36mRoom Load (0.3ms)[0m  [1m[34mSELECT "rooms".* FROM "rooms"[0m
+  ↳ app/controllers/mapbox_controller.rb:6
+  [1m[36mPower Load (0.1ms)[0m  [1m[34mSELECT "powers".* FROM "powers" WHERE "powers"."room_id" = ?[0m  [["room_id", 1]]
+  ↳ app/controllers/mapbox_controller.rb:10
+  [1m[36mUser Load (0.1ms)[0m  [1m[34mSELECT  "users".* FROM "users" WHERE "users"."id" = ? LIMIT ?[0m  [["id", 1], ["LIMIT", 1]]
+  ↳ app/controllers/mapbox_controller.rb:13
+  [1m[36mPower Load (0.2ms)[0m  [1m[34mSELECT "powers".* FROM "powers" WHERE "powers"."room_id" = ?[0m  [["room_id", 2]]
+  ↳ app/controllers/mapbox_controller.rb:10
+  [1m[36mCACHE User Load (0.0ms)[0m  [1m[34mSELECT  "users".* FROM "users" WHERE "users"."id" = ? LIMIT ?[0m  [["id", 1], ["LIMIT", 1]]
+  ↳ app/controllers/mapbox_controller.rb:13
+  [1m[36mPower Load (0.2ms)[0m  [1m[34mSELECT "powers".* FROM "powers" WHERE "powers"."room_id" = ?[0m  [["room_id", 3]]
+  ↳ app/controllers/mapbox_controller.rb:10
+  [1m[36mCACHE User Load (0.0ms)[0m  [1m[34mSELECT  "users".* FROM "users" WHERE "users"."id" = ? LIMIT ?[0m  [["id", 1], ["LIMIT", 1]]
+  ↳ app/controllers/mapbox_controller.rb:13
+  [1m[36mPower Load (0.1ms)[0m  [1m[34mSELECT "powers".* FROM "powers" WHERE "powers"."room_id" = ?[0m  [["room_id", 4]]
+  ↳ app/controllers/mapbox_controller.rb:10
+  [1m[36mCACHE User Load (0.0ms)[0m  [1m[34mSELECT  "users".* FROM "users" WHERE "users"."id" = ? LIMIT ?[0m  [["id", 1], ["LIMIT", 1]]
+  ↳ app/controllers/mapbox_controller.rb:13
+  [1m[36mPower Load (0.1ms)[0m  [1m[34mSELECT "powers".* FROM "powers" WHERE "powers"."room_id" = ?[0m  [["room_id", 5]]
+  ↳ app/controllers/mapbox_controller.rb:10
+  [1m[36mCACHE User Load (0.0ms)[0m  [1m[34mSELECT  "users".* FROM "users" WHERE "users"."id" = ? LIMIT ?[0m  [["id", 1], ["LIMIT", 1]]
+  ↳ app/controllers/mapbox_controller.rb:13
+  [1m[36mPower Load (0.1ms)[0m  [1m[34mSELECT "powers".* FROM "powers" WHERE "powers"."room_id" = ?[0m  [["room_id", 6]]
+  ↳ app/controllers/mapbox_controller.rb:10
+  [1m[36mCACHE User Load (0.0ms)[0m  [1m[34mSELECT  "users".* FROM "users" WHERE "users"."id" = ? LIMIT ?[0m  [["id", 1], ["LIMIT", 1]]
+  ↳ app/controllers/mapbox_controller.rb:13
+  [1m[36mPower Load (0.1ms)[0m  [1m[34mSELECT "powers".* FROM "powers" WHERE "powers"."room_id" = ?[0m  [["room_id", 7]]
+  ↳ app/controllers/mapbox_controller.rb:10
+  [1m[36mCACHE User Load (0.0ms)[0m  [1m[34mSELECT  "users".* FROM "users" WHERE "users"."id" = ? LIMIT ?[0m  [["id", 1], ["LIMIT", 1]]
+  ↳ app/controllers/mapbox_controller.rb:13
+Completed 200 OK in 18ms (Views: 0.1ms | ActiveRecord: 1.6ms)
+
+
+Started GET "/dashboard.json" for 127.0.0.1 at 2018-09-17 20:55:43 +0200
+Processing by MapboxController#show as JSON
+  [1m[36mRoom Load (0.2ms)[0m  [1m[34mSELECT "rooms".* FROM "rooms"[0m
+  ↳ app/controllers/mapbox_controller.rb:6
+  [1m[36mPower Load (0.1ms)[0m  [1m[34mSELECT "powers".* FROM "powers" WHERE "powers"."room_id" = ?[0m  [["room_id", 1]]
+  ↳ app/controllers/mapbox_controller.rb:10
+  [1m[36mUser Load (0.1ms)[0m  [1m[34mSELECT  "users".* FROM "users" WHERE "users"."id" = ? LIMIT ?[0m  [["id", 1], ["LIMIT", 1]]
+  ↳ app/controllers/mapbox_controller.rb:13
+  [1m[36mPower Load (0.3ms)[0m  [1m[34mSELECT "powers".* FROM "powers" WHERE "powers"."room_id" = ?[0m  [["room_id", 2]]
+  ↳ app/controllers/mapbox_controller.rb:10
+  [1m[36mCACHE User Load (0.0ms)[0m  [1m[34mSELECT  "users".* FROM "users" WHERE "users"."id" = ? LIMIT ?[0m  [["id", 1], ["LIMIT", 1]]
+  ↳ app/controllers/mapbox_controller.rb:13
+  [1m[36mPower Load (0.1ms)[0m  [1m[34mSELECT "powers".* FROM "powers" WHERE "powers"."room_id" = ?[0m  [["room_id", 3]]
+  ↳ app/controllers/mapbox_controller.rb:10
+  [1m[36mCACHE User Load (0.0ms)[0m  [1m[34mSELECT  "users".* FROM "users" WHERE "users"."id" = ? LIMIT ?[0m  [["id", 1], ["LIMIT", 1]]
+  ↳ app/controllers/mapbox_controller.rb:13
+  [1m[36mPower Load (0.1ms)[0m  [1m[34mSELECT "powers".* FROM "powers" WHERE "powers"."room_id" = ?[0m  [["room_id", 4]]
+  ↳ app/controllers/mapbox_controller.rb:10
+  [1m[36mCACHE User Load (0.0ms)[0m  [1m[34mSELECT  "users".* FROM "users" WHERE "users"."id" = ? LIMIT ?[0m  [["id", 1], ["LIMIT", 1]]
+  ↳ app/controllers/mapbox_controller.rb:13
+  [1m[36mPower Load (0.1ms)[0m  [1m[34mSELECT "powers".* FROM "powers" WHERE "powers"."room_id" = ?[0m  [["room_id", 5]]
+  ↳ app/controllers/mapbox_controller.rb:10
+  [1m[36mCACHE User Load (0.0ms)[0m  [1m[34mSELECT  "users".* FROM "users" WHERE "users"."id" = ? LIMIT ?[0m  [["id", 1], ["LIMIT", 1]]
+  ↳ app/controllers/mapbox_controller.rb:13
+  [1m[36mPower Load (0.1ms)[0m  [1m[34mSELECT "powers".* FROM "powers" WHERE "powers"."room_id" = ?[0m  [["room_id", 6]]
+  ↳ app/controllers/mapbox_controller.rb:10
+  [1m[36mCACHE User Load (0.0ms)[0m  [1m[34mSELECT  "users".* FROM "users" WHERE "users"."id" = ? LIMIT ?[0m  [["id", 1], ["LIMIT", 1]]
+  ↳ app/controllers/mapbox_controller.rb:13
+  [1m[36mPower Load (0.1ms)[0m  [1m[34mSELECT "powers".* FROM "powers" WHERE "powers"."room_id" = ?[0m  [["room_id", 7]]
+  ↳ app/controllers/mapbox_controller.rb:10
+  [1m[36mCACHE User Load (0.0ms)[0m  [1m[34mSELECT  "users".* FROM "users" WHERE "users"."id" = ? LIMIT ?[0m  [["id", 1], ["LIMIT", 1]]
+  ↳ app/controllers/mapbox_controller.rb:13
+Completed 200 OK in 17ms (Views: 0.1ms | ActiveRecord: 1.4ms)
+
+
+Started GET "/users/6" for 127.0.0.1 at 2018-09-17 20:55:50 +0200
+Processing by UsersController#show as HTML
+  Parameters: {"id"=>"6"}
+  [1m[36mUser Load (0.2ms)[0m  [1m[34mSELECT  "users".* FROM "users" WHERE "users"."id" = ? LIMIT ?[0m  [["id", 6], ["LIMIT", 1]]
+  ↳ app/controllers/users_controller.rb:6
+  Rendering users/show.html.haml within layouts/application
+  Rendered users/show.html.haml within layouts/application (234.8ms)
+Completed 500 Internal Server Error in 243ms (ActiveRecord: 0.2ms)
+
+
+  
+ActionView::Template::Error (undefined method `achievement_user_path' for #<#<Class:0x00007fca74055f50>:0x00007fca740543a8>):
+    17:             %h1 EMAIL:
+    18:             %p #{@user.email}
+    19:           %br
+    20:           =link_to achievement_user_path(@user) do
+    21:             %input.btn.btn-sm.btn-success{:type => "submit", :value => "Achievements"}
+    22:         .col-lg-6
+    23:           %label
+  
+app/views/users/show.html.haml:20:in `_app_views_users_show_html_haml___2961104271410164193_70253753316260'
+Started GET "/" for 127.0.0.1 at 2018-09-17 21:03:51 +0200
+  [1m[35m (0.2ms)[0m  [1m[34mSELECT "schema_migrations"."version" FROM "schema_migrations" ORDER BY "schema_migrations"."version" ASC[0m
+  ↳ vendor/bundle/gems/activerecord-5.2.0/lib/active_record/log_subscriber.rb:98
+Processing by MapboxController#show as HTML
+  [1m[36mRoom Load (0.2ms)[0m  [1m[34mSELECT "rooms".* FROM "rooms"[0m
+  ↳ app/controllers/mapbox_controller.rb:6
+  [1m[36mPower Load (0.2ms)[0m  [1m[34mSELECT "powers".* FROM "powers" WHERE "powers"."room_id" = ?[0m  [["room_id", 1]]
+  ↳ app/controllers/mapbox_controller.rb:10
+  [1m[36mUser Load (0.2ms)[0m  [1m[34mSELECT  "users".* FROM "users" WHERE "users"."id" = ? LIMIT ?[0m  [["id", 1], ["LIMIT", 1]]
+  ↳ app/controllers/mapbox_controller.rb:13
+  [1m[36mPower Load (0.2ms)[0m  [1m[34mSELECT "powers".* FROM "powers" WHERE "powers"."room_id" = ?[0m  [["room_id", 2]]
+  ↳ app/controllers/mapbox_controller.rb:10
+  [1m[36mCACHE User Load (0.0ms)[0m  [1m[34mSELECT  "users".* FROM "users" WHERE "users"."id" = ? LIMIT ?[0m  [["id", 1], ["LIMIT", 1]]
+  ↳ app/controllers/mapbox_controller.rb:13
+  [1m[36mPower Load (0.1ms)[0m  [1m[34mSELECT "powers".* FROM "powers" WHERE "powers"."room_id" = ?[0m  [["room_id", 3]]
+  ↳ app/controllers/mapbox_controller.rb:10
+  [1m[36mCACHE User Load (0.0ms)[0m  [1m[34mSELECT  "users".* FROM "users" WHERE "users"."id" = ? LIMIT ?[0m  [["id", 1], ["LIMIT", 1]]
+  ↳ app/controllers/mapbox_controller.rb:13
+  [1m[36mPower Load (0.1ms)[0m  [1m[34mSELECT "powers".* FROM "powers" WHERE "powers"."room_id" = ?[0m  [["room_id", 4]]
+  ↳ app/controllers/mapbox_controller.rb:10
+  [1m[36mCACHE User Load (0.0ms)[0m  [1m[34mSELECT  "users".* FROM "users" WHERE "users"."id" = ? LIMIT ?[0m  [["id", 1], ["LIMIT", 1]]
+  ↳ app/controllers/mapbox_controller.rb:13
+  [1m[36mPower Load (0.2ms)[0m  [1m[34mSELECT "powers".* FROM "powers" WHERE "powers"."room_id" = ?[0m  [["room_id", 5]]
+  ↳ app/controllers/mapbox_controller.rb:10
+  [1m[36mCACHE User Load (0.0ms)[0m  [1m[34mSELECT  "users".* FROM "users" WHERE "users"."id" = ? LIMIT ?[0m  [["id", 1], ["LIMIT", 1]]
+  ↳ app/controllers/mapbox_controller.rb:13
+  [1m[36mPower Load (0.1ms)[0m  [1m[34mSELECT "powers".* FROM "powers" WHERE "powers"."room_id" = ?[0m  [["room_id", 6]]
+  ↳ app/controllers/mapbox_controller.rb:10
+  [1m[36mCACHE User Load (0.0ms)[0m  [1m[34mSELECT  "users".* FROM "users" WHERE "users"."id" = ? LIMIT ?[0m  [["id", 1], ["LIMIT", 1]]
+  ↳ app/controllers/mapbox_controller.rb:13
+  [1m[36mPower Load (0.2ms)[0m  [1m[34mSELECT "powers".* FROM "powers" WHERE "powers"."room_id" = ?[0m  [["room_id", 7]]
+  ↳ app/controllers/mapbox_controller.rb:10
+  [1m[36mCACHE User Load (0.0ms)[0m  [1m[34mSELECT  "users".* FROM "users" WHERE "users"."id" = ? LIMIT ?[0m  [["id", 1], ["LIMIT", 1]]
+  ↳ app/controllers/mapbox_controller.rb:13
+  Rendering mapbox/show.html.haml within layouts/application
+  Rendered mapbox/show.html.haml within layouts/application (8.7ms)
+  Rendered layouts/_navbar.html.haml (5.7ms)
+  Rendered layouts/_footer.html.haml (16.9ms)
+Completed 200 OK in 607ms (Views: 503.0ms | ActiveRecord: 3.7ms)
+
+
+Started GET "/dashboard.json" for 127.0.0.1 at 2018-09-17 21:03:52 +0200
+Processing by MapboxController#show as JSON
+  [1m[36mRoom Load (0.2ms)[0m  [1m[34mSELECT "rooms".* FROM "rooms"[0m
+  ↳ app/controllers/mapbox_controller.rb:6
+  [1m[36mPower Load (0.1ms)[0m  [1m[34mSELECT "powers".* FROM "powers" WHERE "powers"."room_id" = ?[0m  [["room_id", 1]]
+  ↳ app/controllers/mapbox_controller.rb:10
+  [1m[36mUser Load (0.1ms)[0m  [1m[34mSELECT  "users".* FROM "users" WHERE "users"."id" = ? LIMIT ?[0m  [["id", 1], ["LIMIT", 1]]
+  ↳ app/controllers/mapbox_controller.rb:13
+  [1m[36mPower Load (0.1ms)[0m  [1m[34mSELECT "powers".* FROM "powers" WHERE "powers"."room_id" = ?[0m  [["room_id", 2]]
+  ↳ app/controllers/mapbox_controller.rb:10
+  [1m[36mCACHE User Load (0.0ms)[0m  [1m[34mSELECT  "users".* FROM "users" WHERE "users"."id" = ? LIMIT ?[0m  [["id", 1], ["LIMIT", 1]]
+  ↳ app/controllers/mapbox_controller.rb:13
+  [1m[36mPower Load (0.1ms)[0m  [1m[34mSELECT "powers".* FROM "powers" WHERE "powers"."room_id" = ?[0m  [["room_id", 3]]
+  ↳ app/controllers/mapbox_controller.rb:10
+  [1m[36mCACHE User Load (0.0ms)[0m  [1m[34mSELECT  "users".* FROM "users" WHERE "users"."id" = ? LIMIT ?[0m  [["id", 1], ["LIMIT", 1]]
+  ↳ app/controllers/mapbox_controller.rb:13
+  [1m[36mPower Load (0.1ms)[0m  [1m[34mSELECT "powers".* FROM "powers" WHERE "powers"."room_id" = ?[0m  [["room_id", 4]]
+  ↳ app/controllers/mapbox_controller.rb:10
+  [1m[36mCACHE User Load (0.0ms)[0m  [1m[34mSELECT  "users".* FROM "users" WHERE "users"."id" = ? LIMIT ?[0m  [["id", 1], ["LIMIT", 1]]
+  ↳ app/controllers/mapbox_controller.rb:13
+  [1m[36mPower Load (0.1ms)[0m  [1m[34mSELECT "powers".* FROM "powers" WHERE "powers"."room_id" = ?[0m  [["room_id", 5]]
+  ↳ app/controllers/mapbox_controller.rb:10
+  [1m[36mCACHE User Load (0.0ms)[0m  [1m[34mSELECT  "users".* FROM "users" WHERE "users"."id" = ? LIMIT ?[0m  [["id", 1], ["LIMIT", 1]]
+  ↳ app/controllers/mapbox_controller.rb:13
+  [1m[36mPower Load (0.1ms)[0m  [1m[34mSELECT "powers".* FROM "powers" WHERE "powers"."room_id" = ?[0m  [["room_id", 6]]
+  ↳ app/controllers/mapbox_controller.rb:10
+  [1m[36mCACHE User Load (0.0ms)[0m  [1m[34mSELECT  "users".* FROM "users" WHERE "users"."id" = ? LIMIT ?[0m  [["id", 1], ["LIMIT", 1]]
+  ↳ app/controllers/mapbox_controller.rb:13
+  [1m[36mPower Load (0.1ms)[0m  [1m[34mSELECT "powers".* FROM "powers" WHERE "powers"."room_id" = ?[0m  [["room_id", 7]]
+  ↳ app/controllers/mapbox_controller.rb:10
+  [1m[36mCACHE User Load (0.0ms)[0m  [1m[34mSELECT  "users".* FROM "users" WHERE "users"."id" = ? LIMIT ?[0m  [["id", 1], ["LIMIT", 1]]
+  ↳ app/controllers/mapbox_controller.rb:13
+Completed 200 OK in 16ms (Views: 0.2ms | ActiveRecord: 1.2ms)
+
+
+Started GET "/dashboard.json" for 127.0.0.1 at 2018-09-17 21:03:52 +0200
+Processing by MapboxController#show as JSON
+  [1m[36mRoom Load (0.3ms)[0m  [1m[34mSELECT "rooms".* FROM "rooms"[0m
+  ↳ app/controllers/mapbox_controller.rb:6
+  [1m[36mPower Load (0.1ms)[0m  [1m[34mSELECT "powers".* FROM "powers" WHERE "powers"."room_id" = ?[0m  [["room_id", 1]]
+  ↳ app/controllers/mapbox_controller.rb:10
+  [1m[36mUser Load (0.1ms)[0m  [1m[34mSELECT  "users".* FROM "users" WHERE "users"."id" = ? LIMIT ?[0m  [["id", 1], ["LIMIT", 1]]
+  ↳ app/controllers/mapbox_controller.rb:13
+  [1m[36mPower Load (0.1ms)[0m  [1m[34mSELECT "powers".* FROM "powers" WHERE "powers"."room_id" = ?[0m  [["room_id", 2]]
+  ↳ app/controllers/mapbox_controller.rb:10
+  [1m[36mCACHE User Load (0.0ms)[0m  [1m[34mSELECT  "users".* FROM "users" WHERE "users"."id" = ? LIMIT ?[0m  [["id", 1], ["LIMIT", 1]]
+  ↳ app/controllers/mapbox_controller.rb:13
+  [1m[36mPower Load (0.1ms)[0m  [1m[34mSELECT "powers".* FROM "powers" WHERE "powers"."room_id" = ?[0m  [["room_id", 3]]
+  ↳ app/controllers/mapbox_controller.rb:10
+  [1m[36mCACHE User Load (0.0ms)[0m  [1m[34mSELECT  "users".* FROM "users" WHERE "users"."id" = ? LIMIT ?[0m  [["id", 1], ["LIMIT", 1]]
+  ↳ app/controllers/mapbox_controller.rb:13
+  [1m[36mPower Load (0.2ms)[0m  [1m[34mSELECT "powers".* FROM "powers" WHERE "powers"."room_id" = ?[0m  [["room_id", 4]]
+  ↳ app/controllers/mapbox_controller.rb:10
+  [1m[36mCACHE User Load (0.0ms)[0m  [1m[34mSELECT  "users".* FROM "users" WHERE "users"."id" = ? LIMIT ?[0m  [["id", 1], ["LIMIT", 1]]
+  ↳ app/controllers/mapbox_controller.rb:13
+  [1m[36mPower Load (0.1ms)[0m  [1m[34mSELECT "powers".* FROM "powers" WHERE "powers"."room_id" = ?[0m  [["room_id", 5]]
+  ↳ app/controllers/mapbox_controller.rb:10
+  [1m[36mCACHE User Load (0.0ms)[0m  [1m[34mSELECT  "users".* FROM "users" WHERE "users"."id" = ? LIMIT ?[0m  [["id", 1], ["LIMIT", 1]]
+  ↳ app/controllers/mapbox_controller.rb:13
+  [1m[36mPower Load (0.2ms)[0m  [1m[34mSELECT "powers".* FROM "powers" WHERE "powers"."room_id" = ?[0m  [["room_id", 6]]
+  ↳ app/controllers/mapbox_controller.rb:10
+  [1m[36mCACHE User Load (0.0ms)[0m  [1m[34mSELECT  "users".* FROM "users" WHERE "users"."id" = ? LIMIT ?[0m  [["id", 1], ["LIMIT", 1]]
+  ↳ app/controllers/mapbox_controller.rb:13
+  [1m[36mPower Load (0.1ms)[0m  [1m[34mSELECT "powers".* FROM "powers" WHERE "powers"."room_id" = ?[0m  [["room_id", 7]]
+  ↳ app/controllers/mapbox_controller.rb:10
+  [1m[36mCACHE User Load (0.0ms)[0m  [1m[34mSELECT  "users".* FROM "users" WHERE "users"."id" = ? LIMIT ?[0m  [["id", 1], ["LIMIT", 1]]
+  ↳ app/controllers/mapbox_controller.rb:13
+Completed 200 OK in 16ms (Views: 0.1ms | ActiveRecord: 1.6ms)
+
+
+Started GET "/login" for 127.0.0.1 at 2018-09-17 21:03:59 +0200
+Processing by SessionsController#new as HTML
+  Rendering sessions/new.html.haml within layouts/application
+  Rendered sessions/new.html.haml within layouts/application (33.1ms)
+  Rendered layouts/_navbar.html.haml (4.8ms)
+  Rendered layouts/_footer.html.haml (14.0ms)
+Completed 200 OK in 130ms (Views: 124.2ms | ActiveRecord: 0.0ms)
+
+
+Started POST "/login" for 127.0.0.1 at 2018-09-17 21:04:11 +0200
+Processing by SessionsController#create as HTML
+  Parameters: {"utf8"=>"✓", "authenticity_token"=>"UWo4WY2An70aCIlWs7XrHACNFCI9k6c9flt3hUan1gZYziFABtFFhex2zD0vCgRbtS9dR10U1xSH7gRbbRnKJw==", "session"=>{"email"=>"danieligno@gmail.com", "password"=>"[FILTERED]", "remember_me"=>"1"}, "commit"=>"Log in"}
+  [1m[36mUser Load (0.4ms)[0m  [1m[34mSELECT  "users".* FROM "users" WHERE "users"."email" = ? LIMIT ?[0m  [["email", "danieligno@gmail.com"], ["LIMIT", 1]]
+  ↳ app/controllers/sessions_controller.rb:30
+  Rendering sessions/new.html.haml within layouts/application
+  Rendered sessions/new.html.haml within layouts/application (11.2ms)
+  Rendered layouts/_navbar.html.haml (4.5ms)
+  Rendered layouts/_footer.html.haml (24.1ms)
+Completed 200 OK in 131ms (Views: 127.7ms | ActiveRecord: 0.4ms)
+
+
+Started POST "/login" for 127.0.0.1 at 2018-09-17 21:04:21 +0200
+Processing by SessionsController#create as HTML
+  Parameters: {"utf8"=>"✓", "authenticity_token"=>"Uh2+OJ1Y/S/Zc8+HHSGkUG31lihGPN5tv/nQlXOvcMpbuachFgknFy8NiuyBnksX2FffTSa7rkRGTKNLWBFs6w==", "session"=>{"email"=>"danieligno10@gmail.com", "password"=>"[FILTERED]", "remember_me"=>"1"}, "commit"=>"Log in"}
+  [1m[36mUser Load (3.7ms)[0m  [1m[34mSELECT  "users".* FROM "users" WHERE "users"."email" = ? LIMIT ?[0m  [["email", "danieligno10@gmail.com"], ["LIMIT", 1]]
+  ↳ app/controllers/sessions_controller.rb:30
+Redirected to http://localhost:3000/
+Completed 302 Found in 101ms (ActiveRecord: 3.7ms)
+
+
+Started GET "/" for 127.0.0.1 at 2018-09-17 21:04:21 +0200
+Processing by MapboxController#show as HTML
+  [1m[36mRoom Load (0.3ms)[0m  [1m[34mSELECT "rooms".* FROM "rooms"[0m
+  ↳ app/controllers/mapbox_controller.rb:6
+  [1m[36mPower Load (0.2ms)[0m  [1m[34mSELECT "powers".* FROM "powers" WHERE "powers"."room_id" = ?[0m  [["room_id", 1]]
+  ↳ app/controllers/mapbox_controller.rb:10
+  [1m[36mUser Load (0.2ms)[0m  [1m[34mSELECT  "users".* FROM "users" WHERE "users"."id" = ? LIMIT ?[0m  [["id", 1], ["LIMIT", 1]]
+  ↳ app/controllers/mapbox_controller.rb:13
+  [1m[36mPower Load (0.2ms)[0m  [1m[34mSELECT "powers".* FROM "powers" WHERE "powers"."room_id" = ?[0m  [["room_id", 2]]
+  ↳ app/controllers/mapbox_controller.rb:10
+  [1m[36mCACHE User Load (0.0ms)[0m  [1m[34mSELECT  "users".* FROM "users" WHERE "users"."id" = ? LIMIT ?[0m  [["id", 1], ["LIMIT", 1]]
+  ↳ app/controllers/mapbox_controller.rb:13
+  [1m[36mPower Load (0.2ms)[0m  [1m[34mSELECT "powers".* FROM "powers" WHERE "powers"."room_id" = ?[0m  [["room_id", 3]]
+  ↳ app/controllers/mapbox_controller.rb:10
+  [1m[36mCACHE User Load (0.0ms)[0m  [1m[34mSELECT  "users".* FROM "users" WHERE "users"."id" = ? LIMIT ?[0m  [["id", 1], ["LIMIT", 1]]
+  ↳ app/controllers/mapbox_controller.rb:13
+  [1m[36mPower Load (0.2ms)[0m  [1m[34mSELECT "powers".* FROM "powers" WHERE "powers"."room_id" = ?[0m  [["room_id", 4]]
+  ↳ app/controllers/mapbox_controller.rb:10
+  [1m[36mCACHE User Load (0.0ms)[0m  [1m[34mSELECT  "users".* FROM "users" WHERE "users"."id" = ? LIMIT ?[0m  [["id", 1], ["LIMIT", 1]]
+  ↳ app/controllers/mapbox_controller.rb:13
+  [1m[36mPower Load (0.2ms)[0m  [1m[34mSELECT "powers".* FROM "powers" WHERE "powers"."room_id" = ?[0m  [["room_id", 5]]
+  ↳ app/controllers/mapbox_controller.rb:10
+  [1m[36mCACHE User Load (0.0ms)[0m  [1m[34mSELECT  "users".* FROM "users" WHERE "users"."id" = ? LIMIT ?[0m  [["id", 1], ["LIMIT", 1]]
+  ↳ app/controllers/mapbox_controller.rb:13
+  [1m[36mPower Load (0.2ms)[0m  [1m[34mSELECT "powers".* FROM "powers" WHERE "powers"."room_id" = ?[0m  [["room_id", 6]]
+  ↳ app/controllers/mapbox_controller.rb:10
+  [1m[36mCACHE User Load (0.0ms)[0m  [1m[34mSELECT  "users".* FROM "users" WHERE "users"."id" = ? LIMIT ?[0m  [["id", 1], ["LIMIT", 1]]
+  ↳ app/controllers/mapbox_controller.rb:13
+  [1m[36mPower Load (0.2ms)[0m  [1m[34mSELECT "powers".* FROM "powers" WHERE "powers"."room_id" = ?[0m  [["room_id", 7]]
+  ↳ app/controllers/mapbox_controller.rb:10
+  [1m[36mCACHE User Load (0.0ms)[0m  [1m[34mSELECT  "users".* FROM "users" WHERE "users"."id" = ? LIMIT ?[0m  [["id", 1], ["LIMIT", 1]]
+  ↳ app/controllers/mapbox_controller.rb:13
+  Rendering mapbox/show.html.haml within layouts/application
+  Rendered mapbox/show.html.haml within layouts/application (15.6ms)
+  Rendered layouts/_navbar.html.haml (5.4ms)
+  Rendered layouts/_footer.html.haml (26.3ms)
+Completed 200 OK in 173ms (Views: 149.5ms | ActiveRecord: 1.9ms)
+
+
+Started GET "/dashboard.json" for 127.0.0.1 at 2018-09-17 21:04:21 +0200
+Processing by MapboxController#show as JSON
+  [1m[36mRoom Load (0.2ms)[0m  [1m[34mSELECT "rooms".* FROM "rooms"[0m
+  ↳ app/controllers/mapbox_controller.rb:6
+  [1m[36mPower Load (0.1ms)[0m  [1m[34mSELECT "powers".* FROM "powers" WHERE "powers"."room_id" = ?[0m  [["room_id", 1]]
+  ↳ app/controllers/mapbox_controller.rb:10
+  [1m[36mUser Load (0.1ms)[0m  [1m[34mSELECT  "users".* FROM "users" WHERE "users"."id" = ? LIMIT ?[0m  [["id", 1], ["LIMIT", 1]]
+  ↳ app/controllers/mapbox_controller.rb:13
+  [1m[36mPower Load (0.1ms)[0m  [1m[34mSELECT "powers".* FROM "powers" WHERE "powers"."room_id" = ?[0m  [["room_id", 2]]
+  ↳ app/controllers/mapbox_controller.rb:10
+  [1m[36mCACHE User Load (0.0ms)[0m  [1m[34mSELECT  "users".* FROM "users" WHERE "users"."id" = ? LIMIT ?[0m  [["id", 1], ["LIMIT", 1]]
+  ↳ app/controllers/mapbox_controller.rb:13
+  [1m[36mPower Load (0.2ms)[0m  [1m[34mSELECT "powers".* FROM "powers" WHERE "powers"."room_id" = ?[0m  [["room_id", 3]]
+  ↳ app/controllers/mapbox_controller.rb:10
+  [1m[36mCACHE User Load (0.0ms)[0m  [1m[34mSELECT  "users".* FROM "users" WHERE "users"."id" = ? LIMIT ?[0m  [["id", 1], ["LIMIT", 1]]
+  ↳ app/controllers/mapbox_controller.rb:13
+  [1m[36mPower Load (0.1ms)[0m  [1m[34mSELECT "powers".* FROM "powers" WHERE "powers"."room_id" = ?[0m  [["room_id", 4]]
+  ↳ app/controllers/mapbox_controller.rb:10
+  [1m[36mCACHE User Load (0.0ms)[0m  [1m[34mSELECT  "users".* FROM "users" WHERE "users"."id" = ? LIMIT ?[0m  [["id", 1], ["LIMIT", 1]]
+  ↳ app/controllers/mapbox_controller.rb:13
+  [1m[36mPower Load (0.1ms)[0m  [1m[34mSELECT "powers".* FROM "powers" WHERE "powers"."room_id" = ?[0m  [["room_id", 5]]
+  ↳ app/controllers/mapbox_controller.rb:10
+  [1m[36mCACHE User Load (0.0ms)[0m  [1m[34mSELECT  "users".* FROM "users" WHERE "users"."id" = ? LIMIT ?[0m  [["id", 1], ["LIMIT", 1]]
+  ↳ app/controllers/mapbox_controller.rb:13
+  [1m[36mPower Load (0.1ms)[0m  [1m[34mSELECT "powers".* FROM "powers" WHERE "powers"."room_id" = ?[0m  [["room_id", 6]]
+  ↳ app/controllers/mapbox_controller.rb:10
+  [1m[36mCACHE User Load (0.0ms)[0m  [1m[34mSELECT  "users".* FROM "users" WHERE "users"."id" = ? LIMIT ?[0m  [["id", 1], ["LIMIT", 1]]
+  ↳ app/controllers/mapbox_controller.rb:13
+  [1m[36mPower Load (0.1ms)[0m  [1m[34mSELECT "powers".* FROM "powers" WHERE "powers"."room_id" = ?[0m  [["room_id", 7]]
+  ↳ app/controllers/mapbox_controller.rb:10
+  [1m[36mCACHE User Load (0.0ms)[0m  [1m[34mSELECT  "users".* FROM "users" WHERE "users"."id" = ? LIMIT ?[0m  [["id", 1], ["LIMIT", 1]]
+  ↳ app/controllers/mapbox_controller.rb:13
+Completed 200 OK in 16ms (Views: 0.1ms | ActiveRecord: 1.2ms)
+
+
+Started GET "/dashboard.json" for 127.0.0.1 at 2018-09-17 21:04:21 +0200
+Processing by MapboxController#show as JSON
+  [1m[36mRoom Load (0.5ms)[0m  [1m[34mSELECT "rooms".* FROM "rooms"[0m
+  ↳ app/controllers/mapbox_controller.rb:6
+  [1m[36mPower Load (0.1ms)[0m  [1m[34mSELECT "powers".* FROM "powers" WHERE "powers"."room_id" = ?[0m  [["room_id", 1]]
+  ↳ app/controllers/mapbox_controller.rb:10
+  [1m[36mUser Load (0.1ms)[0m  [1m[34mSELECT  "users".* FROM "users" WHERE "users"."id" = ? LIMIT ?[0m  [["id", 1], ["LIMIT", 1]]
+  ↳ app/controllers/mapbox_controller.rb:13
+  [1m[36mPower Load (0.1ms)[0m  [1m[34mSELECT "powers".* FROM "powers" WHERE "powers"."room_id" = ?[0m  [["room_id", 2]]
+  ↳ app/controllers/mapbox_controller.rb:10
+  [1m[36mCACHE User Load (0.0ms)[0m  [1m[34mSELECT  "users".* FROM "users" WHERE "users"."id" = ? LIMIT ?[0m  [["id", 1], ["LIMIT", 1]]
+  ↳ app/controllers/mapbox_controller.rb:13
+  [1m[36mPower Load (0.1ms)[0m  [1m[34mSELECT "powers".* FROM "powers" WHERE "powers"."room_id" = ?[0m  [["room_id", 3]]
+  ↳ app/controllers/mapbox_controller.rb:10
+  [1m[36mCACHE User Load (0.0ms)[0m  [1m[34mSELECT  "users".* FROM "users" WHERE "users"."id" = ? LIMIT ?[0m  [["id", 1], ["LIMIT", 1]]
+  ↳ app/controllers/mapbox_controller.rb:13
+  [1m[36mPower Load (0.1ms)[0m  [1m[34mSELECT "powers".* FROM "powers" WHERE "powers"."room_id" = ?[0m  [["room_id", 4]]
+  ↳ app/controllers/mapbox_controller.rb:10
+  [1m[36mCACHE User Load (0.1ms)[0m  [1m[34mSELECT  "users".* FROM "users" WHERE "users"."id" = ? LIMIT ?[0m  [["id", 1], ["LIMIT", 1]]
+  ↳ app/controllers/mapbox_controller.rb:13
+  [1m[36mPower Load (0.5ms)[0m  [1m[34mSELECT "powers".* FROM "powers" WHERE "powers"."room_id" = ?[0m  [["room_id", 5]]
+  ↳ app/controllers/mapbox_controller.rb:10
+  [1m[36mCACHE User Load (0.0ms)[0m  [1m[34mSELECT  "users".* FROM "users" WHERE "users"."id" = ? LIMIT ?[0m  [["id", 1], ["LIMIT", 1]]
+  ↳ app/controllers/mapbox_controller.rb:13
+  [1m[36mPower Load (0.1ms)[0m  [1m[34mSELECT "powers".* FROM "powers" WHERE "powers"."room_id" = ?[0m  [["room_id", 6]]
+  ↳ app/controllers/mapbox_controller.rb:10
+  [1m[36mCACHE User Load (0.0ms)[0m  [1m[34mSELECT  "users".* FROM "users" WHERE "users"."id" = ? LIMIT ?[0m  [["id", 1], ["LIMIT", 1]]
+  ↳ app/controllers/mapbox_controller.rb:13
+  [1m[36mPower Load (0.2ms)[0m  [1m[34mSELECT "powers".* FROM "powers" WHERE "powers"."room_id" = ?[0m  [["room_id", 7]]
+  ↳ app/controllers/mapbox_controller.rb:10
+  [1m[36mCACHE User Load (0.0ms)[0m  [1m[34mSELECT  "users".* FROM "users" WHERE "users"."id" = ? LIMIT ?[0m  [["id", 1], ["LIMIT", 1]]
+  ↳ app/controllers/mapbox_controller.rb:13
+Completed 200 OK in 18ms (Views: 0.1ms | ActiveRecord: 2.0ms)
+
+
+Started GET "/login" for 127.0.0.1 at 2018-09-17 21:04:40 +0200
+Processing by SessionsController#new as HTML
+  Rendering sessions/new.html.haml within layouts/application
+  Rendered sessions/new.html.haml within layouts/application (25.6ms)
+  Rendered layouts/_navbar.html.haml (6.1ms)
+  Rendered layouts/_footer.html.haml (15.7ms)
+Completed 200 OK in 161ms (Views: 157.2ms | ActiveRecord: 0.0ms)
+
+
+Started GET "/auth/google_oauth2" for 127.0.0.1 at 2018-09-17 21:04:42 +0200
+Started GET "/auth/google_oauth2/callback?state=9eae932b2d2ed37dd32ac5431e00d771a912354c9d55ea03&code=4/XQB1ymzpqe6KD69PPQFlJap2EzbSEnrqQ-QBie5AKWv0tBNginvrK3mJnDtxqFWTU2y5nTF5SSmxvlQ8gUC48GM&scope=https://www.googleapis.com/auth/userinfo.profile+https://www.googleapis.com/auth/userinfo.email" for 127.0.0.1 at 2018-09-17 21:04:48 +0200
+Processing by SessionsController#create as HTML
+  Parameters: {"state"=>"9eae932b2d2ed37dd32ac5431e00d771a912354c9d55ea03", "code"=>"4/XQB1ymzpqe6KD69PPQFlJap2EzbSEnrqQ-QBie5AKWv0tBNginvrK3mJnDtxqFWTU2y5nTF5SSmxvlQ8gUC48GM", "scope"=>"https://www.googleapis.com/auth/userinfo.profile https://www.googleapis.com/auth/userinfo.email", "provider"=>"google_oauth2"}
+  [1m[36mUser Load (0.6ms)[0m  [1m[34mSELECT  "users".* FROM "users" WHERE "users"."email" = ? LIMIT ?[0m  [["email", "matty.atty95@gmail.com"], ["LIMIT", 1]]
+  ↳ app/controllers/sessions_controller.rb:10
+  [1m[35m (0.3ms)[0m  [1m[36mbegin transaction[0m
+  ↳ app/models/user.rb:67
+  [1m[36mUser Create (0.4ms)[0m  [1m[32mINSERT INTO "users" ("username", "email", "created_at", "updated_at", "activation_digest", "activated") VALUES (?, ?, ?, ?, ?, ?)[0m  [["username", "Matteo Attenni"], ["email", "matty.atty95@gmail.com"], ["created_at", "2018-09-17 19:04:49.415975"], ["updated_at", "2018-09-17 19:04:49.415975"], ["activation_digest", "$2a$10$5vwP3scThaeykr9cummYuO8rbp/NzVdaOvILUmOchoji/nd5sqBHq"], ["activated", 1]]
+  ↳ app/models/user.rb:67
+  [1m[35m (84.0ms)[0m  [1m[36mcommit transaction[0m
+  ↳ app/models/user.rb:67
+  [1m[35m (0.3ms)[0m  [1m[36mbegin transaction[0m
+  ↳ app/models/user.rb:68
+  [1m[36mUser Update (3.9ms)[0m  [1m[33mUPDATE "users" SET "updated_at" = ?, "activated_at" = ? WHERE "users"."id" = ?[0m  [["updated_at", "2018-09-17 19:04:49.639344"], ["activated_at", "2018-09-17 19:04:49.635779"], ["id", 10]]
+  ↳ app/models/user.rb:68
+  [1m[35m (75.8ms)[0m  [1m[36mcommit transaction[0m
+  ↳ app/models/user.rb:68
+  [1m[35m (0.2ms)[0m  [1m[36mbegin transaction[0m
+  ↳ app/controllers/sessions_controller.rb:19
+  [1m[36mUser Exists (0.3ms)[0m  [1m[34mSELECT  1 AS one FROM "users" WHERE "users"."username" = ? AND "users"."id" != ? LIMIT ?[0m  [["username", "Matteo Attenni"], ["id", 10], ["LIMIT", 1]]
+  ↳ app/controllers/sessions_controller.rb:19
+  [1m[36mUser Exists (0.3ms)[0m  [1m[34mSELECT  1 AS one FROM "users" WHERE LOWER("users"."email") = LOWER(?) AND "users"."id" != ? LIMIT ?[0m  [["email", "matty.atty95@gmail.com"], ["id", 10], ["LIMIT", 1]]
+  ↳ app/controllers/sessions_controller.rb:19
+  [1m[35m (0.1ms)[0m  [1m[31mrollback transaction[0m
+  ↳ app/controllers/sessions_controller.rb:19
+Completed 406 Not Acceptable in 411ms (ActiveRecord: 166.2ms)
+
+
+  
+ActionController::UnknownFormat (SessionsController#create is missing a template for this request format and variant.
+
+request.formats: ["text/html"]
+request.variant: []
+
+NOTE! For XHR/Ajax or API requests, this action would normally respond with 204 No Content: an empty white screen. Since you're loading it in a web browser, we assume that you expected to actually render a template, not nothing, so we're showing an error to be extra-clear. If you expect 204 No Content, carry on. That's what you'll get from an XHR or API request. Give it a shot.):
+  
+vendor/bundle/gems/actionpack-5.2.0/lib/action_controller/metal/implicit_render.rb:55:in `default_render'
+vendor/bundle/gems/actionpack-5.2.0/lib/action_controller/metal/basic_implicit_render.rb:6:in `block in send_action'
+vendor/bundle/gems/actionpack-5.2.0/lib/action_controller/metal/basic_implicit_render.rb:6:in `tap'
+vendor/bundle/gems/actionpack-5.2.0/lib/action_controller/metal/basic_implicit_render.rb:6:in `send_action'
+vendor/bundle/gems/actionpack-5.2.0/lib/abstract_controller/base.rb:194:in `process_action'
+vendor/bundle/gems/actionpack-5.2.0/lib/action_controller/metal/rendering.rb:30:in `process_action'
+vendor/bundle/gems/actionpack-5.2.0/lib/abstract_controller/callbacks.rb:42:in `block in process_action'
+vendor/bundle/gems/activesupport-5.2.0/lib/active_support/callbacks.rb:132:in `run_callbacks'
+vendor/bundle/gems/actionpack-5.2.0/lib/abstract_controller/callbacks.rb:41:in `process_action'
+vendor/bundle/gems/actionpack-5.2.0/lib/action_controller/metal/rescue.rb:22:in `process_action'
+vendor/bundle/gems/actionpack-5.2.0/lib/action_controller/metal/instrumentation.rb:34:in `block in process_action'
+vendor/bundle/gems/activesupport-5.2.0/lib/active_support/notifications.rb:168:in `block in instrument'
+vendor/bundle/gems/activesupport-5.2.0/lib/active_support/notifications/instrumenter.rb:23:in `instrument'
+vendor/bundle/gems/activesupport-5.2.0/lib/active_support/notifications.rb:168:in `instrument'
+vendor/bundle/gems/actionpack-5.2.0/lib/action_controller/metal/instrumentation.rb:32:in `process_action'
+vendor/bundle/gems/actionpack-5.2.0/lib/action_controller/metal/params_wrapper.rb:256:in `process_action'
+vendor/bundle/gems/activerecord-5.2.0/lib/active_record/railties/controller_runtime.rb:24:in `process_action'
+vendor/bundle/gems/actionpack-5.2.0/lib/abstract_controller/base.rb:134:in `process'
+vendor/bundle/gems/actionview-5.2.0/lib/action_view/rendering.rb:32:in `process'
+vendor/bundle/gems/actionpack-5.2.0/lib/action_controller/metal.rb:191:in `dispatch'
+vendor/bundle/gems/actionpack-5.2.0/lib/action_controller/metal.rb:252:in `dispatch'
+vendor/bundle/gems/actionpack-5.2.0/lib/action_dispatch/routing/route_set.rb:52:in `dispatch'
+vendor/bundle/gems/actionpack-5.2.0/lib/action_dispatch/routing/route_set.rb:34:in `serve'
+vendor/bundle/gems/actionpack-5.2.0/lib/action_dispatch/journey/router.rb:52:in `block in serve'
+vendor/bundle/gems/actionpack-5.2.0/lib/action_dispatch/journey/router.rb:35:in `each'
+vendor/bundle/gems/actionpack-5.2.0/lib/action_dispatch/journey/router.rb:35:in `serve'
+vendor/bundle/gems/actionpack-5.2.0/lib/action_dispatch/routing/route_set.rb:840:in `call'
+vendor/bundle/bundler/gems/recurring_select-40c4f4122a2f/app/middleware/recurring_select_middleware.rb:24:in `call'
+vendor/bundle/gems/omniauth-1.8.1/lib/omniauth/strategy.rb:415:in `call_app!'
+vendor/bundle/gems/omniauth-1.8.1/lib/omniauth/strategy.rb:369:in `callback_phase'
+vendor/bundle/gems/omniauth-oauth2-1.3.1/lib/omniauth/strategies/oauth2.rb:79:in `callback_phase'
+vendor/bundle/gems/omniauth-1.8.1/lib/omniauth/strategy.rb:236:in `callback_call'
+vendor/bundle/gems/omniauth-1.8.1/lib/omniauth/strategy.rb:188:in `call!'
+vendor/bundle/gems/omniauth-1.8.1/lib/omniauth/strategy.rb:168:in `call'
+vendor/bundle/gems/omniauth-1.8.1/lib/omniauth/strategy.rb:190:in `call!'
+vendor/bundle/gems/omniauth-1.8.1/lib/omniauth/strategy.rb:168:in `call'
+vendor/bundle/gems/omniauth-1.8.1/lib/omniauth/builder.rb:63:in `call'
+vendor/bundle/gems/warden-1.2.7/lib/warden/manager.rb:36:in `block in call'
+vendor/bundle/gems/warden-1.2.7/lib/warden/manager.rb:35:in `catch'
+vendor/bundle/gems/warden-1.2.7/lib/warden/manager.rb:35:in `call'
+vendor/bundle/gems/rack-2.0.5/lib/rack/tempfile_reaper.rb:15:in `call'
+vendor/bundle/gems/rack-2.0.5/lib/rack/etag.rb:25:in `call'
+vendor/bundle/gems/rack-2.0.5/lib/rack/conditional_get.rb:25:in `call'
+vendor/bundle/gems/rack-2.0.5/lib/rack/head.rb:12:in `call'
+vendor/bundle/gems/actionpack-5.2.0/lib/action_dispatch/http/content_security_policy.rb:18:in `call'
+vendor/bundle/gems/rack-2.0.5/lib/rack/session/abstract/id.rb:232:in `context'
+vendor/bundle/gems/rack-2.0.5/lib/rack/session/abstract/id.rb:226:in `call'
+vendor/bundle/gems/actionpack-5.2.0/lib/action_dispatch/middleware/cookies.rb:670:in `call'
+vendor/bundle/gems/activerecord-5.2.0/lib/active_record/migration.rb:559:in `call'
+vendor/bundle/gems/actionpack-5.2.0/lib/action_dispatch/middleware/callbacks.rb:28:in `block in call'
+vendor/bundle/gems/activesupport-5.2.0/lib/active_support/callbacks.rb:98:in `run_callbacks'
+vendor/bundle/gems/actionpack-5.2.0/lib/action_dispatch/middleware/callbacks.rb:26:in `call'
+vendor/bundle/gems/actionpack-5.2.0/lib/action_dispatch/middleware/executor.rb:14:in `call'
+vendor/bundle/gems/actionpack-5.2.0/lib/action_dispatch/middleware/debug_exceptions.rb:61:in `call'
+vendor/bundle/gems/web-console-3.6.2/lib/web_console/middleware.rb:135:in `call_app'
+vendor/bundle/gems/web-console-3.6.2/lib/web_console/middleware.rb:30:in `block in call'
+vendor/bundle/gems/web-console-3.6.2/lib/web_console/middleware.rb:20:in `catch'
+vendor/bundle/gems/web-console-3.6.2/lib/web_console/middleware.rb:20:in `call'
+vendor/bundle/gems/actionpack-5.2.0/lib/action_dispatch/middleware/show_exceptions.rb:33:in `call'
+vendor/bundle/gems/railties-5.2.0/lib/rails/rack/logger.rb:38:in `call_app'
+vendor/bundle/gems/railties-5.2.0/lib/rails/rack/logger.rb:26:in `block in call'
+vendor/bundle/gems/activesupport-5.2.0/lib/active_support/tagged_logging.rb:71:in `block in tagged'
+vendor/bundle/gems/activesupport-5.2.0/lib/active_support/tagged_logging.rb:28:in `tagged'
+vendor/bundle/gems/activesupport-5.2.0/lib/active_support/tagged_logging.rb:71:in `tagged'
+vendor/bundle/gems/railties-5.2.0/lib/rails/rack/logger.rb:26:in `call'
+vendor/bundle/gems/sprockets-rails-3.2.1/lib/sprockets/rails/quiet_assets.rb:13:in `call'
+vendor/bundle/gems/actionpack-5.2.0/lib/action_dispatch/middleware/remote_ip.rb:81:in `call'
+vendor/bundle/gems/actionpack-5.2.0/lib/action_dispatch/middleware/request_id.rb:27:in `call'
+vendor/bundle/gems/rack-2.0.5/lib/rack/method_override.rb:22:in `call'
+vendor/bundle/gems/rack-2.0.5/lib/rack/runtime.rb:22:in `call'
+vendor/bundle/gems/activesupport-5.2.0/lib/active_support/cache/strategy/local_cache_middleware.rb:29:in `call'
+vendor/bundle/gems/actionpack-5.2.0/lib/action_dispatch/middleware/executor.rb:14:in `call'
+vendor/bundle/gems/actionpack-5.2.0/lib/action_dispatch/middleware/static.rb:127:in `call'
+vendor/bundle/gems/rack-2.0.5/lib/rack/sendfile.rb:111:in `call'
+vendor/bundle/gems/railties-5.2.0/lib/rails/engine.rb:524:in `call'
+vendor/bundle/gems/puma-3.11.4/lib/puma/configuration.rb:225:in `call'
+vendor/bundle/gems/puma-3.11.4/lib/puma/server.rb:632:in `handle_request'
+vendor/bundle/gems/puma-3.11.4/lib/puma/server.rb:446:in `process_client'
+vendor/bundle/gems/puma-3.11.4/lib/puma/server.rb:306:in `block in run'
+vendor/bundle/gems/puma-3.11.4/lib/puma/thread_pool.rb:120:in `block in spawn_thread'
+Started GET "/" for 127.0.0.1 at 2018-09-17 21:05:03 +0200
+Processing by MapboxController#show as HTML
+  [1m[36mRoom Load (0.5ms)[0m  [1m[34mSELECT "rooms".* FROM "rooms"[0m
+  ↳ app/controllers/mapbox_controller.rb:6
+  [1m[36mPower Load (0.2ms)[0m  [1m[34mSELECT "powers".* FROM "powers" WHERE "powers"."room_id" = ?[0m  [["room_id", 1]]
+  ↳ app/controllers/mapbox_controller.rb:10
+  [1m[36mUser Load (0.1ms)[0m  [1m[34mSELECT  "users".* FROM "users" WHERE "users"."id" = ? LIMIT ?[0m  [["id", 1], ["LIMIT", 1]]
+  ↳ app/controllers/mapbox_controller.rb:13
+  [1m[36mPower Load (0.1ms)[0m  [1m[34mSELECT "powers".* FROM "powers" WHERE "powers"."room_id" = ?[0m  [["room_id", 2]]
+  ↳ app/controllers/mapbox_controller.rb:10
+  [1m[36mCACHE User Load (0.0ms)[0m  [1m[34mSELECT  "users".* FROM "users" WHERE "users"."id" = ? LIMIT ?[0m  [["id", 1], ["LIMIT", 1]]
+  ↳ app/controllers/mapbox_controller.rb:13
+  [1m[36mPower Load (0.1ms)[0m  [1m[34mSELECT "powers".* FROM "powers" WHERE "powers"."room_id" = ?[0m  [["room_id", 3]]
+  ↳ app/controllers/mapbox_controller.rb:10
+  [1m[36mCACHE User Load (0.0ms)[0m  [1m[34mSELECT  "users".* FROM "users" WHERE "users"."id" = ? LIMIT ?[0m  [["id", 1], ["LIMIT", 1]]
+  ↳ app/controllers/mapbox_controller.rb:13
+  [1m[36mPower Load (0.2ms)[0m  [1m[34mSELECT "powers".* FROM "powers" WHERE "powers"."room_id" = ?[0m  [["room_id", 4]]
+  ↳ app/controllers/mapbox_controller.rb:10
+  [1m[36mCACHE User Load (0.0ms)[0m  [1m[34mSELECT  "users".* FROM "users" WHERE "users"."id" = ? LIMIT ?[0m  [["id", 1], ["LIMIT", 1]]
+  ↳ app/controllers/mapbox_controller.rb:13
+  [1m[36mPower Load (0.1ms)[0m  [1m[34mSELECT "powers".* FROM "powers" WHERE "powers"."room_id" = ?[0m  [["room_id", 5]]
+  ↳ app/controllers/mapbox_controller.rb:10
+  [1m[36mCACHE User Load (0.0ms)[0m  [1m[34mSELECT  "users".* FROM "users" WHERE "users"."id" = ? LIMIT ?[0m  [["id", 1], ["LIMIT", 1]]
+  ↳ app/controllers/mapbox_controller.rb:13
+  [1m[36mPower Load (0.2ms)[0m  [1m[34mSELECT "powers".* FROM "powers" WHERE "powers"."room_id" = ?[0m  [["room_id", 6]]
+  ↳ app/controllers/mapbox_controller.rb:10
+  [1m[36mCACHE User Load (0.0ms)[0m  [1m[34mSELECT  "users".* FROM "users" WHERE "users"."id" = ? LIMIT ?[0m  [["id", 1], ["LIMIT", 1]]
+  ↳ app/controllers/mapbox_controller.rb:13
+  [1m[36mPower Load (0.2ms)[0m  [1m[34mSELECT "powers".* FROM "powers" WHERE "powers"."room_id" = ?[0m  [["room_id", 7]]
+  ↳ app/controllers/mapbox_controller.rb:10
+  [1m[36mCACHE User Load (0.0ms)[0m  [1m[34mSELECT  "users".* FROM "users" WHERE "users"."id" = ? LIMIT ?[0m  [["id", 1], ["LIMIT", 1]]
+  ↳ app/controllers/mapbox_controller.rb:13
+  Rendering mapbox/show.html.haml within layouts/application
+  Rendered mapbox/show.html.haml within layouts/application (9.3ms)
+  Rendered layouts/_navbar.html.haml (6.8ms)
+  Rendered layouts/_footer.html.haml (21.4ms)
+Completed 200 OK in 132ms (Views: 110.9ms | ActiveRecord: 2.0ms)
+
+
+Started GET "/dashboard.json" for 127.0.0.1 at 2018-09-17 21:05:03 +0200
+Processing by MapboxController#show as JSON
+  [1m[36mRoom Load (0.3ms)[0m  [1m[34mSELECT "rooms".* FROM "rooms"[0m
+  ↳ app/controllers/mapbox_controller.rb:6
+  [1m[36mPower Load (0.1ms)[0m  [1m[34mSELECT "powers".* FROM "powers" WHERE "powers"."room_id" = ?[0m  [["room_id", 1]]
+  ↳ app/controllers/mapbox_controller.rb:10
+  [1m[36mUser Load (0.2ms)[0m  [1m[34mSELECT  "users".* FROM "users" WHERE "users"."id" = ? LIMIT ?[0m  [["id", 1], ["LIMIT", 1]]
+  ↳ app/controllers/mapbox_controller.rb:13
+  [1m[36mPower Load (0.1ms)[0m  [1m[34mSELECT "powers".* FROM "powers" WHERE "powers"."room_id" = ?[0m  [["room_id", 2]]
+  ↳ app/controllers/mapbox_controller.rb:10
+  [1m[36mCACHE User Load (0.0ms)[0m  [1m[34mSELECT  "users".* FROM "users" WHERE "users"."id" = ? LIMIT ?[0m  [["id", 1], ["LIMIT", 1]]
+  ↳ app/controllers/mapbox_controller.rb:13
+  [1m[36mPower Load (0.1ms)[0m  [1m[34mSELECT "powers".* FROM "powers" WHERE "powers"."room_id" = ?[0m  [["room_id", 3]]
+  ↳ app/controllers/mapbox_controller.rb:10
+  [1m[36mCACHE User Load (0.0ms)[0m  [1m[34mSELECT  "users".* FROM "users" WHERE "users"."id" = ? LIMIT ?[0m  [["id", 1], ["LIMIT", 1]]
+  ↳ app/controllers/mapbox_controller.rb:13
+  [1m[36mPower Load (0.1ms)[0m  [1m[34mSELECT "powers".* FROM "powers" WHERE "powers"."room_id" = ?[0m  [["room_id", 4]]
+  ↳ app/controllers/mapbox_controller.rb:10
+  [1m[36mCACHE User Load (0.0ms)[0m  [1m[34mSELECT  "users".* FROM "users" WHERE "users"."id" = ? LIMIT ?[0m  [["id", 1], ["LIMIT", 1]]
+  ↳ app/controllers/mapbox_controller.rb:13
+  [1m[36mPower Load (0.1ms)[0m  [1m[34mSELECT "powers".* FROM "powers" WHERE "powers"."room_id" = ?[0m  [["room_id", 5]]
+  ↳ app/controllers/mapbox_controller.rb:10
+  [1m[36mCACHE User Load (0.0ms)[0m  [1m[34mSELECT  "users".* FROM "users" WHERE "users"."id" = ? LIMIT ?[0m  [["id", 1], ["LIMIT", 1]]
+  ↳ app/controllers/mapbox_controller.rb:13
+  [1m[36mPower Load (0.1ms)[0m  [1m[34mSELECT "powers".* FROM "powers" WHERE "powers"."room_id" = ?[0m  [["room_id", 6]]
+  ↳ app/controllers/mapbox_controller.rb:10
+  [1m[36mCACHE User Load (0.0ms)[0m  [1m[34mSELECT  "users".* FROM "users" WHERE "users"."id" = ? LIMIT ?[0m  [["id", 1], ["LIMIT", 1]]
+  ↳ app/controllers/mapbox_controller.rb:13
+  [1m[36mPower Load (0.1ms)[0m  [1m[34mSELECT "powers".* FROM "powers" WHERE "powers"."room_id" = ?[0m  [["room_id", 7]]
+  ↳ app/controllers/mapbox_controller.rb:10
+  [1m[36mCACHE User Load (0.0ms)[0m  [1m[34mSELECT  "users".* FROM "users" WHERE "users"."id" = ? LIMIT ?[0m  [["id", 1], ["LIMIT", 1]]
+  ↳ app/controllers/mapbox_controller.rb:13
+Completed 200 OK in 18ms (Views: 0.1ms | ActiveRecord: 1.4ms)
+
+
+Started GET "/dashboard.json" for 127.0.0.1 at 2018-09-17 21:05:03 +0200
+Processing by MapboxController#show as JSON
+  [1m[36mRoom Load (0.3ms)[0m  [1m[34mSELECT "rooms".* FROM "rooms"[0m
+  ↳ app/controllers/mapbox_controller.rb:6
+  [1m[36mPower Load (0.1ms)[0m  [1m[34mSELECT "powers".* FROM "powers" WHERE "powers"."room_id" = ?[0m  [["room_id", 1]]
+  ↳ app/controllers/mapbox_controller.rb:10
+  [1m[36mUser Load (0.2ms)[0m  [1m[34mSELECT  "users".* FROM "users" WHERE "users"."id" = ? LIMIT ?[0m  [["id", 1], ["LIMIT", 1]]
+  ↳ app/controllers/mapbox_controller.rb:13
+  [1m[36mPower Load (0.1ms)[0m  [1m[34mSELECT "powers".* FROM "powers" WHERE "powers"."room_id" = ?[0m  [["room_id", 2]]
+  ↳ app/controllers/mapbox_controller.rb:10
+  [1m[36mCACHE User Load (0.0ms)[0m  [1m[34mSELECT  "users".* FROM "users" WHERE "users"."id" = ? LIMIT ?[0m  [["id", 1], ["LIMIT", 1]]
+  ↳ app/controllers/mapbox_controller.rb:13
+  [1m[36mPower Load (0.2ms)[0m  [1m[34mSELECT "powers".* FROM "powers" WHERE "powers"."room_id" = ?[0m  [["room_id", 3]]
+  ↳ app/controllers/mapbox_controller.rb:10
+  [1m[36mCACHE User Load (0.1ms)[0m  [1m[34mSELECT  "users".* FROM "users" WHERE "users"."id" = ? LIMIT ?[0m  [["id", 1], ["LIMIT", 1]]
+  ↳ app/controllers/mapbox_controller.rb:13
+  [1m[36mPower Load (0.1ms)[0m  [1m[34mSELECT "powers".* FROM "powers" WHERE "powers"."room_id" = ?[0m  [["room_id", 4]]
+  ↳ app/controllers/mapbox_controller.rb:10
+  [1m[36mCACHE User Load (0.0ms)[0m  [1m[34mSELECT  "users".* FROM "users" WHERE "users"."id" = ? LIMIT ?[0m  [["id", 1], ["LIMIT", 1]]
+  ↳ app/controllers/mapbox_controller.rb:13
+  [1m[36mPower Load (0.1ms)[0m  [1m[34mSELECT "powers".* FROM "powers" WHERE "powers"."room_id" = ?[0m  [["room_id", 5]]
+  ↳ app/controllers/mapbox_controller.rb:10
+  [1m[36mCACHE User Load (0.0ms)[0m  [1m[34mSELECT  "users".* FROM "users" WHERE "users"."id" = ? LIMIT ?[0m  [["id", 1], ["LIMIT", 1]]
+  ↳ app/controllers/mapbox_controller.rb:13
+  [1m[36mPower Load (0.1ms)[0m  [1m[34mSELECT "powers".* FROM "powers" WHERE "powers"."room_id" = ?[0m  [["room_id", 6]]
+  ↳ app/controllers/mapbox_controller.rb:10
+  [1m[36mCACHE User Load (0.0ms)[0m  [1m[34mSELECT  "users".* FROM "users" WHERE "users"."id" = ? LIMIT ?[0m  [["id", 1], ["LIMIT", 1]]
+  ↳ app/controllers/mapbox_controller.rb:13
+  [1m[36mPower Load (0.2ms)[0m  [1m[34mSELECT "powers".* FROM "powers" WHERE "powers"."room_id" = ?[0m  [["room_id", 7]]
+  ↳ app/controllers/mapbox_controller.rb:10
+  [1m[36mCACHE User Load (0.0ms)[0m  [1m[34mSELECT  "users".* FROM "users" WHERE "users"."id" = ? LIMIT ?[0m  [["id", 1], ["LIMIT", 1]]
+  ↳ app/controllers/mapbox_controller.rb:13
+Completed 200 OK in 19ms (Views: 0.1ms | ActiveRecord: 1.7ms)
+
+
+  [1m[36mUser Load (0.7ms)[0m  [1m[34mSELECT  "users".* FROM "users" LIMIT ?[0m  [["LIMIT", 11]]
+  [1m[36mUser Load (0.2ms)[0m  [1m[34mSELECT  "users".* FROM "users" WHERE "users"."id" = ? LIMIT ?[0m  [["id", 10], ["LIMIT", 1]]
+  [1m[35m (0.1ms)[0m  [1m[36mbegin transaction[0m
+  [1m[36mUser Exists (0.4ms)[0m  [1m[34mSELECT  1 AS one FROM "users" WHERE "users"."username" = ? AND "users"."id" != ? LIMIT ?[0m  [["username", "Matteo Attenni"], ["id", 10], ["LIMIT", 1]]
+  [1m[36mUser Exists (0.4ms)[0m  [1m[34mSELECT  1 AS one FROM "users" WHERE LOWER("users"."email") = LOWER(?) AND "users"."id" != ? LIMIT ?[0m  [["email", "matty.atty95@gmail.com"], ["id", 10], ["LIMIT", 1]]
+  [1m[35m (0.1ms)[0m  [1m[31mrollback transaction[0m
+  [1m[35m (0.3ms)[0m  [1m[36mbegin transaction[0m
+  [1m[36mUser Update (0.3ms)[0m  [1m[33mUPDATE "users" SET "updated_at" = ?, "admin" = ? WHERE "users"."id" = ?[0m  [["updated_at", "2018-09-17 19:06:38.702636"], ["admin", 1], ["id", 10]]
+  [1m[35m (112.3ms)[0m  [1m[36mcommit transaction[0m
+Started GET "/" for 127.0.0.1 at 2018-09-17 21:06:59 +0200
+  [1m[35m (0.2ms)[0m  [1m[34mSELECT "schema_migrations"."version" FROM "schema_migrations" ORDER BY "schema_migrations"."version" ASC[0m
+  ↳ vendor/bundle/gems/activerecord-5.2.0/lib/active_record/log_subscriber.rb:98
+Processing by MapboxController#show as HTML
+  [1m[36mRoom Load (0.2ms)[0m  [1m[34mSELECT "rooms".* FROM "rooms"[0m
+  ↳ app/controllers/mapbox_controller.rb:6
+  [1m[36mPower Load (0.1ms)[0m  [1m[34mSELECT "powers".* FROM "powers" WHERE "powers"."room_id" = ?[0m  [["room_id", 1]]
+  ↳ app/controllers/mapbox_controller.rb:10
+  [1m[36mUser Load (0.2ms)[0m  [1m[34mSELECT  "users".* FROM "users" WHERE "users"."id" = ? LIMIT ?[0m  [["id", 1], ["LIMIT", 1]]
+  ↳ app/controllers/mapbox_controller.rb:13
+  [1m[36mPower Load (0.1ms)[0m  [1m[34mSELECT "powers".* FROM "powers" WHERE "powers"."room_id" = ?[0m  [["room_id", 2]]
+  ↳ app/controllers/mapbox_controller.rb:10
+  [1m[36mCACHE User Load (0.0ms)[0m  [1m[34mSELECT  "users".* FROM "users" WHERE "users"."id" = ? LIMIT ?[0m  [["id", 1], ["LIMIT", 1]]
+  ↳ app/controllers/mapbox_controller.rb:13
+  [1m[36mPower Load (0.1ms)[0m  [1m[34mSELECT "powers".* FROM "powers" WHERE "powers"."room_id" = ?[0m  [["room_id", 3]]
+  ↳ app/controllers/mapbox_controller.rb:10
+  [1m[36mCACHE User Load (0.0ms)[0m  [1m[34mSELECT  "users".* FROM "users" WHERE "users"."id" = ? LIMIT ?[0m  [["id", 1], ["LIMIT", 1]]
+  ↳ app/controllers/mapbox_controller.rb:13
+  [1m[36mPower Load (0.1ms)[0m  [1m[34mSELECT "powers".* FROM "powers" WHERE "powers"."room_id" = ?[0m  [["room_id", 4]]
+  ↳ app/controllers/mapbox_controller.rb:10
+  [1m[36mCACHE User Load (0.0ms)[0m  [1m[34mSELECT  "users".* FROM "users" WHERE "users"."id" = ? LIMIT ?[0m  [["id", 1], ["LIMIT", 1]]
+  ↳ app/controllers/mapbox_controller.rb:13
+  [1m[36mPower Load (0.1ms)[0m  [1m[34mSELECT "powers".* FROM "powers" WHERE "powers"."room_id" = ?[0m  [["room_id", 5]]
+  ↳ app/controllers/mapbox_controller.rb:10
+  [1m[36mCACHE User Load (0.0ms)[0m  [1m[34mSELECT  "users".* FROM "users" WHERE "users"."id" = ? LIMIT ?[0m  [["id", 1], ["LIMIT", 1]]
+  ↳ app/controllers/mapbox_controller.rb:13
+  [1m[36mPower Load (0.2ms)[0m  [1m[34mSELECT "powers".* FROM "powers" WHERE "powers"."room_id" = ?[0m  [["room_id", 6]]
+  ↳ app/controllers/mapbox_controller.rb:10
+  [1m[36mCACHE User Load (0.0ms)[0m  [1m[34mSELECT  "users".* FROM "users" WHERE "users"."id" = ? LIMIT ?[0m  [["id", 1], ["LIMIT", 1]]
+  ↳ app/controllers/mapbox_controller.rb:13
+  [1m[36mPower Load (0.1ms)[0m  [1m[34mSELECT "powers".* FROM "powers" WHERE "powers"."room_id" = ?[0m  [["room_id", 7]]
+  ↳ app/controllers/mapbox_controller.rb:10
+  [1m[36mCACHE User Load (0.0ms)[0m  [1m[34mSELECT  "users".* FROM "users" WHERE "users"."id" = ? LIMIT ?[0m  [["id", 1], ["LIMIT", 1]]
+  ↳ app/controllers/mapbox_controller.rb:13
+  Rendering mapbox/show.html.haml within layouts/application
+  Rendered mapbox/show.html.haml within layouts/application (11.5ms)
+  Rendered layouts/_navbar.html.haml (5.1ms)
+  Rendered layouts/_footer.html.haml (42.8ms)
+Completed 200 OK in 673ms (Views: 563.5ms | ActiveRecord: 3.2ms)
+
+
+Started GET "/dashboard.json" for 127.0.0.1 at 2018-09-17 21:07:00 +0200
+Processing by MapboxController#show as JSON
+  [1m[36mRoom Load (0.2ms)[0m  [1m[34mSELECT "rooms".* FROM "rooms"[0m
+  ↳ app/controllers/mapbox_controller.rb:6
+  [1m[36mPower Load (0.1ms)[0m  [1m[34mSELECT "powers".* FROM "powers" WHERE "powers"."room_id" = ?[0m  [["room_id", 1]]
+  ↳ app/controllers/mapbox_controller.rb:10
+  [1m[36mUser Load (0.1ms)[0m  [1m[34mSELECT  "users".* FROM "users" WHERE "users"."id" = ? LIMIT ?[0m  [["id", 1], ["LIMIT", 1]]
+  ↳ app/controllers/mapbox_controller.rb:13
+  [1m[36mPower Load (0.1ms)[0m  [1m[34mSELECT "powers".* FROM "powers" WHERE "powers"."room_id" = ?[0m  [["room_id", 2]]
+  ↳ app/controllers/mapbox_controller.rb:10
+  [1m[36mCACHE User Load (0.0ms)[0m  [1m[34mSELECT  "users".* FROM "users" WHERE "users"."id" = ? LIMIT ?[0m  [["id", 1], ["LIMIT", 1]]
+  ↳ app/controllers/mapbox_controller.rb:13
+  [1m[36mPower Load (0.3ms)[0m  [1m[34mSELECT "powers".* FROM "powers" WHERE "powers"."room_id" = ?[0m  [["room_id", 3]]
+  ↳ app/controllers/mapbox_controller.rb:10
+  [1m[36mCACHE User Load (0.0ms)[0m  [1m[34mSELECT  "users".* FROM "users" WHERE "users"."id" = ? LIMIT ?[0m  [["id", 1], ["LIMIT", 1]]
+  ↳ app/controllers/mapbox_controller.rb:13
+  [1m[36mPower Load (0.1ms)[0m  [1m[34mSELECT "powers".* FROM "powers" WHERE "powers"."room_id" = ?[0m  [["room_id", 4]]
+  ↳ app/controllers/mapbox_controller.rb:10
+  [1m[36mCACHE User Load (0.0ms)[0m  [1m[34mSELECT  "users".* FROM "users" WHERE "users"."id" = ? LIMIT ?[0m  [["id", 1], ["LIMIT", 1]]
+  ↳ app/controllers/mapbox_controller.rb:13
+  [1m[36mPower Load (0.1ms)[0m  [1m[34mSELECT "powers".* FROM "powers" WHERE "powers"."room_id" = ?[0m  [["room_id", 5]]
+  ↳ app/controllers/mapbox_controller.rb:10
+  [1m[36mCACHE User Load (0.0ms)[0m  [1m[34mSELECT  "users".* FROM "users" WHERE "users"."id" = ? LIMIT ?[0m  [["id", 1], ["LIMIT", 1]]
+  ↳ app/controllers/mapbox_controller.rb:13
+  [1m[36mPower Load (0.1ms)[0m  [1m[34mSELECT "powers".* FROM "powers" WHERE "powers"."room_id" = ?[0m  [["room_id", 6]]
+  ↳ app/controllers/mapbox_controller.rb:10
+  [1m[36mCACHE User Load (0.0ms)[0m  [1m[34mSELECT  "users".* FROM "users" WHERE "users"."id" = ? LIMIT ?[0m  [["id", 1], ["LIMIT", 1]]
+  ↳ app/controllers/mapbox_controller.rb:13
+  [1m[36mPower Load (0.1ms)[0m  [1m[34mSELECT "powers".* FROM "powers" WHERE "powers"."room_id" = ?[0m  [["room_id", 7]]
+  ↳ app/controllers/mapbox_controller.rb:10
+  [1m[36mCACHE User Load (0.0ms)[0m  [1m[34mSELECT  "users".* FROM "users" WHERE "users"."id" = ? LIMIT ?[0m  [["id", 1], ["LIMIT", 1]]
+  ↳ app/controllers/mapbox_controller.rb:13
+Completed 200 OK in 24ms (Views: 0.1ms | ActiveRecord: 1.3ms)
+
+
+Started GET "/dashboard.json" for 127.0.0.1 at 2018-09-17 21:07:00 +0200
+Processing by MapboxController#show as JSON
+  [1m[36mRoom Load (0.3ms)[0m  [1m[34mSELECT "rooms".* FROM "rooms"[0m
+  ↳ app/controllers/mapbox_controller.rb:6
+  [1m[36mPower Load (0.1ms)[0m  [1m[34mSELECT "powers".* FROM "powers" WHERE "powers"."room_id" = ?[0m  [["room_id", 1]]
+  ↳ app/controllers/mapbox_controller.rb:10
+  [1m[36mUser Load (0.2ms)[0m  [1m[34mSELECT  "users".* FROM "users" WHERE "users"."id" = ? LIMIT ?[0m  [["id", 1], ["LIMIT", 1]]
+  ↳ app/controllers/mapbox_controller.rb:13
+  [1m[36mPower Load (0.1ms)[0m  [1m[34mSELECT "powers".* FROM "powers" WHERE "powers"."room_id" = ?[0m  [["room_id", 2]]
+  ↳ app/controllers/mapbox_controller.rb:10
+  [1m[36mCACHE User Load (0.0ms)[0m  [1m[34mSELECT  "users".* FROM "users" WHERE "users"."id" = ? LIMIT ?[0m  [["id", 1], ["LIMIT", 1]]
+  ↳ app/controllers/mapbox_controller.rb:13
+  [1m[36mPower Load (0.1ms)[0m  [1m[34mSELECT "powers".* FROM "powers" WHERE "powers"."room_id" = ?[0m  [["room_id", 3]]
+  ↳ app/controllers/mapbox_controller.rb:10
+  [1m[36mCACHE User Load (0.0ms)[0m  [1m[34mSELECT  "users".* FROM "users" WHERE "users"."id" = ? LIMIT ?[0m  [["id", 1], ["LIMIT", 1]]
+  ↳ app/controllers/mapbox_controller.rb:13
+  [1m[36mPower Load (0.1ms)[0m  [1m[34mSELECT "powers".* FROM "powers" WHERE "powers"."room_id" = ?[0m  [["room_id", 4]]
+  ↳ app/controllers/mapbox_controller.rb:10
+  [1m[36mCACHE User Load (0.0ms)[0m  [1m[34mSELECT  "users".* FROM "users" WHERE "users"."id" = ? LIMIT ?[0m  [["id", 1], ["LIMIT", 1]]
+  ↳ app/controllers/mapbox_controller.rb:13
+  [1m[36mPower Load (0.1ms)[0m  [1m[34mSELECT "powers".* FROM "powers" WHERE "powers"."room_id" = ?[0m  [["room_id", 5]]
+  ↳ app/controllers/mapbox_controller.rb:10
+  [1m[36mCACHE User Load (0.0ms)[0m  [1m[34mSELECT  "users".* FROM "users" WHERE "users"."id" = ? LIMIT ?[0m  [["id", 1], ["LIMIT", 1]]
+  ↳ app/controllers/mapbox_controller.rb:13
+  [1m[36mPower Load (0.1ms)[0m  [1m[34mSELECT "powers".* FROM "powers" WHERE "powers"."room_id" = ?[0m  [["room_id", 6]]
+  ↳ app/controllers/mapbox_controller.rb:10
+  [1m[36mCACHE User Load (0.0ms)[0m  [1m[34mSELECT  "users".* FROM "users" WHERE "users"."id" = ? LIMIT ?[0m  [["id", 1], ["LIMIT", 1]]
+  ↳ app/controllers/mapbox_controller.rb:13
+  [1m[36mPower Load (0.1ms)[0m  [1m[34mSELECT "powers".* FROM "powers" WHERE "powers"."room_id" = ?[0m  [["room_id", 7]]
+  ↳ app/controllers/mapbox_controller.rb:10
+  [1m[36mCACHE User Load (0.0ms)[0m  [1m[34mSELECT  "users".* FROM "users" WHERE "users"."id" = ? LIMIT ?[0m  [["id", 1], ["LIMIT", 1]]
+  ↳ app/controllers/mapbox_controller.rb:13
+Completed 200 OK in 28ms (Views: 0.1ms | ActiveRecord: 1.5ms)
+
+
+Started GET "/login" for 127.0.0.1 at 2018-09-17 21:07:03 +0200
+Processing by SessionsController#new as HTML
+  Rendering sessions/new.html.haml within layouts/application
+  Rendered sessions/new.html.haml within layouts/application (95.6ms)
+  Rendered layouts/_navbar.html.haml (6.5ms)
+  Rendered layouts/_footer.html.haml (17.4ms)
+Completed 200 OK in 218ms (Views: 213.4ms | ActiveRecord: 0.0ms)
+
+
+Started GET "/auth/google_oauth2" for 127.0.0.1 at 2018-09-17 21:07:05 +0200
+Started GET "/auth/google_oauth2/callback?state=4c1aa200a30964395d3e9d228b14ca408a90899e013058cf&code=4/XQAepXSW1EdAwW9T3gwy-C8daV40oRuTYlYpLHuXu0bTr_0v-EDeqOv8MVGFTa3-yaVpZHIjr9kC1F-v0ABfCHA&scope=https://www.googleapis.com/auth/userinfo.email+https://www.googleapis.com/auth/userinfo.profile" for 127.0.0.1 at 2018-09-17 21:07:08 +0200
+Processing by SessionsController#create as HTML
+  Parameters: {"state"=>"4c1aa200a30964395d3e9d228b14ca408a90899e013058cf", "code"=>"4/XQAepXSW1EdAwW9T3gwy-C8daV40oRuTYlYpLHuXu0bTr_0v-EDeqOv8MVGFTa3-yaVpZHIjr9kC1F-v0ABfCHA", "scope"=>"https://www.googleapis.com/auth/userinfo.email https://www.googleapis.com/auth/userinfo.profile", "provider"=>"google_oauth2"}
+  [1m[36mUser Load (1.0ms)[0m  [1m[34mSELECT  "users".* FROM "users" WHERE "users"."email" = ? LIMIT ?[0m  [["email", "matty.atty95@gmail.com"], ["LIMIT", 1]]
+  ↳ app/controllers/sessions_controller.rb:10
+Redirected to http://localhost:3000/users/10
+Completed 302 Found in 14ms (ActiveRecord: 1.0ms)
+
+
+Started GET "/users/10" for 127.0.0.1 at 2018-09-17 21:07:09 +0200
+Processing by UsersController#show as HTML
+  Parameters: {"id"=>"10"}
+  [1m[36mUser Load (0.2ms)[0m  [1m[34mSELECT  "users".* FROM "users" WHERE "users"."id" = ? LIMIT ?[0m  [["id", 10], ["LIMIT", 1]]
+  ↳ app/controllers/users_controller.rb:6
+  Rendering users/show.html.haml within layouts/application
+  Rendered users/show.html.haml within layouts/application (312.3ms)
+Completed 500 Internal Server Error in 322ms (ActiveRecord: 0.2ms)
+
+
+  
+ActionView::Template::Error (undefined method `achievement_user_path' for #<#<Class:0x00005584571b4780>:0x000055845459aac8>):
+    17:             %h1 EMAIL:
+    18:             %p #{@user.email}
+    19:           %br
+    20:           =link_to achievement_user_path(@user) do
+    21:             %input.btn.btn-sm.btn-success{:type => "submit", :value => "Achievements"}
+    22:         .col-lg-6
+    23:           %label
+  
+app/views/users/show.html.haml:20:in `_app_views_users_show_html_haml__558411215321921288_47013442729240'
+Started GET "/users/10" for 127.0.0.1 at 2018-09-17 21:08:40 +0200
+Processing by UsersController#show as HTML
+  Parameters: {"id"=>"10"}
+  [1m[36mUser Load (0.3ms)[0m  [1m[34mSELECT  "users".* FROM "users" WHERE "users"."id" = ? LIMIT ?[0m  [["id", 10], ["LIMIT", 1]]
+  ↳ app/controllers/users_controller.rb:6
+  Rendering users/show.html.haml within layouts/application
+  Rendered users/show.html.haml within layouts/application (231.7ms)
+Completed 500 Internal Server Error in 239ms (ActiveRecord: 0.3ms)
+
+
+  
+ActionView::Template::Error (undefined method `achievements_user_path' for #<#<Class:0x00005584571b4780>:0x00007f6acdd34868>):
+    17:             %h1 EMAIL:
+    18:             %p #{@user.email}
+    19:           %br
+    20:           =link_to achievements_user_path(@user) do
+    21:             %input.btn.btn-sm.btn-success{:type => "submit", :value => "Achievements"}
+    22:         .col-lg-6
+    23:           %label
+  
+app/views/users/show.html.haml:20:in `_app_views_users_show_html_haml__558411215321921288_70048348219620'
+Started GET "/users/10" for 127.0.0.1 at 2018-09-17 21:10:31 +0200
+Processing by UsersController#show as HTML
+  Parameters: {"id"=>"10"}
+  [1m[36mUser Load (0.2ms)[0m  [1m[34mSELECT  "users".* FROM "users" WHERE "users"."id" = ? LIMIT ?[0m  [["id", 10], ["LIMIT", 1]]
+  ↳ app/controllers/users_controller.rb:6
+  Rendering users/show.html.haml within layouts/application
+  Rendered users/show.html.haml within layouts/application (262.3ms)
+Completed 500 Internal Server Error in 322ms (ActiveRecord: 1.1ms)
+
+
+  
+ActionView::Template::Error (undefined method `achievements_user_path' for #<#<Class:0x00007f6ac45104d8>:0x00007f6ac4509fe8>):
+    17:             %h1 EMAIL:
+    18:             %p #{@user.email}
+    19:           %br
+    20:           =link_to achievements_user_path(@user) do
+    21:             %input.btn.btn-sm.btn-success{:type => "submit", :value => "Achievements"}
+    22:         .col-lg-6
+    23:           %label
+  
+app/views/users/show.html.haml:20:in `_app_views_users_show_html_haml__558411215321921288_70048268453680'
+Started GET "/users/10" for 127.0.0.1 at 2018-09-17 21:10:33 +0200
+Processing by UsersController#show as HTML
+  Parameters: {"id"=>"10"}
+  [1m[36mUser Load (0.2ms)[0m  [1m[34mSELECT  "users".* FROM "users" WHERE "users"."id" = ? LIMIT ?[0m  [["id", 10], ["LIMIT", 1]]
+  ↳ app/controllers/users_controller.rb:6
+  Rendering users/show.html.haml within layouts/application
+  Rendered users/show.html.haml within layouts/application (255.4ms)
+Completed 500 Internal Server Error in 264ms (ActiveRecord: 0.2ms)
+
+
+  
+ActionView::Template::Error (undefined method `achievements_user_path' for #<#<Class:0x00007f6ac45104d8>:0x00007f6acda18828>):
+    17:             %h1 EMAIL:
+    18:             %p #{@user.email}
+    19:           %br
+    20:           =link_to achievements_user_path(@user) do
+    21:             %input.btn.btn-sm.btn-success{:type => "submit", :value => "Achievements"}
+    22:         .col-lg-6
+    23:           %label
+  
+app/views/users/show.html.haml:20:in `_app_views_users_show_html_haml__558411215321921288_70048346591160'
+Started GET "/users/10" for 127.0.0.1 at 2018-09-17 21:11:22 +0200
+Processing by UsersController#show as HTML
+  Parameters: {"id"=>"10"}
+  [1m[36mUser Load (0.6ms)[0m  [1m[34mSELECT  "users".* FROM "users" WHERE "users"."id" = ? LIMIT ?[0m  [["id", 10], ["LIMIT", 1]]
+  ↳ app/controllers/users_controller.rb:6
+  Rendering users/show.html.haml within layouts/application
+  Rendered users/show.html.haml within layouts/application (13.3ms)
+  [1m[36mUser Load (0.1ms)[0m  [1m[34mSELECT  "users".* FROM "users" WHERE "users"."id" = ? LIMIT ?[0m  [["id", 10], ["LIMIT", 1]]
+  ↳ app/controllers/application_controller.rb:10
+  Rendered layouts/_navbar.html.haml (7.4ms)
+  Rendered layouts/_footer.html.haml (26.9ms)
+Completed 200 OK in 125ms (Views: 117.5ms | ActiveRecord: 0.8ms)
+
+
+Started GET "/users/achievements" for 127.0.0.1 at 2018-09-17 21:11:25 +0200
+Processing by UsersController#show as HTML
+  Parameters: {"id"=>"achievements"}
+  [1m[36mUser Load (0.5ms)[0m  [1m[34mSELECT  "users".* FROM "users" WHERE "users"."id" = ? LIMIT ?[0m  [["id", 0], ["LIMIT", 1]]
+  ↳ app/controllers/users_controller.rb:6
+  Rendering public/404.html.haml within layouts/application
+  Rendered public/404.html.haml within layouts/application (8.3ms)
+  [1m[36mUser Load (0.1ms)[0m  [1m[34mSELECT  "users".* FROM "users" WHERE "users"."id" = ? LIMIT ?[0m  [["id", 10], ["LIMIT", 1]]
+  ↳ app/controllers/application_controller.rb:10
+  Rendered layouts/_navbar.html.haml (8.6ms)
+  Rendered layouts/_footer.html.haml (17.0ms)
+Completed 404 Not Found in 134ms (Views: 123.8ms | ActiveRecord: 0.7ms)
+
+
+Started GET "/users/10" for 127.0.0.1 at 2018-09-17 21:11:48 +0200
+Processing by UsersController#show as HTML
+  Parameters: {"id"=>"10"}
+  [1m[36mUser Load (0.6ms)[0m  [1m[34mSELECT  "users".* FROM "users" WHERE "users"."id" = ? LIMIT ?[0m  [["id", 10], ["LIMIT", 1]]
+  ↳ app/controllers/users_controller.rb:6
+  Rendering users/show.html.haml within layouts/application
+  Rendered users/show.html.haml within layouts/application (14.6ms)
+  [1m[36mUser Load (0.1ms)[0m  [1m[34mSELECT  "users".* FROM "users" WHERE "users"."id" = ? LIMIT ?[0m  [["id", 10], ["LIMIT", 1]]
+  ↳ app/controllers/application_controller.rb:10
+  Rendered layouts/_navbar.html.haml (8.0ms)
+  Rendered layouts/_footer.html.haml (27.2ms)
+Completed 200 OK in 136ms (Views: 125.4ms | ActiveRecord: 0.8ms)
+
+
+Started GET "/users/users" for 127.0.0.1 at 2018-09-17 21:11:52 +0200
+Processing by UsersController#show as HTML
+  Parameters: {"id"=>"users"}
+  [1m[36mUser Load (0.3ms)[0m  [1m[34mSELECT  "users".* FROM "users" WHERE "users"."id" = ? LIMIT ?[0m  [["id", 0], ["LIMIT", 1]]
+  ↳ app/controllers/users_controller.rb:6
+  Rendering public/404.html.haml within layouts/application
+  Rendered public/404.html.haml within layouts/application (6.3ms)
+  [1m[36mUser Load (0.2ms)[0m  [1m[34mSELECT  "users".* FROM "users" WHERE "users"."id" = ? LIMIT ?[0m  [["id", 10], ["LIMIT", 1]]
+  ↳ app/controllers/application_controller.rb:10
+  Rendered layouts/_navbar.html.haml (8.8ms)
+  Rendered layouts/_footer.html.haml (22.8ms)
+Completed 404 Not Found in 126ms (Views: 121.4ms | ActiveRecord: 0.5ms)
+
+
+Started GET "/users/users" for 127.0.0.1 at 2018-09-17 21:11:58 +0200
+Processing by UsersController#show as HTML
+  Parameters: {"id"=>"users"}
+  [1m[36mUser Load (0.5ms)[0m  [1m[34mSELECT  "users".* FROM "users" WHERE "users"."id" = ? LIMIT ?[0m  [["id", 0], ["LIMIT", 1]]
+  ↳ app/controllers/users_controller.rb:6
+  Rendering public/404.html.haml within layouts/application
+  Rendered public/404.html.haml within layouts/application (7.6ms)
+  [1m[36mUser Load (0.1ms)[0m  [1m[34mSELECT  "users".* FROM "users" WHERE "users"."id" = ? LIMIT ?[0m  [["id", 10], ["LIMIT", 1]]
+  ↳ app/controllers/application_controller.rb:10
+  Rendered layouts/_navbar.html.haml (7.8ms)
+  Rendered layouts/_footer.html.haml (23.3ms)
+Completed 404 Not Found in 122ms (Views: 116.1ms | ActiveRecord: 0.6ms)
+
+
+Started GET "/users/10" for 127.0.0.1 at 2018-09-17 21:12:02 +0200
+Processing by UsersController#show as HTML
+  Parameters: {"id"=>"10"}
+  [1m[36mUser Load (0.5ms)[0m  [1m[34mSELECT  "users".* FROM "users" WHERE "users"."id" = ? LIMIT ?[0m  [["id", 10], ["LIMIT", 1]]
+  ↳ app/controllers/users_controller.rb:6
+  Rendering users/show.html.haml within layouts/application
+  Rendered users/show.html.haml within layouts/application (35.8ms)
+  [1m[36mUser Load (0.1ms)[0m  [1m[34mSELECT  "users".* FROM "users" WHERE "users"."id" = ? LIMIT ?[0m  [["id", 10], ["LIMIT", 1]]
+  ↳ app/controllers/application_controller.rb:10
+  Rendered layouts/_navbar.html.haml (6.8ms)
+  Rendered layouts/_footer.html.haml (14.5ms)
+Completed 200 OK in 154ms (Views: 145.5ms | ActiveRecord: 0.6ms)
+
+
+Started GET "/users/achievements" for 127.0.0.1 at 2018-09-17 21:12:07 +0200
+Processing by UsersController#show as HTML
+  Parameters: {"id"=>"achievements"}
+  [1m[36mUser Load (0.3ms)[0m  [1m[34mSELECT  "users".* FROM "users" WHERE "users"."id" = ? LIMIT ?[0m  [["id", 0], ["LIMIT", 1]]
+  ↳ app/controllers/users_controller.rb:6
+  Rendering public/404.html.haml within layouts/application
+  Rendered public/404.html.haml within layouts/application (12.7ms)
+  [1m[36mUser Load (0.1ms)[0m  [1m[34mSELECT  "users".* FROM "users" WHERE "users"."id" = ? LIMIT ?[0m  [["id", 10], ["LIMIT", 1]]
+  ↳ app/controllers/application_controller.rb:10
+  Rendered layouts/_navbar.html.haml (8.7ms)
+  Rendered layouts/_footer.html.haml (28.3ms)
+Completed 404 Not Found in 150ms (Views: 146.1ms | ActiveRecord: 0.4ms)
+
+
+Started GET "/users/10" for 127.0.0.1 at 2018-09-17 21:13:37 +0200
+Processing by UsersController#show as HTML
+  Parameters: {"id"=>"10"}
+  [1m[36mUser Load (0.2ms)[0m  [1m[34mSELECT  "users".* FROM "users" WHERE "users"."id" = ? LIMIT ?[0m  [["id", 10], ["LIMIT", 1]]
+  ↳ app/controllers/users_controller.rb:6
+  Rendering users/show.html.haml within layouts/application
+  Rendered users/show.html.haml within layouts/application (7.6ms)
+  [1m[36mUser Load (0.1ms)[0m  [1m[34mSELECT  "users".* FROM "users" WHERE "users"."id" = ? LIMIT ?[0m  [["id", 10], ["LIMIT", 1]]
+  ↳ app/controllers/application_controller.rb:10
+  Rendered layouts/_navbar.html.haml (14.9ms)
+  Rendered layouts/_footer.html.haml (11.8ms)
+Completed 200 OK in 148ms (Views: 107.8ms | ActiveRecord: 1.0ms)
+
+
+Started GET "/users/achievements" for 127.0.0.1 at 2018-09-17 21:13:39 +0200
+Processing by UsersController#show as HTML
+  Parameters: {"id"=>"achievements"}
+  [1m[36mUser Load (0.5ms)[0m  [1m[34mSELECT  "users".* FROM "users" WHERE "users"."id" = ? LIMIT ?[0m  [["id", 0], ["LIMIT", 1]]
+  ↳ app/controllers/users_controller.rb:6
+  Rendering public/404.html.haml within layouts/application
+  Rendered public/404.html.haml within layouts/application (13.8ms)
+  [1m[36mUser Load (0.2ms)[0m  [1m[34mSELECT  "users".* FROM "users" WHERE "users"."id" = ? LIMIT ?[0m  [["id", 10], ["LIMIT", 1]]
+  ↳ app/controllers/application_controller.rb:10
+  Rendered layouts/_navbar.html.haml (8.2ms)
+  Rendered layouts/_footer.html.haml (23.6ms)
+Completed 404 Not Found in 162ms (Views: 153.5ms | ActiveRecord: 0.7ms)
+
+
+Started GET "/" for 127.0.0.1 at 2018-09-17 21:14:01 +0200
+Processing by MapboxController#show as HTML
+  [1m[36mRoom Load (0.2ms)[0m  [1m[34mSELECT "rooms".* FROM "rooms"[0m
+  ↳ app/controllers/mapbox_controller.rb:6
+  [1m[36mPower Load (0.3ms)[0m  [1m[34mSELECT "powers".* FROM "powers" WHERE "powers"."room_id" = ?[0m  [["room_id", 1]]
+  ↳ app/controllers/mapbox_controller.rb:10
+  [1m[36mUser Load (0.3ms)[0m  [1m[34mSELECT  "users".* FROM "users" WHERE "users"."id" = ? LIMIT ?[0m  [["id", 1], ["LIMIT", 1]]
+  ↳ app/controllers/mapbox_controller.rb:13
+  [1m[36mPower Load (0.3ms)[0m  [1m[34mSELECT "powers".* FROM "powers" WHERE "powers"."room_id" = ?[0m  [["room_id", 2]]
+  ↳ app/controllers/mapbox_controller.rb:10
+  [1m[36mCACHE User Load (0.0ms)[0m  [1m[34mSELECT  "users".* FROM "users" WHERE "users"."id" = ? LIMIT ?[0m  [["id", 1], ["LIMIT", 1]]
+  ↳ app/controllers/mapbox_controller.rb:13
+  [1m[36mPower Load (0.2ms)[0m  [1m[34mSELECT "powers".* FROM "powers" WHERE "powers"."room_id" = ?[0m  [["room_id", 3]]
+  ↳ app/controllers/mapbox_controller.rb:10
+  [1m[36mCACHE User Load (0.0ms)[0m  [1m[34mSELECT  "users".* FROM "users" WHERE "users"."id" = ? LIMIT ?[0m  [["id", 1], ["LIMIT", 1]]
+  ↳ app/controllers/mapbox_controller.rb:13
+  [1m[36mPower Load (0.2ms)[0m  [1m[34mSELECT "powers".* FROM "powers" WHERE "powers"."room_id" = ?[0m  [["room_id", 4]]
+  ↳ app/controllers/mapbox_controller.rb:10
+  [1m[36mCACHE User Load (0.0ms)[0m  [1m[34mSELECT  "users".* FROM "users" WHERE "users"."id" = ? LIMIT ?[0m  [["id", 1], ["LIMIT", 1]]
+  ↳ app/controllers/mapbox_controller.rb:13
+  [1m[36mPower Load (0.1ms)[0m  [1m[34mSELECT "powers".* FROM "powers" WHERE "powers"."room_id" = ?[0m  [["room_id", 5]]
+  ↳ app/controllers/mapbox_controller.rb:10
+  [1m[36mCACHE User Load (0.0ms)[0m  [1m[34mSELECT  "users".* FROM "users" WHERE "users"."id" = ? LIMIT ?[0m  [["id", 1], ["LIMIT", 1]]
+  ↳ app/controllers/mapbox_controller.rb:13
+  [1m[36mPower Load (0.1ms)[0m  [1m[34mSELECT "powers".* FROM "powers" WHERE "powers"."room_id" = ?[0m  [["room_id", 6]]
+  ↳ app/controllers/mapbox_controller.rb:10
+  [1m[36mCACHE User Load (0.0ms)[0m  [1m[34mSELECT  "users".* FROM "users" WHERE "users"."id" = ? LIMIT ?[0m  [["id", 1], ["LIMIT", 1]]
+  ↳ app/controllers/mapbox_controller.rb:13
+  [1m[36mPower Load (0.1ms)[0m  [1m[34mSELECT "powers".* FROM "powers" WHERE "powers"."room_id" = ?[0m  [["room_id", 7]]
+  ↳ app/controllers/mapbox_controller.rb:10
+  [1m[36mCACHE User Load (0.0ms)[0m  [1m[34mSELECT  "users".* FROM "users" WHERE "users"."id" = ? LIMIT ?[0m  [["id", 1], ["LIMIT", 1]]
+  ↳ app/controllers/mapbox_controller.rb:13
+  Rendering mapbox/show.html.haml within layouts/application
+  Rendered mapbox/show.html.haml within layouts/application (10.5ms)
+  [1m[36mUser Load (0.2ms)[0m  [1m[34mSELECT  "users".* FROM "users" WHERE "users"."id" = ? LIMIT ?[0m  [["id", 10], ["LIMIT", 1]]
+  ↳ app/controllers/application_controller.rb:10
+  Rendered layouts/_navbar.html.haml (8.8ms)
+  Rendered layouts/_footer.html.haml (27.8ms)
+Completed 200 OK in 212ms (Views: 121.5ms | ActiveRecord: 4.6ms)
+
+
+Started GET "/dashboard.json" for 127.0.0.1 at 2018-09-17 21:14:02 +0200
+Processing by MapboxController#show as JSON
+  [1m[36mRoom Load (0.4ms)[0m  [1m[34mSELECT "rooms".* FROM "rooms"[0m
+  ↳ app/controllers/mapbox_controller.rb:6
+  [1m[36mPower Load (0.2ms)[0m  [1m[34mSELECT "powers".* FROM "powers" WHERE "powers"."room_id" = ?[0m  [["room_id", 1]]
+  ↳ app/controllers/mapbox_controller.rb:10
+  [1m[36mUser Load (0.2ms)[0m  [1m[34mSELECT  "users".* FROM "users" WHERE "users"."id" = ? LIMIT ?[0m  [["id", 1], ["LIMIT", 1]]
+  ↳ app/controllers/mapbox_controller.rb:13
+  [1m[36mPower Load (0.2ms)[0m  [1m[34mSELECT "powers".* FROM "powers" WHERE "powers"."room_id" = ?[0m  [["room_id", 2]]
+  ↳ app/controllers/mapbox_controller.rb:10
+  [1m[36mCACHE User Load (0.0ms)[0m  [1m[34mSELECT  "users".* FROM "users" WHERE "users"."id" = ? LIMIT ?[0m  [["id", 1], ["LIMIT", 1]]
+  ↳ app/controllers/mapbox_controller.rb:13
+  [1m[36mPower Load (0.1ms)[0m  [1m[34mSELECT "powers".* FROM "powers" WHERE "powers"."room_id" = ?[0m  [["room_id", 3]]
+  ↳ app/controllers/mapbox_controller.rb:10
+  [1m[36mCACHE User Load (0.0ms)[0m  [1m[34mSELECT  "users".* FROM "users" WHERE "users"."id" = ? LIMIT ?[0m  [["id", 1], ["LIMIT", 1]]
+  ↳ app/controllers/mapbox_controller.rb:13
+  [1m[36mPower Load (0.1ms)[0m  [1m[34mSELECT "powers".* FROM "powers" WHERE "powers"."room_id" = ?[0m  [["room_id", 4]]
+  ↳ app/controllers/mapbox_controller.rb:10
+  [1m[36mCACHE User Load (0.0ms)[0m  [1m[34mSELECT  "users".* FROM "users" WHERE "users"."id" = ? LIMIT ?[0m  [["id", 1], ["LIMIT", 1]]
+  ↳ app/controllers/mapbox_controller.rb:13
+  [1m[36mPower Load (0.1ms)[0m  [1m[34mSELECT "powers".* FROM "powers" WHERE "powers"."room_id" = ?[0m  [["room_id", 5]]
+  ↳ app/controllers/mapbox_controller.rb:10
+  [1m[36mCACHE User Load (0.0ms)[0m  [1m[34mSELECT  "users".* FROM "users" WHERE "users"."id" = ? LIMIT ?[0m  [["id", 1], ["LIMIT", 1]]
+  ↳ app/controllers/mapbox_controller.rb:13
+  [1m[36mPower Load (0.2ms)[0m  [1m[34mSELECT "powers".* FROM "powers" WHERE "powers"."room_id" = ?[0m  [["room_id", 6]]
+  ↳ app/controllers/mapbox_controller.rb:10
+  [1m[36mCACHE User Load (0.0ms)[0m  [1m[34mSELECT  "users".* FROM "users" WHERE "users"."id" = ? LIMIT ?[0m  [["id", 1], ["LIMIT", 1]]
+  ↳ app/controllers/mapbox_controller.rb:13
+  [1m[36mPower Load (0.1ms)[0m  [1m[34mSELECT "powers".* FROM "powers" WHERE "powers"."room_id" = ?[0m  [["room_id", 7]]
+  ↳ app/controllers/mapbox_controller.rb:10
+  [1m[36mCACHE User Load (0.0ms)[0m  [1m[34mSELECT  "users".* FROM "users" WHERE "users"."id" = ? LIMIT ?[0m  [["id", 1], ["LIMIT", 1]]
+  ↳ app/controllers/mapbox_controller.rb:13
+Completed 200 OK in 20ms (Views: 0.1ms | ActiveRecord: 1.7ms)
+
+
+Started GET "/dashboard.json" for 127.0.0.1 at 2018-09-17 21:14:02 +0200
+Processing by MapboxController#show as JSON
+  [1m[36mRoom Load (0.3ms)[0m  [1m[34mSELECT "rooms".* FROM "rooms"[0m
+  ↳ app/controllers/mapbox_controller.rb:6
+  [1m[36mPower Load (0.1ms)[0m  [1m[34mSELECT "powers".* FROM "powers" WHERE "powers"."room_id" = ?[0m  [["room_id", 1]]
+  ↳ app/controllers/mapbox_controller.rb:10
+  [1m[36mUser Load (0.1ms)[0m  [1m[34mSELECT  "users".* FROM "users" WHERE "users"."id" = ? LIMIT ?[0m  [["id", 1], ["LIMIT", 1]]
+  ↳ app/controllers/mapbox_controller.rb:13
+  [1m[36mPower Load (0.1ms)[0m  [1m[34mSELECT "powers".* FROM "powers" WHERE "powers"."room_id" = ?[0m  [["room_id", 2]]
+  ↳ app/controllers/mapbox_controller.rb:10
+  [1m[36mCACHE User Load (0.0ms)[0m  [1m[34mSELECT  "users".* FROM "users" WHERE "users"."id" = ? LIMIT ?[0m  [["id", 1], ["LIMIT", 1]]
+  ↳ app/controllers/mapbox_controller.rb:13
+  [1m[36mPower Load (0.1ms)[0m  [1m[34mSELECT "powers".* FROM "powers" WHERE "powers"."room_id" = ?[0m  [["room_id", 3]]
+  ↳ app/controllers/mapbox_controller.rb:10
+  [1m[36mCACHE User Load (0.0ms)[0m  [1m[34mSELECT  "users".* FROM "users" WHERE "users"."id" = ? LIMIT ?[0m  [["id", 1], ["LIMIT", 1]]
+  ↳ app/controllers/mapbox_controller.rb:13
+  [1m[36mPower Load (0.1ms)[0m  [1m[34mSELECT "powers".* FROM "powers" WHERE "powers"."room_id" = ?[0m  [["room_id", 4]]
+  ↳ app/controllers/mapbox_controller.rb:10
+  [1m[36mCACHE User Load (0.0ms)[0m  [1m[34mSELECT  "users".* FROM "users" WHERE "users"."id" = ? LIMIT ?[0m  [["id", 1], ["LIMIT", 1]]
+  ↳ app/controllers/mapbox_controller.rb:13
+  [1m[36mPower Load (0.1ms)[0m  [1m[34mSELECT "powers".* FROM "powers" WHERE "powers"."room_id" = ?[0m  [["room_id", 5]]
+  ↳ app/controllers/mapbox_controller.rb:10
+  [1m[36mCACHE User Load (0.0ms)[0m  [1m[34mSELECT  "users".* FROM "users" WHERE "users"."id" = ? LIMIT ?[0m  [["id", 1], ["LIMIT", 1]]
+  ↳ app/controllers/mapbox_controller.rb:13
+  [1m[36mPower Load (0.1ms)[0m  [1m[34mSELECT "powers".* FROM "powers" WHERE "powers"."room_id" = ?[0m  [["room_id", 6]]
+  ↳ app/controllers/mapbox_controller.rb:10
+  [1m[36mCACHE User Load (0.0ms)[0m  [1m[34mSELECT  "users".* FROM "users" WHERE "users"."id" = ? LIMIT ?[0m  [["id", 1], ["LIMIT", 1]]
+  ↳ app/controllers/mapbox_controller.rb:13
+  [1m[36mPower Load (0.2ms)[0m  [1m[34mSELECT "powers".* FROM "powers" WHERE "powers"."room_id" = ?[0m  [["room_id", 7]]
+  ↳ app/controllers/mapbox_controller.rb:10
+  [1m[36mCACHE User Load (0.0ms)[0m  [1m[34mSELECT  "users".* FROM "users" WHERE "users"."id" = ? LIMIT ?[0m  [["id", 1], ["LIMIT", 1]]
+  ↳ app/controllers/mapbox_controller.rb:13
+Completed 200 OK in 18ms (Views: 0.1ms | ActiveRecord: 1.4ms)
+
+
+Started GET "/users/10" for 127.0.0.1 at 2018-09-17 21:14:04 +0200
+Processing by UsersController#show as HTML
+  Parameters: {"id"=>"10"}
+  [1m[36mUser Load (0.2ms)[0m  [1m[34mSELECT  "users".* FROM "users" WHERE "users"."id" = ? LIMIT ?[0m  [["id", 10], ["LIMIT", 1]]
+  ↳ app/controllers/users_controller.rb:6
+  Rendering users/show.html.haml within layouts/application
+  Rendered users/show.html.haml within layouts/application (325.4ms)
+Completed 500 Internal Server Error in 332ms (ActiveRecord: 0.2ms)
+
+
+  
+ActionView::Template::Error (undefined method `achievements_user_path' for #<#<Class:0x00007f6acdd20778>:0x00007f6acdd12650>):
+    17:             %h1 EMAIL:
+    18:             %p #{@user.email}
+    19:           %br
+    20:           =link_to achievements_user_path(@user) do
+    21:             %input.btn.btn-sm.btn-success{:type => "submit", :value => "Achievements"}
+    22:         .col-lg-6
+    23:           %label
+  
+app/views/users/show.html.haml:20:in `_app_views_users_show_html_haml__558411215321921288_70048348179000'
+Started GET "/users/10" for 127.0.0.1 at 2018-09-17 21:15:05 +0200
+Processing by UsersController#show as HTML
+  Parameters: {"id"=>"10"}
+  [1m[36mUser Load (0.3ms)[0m  [1m[34mSELECT  "users".* FROM "users" WHERE "users"."id" = ? LIMIT ?[0m  [["id", 10], ["LIMIT", 1]]
+  ↳ app/controllers/users_controller.rb:6
+  Rendering users/show.html.haml within layouts/application
+  Rendered users/show.html.haml within layouts/application (228.5ms)
+Completed 500 Internal Server Error in 275ms (ActiveRecord: 1.0ms)
+
+
+  
+ActionView::Template::Error (undefined method `achievements_user_path' for #<#<Class:0x00007f6ace110518>:0x00007f6ace109e20>):
+    17:             %h1 EMAIL:
+    18:             %p #{@user.email}
+    19:           %br
+    20:           =link_to achievements_user_path(@user) do
+    21:             %input.btn.btn-sm.btn-success{:type => "submit", :value => "Achievements"}
+    22:         .col-lg-6
+    23:           %label
+  
+app/views/users/show.html.haml:20:in `_app_views_users_show_html_haml__558411215321921288_70048350242560'
+Started GET "/users/10" for 127.0.0.1 at 2018-09-17 21:16:22 +0200
+Processing by UsersController#show as HTML
+  Parameters: {"id"=>"10"}
+  [1m[36mUser Load (0.3ms)[0m  [1m[34mSELECT  "users".* FROM "users" WHERE "users"."id" = ? LIMIT ?[0m  [["id", 10], ["LIMIT", 1]]
+  ↳ app/controllers/users_controller.rb:6
+  Rendering users/show.html.haml within layouts/application
+  Rendered users/show.html.haml within layouts/application (3.9ms)
+Completed 500 Internal Server Error in 11ms (ActiveRecord: 0.3ms)
+
+
+  
+ActionView::Template::Error (Inconsistent indentation: 9 spaces used for indentation, but the rest of the document was indented using 2 spaces.):
+    17:             %h1 EMAIL:
+    18:             %p #{@user.email}
+    19:           %br
+    20:          / =link_to achievements_user_path(@user) do
+    21:             %input.btn.btn-sm.btn-success{:type => "submit", :value => "Achievements"}
+    22:         .col-lg-6
+    23:           %label
+  
+app/views/users/show.html.haml:20
+Started GET "/users/10" for 127.0.0.1 at 2018-09-17 21:16:28 +0200
+Processing by UsersController#show as HTML
+  Parameters: {"id"=>"10"}
+  [1m[36mUser Load (0.2ms)[0m  [1m[34mSELECT  "users".* FROM "users" WHERE "users"."id" = ? LIMIT ?[0m  [["id", 10], ["LIMIT", 1]]
+  ↳ app/controllers/users_controller.rb:6
+  Rendering users/show.html.haml within layouts/application
+  Rendered users/show.html.haml within layouts/application (2.6ms)
+Completed 500 Internal Server Error in 8ms (ActiveRecord: 0.2ms)
+
+
+  
+ActionView::Template::Error (Inconsistent indentation: 9 spaces used for indentation, but the rest of the document was indented using 2 spaces.):
+    17:             %h1 EMAIL:
+    18:             %p #{@user.email}
+    19:           %br
+    20:          // =link_to achievements_user_path(@user) do
+    21:             %input.btn.btn-sm.btn-success{:type => "submit", :value => "Achievements"}
+    22:         .col-lg-6
+    23:           %label
+  
+app/views/users/show.html.haml:20
+Started GET "/users/10" for 127.0.0.1 at 2018-09-17 21:16:41 +0200
+Processing by UsersController#show as HTML
+  Parameters: {"id"=>"10"}
+  [1m[36mUser Load (0.2ms)[0m  [1m[34mSELECT  "users".* FROM "users" WHERE "users"."id" = ? LIMIT ?[0m  [["id", 10], ["LIMIT", 1]]
+  ↳ app/controllers/users_controller.rb:6
+  Rendering users/show.html.haml within layouts/application
+  Rendered users/show.html.haml within layouts/application (9.9ms)
+  [1m[36mUser Load (0.1ms)[0m  [1m[34mSELECT  "users".* FROM "users" WHERE "users"."id" = ? LIMIT ?[0m  [["id", 10], ["LIMIT", 1]]
+  ↳ app/controllers/application_controller.rb:10
+  Rendered layouts/_navbar.html.haml (6.6ms)
+  Rendered layouts/_footer.html.haml (19.6ms)
+Completed 200 OK in 106ms (Views: 103.5ms | ActiveRecord: 0.4ms)
+
+
+Started GET "/users/achievements" for 127.0.0.1 at 2018-09-17 21:16:43 +0200
+Processing by UsersController#show as HTML
+  Parameters: {"id"=>"achievements"}
+  [1m[36mUser Load (0.2ms)[0m  [1m[34mSELECT  "users".* FROM "users" WHERE "users"."id" = ? LIMIT ?[0m  [["id", 0], ["LIMIT", 1]]
+  ↳ app/controllers/users_controller.rb:6
+  Rendering public/404.html.haml within layouts/application
+  Rendered public/404.html.haml within layouts/application (4.9ms)
+  [1m[36mUser Load (0.2ms)[0m  [1m[34mSELECT  "users".* FROM "users" WHERE "users"."id" = ? LIMIT ?[0m  [["id", 10], ["LIMIT", 1]]
+  ↳ app/controllers/application_controller.rb:10
+  Rendered layouts/_navbar.html.haml (8.9ms)
+  Rendered layouts/_footer.html.haml (16.4ms)
+Completed 404 Not Found in 114ms (Views: 111.2ms | ActiveRecord: 0.4ms)
+
+
+Started GET "/users/10" for 127.0.0.1 at 2018-09-17 21:16:45 +0200
+Processing by UsersController#show as HTML
+  Parameters: {"id"=>"10"}
+  [1m[36mUser Load (0.6ms)[0m  [1m[34mSELECT  "users".* FROM "users" WHERE "users"."id" = ? LIMIT ?[0m  [["id", 10], ["LIMIT", 1]]
+  ↳ app/controllers/users_controller.rb:6
+  Rendering users/show.html.haml within layouts/application
+  Rendered users/show.html.haml within layouts/application (33.7ms)
+  [1m[36mUser Load (0.1ms)[0m  [1m[34mSELECT  "users".* FROM "users" WHERE "users"."id" = ? LIMIT ?[0m  [["id", 10], ["LIMIT", 1]]
+  ↳ app/controllers/application_controller.rb:10
+  Rendered layouts/_navbar.html.haml (7.4ms)
+  Rendered layouts/_footer.html.haml (16.0ms)
+Completed 200 OK in 156ms (Views: 146.1ms | ActiveRecord: 0.7ms)
+
+
+Started GET "/users/10/edit" for 127.0.0.1 at 2018-09-17 21:16:47 +0200
+Processing by UsersController#edit as HTML
+  Parameters: {"id"=>"10"}
+  [1m[36mUser Load (0.6ms)[0m  [1m[34mSELECT  "users".* FROM "users" WHERE "users"."id" = ? LIMIT ?[0m  [["id", 10], ["LIMIT", 1]]
+  ↳ app/controllers/application_controller.rb:10
+  [1m[36mUser Load (0.5ms)[0m  [1m[34mSELECT  "users".* FROM "users" WHERE "users"."id" = ? LIMIT ?[0m  [["id", 10], ["LIMIT", 1]]
+  ↳ app/controllers/users_controller.rb:69
+  [1m[36mCACHE User Load (0.1ms)[0m  [1m[34mSELECT  "users".* FROM "users" WHERE "users"."id" = ? LIMIT ?[0m  [["id", 10], ["LIMIT", 1]]
+  ↳ app/controllers/users_controller.rb:41
+  Rendering users/edit.html.haml within layouts/application
+  Rendered shared/_error_messages.html.haml (4.7ms)
+  Rendered users/edit.html.haml within layouts/application (27.6ms)
+  Rendered layouts/_navbar.html.haml (9.6ms)
+  Rendered layouts/_footer.html.haml (16.8ms)
+Completed 200 OK in 167ms (Views: 151.3ms | ActiveRecord: 1.2ms)
+
+
+Started GET "/user/10" for 127.0.0.1 at 2018-09-17 21:18:30 +0200
+Processing by ApplicationController#render_404 as HTML
+  Parameters: {"path"=>"user/10"}
+  Rendering public/404.html.haml within layouts/application
+  Rendered public/404.html.haml within layouts/application (3.4ms)
+  [1m[36mUser Load (0.3ms)[0m  [1m[34mSELECT  "users".* FROM "users" WHERE "users"."id" = ? LIMIT ?[0m  [["id", 10], ["LIMIT", 1]]
+  ↳ app/controllers/application_controller.rb:10
+  Rendered layouts/_navbar.html.haml (46.9ms)
+  Rendered layouts/_footer.html.haml (38.1ms)
+Completed 404 Not Found in 169ms (Views: 167.3ms | ActiveRecord: 1.1ms)
+
+
+Started GET "/" for 127.0.0.1 at 2018-09-17 21:18:34 +0200
+Processing by MapboxController#show as HTML
+  [1m[36mRoom Load (1.1ms)[0m  [1m[34mSELECT "rooms".* FROM "rooms"[0m
+  ↳ app/controllers/mapbox_controller.rb:6
+  [1m[36mPower Load (0.2ms)[0m  [1m[34mSELECT "powers".* FROM "powers" WHERE "powers"."room_id" = ?[0m  [["room_id", 1]]
+  ↳ app/controllers/mapbox_controller.rb:10
+  [1m[36mUser Load (0.1ms)[0m  [1m[34mSELECT  "users".* FROM "users" WHERE "users"."id" = ? LIMIT ?[0m  [["id", 1], ["LIMIT", 1]]
+  ↳ app/controllers/mapbox_controller.rb:13
+  [1m[36mPower Load (0.1ms)[0m  [1m[34mSELECT "powers".* FROM "powers" WHERE "powers"."room_id" = ?[0m  [["room_id", 2]]
+  ↳ app/controllers/mapbox_controller.rb:10
+  [1m[36mCACHE User Load (0.0ms)[0m  [1m[34mSELECT  "users".* FROM "users" WHERE "users"."id" = ? LIMIT ?[0m  [["id", 1], ["LIMIT", 1]]
+  ↳ app/controllers/mapbox_controller.rb:13
+  [1m[36mPower Load (0.1ms)[0m  [1m[34mSELECT "powers".* FROM "powers" WHERE "powers"."room_id" = ?[0m  [["room_id", 3]]
+  ↳ app/controllers/mapbox_controller.rb:10
+  [1m[36mCACHE User Load (0.0ms)[0m  [1m[34mSELECT  "users".* FROM "users" WHERE "users"."id" = ? LIMIT ?[0m  [["id", 1], ["LIMIT", 1]]
+  ↳ app/controllers/mapbox_controller.rb:13
+  [1m[36mPower Load (0.2ms)[0m  [1m[34mSELECT "powers".* FROM "powers" WHERE "powers"."room_id" = ?[0m  [["room_id", 4]]
+  ↳ app/controllers/mapbox_controller.rb:10
+  [1m[36mCACHE User Load (0.0ms)[0m  [1m[34mSELECT  "users".* FROM "users" WHERE "users"."id" = ? LIMIT ?[0m  [["id", 1], ["LIMIT", 1]]
+  ↳ app/controllers/mapbox_controller.rb:13
+  [1m[36mPower Load (0.1ms)[0m  [1m[34mSELECT "powers".* FROM "powers" WHERE "powers"."room_id" = ?[0m  [["room_id", 5]]
+  ↳ app/controllers/mapbox_controller.rb:10
+  [1m[36mCACHE User Load (0.0ms)[0m  [1m[34mSELECT  "users".* FROM "users" WHERE "users"."id" = ? LIMIT ?[0m  [["id", 1], ["LIMIT", 1]]
+  ↳ app/controllers/mapbox_controller.rb:13
+  [1m[36mPower Load (0.2ms)[0m  [1m[34mSELECT "powers".* FROM "powers" WHERE "powers"."room_id" = ?[0m  [["room_id", 6]]
+  ↳ app/controllers/mapbox_controller.rb:10
+  [1m[36mCACHE User Load (0.0ms)[0m  [1m[34mSELECT  "users".* FROM "users" WHERE "users"."id" = ? LIMIT ?[0m  [["id", 1], ["LIMIT", 1]]
+  ↳ app/controllers/mapbox_controller.rb:13
+  [1m[36mPower Load (0.2ms)[0m  [1m[34mSELECT "powers".* FROM "powers" WHERE "powers"."room_id" = ?[0m  [["room_id", 7]]
+  ↳ app/controllers/mapbox_controller.rb:10
+  [1m[36mCACHE User Load (0.0ms)[0m  [1m[34mSELECT  "users".* FROM "users" WHERE "users"."id" = ? LIMIT ?[0m  [["id", 1], ["LIMIT", 1]]
+  ↳ app/controllers/mapbox_controller.rb:13
+  Rendering mapbox/show.html.haml within layouts/application
+  Rendered mapbox/show.html.haml within layouts/application (21.1ms)
+  [1m[36mUser Load (0.1ms)[0m  [1m[34mSELECT  "users".* FROM "users" WHERE "users"."id" = ? LIMIT ?[0m  [["id", 10], ["LIMIT", 1]]
+  ↳ app/controllers/application_controller.rb:10
+  Rendered layouts/_navbar.html.haml (7.0ms)
+  Rendered layouts/_footer.html.haml (16.8ms)
+Completed 200 OK in 242ms (Views: 141.9ms | ActiveRecord: 4.7ms)
+
+
+Started GET "/dashboard.json" for 127.0.0.1 at 2018-09-17 21:18:35 +0200
+Processing by MapboxController#show as JSON
+  [1m[36mRoom Load (0.3ms)[0m  [1m[34mSELECT "rooms".* FROM "rooms"[0m
+  ↳ app/controllers/mapbox_controller.rb:6
+  [1m[36mPower Load (0.1ms)[0m  [1m[34mSELECT "powers".* FROM "powers" WHERE "powers"."room_id" = ?[0m  [["room_id", 1]]
+  ↳ app/controllers/mapbox_controller.rb:10
+  [1m[36mUser Load (0.1ms)[0m  [1m[34mSELECT  "users".* FROM "users" WHERE "users"."id" = ? LIMIT ?[0m  [["id", 1], ["LIMIT", 1]]
+  ↳ app/controllers/mapbox_controller.rb:13
+  [1m[36mPower Load (0.1ms)[0m  [1m[34mSELECT "powers".* FROM "powers" WHERE "powers"."room_id" = ?[0m  [["room_id", 2]]
+  ↳ app/controllers/mapbox_controller.rb:10
+  [1m[36mCACHE User Load (0.0ms)[0m  [1m[34mSELECT  "users".* FROM "users" WHERE "users"."id" = ? LIMIT ?[0m  [["id", 1], ["LIMIT", 1]]
+  ↳ app/controllers/mapbox_controller.rb:13
+  [1m[36mPower Load (0.1ms)[0m  [1m[34mSELECT "powers".* FROM "powers" WHERE "powers"."room_id" = ?[0m  [["room_id", 3]]
+  ↳ app/controllers/mapbox_controller.rb:10
+  [1m[36mCACHE User Load (0.0ms)[0m  [1m[34mSELECT  "users".* FROM "users" WHERE "users"."id" = ? LIMIT ?[0m  [["id", 1], ["LIMIT", 1]]
+  ↳ app/controllers/mapbox_controller.rb:13
+  [1m[36mPower Load (0.1ms)[0m  [1m[34mSELECT "powers".* FROM "powers" WHERE "powers"."room_id" = ?[0m  [["room_id", 4]]
+  ↳ app/controllers/mapbox_controller.rb:10
+  [1m[36mCACHE User Load (0.0ms)[0m  [1m[34mSELECT  "users".* FROM "users" WHERE "users"."id" = ? LIMIT ?[0m  [["id", 1], ["LIMIT", 1]]
+  ↳ app/controllers/mapbox_controller.rb:13
+  [1m[36mPower Load (0.1ms)[0m  [1m[34mSELECT "powers".* FROM "powers" WHERE "powers"."room_id" = ?[0m  [["room_id", 5]]
+  ↳ app/controllers/mapbox_controller.rb:10
+  [1m[36mCACHE User Load (0.0ms)[0m  [1m[34mSELECT  "users".* FROM "users" WHERE "users"."id" = ? LIMIT ?[0m  [["id", 1], ["LIMIT", 1]]
+  ↳ app/controllers/mapbox_controller.rb:13
+  [1m[36mPower Load (0.1ms)[0m  [1m[34mSELECT "powers".* FROM "powers" WHERE "powers"."room_id" = ?[0m  [["room_id", 6]]
+  ↳ app/controllers/mapbox_controller.rb:10
+  [1m[36mCACHE User Load (0.0ms)[0m  [1m[34mSELECT  "users".* FROM "users" WHERE "users"."id" = ? LIMIT ?[0m  [["id", 1], ["LIMIT", 1]]
+  ↳ app/controllers/mapbox_controller.rb:13
+  [1m[36mPower Load (0.1ms)[0m  [1m[34mSELECT "powers".* FROM "powers" WHERE "powers"."room_id" = ?[0m  [["room_id", 7]]
+  ↳ app/controllers/mapbox_controller.rb:10
+  [1m[36mCACHE User Load (0.0ms)[0m  [1m[34mSELECT  "users".* FROM "users" WHERE "users"."id" = ? LIMIT ?[0m  [["id", 1], ["LIMIT", 1]]
+  ↳ app/controllers/mapbox_controller.rb:13
+Completed 200 OK in 13ms (Views: 0.1ms | ActiveRecord: 1.1ms)
+
+
+Started GET "/dashboard.json" for 127.0.0.1 at 2018-09-17 21:18:35 +0200
+Processing by MapboxController#show as JSON
+  [1m[36mRoom Load (0.3ms)[0m  [1m[34mSELECT "rooms".* FROM "rooms"[0m
+  ↳ app/controllers/mapbox_controller.rb:6
+  [1m[36mPower Load (0.1ms)[0m  [1m[34mSELECT "powers".* FROM "powers" WHERE "powers"."room_id" = ?[0m  [["room_id", 1]]
+  ↳ app/controllers/mapbox_controller.rb:10
+  [1m[36mUser Load (0.1ms)[0m  [1m[34mSELECT  "users".* FROM "users" WHERE "users"."id" = ? LIMIT ?[0m  [["id", 1], ["LIMIT", 1]]
+  ↳ app/controllers/mapbox_controller.rb:13
+  [1m[36mPower Load (0.1ms)[0m  [1m[34mSELECT "powers".* FROM "powers" WHERE "powers"."room_id" = ?[0m  [["room_id", 2]]
+  ↳ app/controllers/mapbox_controller.rb:10
+  [1m[36mCACHE User Load (0.0ms)[0m  [1m[34mSELECT  "users".* FROM "users" WHERE "users"."id" = ? LIMIT ?[0m  [["id", 1], ["LIMIT", 1]]
+  ↳ app/controllers/mapbox_controller.rb:13
+  [1m[36mPower Load (0.2ms)[0m  [1m[34mSELECT "powers".* FROM "powers" WHERE "powers"."room_id" = ?[0m  [["room_id", 3]]
+  ↳ app/controllers/mapbox_controller.rb:10
+  [1m[36mCACHE User Load (0.0ms)[0m  [1m[34mSELECT  "users".* FROM "users" WHERE "users"."id" = ? LIMIT ?[0m  [["id", 1], ["LIMIT", 1]]
+  ↳ app/controllers/mapbox_controller.rb:13
+  [1m[36mPower Load (0.1ms)[0m  [1m[34mSELECT "powers".* FROM "powers" WHERE "powers"."room_id" = ?[0m  [["room_id", 4]]
+  ↳ app/controllers/mapbox_controller.rb:10
+  [1m[36mCACHE User Load (0.0ms)[0m  [1m[34mSELECT  "users".* FROM "users" WHERE "users"."id" = ? LIMIT ?[0m  [["id", 1], ["LIMIT", 1]]
+  ↳ app/controllers/mapbox_controller.rb:13
+  [1m[36mPower Load (0.1ms)[0m  [1m[34mSELECT "powers".* FROM "powers" WHERE "powers"."room_id" = ?[0m  [["room_id", 5]]
+  ↳ app/controllers/mapbox_controller.rb:10
+  [1m[36mCACHE User Load (0.0ms)[0m  [1m[34mSELECT  "users".* FROM "users" WHERE "users"."id" = ? LIMIT ?[0m  [["id", 1], ["LIMIT", 1]]
+  ↳ app/controllers/mapbox_controller.rb:13
+  [1m[36mPower Load (0.2ms)[0m  [1m[34mSELECT "powers".* FROM "powers" WHERE "powers"."room_id" = ?[0m  [["room_id", 6]]
+  ↳ app/controllers/mapbox_controller.rb:10
+  [1m[36mCACHE User Load (0.0ms)[0m  [1m[34mSELECT  "users".* FROM "users" WHERE "users"."id" = ? LIMIT ?[0m  [["id", 1], ["LIMIT", 1]]
+  ↳ app/controllers/mapbox_controller.rb:13
+  [1m[36mPower Load (0.1ms)[0m  [1m[34mSELECT "powers".* FROM "powers" WHERE "powers"."room_id" = ?[0m  [["room_id", 7]]
+  ↳ app/controllers/mapbox_controller.rb:10
+  [1m[36mCACHE User Load (0.0ms)[0m  [1m[34mSELECT  "users".* FROM "users" WHERE "users"."id" = ? LIMIT ?[0m  [["id", 1], ["LIMIT", 1]]
+  ↳ app/controllers/mapbox_controller.rb:13
+Completed 200 OK in 21ms (Views: 0.2ms | ActiveRecord: 1.5ms)
+
+
+Started GET "/users/10" for 127.0.0.1 at 2018-09-17 21:18:37 +0200
+Processing by UsersController#show as HTML
+  Parameters: {"id"=>"10"}
+  [1m[36mUser Load (0.4ms)[0m  [1m[34mSELECT  "users".* FROM "users" WHERE "users"."id" = ? LIMIT ?[0m  [["id", 10], ["LIMIT", 1]]
+  ↳ app/controllers/users_controller.rb:6
+  Rendering users/show.html.haml within layouts/application
+  Rendered users/show.html.haml within layouts/application (288.8ms)
+Completed 500 Internal Server Error in 307ms (ActiveRecord: 0.4ms)
+
+
+  
+ActionView::Template::Error (undefined method `achievements_user_path' for #<#<Class:0x00007f6acd886398>:0x00007f6acd873310>):
+    17:             %h1 EMAIL:
+    18:             %p #{@user.email}
+    19:           %br
+    20:           =link_to achievements_user_path(@user) do
+    21:             %input.btn.btn-sm.btn-success{:type => "submit", :value => "Achievements"}
+    22:         .col-lg-6
+    23:           %label
+  
+app/views/users/show.html.haml:20:in `_app_views_users_show_html_haml__558411215321921288_70048345786160'
+Started GET "/users/10" for 127.0.0.1 at 2018-09-17 21:25:38 +0200
+Processing by UsersController#show as HTML
+  Parameters: {"id"=>"10"}
+  [1m[36mUser Load (0.2ms)[0m  [1m[34mSELECT  "users".* FROM "users" WHERE "users"."id" = ? LIMIT ?[0m  [["id", 10], ["LIMIT", 1]]
+  ↳ app/controllers/users_controller.rb:6
+  Rendering users/show.html.haml within layouts/application
+  Rendered users/show.html.haml within layouts/application (310.7ms)
+Completed 500 Internal Server Error in 356ms (ActiveRecord: 1.3ms)
+
+
+  
+ActionView::Template::Error (undefined method `achievements_user_path' for #<#<Class:0x0000558452e41048>:0x0000558452e39898>):
+    17:             %h1 EMAIL:
+    18:             %p #{@user.email}
+    19:           %br
+    20:           =link_to achievements_user_path(@user) do
+    21:             %input.btn.btn-sm.btn-success{:type => "submit", :value => "Achievements"}
+    22:         .col-lg-6
+    23:           %label
+  
+app/views/users/show.html.haml:20:in `_app_views_users_show_html_haml__558411215321921288_47013407362700'
+Started GET "/" for 127.0.0.1 at 2018-09-17 21:25:44 +0200
+Processing by MapboxController#show as HTML
+  [1m[36mRoom Load (0.4ms)[0m  [1m[34mSELECT "rooms".* FROM "rooms"[0m
+  ↳ app/controllers/mapbox_controller.rb:6
+  [1m[36mPower Load (0.1ms)[0m  [1m[34mSELECT "powers".* FROM "powers" WHERE "powers"."room_id" = ?[0m  [["room_id", 1]]
+  ↳ app/controllers/mapbox_controller.rb:10
+  [1m[36mUser Load (0.2ms)[0m  [1m[34mSELECT  "users".* FROM "users" WHERE "users"."id" = ? LIMIT ?[0m  [["id", 1], ["LIMIT", 1]]
+  ↳ app/controllers/mapbox_controller.rb:13
+  [1m[36mPower Load (0.2ms)[0m  [1m[34mSELECT "powers".* FROM "powers" WHERE "powers"."room_id" = ?[0m  [["room_id", 2]]
+  ↳ app/controllers/mapbox_controller.rb:10
+  [1m[36mCACHE User Load (0.0ms)[0m  [1m[34mSELECT  "users".* FROM "users" WHERE "users"."id" = ? LIMIT ?[0m  [["id", 1], ["LIMIT", 1]]
+  ↳ app/controllers/mapbox_controller.rb:13
+  [1m[36mPower Load (0.1ms)[0m  [1m[34mSELECT "powers".* FROM "powers" WHERE "powers"."room_id" = ?[0m  [["room_id", 3]]
+  ↳ app/controllers/mapbox_controller.rb:10
+  [1m[36mCACHE User Load (0.0ms)[0m  [1m[34mSELECT  "users".* FROM "users" WHERE "users"."id" = ? LIMIT ?[0m  [["id", 1], ["LIMIT", 1]]
+  ↳ app/controllers/mapbox_controller.rb:13
+  [1m[36mPower Load (0.1ms)[0m  [1m[34mSELECT "powers".* FROM "powers" WHERE "powers"."room_id" = ?[0m  [["room_id", 4]]
+  ↳ app/controllers/mapbox_controller.rb:10
+  [1m[36mCACHE User Load (0.0ms)[0m  [1m[34mSELECT  "users".* FROM "users" WHERE "users"."id" = ? LIMIT ?[0m  [["id", 1], ["LIMIT", 1]]
+  ↳ app/controllers/mapbox_controller.rb:13
+  [1m[36mPower Load (0.2ms)[0m  [1m[34mSELECT "powers".* FROM "powers" WHERE "powers"."room_id" = ?[0m  [["room_id", 5]]
+  ↳ app/controllers/mapbox_controller.rb:10
+  [1m[36mCACHE User Load (0.0ms)[0m  [1m[34mSELECT  "users".* FROM "users" WHERE "users"."id" = ? LIMIT ?[0m  [["id", 1], ["LIMIT", 1]]
+  ↳ app/controllers/mapbox_controller.rb:13
+  [1m[36mPower Load (0.2ms)[0m  [1m[34mSELECT "powers".* FROM "powers" WHERE "powers"."room_id" = ?[0m  [["room_id", 6]]
+  ↳ app/controllers/mapbox_controller.rb:10
+  [1m[36mCACHE User Load (0.0ms)[0m  [1m[34mSELECT  "users".* FROM "users" WHERE "users"."id" = ? LIMIT ?[0m  [["id", 1], ["LIMIT", 1]]
+  ↳ app/controllers/mapbox_controller.rb:13
+  [1m[36mPower Load (0.2ms)[0m  [1m[34mSELECT "powers".* FROM "powers" WHERE "powers"."room_id" = ?[0m  [["room_id", 7]]
+  ↳ app/controllers/mapbox_controller.rb:10
+  [1m[36mCACHE User Load (0.0ms)[0m  [1m[34mSELECT  "users".* FROM "users" WHERE "users"."id" = ? LIMIT ?[0m  [["id", 1], ["LIMIT", 1]]
+  ↳ app/controllers/mapbox_controller.rb:13
+  Rendering mapbox/show.html.haml within layouts/application
+  Rendered mapbox/show.html.haml within layouts/application (12.0ms)
+  [1m[36mUser Load (0.2ms)[0m  [1m[34mSELECT  "users".* FROM "users" WHERE "users"."id" = ? LIMIT ?[0m  [["id", 10], ["LIMIT", 1]]
+  ↳ app/controllers/application_controller.rb:10
+  Rendered layouts/_navbar.html.haml (8.7ms)
+  Rendered layouts/_footer.html.haml (23.6ms)
+Completed 200 OK in 202ms (Views: 119.1ms | ActiveRecord: 3.8ms)
+
+
+Started GET "/dashboard.json" for 127.0.0.1 at 2018-09-17 21:25:44 +0200
+Processing by MapboxController#show as JSON
+  [1m[36mRoom Load (0.2ms)[0m  [1m[34mSELECT "rooms".* FROM "rooms"[0m
+  ↳ app/controllers/mapbox_controller.rb:6
+  [1m[36mPower Load (0.1ms)[0m  [1m[34mSELECT "powers".* FROM "powers" WHERE "powers"."room_id" = ?[0m  [["room_id", 1]]
+  ↳ app/controllers/mapbox_controller.rb:10
+  [1m[36mUser Load (0.2ms)[0m  [1m[34mSELECT  "users".* FROM "users" WHERE "users"."id" = ? LIMIT ?[0m  [["id", 1], ["LIMIT", 1]]
+  ↳ app/controllers/mapbox_controller.rb:13
+  [1m[36mPower Load (0.2ms)[0m  [1m[34mSELECT "powers".* FROM "powers" WHERE "powers"."room_id" = ?[0m  [["room_id", 2]]
+  ↳ app/controllers/mapbox_controller.rb:10
+  [1m[36mCACHE User Load (0.0ms)[0m  [1m[34mSELECT  "users".* FROM "users" WHERE "users"."id" = ? LIMIT ?[0m  [["id", 1], ["LIMIT", 1]]
+  ↳ app/controllers/mapbox_controller.rb:13
+  [1m[36mPower Load (0.1ms)[0m  [1m[34mSELECT "powers".* FROM "powers" WHERE "powers"."room_id" = ?[0m  [["room_id", 3]]
+  ↳ app/controllers/mapbox_controller.rb:10
+  [1m[36mCACHE User Load (0.0ms)[0m  [1m[34mSELECT  "users".* FROM "users" WHERE "users"."id" = ? LIMIT ?[0m  [["id", 1], ["LIMIT", 1]]
+  ↳ app/controllers/mapbox_controller.rb:13
+  [1m[36mPower Load (0.2ms)[0m  [1m[34mSELECT "powers".* FROM "powers" WHERE "powers"."room_id" = ?[0m  [["room_id", 4]]
+  ↳ app/controllers/mapbox_controller.rb:10
+  [1m[36mCACHE User Load (0.0ms)[0m  [1m[34mSELECT  "users".* FROM "users" WHERE "users"."id" = ? LIMIT ?[0m  [["id", 1], ["LIMIT", 1]]
+  ↳ app/controllers/mapbox_controller.rb:13
+  [1m[36mPower Load (0.2ms)[0m  [1m[34mSELECT "powers".* FROM "powers" WHERE "powers"."room_id" = ?[0m  [["room_id", 5]]
+  ↳ app/controllers/mapbox_controller.rb:10
+  [1m[36mCACHE User Load (0.0ms)[0m  [1m[34mSELECT  "users".* FROM "users" WHERE "users"."id" = ? LIMIT ?[0m  [["id", 1], ["LIMIT", 1]]
+  ↳ app/controllers/mapbox_controller.rb:13
+  [1m[36mPower Load (0.1ms)[0m  [1m[34mSELECT "powers".* FROM "powers" WHERE "powers"."room_id" = ?[0m  [["room_id", 6]]
+  ↳ app/controllers/mapbox_controller.rb:10
+  [1m[36mCACHE User Load (0.0ms)[0m  [1m[34mSELECT  "users".* FROM "users" WHERE "users"."id" = ? LIMIT ?[0m  [["id", 1], ["LIMIT", 1]]
+  ↳ app/controllers/mapbox_controller.rb:13
+  [1m[36mPower Load (0.1ms)[0m  [1m[34mSELECT "powers".* FROM "powers" WHERE "powers"."room_id" = ?[0m  [["room_id", 7]]
+  ↳ app/controllers/mapbox_controller.rb:10
+  [1m[36mCACHE User Load (0.0ms)[0m  [1m[34mSELECT  "users".* FROM "users" WHERE "users"."id" = ? LIMIT ?[0m  [["id", 1], ["LIMIT", 1]]
+  ↳ app/controllers/mapbox_controller.rb:13
+Completed 200 OK in 20ms (Views: 0.1ms | ActiveRecord: 1.5ms)
+
+
+Started GET "/dashboard.json" for 127.0.0.1 at 2018-09-17 21:25:44 +0200
+Processing by MapboxController#show as JSON
+  [1m[36mRoom Load (0.2ms)[0m  [1m[34mSELECT "rooms".* FROM "rooms"[0m
+  ↳ app/controllers/mapbox_controller.rb:6
+  [1m[36mPower Load (0.1ms)[0m  [1m[34mSELECT "powers".* FROM "powers" WHERE "powers"."room_id" = ?[0m  [["room_id", 1]]
+  ↳ app/controllers/mapbox_controller.rb:10
+  [1m[36mUser Load (0.2ms)[0m  [1m[34mSELECT  "users".* FROM "users" WHERE "users"."id" = ? LIMIT ?[0m  [["id", 1], ["LIMIT", 1]]
+  ↳ app/controllers/mapbox_controller.rb:13
+  [1m[36mPower Load (0.1ms)[0m  [1m[34mSELECT "powers".* FROM "powers" WHERE "powers"."room_id" = ?[0m  [["room_id", 2]]
+  ↳ app/controllers/mapbox_controller.rb:10
+  [1m[36mCACHE User Load (0.0ms)[0m  [1m[34mSELECT  "users".* FROM "users" WHERE "users"."id" = ? LIMIT ?[0m  [["id", 1], ["LIMIT", 1]]
+  ↳ app/controllers/mapbox_controller.rb:13
+  [1m[36mPower Load (0.1ms)[0m  [1m[34mSELECT "powers".* FROM "powers" WHERE "powers"."room_id" = ?[0m  [["room_id", 3]]
+  ↳ app/controllers/mapbox_controller.rb:10
+  [1m[36mCACHE User Load (0.0ms)[0m  [1m[34mSELECT  "users".* FROM "users" WHERE "users"."id" = ? LIMIT ?[0m  [["id", 1], ["LIMIT", 1]]
+  ↳ app/controllers/mapbox_controller.rb:13
+  [1m[36mPower Load (0.1ms)[0m  [1m[34mSELECT "powers".* FROM "powers" WHERE "powers"."room_id" = ?[0m  [["room_id", 4]]
+  ↳ app/controllers/mapbox_controller.rb:10
+  [1m[36mCACHE User Load (0.0ms)[0m  [1m[34mSELECT  "users".* FROM "users" WHERE "users"."id" = ? LIMIT ?[0m  [["id", 1], ["LIMIT", 1]]
+  ↳ app/controllers/mapbox_controller.rb:13
+  [1m[36mPower Load (0.1ms)[0m  [1m[34mSELECT "powers".* FROM "powers" WHERE "powers"."room_id" = ?[0m  [["room_id", 5]]
+  ↳ app/controllers/mapbox_controller.rb:10
+  [1m[36mCACHE User Load (0.0ms)[0m  [1m[34mSELECT  "users".* FROM "users" WHERE "users"."id" = ? LIMIT ?[0m  [["id", 1], ["LIMIT", 1]]
+  ↳ app/controllers/mapbox_controller.rb:13
+  [1m[36mPower Load (0.1ms)[0m  [1m[34mSELECT "powers".* FROM "powers" WHERE "powers"."room_id" = ?[0m  [["room_id", 6]]
+  ↳ app/controllers/mapbox_controller.rb:10
+  [1m[36mCACHE User Load (0.0ms)[0m  [1m[34mSELECT  "users".* FROM "users" WHERE "users"."id" = ? LIMIT ?[0m  [["id", 1], ["LIMIT", 1]]
+  ↳ app/controllers/mapbox_controller.rb:13
+  [1m[36mPower Load (0.2ms)[0m  [1m[34mSELECT "powers".* FROM "powers" WHERE "powers"."room_id" = ?[0m  [["room_id", 7]]
+  ↳ app/controllers/mapbox_controller.rb:10
+  [1m[36mCACHE User Load (0.0ms)[0m  [1m[34mSELECT  "users".* FROM "users" WHERE "users"."id" = ? LIMIT ?[0m  [["id", 1], ["LIMIT", 1]]
+  ↳ app/controllers/mapbox_controller.rb:13
+Completed 200 OK in 19ms (Views: 0.1ms | ActiveRecord: 1.4ms)
+
+
+Started GET "/users/10" for 127.0.0.1 at 2018-09-17 21:25:46 +0200
+Processing by UsersController#show as HTML
+  Parameters: {"id"=>"10"}
+  [1m[36mUser Load (0.1ms)[0m  [1m[34mSELECT  "users".* FROM "users" WHERE "users"."id" = ? LIMIT ?[0m  [["id", 10], ["LIMIT", 1]]
+  ↳ app/controllers/users_controller.rb:6
+  Rendering users/show.html.haml within layouts/application
+  Rendered users/show.html.haml within layouts/application (471.3ms)
+Completed 500 Internal Server Error in 481ms (ActiveRecord: 0.1ms)
+
+
+  
+ActionView::Template::Error (undefined method `achievements_user_path' for #<#<Class:0x0000558452e41048>:0x00005584573bceb0>):
+    17:             %h1 EMAIL:
+    18:             %p #{@user.email}
+    19:           %br
+    20:           =link_to achievements_user_path(@user) do
+    21:             %input.btn.btn-sm.btn-success{:type => "submit", :value => "Achievements"}
+    22:         .col-lg-6
+    23:           %label
+  
+app/views/users/show.html.haml:20:in `_app_views_users_show_html_haml__558411215321921288_47013443793900'
+Started GET "/users/10" for 127.0.0.1 at 2018-09-17 21:27:41 +0200
+Processing by ApplicationController#render_404 as HTML
+  Parameters: {"path"=>"users/10"}
+  Rendering public/404.html.haml within layouts/application
+  Rendered public/404.html.haml within layouts/application (3.6ms)
+  [1m[36mUser Load (0.2ms)[0m  [1m[34mSELECT  "users".* FROM "users" WHERE "users"."id" = ? LIMIT ?[0m  [["id", 10], ["LIMIT", 1]]
+  ↳ app/controllers/application_controller.rb:10
+  Rendered layouts/_navbar.html.haml (253.6ms)
+Completed 500 Internal Server Error in 316ms (ActiveRecord: 0.8ms)
+
+
+  
+ActionView::Template::Error (undefined method `user_path' for #<#<Class:0x00007f6a946099c8>:0x00007f6ace32bde8>):
+     7:     -if current_user
+     8:       =link_to ('#') do
+     9:         =image_tag("mail.svg",class:"navicon1")
+    10:       =link_to (current_user) do
+    11:         =image_tag("person.svg",class:"navicon2")
+    12:       =link_to (new_room_path) do
+    13:         %button.btn.btn-success#create Create a room
+  
+app/views/layouts/_navbar.html.haml:10:in `_app_views_layouts__navbar_html_haml__277723449901012418_70047867946320'
+app/views/layouts/application.html.haml:21:in `_app_views_layouts_application_html_haml__211356236182721_70048351334820'
+app/controllers/application_controller.rb:15:in `block (2 levels) in render_404'
+app/controllers/application_controller.rb:14:in `render_404'
+Started GET "/users/10" for 127.0.0.1 at 2018-09-17 21:32:30 +0200
+Processing by UsersController#show as HTML
+  Parameters: {"id"=>"10"}
+  [1m[36mUser Load (0.3ms)[0m  [1m[34mSELECT  "users".* FROM "users" WHERE "users"."id" = ? LIMIT ?[0m  [["id", 10], ["LIMIT", 1]]
+  ↳ app/controllers/users_controller.rb:6
+  Rendering users/show.html.haml within layouts/application
+  Rendered users/show.html.haml within layouts/application (218.7ms)
+Completed 500 Internal Server Error in 261ms (ActiveRecord: 1.4ms)
+
+
+  
+ActionView::Template::Error (undefined method `achievements_user_path' for #<#<Class:0x00007f6a94628238>:0x00007f6a9462e688>):
+    17:             %h1 EMAIL:
+    18:             %p #{@user.email}
+    19:           %br
+    20:           =link_to achievements_user_path(@user) do
+    21:             %input.btn.btn-sm.btn-success{:type => "submit", :value => "Achievements"}
+    22:         .col-lg-6
+    23:           %label
+  
+app/views/users/show.html.haml:20:in `_app_views_users_show_html_haml__558411215321921288_70047866373400'
+  [1m[36mRoom Load (0.3ms)[0m  [1m[34mSELECT "rooms".* FROM "rooms"[0m
+  ↳ config/initializers/scheduler.rb:8
+  [1m[36mRoom Load (0.2ms)[0m  [1m[34mSELECT "rooms".* FROM "rooms"[0m
+  ↳ config/initializers/scheduler.rb:27
+  [1m[36mRoom Load (0.2ms)[0m  [1m[34mSELECT "rooms".* FROM "rooms"[0m
+  ↳ config/initializers/scheduler.rb:27
+  [1m[36mRoom Load (0.1ms)[0m  [1m[34mSELECT "rooms".* FROM "rooms"[0m
+  ↳ config/initializers/scheduler.rb:27
+  [1m[36mRoom Load (0.2ms)[0m  [1m[34mSELECT "rooms".* FROM "rooms"[0m
+  ↳ config/initializers/scheduler.rb:27
+  [1m[36mRoom Load (0.1ms)[0m  [1m[34mSELECT "rooms".* FROM "rooms"[0m
+  ↳ config/initializers/scheduler.rb:27
+  [1m[36mRoom Load (0.5ms)[0m  [1m[34mSELECT "rooms".* FROM "rooms"[0m
+  ↳ config/initializers/scheduler.rb:27
+  [1m[36mRoom Load (0.2ms)[0m  [1m[34mSELECT "rooms".* FROM "rooms"[0m
+  ↳ config/initializers/scheduler.rb:27
+Started GET "/" for 127.0.0.1 at 2018-09-17 21:41:09 +0200
+  [1m[35m (0.9ms)[0m  [1m[34mSELECT "schema_migrations"."version" FROM "schema_migrations" ORDER BY "schema_migrations"."version" ASC[0m
+  ↳ vendor/bundle/gems/activerecord-5.2.0/lib/active_record/log_subscriber.rb:98
+Processing by MapboxController#show as HTML
+  [1m[36mRoom Load (0.3ms)[0m  [1m[34mSELECT "rooms".* FROM "rooms"[0m
+  ↳ app/controllers/mapbox_controller.rb:6
+  [1m[36mPower Load (0.2ms)[0m  [1m[34mSELECT "powers".* FROM "powers" WHERE "powers"."room_id" = ?[0m  [["room_id", 1]]
+  ↳ app/controllers/mapbox_controller.rb:10
+  [1m[36mUser Load (0.3ms)[0m  [1m[34mSELECT  "users".* FROM "users" WHERE "users"."id" = ? LIMIT ?[0m  [["id", 1], ["LIMIT", 1]]
+  ↳ app/controllers/mapbox_controller.rb:13
+  [1m[36mPower Load (0.1ms)[0m  [1m[34mSELECT "powers".* FROM "powers" WHERE "powers"."room_id" = ?[0m  [["room_id", 2]]
+  ↳ app/controllers/mapbox_controller.rb:10
+  [1m[36mCACHE User Load (0.0ms)[0m  [1m[34mSELECT  "users".* FROM "users" WHERE "users"."id" = ? LIMIT ?[0m  [["id", 1], ["LIMIT", 1]]
+  ↳ app/controllers/mapbox_controller.rb:13
+  [1m[36mPower Load (0.2ms)[0m  [1m[34mSELECT "powers".* FROM "powers" WHERE "powers"."room_id" = ?[0m  [["room_id", 3]]
+  ↳ app/controllers/mapbox_controller.rb:10
+  [1m[36mCACHE User Load (0.0ms)[0m  [1m[34mSELECT  "users".* FROM "users" WHERE "users"."id" = ? LIMIT ?[0m  [["id", 1], ["LIMIT", 1]]
+  ↳ app/controllers/mapbox_controller.rb:13
+  [1m[36mPower Load (0.2ms)[0m  [1m[34mSELECT "powers".* FROM "powers" WHERE "powers"."room_id" = ?[0m  [["room_id", 4]]
+  ↳ app/controllers/mapbox_controller.rb:10
+  [1m[36mCACHE User Load (0.0ms)[0m  [1m[34mSELECT  "users".* FROM "users" WHERE "users"."id" = ? LIMIT ?[0m  [["id", 1], ["LIMIT", 1]]
+  ↳ app/controllers/mapbox_controller.rb:13
+  [1m[36mPower Load (0.2ms)[0m  [1m[34mSELECT "powers".* FROM "powers" WHERE "powers"."room_id" = ?[0m  [["room_id", 5]]
+  ↳ app/controllers/mapbox_controller.rb:10
+  [1m[36mCACHE User Load (0.0ms)[0m  [1m[34mSELECT  "users".* FROM "users" WHERE "users"."id" = ? LIMIT ?[0m  [["id", 1], ["LIMIT", 1]]
+  ↳ app/controllers/mapbox_controller.rb:13
+  [1m[36mPower Load (0.2ms)[0m  [1m[34mSELECT "powers".* FROM "powers" WHERE "powers"."room_id" = ?[0m  [["room_id", 6]]
+  ↳ app/controllers/mapbox_controller.rb:10
+  [1m[36mCACHE User Load (0.0ms)[0m  [1m[34mSELECT  "users".* FROM "users" WHERE "users"."id" = ? LIMIT ?[0m  [["id", 1], ["LIMIT", 1]]
+  ↳ app/controllers/mapbox_controller.rb:13
+  [1m[36mPower Load (0.3ms)[0m  [1m[34mSELECT "powers".* FROM "powers" WHERE "powers"."room_id" = ?[0m  [["room_id", 7]]
+  ↳ app/controllers/mapbox_controller.rb:10
+  [1m[36mCACHE User Load (0.0ms)[0m  [1m[34mSELECT  "users".* FROM "users" WHERE "users"."id" = ? LIMIT ?[0m  [["id", 1], ["LIMIT", 1]]
+  ↳ app/controllers/mapbox_controller.rb:13
+  Rendering mapbox/show.html.haml within layouts/application
+  Rendered mapbox/show.html.haml within layouts/application (19.5ms)
+  [1m[36mUser Load (0.1ms)[0m  [1m[34mSELECT  "users".* FROM "users" WHERE "users"."id" = ? LIMIT ?[0m  [["id", 10], ["LIMIT", 1]]
+  ↳ app/controllers/application_controller.rb:10
+  Rendered layouts/_navbar.html.haml (8.3ms)
+  Rendered layouts/_footer.html.haml (47.3ms)
+Completed 200 OK in 652ms (Views: 455.3ms | ActiveRecord: 5.7ms)
+
+
+Started GET "/dashboard.json" for 127.0.0.1 at 2018-09-17 21:41:10 +0200
+Processing by MapboxController#show as JSON
+  [1m[36mRoom Load (0.3ms)[0m  [1m[34mSELECT "rooms".* FROM "rooms"[0m
+  ↳ app/controllers/mapbox_controller.rb:6
+  [1m[36mPower Load (0.1ms)[0m  [1m[34mSELECT "powers".* FROM "powers" WHERE "powers"."room_id" = ?[0m  [["room_id", 1]]
+  ↳ app/controllers/mapbox_controller.rb:10
+  [1m[36mUser Load (0.1ms)[0m  [1m[34mSELECT  "users".* FROM "users" WHERE "users"."id" = ? LIMIT ?[0m  [["id", 1], ["LIMIT", 1]]
+  ↳ app/controllers/mapbox_controller.rb:13
+  [1m[36mPower Load (0.1ms)[0m  [1m[34mSELECT "powers".* FROM "powers" WHERE "powers"."room_id" = ?[0m  [["room_id", 2]]
+  ↳ app/controllers/mapbox_controller.rb:10
+  [1m[36mCACHE User Load (0.0ms)[0m  [1m[34mSELECT  "users".* FROM "users" WHERE "users"."id" = ? LIMIT ?[0m  [["id", 1], ["LIMIT", 1]]
+  ↳ app/controllers/mapbox_controller.rb:13
+  [1m[36mPower Load (0.1ms)[0m  [1m[34mSELECT "powers".* FROM "powers" WHERE "powers"."room_id" = ?[0m  [["room_id", 3]]
+  ↳ app/controllers/mapbox_controller.rb:10
+  [1m[36mCACHE User Load (0.0ms)[0m  [1m[34mSELECT  "users".* FROM "users" WHERE "users"."id" = ? LIMIT ?[0m  [["id", 1], ["LIMIT", 1]]
+  ↳ app/controllers/mapbox_controller.rb:13
+  [1m[36mPower Load (0.1ms)[0m  [1m[34mSELECT "powers".* FROM "powers" WHERE "powers"."room_id" = ?[0m  [["room_id", 4]]
+  ↳ app/controllers/mapbox_controller.rb:10
+  [1m[36mCACHE User Load (0.0ms)[0m  [1m[34mSELECT  "users".* FROM "users" WHERE "users"."id" = ? LIMIT ?[0m  [["id", 1], ["LIMIT", 1]]
+  ↳ app/controllers/mapbox_controller.rb:13
+  [1m[36mPower Load (0.1ms)[0m  [1m[34mSELECT "powers".* FROM "powers" WHERE "powers"."room_id" = ?[0m  [["room_id", 5]]
+  ↳ app/controllers/mapbox_controller.rb:10
+  [1m[36mCACHE User Load (0.0ms)[0m  [1m[34mSELECT  "users".* FROM "users" WHERE "users"."id" = ? LIMIT ?[0m  [["id", 1], ["LIMIT", 1]]
+  ↳ app/controllers/mapbox_controller.rb:13
+  [1m[36mPower Load (0.1ms)[0m  [1m[34mSELECT "powers".* FROM "powers" WHERE "powers"."room_id" = ?[0m  [["room_id", 6]]
+  ↳ app/controllers/mapbox_controller.rb:10
+  [1m[36mCACHE User Load (0.0ms)[0m  [1m[34mSELECT  "users".* FROM "users" WHERE "users"."id" = ? LIMIT ?[0m  [["id", 1], ["LIMIT", 1]]
+  ↳ app/controllers/mapbox_controller.rb:13
+  [1m[36mPower Load (0.3ms)[0m  [1m[34mSELECT "powers".* FROM "powers" WHERE "powers"."room_id" = ?[0m  [["room_id", 7]]
+  ↳ app/controllers/mapbox_controller.rb:10
+  [1m[36mCACHE User Load (0.0ms)[0m  [1m[34mSELECT  "users".* FROM "users" WHERE "users"."id" = ? LIMIT ?[0m  [["id", 1], ["LIMIT", 1]]
+  ↳ app/controllers/mapbox_controller.rb:13
+Completed 200 OK in 29ms (Views: 0.1ms | ActiveRecord: 1.5ms)
+
+
+Started GET "/dashboard.json" for 127.0.0.1 at 2018-09-17 21:41:10 +0200
+Processing by MapboxController#show as JSON
+  [1m[36mRoom Load (0.3ms)[0m  [1m[34mSELECT "rooms".* FROM "rooms"[0m
+  ↳ app/controllers/mapbox_controller.rb:6
+  [1m[36mPower Load (0.2ms)[0m  [1m[34mSELECT "powers".* FROM "powers" WHERE "powers"."room_id" = ?[0m  [["room_id", 1]]
+  ↳ app/controllers/mapbox_controller.rb:10
+  [1m[36mUser Load (0.3ms)[0m  [1m[34mSELECT  "users".* FROM "users" WHERE "users"."id" = ? LIMIT ?[0m  [["id", 1], ["LIMIT", 1]]
+  ↳ app/controllers/mapbox_controller.rb:13
+  [1m[36mPower Load (0.1ms)[0m  [1m[34mSELECT "powers".* FROM "powers" WHERE "powers"."room_id" = ?[0m  [["room_id", 2]]
+  ↳ app/controllers/mapbox_controller.rb:10
+  [1m[36mCACHE User Load (0.0ms)[0m  [1m[34mSELECT  "users".* FROM "users" WHERE "users"."id" = ? LIMIT ?[0m  [["id", 1], ["LIMIT", 1]]
+  ↳ app/controllers/mapbox_controller.rb:13
+  [1m[36mPower Load (0.2ms)[0m  [1m[34mSELECT "powers".* FROM "powers" WHERE "powers"."room_id" = ?[0m  [["room_id", 3]]
+  ↳ app/controllers/mapbox_controller.rb:10
+  [1m[36mCACHE User Load (0.1ms)[0m  [1m[34mSELECT  "users".* FROM "users" WHERE "users"."id" = ? LIMIT ?[0m  [["id", 1], ["LIMIT", 1]]
+  ↳ app/controllers/mapbox_controller.rb:13
+  [1m[36mPower Load (0.2ms)[0m  [1m[34mSELECT "powers".* FROM "powers" WHERE "powers"."room_id" = ?[0m  [["room_id", 4]]
+  ↳ app/controllers/mapbox_controller.rb:10
+  [1m[36mCACHE User Load (0.0ms)[0m  [1m[34mSELECT  "users".* FROM "users" WHERE "users"."id" = ? LIMIT ?[0m  [["id", 1], ["LIMIT", 1]]
+  ↳ app/controllers/mapbox_controller.rb:13
+  [1m[36mPower Load (0.2ms)[0m  [1m[34mSELECT "powers".* FROM "powers" WHERE "powers"."room_id" = ?[0m  [["room_id", 5]]
+  ↳ app/controllers/mapbox_controller.rb:10
+  [1m[36mCACHE User Load (0.0ms)[0m  [1m[34mSELECT  "users".* FROM "users" WHERE "users"."id" = ? LIMIT ?[0m  [["id", 1], ["LIMIT", 1]]
+  ↳ app/controllers/mapbox_controller.rb:13
+  [1m[36mPower Load (0.1ms)[0m  [1m[34mSELECT "powers".* FROM "powers" WHERE "powers"."room_id" = ?[0m  [["room_id", 6]]
+  ↳ app/controllers/mapbox_controller.rb:10
+  [1m[36mCACHE User Load (0.0ms)[0m  [1m[34mSELECT  "users".* FROM "users" WHERE "users"."id" = ? LIMIT ?[0m  [["id", 1], ["LIMIT", 1]]
+  ↳ app/controllers/mapbox_controller.rb:13
+  [1m[36mPower Load (0.1ms)[0m  [1m[34mSELECT "powers".* FROM "powers" WHERE "powers"."room_id" = ?[0m  [["room_id", 7]]
+  ↳ app/controllers/mapbox_controller.rb:10
+  [1m[36mCACHE User Load (0.0ms)[0m  [1m[34mSELECT  "users".* FROM "users" WHERE "users"."id" = ? LIMIT ?[0m  [["id", 1], ["LIMIT", 1]]
+  ↳ app/controllers/mapbox_controller.rb:13
+Completed 200 OK in 30ms (Views: 0.1ms | ActiveRecord: 1.9ms)
+
+
+Started GET "/users/10" for 127.0.0.1 at 2018-09-17 21:41:12 +0200
+Processing by UsersController#show as HTML
+  Parameters: {"id"=>"10"}
+  [1m[36mUser Load (0.4ms)[0m  [1m[34mSELECT  "users".* FROM "users" WHERE "users"."id" = ? LIMIT ?[0m  [["id", 10], ["LIMIT", 1]]
+  ↳ app/controllers/users_controller.rb:6
+  Rendering users/show.html.haml within layouts/application
+  Rendered users/show.html.haml within layouts/application (62.5ms)
+  [1m[36mUser Load (0.1ms)[0m  [1m[34mSELECT  "users".* FROM "users" WHERE "users"."id" = ? LIMIT ?[0m  [["id", 10], ["LIMIT", 1]]
+  ↳ app/controllers/application_controller.rb:10
+  Rendered layouts/_navbar.html.haml (9.1ms)
+  Rendered layouts/_footer.html.haml (19.0ms)
+Completed 200 OK in 222ms (Views: 214.2ms | ActiveRecord: 0.5ms)
+
+
+Started GET "/users/10/achievements" for 127.0.0.1 at 2018-09-17 21:41:15 +0200
+Processing by UsersController#achievements as HTML
+  Parameters: {"user_id"=>"10"}
+  Rendering public/404.html.haml within layouts/application
+  Rendered public/404.html.haml within layouts/application (11.0ms)
+  [1m[36mUser Load (0.1ms)[0m  [1m[34mSELECT  "users".* FROM "users" WHERE "users"."id" = ? LIMIT ?[0m  [["id", 10], ["LIMIT", 1]]
+  ↳ app/controllers/application_controller.rb:10
+  Rendered layouts/_navbar.html.haml (12.3ms)
+  Rendered layouts/_footer.html.haml (36.5ms)
+Completed 404 Not Found in 220ms (Views: 214.2ms | ActiveRecord: 0.1ms)
+
+
+Started GET "/users/10/achievements" for 127.0.0.1 at 2018-09-17 21:42:30 +0200
+Processing by UsersController#achievements as HTML
+  Parameters: {"user_id"=>"10"}
+  Rendering public/404.html.haml within layouts/application
+  Rendered public/404.html.haml within layouts/application (3.5ms)
+  [1m[36mUser Load (0.1ms)[0m  [1m[34mSELECT  "users".* FROM "users" WHERE "users"."id" = ? LIMIT ?[0m  [["id", 10], ["LIMIT", 1]]
+  ↳ app/controllers/application_controller.rb:10
+  Rendered layouts/_navbar.html.haml (7.6ms)
+  Rendered layouts/_footer.html.haml (15.8ms)
+Completed 404 Not Found in 96ms (Views: 94.8ms | ActiveRecord: 0.1ms)
+
+
+Started GET "/users/10" for 127.0.0.1 at 2018-09-17 21:42:35 +0200
+Processing by UsersController#show as HTML
+  Parameters: {"id"=>"10"}
+  [1m[36mUser Load (0.2ms)[0m  [1m[34mSELECT  "users".* FROM "users" WHERE "users"."id" = ? LIMIT ?[0m  [["id", 10], ["LIMIT", 1]]
+  ↳ app/controllers/users_controller.rb:6
+  Rendering users/show.html.haml within layouts/application
+  Rendered users/show.html.haml within layouts/application (11.2ms)
+  [1m[36mUser Load (0.1ms)[0m  [1m[34mSELECT  "users".* FROM "users" WHERE "users"."id" = ? LIMIT ?[0m  [["id", 10], ["LIMIT", 1]]
+  ↳ app/controllers/application_controller.rb:10
+  Rendered layouts/_navbar.html.haml (8.9ms)
+  Rendered layouts/_footer.html.haml (18.4ms)
+Completed 200 OK in 117ms (Views: 112.7ms | ActiveRecord: 0.4ms)
+
+
+Started GET "/users/10/achievements" for 127.0.0.1 at 2018-09-17 21:42:37 +0200
+Processing by UsersController#achievements as HTML
+  Parameters: {"user_id"=>"10"}
+  Rendering public/404.html.haml within layouts/application
+  Rendered public/404.html.haml within layouts/application (8.4ms)
+  [1m[36mUser Load (0.2ms)[0m  [1m[34mSELECT  "users".* FROM "users" WHERE "users"."id" = ? LIMIT ?[0m  [["id", 10], ["LIMIT", 1]]
+  ↳ app/controllers/application_controller.rb:10
+  Rendered layouts/_navbar.html.haml (21.9ms)
+  Rendered layouts/_footer.html.haml (19.0ms)
+Completed 404 Not Found in 161ms (Views: 158.9ms | ActiveRecord: 0.2ms)
+
+
+Started GET "/users/10" for 127.0.0.1 at 2018-09-17 21:46:10 +0200
+  [1m[35m (0.4ms)[0m  [1m[34mSELECT "schema_migrations"."version" FROM "schema_migrations" ORDER BY "schema_migrations"."version" ASC[0m
+  ↳ vendor/bundle/gems/activerecord-5.2.0/lib/active_record/log_subscriber.rb:98
+Processing by UsersController#show as HTML
+  Parameters: {"id"=>"10"}
+  [1m[36mUser Load (0.2ms)[0m  [1m[34mSELECT  "users".* FROM "users" WHERE "users"."id" = ? LIMIT ?[0m  [["id", 10], ["LIMIT", 1]]
+  ↳ app/controllers/users_controller.rb:6
+  Rendering users/show.html.haml within layouts/application
+  Rendered users/show.html.haml within layouts/application (9.9ms)
+  [1m[36mUser Load (0.1ms)[0m  [1m[34mSELECT  "users".* FROM "users" WHERE "users"."id" = ? LIMIT ?[0m  [["id", 10], ["LIMIT", 1]]
+  ↳ app/controllers/application_controller.rb:10
+  Rendered layouts/_navbar.html.haml (8.0ms)
+  Rendered layouts/_footer.html.haml (13.6ms)
+Completed 200 OK in 532ms (Views: 486.4ms | ActiveRecord: 1.2ms)
+
+
+Started GET "/users/10/edit" for 127.0.0.1 at 2018-09-17 21:46:13 +0200
+Processing by UsersController#edit as HTML
+  Parameters: {"id"=>"10"}
+  [1m[36mUser Load (0.6ms)[0m  [1m[34mSELECT  "users".* FROM "users" WHERE "users"."id" = ? LIMIT ?[0m  [["id", 10], ["LIMIT", 1]]
+  ↳ app/controllers/application_controller.rb:10
+  [1m[36mUser Load (0.8ms)[0m  [1m[34mSELECT  "users".* FROM "users" WHERE "users"."id" = ? LIMIT ?[0m  [["id", 10], ["LIMIT", 1]]
+  ↳ app/controllers/users_controller.rb:70
+  [1m[36mCACHE User Load (0.1ms)[0m  [1m[34mSELECT  "users".* FROM "users" WHERE "users"."id" = ? LIMIT ?[0m  [["id", 10], ["LIMIT", 1]]
+  ↳ app/controllers/users_controller.rb:42
+  Rendering users/edit.html.haml within layouts/application
+  Rendered shared/_error_messages.html.haml (5.4ms)
+  Rendered users/edit.html.haml within layouts/application (56.6ms)
+  Rendered layouts/_navbar.html.haml (8.0ms)
+  Rendered layouts/_footer.html.haml (17.7ms)
+Completed 200 OK in 185ms (Views: 169.0ms | ActiveRecord: 1.4ms)
+
+
+Started GET "/users/10" for 127.0.0.1 at 2018-09-17 21:46:15 +0200
+Processing by UsersController#show as HTML
+  Parameters: {"id"=>"10"}
+  [1m[36mUser Load (0.7ms)[0m  [1m[34mSELECT  "users".* FROM "users" WHERE "users"."id" = ? LIMIT ?[0m  [["id", 10], ["LIMIT", 1]]
+  ↳ app/controllers/users_controller.rb:6
+  Rendering users/show.html.haml within layouts/application
+  Rendered users/show.html.haml within layouts/application (31.4ms)
+  [1m[36mUser Load (0.1ms)[0m  [1m[34mSELECT  "users".* FROM "users" WHERE "users"."id" = ? LIMIT ?[0m  [["id", 10], ["LIMIT", 1]]
+  ↳ app/controllers/application_controller.rb:10
+  Rendered layouts/_navbar.html.haml (6.8ms)
+  Rendered layouts/_footer.html.haml (17.6ms)
+Completed 200 OK in 152ms (Views: 140.5ms | ActiveRecord: 0.8ms)
+
+
+Started GET "/users/10/achievements" for 127.0.0.1 at 2018-09-17 21:46:16 +0200
+Processing by UsersController#achievements as HTML
+  Parameters: {"user_id"=>"10"}
+  Rendering public/404.html.haml within layouts/application
+  Rendered public/404.html.haml within layouts/application (9.4ms)
+  [1m[36mUser Load (0.1ms)[0m  [1m[34mSELECT  "users".* FROM "users" WHERE "users"."id" = ? LIMIT ?[0m  [["id", 10], ["LIMIT", 1]]
+  ↳ app/controllers/application_controller.rb:10
+  Rendered layouts/_navbar.html.haml (17.8ms)
+  Rendered layouts/_footer.html.haml (15.9ms)
+Completed 404 Not Found in 139ms (Views: 134.6ms | ActiveRecord: 0.1ms)
+
+
+Started GET "/users/10" for 127.0.0.1 at 2018-09-17 21:46:48 +0200
+  [1m[35m (0.2ms)[0m  [1m[34mSELECT "schema_migrations"."version" FROM "schema_migrations" ORDER BY "schema_migrations"."version" ASC[0m
+  ↳ vendor/bundle/gems/activerecord-5.2.0/lib/active_record/log_subscriber.rb:98
+Processing by UsersController#show as HTML
+  Parameters: {"id"=>"10"}
+  [1m[36mUser Load (0.2ms)[0m  [1m[34mSELECT  "users".* FROM "users" WHERE "users"."id" = ? LIMIT ?[0m  [["id", 10], ["LIMIT", 1]]
+  ↳ app/controllers/users_controller.rb:6
+  Rendering users/show.html.haml within layouts/application
+  Rendered users/show.html.haml within layouts/application (264.1ms)
+Completed 500 Internal Server Error in 320ms (ActiveRecord: 0.9ms)
+
+
+  
+ActionView::Template::Error (undefined method `user_achievements_path' for #<#<Class:0x00007ff1a026b940>:0x00007ff1a0268c90>):
+    17:             %h1 EMAIL:
+    18:             %p #{@user.email}
+    19:           %br
+    20:           =link_to user_achievements_path(@user) do
+    21:             %input.btn.btn-sm.btn-success{:type => "submit", :value => "Achievements"}
+    22:         .col-lg-6
+    23:           %label
+  
+app/views/users/show.html.haml:20:in `_app_views_users_show_html_haml___935482101581221856_70337875404460'
+Started GET "/users/10" for 127.0.0.1 at 2018-09-17 21:47:20 +0200
+Processing by UsersController#show as HTML
+  Parameters: {"id"=>"10"}
+  [1m[36mUser Load (0.7ms)[0m  [1m[34mSELECT  "users".* FROM "users" WHERE "users"."id" = ? LIMIT ?[0m  [["id", 10], ["LIMIT", 1]]
+  ↳ app/controllers/users_controller.rb:6
+  Rendering users/show.html.haml within layouts/application
+  Rendered users/show.html.haml within layouts/application (265.3ms)
+Completed 500 Internal Server Error in 291ms (ActiveRecord: 0.7ms)
+
+
+  
+ActionView::Template::Error (undefined method `achievements_user_path' for #<#<Class:0x00007ff1a026b940>:0x00007ff1a1db1920>):
+    17:             %h1 EMAIL:
+    18:             %p #{@user.email}
+    19:           %br
+    20:           =link_to achievements_user_path(@user) do
+    21:             %input.btn.btn-sm.btn-success{:type => "submit", :value => "Achievements"}
+    22:         .col-lg-6
+    23:           %label
+  
+app/views/users/show.html.haml:20:in `_app_views_users_show_html_haml___935482101581221856_70337889669420'
+Started GET "/users/10" for 127.0.0.1 at 2018-09-17 21:47:21 +0200
+Processing by UsersController#show as HTML
+  Parameters: {"id"=>"10"}
+  [1m[36mUser Load (0.7ms)[0m  [1m[34mSELECT  "users".* FROM "users" WHERE "users"."id" = ? LIMIT ?[0m  [["id", 10], ["LIMIT", 1]]
+  ↳ app/controllers/users_controller.rb:6
+  Rendering users/show.html.haml within layouts/application
+  Rendered users/show.html.haml within layouts/application (253.3ms)
+Completed 500 Internal Server Error in 280ms (ActiveRecord: 0.7ms)
+
+
+Started GET "/users/10" for 127.0.0.1 at 2018-09-17 21:47:22 +0200
+Started GET "/users/10" for 127.0.0.1 at 2018-09-17 21:47:22 +0200
+Processing by UsersController#show as HTML
+  Parameters: {"id"=>"10"}
+  
+  [1m[36mUser Load (0.3ms)[0m  [1m[34mSELECT  "users".* FROM "users" WHERE "users"."id" = ? LIMIT ?[0m  [["id", 10], ["LIMIT", 1]]
+  ↳ app/controllers/users_controller.rb:6
+ActionView::Template::Error (undefined method `achievements_user_path' for #<#<Class:0x00007ff1a026b940>:0x0000556292f09660>):
+    17:             %h1 EMAIL:
+    18:             %p #{@user.email}
+    19:           %br
+    20:           =link_to achievements_user_path(@user) do
+    21:             %input.btn.btn-sm.btn-success{:type => "submit", :value => "Achievements"}
+    22:         .col-lg-6
+    23:           %label
+Processing by UsersController#show as HTML
+  Parameters: {"id"=>"10"}
+  
+app/views/users/show.html.haml:20:in `_app_views_users_show_html_haml___935482101581221856_46940930202680'
+  [1m[36mUser Load (0.3ms)[0m  [1m[34mSELECT  "users".* FROM "users" WHERE "users"."id" = ? LIMIT ?[0m  [["id", 10], ["LIMIT", 1]]
+  Rendering users/show.html.haml within layouts/application
+  ↳ app/controllers/users_controller.rb:6
+  Rendering users/show.html.haml within layouts/application
+  Rendered users/show.html.haml within layouts/application (247.7ms)
+Completed 500 Internal Server Error in 313ms (ActiveRecord: 0.3ms)
+
+
+Started GET "/users/10" for 127.0.0.1 at 2018-09-17 21:47:22 +0200
+Started GET "/users/10" for 127.0.0.1 at 2018-09-17 21:47:22 +0200
+Processing by UsersController#show as HTML
+  Parameters: {"id"=>"10"}
+  [1m[36mUser Load (0.3ms)[0m  [1m[34mSELECT  "users".* FROM "users" WHERE "users"."id" = ? LIMIT ?[0m  [["id", 10], ["LIMIT", 1]]
+  
+  ↳ app/controllers/users_controller.rb:6
+ActionView::Template::Error (undefined method `achievements_user_path' for #<#<Class:0x00007ff1a026b940>:0x0000556291f566c8>):
+Started GET "/users/10" for 127.0.0.1 at 2018-09-17 21:47:22 +0200
+Processing by UsersController#show as HTML
+  Parameters: {"id"=>"10"}
+  Rendered users/show.html.haml within layouts/application (232.8ms)
+Started GET "/users/10" for 127.0.0.1 at 2018-09-17 21:47:22 +0200
+  Rendering users/show.html.haml within layouts/application
+Processing by UsersController#show as HTML
+  Parameters: {"id"=>"10"}
+  [1m[36mUser Load (0.4ms)[0m  [1m[34mSELECT  "users".* FROM "users" WHERE "users"."id" = ? LIMIT ?[0m  [["id", 10], ["LIMIT", 1]]
+    17:             %h1 EMAIL:
+    18:             %p #{@user.email}
+    19:           %br
+    20:           =link_to achievements_user_path(@user) do
+    21:             %input.btn.btn-sm.btn-success{:type => "submit", :value => "Achievements"}
+    22:         .col-lg-6
+    23:           %label
+  [1m[36mUser Load (0.3ms)[0m  [1m[34mSELECT  "users".* FROM "users" WHERE "users"."id" = ? LIMIT ?[0m  [["id", 10], ["LIMIT", 1]]
+Completed 500 Internal Server Error in 554ms (ActiveRecord: 0.3ms)
+
+
+  
+  
+app/views/users/show.html.haml:20:in `_app_views_users_show_html_haml___935482101581221856_46940921873520'
+ActionView::Template::Error (undefined method `achievements_user_path' for #<#<Class:0x00007ff1a026b940>:0x00007ff1a402bf00>):
+  Rendered users/show.html.haml within layouts/application (277.9ms)
+Started GET "/users/10" for 127.0.0.1 at 2018-09-17 21:47:22 +0200
+Processing by UsersController#show as HTML
+Processing by UsersController#show as HTML
+  ↳ app/controllers/users_controller.rb:6
+  Parameters: {"id"=>"10"}
+Completed 500 Internal Server Error in 461ms (ActiveRecord: 0.3ms)
+
+
+    17:             %h1 EMAIL:
+    18:             %p #{@user.email}
+    19:           %br
+    20:           =link_to achievements_user_path(@user) do
+    21:             %input.btn.btn-sm.btn-success{:type => "submit", :value => "Achievements"}
+    22:         .col-lg-6
+    23:           %label
+  ↳ app/controllers/users_controller.rb:6
+  [1m[36mUser Load (0.3ms)[0m  [1m[34mSELECT  "users".* FROM "users" WHERE "users"."id" = ? LIMIT ?[0m  [["id", 10], ["LIMIT", 1]]
+  Parameters: {"id"=>"10"}
+  
+ActionView::Template::Error (undefined method `achievements_user_path' for #<#<Class:0x00007ff1a026b940>:0x00005562925bef10>):
+  
+  Rendering users/show.html.haml within layouts/application
+app/views/users/show.html.haml:20:in `_app_views_users_show_html_haml___935482101581221856_46940921873520'
+  [1m[36mUser Load (0.2ms)[0m  [1m[34mSELECT  "users".* FROM "users" WHERE "users"."id" = ? LIMIT ?[0m  [["id", 10], ["LIMIT", 1]]
+  ↳ app/controllers/users_controller.rb:6
+    17:             %h1 EMAIL:
+    18:             %p #{@user.email}
+    19:           %br
+    20:           =link_to achievements_user_path(@user) do
+    21:             %input.btn.btn-sm.btn-success{:type => "submit", :value => "Achievements"}
+    22:         .col-lg-6
+    23:           %label
+  
+  Rendering users/show.html.haml within layouts/application
+app/views/users/show.html.haml:20:in `_app_views_users_show_html_haml___935482101581221856_46940925709700'
+  ↳ app/controllers/users_controller.rb:6
+  Rendering users/show.html.haml within layouts/application
+  Rendered users/show.html.haml within layouts/application (303.3ms)
+  Rendered users/show.html.haml within layouts/application (420.9ms)
+Completed 500 Internal Server Error in 971ms (ActiveRecord: 0.4ms)
+
+
+Started GET "/users/10" for 127.0.0.1 at 2018-09-17 21:47:23 +0200
+  Rendering users/show.html.haml within layouts/application
+  
+Completed 500 Internal Server Error in 1078ms (ActiveRecord: 0.3ms)
+
+
+  
+ActionView::Template::Error (undefined method `achievements_user_path' for #<#<Class:0x00007ff1a026b940>:0x00007ff1a45f4f18>):
+  Rendered users/show.html.haml within layouts/application (391.0ms)
+Processing by UsersController#show as HTML
+  Parameters: {"id"=>"10"}
+  Rendered users/show.html.haml within layouts/application (218.3ms)
+  [1m[36mUser Load (0.3ms)[0m  [1m[34mSELECT  "users".* FROM "users" WHERE "users"."id" = ? LIMIT ?[0m  [["id", 10], ["LIMIT", 1]]
+ActionView::Template::Error (undefined method `achievements_user_path' for #<#<Class:0x00007ff1a026b940>:0x00007ff1a4f0d168>):
+  ↳ app/controllers/users_controller.rb:6
+    17:             %h1 EMAIL:
+    18:             %p #{@user.email}
+    19:           %br
+    20:           =link_to achievements_user_path(@user) do
+    21:             %input.btn.btn-sm.btn-success{:type => "submit", :value => "Achievements"}
+    22:         .col-lg-6
+    23:           %label
+  
+app/views/users/show.html.haml:20:in `_app_views_users_show_html_haml___935482101581221856_70337910778920'
+Completed 500 Internal Server Error in 1137ms (ActiveRecord: 0.2ms)
+
+
+Completed 500 Internal Server Error in 1143ms (ActiveRecord: 0.3ms)
+
+
+  
+ActionView::Template::Error (undefined method `achievements_user_path' for #<#<Class:0x00007ff1a026b940>:0x00007ff1a45d31d8>):
+    17:             %h1 EMAIL:
+    18:             %p #{@user.email}
+    19:           %br
+    20:           =link_to achievements_user_path(@user) do
+    21:             %input.btn.btn-sm.btn-success{:type => "submit", :value => "Achievements"}
+    22:         .col-lg-6
+    23:           %label
+  
+  Rendering users/show.html.haml within layouts/application
+    17:             %h1 EMAIL:
+    18:             %p #{@user.email}
+    19:           %br
+    20:           =link_to achievements_user_path(@user) do
+    21:             %input.btn.btn-sm.btn-success{:type => "submit", :value => "Achievements"}
+    22:         .col-lg-6
+    23:           %label
+  
+  
+  Rendered users/show.html.haml within layouts/application (286.3ms)
+app/views/users/show.html.haml:20:in `_app_views_users_show_html_haml___935482101581221856_70337910778920'
+ActionView::Template::Error (undefined method `achievements_user_path' for #<#<Class:0x00007ff1a026b940>:0x0000556294cfec88>):
+app/views/users/show.html.haml:20:in `_app_views_users_show_html_haml___935482101581221856_70337910778920'
+Completed 500 Internal Server Error in 356ms (ActiveRecord: 0.3ms)
+
+
+  
+    17:             %h1 EMAIL:
+    18:             %p #{@user.email}
+    19:           %br
+    20:           =link_to achievements_user_path(@user) do
+    21:             %input.btn.btn-sm.btn-success{:type => "submit", :value => "Achievements"}
+    22:         .col-lg-6
+    23:           %label
+ActionView::Template::Error (undefined method `achievements_user_path' for #<#<Class:0x00007ff1a026b940>:0x00007ff1a55e05a8>):
+  
+app/views/users/show.html.haml:20:in `_app_views_users_show_html_haml___935482101581221856_46940945906300'
+    17:             %h1 EMAIL:
+    18:             %p #{@user.email}
+    19:           %br
+    20:           =link_to achievements_user_path(@user) do
+    21:             %input.btn.btn-sm.btn-success{:type => "submit", :value => "Achievements"}
+    22:         .col-lg-6
+    23:           %label
+  
+app/views/users/show.html.haml:20:in `_app_views_users_show_html_haml___935482101581221856_46940945906300'
+Started GET "/users/10" for 127.0.0.1 at 2018-09-17 21:48:24 +0200
+Processing by UsersController#show as HTML
+  Parameters: {"id"=>"10"}
+  [1m[36mUser Load (0.3ms)[0m  [1m[34mSELECT  "users".* FROM "users" WHERE "users"."id" = ? LIMIT ?[0m  [["id", 10], ["LIMIT", 1]]
+  ↳ app/controllers/users_controller.rb:6
+  Rendering users/show.html.haml within layouts/application
+  Rendered users/show.html.haml within layouts/application (10.6ms)
+  [1m[36mUser Load (0.1ms)[0m  [1m[34mSELECT  "users".* FROM "users" WHERE "users"."id" = ? LIMIT ?[0m  [["id", 10], ["LIMIT", 1]]
+  ↳ app/controllers/application_controller.rb:10
+  Rendered layouts/_navbar.html.haml (7.5ms)
+  Rendered layouts/_footer.html.haml (13.9ms)
+Completed 200 OK in 634ms (Views: 587.8ms | ActiveRecord: 1.7ms)
+
+
+Started GET "/users/10/achievements" for 127.0.0.1 at 2018-09-17 21:48:27 +0200
+Processing by UsersController#achievements as HTML
+  Parameters: {"user_id"=>"10"}
+  Rendering public/404.html.haml within layouts/application
+  Rendered public/404.html.haml within layouts/application (18.3ms)
+  [1m[36mUser Load (0.1ms)[0m  [1m[34mSELECT  "users".* FROM "users" WHERE "users"."id" = ? LIMIT ?[0m  [["id", 10], ["LIMIT", 1]]
+  ↳ app/controllers/application_controller.rb:10
+  Rendered layouts/_navbar.html.haml (9.0ms)
+  Rendered layouts/_footer.html.haml (19.5ms)
+Completed 404 Not Found in 157ms (Views: 153.2ms | ActiveRecord: 0.1ms)
+
+
+Started GET "/users/10" for 127.0.0.1 at 2018-09-17 21:48:29 +0200
+Processing by UsersController#show as HTML
+  Parameters: {"id"=>"10"}
+  [1m[36mUser Load (0.3ms)[0m  [1m[34mSELECT  "users".* FROM "users" WHERE "users"."id" = ? LIMIT ?[0m  [["id", 10], ["LIMIT", 1]]
+  ↳ app/controllers/users_controller.rb:6
+  Rendering users/show.html.haml within layouts/application
+  Rendered users/show.html.haml within layouts/application (16.9ms)
+  [1m[36mUser Load (0.1ms)[0m  [1m[34mSELECT  "users".* FROM "users" WHERE "users"."id" = ? LIMIT ?[0m  [["id", 10], ["LIMIT", 1]]
+  ↳ app/controllers/application_controller.rb:10
+  Rendered layouts/_navbar.html.haml (6.7ms)
+  Rendered layouts/_footer.html.haml (24.1ms)
+Completed 200 OK in 118ms (Views: 111.8ms | ActiveRecord: 0.5ms)
+
+
+Started GET "/users/10" for 127.0.0.1 at 2018-09-17 21:48:47 +0200
+Processing by UsersController#show as HTML
+  Parameters: {"id"=>"10"}
+  [1m[36mUser Load (0.5ms)[0m  [1m[34mSELECT  "users".* FROM "users" WHERE "users"."id" = ? LIMIT ?[0m  [["id", 10], ["LIMIT", 1]]
+  ↳ app/controllers/users_controller.rb:6
+  Rendering users/show.html.haml within layouts/application
+  Rendered users/show.html.haml within layouts/application (9.1ms)
+  [1m[36mUser Load (0.1ms)[0m  [1m[34mSELECT  "users".* FROM "users" WHERE "users"."id" = ? LIMIT ?[0m  [["id", 10], ["LIMIT", 1]]
+  ↳ app/controllers/application_controller.rb:10
+  Rendered layouts/_navbar.html.haml (6.9ms)
+  Rendered layouts/_footer.html.haml (15.7ms)
+Completed 200 OK in 145ms (Views: 98.8ms | ActiveRecord: 1.6ms)
+
+
+Started GET "/users/10/achievements" for 127.0.0.1 at 2018-09-17 21:48:48 +0200
+Processing by UsersController#achievements as HTML
+  Parameters: {"user_id"=>"10"}
+  Rendering public/404.html.haml within layouts/application
+  Rendered public/404.html.haml within layouts/application (8.8ms)
+  [1m[36mUser Load (0.1ms)[0m  [1m[34mSELECT  "users".* FROM "users" WHERE "users"."id" = ? LIMIT ?[0m  [["id", 10], ["LIMIT", 1]]
+  ↳ app/controllers/application_controller.rb:10
+  Rendered layouts/_navbar.html.haml (6.9ms)
+  Rendered layouts/_footer.html.haml (19.7ms)
+Completed 404 Not Found in 141ms (Views: 135.9ms | ActiveRecord: 0.1ms)
+
+
+Started GET "/users/10/achievements" for 127.0.0.1 at 2018-09-17 21:50:44 +0200
+Processing by ApplicationController#render_404 as HTML
+  Parameters: {"path"=>"users/10/achievements"}
+  Rendering public/404.html.haml within layouts/application
+  Rendered public/404.html.haml within layouts/application (3.1ms)
+  [1m[36mUser Load (0.2ms)[0m  [1m[34mSELECT  "users".* FROM "users" WHERE "users"."id" = ? LIMIT ?[0m  [["id", 10], ["LIMIT", 1]]
+  ↳ app/controllers/application_controller.rb:10
+  Rendered layouts/_navbar.html.haml (45.1ms)
+  Rendered layouts/_footer.html.haml (25.1ms)
+Completed 404 Not Found in 139ms (Views: 137.3ms | ActiveRecord: 0.7ms)
+
+
+Started GET "/users/10" for 127.0.0.1 at 2018-09-17 21:50:48 +0200
+Processing by UsersController#show as HTML
+  Parameters: {"id"=>"10"}
+  [1m[36mUser Load (0.8ms)[0m  [1m[34mSELECT  "users".* FROM "users" WHERE "users"."id" = ? LIMIT ?[0m  [["id", 10], ["LIMIT", 1]]
+  ↳ app/controllers/users_controller.rb:6
+  Rendering users/show.html.haml within layouts/application
+  Rendered users/show.html.haml within layouts/application (244.8ms)
+Completed 500 Internal Server Error in 273ms (ActiveRecord: 0.8ms)
+
+
+  
+ActionView::Template::Error (undefined method `user_achievements_path' for #<#<Class:0x00007ff1a45a00a8>:0x00007ff1a4401c88>):
+    17:             %h1 EMAIL:
+    18:             %p #{@user.email}
+    19:           %br
+    20:           =link_to user_achievements_path(@user) do
+    21:             %input.btn.btn-sm.btn-success{:type => "submit", :value => "Achievements"}
+    22:         .col-lg-6
+    23:           %label
+  
+app/views/users/show.html.haml:20:in `_app_views_users_show_html_haml___935482101581221856_70337910605220'
+Started GET "/users/10" for 127.0.0.1 at 2018-09-17 21:51:10 +0200
+Processing by UsersController#show as HTML
+  Parameters: {"id"=>"10"}
+  [1m[36mUser Load (0.2ms)[0m  [1m[34mSELECT  "users".* FROM "users" WHERE "users"."id" = ? LIMIT ?[0m  [["id", 10], ["LIMIT", 1]]
+  ↳ app/controllers/users_controller.rb:6
+  Rendering users/show.html.haml within layouts/application
+  Rendered users/show.html.haml within layouts/application (7.4ms)
+  [1m[36mUser Load (0.1ms)[0m  [1m[34mSELECT  "users".* FROM "users" WHERE "users"."id" = ? LIMIT ?[0m  [["id", 10], ["LIMIT", 1]]
+  ↳ app/controllers/application_controller.rb:10
+  Rendered layouts/_navbar.html.haml (8.0ms)
+  Rendered layouts/_footer.html.haml (21.0ms)
+Completed 200 OK in 149ms (Views: 101.8ms | ActiveRecord: 1.2ms)
+
+
+Started GET "/users/10/achievements" for 127.0.0.1 at 2018-09-17 21:51:12 +0200
+Processing by UsersController#achievements as HTML
+  Parameters: {"user_id"=>"10"}
+  Rendering public/404.html.haml within layouts/application
+  Rendered public/404.html.haml within layouts/application (3.7ms)
+  [1m[36mUser Load (0.1ms)[0m  [1m[34mSELECT  "users".* FROM "users" WHERE "users"."id" = ? LIMIT ?[0m  [["id", 10], ["LIMIT", 1]]
+  ↳ app/controllers/application_controller.rb:10
+  Rendered layouts/_navbar.html.haml (8.0ms)
+  Rendered layouts/_footer.html.haml (17.0ms)
+Completed 404 Not Found in 110ms (Views: 108.6ms | ActiveRecord: 0.1ms)
+
+
+Started GET "/users/10/achievements" for 127.0.0.1 at 2018-09-17 21:56:30 +0200
+Processing by UsersController#achievements as HTML
+  Parameters: {"user_id"=>"10"}
+  Rendering public/404.html.haml within layouts/application
+  Rendered public/404.html.haml within layouts/application (3.8ms)
+  [1m[36mUser Load (0.3ms)[0m  [1m[34mSELECT  "users".* FROM "users" WHERE "users"."id" = ? LIMIT ?[0m  [["id", 10], ["LIMIT", 1]]
+  ↳ app/controllers/application_controller.rb:10
+  Rendered layouts/_navbar.html.haml (32.1ms)
+  Rendered layouts/_footer.html.haml (18.4ms)
+Completed 404 Not Found in 148ms (Views: 132.5ms | ActiveRecord: 1.8ms)
+
+
+Started GET "/" for 127.0.0.1 at 2018-09-17 21:56:37 +0200
+Processing by MapboxController#show as HTML
+  [1m[36mRoom Load (0.4ms)[0m  [1m[34mSELECT "rooms".* FROM "rooms"[0m
+  ↳ app/controllers/mapbox_controller.rb:6
+  [1m[36mPower Load (0.2ms)[0m  [1m[34mSELECT "powers".* FROM "powers" WHERE "powers"."room_id" = ?[0m  [["room_id", 1]]
+  ↳ app/controllers/mapbox_controller.rb:10
+  [1m[36mUser Load (0.4ms)[0m  [1m[34mSELECT  "users".* FROM "users" WHERE "users"."id" = ? LIMIT ?[0m  [["id", 1], ["LIMIT", 1]]
+  ↳ app/controllers/mapbox_controller.rb:13
+  [1m[36mPower Load (0.1ms)[0m  [1m[34mSELECT "powers".* FROM "powers" WHERE "powers"."room_id" = ?[0m  [["room_id", 2]]
+  ↳ app/controllers/mapbox_controller.rb:10
+  [1m[36mCACHE User Load (0.0ms)[0m  [1m[34mSELECT  "users".* FROM "users" WHERE "users"."id" = ? LIMIT ?[0m  [["id", 1], ["LIMIT", 1]]
+  ↳ app/controllers/mapbox_controller.rb:13
+  [1m[36mPower Load (0.2ms)[0m  [1m[34mSELECT "powers".* FROM "powers" WHERE "powers"."room_id" = ?[0m  [["room_id", 3]]
+  ↳ app/controllers/mapbox_controller.rb:10
+  [1m[36mCACHE User Load (0.0ms)[0m  [1m[34mSELECT  "users".* FROM "users" WHERE "users"."id" = ? LIMIT ?[0m  [["id", 1], ["LIMIT", 1]]
+  ↳ app/controllers/mapbox_controller.rb:13
+  [1m[36mPower Load (0.2ms)[0m  [1m[34mSELECT "powers".* FROM "powers" WHERE "powers"."room_id" = ?[0m  [["room_id", 4]]
+  ↳ app/controllers/mapbox_controller.rb:10
+  [1m[36mCACHE User Load (0.0ms)[0m  [1m[34mSELECT  "users".* FROM "users" WHERE "users"."id" = ? LIMIT ?[0m  [["id", 1], ["LIMIT", 1]]
+  ↳ app/controllers/mapbox_controller.rb:13
+  [1m[36mPower Load (0.1ms)[0m  [1m[34mSELECT "powers".* FROM "powers" WHERE "powers"."room_id" = ?[0m  [["room_id", 5]]
+  ↳ app/controllers/mapbox_controller.rb:10
+  [1m[36mCACHE User Load (0.0ms)[0m  [1m[34mSELECT  "users".* FROM "users" WHERE "users"."id" = ? LIMIT ?[0m  [["id", 1], ["LIMIT", 1]]
+  ↳ app/controllers/mapbox_controller.rb:13
+  [1m[36mPower Load (0.2ms)[0m  [1m[34mSELECT "powers".* FROM "powers" WHERE "powers"."room_id" = ?[0m  [["room_id", 6]]
+  ↳ app/controllers/mapbox_controller.rb:10
+  [1m[36mCACHE User Load (0.0ms)[0m  [1m[34mSELECT  "users".* FROM "users" WHERE "users"."id" = ? LIMIT ?[0m  [["id", 1], ["LIMIT", 1]]
+  ↳ app/controllers/mapbox_controller.rb:13
+  [1m[36mPower Load (0.1ms)[0m  [1m[34mSELECT "powers".* FROM "powers" WHERE "powers"."room_id" = ?[0m  [["room_id", 7]]
+  ↳ app/controllers/mapbox_controller.rb:10
+  [1m[36mCACHE User Load (0.0ms)[0m  [1m[34mSELECT  "users".* FROM "users" WHERE "users"."id" = ? LIMIT ?[0m  [["id", 1], ["LIMIT", 1]]
+  ↳ app/controllers/mapbox_controller.rb:13
+  Rendering mapbox/show.html.haml within layouts/application
+  Rendered mapbox/show.html.haml within layouts/application (21.7ms)
+  [1m[36mUser Load (0.2ms)[0m  [1m[34mSELECT  "users".* FROM "users" WHERE "users"."id" = ? LIMIT ?[0m  [["id", 10], ["LIMIT", 1]]
+  ↳ app/controllers/application_controller.rb:10
+  Rendered layouts/_navbar.html.haml (8.2ms)
+  Rendered layouts/_footer.html.haml (13.3ms)
+Completed 200 OK in 263ms (Views: 156.1ms | ActiveRecord: 4.1ms)
+
+
+Started GET "/dashboard.json" for 127.0.0.1 at 2018-09-17 21:56:37 +0200
+Processing by MapboxController#show as JSON
+  [1m[36mRoom Load (0.2ms)[0m  [1m[34mSELECT "rooms".* FROM "rooms"[0m
+  ↳ app/controllers/mapbox_controller.rb:6
+  [1m[36mPower Load (0.1ms)[0m  [1m[34mSELECT "powers".* FROM "powers" WHERE "powers"."room_id" = ?[0m  [["room_id", 1]]
+  ↳ app/controllers/mapbox_controller.rb:10
+  [1m[36mUser Load (0.1ms)[0m  [1m[34mSELECT  "users".* FROM "users" WHERE "users"."id" = ? LIMIT ?[0m  [["id", 1], ["LIMIT", 1]]
+  ↳ app/controllers/mapbox_controller.rb:13
+  [1m[36mPower Load (0.1ms)[0m  [1m[34mSELECT "powers".* FROM "powers" WHERE "powers"."room_id" = ?[0m  [["room_id", 2]]
+  ↳ app/controllers/mapbox_controller.rb:10
+  [1m[36mCACHE User Load (0.0ms)[0m  [1m[34mSELECT  "users".* FROM "users" WHERE "users"."id" = ? LIMIT ?[0m  [["id", 1], ["LIMIT", 1]]
+  ↳ app/controllers/mapbox_controller.rb:13
+  [1m[36mPower Load (0.2ms)[0m  [1m[34mSELECT "powers".* FROM "powers" WHERE "powers"."room_id" = ?[0m  [["room_id", 3]]
+  ↳ app/controllers/mapbox_controller.rb:10
+  [1m[36mCACHE User Load (0.0ms)[0m  [1m[34mSELECT  "users".* FROM "users" WHERE "users"."id" = ? LIMIT ?[0m  [["id", 1], ["LIMIT", 1]]
+  ↳ app/controllers/mapbox_controller.rb:13
+  [1m[36mPower Load (0.1ms)[0m  [1m[34mSELECT "powers".* FROM "powers" WHERE "powers"."room_id" = ?[0m  [["room_id", 4]]
+  ↳ app/controllers/mapbox_controller.rb:10
+  [1m[36mCACHE User Load (0.0ms)[0m  [1m[34mSELECT  "users".* FROM "users" WHERE "users"."id" = ? LIMIT ?[0m  [["id", 1], ["LIMIT", 1]]
+  ↳ app/controllers/mapbox_controller.rb:13
+  [1m[36mPower Load (0.1ms)[0m  [1m[34mSELECT "powers".* FROM "powers" WHERE "powers"."room_id" = ?[0m  [["room_id", 5]]
+  ↳ app/controllers/mapbox_controller.rb:10
+  [1m[36mCACHE User Load (0.0ms)[0m  [1m[34mSELECT  "users".* FROM "users" WHERE "users"."id" = ? LIMIT ?[0m  [["id", 1], ["LIMIT", 1]]
+  ↳ app/controllers/mapbox_controller.rb:13
+  [1m[36mPower Load (0.3ms)[0m  [1m[34mSELECT "powers".* FROM "powers" WHERE "powers"."room_id" = ?[0m  [["room_id", 6]]
+  ↳ app/controllers/mapbox_controller.rb:10
+  [1m[36mCACHE User Load (0.0ms)[0m  [1m[34mSELECT  "users".* FROM "users" WHERE "users"."id" = ? LIMIT ?[0m  [["id", 1], ["LIMIT", 1]]
+  ↳ app/controllers/mapbox_controller.rb:13
+  [1m[36mPower Load (0.2ms)[0m  [1m[34mSELECT "powers".* FROM "powers" WHERE "powers"."room_id" = ?[0m  [["room_id", 7]]
+  ↳ app/controllers/mapbox_controller.rb:10
+  [1m[36mCACHE User Load (0.0ms)[0m  [1m[34mSELECT  "users".* FROM "users" WHERE "users"."id" = ? LIMIT ?[0m  [["id", 1], ["LIMIT", 1]]
+  ↳ app/controllers/mapbox_controller.rb:13
+Completed 200 OK in 19ms (Views: 0.1ms | ActiveRecord: 1.6ms)
+
+
+Started GET "/dashboard.json" for 127.0.0.1 at 2018-09-17 21:56:37 +0200
+Processing by MapboxController#show as JSON
+  [1m[36mRoom Load (0.2ms)[0m  [1m[34mSELECT "rooms".* FROM "rooms"[0m
+  ↳ app/controllers/mapbox_controller.rb:6
+  [1m[36mPower Load (0.1ms)[0m  [1m[34mSELECT "powers".* FROM "powers" WHERE "powers"."room_id" = ?[0m  [["room_id", 1]]
+  ↳ app/controllers/mapbox_controller.rb:10
+  [1m[36mUser Load (0.1ms)[0m  [1m[34mSELECT  "users".* FROM "users" WHERE "users"."id" = ? LIMIT ?[0m  [["id", 1], ["LIMIT", 1]]
+  ↳ app/controllers/mapbox_controller.rb:13
+  [1m[36mPower Load (0.1ms)[0m  [1m[34mSELECT "powers".* FROM "powers" WHERE "powers"."room_id" = ?[0m  [["room_id", 2]]
+  ↳ app/controllers/mapbox_controller.rb:10
+  [1m[36mCACHE User Load (0.0ms)[0m  [1m[34mSELECT  "users".* FROM "users" WHERE "users"."id" = ? LIMIT ?[0m  [["id", 1], ["LIMIT", 1]]
+  ↳ app/controllers/mapbox_controller.rb:13
+  [1m[36mPower Load (0.2ms)[0m  [1m[34mSELECT "powers".* FROM "powers" WHERE "powers"."room_id" = ?[0m  [["room_id", 3]]
+  ↳ app/controllers/mapbox_controller.rb:10
+  [1m[36mCACHE User Load (0.0ms)[0m  [1m[34mSELECT  "users".* FROM "users" WHERE "users"."id" = ? LIMIT ?[0m  [["id", 1], ["LIMIT", 1]]
+  ↳ app/controllers/mapbox_controller.rb:13
+  [1m[36mPower Load (0.1ms)[0m  [1m[34mSELECT "powers".* FROM "powers" WHERE "powers"."room_id" = ?[0m  [["room_id", 4]]
+  ↳ app/controllers/mapbox_controller.rb:10
+  [1m[36mCACHE User Load (0.0ms)[0m  [1m[34mSELECT  "users".* FROM "users" WHERE "users"."id" = ? LIMIT ?[0m  [["id", 1], ["LIMIT", 1]]
+  ↳ app/controllers/mapbox_controller.rb:13
+  [1m[36mPower Load (0.1ms)[0m  [1m[34mSELECT "powers".* FROM "powers" WHERE "powers"."room_id" = ?[0m  [["room_id", 5]]
+  ↳ app/controllers/mapbox_controller.rb:10
+  [1m[36mCACHE User Load (0.0ms)[0m  [1m[34mSELECT  "users".* FROM "users" WHERE "users"."id" = ? LIMIT ?[0m  [["id", 1], ["LIMIT", 1]]
+  ↳ app/controllers/mapbox_controller.rb:13
+  [1m[36mPower Load (0.1ms)[0m  [1m[34mSELECT "powers".* FROM "powers" WHERE "powers"."room_id" = ?[0m  [["room_id", 6]]
+  ↳ app/controllers/mapbox_controller.rb:10
+  [1m[36mCACHE User Load (0.0ms)[0m  [1m[34mSELECT  "users".* FROM "users" WHERE "users"."id" = ? LIMIT ?[0m  [["id", 1], ["LIMIT", 1]]
+  ↳ app/controllers/mapbox_controller.rb:13
+  [1m[36mPower Load (0.2ms)[0m  [1m[34mSELECT "powers".* FROM "powers" WHERE "powers"."room_id" = ?[0m  [["room_id", 7]]
+  ↳ app/controllers/mapbox_controller.rb:10
+  [1m[36mCACHE User Load (0.0ms)[0m  [1m[34mSELECT  "users".* FROM "users" WHERE "users"."id" = ? LIMIT ?[0m  [["id", 1], ["LIMIT", 1]]
+  ↳ app/controllers/mapbox_controller.rb:13
+Completed 200 OK in 20ms (Views: 0.1ms | ActiveRecord: 1.4ms)
+
+
+Started GET "/users/10" for 127.0.0.1 at 2018-09-17 21:56:40 +0200
+Processing by UsersController#show as HTML
+  Parameters: {"id"=>"10"}
+  [1m[36mUser Load (0.4ms)[0m  [1m[34mSELECT  "users".* FROM "users" WHERE "users"."id" = ? LIMIT ?[0m  [["id", 10], ["LIMIT", 1]]
+  ↳ app/controllers/users_controller.rb:6
+  Rendering users/show.html.haml within layouts/application
+  Rendered users/show.html.haml within layouts/application (36.9ms)
+  [1m[36mUser Load (0.1ms)[0m  [1m[34mSELECT  "users".* FROM "users" WHERE "users"."id" = ? LIMIT ?[0m  [["id", 10], ["LIMIT", 1]]
+  ↳ app/controllers/application_controller.rb:10
+  Rendered layouts/_navbar.html.haml (8.7ms)
+  Rendered layouts/_footer.html.haml (21.1ms)
+Completed 200 OK in 199ms (Views: 192.6ms | ActiveRecord: 0.5ms)
+
+
+Started GET "/users/10/achievements" for 127.0.0.1 at 2018-09-17 21:56:41 +0200
+Processing by UsersController#achievements as HTML
+  Parameters: {"user_id"=>"10"}
+  Rendering public/404.html.haml within layouts/application
+  Rendered public/404.html.haml within layouts/application (8.1ms)
+  [1m[36mUser Load (0.2ms)[0m  [1m[34mSELECT  "users".* FROM "users" WHERE "users"."id" = ? LIMIT ?[0m  [["id", 10], ["LIMIT", 1]]
+  ↳ app/controllers/application_controller.rb:10
+  Rendered layouts/_navbar.html.haml (9.7ms)
+  Rendered layouts/_footer.html.haml (20.1ms)
+Completed 404 Not Found in 140ms (Views: 137.9ms | ActiveRecord: 0.2ms)
+
+
+Started GET "/users/10/achievements" for 127.0.0.1 at 2018-09-17 21:56:49 +0200
+Processing by UsersController#achievements as HTML
+  Parameters: {"user_id"=>"10"}
+  Rendering public/404.html.haml within layouts/application
+  Rendered public/404.html.haml within layouts/application (5.2ms)
+  [1m[36mUser Load (0.3ms)[0m  [1m[34mSELECT  "users".* FROM "users" WHERE "users"."id" = ? LIMIT ?[0m  [["id", 10], ["LIMIT", 1]]
+  ↳ app/controllers/application_controller.rb:10
+  Rendered layouts/_navbar.html.haml (50.4ms)
+  Rendered layouts/_footer.html.haml (18.6ms)
+Completed 404 Not Found in 160ms (Views: 144.0ms | ActiveRecord: 0.9ms)
+
+
+Started GET "/users/10/achievements" for 127.0.0.1 at 2018-09-17 21:57:43 +0200
+Processing by UsersController#achievements as HTML
+  Parameters: {"user_id"=>"10"}
+Completed 404 Not Found in 14ms (ActiveRecord: 1.3ms)
+
+
+  
+ActiveRecord::RecordNotFound (Couldn't find User without an ID):
+  
+app/controllers/users_controller.rb:11:in `achievements'
+Started GET "/" for 127.0.0.1 at 2018-09-17 21:58:30 +0200
+Processing by MapboxController#show as HTML
+  [1m[36mRoom Load (0.2ms)[0m  [1m[34mSELECT "rooms".* FROM "rooms"[0m
+  ↳ app/controllers/mapbox_controller.rb:6
+  [1m[36mPower Load (0.2ms)[0m  [1m[34mSELECT "powers".* FROM "powers" WHERE "powers"."room_id" = ?[0m  [["room_id", 1]]
+  ↳ app/controllers/mapbox_controller.rb:10
+  [1m[36mUser Load (0.3ms)[0m  [1m[34mSELECT  "users".* FROM "users" WHERE "users"."id" = ? LIMIT ?[0m  [["id", 1], ["LIMIT", 1]]
+  ↳ app/controllers/mapbox_controller.rb:13
+  [1m[36mPower Load (0.1ms)[0m  [1m[34mSELECT "powers".* FROM "powers" WHERE "powers"."room_id" = ?[0m  [["room_id", 2]]
+  ↳ app/controllers/mapbox_controller.rb:10
+  [1m[36mCACHE User Load (0.0ms)[0m  [1m[34mSELECT  "users".* FROM "users" WHERE "users"."id" = ? LIMIT ?[0m  [["id", 1], ["LIMIT", 1]]
+  ↳ app/controllers/mapbox_controller.rb:13
+  [1m[36mPower Load (0.1ms)[0m  [1m[34mSELECT "powers".* FROM "powers" WHERE "powers"."room_id" = ?[0m  [["room_id", 3]]
+  ↳ app/controllers/mapbox_controller.rb:10
+  [1m[36mCACHE User Load (0.0ms)[0m  [1m[34mSELECT  "users".* FROM "users" WHERE "users"."id" = ? LIMIT ?[0m  [["id", 1], ["LIMIT", 1]]
+  ↳ app/controllers/mapbox_controller.rb:13
+  [1m[36mPower Load (0.2ms)[0m  [1m[34mSELECT "powers".* FROM "powers" WHERE "powers"."room_id" = ?[0m  [["room_id", 4]]
+  ↳ app/controllers/mapbox_controller.rb:10
+  [1m[36mCACHE User Load (0.0ms)[0m  [1m[34mSELECT  "users".* FROM "users" WHERE "users"."id" = ? LIMIT ?[0m  [["id", 1], ["LIMIT", 1]]
+  ↳ app/controllers/mapbox_controller.rb:13
+  [1m[36mPower Load (0.1ms)[0m  [1m[34mSELECT "powers".* FROM "powers" WHERE "powers"."room_id" = ?[0m  [["room_id", 5]]
+  ↳ app/controllers/mapbox_controller.rb:10
+  [1m[36mCACHE User Load (0.0ms)[0m  [1m[34mSELECT  "users".* FROM "users" WHERE "users"."id" = ? LIMIT ?[0m  [["id", 1], ["LIMIT", 1]]
+  ↳ app/controllers/mapbox_controller.rb:13
+  [1m[36mPower Load (0.1ms)[0m  [1m[34mSELECT "powers".* FROM "powers" WHERE "powers"."room_id" = ?[0m  [["room_id", 6]]
+  ↳ app/controllers/mapbox_controller.rb:10
+  [1m[36mCACHE User Load (0.0ms)[0m  [1m[34mSELECT  "users".* FROM "users" WHERE "users"."id" = ? LIMIT ?[0m  [["id", 1], ["LIMIT", 1]]
+  ↳ app/controllers/mapbox_controller.rb:13
+  [1m[36mPower Load (0.1ms)[0m  [1m[34mSELECT "powers".* FROM "powers" WHERE "powers"."room_id" = ?[0m  [["room_id", 7]]
+  ↳ app/controllers/mapbox_controller.rb:10
+  [1m[36mCACHE User Load (0.0ms)[0m  [1m[34mSELECT  "users".* FROM "users" WHERE "users"."id" = ? LIMIT ?[0m  [["id", 1], ["LIMIT", 1]]
+  ↳ app/controllers/mapbox_controller.rb:13
+  Rendering mapbox/show.html.haml within layouts/application
+  Rendered mapbox/show.html.haml within layouts/application (9.1ms)
+  [1m[36mUser Load (0.2ms)[0m  [1m[34mSELECT  "users".* FROM "users" WHERE "users"."id" = ? LIMIT ?[0m  [["id", 10], ["LIMIT", 1]]
+  ↳ app/controllers/application_controller.rb:10
+  Rendered layouts/_navbar.html.haml (7.5ms)
+  Rendered layouts/_footer.html.haml (21.2ms)
+Completed 200 OK in 191ms (Views: 103.8ms | ActiveRecord: 3.5ms)
+
+
+Started GET "/dashboard.json" for 127.0.0.1 at 2018-09-17 21:58:30 +0200
+Processing by MapboxController#show as JSON
+  [1m[36mRoom Load (0.2ms)[0m  [1m[34mSELECT "rooms".* FROM "rooms"[0m
+  ↳ app/controllers/mapbox_controller.rb:6
+  [1m[36mPower Load (0.1ms)[0m  [1m[34mSELECT "powers".* FROM "powers" WHERE "powers"."room_id" = ?[0m  [["room_id", 1]]
+  ↳ app/controllers/mapbox_controller.rb:10
+  [1m[36mUser Load (0.1ms)[0m  [1m[34mSELECT  "users".* FROM "users" WHERE "users"."id" = ? LIMIT ?[0m  [["id", 1], ["LIMIT", 1]]
+  ↳ app/controllers/mapbox_controller.rb:13
+  [1m[36mPower Load (0.1ms)[0m  [1m[34mSELECT "powers".* FROM "powers" WHERE "powers"."room_id" = ?[0m  [["room_id", 2]]
+  ↳ app/controllers/mapbox_controller.rb:10
+  [1m[36mCACHE User Load (0.0ms)[0m  [1m[34mSELECT  "users".* FROM "users" WHERE "users"."id" = ? LIMIT ?[0m  [["id", 1], ["LIMIT", 1]]
+  ↳ app/controllers/mapbox_controller.rb:13
+  [1m[36mPower Load (0.1ms)[0m  [1m[34mSELECT "powers".* FROM "powers" WHERE "powers"."room_id" = ?[0m  [["room_id", 3]]
+  ↳ app/controllers/mapbox_controller.rb:10
+  [1m[36mCACHE User Load (0.0ms)[0m  [1m[34mSELECT  "users".* FROM "users" WHERE "users"."id" = ? LIMIT ?[0m  [["id", 1], ["LIMIT", 1]]
+  ↳ app/controllers/mapbox_controller.rb:13
+  [1m[36mPower Load (0.1ms)[0m  [1m[34mSELECT "powers".* FROM "powers" WHERE "powers"."room_id" = ?[0m  [["room_id", 4]]
+  ↳ app/controllers/mapbox_controller.rb:10
+  [1m[36mCACHE User Load (0.0ms)[0m  [1m[34mSELECT  "users".* FROM "users" WHERE "users"."id" = ? LIMIT ?[0m  [["id", 1], ["LIMIT", 1]]
+  ↳ app/controllers/mapbox_controller.rb:13
+  [1m[36mPower Load (0.2ms)[0m  [1m[34mSELECT "powers".* FROM "powers" WHERE "powers"."room_id" = ?[0m  [["room_id", 5]]
+  ↳ app/controllers/mapbox_controller.rb:10
+  [1m[36mCACHE User Load (0.0ms)[0m  [1m[34mSELECT  "users".* FROM "users" WHERE "users"."id" = ? LIMIT ?[0m  [["id", 1], ["LIMIT", 1]]
+  ↳ app/controllers/mapbox_controller.rb:13
+  [1m[36mPower Load (0.1ms)[0m  [1m[34mSELECT "powers".* FROM "powers" WHERE "powers"."room_id" = ?[0m  [["room_id", 6]]
+  ↳ app/controllers/mapbox_controller.rb:10
+  [1m[36mCACHE User Load (0.0ms)[0m  [1m[34mSELECT  "users".* FROM "users" WHERE "users"."id" = ? LIMIT ?[0m  [["id", 1], ["LIMIT", 1]]
+  ↳ app/controllers/mapbox_controller.rb:13
+  [1m[36mPower Load (0.1ms)[0m  [1m[34mSELECT "powers".* FROM "powers" WHERE "powers"."room_id" = ?[0m  [["room_id", 7]]
+  ↳ app/controllers/mapbox_controller.rb:10
+  [1m[36mCACHE User Load (0.0ms)[0m  [1m[34mSELECT  "users".* FROM "users" WHERE "users"."id" = ? LIMIT ?[0m  [["id", 1], ["LIMIT", 1]]
+  ↳ app/controllers/mapbox_controller.rb:13
+Completed 200 OK in 21ms (Views: 0.1ms | ActiveRecord: 1.5ms)
+
+
+Started GET "/dashboard.json" for 127.0.0.1 at 2018-09-17 21:58:30 +0200
+Processing by MapboxController#show as JSON
+  [1m[36mRoom Load (0.3ms)[0m  [1m[34mSELECT "rooms".* FROM "rooms"[0m
+  ↳ app/controllers/mapbox_controller.rb:6
+  [1m[36mPower Load (0.1ms)[0m  [1m[34mSELECT "powers".* FROM "powers" WHERE "powers"."room_id" = ?[0m  [["room_id", 1]]
+  ↳ app/controllers/mapbox_controller.rb:10
+  [1m[36mUser Load (0.1ms)[0m  [1m[34mSELECT  "users".* FROM "users" WHERE "users"."id" = ? LIMIT ?[0m  [["id", 1], ["LIMIT", 1]]
+  ↳ app/controllers/mapbox_controller.rb:13
+  [1m[36mPower Load (0.1ms)[0m  [1m[34mSELECT "powers".* FROM "powers" WHERE "powers"."room_id" = ?[0m  [["room_id", 2]]
+  ↳ app/controllers/mapbox_controller.rb:10
+  [1m[36mCACHE User Load (0.0ms)[0m  [1m[34mSELECT  "users".* FROM "users" WHERE "users"."id" = ? LIMIT ?[0m  [["id", 1], ["LIMIT", 1]]
+  ↳ app/controllers/mapbox_controller.rb:13
+  [1m[36mPower Load (0.1ms)[0m  [1m[34mSELECT "powers".* FROM "powers" WHERE "powers"."room_id" = ?[0m  [["room_id", 3]]
+  ↳ app/controllers/mapbox_controller.rb:10
+  [1m[36mCACHE User Load (0.0ms)[0m  [1m[34mSELECT  "users".* FROM "users" WHERE "users"."id" = ? LIMIT ?[0m  [["id", 1], ["LIMIT", 1]]
+  ↳ app/controllers/mapbox_controller.rb:13
+  [1m[36mPower Load (0.2ms)[0m  [1m[34mSELECT "powers".* FROM "powers" WHERE "powers"."room_id" = ?[0m  [["room_id", 4]]
+  ↳ app/controllers/mapbox_controller.rb:10
+  [1m[36mCACHE User Load (0.0ms)[0m  [1m[34mSELECT  "users".* FROM "users" WHERE "users"."id" = ? LIMIT ?[0m  [["id", 1], ["LIMIT", 1]]
+  ↳ app/controllers/mapbox_controller.rb:13
+  [1m[36mPower Load (0.1ms)[0m  [1m[34mSELECT "powers".* FROM "powers" WHERE "powers"."room_id" = ?[0m  [["room_id", 5]]
+  ↳ app/controllers/mapbox_controller.rb:10
+  [1m[36mCACHE User Load (0.0ms)[0m  [1m[34mSELECT  "users".* FROM "users" WHERE "users"."id" = ? LIMIT ?[0m  [["id", 1], ["LIMIT", 1]]
+  ↳ app/controllers/mapbox_controller.rb:13
+  [1m[36mPower Load (0.1ms)[0m  [1m[34mSELECT "powers".* FROM "powers" WHERE "powers"."room_id" = ?[0m  [["room_id", 6]]
+  ↳ app/controllers/mapbox_controller.rb:10
+  [1m[36mCACHE User Load (0.0ms)[0m  [1m[34mSELECT  "users".* FROM "users" WHERE "users"."id" = ? LIMIT ?[0m  [["id", 1], ["LIMIT", 1]]
+  ↳ app/controllers/mapbox_controller.rb:13
+  [1m[36mPower Load (0.1ms)[0m  [1m[34mSELECT "powers".* FROM "powers" WHERE "powers"."room_id" = ?[0m  [["room_id", 7]]
+  ↳ app/controllers/mapbox_controller.rb:10
+  [1m[36mCACHE User Load (0.0ms)[0m  [1m[34mSELECT  "users".* FROM "users" WHERE "users"."id" = ? LIMIT ?[0m  [["id", 1], ["LIMIT", 1]]
+  ↳ app/controllers/mapbox_controller.rb:13
+Completed 200 OK in 31ms (Views: 0.1ms | ActiveRecord: 1.5ms)
+
+
+Started GET "/users/10" for 127.0.0.1 at 2018-09-17 21:58:32 +0200
+Processing by UsersController#show as HTML
+  Parameters: {"id"=>"10"}
+  [1m[36mUser Load (0.1ms)[0m  [1m[34mSELECT  "users".* FROM "users" WHERE "users"."id" = ? LIMIT ?[0m  [["id", 10], ["LIMIT", 1]]
+  ↳ app/controllers/users_controller.rb:6
+  Rendering users/show.html.haml within layouts/application
+  Rendered users/show.html.haml within layouts/application (15.6ms)
+  [1m[36mUser Load (0.3ms)[0m  [1m[34mSELECT  "users".* FROM "users" WHERE "users"."id" = ? LIMIT ?[0m  [["id", 10], ["LIMIT", 1]]
+  ↳ app/controllers/application_controller.rb:10
+  Rendered layouts/_navbar.html.haml (26.1ms)
+  Rendered layouts/_footer.html.haml (44.8ms)
+Completed 200 OK in 183ms (Views: 179.7ms | ActiveRecord: 0.4ms)
+
+
+Started GET "/users/10/achievements" for 127.0.0.1 at 2018-09-17 21:58:34 +0200
+Processing by UsersController#achievements as HTML
+  Parameters: {"user_id"=>"10"}
+Completed 404 Not Found in 4ms (ActiveRecord: 0.0ms)
+
+
+  
+ActiveRecord::RecordNotFound (Couldn't find User without an ID):
+  
+app/controllers/users_controller.rb:11:in `achievements'
+Started GET "/users/10/achievements" for 127.0.0.1 at 2018-09-17 22:01:32 +0200
+Processing by UsersController#achievements as HTML
+  Parameters: {"user_id"=>"10"}
+  [1m[36mUser Load (0.3ms)[0m  [1m[34mSELECT  "users".* FROM "users" WHERE "users"."id" = ? LIMIT ?[0m  [["id", 10], ["LIMIT", 1]]
+  ↳ app/controllers/users_controller.rb:11
+  Rendering users/achievements.html.haml within layouts/application
+  Rendered users/achievements.html.haml within layouts/application (1.6ms)
+Completed 500 Internal Server Error in 48ms (ActiveRecord: 1.6ms)
+
+
+  
+ActionView::Template::Error (Illegal nesting: content can't be both given on the same line as %h1 and nested within it.):
+     7:         .col-lg-6
+     8:             %label 
+     9:                 %h1 Your average score:
+    10:                     %h3 #{@user.cached_votes_up}
+    11:         .col-lg-6
+    12:             %label
+    13:                 %h1 Your XP:
+  
+app/views/users/achievements.html.haml:10
+app/controllers/users_controller.rb:12:in `achievements'
+Started GET "/users/10/achievements" for 127.0.0.1 at 2018-09-17 22:01:58 +0200
+Processing by UsersController#achievements as HTML
+  Parameters: {"user_id"=>"10"}
+  [1m[36mUser Load (0.2ms)[0m  [1m[34mSELECT  "users".* FROM "users" WHERE "users"."id" = ? LIMIT ?[0m  [["id", 10], ["LIMIT", 1]]
+  ↳ app/controllers/users_controller.rb:11
+  Rendering users/achievements.html.haml within layouts/application
+  Rendered users/achievements.html.haml within layouts/application (3.0ms)
+Completed 500 Internal Server Error in 9ms (ActiveRecord: 0.2ms)
+
+
+  
+ActionView::Template::Error (Illegal nesting: content can't be both given on the same line as %h1 and nested within it.):
+    11:         .col-lg-6
+    12:             %label
+    13:                 %h1 Your XP:
+    14:                     .progress.progress-bar.progress-bar-striped.active{"aria-valuemax" => "100", "aria-valuemin" => "0", "aria-valuenow" => "40", :role => "progressbar", :style => "width:40%"} 0% 
+  
+app/views/users/achievements.html.haml:14
+app/controllers/users_controller.rb:12:in `achievements'
+Started GET "/users/10/achievements" for 127.0.0.1 at 2018-09-17 22:02:07 +0200
+Processing by UsersController#achievements as HTML
+  Parameters: {"user_id"=>"10"}
+  [1m[36mUser Load (0.3ms)[0m  [1m[34mSELECT  "users".* FROM "users" WHERE "users"."id" = ? LIMIT ?[0m  [["id", 10], ["LIMIT", 1]]
+  ↳ app/controllers/users_controller.rb:11
+  Rendering users/achievements.html.haml within layouts/application
+  Rendered users/achievements.html.haml within layouts/application (5.7ms)
+  [1m[36mUser Load (0.2ms)[0m  [1m[34mSELECT  "users".* FROM "users" WHERE "users"."id" = ? LIMIT ?[0m  [["id", 10], ["LIMIT", 1]]
+  ↳ app/controllers/application_controller.rb:10
+  Rendered layouts/_navbar.html.haml (9.1ms)
+  Rendered layouts/_footer.html.haml (30.2ms)
+Completed 200 OK in 127ms (Views: 116.5ms | ActiveRecord: 0.5ms)
+
+
+Started GET "/users/10/achievements" for 127.0.0.1 at 2018-09-17 22:03:08 +0200
+Processing by UsersController#achievements as HTML
+  Parameters: {"user_id"=>"10"}
+  [1m[36mUser Load (0.2ms)[0m  [1m[34mSELECT  "users".* FROM "users" WHERE "users"."id" = ? LIMIT ?[0m  [["id", 10], ["LIMIT", 1]]
+  ↳ app/controllers/users_controller.rb:11
+  Rendering users/achievements.html.haml within layouts/application
+  Rendered users/achievements.html.haml within layouts/application (4.8ms)
+  [1m[36mUser Load (0.2ms)[0m  [1m[34mSELECT  "users".* FROM "users" WHERE "users"."id" = ? LIMIT ?[0m  [["id", 10], ["LIMIT", 1]]
+  ↳ app/controllers/application_controller.rb:10
+  Rendered layouts/_navbar.html.haml (7.0ms)
+  Rendered layouts/_footer.html.haml (19.5ms)
+Completed 200 OK in 104ms (Views: 102.2ms | ActiveRecord: 0.4ms)
+
+
+Started GET "/users/10/achievements" for 127.0.0.1 at 2018-09-17 22:03:19 +0200
+Processing by UsersController#achievements as HTML
+  Parameters: {"user_id"=>"10"}
+  [1m[36mUser Load (0.2ms)[0m  [1m[34mSELECT  "users".* FROM "users" WHERE "users"."id" = ? LIMIT ?[0m  [["id", 10], ["LIMIT", 1]]
+  ↳ app/controllers/users_controller.rb:11
+  Rendering users/achievements.html.haml within layouts/application
+  Rendered users/achievements.html.haml within layouts/application (2.2ms)
+Completed 500 Internal Server Error in 9ms (ActiveRecord: 0.2ms)
+
+
+  
+ActionView::Template::Error (Illegal nesting: content can't be both given on the same line as %h3 and nested within it.):
+     7:         .col-lg-6
+     8:             %label 
+     9:             %h3 Your average score:
+    10:                 %h3 #{@user.cached_votes_up}
+    11:         .col-lg-6
+    12:             %label
+    13:                 %h1 Your XP:
+  
+app/views/users/achievements.html.haml:10
+app/controllers/users_controller.rb:12:in `achievements'
+Started GET "/users/10/achievements" for 127.0.0.1 at 2018-09-17 22:03:22 +0200
+Processing by UsersController#achievements as HTML
+  Parameters: {"user_id"=>"10"}
+  [1m[36mUser Load (0.1ms)[0m  [1m[34mSELECT  "users".* FROM "users" WHERE "users"."id" = ? LIMIT ?[0m  [["id", 10], ["LIMIT", 1]]
+  ↳ app/controllers/users_controller.rb:11
+  Rendering users/achievements.html.haml within layouts/application
+  Rendered users/achievements.html.haml within layouts/application (6.4ms)
+  [1m[36mUser Load (0.2ms)[0m  [1m[34mSELECT  "users".* FROM "users" WHERE "users"."id" = ? LIMIT ?[0m  [["id", 10], ["LIMIT", 1]]
+  ↳ app/controllers/application_controller.rb:10
+  Rendered layouts/_navbar.html.haml (20.5ms)
+  Rendered layouts/_footer.html.haml (16.9ms)
+Completed 200 OK in 129ms (Views: 127.2ms | ActiveRecord: 0.3ms)
+
+
+Started GET "/users/10/achievements" for 127.0.0.1 at 2018-09-17 22:03:39 +0200
+Processing by UsersController#achievements as HTML
+  Parameters: {"user_id"=>"10"}
+  [1m[36mUser Load (0.1ms)[0m  [1m[34mSELECT  "users".* FROM "users" WHERE "users"."id" = ? LIMIT ?[0m  [["id", 10], ["LIMIT", 1]]
+  ↳ app/controllers/users_controller.rb:11
+  Rendering users/achievements.html.haml within layouts/application
+  Rendered users/achievements.html.haml within layouts/application (5.2ms)
+  [1m[36mUser Load (0.1ms)[0m  [1m[34mSELECT  "users".* FROM "users" WHERE "users"."id" = ? LIMIT ?[0m  [["id", 10], ["LIMIT", 1]]
+  ↳ app/controllers/application_controller.rb:10
+  Rendered layouts/_navbar.html.haml (12.7ms)
+  Rendered layouts/_footer.html.haml (34.5ms)
+Completed 200 OK in 148ms (Views: 146.3ms | ActiveRecord: 0.3ms)
+
+
+Started GET "/users/10/achievements" for 127.0.0.1 at 2018-09-17 22:03:52 +0200
+Processing by UsersController#achievements as HTML
+  Parameters: {"user_id"=>"10"}
+  [1m[36mUser Load (0.3ms)[0m  [1m[34mSELECT  "users".* FROM "users" WHERE "users"."id" = ? LIMIT ?[0m  [["id", 10], ["LIMIT", 1]]
+  ↳ app/controllers/users_controller.rb:11
+  Rendering users/achievements.html.haml within layouts/application
+  Rendered users/achievements.html.haml within layouts/application (11.4ms)
+  [1m[36mUser Load (0.2ms)[0m  [1m[34mSELECT  "users".* FROM "users" WHERE "users"."id" = ? LIMIT ?[0m  [["id", 10], ["LIMIT", 1]]
+  ↳ app/controllers/application_controller.rb:10
+  Rendered layouts/_navbar.html.haml (11.3ms)
+  Rendered layouts/_footer.html.haml (17.2ms)
+Completed 200 OK in 160ms (Views: 156.8ms | ActiveRecord: 0.6ms)
+
+
+Started GET "/users/10/achievements" for 127.0.0.1 at 2018-09-17 22:04:01 +0200
+Processing by UsersController#achievements as HTML
+  Parameters: {"user_id"=>"10"}
+  [1m[36mUser Load (0.2ms)[0m  [1m[34mSELECT  "users".* FROM "users" WHERE "users"."id" = ? LIMIT ?[0m  [["id", 10], ["LIMIT", 1]]
+  ↳ app/controllers/users_controller.rb:11
+  Rendering users/achievements.html.haml within layouts/application
+  Rendered users/achievements.html.haml within layouts/application (7.1ms)
+  [1m[36mUser Load (0.3ms)[0m  [1m[34mSELECT  "users".* FROM "users" WHERE "users"."id" = ? LIMIT ?[0m  [["id", 10], ["LIMIT", 1]]
+  ↳ app/controllers/application_controller.rb:10
+  Rendered layouts/_navbar.html.haml (10.1ms)
+  Rendered layouts/_footer.html.haml (15.7ms)
+Completed 200 OK in 115ms (Views: 112.1ms | ActiveRecord: 0.5ms)
+
+
+Started GET "/users/10/achievements" for 127.0.0.1 at 2018-09-17 22:04:16 +0200
+Processing by UsersController#achievements as HTML
+  Parameters: {"user_id"=>"10"}
+  [1m[36mUser Load (0.2ms)[0m  [1m[34mSELECT  "users".* FROM "users" WHERE "users"."id" = ? LIMIT ?[0m  [["id", 10], ["LIMIT", 1]]
+  ↳ app/controllers/users_controller.rb:11
+  Rendering users/achievements.html.haml within layouts/application
+  Rendered users/achievements.html.haml within layouts/application (5.9ms)
+  [1m[36mUser Load (0.3ms)[0m  [1m[34mSELECT  "users".* FROM "users" WHERE "users"."id" = ? LIMIT ?[0m  [["id", 10], ["LIMIT", 1]]
+  ↳ app/controllers/application_controller.rb:10
+  Rendered layouts/_navbar.html.haml (11.8ms)
+  Rendered layouts/_footer.html.haml (16.3ms)
+Completed 200 OK in 119ms (Views: 116.9ms | ActiveRecord: 0.5ms)
+
+
+Started GET "/users/10/achievements" for 127.0.0.1 at 2018-09-17 22:06:51 +0200
+Processing by UsersController#achievements as HTML
+  Parameters: {"user_id"=>"10"}
+  [1m[36mUser Load (0.2ms)[0m  [1m[34mSELECT  "users".* FROM "users" WHERE "users"."id" = ? LIMIT ?[0m  [["id", 10], ["LIMIT", 1]]
+  ↳ app/controllers/users_controller.rb:11
+  Rendering users/achievements.html.haml within layouts/application
+  Rendered users/achievements.html.haml within layouts/application (6.1ms)
+  [1m[36mUser Load (0.1ms)[0m  [1m[34mSELECT  "users".* FROM "users" WHERE "users"."id" = ? LIMIT ?[0m  [["id", 10], ["LIMIT", 1]]
+  ↳ app/controllers/application_controller.rb:10
+  Rendered layouts/_navbar.html.haml (7.3ms)
+  Rendered layouts/_footer.html.haml (19.9ms)
+Completed 200 OK in 107ms (Views: 104.1ms | ActiveRecord: 0.4ms)
+
+
+Started GET "/users/10/achievements" for 127.0.0.1 at 2018-09-17 22:07:27 +0200
+Processing by UsersController#achievements as HTML
+  Parameters: {"user_id"=>"10"}
+  [1m[36mUser Load (0.3ms)[0m  [1m[34mSELECT  "users".* FROM "users" WHERE "users"."id" = ? LIMIT ?[0m  [["id", 10], ["LIMIT", 1]]
+  ↳ app/controllers/users_controller.rb:11
+  Rendering users/achievements.html.haml within layouts/application
+  Rendered users/achievements.html.haml within layouts/application (5.7ms)
+  [1m[36mUser Load (0.1ms)[0m  [1m[34mSELECT  "users".* FROM "users" WHERE "users"."id" = ? LIMIT ?[0m  [["id", 10], ["LIMIT", 1]]
+  ↳ app/controllers/application_controller.rb:10
+  Rendered layouts/_navbar.html.haml (8.0ms)
+  Rendered layouts/_footer.html.haml (14.3ms)
+Completed 200 OK in 110ms (Views: 107.0ms | ActiveRecord: 0.4ms)
+
+
+Started GET "/users/10/achievements" for 127.0.0.1 at 2018-09-17 22:11:00 +0200
+Processing by UsersController#achievements as HTML
+  Parameters: {"user_id"=>"10"}
+  [1m[36mUser Load (0.2ms)[0m  [1m[34mSELECT  "users".* FROM "users" WHERE "users"."id" = ? LIMIT ?[0m  [["id", 10], ["LIMIT", 1]]
+  ↳ app/controllers/users_controller.rb:11
+  Rendering users/achievements.html.haml within layouts/application
+  Rendered users/achievements.html.haml within layouts/application (19.9ms)
+  [1m[36mUser Load (0.1ms)[0m  [1m[34mSELECT  "users".* FROM "users" WHERE "users"."id" = ? LIMIT ?[0m  [["id", 10], ["LIMIT", 1]]
+  ↳ app/controllers/application_controller.rb:10
+  Rendered layouts/_navbar.html.haml (10.8ms)
+  Rendered layouts/_footer.html.haml (21.3ms)
+Completed 200 OK in 176ms (Views: 125.6ms | ActiveRecord: 1.5ms)
+
+
+Started GET "/users/10/achievements" for 127.0.0.1 at 2018-09-17 22:13:02 +0200
+Processing by UsersController#achievements as HTML
+  Parameters: {"user_id"=>"10"}
+  [1m[36mUser Load (0.3ms)[0m  [1m[34mSELECT  "users".* FROM "users" WHERE "users"."id" = ? LIMIT ?[0m  [["id", 10], ["LIMIT", 1]]
+  ↳ app/controllers/users_controller.rb:11
+  Rendering users/achievements.html.haml within layouts/application
+  Rendered users/achievements.html.haml within layouts/application (6.0ms)
+  [1m[36mUser Load (0.2ms)[0m  [1m[34mSELECT  "users".* FROM "users" WHERE "users"."id" = ? LIMIT ?[0m  [["id", 10], ["LIMIT", 1]]
+  ↳ app/controllers/application_controller.rb:10
+  Rendered layouts/_navbar.html.haml (16.5ms)
+  Rendered layouts/_footer.html.haml (48.3ms)
+Completed 200 OK in 221ms (Views: 174.1ms | ActiveRecord: 1.6ms)
+
+
+  [1m[36mUser Load (0.3ms)[0m  [1m[34mSELECT  "users".* FROM "users" WHERE "users"."id" = ? LIMIT ?[0m  [["id", 10], ["LIMIT", 1]]
+  [1m[35m (0.4ms)[0m  [1m[36mbegin transaction[0m
+  [1m[36mUser Exists (0.8ms)[0m  [1m[34mSELECT  1 AS one FROM "users" WHERE "users"."username" = ? AND "users"."id" != ? LIMIT ?[0m  [["username", "Matteo Attenni"], ["id", 10], ["LIMIT", 1]]
+  [1m[36mUser Exists (0.6ms)[0m  [1m[34mSELECT  1 AS one FROM "users" WHERE LOWER("users"."email") = LOWER(?) AND "users"."id" != ? LIMIT ?[0m  [["email", "matty.atty95@gmail.com"], ["id", 10], ["LIMIT", 1]]
+  [1m[35m (0.1ms)[0m  [1m[31mrollback transaction[0m
+  [1m[35m (0.3ms)[0m  [1m[36mbegin transaction[0m
+  [1m[35m (0.3ms)[0m  [1m[31mrollback transaction[0m
+  [1m[35m (0.3ms)[0m  [1m[36mbegin transaction[0m
+  [1m[36mUser Update (1.3ms)[0m  [1m[33mUPDATE "users" SET "updated_at" = ?, "cached_votes_up" = ? WHERE "users"."id" = ?[0m  [["updated_at", "2018-09-17 20:14:48.857761"], ["cached_votes_up", 110], ["id", 10]]
+  [1m[35m (87.3ms)[0m  [1m[36mcommit transaction[0m
+Started GET "/users/10/achievements" for 127.0.0.1 at 2018-09-17 22:15:07 +0200
+  [1m[35m (0.3ms)[0m  [1m[34mSELECT "schema_migrations"."version" FROM "schema_migrations" ORDER BY "schema_migrations"."version" ASC[0m
+  ↳ vendor/bundle/gems/activerecord-5.2.0/lib/active_record/log_subscriber.rb:98
+Processing by UsersController#achievements as HTML
+  Parameters: {"user_id"=>"10"}
+  [1m[36mUser Load (0.2ms)[0m  [1m[34mSELECT  "users".* FROM "users" WHERE "users"."id" = ? LIMIT ?[0m  [["id", 10], ["LIMIT", 1]]
+  ↳ app/controllers/users_controller.rb:11
+  Rendering users/achievements.html.haml within layouts/application
+  Rendered users/achievements.html.haml within layouts/application (8.2ms)
+  [1m[36mUser Load (0.1ms)[0m  [1m[34mSELECT  "users".* FROM "users" WHERE "users"."id" = ? LIMIT ?[0m  [["id", 10], ["LIMIT", 1]]
+  ↳ app/controllers/application_controller.rb:10
+  Rendered layouts/_navbar.html.haml (8.2ms)
+  Rendered layouts/_footer.html.haml (35.6ms)
+Completed 200 OK in 602ms (Views: 550.4ms | ActiveRecord: 1.5ms)
+
+

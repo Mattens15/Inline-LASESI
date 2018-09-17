@@ -2,8 +2,8 @@ class User < ApplicationRecord
     attr_accessor :remember_token, :activation_token, :reset_token
     before_create :create_activation_digest
     has_many :achievements
-    ratyrate_rater
-    ratyrate_rateable "ranking"
+    acts_as_votable
+    acts_as_voter
     before_save :downcase_email
     validates :username, presence: true, :length => { :maximum => 20 }, uniqueness: true;
     VALID_EMAIL_REGEX = /\A[\w+\-.]+@[a-z\d\-]+(\.[a-z\d\-]+)*\.[a-z]+\z/i
@@ -54,6 +54,11 @@ class User < ApplicationRecord
 
     def awarded?(achievement)
         achievements.count(:conditions => { :type => achievement }) > 0
+    end
+
+    def upvote
+        @user.upvote_from current_user
+        redirect_to users_path
     end
 
     def send_activation_email
