@@ -1,0 +1,8 @@
+- provide(:title, "edit message") 
+.container
+  %h1 Edit message
+
+  =form_for [@room,@to_edit] do |m|
+    =m.text_field :body
+    =m.submit "Update message", class: "btn btn-primary"
+  

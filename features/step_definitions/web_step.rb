@@ -9,6 +9,10 @@ Given /^(?:I )am a registered user$/ do
   @user = User.create!(:username => 'Topo gigio', :email => "example@mail.com", :password => '12345678', :password_confirmation => '12345678')
 end
 
+Given /^(?:I )am an admin$/ do
+  @user = User.create!(:username => 'Topo gigio', :email => "example@mail.com", :password => '12345678', :password_confirmation => '12345678',:admin=>true)
+end
+
 And /^a room already exists/ do
   @owner = User.create!(:username => 'Owner', :email => "owner@mail.com", :password => '12345678', :password_confirmation => '12345678')
   @room = @owner.rooms.create!(:name => 'Room prova1', 
@@ -19,6 +23,23 @@ And /^a room already exists/ do
                               :longitude  => 12.479098,
                               :address    => 'via delBabuino, 00187 Roma Roma, Italy',
                               :fifo       => true)
+end
+
+And /^a private room already exists/ do
+  @owner = User.create!(:username => 'Owner', :email => "owner@mail.com", :password => '12345678', :password_confirmation => '12345678')
+  @room = @owner.rooms.create!(:name => 'Room prova1', 
+                              :max_participants => 5,
+                              :time_from  => Time.now + 60*60*12,
+                              :time_to    => Time.now + 60*70*24,
+                              :latitude   => 41.908339,
+                              :longitude  => 12.479098,
+                              :private    => true,
+                              :address    => 'via delBabuino, 00187 Roma Roma, Italy',
+                              :fifo       => true)
+end
+
+And /^a conversation with (.+) exists/ do |name|
+  @user.send_message(User.find_by(username: name),'test','test')
 end
 
 And /^user (.+) exists/ do |name|
@@ -55,6 +76,16 @@ When /^I visit (.*)$/ do |page_name|
   end
 end
 
+When /^(.+) sends me a direct/ do|user|
+  u=User.find_by(username: user)
+  u.reply_to_conversation(u.mailbox.conversations.last,"risposta")
+end
+When /^I send (.+) a direct/ do|user2|
+  u=User.find_by(username: user2)
+  @user.reply_to_conversation(@user.mailbox.conversations.last,"risposta")
+end
+
+
 And /^I fill (.*) with (.*)/ do |element, value|
 	fill_in element, :with => value
 end
@@ -68,7 +99,7 @@ And /^I pick the first one/ do
 end
 
 And /^I click (.*)/ do |element|
-  click_on(element)
+  click_on(element,match: :first)
 end
 
 And /^I select the recurrence/ do
@@ -144,6 +175,14 @@ Then /^(.+) should be room host/ do |username|
   expect(Power.exists?(user_id: user.id, room_id: room.id))
 end
 
+Then /^(.+) should receive a new direct/ do |username|
+  if username.eql?('I')
+    user=@user
+  else
+    user=User.find_by(username: username)
+  end
+  expect(user.mailbox.inbox.last.count_messages).to be > 0
+end
 Then /^Room should have avatar/ do
   room = Room.take
   expect(room.avatar).not_to be nil
@@ -160,12 +199,29 @@ Then /^I should see 404/ do
   expect(element.text).to eq('404')
 end
 
+Then /^I should see how many rooms I have attended/ do
+  puts(@user.rooms_attended)
+  puts(page.find(:xpath,"//*[@id='rooms-attended']").value)
+  #expect(@user.rooms_attended).to be eq(page.find(:xpath,"//*[@id='rooms-attended']").value.to_i)
+end
 Then /^Room should have multiple instances/ do
   expect(Room.all.count).to be > 1
 end
 
 Then /^I should be on room page/ do
   expect(page).to have_text("Room was successfully created.")
+end
+
+Then /^I should see a new message/ do
+  expect(@room.messages.count).to be > 0
+end
+
+Then /^the website should be suspended/ do
+  expect($should_be_offline).to be true
+end
+
+Then /^the website should be restored/ do
+  expect($should_be_offline).to be false
 end
 
 Then /^I should see room name/ do

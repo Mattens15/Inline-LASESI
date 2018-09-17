@@ -5,6 +5,8 @@ ruby '2.5.1'
 #gem for  facebook autentification
 gem 'omniauth' 
 gem 'omniauth-facebook', '~> 4.0.0'
+#gem for google autentification
+gem "omniauth-google-oauth2", "~> 0.2.1"
 gem 'rails', '~> 5.2.0'
 gem 'sqlite3'
 gem 'puma', '~> 3.11'
@@ -16,6 +18,7 @@ gem 'turbolinks', '~> 5'
 gem 'jbuilder', '~> 2.5'
 gem 'haml-rails'
 gem 'bootstrap'
+gem 'mailboxer'
 gem 'devise_invitable'
 gem 'mapbox-gl-rails'
 gem 'signet-rails'
@@ -38,6 +41,8 @@ gem "simple_calendar"
 gem 'friendly_id', '~> 5.1.0'
 gem 'mini_racer'
 gem 'acts_as_votable', '~> 0.11.1'
+gem "rufus-scheduler", "~> 3.5"
+gem "colorize"
 
 group :development, :test do
   gem 'byebug', platforms: [:mri, :mingw, :x64_mingw]
@@ -56,5 +61,3 @@ group :development do
   gem 'spring'
   gem 'spring-watcher-listen', '~> 2.0.0'
 end
-
-gem "rufus-scheduler", "~> 3.5"

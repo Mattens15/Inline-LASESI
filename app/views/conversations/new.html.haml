@@ -1,0 +1,13 @@
+.div{align: "center"}
+  %a{:href => "/conversations"} Back to conversations 
+  %h1 New Conversation
+.container  
+  = form_tag conversations_path,method: :post do
+    .form-group
+      =select_tag :user_id,options_from_collection_for_select(@recipients,:id,:username),class: "form-control"
+    .form-group
+      = text_field_tag :subject,nil, placeholder: "Subject",  autocomplete:"off",class: "form-control"
+    .form-group
+      = text_area_tag :body,nil,rows:"6",placeholder: "Insert Your   Message...",class: "form-control"
+    .form-group
+    = submit_tag "Send message", class: "btn btn-primary   btn-sm"  
