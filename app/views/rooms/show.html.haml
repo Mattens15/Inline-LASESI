@@ -66,8 +66,16 @@
 				#reminderdiv{:style => 'margin-top: 10px'}
 					-if !current_user.nil? && current_user.reservations.exists?(room_id: @room.id)
 						=render 'remind' 
-		.col-xl-3.col-lg-3.col-md-3.col-sm-12.col-12.border-left
-			#messages.fixed-size-room
+		.col-3.border-left
+			#pinned.border-bottom
+				-@room.messages.each do |m|
+					-if m.pinned
+						%h5 PINNED MESSAGE
+						%p
+							%strong
+								=link_to User.find(m.user_id).	username
+							=m.body
+			#messages{:style =>'overflow-y:scroll;height:70vh'}
 			-if current_user
 				= form_for([@room, Message.new], remote: true) do |f|
 					= hidden_field_tag :user_id, current_user.id

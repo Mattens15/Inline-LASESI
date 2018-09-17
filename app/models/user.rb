@@ -24,6 +24,8 @@ class User < ApplicationRecord
     has_many :passive_requests, class_name: 'SwapReservation', :foreign_key => 'passive_user'
     
     has_many :messages
+
+    acts_as_messageable
     
     def User.digest(string)
         cost = ActiveModel::SecurePassword.min_cost ? BCrypt::Engine::MIN_COST :

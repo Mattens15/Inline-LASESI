@@ -1,11 +1,13 @@
 
 - provide(:title, "Find the nearest room");
-.container-fluid#bigone
-  .row
-    .col-xl-12.col-lg-12.col-md-12.col-sm-12.col-12
-      #map
-  .row.text-center.my-2
-    .col-xl-4.col-lg-4.col-md-4.col-sm-12.col-xs-12
+
+.container
+
+  
+  #map{:style=>'width: 100%; height: 300px; margin-top: 1%;'}
+  .row{:style => 'text-align: center;'}
+
+    .col-4
       %label
         Insert your radius:
       %input.form-control{:type => 'number', :step => '0.1', :id => 'radius', :value => '', :placeholder => 'Insert your radius...', :value => '5', :min => '0.1'}

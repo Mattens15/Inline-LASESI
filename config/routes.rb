@@ -21,6 +21,8 @@ Rails.application.routes.draw do
   get '/redirect', to: 'calendars#redirect', as: 'redirect'
   get '/callback', to: 'calendars#callback', as: 'callback'
   put 'destroy_avatar' => 'rooms#destroy_avatar'
+  
+
 
   resources :sessions, only: [:create, :destroy]
   resource :home, only: [:show]
@@ -31,12 +33,21 @@ Rails.application.routes.draw do
   resources :rooms do
     post 'add_event' => 'calendars#add_event'
     resources :powers
-    resources :messages
+    resources :messages do
+      post 'pin'=>'messages#pin'
+    end
     resources :reservations do
       resources :swap_reservations
     end
   end
-  
+
+
+  resources :conversations do
+    resource :directs
+  end
+
+
   #SE NON CI SONO ALTRE ROUTES, SIGNIFICA CHE L'ELEMENTO NON ESISTE ->
-  match '*path' => 'application#render_404', via: :all
+  match '/change'=>'application#change_availability', via: :all
+  #match '*path' => 'application#render_404', via: :all
 end

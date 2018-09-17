@@ -3,14 +3,14 @@ class CreateRooms < ActiveRecord::Migration[5.2]
     create_table :rooms do |t|
       t.string    :name
       t.string    :description
-      t.boolean   :fifo, deafult: true
+      t.boolean   :fifo, default: true
       t.integer   :max_participants
       
       t.string    :address
       t.float     :latitude
       t.float     :longitude
       
-      t.boolean   :private, deafult: false
+      t.boolean   :private, default: false
       t.datetime  :max_unjoin_time
       
       t.datetime  :time_from
