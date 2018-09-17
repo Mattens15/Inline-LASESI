@@ -16,7 +16,20 @@ ActiveRecord::Schema.define(version: 2018_09_17_145413) do
     t.string "provider"
     t.string "uid"
     t.integer "user_id"
-ActiveRecord::Schema.define(version: 2018_09_17_141303) do
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+  end
+
+  create_table "average_caches", force: :cascade do |t|
+    t.integer "rater_id"
+    t.string "rateable_type"
+    t.integer "rateable_id"
+    t.float "avg", null: false
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+    t.index ["rateable_type", "rateable_id"], name: "index_average_caches_on_rateable_type_and_rateable_id"
+    t.index ["rater_id"], name: "index_average_caches_on_rater_id"
+  end
 
   create_table "mailboxer_conversation_opt_outs", force: :cascade do |t|
     t.string "unsubscriber_type"
@@ -32,15 +45,6 @@ ActiveRecord::Schema.define(version: 2018_09_17_141303) do
     t.datetime "updated_at", null: false
   end
 
-  create_table "average_caches", force: :cascade do |t|
-    t.integer "rater_id"
-    t.string "rateable_type"
-    t.integer "rateable_id"
-    t.float "avg", null: false
-    t.datetime "created_at", null: false
-    t.datetime "updated_at", null: false
-    t.index ["rateable_type", "rateable_id"], name: "index_average_caches_on_rateable_type_and_rateable_id"
-    t.index ["rater_id"], name: "index_average_caches_on_rater_id"
   create_table "mailboxer_notifications", force: :cascade do |t|
     t.string "type"
     t.text "body"
