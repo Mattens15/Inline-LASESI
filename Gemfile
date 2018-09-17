@@ -37,6 +37,7 @@ gem 'recurring_select',  git: 'https://github.com/DanieleFedeli/recurring_select
 gem "simple_calendar"
 gem 'friendly_id', '~> 5.1.0'
 gem 'mini_racer'
+gem 'acts_as_votable', '~> 0.11.1'
 
 group :development, :test do
   gem 'byebug', platforms: [:mri, :mingw, :x64_mingw]

@@ -26,7 +26,11 @@ Rails.application.routes.draw do
   resource :home, only: [:show]
   resources :password_resets,     only: [:new, :create, :edit, :update]
   resources :account_activations, only: [:edit]
-  resources :users
+  resources :users do
+    member do
+      put "like" => "users#upvote"
+    end
+  end
   resources :avatars
   resources :rooms do
     post 'add_event' => 'calendars#add_event'
