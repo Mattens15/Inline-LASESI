@@ -23,9 +23,14 @@ class UsersController < ApplicationController
   end
 
   def destroy
+    auth_hash = request.env['omniauth.auth']
+    if auth_hash
+      User.find_by(email: auth_hash['info']['email'].downcase).destroy
+    else
     User.find(params[:id]).destroy
     flash[:success] = "User deleted"
     redirect_to(root_url)
+    end
   end
 
   def edit
