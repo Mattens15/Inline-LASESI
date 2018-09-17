@@ -1,7 +1,7 @@
 class ApplicationController < ActionController::Base
   protect_from_forgery with: :exception
   before_action :set_no_cache
-  rescue_from ActiveRecord::RecordNotFound, with: :render_404
+  #rescue_from ActiveRecord::RecordNotFound, with: :render_404
   
   include SessionsHelper
   helper_method :current_user
@@ -22,10 +22,10 @@ class ApplicationController < ActionController::Base
     if current_user && current_user.admin
       if $should_be_offline
         $should_be_offline=false
-        puts "Website is now suspended...".red
+        
       else
         $should_be_offline=true
-        puts "Website has been restored!".green
+        
       end
     end
     

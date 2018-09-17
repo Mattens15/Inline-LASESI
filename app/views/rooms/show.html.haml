@@ -65,6 +65,14 @@
 					-if !current_user.nil? && current_user.reservations.exists?(room_id: @room.id)
 						=render 'remind' 
 		.col-3.border-left
+			#pinned.border-bottom
+				-@room.messages.each do |m|
+					-if m.pinned
+						%h5 PINNED MESSAGE
+						%p
+							%strong
+								=link_to User.find(m.user_id).	username
+							=m.body
 			#messages{:style =>'overflow-y:scroll;height:70vh'}
 			-if current_user
 				= form_for([@room, Message.new], remote: true) do |f|

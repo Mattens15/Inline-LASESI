@@ -1,5 +1,5 @@
 class MessagesController < ApplicationController
-	before_action :authenticate_user!, only: [create]
+	before_action :authenticate_user!, only: [:create]
 	before_action :set_room
 	def index
 		render :layout => false
@@ -7,25 +7,45 @@ class MessagesController < ApplicationController
 	end
 	
 	def create
-		@message = @room.messages.new(message_params)
-		@message.user = current_user
-		if @message.save!
+		if current_user
+			@message = @room.messages.build(message_params)
+			@message.user = current_user
 			
-		else
-			flash[:danger] = "Errore creazione"
+			if @message.save!
+				logger.debug "YUGAUGSGUYASUYGsmessaggio creato #{@message.id} #{@message.body}".green
+				respond_to do |format|
+					format.html
+				end
+				
+			else
+				flash[:danger] = "Errore creazione"
+			end
 		end
 	end
-    
-    def pin
-      oldone = messages.find_by(pinned: true).pinned = false
-      oldone.save
-      newone = messages.find(params[:id])
-      newone.pinned= true
-      newone.save
-    end
-    def edit
 
-    end
+	def pin
+		oldone = messages.find_by(pinned: true).pinned = false
+		oldone.save
+		newone = messages.find(params[:id])
+		newone.pinned= true
+		newone.save
+	end
+
+	def edit
+		@to_edit=Message.find(params[:id])
+		@room=Room.find_by(id: @to_edit.room_id)
+		
+	end
+
+	def update
+		@to_edit=Message.find(params[:id])
+		@to_edit.body=params[:message][:body]
+		@to_edit.save!
+		respond_to do |format|
+			format.html {redirect_to @to_edit.room}
+		end
+
+	end
 	private
 		def set_room
 			@room = Room.friendly.find(params[:room_id])
@@ -36,6 +56,7 @@ class MessagesController < ApplicationController
 		end
 
 		def message_params
-			params.require(:message).permit(:body)
+			params.require(:message).permit(:body,:id)
 		end
+
 end

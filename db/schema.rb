@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2018_07_05_145630) do
+ActiveRecord::Schema.define(version: 2018_09_17_141303) do
 
   create_table "mailboxer_conversation_opt_outs", force: :cascade do |t|
     t.string "unsubscriber_type"
@@ -66,14 +66,11 @@ ActiveRecord::Schema.define(version: 2018_07_05_145630) do
     t.index ["receiver_id", "receiver_type"], name: "index_mailboxer_receipts_on_receiver_id_and_receiver_type"
   end
 
-  create_table "messages", id: false, force: :cascade do |t|
+  create_table "messages", force: :cascade do |t|
     t.integer "room_id"
     t.integer "user_id"
-    t.integer "id"
-    t.boolean "pinned", default: false
     t.text "body"
-    t.datetime "created_at", null: false
-    t.datetime "updated_at", null: false
+    t.boolean "pinned", default: false
     t.index ["room_id"], name: "index_messages_on_room_id"
     t.index ["user_id"], name: "index_messages_on_user_id"
   end
@@ -103,7 +100,7 @@ ActiveRecord::Schema.define(version: 2018_07_05_145630) do
   create_table "rooms", force: :cascade do |t|
     t.string "name"
     t.string "description"
-    t.boolean "fifo"
+    t.boolean "fifo", default: true
     t.integer "max_participants"
     t.string "address"
     t.float "latitude"

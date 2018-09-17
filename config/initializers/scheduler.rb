@@ -8,13 +8,14 @@ routine.every "5m" do
 	puts "Checking if reminders need to be sent!".yellow
 	Room.all.each do |stanza|   
 		if stanza.time_from.past?
-			stanza.reservations.map do |r|
-				r.each do |user|
-					if user.reminder
-						ReminderMailer.reminder_email(user)
-						puts"Sending a reminder to #{user.username}...".green
-					end
+			stanza.reservations.each do |r|
+				
+				if r.reminder
+					user=User.find_by(id:r.user_id)
+					ReminderMailer.reminder_email(user)
+					puts"Sending a reminder to #{user}...".green
 				end
+			
 			end
 		end		
 	end

@@ -3,11 +3,11 @@
   .tools{:style=>"padding-left:10px;padding-top:10px;"}
     -if $should_be_offline==true
       =link_to "/change" do
-        %button.btn.btn-success Restore website
+        %button.btn.btn-success#restore Restore website
       
        
     -else
       
       =link_to "/change" do
-        %button.btn.btn-danger Suspend website
+        %button.btn.btn-danger#suspend Suspend website
 

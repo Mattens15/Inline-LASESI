@@ -1,5 +1,19 @@
--@room.messages.each do |m|
-    %p
-        %strong 
-            =link_to User.find(m.user_id).username, user_path(m.user) 
-        =m.body
+
+-@room.messages.each do |m| #Index.html.haml
+    .test
+
+        %p
+            %strong 
+                =link_to User.find(m.user_id).username, user_path(m.user) 
+            =m.body
+            
+    -if current_user && (current_user.admin? || current_user.powers.exists?(room_id: @room.id))
+        
+        =link_to edit_room_message_path(@room.id, m.id) do
+            =hidden_field_tag :id, m.id
+            =image_tag('gear.svg',class:'edit')
+
+        =link_to 'pin',{controller:'messages',action:'pin'} do
+            =image_tag('pin.svg',class:'pin')
+        
+            

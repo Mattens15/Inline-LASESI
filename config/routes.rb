@@ -23,7 +23,9 @@ Rails.application.routes.draw do
   resources :rooms do
     post 'add_event' => 'calendars#add_event'
     resources :powers
-    resources :messages
+    resources :messages do
+      post 'pin'=>'messages#pin'
+    end
     resources :reservations do
       resources :swap_reservations
     end
@@ -37,5 +39,5 @@ Rails.application.routes.draw do
 
   #SE NON CI SONO ALTRE ROUTES, SIGNIFICA CHE L'ELEMENTO NON ESISTE ->
   match '/change'=>'application#change_availability', via: :all
-  match '*path' => 'application#render_404', via: :all
+  #match '*path' => 'application#render_404', via: :all
 end
