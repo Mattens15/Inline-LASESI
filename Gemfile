@@ -30,7 +30,7 @@ gem 'ratyrate'
 gem 'omniauth-oauth2', '~> 1.3.1'
 gem 'omniauth-google-oauth2'
 gem 'activeadmin-sqlpage'
-gem 'thin'
+#gem 'thin'
 gem "paperclip"
 gem 'ice_cube'
 gem 'recurring_select',  git: 'https://github.com/DanieleFedeli/recurring_select'
