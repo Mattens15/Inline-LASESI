@@ -1,8 +1,5 @@
 Rails.application.routes.draw do
 # gestione sessione omniauth e user normale
-
- 
-  
   get '/auth/:provider/callback', :to =>'sessions#create'
   get '/auth/failure', :to =>  redirect('/')# 'sessions_omniauth#failure'
   post '/rate' => 'rater#create', :as => 'rate'
@@ -17,7 +14,6 @@ Rails.application.routes.draw do
   get 'login'   => 'sessions#new'
   post'login'   => 'sessions#create'
   get 'logout'  => 'sessions#destroy'
-  
   get '/redirect', to: 'calendars#redirect', as: 'redirect'
   get '/callback', to: 'calendars#callback', as: 'callback'
   put 'destroy_avatar' => 'rooms#destroy_avatar'
@@ -27,6 +23,7 @@ Rails.application.routes.draw do
   resources :password_resets,     only: [:new, :create, :edit, :update]
   resources :account_activations, only: [:edit]
   resources :users do
+    get 'achievements' => 'users#achievements'
     member do
       put "like" => "users#upvote"
     end
@@ -42,5 +39,5 @@ Rails.application.routes.draw do
   end
   
   #SE NON CI SONO ALTRE ROUTES, SIGNIFICA CHE L'ELEMENTO NON ESISTE ->
-  match '*path' => 'application#render_404', via: :all
+ 
 end

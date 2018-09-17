@@ -7,6 +7,15 @@ class UsersController < ApplicationController
     @hashed=Digest::MD5.hexdigest(@user.id.to_s)
   end
 
+  def achievements
+    @user=User.find(params[:user_id])
+    @scala=100
+    if(@user.cached_votes_up>@scala)
+      @scala=@scala*2
+    end
+    render 'achievements'
+  end
+
   def new
     @user = User.new
   end

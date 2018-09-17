@@ -17,7 +17,7 @@
             %h1 EMAIL:
             %p #{@user.email}
           %br
-          =link_to achievement_user_path(@user) do
+          =link_to user_achievements_path(@user) do
             %input.btn.btn-sm.btn-success{:type => "submit", :value => "Achievements"}
         .col-lg-6
           %label
