@@ -22,4 +22,9 @@ class ApplicationController < ActionController::Base
     response.headers["Pragma"] = "no-cache"
     response.headers["Expires"] = "Fri, 01 Jan 1990 00:00:00 GMT"
   end
+
+  protected
+    def authenticate_inviter!
+      authenticate_admin!(:force => true)
+    end
 end

@@ -24,7 +24,14 @@
           %br
           %label
             %h1 REFERRAL LINK:
-            %a{:href => "http://inlineapp.com/login"} http://inlineapp.com/#{@hashed}
+            %p http://inlineapp.com/#{@hashed}
+          %label 
+            %h1 INVITE USER:
+            = form_for(@user) do |f|
+              .form-group
+                %p EMAIL
+                %input.form-control{:maxlength => "50",:id => "user_email", :name => "user[email]", :placeholder => "prova@example.com", :required => "true", :type => "email"}/
+                %input.btn.btn-sm.btn-success{:type => "submit", :value => "Invite"}/
           %br
           %br
           =link_to edit_user_path(@user)  do 

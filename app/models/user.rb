@@ -1,7 +1,10 @@
 class User < ApplicationRecord
     attr_accessor :remember_token, :activation_token, :reset_token
     before_create :create_activation_digest
+    devise :database_authenticatable, :validatable, :confirmable, :invitable, :invite_for => 1.weeks
+    include DeviseInvitable::Inviter
     has_many :achievements
+    has_many :invitations, :class_name => 'User', :as => :invited_by
     ratyrate_rater
     ratyrate_rateable "ranking"
     before_save :downcase_email

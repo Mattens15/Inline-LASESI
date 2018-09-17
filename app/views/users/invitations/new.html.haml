@@ -1,0 +1,9 @@
+%h2= t "devise.invitations.new.header"
+= form_for(@user), :as => user, :url => invitation_path(user), :html => {:method => :post} do |f|
+  = devise_error_messages!
+  - User.invite.each do |field|
+    %p
+      = f.label EMAIL
+      %br/
+      = f.text_field EMAIL
+  %p= f.submit t("devise.invitations.new.submit_button") 

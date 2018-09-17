@@ -1,10 +1,4 @@
 Rails.application.routes.draw do
-# gestione sessione omniauth e user normale
-
- 
-  
-  get '/auth/:provider/callback', :to =>'sessions#create'
-  get '/auth/failure', :to =>  redirect('/')# 'sessions_omniauth#failure'
   post '/rate' => 'rater#create', :as => 'rate'
   default_url_options :host => "localhost"
   root                     'mapbox#show'
@@ -17,12 +11,25 @@ Rails.application.routes.draw do
   get 'login'   => 'sessions#new'
   post'login'   => 'sessions#create'
   get 'logout'  => 'sessions#destroy'
-  
+  # gestione sessione omniauth
+  get 'sessions_omniauth/new'
+  get 'sessions_omniauth/create'
+  get 'sessions_omniauth/failure'
+  get '/login_omniauth', :to =>'sessions_omniauth#new', :as => :login_omniauth
+  get '/auth/:provider/callback', :to =>'sessions_omniauth#create'
+  get '/auth/failure', :to =>  redirect('/')# 'sessions_omniauth#failure'
+  get '/logout_omniauth', :to => 'sessions_omniauth#destroy'
+  delete '/logout_omniauth', :to => 'sessions_omniauth#destroy'
+  get 'signup_omniauth', :to =>'users_omniauth#new'
+  get 'signup_omniauth', :to =>'users_omniauth#create'
+  #fine gestione sessione omniauth
+  get 'auth/:provider/callback' => 'sessions#callback'
   get '/redirect', to: 'calendars#redirect', as: 'redirect'
   get '/callback', to: 'calendars#callback', as: 'callback'
   put 'destroy_avatar' => 'rooms#destroy_avatar'
-
+  devise_for :users, :controllers => { :invitations => 'users/invitations' }
   resources :sessions, only: [:create, :destroy]
+  resources :login_omniauth, only: [:create, :destroy]
   resource :home, only: [:show]
   resources :password_resets,     only: [:new, :create, :edit, :update]
   resources :account_activations, only: [:edit]

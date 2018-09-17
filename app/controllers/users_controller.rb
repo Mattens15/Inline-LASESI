@@ -46,6 +46,15 @@ class UsersController < ApplicationController
       render 'edit'
     end
   end
+
+  def invitation
+    existing_user=User.find_by(email: email)
+    self.user = if existing_user.present?
+                  existing_user
+                else
+                  User.invite!(email: email)
+                end
+  end
   
   private
 
