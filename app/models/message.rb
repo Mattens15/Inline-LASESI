@@ -6,4 +6,10 @@ class Message < ApplicationRecord
 	validates :user, presence: true
 	validates :room, presence: true
 	validates :body, presence: true
+
+
+	def change_pin
+		self.pinned=!self.pinned
+		self.save
+	end
 end

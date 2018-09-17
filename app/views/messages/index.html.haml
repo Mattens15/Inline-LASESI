@@ -13,7 +13,7 @@
             =hidden_field_tag :id, m.id
             =image_tag('gear.svg',class:'edit')
 
-        =link_to 'pin',{controller:'messages',action:'pin'} do
+        =link_to room_message_pin_path(@room.id,m.id),method: :post do
             =image_tag('pin.svg',class:'pin')
         
             

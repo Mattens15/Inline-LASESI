@@ -24,11 +24,10 @@ class MessagesController < ApplicationController
 	end
 
 	def pin
-		oldone = messages.find_by(pinned: true).pinned = false
-		oldone.save
-		newone = messages.find(params[:id])
-		newone.pinned= true
-		newone.save
+		oldone = Message.find_by(pinned: true)
+		oldone.change_pin if oldone
+		newone = Message.find(params[:message_id])
+		newone.change_pin
 	end
 
 	def edit
