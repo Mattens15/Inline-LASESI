@@ -28,6 +28,9 @@ class MessagesController < ApplicationController
 		oldone.change_pin if oldone
 		newone = Message.find(params[:message_id])
 		newone.change_pin
+		respond_to do |format|
+			format.html {redirect_to newone.room}
+		end
 	end
 
 	def edit
