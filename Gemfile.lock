@@ -411,6 +411,7 @@ DEPENDENCIES
   coffee-rails (~> 4.2)
   cucumber-rails
   database_cleaner
+  devise
   devise_invitable
   factory_bot_rails (~> 4.0)
   flatpickr_rails
