@@ -74,6 +74,23 @@ class RoomsController < ApplicationController
     redirect_to edit_room_path(@room)
   end
 
+  def invite_user_to_room
+    room=Room.find_by(id: params[:room_id])
+    sender=current_user
+    sendee=User.find_by(username: params[:username])
+    if sendee
+      sender.send_message(sendee,"You have been invited to #{room.name}",
+    "Hey #{sendee.username}, #{sender.username} has invited you to check out root_url/rooms/#{@room.hash_id}")
+      respond_to do |format|
+        format.html{redirect_to room,notice: 'User has been invited!'}
+      end
+    else
+      respond_to do |format|
+        format.html{redirect_to room,notice: 'ERROR: User does not exist'}
+      end
+    end
+  end
+
   private
     # Use callbacks to share common setup or constraints between actions.
     def set_room

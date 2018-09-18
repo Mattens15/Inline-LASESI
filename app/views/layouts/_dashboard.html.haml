@@ -1,0 +1,20 @@
+.dashboard{:style=>"background-color:#f2f2f2;height:200px;"}  
+  %h1 Admin's Dashboard
+  .tools{:style=>"padding-left:10px;padding-top:10px;"}
+    -if $should_be_offline==true
+      =link_to "/change" do
+        %button.btn.btn-success#restore Restore website
+      
+       
+    -else
+      
+      =link_to "/change" do
+        %button.btn.btn-danger#suspend Suspend website
+      
+      = form_tag destroy_path do
+        %br 
+        =text_field_tag :email
+        =submit_tag "Delete user", class: "btn btn-danger", :data => {:confirm => "Are you sure you want to delete this user?"}
+        
+        
+

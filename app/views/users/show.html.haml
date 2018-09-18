@@ -1,41 +1,31 @@
-!!!5
-%html{:lang => "it"}
-  %head
-    %meta{:content => "text/html; charset=UTF-8", "http-equiv" => "Content-Type"}/
-    %title Your Profile Inline
-    %meta{:charset => "utf-8"}/
-    %meta{:content => "width=device-width, initial-scale=1", :name => "viewport"}/
-  %body
-    .container-fluid{:style => 'padding-left: 15%,padding-right:15%'}
-      .row
-        .col-lg-6
-          %label
-            %h1 USERNAME:
-            %p #{@user.username}
-          %br
-          %label
-            %h1 EMAIL:
-            %p #{@user.email}
-          %br
-        .col-lg-6
-          %label
-            %h1 YOUR ID: 
-            %p  #{@hashed}
-          %br
-          %label
-            %h1 REFERRAL LINK:
-            %p http://inlineapp.com/#{@hashed}
-          %label 
-            %h1 INVITE USER:
-            = form_for(@user) do |f|
-              .form-group
-                %p EMAIL
-                %input.form-control{:maxlength => "50",:id => "user_email", :name => "user[email]", :placeholder => "prova@example.com", :required => "true", :type => "email"}/
-                %input.btn.btn-sm.btn-success{:type => "submit", :value => "Invite"}/
-          %br
-          %br
-          =link_to edit_user_path(@user)  do 
-            %input.btn.btn-sm.btn-warning{:type => "submit", :value => "Edit Profile"}/
-          =link_to @user, method: :delete, title: 'Delete User', :data => {:confirm => 'Are you sure you want to delete your profile?'} do
-            %input.btn.btn-sm.btn-danger{:type =>"submit", :value => "Delete profile"}/
-
+.container-fluid{:style => 'padding-left: 15%,padding-right:15%'}
+  .row
+    .col-lg-6
+      %label
+        %h1 USERNAME:
+        %p #{@user.username}
+      %br
+      %label
+        %h1 EMAIL:
+        %p #{@user.email}
+      %br
+      =link_to user_achievements_path(@user) do
+        %input.btn.btn-sm.btn-success{:type => "submit", :value => "Achievements"}
+    .col-lg-6
+      %label
+        %h1 YOUR ID: 
+        %p  #{@hashed}
+      %br
+      %label
+        %h1 REFERRAL LINK:
+        http://inlineapp.com/#{@hashed}
+      %br
+      %br
+      =link_to edit_user_path(@user)  do 
+        %input.btn.btn-sm.btn-warning{:type => "submit", :value => "Edit Profile"}/
+      =link_to @user, method: :delete, title: 'Delete User', :data => {:confirm => 'Are you sure you want to delete your profile?'} do
+        %input.btn.btn-sm.btn-danger{:type =>"submit", :value => "Delete profile"}/
+  .row 
+    %strong Rooms Attended: 
+    %p#rooms-attended
+      =@user.rooms_attended

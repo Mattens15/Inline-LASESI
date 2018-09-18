@@ -1,49 +1,53 @@
 Rails.application.routes.draw do
-  post '/rate' => 'rater#create', :as => 'rate'
+  # gestione sessione omniauth e user normale
+  get '/auth/:provider/callback', :to =>'sessions#create'
+  get '/auth/failure', :to =>  redirect('/')# 'sessions_omniauth#failure'
+  post 'rate' => 'rater#create'
   default_url_options :host => "localhost"
   root                     'mapbox#show'
   get 'dashboard'				=> 'mapbox#show'
-  get 'sessions/new'
-  get 'password_resets/new'
-  get 'password_resets/edit'
+  
   get 'signup'  => 'users#new'
   delete 'destroy' => 'users#destroy'
   get 'login'   => 'sessions#new'
   post'login'   => 'sessions#create'
   get 'logout'  => 'sessions#destroy'
-  # gestione sessione omniauth
-  get 'sessions_omniauth/new'
-  get 'sessions_omniauth/create'
-  get 'sessions_omniauth/failure'
-  get '/login_omniauth', :to =>'sessions_omniauth#new', :as => :login_omniauth
-  get '/auth/:provider/callback', :to =>'sessions_omniauth#create'
-  get '/auth/failure', :to =>  redirect('/')# 'sessions_omniauth#failure'
-  get '/logout_omniauth', :to => 'sessions_omniauth#destroy'
-  delete '/logout_omniauth', :to => 'sessions_omniauth#destroy'
-  get 'signup_omniauth', :to =>'users_omniauth#new'
-  get 'signup_omniauth', :to =>'users_omniauth#create'
-  #fine gestione sessione omniauth
-  get 'auth/:provider/callback' => 'sessions#callback'
-  get '/redirect', to: 'calendars#redirect', as: 'redirect'
-  get '/callback', to: 'calendars#callback', as: 'callback'
+  get 'redirect', to: 'calendars#redirect'
+  get 'callback', to: 'calendars#callback'
   put 'destroy_avatar' => 'rooms#destroy_avatar'
-  devise_for :users, :controllers => { :invitations => 'users/invitations' }
-  resources :sessions, only: [:create, :destroy]
-  resources :login_omniauth, only: [:create, :destroy]
-  resource :home, only: [:show]
+  
+  resources :sessions, only: [:new, :create, :destroy]
   resources :password_resets,     only: [:new, :create, :edit, :update]
   resources :account_activations, only: [:edit]
-  resources :users
+  resources :users do
+    get 'achievements' => 'users#achievements'
+    post 'destroy' => 'users#destroy'
+    member do
+      put "like" => "users#upvote"
+    end
+  end
+  
   resources :avatars
+  
   resources :rooms do
+    post 'invite_user' =>'rooms#invite_user_to_room'
     post 'add_event' => 'calendars#add_event'
     resources :powers
-    resources :messages
+    resources :messages do
+      post 'pin'=>'messages#pin'
+    end
     resources :reservations do
       resources :swap_reservations
     end
   end
-  
+
+
+  resources :conversations do
+    resource :directs
+  end
+
+
   #SE NON CI SONO ALTRE ROUTES, SIGNIFICA CHE L'ELEMENTO NON ESISTE ->
+  match '/change'=>'application#change_availability', via: :all
   match '*path' => 'application#render_404', via: :all
 end

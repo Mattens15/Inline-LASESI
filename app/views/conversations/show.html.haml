@@ -1,0 +1,27 @@
+.div{align: "center"}
+  %a{:href => "/conversations"} Back to conversations
+  %h2
+
+    Conversation with 
+    - (@conversation.participants - [current_user]).each do |r|
+      %strong= r.username
+    =@conversation.subject
+
+.container#messages{style:"overflow-y:scroll;height:500px;"}
+  
+      
+  - @conversation.receipts_for(current_user).each do |r|
+    
+    %p
+      %strong= r.message.sender.username
+      =r.message.body
+
+.container
+  
+  = form_tag conversation_directs_path(@conversation),method: :post do
+    .form-group
+      =text_field_tag :body,nil,class: "form-control",placeholder: "Insert your message..",autocomplete:"off"
+    .form-group  
+      = submit_tag  "Send",type: "submit", class: "btn btn-primary btn-lg btn-block"   
+
+    

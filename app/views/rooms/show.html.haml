@@ -7,6 +7,11 @@
 			=@room.description
 		-if do_i_matter?
 			=link_to 'Edit room', edit_room_path
+
+			=form_tag room_invite_user_path(@room.id) do 
+				=text_field_tag :username
+				=submit_tag 'Invita'
+
 	.row.body-room
 		.col-xl-3.col-lg-3.col-md-3.col-sm-12.col-12.border-right.text-center#infodiv
 			%h4.text-center.my-auto.border-bottom
@@ -66,8 +71,16 @@
 				#reminderdiv{:style => 'margin-top: 10px'}
 					-if !current_user.nil? && current_user.reservations.exists?(room_id: @room.id)
 						=render 'remind' 
-		.col-xl-3.col-lg-3.col-md-3.col-sm-12.col-12.border-left
-			#messages.fixed-size-room
+		.col-3.border-left
+			#pinned.border-bottom
+				-@room.messages.each do |m|
+					-if m.pinned
+						%h5 PINNED MESSAGE
+						%p
+							%strong
+								=link_to User.find(m.user_id).	username
+							=m.body
+			#messages{:style =>'overflow-y:scroll;height:70vh'}
 			-if current_user
 				= form_for([@room, Message.new], remote: true) do |f|
 					= hidden_field_tag :user_id, current_user.id
@@ -151,7 +164,7 @@
 			if (scroll){
 				scrollDown(500);}
 			
-		}, 2000);
+		}, 1000);
 	}
 
 	function scrollDown(speed){

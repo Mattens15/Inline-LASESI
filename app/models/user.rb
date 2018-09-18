@@ -5,8 +5,8 @@ class User < ApplicationRecord
     include DeviseInvitable::Inviter
     has_many :achievements
     has_many :invitations, :class_name => 'User', :as => :invited_by
-    ratyrate_rater
-    ratyrate_rateable "ranking"
+    acts_as_votable
+    acts_as_voter
     before_save :downcase_email
     validates :username, presence: true, :length => { :maximum => 20 }, uniqueness: true;
     VALID_EMAIL_REGEX = /\A[\w+\-.]+@[a-z\d\-]+(\.[a-z\d\-]+)*\.[a-z]+\z/i
@@ -27,6 +27,8 @@ class User < ApplicationRecord
     has_many :passive_requests, class_name: 'SwapReservation', :foreign_key => 'passive_user'
     
     has_many :messages
+
+    acts_as_messageable
     
     def User.digest(string)
         cost = ActiveModel::SecurePassword.min_cost ? BCrypt::Engine::MIN_COST :
@@ -55,6 +57,11 @@ class User < ApplicationRecord
 
     def awarded?(achievement)
         achievements.count(:conditions => { :type => achievement }) > 0
+    end
+
+    def upvote
+        @user.upvote_from current_user
+        redirect_to users_path
     end
 
     def send_activation_email

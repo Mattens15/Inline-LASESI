@@ -5,8 +5,9 @@ class ApplicationController < ActionController::Base
   
   include SessionsHelper
   helper_method :current_user
-  
+  $should_be_offline=false
   def current_user
+    
     @current_user ||= User.find(session[:user_id]) if session[:user_id]
   end
   
@@ -16,7 +17,23 @@ class ApplicationController < ActionController::Base
       format.all { render nothing: true, status: 404 }
     end
   end
-
+  
+  def change_availability 
+    if current_user && current_user.admin
+      if $should_be_offline
+        $should_be_offline=false
+        
+      else
+        $should_be_offline=true
+        
+      end
+    end
+    
+      
+    redirect_to "/"
+    
+    
+  end
   def set_no_cache
     response.headers["Cache-Control"] = "no-cache, no-store, max-age=0, must-revalidate"
     response.headers["Pragma"] = "no-cache"

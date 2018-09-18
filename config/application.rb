@@ -1,6 +1,6 @@
 require_relative 'boot'
 
-require "rails/all"
+require "rails"
 # Pick the frameworks you want:
 require "active_model/railtie"
 require "active_job/railtie"
@@ -20,8 +20,9 @@ Bundler.require(*Rails.groups)
 module Inline
   class Application < Rails::Application
     # Initialize configuration defaults for originally generated Rails version.
+    puts 'Loading defaults'
     config.load_defaults 5.2
-
+    $should_be_offline=false
     # Settings in config/environments/* take precedence over those specified here.
     # Application configuration can go into files in config/initializers
     # -- all .rb files in that directory are automatically loaded after loading
@@ -30,6 +31,7 @@ module Inline
     # Don't generate system test files.
     config.generators.system_tests = nil
     
+    puts 'Config generators'
     config.generators do |g|
 			g.test_framework :rspec,
 		    :fixtures => true,
@@ -38,7 +40,7 @@ module Inline
 		    :routing_specs => false,
 		    :controller_specs => true,
 		    :request_specs => true
-			g.fixture_replacement :factory_girl, :dir => "spec/factories"
+			g.fixture_replacement :factory_bot, :dir => "spec/factories"
 		end
     
     config.action_view.field_error_proc = Proc.new { |html_tag, instance| 

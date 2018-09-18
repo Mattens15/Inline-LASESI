@@ -7,6 +7,15 @@ class UsersController < ApplicationController
     @hashed=Digest::MD5.hexdigest(@user.id.to_s)
   end
 
+  def achievements
+    @user=User.find(params[:user_id])
+    @scala=100
+    if(@user.cached_votes_up>@scala)
+      @scala=@scala*2
+    end
+    render 'achievements'
+  end
+
   def new
     @user = User.new
   end
@@ -27,7 +36,7 @@ class UsersController < ApplicationController
     if auth_hash
       User.find_by(email: auth_hash['info']['email'].downcase).destroy
     else
-    User.find(params[:id]).destroy
+    User.find(params[:email]).destroy
     flash[:success] = "User deleted"
     redirect_to(root_url)
     end
