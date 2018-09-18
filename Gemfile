@@ -6,6 +6,7 @@ ruby '2.5.1'
 gem 'omniauth' 
 gem 'omniauth-facebook', '~> 4.0.0'
 #gem for google autentification
+gem "omniauth-google-oauth2", "~> 0.2.1"
 gem 'rails', '~> 5.2.0'
 gem 'sqlite3'
 gem 'puma', '~> 3.11'
@@ -44,14 +45,13 @@ gem "colorize"
 
 group :development, :test do
   gem 'byebug', platforms: [:mri, :mingw, :x64_mingw]
-  gem 'rspec-rails'
+  gem 'rspec-rails', '~> 3.7'
   gem 'cucumber-rails', require: false
   gem 'selenium-webdriver'
   gem 'capybara'
   gem "factory_bot_rails", "~> 4.0", :require => false
   gem 'database_cleaner'
   gem 'rails-controller-testing'
-  gem 'rubocop-rspec'
 end
 
 group :development do
