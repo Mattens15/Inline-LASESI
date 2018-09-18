@@ -35,7 +35,7 @@ class PowersController < ApplicationController
       format.html {redirect_to edit_room_path(@room)}
     end
   end
-  
+
   private
 
   def set_room

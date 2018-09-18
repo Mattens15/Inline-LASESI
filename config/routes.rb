@@ -29,6 +29,7 @@ Rails.application.routes.draw do
   resources :avatars
   
   resources :rooms do
+    post 'invite_user' =>'rooms#invite_user_to_room'
     post 'add_event' => 'calendars#add_event'
     resources :powers
     resources :messages do
