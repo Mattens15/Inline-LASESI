@@ -8,10 +8,7 @@ class MessagesController < ApplicationController
 	end
 	
 	def create
-		@message = @room.messages.build(message_params)
-		@message.user = current_user
-		if !@message.save
-			flash[:danger] = "Errore creazione"
+		
 		if current_user
 			@message = @room.messages.build(message_params)
 			@message.user = current_user
