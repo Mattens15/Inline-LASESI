@@ -51,7 +51,10 @@ And /^(?:I )log in$/ do
   visit @test_url+"login"
   fill_in "session_email", :with => @user.email
   fill_in "session_password", :with => @user.password
-  page.find('#session_submit').click
+  find('#login_button').click
+  @user.update_attribute(:activated,    true)
+  @user.update_attribute(:activated_at, Time.zone.now)
+  puts "ACTIVATED: #{@user.activated} #{@user.activated_at}"
 end
 
 #WHEN 
@@ -200,16 +203,15 @@ Then /^I should see 404/ do
 end
 
 Then /^I should see how many rooms I have attended/ do
-  puts(@user.rooms_attended)
-  puts(page.find(:xpath,"//*[@id='rooms-attended']").value)
-  #expect(@user.rooms_attended).to be eq(page.find(:xpath,"//*[@id='rooms-attended']").value.to_i)
+  expect(@user.rooms_attended).to be eq(page.find("#rooms-attended").value.to_i)
 end
+
 Then /^Room should have multiple instances/ do
   expect(Room.all.count).to be > 1
 end
 
 Then /^I should be on room page/ do
-  expect(page).to have_text("Room was successfully created.")
+  expect(page.find(:xpath,"//*[text()='Room was successfully created.']")).not_to be nil
 end
 
 Then /^I should see a new message/ do
@@ -225,9 +227,10 @@ Then /^the website should be restored/ do
 end
 
 Then /^I should see room name/ do
-  
-  within('.start-date') do
-    room = Room.take
-    expect(page).to have_text("#{room.name}", maximum: 2)
-  end
+  room = Room.take
+  expect(page.find(:xpath,"//*[text()='#{room.name}']")).not_to be nil
 end
+
+Then /^I should be enlisted in the list of people to remind/ do
+  expect(@room.reservations.last.reminder).to be true
+end 

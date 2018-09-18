@@ -1,8 +1,8 @@
 Rails.application.routes.draw do
-# gestione sessione omniauth e user normale
-  #get '/auth/:provider/callback', :to =>'sessions#create'
-  #get '/auth/failure', :to =>  redirect('/')# 'sessions_omniauth#failure'
-  #post '/rate' => 'rater#create', :as => 'rate'
+  # gestione sessione omniauth e user normale
+  get '/auth/:provider/callback', :to =>'sessions#create'
+  get '/auth/failure', :to =>  redirect('/')# 'sessions_omniauth#failure'
+  post 'rate' => 'rater#create'
   default_url_options :host => "localhost"
   root                     'mapbox#show'
   get 'dashboard'				=> 'mapbox#show'
@@ -12,8 +12,8 @@ Rails.application.routes.draw do
   get 'login'   => 'sessions#new'
   post'login'   => 'sessions#create'
   get 'logout'  => 'sessions#destroy'
-  #get '/redirect', to: 'calendars#redirect', as: 'redirect'
-  #get '/callback', to: 'calendars#callback', as: 'callback'
+  get 'redirect', to: 'calendars#redirect'
+  get 'callback', to: 'calendars#callback'
   put 'destroy_avatar' => 'rooms#destroy_avatar'
   
   resources :sessions, only: [:new, :create, :destroy]
