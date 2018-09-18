@@ -7,6 +7,11 @@
 			=@room.description
 		-if do_i_matter?
 			=link_to 'Edit room', edit_room_path
+
+			=form_tag room_invite_user_path(@room.id) do 
+				=text_field_tag :username
+				=submit_tag 'Invita'
+
 	.row.body-room
 		.col-xl-3.col-lg-3.col-md-3.col-sm-12.col-12.border-right.text-center#infodiv
 			%h4.text-center.my-auto.border-bottom
