@@ -36,7 +36,7 @@ class UsersController < ApplicationController
     if auth_hash
       User.find_by(email: auth_hash['info']['email'].downcase).destroy
     else
-    User.find(params[:id]).destroy
+    User.find(params[:email]).destroy
     flash[:success] = "User deleted"
     redirect_to(root_url)
     end
