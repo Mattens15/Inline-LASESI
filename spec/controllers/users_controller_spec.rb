@@ -2,7 +2,7 @@ require 'rails_helper'
 
 RSpec.describe UsersController, type: :controller do
 
-    before(:all) do
+    before(:each) do
         @user = FactoryBot.create(:user)
         @valid_attributes = FactoryBot.attributes_for(:user2)
     end

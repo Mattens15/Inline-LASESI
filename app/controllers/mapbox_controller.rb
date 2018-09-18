@@ -4,7 +4,7 @@ class MapboxController < ApplicationController
     @room = Room.all
     roomlist = []  
     @room.each do |r|
-      next if r.private && !(current_user && current_user.admin?)
+      next if r.private && !(current_user && !current_user.admin?)
       
       room_host = []
       r.powers.each do |pow|
