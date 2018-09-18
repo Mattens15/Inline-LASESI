@@ -15,6 +15,15 @@ class UsersController < ApplicationController
     end
     render 'achievements'
   end
+  
+  def invitation
+    existing_user=User.find_by(email: email)
+    self.user = if existing_user.present?
+                  existing_user
+                else
+                  User.invite!(email: email)
+                end
+  end
 
   def new
     @user = User.new

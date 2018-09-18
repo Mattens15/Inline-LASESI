@@ -2,6 +2,7 @@ class User < ApplicationRecord
     attr_accessor :remember_token, :activation_token, :reset_token
     before_create :create_activation_digest
     has_many :achievements
+    has_many :invitations, :class_name => self.to_s, :as => :invited_by
     acts_as_votable
     acts_as_voter
     before_save :downcase_email
