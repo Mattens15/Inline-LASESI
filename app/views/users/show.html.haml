@@ -26,7 +26,16 @@
         %input.btn.btn-sm.btn-warning{:type => "submit", :value => "Edit Profile"}/
       =link_to @user, method: :delete, title: 'Delete User', :data => {:confirm => 'Are you sure you want to delete your profile?'} do
         %input.btn.btn-sm.btn-danger{:type =>"submit", :value => "Delete profile"}/
-  .row 
-    %strong Rooms Attended: 
-    %p#rooms-attended
-      =@user.rooms_attended
+  .row
+    .col-lg-6
+      %strong Rooms Attended: 
+      %p#rooms-attended
+        =@user.rooms_attended
+    .col-lg-6
+      %br    
+      %label 
+        %h3 INVITE USER:
+        = form_for(@user) do |f|
+          .form-group
+            %input.form-control{:maxlength => "50",:id => "user_email", :name => "user[email]", :placeholder => "email", :required => "true", :type => "email"}/
+            %input.btn.btn-sm.btn-success{:type => "submit", :value => "Invite"}/

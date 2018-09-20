@@ -6,7 +6,6 @@ Rails.application.routes.draw do
   default_url_options :host => "localhost"
   root                     'mapbox#show'
   get 'dashboard'				=> 'mapbox#show'
-  
   get 'signup'  => 'users#new'
   delete 'destroy' => 'users#destroy'
   get 'login'   => 'sessions#new'
@@ -15,12 +14,13 @@ Rails.application.routes.draw do
   get 'redirect', to: 'calendars#redirect'
   get 'callback', to: 'calendars#callback'
   put 'destroy_avatar' => 'rooms#destroy_avatar'
-  
+  devise_for :users, :controllers => { :invitations => 'users/invitations' }
   resources :sessions, only: [:new, :create, :destroy]
   resources :password_resets,     only: [:new, :create, :edit, :update]
   resources :account_activations, only: [:edit]
   resources :users do
     get 'achievements' => 'users#achievements'
+    post 'destroy' => 'users#destroy'
     member do
       put "like" => "users#upvote"
     end

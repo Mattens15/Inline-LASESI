@@ -15,6 +15,15 @@ class UsersController < ApplicationController
     end
     render 'achievements'
   end
+  
+  def invitation
+    existing_user=User.find_by(email: email)
+    self.user = if existing_user.present?
+                  existing_user
+                else
+                  User.invite!(email: email)
+                end
+  end
 
   def new
     @user = User.new
@@ -23,6 +32,8 @@ class UsersController < ApplicationController
   def create
     @user = User.new(user_params)    
     if @user.save
+      @user.activated=true
+      @user.save
       @user.send_activation_email
       flash[:info] = "Please check your email to activate your account"
       redirect_to root_url
@@ -36,7 +47,7 @@ class UsersController < ApplicationController
     if auth_hash
       User.find_by(email: auth_hash['info']['email'].downcase).destroy
     else
-    User.find(params[:id]).destroy
+    User.find(params[:email]).destroy
     flash[:success] = "User deleted"
     redirect_to(root_url)
     end

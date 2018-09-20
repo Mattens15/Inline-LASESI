@@ -29,7 +29,7 @@ class SessionsController < ApplicationController
 
     user = User.find_by(email: params[:session][:email].downcase)
     if user && user.authenticate(params[:session][:password])
-      unless Rails.env.test?
+      if Rails.env.production?
         if user.activated?
           log_in user
           params[:session][:remember_me] == '1' ? remember(user) : forget(user)

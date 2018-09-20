@@ -11,6 +11,9 @@
         =image_tag("person.svg",class:"navicon2")
       =link_to (new_room_path) do
         %button.btn.btn-success#create Create a room
+      =link_to logout_path do
+        %button.btn.btn-danger
+          Logout
     -else
       =link_to signup_path do
         %button.btn.btn-primary Sign up
