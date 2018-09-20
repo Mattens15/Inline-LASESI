@@ -4827,3 +4827,1478 @@ Completed 200 OK in 2ms (Views: 0.3ms | ActiveRecord: 0.2ms)
 >>>>>>> 6b8301170aa541320bb48cc86dac1ff094e77255
 
 
+Started GET "/" for 127.0.0.1 at 2018-09-20 21:05:18 +0200
+  [1m[35m (0.9ms)[0m  [1m[34mSELECT "schema_migrations"."version" FROM "schema_migrations" ORDER BY "schema_migrations"."version" ASC[0m
+  ↳ /Users/rsoul/.rvm/rubies/ruby-2.5.1/lib/ruby/gems/2.5.0/gems/activesupport-5.2.0/lib/active_support/subscriber.rb:101
+Processing by MapboxController#show as HTML
+  [1m[36mRoom Load (9.8ms)[0m  [1m[34mSELECT "rooms".* FROM "rooms"[0m
+  ↳ /Users/rsoul/.rvm/rubies/ruby-2.5.1/lib/ruby/gems/2.5.0/gems/activesupport-5.2.0/lib/active_support/subscriber.rb:101
+  [1m[36mPower Load (13.6ms)[0m  [1m[34mSELECT "powers".* FROM "powers" WHERE "powers"."room_id" = ?[0m  [["room_id", 1]]
+  ↳ /Users/rsoul/.rvm/rubies/ruby-2.5.1/lib/ruby/gems/2.5.0/gems/activesupport-5.2.0/lib/active_support/subscriber.rb:101
+  [1m[36mUser Load (0.5ms)[0m  [1m[34mSELECT  "users".* FROM "users" WHERE "users"."id" = ? LIMIT ?[0m  [["id", 1], ["LIMIT", 1]]
+  ↳ /Users/rsoul/.rvm/rubies/ruby-2.5.1/lib/ruby/gems/2.5.0/gems/activesupport-5.2.0/lib/active_support/subscriber.rb:101
+  Rendering mapbox/show.html.haml within layouts/application
+  Rendered mapbox/show.html.haml within layouts/application (92.7ms)
+  [1m[36mCACHE User Load (0.0ms)[0m  [1m[34mSELECT  "users".* FROM "users" WHERE "users"."id" = ? LIMIT ?[0m  [["id", 1], ["LIMIT", 1]]
+  ↳ /Users/rsoul/.rvm/rubies/ruby-2.5.1/lib/ruby/gems/2.5.0/gems/activesupport-5.2.0/lib/active_support/subscriber.rb:101
+  Rendered layouts/_navbar.html.haml (8.7ms)
+Completed 200 OK in 3653ms (Views: 3342.3ms | ActiveRecord: 27.0ms)
+
+
+Started GET "/dashboard.json" for 127.0.0.1 at 2018-09-20 21:05:23 +0200
+Processing by MapboxController#show as JSON
+  [1m[36mRoom Load (0.3ms)[0m  [1m[34mSELECT "rooms".* FROM "rooms"[0m
+  ↳ /Users/rsoul/.rvm/rubies/ruby-2.5.1/lib/ruby/gems/2.5.0/gems/activesupport-5.2.0/lib/active_support/subscriber.rb:101
+  [1m[36mPower Load (0.1ms)[0m  [1m[34mSELECT "powers".* FROM "powers" WHERE "powers"."room_id" = ?[0m  [["room_id", 1]]
+  ↳ /Users/rsoul/.rvm/rubies/ruby-2.5.1/lib/ruby/gems/2.5.0/gems/activesupport-5.2.0/lib/active_support/subscriber.rb:101
+  [1m[36mUser Load (0.1ms)[0m  [1m[34mSELECT  "users".* FROM "users" WHERE "users"."id" = ? LIMIT ?[0m  [["id", 1], ["LIMIT", 1]]
+  ↳ /Users/rsoul/.rvm/rubies/ruby-2.5.1/lib/ruby/gems/2.5.0/gems/activesupport-5.2.0/lib/active_support/subscriber.rb:101
+Completed 200 OK in 5ms (Views: 0.1ms | ActiveRecord: 0.5ms)
+
+
+Started GET "/dashboard.json" for 127.0.0.1 at 2018-09-20 21:05:23 +0200
+Processing by MapboxController#show as JSON
+  [1m[36mRoom Load (0.2ms)[0m  [1m[34mSELECT "rooms".* FROM "rooms"[0m
+  ↳ /Users/rsoul/.rvm/rubies/ruby-2.5.1/lib/ruby/gems/2.5.0/gems/activesupport-5.2.0/lib/active_support/subscriber.rb:101
+  [1m[36mPower Load (0.1ms)[0m  [1m[34mSELECT "powers".* FROM "powers" WHERE "powers"."room_id" = ?[0m  [["room_id", 1]]
+  ↳ /Users/rsoul/.rvm/rubies/ruby-2.5.1/lib/ruby/gems/2.5.0/gems/activesupport-5.2.0/lib/active_support/subscriber.rb:101
+  [1m[36mUser Load (0.1ms)[0m  [1m[34mSELECT  "users".* FROM "users" WHERE "users"."id" = ? LIMIT ?[0m  [["id", 1], ["LIMIT", 1]]
+  ↳ /Users/rsoul/.rvm/rubies/ruby-2.5.1/lib/ruby/gems/2.5.0/gems/activesupport-5.2.0/lib/active_support/subscriber.rb:101
+Completed 200 OK in 3ms (Views: 0.1ms | ActiveRecord: 0.4ms)
+
+
+Started GET "/rooms/new" for 127.0.0.1 at 2018-09-20 21:05:29 +0200
+Processing by RoomsController#new as HTML
+  [1m[36mUser Load (0.2ms)[0m  [1m[34mSELECT  "users".* FROM "users" WHERE "users"."id" = ? LIMIT ?[0m  [["id", 1], ["LIMIT", 1]]
+  ↳ /Users/rsoul/.rvm/rubies/ruby-2.5.1/lib/ruby/gems/2.5.0/gems/activesupport-5.2.0/lib/active_support/subscriber.rb:101
+  Rendering rooms/new.html.haml within layouts/application
+  Rendered rooms/_form_new.html.haml (274.2ms)
+  Rendered rooms/new.html.haml within layouts/application (278.7ms)
+  Rendered layouts/_navbar.html.haml (6.8ms)
+Completed 200 OK in 540ms (Views: 507.4ms | ActiveRecord: 0.2ms)
+
+
+Started POST "/rooms" for 127.0.0.1 at 2018-09-20 21:05:40 +0200
+Processing by RoomsController#create as HTML
+  Parameters: {"utf8"=>"✓", "authenticity_token"=>"N0trBishLIuoloLwzGL+obXwxrE+WW79iZRwK/znGlAJUQx+5A6CKcbyj63xyWxEMOuPbl7UG81t2+zy18wS6g==", "room"=>{"name"=>"hhh", "fifo"=>"true", "max_participants"=>"8", "description"=>"", "address"=>"", "latitude"=>"", "longitude"=>"", "private"=>"false", "time_from"=>"", "time_to"=>"", "recurrence"=>"null"}, "commit"=>"Submit"}
+  [1m[36mUser Load (0.3ms)[0m  [1m[34mSELECT  "users".* FROM "users" WHERE "users"."id" = ? LIMIT ?[0m  [["id", 1], ["LIMIT", 1]]
+  ↳ /Users/rsoul/.rvm/rubies/ruby-2.5.1/lib/ruby/gems/2.5.0/gems/activesupport-5.2.0/lib/active_support/subscriber.rb:101
+  [1m[35m (0.1ms)[0m  [1m[36mbegin transaction[0m
+  ↳ /Users/rsoul/.rvm/rubies/ruby-2.5.1/lib/ruby/gems/2.5.0/gems/activesupport-5.2.0/lib/active_support/subscriber.rb:101
+  [1m[35m (0.1ms)[0m  [1m[31mrollback transaction[0m
+  ↳ /Users/rsoul/.rvm/rubies/ruby-2.5.1/lib/ruby/gems/2.5.0/gems/activesupport-5.2.0/lib/active_support/subscriber.rb:101
+  Rendering rooms/new.html.haml within layouts/application
+  Rendered rooms/_form_new.html.haml (18.4ms)
+  Rendered rooms/new.html.haml within layouts/application (23.1ms)
+  Rendered layouts/_navbar.html.haml (10.4ms)
+Completed 200 OK in 389ms (Views: 367.9ms | ActiveRecord: 0.4ms)
+
+
+Started POST "/rooms" for 127.0.0.1 at 2018-09-20 21:05:51 +0200
+Processing by RoomsController#create as HTML
+  Parameters: {"utf8"=>"✓", "authenticity_token"=>"LwcA+FslDIcnjAYJy158OS0oQqhdo5d5+0nAl7AfgycRHWeAlAqiJUnoC1T29e7cqDMLdz0u4kkfBlxOmzSLnQ==", "room"=>{"name"=>"hhhyyy", "max_participants"=>"8", "description"=>"", "address"=>"", "latitude"=>"", "longitude"=>"", "private"=>"false", "time_from"=>"2018-09-27 12:00", "time_to"=>"2018-09-27 12:00", "recurrence"=>"null"}, "commit"=>"Submit"}
+  [1m[36mUser Load (0.1ms)[0m  [1m[34mSELECT  "users".* FROM "users" WHERE "users"."id" = ? LIMIT ?[0m  [["id", 1], ["LIMIT", 1]]
+  ↳ /Users/rsoul/.rvm/rubies/ruby-2.5.1/lib/ruby/gems/2.5.0/gems/activesupport-5.2.0/lib/active_support/subscriber.rb:101
+  [1m[35m (0.1ms)[0m  [1m[36mbegin transaction[0m
+  ↳ /Users/rsoul/.rvm/rubies/ruby-2.5.1/lib/ruby/gems/2.5.0/gems/activesupport-5.2.0/lib/active_support/subscriber.rb:101
+  [1m[36mRoom Exists (0.2ms)[0m  [1m[34mSELECT  1 AS one FROM "rooms" WHERE "rooms"."hash_id" = ? LIMIT ?[0m  [["hash_id", "C7RkqVuBIUor"], ["LIMIT", 1]]
+  ↳ /Users/rsoul/.rvm/rubies/ruby-2.5.1/lib/ruby/gems/2.5.0/gems/activesupport-5.2.0/lib/active_support/subscriber.rb:101
+  [1m[36mRoom Create (301.5ms)[0m  [1m[32mINSERT INTO "rooms" ("name", "description", "max_participants", "address", "time_from", "time_to", "user_id", "created_at", "updated_at", "hash_id") VALUES (?, ?, ?, ?, ?, ?, ?, ?, ?, ?)[0m  [["name", "hhhyyy"], ["description", ""], ["max_participants", 8], ["address", ""], ["time_from", "2018-09-27 10:00:00"], ["time_to", "2018-09-27 10:00:00"], ["user_id", 1], ["created_at", "2018-09-20 19:05:51.809275"], ["updated_at", "2018-09-20 19:05:51.809275"], ["hash_id", "C7RkqVuBIUor"]]
+  ↳ /Users/rsoul/.rvm/rubies/ruby-2.5.1/lib/ruby/gems/2.5.0/gems/activesupport-5.2.0/lib/active_support/subscriber.rb:101
+  [1m[36mPower Exists (0.1ms)[0m  [1m[34mSELECT  1 AS one FROM "powers" WHERE "powers"."room_id" = ? LIMIT ?[0m  [["room_id", 2], ["LIMIT", 1]]
+  ↳ /Users/rsoul/.rvm/rubies/ruby-2.5.1/lib/ruby/gems/2.5.0/gems/activesupport-5.2.0/lib/active_support/subscriber.rb:101
+  [1m[36mUser Load (0.1ms)[0m  [1m[34mSELECT  "users".* FROM "users" WHERE "users"."id" = ? LIMIT ?[0m  [["id", 1], ["LIMIT", 1]]
+  ↳ /Users/rsoul/.rvm/rubies/ruby-2.5.1/lib/ruby/gems/2.5.0/gems/activesupport-5.2.0/lib/active_support/subscriber.rb:101
+  [1m[36mRoom Load (0.2ms)[0m  [1m[34mSELECT  "rooms".* FROM "rooms" WHERE "rooms"."id" = ? LIMIT ?[0m  [["id", 2], ["LIMIT", 1]]
+  ↳ /Users/rsoul/.rvm/rubies/ruby-2.5.1/lib/ruby/gems/2.5.0/gems/activesupport-5.2.0/lib/active_support/subscriber.rb:101
+  [1m[36mPower Create (42.1ms)[0m  [1m[32mINSERT INTO "powers" ("user_id", "room_id", "created_at", "updated_at") VALUES (?, ?, ?, ?)[0m  [["user_id", 1], ["room_id", 2], ["created_at", "2018-09-20 19:05:52.159722"], ["updated_at", "2018-09-20 19:05:52.159722"]]
+  ↳ /Users/rsoul/.rvm/rubies/ruby-2.5.1/lib/ruby/gems/2.5.0/gems/activesupport-5.2.0/lib/active_support/subscriber.rb:101
+Sending HTTP post https://www.googleapis.com/calendar/v3/calendars/primary/events?
+200
+#<HTTP::Message:0x00007fcb30272ab0 @http_header=#<HTTP::Message::Headers:0x00007fcb30272a88 @http_version="1.1", @body_size=0, @chunked=false, @request_method="POST", @request_uri=#<Addressable::URI:0x3fe598139990 URI:https://www.googleapis.com/calendar/v3/calendars/primary/events?>, @request_query=nil, @request_absolute_uri=nil, @status_code=200, @reason_phrase="OK", @body_type=nil, @body_charset=nil, @body_date=nil, @body_encoding=#<Encoding:UTF-8>, @is_request=false, @header_item=[["Cache-Control", "no-cache, no-store, max-age=0, must-revalidate"], ["Pragma", "no-cache"], ["Expires", "Mon, 01 Jan 1990 00:00:00 GMT"], ["Date", "Thu, 20 Sep 2018 19:05:52 GMT"], ["ETag", "\"3074940705014000\""], ["Vary", "Origin"], ["Vary", "X-Origin"], ["Content-Type", "application/json; charset=UTF-8"], ["Content-Encoding", "gzip"], ["X-Content-Type-Options", "nosniff"], ["X-Frame-Options", "SAMEORIGIN"], ["X-XSS-Protection", "1; mode=block"], ["Server", "GSE"], ["Alt-Svc", "quic=\":443\"; ma=2592000; v=\"44,43,39,35\""], ["Transfer-Encoding", "chunked"]], @dumped=false>, @peer_cert=#<OpenSSL::X509::Certificate: subject=#<OpenSSL::X509::Name CN=*.googleapis.com,O=Google LLC,L=Mountain View,ST=California,C=US>, issuer=#<OpenSSL::X509::Name CN=Google Internet Authority G3,O=Google Trust Services,C=US>, serial=#<OpenSSL::BN:0x00007fcb3185a850>, not_before=2018-08-28 18:23:00 UTC, not_after=2018-11-20 18:23:00 UTC>, @http_body=#<HTTP::Message::Body:0x00007fcb30272a10 @body="{\n \"kind\": \"calendar#event\",\n \"etag\": \"\\\"3074940705014000\\\"\",\n \"id\": \"bb9h0rovnp0hj0hlanaqhbdhe0\",\n \"status\": \"confirmed\",\n \"htmlLink\": \"https://www.google.com/calendar/event?eid=YmI5aDByb3ZucDBoajBobGFuYXFoYmRoZTAgaW5saW5lQGlubGluZS0yMDU3MTMuaWFtLmdzZXJ2aWNlYWNjb3VudC5jb20\",\n \"created\": \"2018-09-20T19:05:52.000Z\",\n \"updated\": \"2018-09-20T19:05:52.507Z\",\n \"summary\": \"hhhyyy\",\n \"creator\": {\n  \"email\": \"inline@inline-205713.iam.gserviceaccount.com\",\n  \"self\": true\n },\n \"organizer\": {\n  \"email\": \"inline@inline-205713.iam.gserviceaccount.com\",\n  \"self\": true\n },\n \"start\": {\n  \"dateTime\": \"2018-09-27T10:00:00Z\"\n },\n \"end\": {\n  \"dateTime\": \"2018-09-27T10:00:00Z\"\n },\n \"visibility\": \"public\",\n \"iCalUID\": \"bb9h0rovnp0hj0hlanaqhbdhe0@google.com\",\n \"sequence\": 0,\n \"reminders\": {\n  \"useDefault\": true\n }\n}\n", @size=0, @positions=nil, @chunk_size=nil>, @previous=nil>
+Success - #<Google::Apis::CalendarV3::Event:0x00007fcb31859b08
+ @created=Thu, 20 Sep 2018 19:05:52 +0000,
+ @creator=
+  #<Google::Apis::CalendarV3::Event::Creator:0x00007fcb3027e888
+   @email="inline@inline-205713.iam.gserviceaccount.com",
+   @self=true>,
+ @end=
+  #<Google::Apis::CalendarV3::EventDateTime:0x00007fcb3027d0c8
+   @date_time=Thu, 27 Sep 2018 10:00:00 +0000>,
+ @etag="\"3074940705014000\"",
+ @html_link=
+  "https://www.google.com/calendar/event?eid=YmI5aDByb3ZucDBoajBobGFuYXFoYmRoZTAgaW5saW5lQGlubGluZS0yMDU3MTMuaWFtLmdzZXJ2aWNlYWNjb3VudC5jb20",
+ @i_cal_uid="bb9h0rovnp0hj0hlanaqhbdhe0@google.com",
+ @id="bb9h0rovnp0hj0hlanaqhbdhe0",
+ @kind="calendar#event",
+ @organizer=
+  #<Google::Apis::CalendarV3::Event::Organizer:0x00007fcb31878a30
+   @email="inline@inline-205713.iam.gserviceaccount.com",
+   @self=true>,
+ @reminders=
+  #<Google::Apis::CalendarV3::Event::Reminders:0x00007fcb302a63d8
+   @use_default=true>,
+ @sequence=0,
+ @start=
+  #<Google::Apis::CalendarV3::EventDateTime:0x00007fcb302a4d58
+   @date_time=Thu, 27 Sep 2018 10:00:00 +0000>,
+ @status="confirmed",
+ @summary="hhhyyy",
+ @updated=Thu, 20 Sep 2018 19:05:52 +0000,
+ @visibility="public">
+
+  [1m[36mRoom Update (0.2ms)[0m  [1m[33mUPDATE "rooms" SET "event_id" = ?, "updated_at" = ? WHERE "rooms"."id" = ?[0m  [["event_id", "bb9h0rovnp0hj0hlanaqhbdhe0"], ["updated_at", "2018-09-20 19:05:52.821552"], ["id", 2]]
+  ↳ /Users/rsoul/.rvm/rubies/ruby-2.5.1/lib/ruby/gems/2.5.0/gems/activesupport-5.2.0/lib/active_support/subscriber.rb:101
+  [1m[36mPower Exists (0.1ms)[0m  [1m[34mSELECT  1 AS one FROM "powers" WHERE "powers"."room_id" = ? LIMIT ?[0m  [["room_id", 2], ["LIMIT", 1]]
+  ↳ /Users/rsoul/.rvm/rubies/ruby-2.5.1/lib/ruby/gems/2.5.0/gems/activesupport-5.2.0/lib/active_support/subscriber.rb:101
+  [1m[36mRoom Update (0.1ms)[0m  [1m[33mUPDATE "rooms" SET "max_unjoin_time" = ?, "updated_at" = ? WHERE "rooms"."id" = ?[0m  [["max_unjoin_time", "2018-09-27 09:00:00"], ["updated_at", "2018-09-20 19:05:52.827968"], ["id", 2]]
+  ↳ /Users/rsoul/.rvm/rubies/ruby-2.5.1/lib/ruby/gems/2.5.0/gems/activesupport-5.2.0/lib/active_support/subscriber.rb:101
+  [1m[36mPower Exists (0.1ms)[0m  [1m[34mSELECT  1 AS one FROM "powers" WHERE "powers"."room_id" = ? LIMIT ?[0m  [["room_id", 2], ["LIMIT", 1]]
+  ↳ /Users/rsoul/.rvm/rubies/ruby-2.5.1/lib/ruby/gems/2.5.0/gems/activesupport-5.2.0/lib/active_support/subscriber.rb:101
+  [1m[35m (375.9ms)[0m  [1m[36mcommit transaction[0m
+  ↳ /Users/rsoul/.rvm/rubies/ruby-2.5.1/lib/ruby/gems/2.5.0/gems/activesupport-5.2.0/lib/active_support/subscriber.rb:101
+Redirected to http://localhost:3000/rooms/C7RkqVuBIUor
+Completed 302 Found in 1593ms (ActiveRecord: 720.8ms)
+
+
+Started GET "/rooms/C7RkqVuBIUor" for 127.0.0.1 at 2018-09-20 21:05:53 +0200
+Processing by RoomsController#show as HTML
+  Parameters: {"id"=>"C7RkqVuBIUor"}
+  [1m[36mRoom Load (0.3ms)[0m  [1m[34mSELECT  "rooms".* FROM "rooms" WHERE "rooms"."hash_id" = ? ORDER BY "rooms"."id" ASC LIMIT ?[0m  [["hash_id", "C7RkqVuBIUor"], ["LIMIT", 1]]
+  ↳ /Users/rsoul/.rvm/rubies/ruby-2.5.1/lib/ruby/gems/2.5.0/gems/activesupport-5.2.0/lib/active_support/subscriber.rb:101
+  Rendering rooms/show.html.haml within layouts/application
+  [1m[36mCACHE Room Load (0.0ms)[0m  [1m[34mSELECT  "rooms".* FROM "rooms" WHERE "rooms"."hash_id" = ? ORDER BY "rooms"."id" ASC LIMIT ?[0m  [["hash_id", "C7RkqVuBIUor"], ["LIMIT", 1]]
+  ↳ /Users/rsoul/.rvm/rubies/ruby-2.5.1/lib/ruby/gems/2.5.0/gems/activesupport-5.2.0/lib/active_support/subscriber.rb:101
+  [1m[36mUser Load (0.1ms)[0m  [1m[34mSELECT  "users".* FROM "users" WHERE "users"."id" = ? LIMIT ?[0m  [["id", 1], ["LIMIT", 1]]
+  ↳ /Users/rsoul/.rvm/rubies/ruby-2.5.1/lib/ruby/gems/2.5.0/gems/activesupport-5.2.0/lib/active_support/subscriber.rb:101
+  [1m[36mPower Exists (0.2ms)[0m  [1m[34mSELECT  1 AS one FROM "powers" WHERE "powers"."user_id" = ? AND "powers"."room_id" = ? LIMIT ?[0m  [["user_id", 1], ["room_id", 2], ["LIMIT", 1]]
+  ↳ /Users/rsoul/.rvm/rubies/ruby-2.5.1/lib/ruby/gems/2.5.0/gems/activesupport-5.2.0/lib/active_support/subscriber.rb:101
+  [1m[36mCACHE Room Load (0.0ms)[0m  [1m[34mSELECT  "rooms".* FROM "rooms" WHERE "rooms"."hash_id" = ? ORDER BY "rooms"."id" ASC LIMIT ?[0m  [["hash_id", "C7RkqVuBIUor"], ["LIMIT", 1]]
+  ↳ /Users/rsoul/.rvm/rubies/ruby-2.5.1/lib/ruby/gems/2.5.0/gems/activesupport-5.2.0/lib/active_support/subscriber.rb:101
+  [1m[36mPower Load (0.1ms)[0m  [1m[34mSELECT "powers".* FROM "powers" WHERE "powers"."room_id" = ?[0m  [["room_id", 2]]
+  ↳ /Users/rsoul/.rvm/rubies/ruby-2.5.1/lib/ruby/gems/2.5.0/gems/activesupport-5.2.0/lib/active_support/subscriber.rb:101
+  [1m[36mCACHE User Load (0.0ms)[0m  [1m[34mSELECT  "users".* FROM "users" WHERE "users"."id" = ? LIMIT ?[0m  [["id", 1], ["LIMIT", 1]]
+  ↳ /Users/rsoul/.rvm/rubies/ruby-2.5.1/lib/ruby/gems/2.5.0/gems/activesupport-5.2.0/lib/active_support/subscriber.rb:101
+  [1m[36mCACHE Room Load (0.0ms)[0m  [1m[34mSELECT  "rooms".* FROM "rooms" WHERE "rooms"."hash_id" = ? ORDER BY "rooms"."id" ASC LIMIT ?[0m  [["hash_id", "C7RkqVuBIUor"], ["LIMIT", 1]]
+  ↳ /Users/rsoul/.rvm/rubies/ruby-2.5.1/lib/ruby/gems/2.5.0/gems/activesupport-5.2.0/lib/active_support/subscriber.rb:101
+  [1m[36mCACHE Room Load (0.0ms)[0m  [1m[34mSELECT  "rooms".* FROM "rooms" WHERE "rooms"."hash_id" = ? ORDER BY "rooms"."id" ASC LIMIT ?[0m  [["hash_id", "C7RkqVuBIUor"], ["LIMIT", 1]]
+  ↳ /Users/rsoul/.rvm/rubies/ruby-2.5.1/lib/ruby/gems/2.5.0/gems/activesupport-5.2.0/lib/active_support/subscriber.rb:101
+  [1m[36mCACHE Power Exists (0.0ms)[0m  [1m[34mSELECT  1 AS one FROM "powers" WHERE "powers"."user_id" = ? AND "powers"."room_id" = ? LIMIT ?[0m  [["user_id", 1], ["room_id", 2], ["LIMIT", 1]]
+  ↳ /Users/rsoul/.rvm/rubies/ruby-2.5.1/lib/ruby/gems/2.5.0/gems/activesupport-5.2.0/lib/active_support/subscriber.rb:101
+  [1m[36mCACHE Room Load (0.0ms)[0m  [1m[34mSELECT  "rooms".* FROM "rooms" WHERE "rooms"."hash_id" = ? ORDER BY "rooms"."id" ASC LIMIT ?[0m  [["hash_id", "C7RkqVuBIUor"], ["LIMIT", 1]]
+  ↳ /Users/rsoul/.rvm/rubies/ruby-2.5.1/lib/ruby/gems/2.5.0/gems/activesupport-5.2.0/lib/active_support/subscriber.rb:101
+  [1m[36mCACHE Power Exists (0.0ms)[0m  [1m[34mSELECT  1 AS one FROM "powers" WHERE "powers"."user_id" = ? AND "powers"."room_id" = ? LIMIT ?[0m  [["user_id", 1], ["room_id", 2], ["LIMIT", 1]]
+  ↳ /Users/rsoul/.rvm/rubies/ruby-2.5.1/lib/ruby/gems/2.5.0/gems/activesupport-5.2.0/lib/active_support/subscriber.rb:101
+  [1m[36mReservation Exists (40.1ms)[0m  [1m[34mSELECT  1 AS one FROM "reservations" WHERE "reservations"."user_id" = ? AND "reservations"."room_id" = ? LIMIT ?[0m  [["user_id", 1], ["room_id", 2], ["LIMIT", 1]]
+  ↳ /Users/rsoul/.rvm/rubies/ruby-2.5.1/lib/ruby/gems/2.5.0/gems/activesupport-5.2.0/lib/active_support/subscriber.rb:101
+  [1m[36mMessage Load (0.4ms)[0m  [1m[34mSELECT "messages".* FROM "messages" WHERE "messages"."room_id" = ?[0m  [["room_id", 2]]
+  ↳ /Users/rsoul/.rvm/rubies/ruby-2.5.1/lib/ruby/gems/2.5.0/gems/activesupport-5.2.0/lib/active_support/subscriber.rb:101
+  Rendered rooms/show.html.haml within layouts/application (246.5ms)
+  Rendered layouts/_navbar.html.haml (8.5ms)
+Completed 200 OK in 642ms (Views: 352.6ms | ActiveRecord: 42.2ms)
+
+
+Started GET "/rooms/C7RkqVuBIUor.json" for 127.0.0.1 at 2018-09-20 21:05:54 +0200
+Processing by RoomsController#show as JSON
+  Parameters: {"id"=>"C7RkqVuBIUor"}
+  [1m[36mRoom Load (0.3ms)[0m  [1m[34mSELECT  "rooms".* FROM "rooms" WHERE "rooms"."hash_id" = ? ORDER BY "rooms"."id" ASC LIMIT ?[0m  [["hash_id", "C7RkqVuBIUor"], ["LIMIT", 1]]
+  ↳ /Users/rsoul/.rvm/rubies/ruby-2.5.1/lib/ruby/gems/2.5.0/gems/activesupport-5.2.0/lib/active_support/subscriber.rb:101
+  Rendering rooms/show.json.jbuilder
+  Rendered rooms/_room.json.jbuilder (1.1ms)
+  Rendered rooms/show.json.jbuilder (66.0ms)
+Completed 200 OK in 180ms (Views: 101.4ms | ActiveRecord: 0.3ms)
+
+
+Started GET "/rooms/C7RkqVuBIUor/messages" for 127.0.0.1 at 2018-09-20 21:05:56 +0200
+Started GET "/rooms/C7RkqVuBIUor/reservations" for 127.0.0.1 at 2018-09-20 21:05:56 +0200
+Processing by MessagesController#index as HTML
+Processing by ReservationsController#index as HTML
+  Parameters: {"room_id"=>"C7RkqVuBIUor"}
+  Parameters: {"room_id"=>"C7RkqVuBIUor"}
+  [1m[36mRoom Load (0.3ms)[0m  [1m[34mSELECT  "rooms".* FROM "rooms" WHERE "rooms"."hash_id" = ? ORDER BY "rooms"."id" ASC LIMIT ?[0m  [["hash_id", "C7RkqVuBIUor"], ["LIMIT", 1]]
+  [1m[36mRoom Load (0.3ms)[0m  [1m[34mSELECT  "rooms".* FROM "rooms" WHERE "rooms"."hash_id" = ? ORDER BY "rooms"."id" ASC LIMIT ?[0m  [["hash_id", "C7RkqVuBIUor"], ["LIMIT", 1]]
+  ↳ /Users/rsoul/.rvm/rubies/ruby-2.5.1/lib/ruby/gems/2.5.0/gems/activesupport-5.2.0/lib/active_support/subscriber.rb:101
+  ↳ /Users/rsoul/.rvm/rubies/ruby-2.5.1/lib/ruby/gems/2.5.0/gems/activesupport-5.2.0/lib/active_support/subscriber.rb:101
+  Rendering messages/index.html.haml
+  [1m[36mMessage Load (0.1ms)[0m  [1m[34mSELECT "messages".* FROM "messages" WHERE "messages"."room_id" = ?[0m  [["room_id", 2]]
+  ↳ /Users/rsoul/.rvm/rubies/ruby-2.5.1/lib/ruby/gems/2.5.0/gems/activesupport-5.2.0/lib/active_support/subscriber.rb:101
+  Rendered messages/index.html.haml (3.4ms)
+Completed 200 OK in 80ms (Views: 76.0ms | ActiveRecord: 0.4ms)
+
+
+  Rendering reservations/index.html.haml
+  [1m[36mReservation Load (11.3ms)[0m  [1m[34mSELECT "reservations".* FROM "reservations" WHERE "reservations"."room_id" = ? ORDER BY position[0m  [["room_id", 2]]
+  ↳ /Users/rsoul/.rvm/rubies/ruby-2.5.1/lib/ruby/gems/2.5.0/gems/activesupport-5.2.0/lib/active_support/subscriber.rb:101
+  Rendered reservations/index.html.haml (17.1ms)
+Completed 200 OK in 104ms (Views: 54.2ms | ActiveRecord: 11.5ms)
+
+
+Started GET "/conversations" for 127.0.0.1 at 2018-09-20 21:06:00 +0200
+Processing by ConversationsController#index as HTML
+  [1m[36mUser Load (0.3ms)[0m  [1m[34mSELECT  "users".* FROM "users" WHERE "users"."id" = ? LIMIT ?[0m  [["id", 1], ["LIMIT", 1]]
+  ↳ /Users/rsoul/.rvm/rubies/ruby-2.5.1/lib/ruby/gems/2.5.0/gems/activesupport-5.2.0/lib/active_support/subscriber.rb:101
+  Rendering conversations/index.html.haml within layouts/application
+  [1m[36mMailboxer::Conversation Load (34.9ms)[0m  [1m[34mSELECT DISTINCT "mailboxer_conversations".* FROM "mailboxer_conversations" INNER JOIN "mailboxer_notifications" ON "mailboxer_notifications"."conversation_id" = "mailboxer_conversations"."id" AND "mailboxer_notifications"."type" IN ('Mailboxer::Message') INNER JOIN "mailboxer_receipts" ON "mailboxer_receipts"."notification_id" = "mailboxer_notifications"."id" WHERE "mailboxer_notifications"."type" = ? AND "mailboxer_receipts"."receiver_id" = ? AND "mailboxer_receipts"."receiver_type" = ? ORDER BY "mailboxer_conversations"."updated_at" DESC[0m  [["type", "Mailboxer::Message"], ["receiver_id", 1], ["receiver_type", "User"]]
+  ↳ /Users/rsoul/.rvm/rubies/ruby-2.5.1/lib/ruby/gems/2.5.0/gems/activesupport-5.2.0/lib/active_support/subscriber.rb:101
+  Rendered conversations/index.html.haml within layouts/application (48.3ms)
+  Rendered layouts/_navbar.html.haml (5.8ms)
+Completed 200 OK in 175ms (Views: 91.0ms | ActiveRecord: 36.7ms)
+
+
+Started GET "/conversations/new" for 127.0.0.1 at 2018-09-20 21:06:02 +0200
+Processing by ConversationsController#new as HTML
+  [1m[36mUser Load (0.3ms)[0m  [1m[34mSELECT  "users".* FROM "users" WHERE "users"."id" = ? LIMIT ?[0m  [["id", 1], ["LIMIT", 1]]
+  ↳ /Users/rsoul/.rvm/rubies/ruby-2.5.1/lib/ruby/gems/2.5.0/gems/activesupport-5.2.0/lib/active_support/subscriber.rb:101
+  [1m[36mUser Load (0.4ms)[0m  [1m[34mSELECT "users".* FROM "users"[0m
+  ↳ /Users/rsoul/.rvm/rubies/ruby-2.5.1/lib/ruby/gems/2.5.0/gems/activesupport-5.2.0/lib/active_support/subscriber.rb:101
+  Rendering conversations/new.html.haml within layouts/application
+  Rendered conversations/new.html.haml within layouts/application (4.0ms)
+  Rendered layouts/_navbar.html.haml (16.2ms)
+Completed 200 OK in 199ms (Views: 102.2ms | ActiveRecord: 0.7ms)
+
+
+Started GET "/" for 127.0.0.1 at 2018-09-20 21:06:13 +0200
+Processing by MapboxController#show as HTML
+  [1m[36mRoom Load (0.4ms)[0m  [1m[34mSELECT "rooms".* FROM "rooms"[0m
+  ↳ /Users/rsoul/.rvm/rubies/ruby-2.5.1/lib/ruby/gems/2.5.0/gems/activesupport-5.2.0/lib/active_support/subscriber.rb:101
+  [1m[36mPower Load (0.4ms)[0m  [1m[34mSELECT "powers".* FROM "powers" WHERE "powers"."room_id" = ?[0m  [["room_id", 1]]
+  ↳ /Users/rsoul/.rvm/rubies/ruby-2.5.1/lib/ruby/gems/2.5.0/gems/activesupport-5.2.0/lib/active_support/subscriber.rb:101
+  [1m[36mUser Load (0.2ms)[0m  [1m[34mSELECT  "users".* FROM "users" WHERE "users"."id" = ? LIMIT ?[0m  [["id", 1], ["LIMIT", 1]]
+  ↳ /Users/rsoul/.rvm/rubies/ruby-2.5.1/lib/ruby/gems/2.5.0/gems/activesupport-5.2.0/lib/active_support/subscriber.rb:101
+  [1m[36mPower Load (0.1ms)[0m  [1m[34mSELECT "powers".* FROM "powers" WHERE "powers"."room_id" = ?[0m  [["room_id", 2]]
+  ↳ /Users/rsoul/.rvm/rubies/ruby-2.5.1/lib/ruby/gems/2.5.0/gems/activesupport-5.2.0/lib/active_support/subscriber.rb:101
+  [1m[36mCACHE User Load (0.0ms)[0m  [1m[34mSELECT  "users".* FROM "users" WHERE "users"."id" = ? LIMIT ?[0m  [["id", 1], ["LIMIT", 1]]
+  ↳ /Users/rsoul/.rvm/rubies/ruby-2.5.1/lib/ruby/gems/2.5.0/gems/activesupport-5.2.0/lib/active_support/subscriber.rb:101
+  Rendering mapbox/show.html.haml within layouts/application
+  Rendered mapbox/show.html.haml within layouts/application (9.6ms)
+  [1m[36mCACHE User Load (0.0ms)[0m  [1m[34mSELECT  "users".* FROM "users" WHERE "users"."id" = ? LIMIT ?[0m  [["id", 1], ["LIMIT", 1]]
+  ↳ /Users/rsoul/.rvm/rubies/ruby-2.5.1/lib/ruby/gems/2.5.0/gems/activesupport-5.2.0/lib/active_support/subscriber.rb:101
+  Rendered layouts/_navbar.html.haml (6.9ms)
+Completed 200 OK in 103ms (Views: 93.8ms | ActiveRecord: 1.2ms)
+
+
+Started GET "/dashboard.json" for 127.0.0.1 at 2018-09-20 21:06:14 +0200
+Processing by MapboxController#show as JSON
+  [1m[36mRoom Load (0.2ms)[0m  [1m[34mSELECT "rooms".* FROM "rooms"[0m
+  ↳ /Users/rsoul/.rvm/rubies/ruby-2.5.1/lib/ruby/gems/2.5.0/gems/activesupport-5.2.0/lib/active_support/subscriber.rb:101
+  [1m[36mPower Load (0.1ms)[0m  [1m[34mSELECT "powers".* FROM "powers" WHERE "powers"."room_id" = ?[0m  [["room_id", 1]]
+  ↳ /Users/rsoul/.rvm/rubies/ruby-2.5.1/lib/ruby/gems/2.5.0/gems/activesupport-5.2.0/lib/active_support/subscriber.rb:101
+  [1m[36mUser Load (0.1ms)[0m  [1m[34mSELECT  "users".* FROM "users" WHERE "users"."id" = ? LIMIT ?[0m  [["id", 1], ["LIMIT", 1]]
+  ↳ /Users/rsoul/.rvm/rubies/ruby-2.5.1/lib/ruby/gems/2.5.0/gems/activesupport-5.2.0/lib/active_support/subscriber.rb:101
+  [1m[36mPower Load (0.1ms)[0m  [1m[34mSELECT "powers".* FROM "powers" WHERE "powers"."room_id" = ?[0m  [["room_id", 2]]
+  ↳ /Users/rsoul/.rvm/rubies/ruby-2.5.1/lib/ruby/gems/2.5.0/gems/activesupport-5.2.0/lib/active_support/subscriber.rb:101
+  [1m[36mCACHE User Load (0.0ms)[0m  [1m[34mSELECT  "users".* FROM "users" WHERE "users"."id" = ? LIMIT ?[0m  [["id", 1], ["LIMIT", 1]]
+  ↳ /Users/rsoul/.rvm/rubies/ruby-2.5.1/lib/ruby/gems/2.5.0/gems/activesupport-5.2.0/lib/active_support/subscriber.rb:101
+Completed 200 OK in 5ms (Views: 0.1ms | ActiveRecord: 0.5ms)
+
+
+Started GET "/dashboard.json" for 127.0.0.1 at 2018-09-20 21:06:14 +0200
+Processing by MapboxController#show as JSON
+  [1m[36mRoom Load (0.2ms)[0m  [1m[34mSELECT "rooms".* FROM "rooms"[0m
+  ↳ /Users/rsoul/.rvm/rubies/ruby-2.5.1/lib/ruby/gems/2.5.0/gems/activesupport-5.2.0/lib/active_support/subscriber.rb:101
+  [1m[36mPower Load (0.1ms)[0m  [1m[34mSELECT "powers".* FROM "powers" WHERE "powers"."room_id" = ?[0m  [["room_id", 1]]
+  ↳ /Users/rsoul/.rvm/rubies/ruby-2.5.1/lib/ruby/gems/2.5.0/gems/activesupport-5.2.0/lib/active_support/subscriber.rb:101
+  [1m[36mUser Load (0.1ms)[0m  [1m[34mSELECT  "users".* FROM "users" WHERE "users"."id" = ? LIMIT ?[0m  [["id", 1], ["LIMIT", 1]]
+  ↳ /Users/rsoul/.rvm/rubies/ruby-2.5.1/lib/ruby/gems/2.5.0/gems/activesupport-5.2.0/lib/active_support/subscriber.rb:101
+  [1m[36mPower Load (0.1ms)[0m  [1m[34mSELECT "powers".* FROM "powers" WHERE "powers"."room_id" = ?[0m  [["room_id", 2]]
+  ↳ /Users/rsoul/.rvm/rubies/ruby-2.5.1/lib/ruby/gems/2.5.0/gems/activesupport-5.2.0/lib/active_support/subscriber.rb:101
+  [1m[36mCACHE User Load (0.0ms)[0m  [1m[34mSELECT  "users".* FROM "users" WHERE "users"."id" = ? LIMIT ?[0m  [["id", 1], ["LIMIT", 1]]
+  ↳ /Users/rsoul/.rvm/rubies/ruby-2.5.1/lib/ruby/gems/2.5.0/gems/activesupport-5.2.0/lib/active_support/subscriber.rb:101
+Completed 200 OK in 6ms (Views: 0.1ms | ActiveRecord: 0.5ms)
+
+
+Started GET "/rooms/C7RkqVuBIUor" for 127.0.0.1 at 2018-09-20 21:06:16 +0200
+Processing by RoomsController#show as HTML
+  Parameters: {"id"=>"C7RkqVuBIUor"}
+  [1m[36mRoom Load (0.4ms)[0m  [1m[34mSELECT  "rooms".* FROM "rooms" WHERE "rooms"."hash_id" = ? ORDER BY "rooms"."id" ASC LIMIT ?[0m  [["hash_id", "C7RkqVuBIUor"], ["LIMIT", 1]]
+  ↳ /Users/rsoul/.rvm/rubies/ruby-2.5.1/lib/ruby/gems/2.5.0/gems/activesupport-5.2.0/lib/active_support/subscriber.rb:101
+  Rendering rooms/show.html.haml within layouts/application
+  [1m[36mCACHE Room Load (0.0ms)[0m  [1m[34mSELECT  "rooms".* FROM "rooms" WHERE "rooms"."hash_id" = ? ORDER BY "rooms"."id" ASC LIMIT ?[0m  [["hash_id", "C7RkqVuBIUor"], ["LIMIT", 1]]
+  ↳ /Users/rsoul/.rvm/rubies/ruby-2.5.1/lib/ruby/gems/2.5.0/gems/activesupport-5.2.0/lib/active_support/subscriber.rb:101
+  [1m[36mUser Load (0.2ms)[0m  [1m[34mSELECT  "users".* FROM "users" WHERE "users"."id" = ? LIMIT ?[0m  [["id", 1], ["LIMIT", 1]]
+  ↳ /Users/rsoul/.rvm/rubies/ruby-2.5.1/lib/ruby/gems/2.5.0/gems/activesupport-5.2.0/lib/active_support/subscriber.rb:101
+  [1m[36mPower Exists (0.3ms)[0m  [1m[34mSELECT  1 AS one FROM "powers" WHERE "powers"."user_id" = ? AND "powers"."room_id" = ? LIMIT ?[0m  [["user_id", 1], ["room_id", 2], ["LIMIT", 1]]
+  ↳ /Users/rsoul/.rvm/rubies/ruby-2.5.1/lib/ruby/gems/2.5.0/gems/activesupport-5.2.0/lib/active_support/subscriber.rb:101
+  [1m[36mCACHE Room Load (0.0ms)[0m  [1m[34mSELECT  "rooms".* FROM "rooms" WHERE "rooms"."hash_id" = ? ORDER BY "rooms"."id" ASC LIMIT ?[0m  [["hash_id", "C7RkqVuBIUor"], ["LIMIT", 1]]
+  ↳ /Users/rsoul/.rvm/rubies/ruby-2.5.1/lib/ruby/gems/2.5.0/gems/activesupport-5.2.0/lib/active_support/subscriber.rb:101
+  [1m[36mPower Load (0.2ms)[0m  [1m[34mSELECT "powers".* FROM "powers" WHERE "powers"."room_id" = ?[0m  [["room_id", 2]]
+  ↳ /Users/rsoul/.rvm/rubies/ruby-2.5.1/lib/ruby/gems/2.5.0/gems/activesupport-5.2.0/lib/active_support/subscriber.rb:101
+  [1m[36mCACHE User Load (0.0ms)[0m  [1m[34mSELECT  "users".* FROM "users" WHERE "users"."id" = ? LIMIT ?[0m  [["id", 1], ["LIMIT", 1]]
+  ↳ /Users/rsoul/.rvm/rubies/ruby-2.5.1/lib/ruby/gems/2.5.0/gems/activesupport-5.2.0/lib/active_support/subscriber.rb:101
+  [1m[36mCACHE Room Load (0.0ms)[0m  [1m[34mSELECT  "rooms".* FROM "rooms" WHERE "rooms"."hash_id" = ? ORDER BY "rooms"."id" ASC LIMIT ?[0m  [["hash_id", "C7RkqVuBIUor"], ["LIMIT", 1]]
+  ↳ /Users/rsoul/.rvm/rubies/ruby-2.5.1/lib/ruby/gems/2.5.0/gems/activesupport-5.2.0/lib/active_support/subscriber.rb:101
+  [1m[36mCACHE Room Load (0.0ms)[0m  [1m[34mSELECT  "rooms".* FROM "rooms" WHERE "rooms"."hash_id" = ? ORDER BY "rooms"."id" ASC LIMIT ?[0m  [["hash_id", "C7RkqVuBIUor"], ["LIMIT", 1]]
+  ↳ /Users/rsoul/.rvm/rubies/ruby-2.5.1/lib/ruby/gems/2.5.0/gems/activesupport-5.2.0/lib/active_support/subscriber.rb:101
+  [1m[36mCACHE Power Exists (0.0ms)[0m  [1m[34mSELECT  1 AS one FROM "powers" WHERE "powers"."user_id" = ? AND "powers"."room_id" = ? LIMIT ?[0m  [["user_id", 1], ["room_id", 2], ["LIMIT", 1]]
+  ↳ /Users/rsoul/.rvm/rubies/ruby-2.5.1/lib/ruby/gems/2.5.0/gems/activesupport-5.2.0/lib/active_support/subscriber.rb:101
+  [1m[36mCACHE Room Load (0.0ms)[0m  [1m[34mSELECT  "rooms".* FROM "rooms" WHERE "rooms"."hash_id" = ? ORDER BY "rooms"."id" ASC LIMIT ?[0m  [["hash_id", "C7RkqVuBIUor"], ["LIMIT", 1]]
+  ↳ /Users/rsoul/.rvm/rubies/ruby-2.5.1/lib/ruby/gems/2.5.0/gems/activesupport-5.2.0/lib/active_support/subscriber.rb:101
+  [1m[36mCACHE Power Exists (0.0ms)[0m  [1m[34mSELECT  1 AS one FROM "powers" WHERE "powers"."user_id" = ? AND "powers"."room_id" = ? LIMIT ?[0m  [["user_id", 1], ["room_id", 2], ["LIMIT", 1]]
+  ↳ /Users/rsoul/.rvm/rubies/ruby-2.5.1/lib/ruby/gems/2.5.0/gems/activesupport-5.2.0/lib/active_support/subscriber.rb:101
+  [1m[36mReservation Exists (0.2ms)[0m  [1m[34mSELECT  1 AS one FROM "reservations" WHERE "reservations"."user_id" = ? AND "reservations"."room_id" = ? LIMIT ?[0m  [["user_id", 1], ["room_id", 2], ["LIMIT", 1]]
+  ↳ /Users/rsoul/.rvm/rubies/ruby-2.5.1/lib/ruby/gems/2.5.0/gems/activesupport-5.2.0/lib/active_support/subscriber.rb:101
+  [1m[36mMessage Load (0.2ms)[0m  [1m[34mSELECT "messages".* FROM "messages" WHERE "messages"."room_id" = ?[0m  [["room_id", 2]]
+  ↳ /Users/rsoul/.rvm/rubies/ruby-2.5.1/lib/ruby/gems/2.5.0/gems/activesupport-5.2.0/lib/active_support/subscriber.rb:101
+  Rendered rooms/show.html.haml within layouts/application (42.2ms)
+  Rendered layouts/_navbar.html.haml (9.8ms)
+Completed 200 OK in 164ms (Views: 155.9ms | ActiveRecord: 1.7ms)
+
+
+Started GET "/rooms/C7RkqVuBIUor.json" for 127.0.0.1 at 2018-09-20 21:06:17 +0200
+Processing by RoomsController#show as JSON
+  Parameters: {"id"=>"C7RkqVuBIUor"}
+  [1m[36mRoom Load (0.3ms)[0m  [1m[34mSELECT  "rooms".* FROM "rooms" WHERE "rooms"."hash_id" = ? ORDER BY "rooms"."id" ASC LIMIT ?[0m  [["hash_id", "C7RkqVuBIUor"], ["LIMIT", 1]]
+  ↳ /Users/rsoul/.rvm/rubies/ruby-2.5.1/lib/ruby/gems/2.5.0/gems/activesupport-5.2.0/lib/active_support/subscriber.rb:101
+  Rendering rooms/show.json.jbuilder
+  Rendered rooms/_room.json.jbuilder (1.4ms)
+  Rendered rooms/show.json.jbuilder (3.4ms)
+Completed 200 OK in 43ms (Views: 38.6ms | ActiveRecord: 0.3ms)
+
+
+Started GET "/rooms/C7RkqVuBIUor/reservations" for 127.0.0.1 at 2018-09-20 21:06:19 +0200
+Started GET "/rooms/C7RkqVuBIUor/messages" for 127.0.0.1 at 2018-09-20 21:06:19 +0200
+Processing by ReservationsController#index as HTML
+  Parameters: {"room_id"=>"C7RkqVuBIUor"}
+  [1m[36mRoom Load (0.3ms)[0m  [1m[34mSELECT  "rooms".* FROM "rooms" WHERE "rooms"."hash_id" = ? ORDER BY "rooms"."id" ASC LIMIT ?[0m  [["hash_id", "C7RkqVuBIUor"], ["LIMIT", 1]]
+  ↳ /Users/rsoul/.rvm/rubies/ruby-2.5.1/lib/ruby/gems/2.5.0/gems/activesupport-5.2.0/lib/active_support/subscriber.rb:101
+Processing by MessagesController#index as HTML
+  Parameters: {"room_id"=>"C7RkqVuBIUor"}
+  [1m[36mRoom Load (0.2ms)[0m  [1m[34mSELECT  "rooms".* FROM "rooms" WHERE "rooms"."hash_id" = ? ORDER BY "rooms"."id" ASC LIMIT ?[0m  [["hash_id", "C7RkqVuBIUor"], ["LIMIT", 1]]
+  ↳ /Users/rsoul/.rvm/rubies/ruby-2.5.1/lib/ruby/gems/2.5.0/gems/activesupport-5.2.0/lib/active_support/subscriber.rb:101
+  Rendering reservations/index.html.haml
+  [1m[36mReservation Load (0.2ms)[0m  [1m[34mSELECT "reservations".* FROM "reservations" WHERE "reservations"."room_id" = ? ORDER BY position[0m  [["room_id", 2]]
+  ↳ /Users/rsoul/.rvm/rubies/ruby-2.5.1/lib/ruby/gems/2.5.0/gems/activesupport-5.2.0/lib/active_support/subscriber.rb:101
+  Rendering messages/index.html.haml
+  Rendered reservations/index.html.haml (5.9ms)
+  [1m[36mMessage Load (0.1ms)[0m  [1m[34mSELECT "messages".* FROM "messages" WHERE "messages"."room_id" = ?[0m  [["room_id", 2]]
+  ↳ /Users/rsoul/.rvm/rubies/ruby-2.5.1/lib/ruby/gems/2.5.0/gems/activesupport-5.2.0/lib/active_support/subscriber.rb:101
+  Rendered messages/index.html.haml (3.9ms)
+Completed 200 OK in 43ms (Views: 40.4ms | ActiveRecord: 0.4ms)
+
+
+Completed 200 OK in 74ms (Views: 70.2ms | ActiveRecord: 0.5ms)
+
+
+Started GET "/rooms/C7RkqVuBIUor/reservations" for 127.0.0.1 at 2018-09-20 21:06:24 +0200
+Started GET "/rooms/C7RkqVuBIUor/messages" for 127.0.0.1 at 2018-09-20 21:06:24 +0200
+Processing by ReservationsController#index as HTML
+Processing by MessagesController#index as HTML
+  Parameters: {"room_id"=>"C7RkqVuBIUor"}
+  [1m[36mRoom Load (0.3ms)[0m  [1m[34mSELECT  "rooms".* FROM "rooms" WHERE "rooms"."hash_id" = ? ORDER BY "rooms"."id" ASC LIMIT ?[0m  [["hash_id", "C7RkqVuBIUor"], ["LIMIT", 1]]
+  Parameters: {"room_id"=>"C7RkqVuBIUor"}
+  ↳ /Users/rsoul/.rvm/rubies/ruby-2.5.1/lib/ruby/gems/2.5.0/gems/activesupport-5.2.0/lib/active_support/subscriber.rb:101
+  [1m[36mRoom Load (0.3ms)[0m  [1m[34mSELECT  "rooms".* FROM "rooms" WHERE "rooms"."hash_id" = ? ORDER BY "rooms"."id" ASC LIMIT ?[0m  [["hash_id", "C7RkqVuBIUor"], ["LIMIT", 1]]
+  ↳ /Users/rsoul/.rvm/rubies/ruby-2.5.1/lib/ruby/gems/2.5.0/gems/activesupport-5.2.0/lib/active_support/subscriber.rb:101
+  Rendering messages/index.html.haml
+  [1m[36mMessage Load (0.1ms)[0m  [1m[34mSELECT "messages".* FROM "messages" WHERE "messages"."room_id" = ?[0m  [["room_id", 2]]
+  ↳ /Users/rsoul/.rvm/rubies/ruby-2.5.1/lib/ruby/gems/2.5.0/gems/activesupport-5.2.0/lib/active_support/subscriber.rb:101
+  Rendering reservations/index.html.haml
+  [1m[36mReservation Load (0.2ms)[0m  [1m[34mSELECT "reservations".* FROM "reservations" WHERE "reservations"."room_id" = ? ORDER BY position[0m  [["room_id", 2]]
+  Rendered messages/index.html.haml (3.6ms)
+  ↳ /Users/rsoul/.rvm/rubies/ruby-2.5.1/lib/ruby/gems/2.5.0/gems/activesupport-5.2.0/lib/active_support/subscriber.rb:101
+Completed 200 OK in 80ms (Views: 75.4ms | ActiveRecord: 0.4ms)
+
+
+  Rendered reservations/index.html.haml (6.8ms)
+Completed 200 OK in 79ms (Views: 42.2ms | ActiveRecord: 0.5ms)
+
+
+Started POST "/rooms/2/invite_user" for 127.0.0.1 at 2018-09-20 21:06:24 +0200
+Processing by RoomsController#invite_user_to_room as HTML
+  Parameters: {"utf8"=>"✓", "authenticity_token"=>"BCRItviQf+Cd6hPudUbYldBxzIPpOfobI6v81PlkF6Q6Pi/ON7/RQvOOHrNI7UpwVWqFXIm0jyvH5GAN0k8fHg==", "username"=>"p@p.p", "commit"=>"Invita", "room_id"=>"2"}
+  [1m[36mRoom Load (0.2ms)[0m  [1m[34mSELECT  "rooms".* FROM "rooms" WHERE "rooms"."id" = ? LIMIT ?[0m  [["id", 2], ["LIMIT", 1]]
+  ↳ /Users/rsoul/.rvm/rubies/ruby-2.5.1/lib/ruby/gems/2.5.0/gems/activesupport-5.2.0/lib/active_support/subscriber.rb:101
+  [1m[36mUser Load (0.2ms)[0m  [1m[34mSELECT  "users".* FROM "users" WHERE "users"."id" = ? LIMIT ?[0m  [["id", 1], ["LIMIT", 1]]
+  ↳ /Users/rsoul/.rvm/rubies/ruby-2.5.1/lib/ruby/gems/2.5.0/gems/activesupport-5.2.0/lib/active_support/subscriber.rb:101
+  [1m[36mUser Load (0.3ms)[0m  [1m[34mSELECT  "users".* FROM "users" WHERE "users"."username" = ? LIMIT ?[0m  [["username", "p@p.p"], ["LIMIT", 1]]
+  ↳ /Users/rsoul/.rvm/rubies/ruby-2.5.1/lib/ruby/gems/2.5.0/gems/activesupport-5.2.0/lib/active_support/subscriber.rb:101
+Redirected to http://localhost:3000/rooms/C7RkqVuBIUor
+Completed 302 Found in 7ms (ActiveRecord: 0.7ms)
+
+
+Started GET "/rooms/C7RkqVuBIUor" for 127.0.0.1 at 2018-09-20 21:06:24 +0200
+Processing by RoomsController#show as HTML
+  Parameters: {"id"=>"C7RkqVuBIUor"}
+  [1m[36mRoom Load (0.2ms)[0m  [1m[34mSELECT  "rooms".* FROM "rooms" WHERE "rooms"."hash_id" = ? ORDER BY "rooms"."id" ASC LIMIT ?[0m  [["hash_id", "C7RkqVuBIUor"], ["LIMIT", 1]]
+  ↳ /Users/rsoul/.rvm/rubies/ruby-2.5.1/lib/ruby/gems/2.5.0/gems/activesupport-5.2.0/lib/active_support/subscriber.rb:101
+  Rendering rooms/show.html.haml within layouts/application
+  [1m[36mCACHE Room Load (0.0ms)[0m  [1m[34mSELECT  "rooms".* FROM "rooms" WHERE "rooms"."hash_id" = ? ORDER BY "rooms"."id" ASC LIMIT ?[0m  [["hash_id", "C7RkqVuBIUor"], ["LIMIT", 1]]
+  ↳ /Users/rsoul/.rvm/rubies/ruby-2.5.1/lib/ruby/gems/2.5.0/gems/activesupport-5.2.0/lib/active_support/subscriber.rb:101
+  [1m[36mUser Load (0.1ms)[0m  [1m[34mSELECT  "users".* FROM "users" WHERE "users"."id" = ? LIMIT ?[0m  [["id", 1], ["LIMIT", 1]]
+  ↳ /Users/rsoul/.rvm/rubies/ruby-2.5.1/lib/ruby/gems/2.5.0/gems/activesupport-5.2.0/lib/active_support/subscriber.rb:101
+  [1m[36mPower Exists (0.1ms)[0m  [1m[34mSELECT  1 AS one FROM "powers" WHERE "powers"."user_id" = ? AND "powers"."room_id" = ? LIMIT ?[0m  [["user_id", 1], ["room_id", 2], ["LIMIT", 1]]
+  ↳ /Users/rsoul/.rvm/rubies/ruby-2.5.1/lib/ruby/gems/2.5.0/gems/activesupport-5.2.0/lib/active_support/subscriber.rb:101
+  [1m[36mCACHE Room Load (0.0ms)[0m  [1m[34mSELECT  "rooms".* FROM "rooms" WHERE "rooms"."hash_id" = ? ORDER BY "rooms"."id" ASC LIMIT ?[0m  [["hash_id", "C7RkqVuBIUor"], ["LIMIT", 1]]
+  ↳ /Users/rsoul/.rvm/rubies/ruby-2.5.1/lib/ruby/gems/2.5.0/gems/activesupport-5.2.0/lib/active_support/subscriber.rb:101
+  [1m[36mPower Load (0.1ms)[0m  [1m[34mSELECT "powers".* FROM "powers" WHERE "powers"."room_id" = ?[0m  [["room_id", 2]]
+  ↳ /Users/rsoul/.rvm/rubies/ruby-2.5.1/lib/ruby/gems/2.5.0/gems/activesupport-5.2.0/lib/active_support/subscriber.rb:101
+  [1m[36mCACHE User Load (0.0ms)[0m  [1m[34mSELECT  "users".* FROM "users" WHERE "users"."id" = ? LIMIT ?[0m  [["id", 1], ["LIMIT", 1]]
+  ↳ /Users/rsoul/.rvm/rubies/ruby-2.5.1/lib/ruby/gems/2.5.0/gems/activesupport-5.2.0/lib/active_support/subscriber.rb:101
+  [1m[36mCACHE Room Load (0.0ms)[0m  [1m[34mSELECT  "rooms".* FROM "rooms" WHERE "rooms"."hash_id" = ? ORDER BY "rooms"."id" ASC LIMIT ?[0m  [["hash_id", "C7RkqVuBIUor"], ["LIMIT", 1]]
+  ↳ /Users/rsoul/.rvm/rubies/ruby-2.5.1/lib/ruby/gems/2.5.0/gems/activesupport-5.2.0/lib/active_support/subscriber.rb:101
+  [1m[36mCACHE Room Load (0.0ms)[0m  [1m[34mSELECT  "rooms".* FROM "rooms" WHERE "rooms"."hash_id" = ? ORDER BY "rooms"."id" ASC LIMIT ?[0m  [["hash_id", "C7RkqVuBIUor"], ["LIMIT", 1]]
+  ↳ /Users/rsoul/.rvm/rubies/ruby-2.5.1/lib/ruby/gems/2.5.0/gems/activesupport-5.2.0/lib/active_support/subscriber.rb:101
+  [1m[36mCACHE Power Exists (0.0ms)[0m  [1m[34mSELECT  1 AS one FROM "powers" WHERE "powers"."user_id" = ? AND "powers"."room_id" = ? LIMIT ?[0m  [["user_id", 1], ["room_id", 2], ["LIMIT", 1]]
+  ↳ /Users/rsoul/.rvm/rubies/ruby-2.5.1/lib/ruby/gems/2.5.0/gems/activesupport-5.2.0/lib/active_support/subscriber.rb:101
+  [1m[36mCACHE Room Load (0.0ms)[0m  [1m[34mSELECT  "rooms".* FROM "rooms" WHERE "rooms"."hash_id" = ? ORDER BY "rooms"."id" ASC LIMIT ?[0m  [["hash_id", "C7RkqVuBIUor"], ["LIMIT", 1]]
+  ↳ /Users/rsoul/.rvm/rubies/ruby-2.5.1/lib/ruby/gems/2.5.0/gems/activesupport-5.2.0/lib/active_support/subscriber.rb:101
+  [1m[36mCACHE Power Exists (0.0ms)[0m  [1m[34mSELECT  1 AS one FROM "powers" WHERE "powers"."user_id" = ? AND "powers"."room_id" = ? LIMIT ?[0m  [["user_id", 1], ["room_id", 2], ["LIMIT", 1]]
+  ↳ /Users/rsoul/.rvm/rubies/ruby-2.5.1/lib/ruby/gems/2.5.0/gems/activesupport-5.2.0/lib/active_support/subscriber.rb:101
+  [1m[36mReservation Exists (0.2ms)[0m  [1m[34mSELECT  1 AS one FROM "reservations" WHERE "reservations"."user_id" = ? AND "reservations"."room_id" = ? LIMIT ?[0m  [["user_id", 1], ["room_id", 2], ["LIMIT", 1]]
+  ↳ /Users/rsoul/.rvm/rubies/ruby-2.5.1/lib/ruby/gems/2.5.0/gems/activesupport-5.2.0/lib/active_support/subscriber.rb:101
+  [1m[36mMessage Load (0.1ms)[0m  [1m[34mSELECT "messages".* FROM "messages" WHERE "messages"."room_id" = ?[0m  [["room_id", 2]]
+  ↳ /Users/rsoul/.rvm/rubies/ruby-2.5.1/lib/ruby/gems/2.5.0/gems/activesupport-5.2.0/lib/active_support/subscriber.rb:101
+  Rendered rooms/show.html.haml within layouts/application (29.8ms)
+  Rendered layouts/_navbar.html.haml (5.7ms)
+Completed 200 OK in 120ms (Views: 114.9ms | ActiveRecord: 1.0ms)
+
+
+Started GET "/rooms/C7RkqVuBIUor.json" for 127.0.0.1 at 2018-09-20 21:06:25 +0200
+Processing by RoomsController#show as JSON
+  Parameters: {"id"=>"C7RkqVuBIUor"}
+  [1m[36mRoom Load (0.3ms)[0m  [1m[34mSELECT  "rooms".* FROM "rooms" WHERE "rooms"."hash_id" = ? ORDER BY "rooms"."id" ASC LIMIT ?[0m  [["hash_id", "C7RkqVuBIUor"], ["LIMIT", 1]]
+  ↳ /Users/rsoul/.rvm/rubies/ruby-2.5.1/lib/ruby/gems/2.5.0/gems/activesupport-5.2.0/lib/active_support/subscriber.rb:101
+  Rendering rooms/show.json.jbuilder
+  Rendered rooms/_room.json.jbuilder (1.0ms)
+  Rendered rooms/show.json.jbuilder (2.8ms)
+Completed 200 OK in 42ms (Views: 37.7ms | ActiveRecord: 0.3ms)
+
+
+Started GET "/rooms/C7RkqVuBIUor/reservations" for 127.0.0.1 at 2018-09-20 21:06:27 +0200
+Started GET "/rooms/C7RkqVuBIUor/messages" for 127.0.0.1 at 2018-09-20 21:06:27 +0200
+Processing by ReservationsController#index as HTML
+  Parameters: {"room_id"=>"C7RkqVuBIUor"}
+  [1m[36mRoom Load (0.3ms)[0m  [1m[34mSELECT  "rooms".* FROM "rooms" WHERE "rooms"."hash_id" = ? ORDER BY "rooms"."id" ASC LIMIT ?[0m  [["hash_id", "C7RkqVuBIUor"], ["LIMIT", 1]]
+  ↳ /Users/rsoul/.rvm/rubies/ruby-2.5.1/lib/ruby/gems/2.5.0/gems/activesupport-5.2.0/lib/active_support/subscriber.rb:101
+Processing by MessagesController#index as HTML
+  Parameters: {"room_id"=>"C7RkqVuBIUor"}
+  [1m[36mRoom Load (0.2ms)[0m  [1m[34mSELECT  "rooms".* FROM "rooms" WHERE "rooms"."hash_id" = ? ORDER BY "rooms"."id" ASC LIMIT ?[0m  [["hash_id", "C7RkqVuBIUor"], ["LIMIT", 1]]
+  ↳ /Users/rsoul/.rvm/rubies/ruby-2.5.1/lib/ruby/gems/2.5.0/gems/activesupport-5.2.0/lib/active_support/subscriber.rb:101
+  Rendering reservations/index.html.haml
+  [1m[36mReservation Load (0.2ms)[0m  [1m[34mSELECT "reservations".* FROM "reservations" WHERE "reservations"."room_id" = ? ORDER BY position[0m  [["room_id", 2]]
+  Rendering messages/index.html.haml
+  ↳ /Users/rsoul/.rvm/rubies/ruby-2.5.1/lib/ruby/gems/2.5.0/gems/activesupport-5.2.0/lib/active_support/subscriber.rb:101
+  [1m[36mMessage Load (0.1ms)[0m  [1m[34mSELECT "messages".* FROM "messages" WHERE "messages"."room_id" = ?[0m  [["room_id", 2]]
+  Rendered reservations/index.html.haml (9.4ms)
+  ↳ /Users/rsoul/.rvm/rubies/ruby-2.5.1/lib/ruby/gems/2.5.0/gems/activesupport-5.2.0/lib/active_support/subscriber.rb:101
+Completed 200 OK in 77ms (Views: 74.9ms | ActiveRecord: 0.5ms)
+
+
+  Rendered messages/index.html.haml (4.3ms)
+Completed 200 OK in 45ms (Views: 42.5ms | ActiveRecord: 0.4ms)
+
+
+Started POST "/rooms/2/invite_user" for 127.0.0.1 at 2018-09-20 21:06:29 +0200
+Processing by RoomsController#invite_user_to_room as HTML
+  Parameters: {"utf8"=>"✓", "authenticity_token"=>"8U9G76kxtk6qopqQxgKaQXVRYPgHbWKthzeM65JFIFXPVSGXZh4Y7MTGl837qQik8EopJ2fgF51jeBAyuW4o7w==", "username"=>"prova1", "commit"=>"Invita", "room_id"=>"2"}
+  [1m[36mRoom Load (0.2ms)[0m  [1m[34mSELECT  "rooms".* FROM "rooms" WHERE "rooms"."id" = ? LIMIT ?[0m  [["id", 2], ["LIMIT", 1]]
+  ↳ /Users/rsoul/.rvm/rubies/ruby-2.5.1/lib/ruby/gems/2.5.0/gems/activesupport-5.2.0/lib/active_support/subscriber.rb:101
+  [1m[36mUser Load (0.2ms)[0m  [1m[34mSELECT  "users".* FROM "users" WHERE "users"."id" = ? LIMIT ?[0m  [["id", 1], ["LIMIT", 1]]
+  ↳ /Users/rsoul/.rvm/rubies/ruby-2.5.1/lib/ruby/gems/2.5.0/gems/activesupport-5.2.0/lib/active_support/subscriber.rb:101
+  [1m[36mUser Load (0.3ms)[0m  [1m[34mSELECT  "users".* FROM "users" WHERE "users"."username" = ? LIMIT ?[0m  [["username", "prova1"], ["LIMIT", 1]]
+  ↳ /Users/rsoul/.rvm/rubies/ruby-2.5.1/lib/ruby/gems/2.5.0/gems/activesupport-5.2.0/lib/active_support/subscriber.rb:101
+Completed 500 Internal Server Error in 5ms (ActiveRecord: 0.6ms)
+
+
+  
+NoMethodError (undefined method `hash_id' for nil:NilClass):
+  
+app/controllers/rooms_controller.rb:83:in `invite_user_to_room'
+Started GET "/rooms/C7RkqVuBIUor" for 127.0.0.1 at 2018-09-20 21:08:21 +0200
+Processing by RoomsController#show as HTML
+  Parameters: {"id"=>"C7RkqVuBIUor"}
+  [1m[36mRoom Load (0.2ms)[0m  [1m[34mSELECT  "rooms".* FROM "rooms" WHERE "rooms"."hash_id" = ? ORDER BY "rooms"."id" ASC LIMIT ?[0m  [["hash_id", "C7RkqVuBIUor"], ["LIMIT", 1]]
+  ↳ /Users/rsoul/.rvm/rubies/ruby-2.5.1/lib/ruby/gems/2.5.0/gems/activesupport-5.2.0/lib/active_support/subscriber.rb:101
+  Rendering rooms/show.html.haml within layouts/application
+  [1m[36mCACHE Room Load (0.0ms)[0m  [1m[34mSELECT  "rooms".* FROM "rooms" WHERE "rooms"."hash_id" = ? ORDER BY "rooms"."id" ASC LIMIT ?[0m  [["hash_id", "C7RkqVuBIUor"], ["LIMIT", 1]]
+  ↳ /Users/rsoul/.rvm/rubies/ruby-2.5.1/lib/ruby/gems/2.5.0/gems/activesupport-5.2.0/lib/active_support/subscriber.rb:101
+  [1m[36mUser Load (0.2ms)[0m  [1m[34mSELECT  "users".* FROM "users" WHERE "users"."id" = ? LIMIT ?[0m  [["id", 1], ["LIMIT", 1]]
+  ↳ /Users/rsoul/.rvm/rubies/ruby-2.5.1/lib/ruby/gems/2.5.0/gems/activesupport-5.2.0/lib/active_support/subscriber.rb:101
+  [1m[36mPower Exists (0.1ms)[0m  [1m[34mSELECT  1 AS one FROM "powers" WHERE "powers"."user_id" = ? AND "powers"."room_id" = ? LIMIT ?[0m  [["user_id", 1], ["room_id", 2], ["LIMIT", 1]]
+  ↳ /Users/rsoul/.rvm/rubies/ruby-2.5.1/lib/ruby/gems/2.5.0/gems/activesupport-5.2.0/lib/active_support/subscriber.rb:101
+  [1m[36mCACHE Room Load (0.0ms)[0m  [1m[34mSELECT  "rooms".* FROM "rooms" WHERE "rooms"."hash_id" = ? ORDER BY "rooms"."id" ASC LIMIT ?[0m  [["hash_id", "C7RkqVuBIUor"], ["LIMIT", 1]]
+  ↳ /Users/rsoul/.rvm/rubies/ruby-2.5.1/lib/ruby/gems/2.5.0/gems/activesupport-5.2.0/lib/active_support/subscriber.rb:101
+  [1m[36mPower Load (0.2ms)[0m  [1m[34mSELECT "powers".* FROM "powers" WHERE "powers"."room_id" = ?[0m  [["room_id", 2]]
+  ↳ /Users/rsoul/.rvm/rubies/ruby-2.5.1/lib/ruby/gems/2.5.0/gems/activesupport-5.2.0/lib/active_support/subscriber.rb:101
+  [1m[36mCACHE User Load (0.0ms)[0m  [1m[34mSELECT  "users".* FROM "users" WHERE "users"."id" = ? LIMIT ?[0m  [["id", 1], ["LIMIT", 1]]
+  ↳ /Users/rsoul/.rvm/rubies/ruby-2.5.1/lib/ruby/gems/2.5.0/gems/activesupport-5.2.0/lib/active_support/subscriber.rb:101
+  [1m[36mCACHE Room Load (0.0ms)[0m  [1m[34mSELECT  "rooms".* FROM "rooms" WHERE "rooms"."hash_id" = ? ORDER BY "rooms"."id" ASC LIMIT ?[0m  [["hash_id", "C7RkqVuBIUor"], ["LIMIT", 1]]
+  ↳ /Users/rsoul/.rvm/rubies/ruby-2.5.1/lib/ruby/gems/2.5.0/gems/activesupport-5.2.0/lib/active_support/subscriber.rb:101
+  [1m[36mCACHE Room Load (0.0ms)[0m  [1m[34mSELECT  "rooms".* FROM "rooms" WHERE "rooms"."hash_id" = ? ORDER BY "rooms"."id" ASC LIMIT ?[0m  [["hash_id", "C7RkqVuBIUor"], ["LIMIT", 1]]
+  ↳ /Users/rsoul/.rvm/rubies/ruby-2.5.1/lib/ruby/gems/2.5.0/gems/activesupport-5.2.0/lib/active_support/subscriber.rb:101
+  [1m[36mCACHE Power Exists (0.0ms)[0m  [1m[34mSELECT  1 AS one FROM "powers" WHERE "powers"."user_id" = ? AND "powers"."room_id" = ? LIMIT ?[0m  [["user_id", 1], ["room_id", 2], ["LIMIT", 1]]
+  ↳ /Users/rsoul/.rvm/rubies/ruby-2.5.1/lib/ruby/gems/2.5.0/gems/activesupport-5.2.0/lib/active_support/subscriber.rb:101
+  [1m[36mCACHE Room Load (0.0ms)[0m  [1m[34mSELECT  "rooms".* FROM "rooms" WHERE "rooms"."hash_id" = ? ORDER BY "rooms"."id" ASC LIMIT ?[0m  [["hash_id", "C7RkqVuBIUor"], ["LIMIT", 1]]
+  ↳ /Users/rsoul/.rvm/rubies/ruby-2.5.1/lib/ruby/gems/2.5.0/gems/activesupport-5.2.0/lib/active_support/subscriber.rb:101
+  [1m[36mCACHE Power Exists (0.0ms)[0m  [1m[34mSELECT  1 AS one FROM "powers" WHERE "powers"."user_id" = ? AND "powers"."room_id" = ? LIMIT ?[0m  [["user_id", 1], ["room_id", 2], ["LIMIT", 1]]
+  ↳ /Users/rsoul/.rvm/rubies/ruby-2.5.1/lib/ruby/gems/2.5.0/gems/activesupport-5.2.0/lib/active_support/subscriber.rb:101
+  [1m[36mReservation Exists (0.3ms)[0m  [1m[34mSELECT  1 AS one FROM "reservations" WHERE "reservations"."user_id" = ? AND "reservations"."room_id" = ? LIMIT ?[0m  [["user_id", 1], ["room_id", 2], ["LIMIT", 1]]
+  ↳ /Users/rsoul/.rvm/rubies/ruby-2.5.1/lib/ruby/gems/2.5.0/gems/activesupport-5.2.0/lib/active_support/subscriber.rb:101
+  [1m[36mMessage Load (0.1ms)[0m  [1m[34mSELECT "messages".* FROM "messages" WHERE "messages"."room_id" = ?[0m  [["room_id", 2]]
+  ↳ /Users/rsoul/.rvm/rubies/ruby-2.5.1/lib/ruby/gems/2.5.0/gems/activesupport-5.2.0/lib/active_support/subscriber.rb:101
+  Rendered rooms/show.html.haml within layouts/application (119.0ms)
+  Rendered layouts/_navbar.html.haml (8.0ms)
+Completed 200 OK in 274ms (Views: 199.8ms | ActiveRecord: 4.2ms)
+
+
+Started GET "/rooms/C7RkqVuBIUor.json" for 127.0.0.1 at 2018-09-20 21:08:22 +0200
+Processing by RoomsController#show as JSON
+  Parameters: {"id"=>"C7RkqVuBIUor"}
+  [1m[36mRoom Load (0.3ms)[0m  [1m[34mSELECT  "rooms".* FROM "rooms" WHERE "rooms"."hash_id" = ? ORDER BY "rooms"."id" ASC LIMIT ?[0m  [["hash_id", "C7RkqVuBIUor"], ["LIMIT", 1]]
+  ↳ /Users/rsoul/.rvm/rubies/ruby-2.5.1/lib/ruby/gems/2.5.0/gems/activesupport-5.2.0/lib/active_support/subscriber.rb:101
+  Rendering rooms/show.json.jbuilder
+  Rendered rooms/_room.json.jbuilder (1.4ms)
+  Rendered rooms/show.json.jbuilder (3.0ms)
+Completed 200 OK in 43ms (Views: 38.7ms | ActiveRecord: 0.3ms)
+
+
+Started POST "/rooms/2/invite_user" for 127.0.0.1 at 2018-09-20 21:08:24 +0200
+Processing by RoomsController#invite_user_to_room as HTML
+  Parameters: {"utf8"=>"✓", "authenticity_token"=>"iepv8pWYri73hM0DI0IOUl/AtHZaxfMTdCeAgQCTfVy38AiKWrcAjJngwF4e6Zy32tv9qTpIhiOQaBxYK7h15g==", "username"=>"prova1", "commit"=>"Invita", "room_id"=>"2"}
+  [1m[36mRoom Load (0.2ms)[0m  [1m[34mSELECT  "rooms".* FROM "rooms" WHERE "rooms"."id" = ? LIMIT ?[0m  [["id", 2], ["LIMIT", 1]]
+  ↳ /Users/rsoul/.rvm/rubies/ruby-2.5.1/lib/ruby/gems/2.5.0/gems/activesupport-5.2.0/lib/active_support/subscriber.rb:101
+  [1m[36mUser Load (0.1ms)[0m  [1m[34mSELECT  "users".* FROM "users" WHERE "users"."id" = ? LIMIT ?[0m  [["id", 1], ["LIMIT", 1]]
+  ↳ /Users/rsoul/.rvm/rubies/ruby-2.5.1/lib/ruby/gems/2.5.0/gems/activesupport-5.2.0/lib/active_support/subscriber.rb:101
+  [1m[36mUser Load (0.2ms)[0m  [1m[34mSELECT  "users".* FROM "users" WHERE "users"."username" = ? LIMIT ?[0m  [["username", "prova1"], ["LIMIT", 1]]
+  ↳ /Users/rsoul/.rvm/rubies/ruby-2.5.1/lib/ruby/gems/2.5.0/gems/activesupport-5.2.0/lib/active_support/subscriber.rb:101
+Completed 500 Internal Server Error in 4ms (ActiveRecord: 0.5ms)
+
+
+  
+NoMethodError (undefined method `hash_id' for nil:NilClass):
+  
+app/controllers/rooms_controller.rb:82:in `invite_user_to_room'
+Started GET "/rooms/C7RkqVuBIUor/reservations" for 127.0.0.1 at 2018-09-20 21:08:24 +0200
+Started GET "/rooms/C7RkqVuBIUor/messages" for 127.0.0.1 at 2018-09-20 21:08:24 +0200
+Processing by ReservationsController#index as HTML
+Processing by MessagesController#index as HTML
+  Parameters: {"room_id"=>"C7RkqVuBIUor"}
+  [1m[36mRoom Load (0.5ms)[0m  [1m[34mSELECT  "rooms".* FROM "rooms" WHERE "rooms"."hash_id" = ? ORDER BY "rooms"."id" ASC LIMIT ?[0m  [["hash_id", "C7RkqVuBIUor"], ["LIMIT", 1]]
+  ↳ /Users/rsoul/.rvm/rubies/ruby-2.5.1/lib/ruby/gems/2.5.0/gems/activesupport-5.2.0/lib/active_support/subscriber.rb:101
+  Parameters: {"room_id"=>"C7RkqVuBIUor"}
+  [1m[36mRoom Load (0.4ms)[0m  [1m[34mSELECT  "rooms".* FROM "rooms" WHERE "rooms"."hash_id" = ? ORDER BY "rooms"."id" ASC LIMIT ?[0m  [["hash_id", "C7RkqVuBIUor"], ["LIMIT", 1]]
+  ↳ /Users/rsoul/.rvm/rubies/ruby-2.5.1/lib/ruby/gems/2.5.0/gems/activesupport-5.2.0/lib/active_support/subscriber.rb:101
+  Rendering messages/index.html.haml
+  [1m[36mMessage Load (0.2ms)[0m  [1m[34mSELECT "messages".* FROM "messages" WHERE "messages"."room_id" = ?[0m  [["room_id", 2]]
+  ↳ /Users/rsoul/.rvm/rubies/ruby-2.5.1/lib/ruby/gems/2.5.0/gems/activesupport-5.2.0/lib/active_support/subscriber.rb:101
+  Rendered messages/index.html.haml (4.3ms)
+Completed 200 OK in 51ms (Views: 46.9ms | ActiveRecord: 0.6ms)
+
+
+  Rendering reservations/index.html.haml
+  [1m[36mReservation Load (0.3ms)[0m  [1m[34mSELECT "reservations".* FROM "reservations" WHERE "reservations"."room_id" = ? ORDER BY position[0m  [["room_id", 2]]
+  ↳ /Users/rsoul/.rvm/rubies/ruby-2.5.1/lib/ruby/gems/2.5.0/gems/activesupport-5.2.0/lib/active_support/subscriber.rb:101
+  Rendered reservations/index.html.haml (10.8ms)
+Completed 200 OK in 203ms (Views: 199.2ms | ActiveRecord: 0.8ms)
+
+
+Started GET "/rooms/C7RkqVuBIUor" for 127.0.0.1 at 2018-09-20 21:08:54 +0200
+Processing by RoomsController#show as HTML
+  Parameters: {"id"=>"C7RkqVuBIUor"}
+  [1m[36mRoom Load (0.2ms)[0m  [1m[34mSELECT  "rooms".* FROM "rooms" WHERE "rooms"."hash_id" = ? ORDER BY "rooms"."id" ASC LIMIT ?[0m  [["hash_id", "C7RkqVuBIUor"], ["LIMIT", 1]]
+  ↳ /Users/rsoul/.rvm/rubies/ruby-2.5.1/lib/ruby/gems/2.5.0/gems/activesupport-5.2.0/lib/active_support/subscriber.rb:101
+  Rendering rooms/show.html.haml within layouts/application
+  [1m[36mCACHE Room Load (0.0ms)[0m  [1m[34mSELECT  "rooms".* FROM "rooms" WHERE "rooms"."hash_id" = ? ORDER BY "rooms"."id" ASC LIMIT ?[0m  [["hash_id", "C7RkqVuBIUor"], ["LIMIT", 1]]
+  ↳ /Users/rsoul/.rvm/rubies/ruby-2.5.1/lib/ruby/gems/2.5.0/gems/activesupport-5.2.0/lib/active_support/subscriber.rb:101
+  [1m[36mUser Load (0.3ms)[0m  [1m[34mSELECT  "users".* FROM "users" WHERE "users"."id" = ? LIMIT ?[0m  [["id", 1], ["LIMIT", 1]]
+  ↳ /Users/rsoul/.rvm/rubies/ruby-2.5.1/lib/ruby/gems/2.5.0/gems/activesupport-5.2.0/lib/active_support/subscriber.rb:101
+  [1m[36mPower Exists (0.2ms)[0m  [1m[34mSELECT  1 AS one FROM "powers" WHERE "powers"."user_id" = ? AND "powers"."room_id" = ? LIMIT ?[0m  [["user_id", 1], ["room_id", 2], ["LIMIT", 1]]
+  ↳ /Users/rsoul/.rvm/rubies/ruby-2.5.1/lib/ruby/gems/2.5.0/gems/activesupport-5.2.0/lib/active_support/subscriber.rb:101
+  [1m[36mCACHE Room Load (0.0ms)[0m  [1m[34mSELECT  "rooms".* FROM "rooms" WHERE "rooms"."hash_id" = ? ORDER BY "rooms"."id" ASC LIMIT ?[0m  [["hash_id", "C7RkqVuBIUor"], ["LIMIT", 1]]
+  ↳ /Users/rsoul/.rvm/rubies/ruby-2.5.1/lib/ruby/gems/2.5.0/gems/activesupport-5.2.0/lib/active_support/subscriber.rb:101
+  [1m[36mPower Load (0.2ms)[0m  [1m[34mSELECT "powers".* FROM "powers" WHERE "powers"."room_id" = ?[0m  [["room_id", 2]]
+  ↳ /Users/rsoul/.rvm/rubies/ruby-2.5.1/lib/ruby/gems/2.5.0/gems/activesupport-5.2.0/lib/active_support/subscriber.rb:101
+  [1m[36mCACHE User Load (0.0ms)[0m  [1m[34mSELECT  "users".* FROM "users" WHERE "users"."id" = ? LIMIT ?[0m  [["id", 1], ["LIMIT", 1]]
+  ↳ /Users/rsoul/.rvm/rubies/ruby-2.5.1/lib/ruby/gems/2.5.0/gems/activesupport-5.2.0/lib/active_support/subscriber.rb:101
+  [1m[36mCACHE Room Load (0.0ms)[0m  [1m[34mSELECT  "rooms".* FROM "rooms" WHERE "rooms"."hash_id" = ? ORDER BY "rooms"."id" ASC LIMIT ?[0m  [["hash_id", "C7RkqVuBIUor"], ["LIMIT", 1]]
+  ↳ /Users/rsoul/.rvm/rubies/ruby-2.5.1/lib/ruby/gems/2.5.0/gems/activesupport-5.2.0/lib/active_support/subscriber.rb:101
+  [1m[36mCACHE Room Load (0.0ms)[0m  [1m[34mSELECT  "rooms".* FROM "rooms" WHERE "rooms"."hash_id" = ? ORDER BY "rooms"."id" ASC LIMIT ?[0m  [["hash_id", "C7RkqVuBIUor"], ["LIMIT", 1]]
+  ↳ /Users/rsoul/.rvm/rubies/ruby-2.5.1/lib/ruby/gems/2.5.0/gems/activesupport-5.2.0/lib/active_support/subscriber.rb:101
+  [1m[36mCACHE Power Exists (0.0ms)[0m  [1m[34mSELECT  1 AS one FROM "powers" WHERE "powers"."user_id" = ? AND "powers"."room_id" = ? LIMIT ?[0m  [["user_id", 1], ["room_id", 2], ["LIMIT", 1]]
+  ↳ /Users/rsoul/.rvm/rubies/ruby-2.5.1/lib/ruby/gems/2.5.0/gems/activesupport-5.2.0/lib/active_support/subscriber.rb:101
+  [1m[36mCACHE Room Load (0.0ms)[0m  [1m[34mSELECT  "rooms".* FROM "rooms" WHERE "rooms"."hash_id" = ? ORDER BY "rooms"."id" ASC LIMIT ?[0m  [["hash_id", "C7RkqVuBIUor"], ["LIMIT", 1]]
+  ↳ /Users/rsoul/.rvm/rubies/ruby-2.5.1/lib/ruby/gems/2.5.0/gems/activesupport-5.2.0/lib/active_support/subscriber.rb:101
+  [1m[36mCACHE Power Exists (0.0ms)[0m  [1m[34mSELECT  1 AS one FROM "powers" WHERE "powers"."user_id" = ? AND "powers"."room_id" = ? LIMIT ?[0m  [["user_id", 1], ["room_id", 2], ["LIMIT", 1]]
+  ↳ /Users/rsoul/.rvm/rubies/ruby-2.5.1/lib/ruby/gems/2.5.0/gems/activesupport-5.2.0/lib/active_support/subscriber.rb:101
+  [1m[36mReservation Exists (0.1ms)[0m  [1m[34mSELECT  1 AS one FROM "reservations" WHERE "reservations"."user_id" = ? AND "reservations"."room_id" = ? LIMIT ?[0m  [["user_id", 1], ["room_id", 2], ["LIMIT", 1]]
+  ↳ /Users/rsoul/.rvm/rubies/ruby-2.5.1/lib/ruby/gems/2.5.0/gems/activesupport-5.2.0/lib/active_support/subscriber.rb:101
+  [1m[36mMessage Load (0.2ms)[0m  [1m[34mSELECT "messages".* FROM "messages" WHERE "messages"."room_id" = ?[0m  [["room_id", 2]]
+  ↳ /Users/rsoul/.rvm/rubies/ruby-2.5.1/lib/ruby/gems/2.5.0/gems/activesupport-5.2.0/lib/active_support/subscriber.rb:101
+  Rendered rooms/show.html.haml within layouts/application (96.8ms)
+  Rendered layouts/_navbar.html.haml (12.6ms)
+Completed 200 OK in 245ms (Views: 205.1ms | ActiveRecord: 4.5ms)
+
+
+Started GET "/rooms/C7RkqVuBIUor.json" for 127.0.0.1 at 2018-09-20 21:08:55 +0200
+Processing by RoomsController#show as JSON
+  Parameters: {"id"=>"C7RkqVuBIUor"}
+  [1m[36mRoom Load (0.2ms)[0m  [1m[34mSELECT  "rooms".* FROM "rooms" WHERE "rooms"."hash_id" = ? ORDER BY "rooms"."id" ASC LIMIT ?[0m  [["hash_id", "C7RkqVuBIUor"], ["LIMIT", 1]]
+  ↳ /Users/rsoul/.rvm/rubies/ruby-2.5.1/lib/ruby/gems/2.5.0/gems/activesupport-5.2.0/lib/active_support/subscriber.rb:101
+  Rendering rooms/show.json.jbuilder
+  Rendered rooms/_room.json.jbuilder (0.8ms)
+  Rendered rooms/show.json.jbuilder (2.3ms)
+Completed 200 OK in 40ms (Views: 35.7ms | ActiveRecord: 0.2ms)
+
+
+Started POST "/rooms/2/invite_user" for 127.0.0.1 at 2018-09-20 21:08:57 +0200
+Processing by RoomsController#invite_user_to_room as HTML
+  Parameters: {"utf8"=>"✓", "authenticity_token"=>"BKO8V5gZ+hxF0xivkP4KobcY8vdi0FIrEHxXtn3FyPg6udsvVzZUviu3FfKtVZhEMgO7KAJdJxv0M8tvVu7AQg==", "username"=>"prova1", "commit"=>"Invita", "room_id"=>"2"}
+  [1m[36mRoom Load (0.2ms)[0m  [1m[34mSELECT  "rooms".* FROM "rooms" WHERE "rooms"."id" = ? LIMIT ?[0m  [["id", 2], ["LIMIT", 1]]
+  ↳ /Users/rsoul/.rvm/rubies/ruby-2.5.1/lib/ruby/gems/2.5.0/gems/activesupport-5.2.0/lib/active_support/subscriber.rb:101
+  [1m[36mUser Load (0.2ms)[0m  [1m[34mSELECT  "users".* FROM "users" WHERE "users"."id" = ? LIMIT ?[0m  [["id", 1], ["LIMIT", 1]]
+  ↳ /Users/rsoul/.rvm/rubies/ruby-2.5.1/lib/ruby/gems/2.5.0/gems/activesupport-5.2.0/lib/active_support/subscriber.rb:101
+  [1m[36mUser Load (0.3ms)[0m  [1m[34mSELECT  "users".* FROM "users" WHERE "users"."username" = ? LIMIT ?[0m  [["username", "prova1"], ["LIMIT", 1]]
+  ↳ /Users/rsoul/.rvm/rubies/ruby-2.5.1/lib/ruby/gems/2.5.0/gems/activesupport-5.2.0/lib/active_support/subscriber.rb:101
+  [1m[35m (0.1ms)[0m  [1m[36mbegin transaction[0m
+  ↳ /Users/rsoul/.rvm/rubies/ruby-2.5.1/lib/ruby/gems/2.5.0/gems/activesupport-5.2.0/lib/active_support/subscriber.rb:101
+  [1m[36mMailboxer::Conversation Create (9.9ms)[0m  [1m[32mINSERT INTO "mailboxer_conversations" ("subject", "created_at", "updated_at") VALUES (?, ?, ?)[0m  [["subject", "Hey prova1, prova1 has invited you to check out root_url/rooms/C7RkqVuBIUor"], ["created_at", "2018-09-20 19:08:57.191404"], ["updated_at", "2018-09-20 19:08:57.191404"]]
+  ↳ /Users/rsoul/.rvm/rubies/ruby-2.5.1/lib/ruby/gems/2.5.0/gems/activesupport-5.2.0/lib/active_support/subscriber.rb:101
+  [1m[36mMailboxer::Message Create (1.6ms)[0m  [1m[32mINSERT INTO "mailboxer_notifications" ("type", "body", "subject", "sender_type", "sender_id", "conversation_id", "updated_at", "created_at") VALUES (?, ?, ?, ?, ?, ?, ?, ?)[0m  [["type", "Mailboxer::Message"], ["body", "You have been invited to hhhyyy"], ["subject", "Hey prova1, prova1 has invited you to check out root_url/rooms/C7RkqVuBIUor"], ["sender_type", "User"], ["sender_id", 1], ["conversation_id", 1], ["updated_at", "2018-09-20 19:08:57.191404"], ["created_at", "2018-09-20 19:08:57.191404"]]
+  ↳ /Users/rsoul/.rvm/rubies/ruby-2.5.1/lib/ruby/gems/2.5.0/gems/activesupport-5.2.0/lib/active_support/subscriber.rb:101
+  [1m[36mMailboxer::Receipt Create (0.6ms)[0m  [1m[32mINSERT INTO "mailboxer_receipts" ("receiver_type", "receiver_id", "notification_id", "mailbox_type", "created_at", "updated_at") VALUES (?, ?, ?, ?, ?, ?)[0m  [["receiver_type", "User"], ["receiver_id", 1], ["notification_id", 1], ["mailbox_type", "inbox"], ["created_at", "2018-09-20 19:08:57.523988"], ["updated_at", "2018-09-20 19:08:57.523988"]]
+  ↳ /Users/rsoul/.rvm/rubies/ruby-2.5.1/lib/ruby/gems/2.5.0/gems/activesupport-5.2.0/lib/active_support/subscriber.rb:101
+  [1m[36mMailboxer::Receipt Create (0.1ms)[0m  [1m[32mINSERT INTO "mailboxer_receipts" ("receiver_type", "receiver_id", "notification_id", "is_read", "mailbox_type", "created_at", "updated_at") VALUES (?, ?, ?, ?, ?, ?, ?)[0m  [["receiver_type", "User"], ["receiver_id", 1], ["notification_id", 1], ["is_read", 1], ["mailbox_type", "sentbox"], ["created_at", "2018-09-20 19:08:57.525529"], ["updated_at", "2018-09-20 19:08:57.525529"]]
+  ↳ /Users/rsoul/.rvm/rubies/ruby-2.5.1/lib/ruby/gems/2.5.0/gems/activesupport-5.2.0/lib/active_support/subscriber.rb:101
+  [1m[35m (20.9ms)[0m  [1m[36mcommit transaction[0m
+  ↳ /Users/rsoul/.rvm/rubies/ruby-2.5.1/lib/ruby/gems/2.5.0/gems/activesupport-5.2.0/lib/active_support/subscriber.rb:101
+Redirected to http://localhost:3000/rooms/C7RkqVuBIUor
+Completed 302 Found in 362ms (ActiveRecord: 35.9ms)
+
+
+Started GET "/rooms/C7RkqVuBIUor" for 127.0.0.1 at 2018-09-20 21:08:57 +0200
+Processing by RoomsController#show as HTML
+  Parameters: {"id"=>"C7RkqVuBIUor"}
+  [1m[36mRoom Load (0.3ms)[0m  [1m[34mSELECT  "rooms".* FROM "rooms" WHERE "rooms"."hash_id" = ? ORDER BY "rooms"."id" ASC LIMIT ?[0m  [["hash_id", "C7RkqVuBIUor"], ["LIMIT", 1]]
+  ↳ /Users/rsoul/.rvm/rubies/ruby-2.5.1/lib/ruby/gems/2.5.0/gems/activesupport-5.2.0/lib/active_support/subscriber.rb:101
+  Rendering rooms/show.html.haml within layouts/application
+  [1m[36mCACHE Room Load (0.0ms)[0m  [1m[34mSELECT  "rooms".* FROM "rooms" WHERE "rooms"."hash_id" = ? ORDER BY "rooms"."id" ASC LIMIT ?[0m  [["hash_id", "C7RkqVuBIUor"], ["LIMIT", 1]]
+  ↳ /Users/rsoul/.rvm/rubies/ruby-2.5.1/lib/ruby/gems/2.5.0/gems/activesupport-5.2.0/lib/active_support/subscriber.rb:101
+  [1m[36mUser Load (0.1ms)[0m  [1m[34mSELECT  "users".* FROM "users" WHERE "users"."id" = ? LIMIT ?[0m  [["id", 1], ["LIMIT", 1]]
+  ↳ /Users/rsoul/.rvm/rubies/ruby-2.5.1/lib/ruby/gems/2.5.0/gems/activesupport-5.2.0/lib/active_support/subscriber.rb:101
+  [1m[36mPower Exists (0.2ms)[0m  [1m[34mSELECT  1 AS one FROM "powers" WHERE "powers"."user_id" = ? AND "powers"."room_id" = ? LIMIT ?[0m  [["user_id", 1], ["room_id", 2], ["LIMIT", 1]]
+  ↳ /Users/rsoul/.rvm/rubies/ruby-2.5.1/lib/ruby/gems/2.5.0/gems/activesupport-5.2.0/lib/active_support/subscriber.rb:101
+  [1m[36mCACHE Room Load (0.0ms)[0m  [1m[34mSELECT  "rooms".* FROM "rooms" WHERE "rooms"."hash_id" = ? ORDER BY "rooms"."id" ASC LIMIT ?[0m  [["hash_id", "C7RkqVuBIUor"], ["LIMIT", 1]]
+  ↳ /Users/rsoul/.rvm/rubies/ruby-2.5.1/lib/ruby/gems/2.5.0/gems/activesupport-5.2.0/lib/active_support/subscriber.rb:101
+  [1m[36mPower Load (0.1ms)[0m  [1m[34mSELECT "powers".* FROM "powers" WHERE "powers"."room_id" = ?[0m  [["room_id", 2]]
+  ↳ /Users/rsoul/.rvm/rubies/ruby-2.5.1/lib/ruby/gems/2.5.0/gems/activesupport-5.2.0/lib/active_support/subscriber.rb:101
+  [1m[36mCACHE User Load (0.0ms)[0m  [1m[34mSELECT  "users".* FROM "users" WHERE "users"."id" = ? LIMIT ?[0m  [["id", 1], ["LIMIT", 1]]
+  ↳ /Users/rsoul/.rvm/rubies/ruby-2.5.1/lib/ruby/gems/2.5.0/gems/activesupport-5.2.0/lib/active_support/subscriber.rb:101
+  [1m[36mCACHE Room Load (0.0ms)[0m  [1m[34mSELECT  "rooms".* FROM "rooms" WHERE "rooms"."hash_id" = ? ORDER BY "rooms"."id" ASC LIMIT ?[0m  [["hash_id", "C7RkqVuBIUor"], ["LIMIT", 1]]
+  ↳ /Users/rsoul/.rvm/rubies/ruby-2.5.1/lib/ruby/gems/2.5.0/gems/activesupport-5.2.0/lib/active_support/subscriber.rb:101
+  [1m[36mCACHE Room Load (0.0ms)[0m  [1m[34mSELECT  "rooms".* FROM "rooms" WHERE "rooms"."hash_id" = ? ORDER BY "rooms"."id" ASC LIMIT ?[0m  [["hash_id", "C7RkqVuBIUor"], ["LIMIT", 1]]
+  ↳ /Users/rsoul/.rvm/rubies/ruby-2.5.1/lib/ruby/gems/2.5.0/gems/activesupport-5.2.0/lib/active_support/subscriber.rb:101
+  [1m[36mCACHE Power Exists (0.0ms)[0m  [1m[34mSELECT  1 AS one FROM "powers" WHERE "powers"."user_id" = ? AND "powers"."room_id" = ? LIMIT ?[0m  [["user_id", 1], ["room_id", 2], ["LIMIT", 1]]
+  ↳ /Users/rsoul/.rvm/rubies/ruby-2.5.1/lib/ruby/gems/2.5.0/gems/activesupport-5.2.0/lib/active_support/subscriber.rb:101
+  [1m[36mCACHE Room Load (0.0ms)[0m  [1m[34mSELECT  "rooms".* FROM "rooms" WHERE "rooms"."hash_id" = ? ORDER BY "rooms"."id" ASC LIMIT ?[0m  [["hash_id", "C7RkqVuBIUor"], ["LIMIT", 1]]
+  ↳ /Users/rsoul/.rvm/rubies/ruby-2.5.1/lib/ruby/gems/2.5.0/gems/activesupport-5.2.0/lib/active_support/subscriber.rb:101
+  [1m[36mCACHE Power Exists (0.0ms)[0m  [1m[34mSELECT  1 AS one FROM "powers" WHERE "powers"."user_id" = ? AND "powers"."room_id" = ? LIMIT ?[0m  [["user_id", 1], ["room_id", 2], ["LIMIT", 1]]
+  ↳ /Users/rsoul/.rvm/rubies/ruby-2.5.1/lib/ruby/gems/2.5.0/gems/activesupport-5.2.0/lib/active_support/subscriber.rb:101
+  [1m[36mReservation Exists (0.2ms)[0m  [1m[34mSELECT  1 AS one FROM "reservations" WHERE "reservations"."user_id" = ? AND "reservations"."room_id" = ? LIMIT ?[0m  [["user_id", 1], ["room_id", 2], ["LIMIT", 1]]
+  ↳ /Users/rsoul/.rvm/rubies/ruby-2.5.1/lib/ruby/gems/2.5.0/gems/activesupport-5.2.0/lib/active_support/subscriber.rb:101
+  [1m[36mMessage Load (0.1ms)[0m  [1m[34mSELECT "messages".* FROM "messages" WHERE "messages"."room_id" = ?[0m  [["room_id", 2]]
+  ↳ /Users/rsoul/.rvm/rubies/ruby-2.5.1/lib/ruby/gems/2.5.0/gems/activesupport-5.2.0/lib/active_support/subscriber.rb:101
+  Rendered rooms/show.html.haml within layouts/application (29.1ms)
+  Rendered layouts/_navbar.html.haml (18.5ms)
+Completed 200 OK in 134ms (Views: 128.7ms | ActiveRecord: 1.1ms)
+
+
+Started GET "/rooms/C7RkqVuBIUor.json" for 127.0.0.1 at 2018-09-20 21:08:58 +0200
+Processing by RoomsController#show as JSON
+  Parameters: {"id"=>"C7RkqVuBIUor"}
+  [1m[36mRoom Load (0.3ms)[0m  [1m[34mSELECT  "rooms".* FROM "rooms" WHERE "rooms"."hash_id" = ? ORDER BY "rooms"."id" ASC LIMIT ?[0m  [["hash_id", "C7RkqVuBIUor"], ["LIMIT", 1]]
+  ↳ /Users/rsoul/.rvm/rubies/ruby-2.5.1/lib/ruby/gems/2.5.0/gems/activesupport-5.2.0/lib/active_support/subscriber.rb:101
+  Rendering rooms/show.json.jbuilder
+  Rendered rooms/_room.json.jbuilder (0.8ms)
+  Rendered rooms/show.json.jbuilder (2.3ms)
+Completed 200 OK in 40ms (Views: 36.6ms | ActiveRecord: 0.3ms)
+
+
+Started GET "/conversations" for 127.0.0.1 at 2018-09-20 21:09:00 +0200
+Processing by ConversationsController#index as HTML
+  [1m[36mUser Load (0.1ms)[0m  [1m[34mSELECT  "users".* FROM "users" WHERE "users"."id" = ? LIMIT ?[0m  [["id", 1], ["LIMIT", 1]]
+  ↳ /Users/rsoul/.rvm/rubies/ruby-2.5.1/lib/ruby/gems/2.5.0/gems/activesupport-5.2.0/lib/active_support/subscriber.rb:101
+Started GET "/rooms/C7RkqVuBIUor/messages" for 127.0.0.1 at 2018-09-20 21:09:00 +0200
+Started GET "/rooms/C7RkqVuBIUor/reservations" for 127.0.0.1 at 2018-09-20 21:09:00 +0200
+Processing by MessagesController#index as HTML
+Processing by ReservationsController#index as HTML
+  Parameters: {"room_id"=>"C7RkqVuBIUor"}
+  Parameters: {"room_id"=>"C7RkqVuBIUor"}
+  [1m[36mRoom Load (0.2ms)[0m  [1m[34mSELECT  "rooms".* FROM "rooms" WHERE "rooms"."hash_id" = ? ORDER BY "rooms"."id" ASC LIMIT ?[0m  [["hash_id", "C7RkqVuBIUor"], ["LIMIT", 1]]
+  [1m[36mRoom Load (0.2ms)[0m  [1m[34mSELECT  "rooms".* FROM "rooms" WHERE "rooms"."hash_id" = ? ORDER BY "rooms"."id" ASC LIMIT ?[0m  [["hash_id", "C7RkqVuBIUor"], ["LIMIT", 1]]
+  Rendering conversations/index.html.haml within layouts/application
+  ↳ /Users/rsoul/.rvm/rubies/ruby-2.5.1/lib/ruby/gems/2.5.0/gems/activesupport-5.2.0/lib/active_support/subscriber.rb:101
+  ↳ /Users/rsoul/.rvm/rubies/ruby-2.5.1/lib/ruby/gems/2.5.0/gems/activesupport-5.2.0/lib/active_support/subscriber.rb:101
+  [1m[36mMailboxer::Conversation Load (23.6ms)[0m  [1m[34mSELECT DISTINCT "mailboxer_conversations".* FROM "mailboxer_conversations" INNER JOIN "mailboxer_notifications" ON "mailboxer_notifications"."conversation_id" = "mailboxer_conversations"."id" AND "mailboxer_notifications"."type" IN ('Mailboxer::Message') INNER JOIN "mailboxer_receipts" ON "mailboxer_receipts"."notification_id" = "mailboxer_notifications"."id" WHERE "mailboxer_notifications"."type" = ? AND "mailboxer_receipts"."receiver_id" = ? AND "mailboxer_receipts"."receiver_type" = ? ORDER BY "mailboxer_conversations"."updated_at" DESC[0m  [["type", "Mailboxer::Message"], ["receiver_id", 1], ["receiver_type", "User"]]
+  Rendering messages/index.html.haml
+  [1m[36mMessage Load (0.2ms)[0m  [1m[34mSELECT "messages".* FROM "messages" WHERE "messages"."room_id" = ?[0m  [["room_id", 2]]
+  ↳ /Users/rsoul/.rvm/rubies/ruby-2.5.1/lib/ruby/gems/2.5.0/gems/activesupport-5.2.0/lib/active_support/subscriber.rb:101
+  [1m[36mMailboxer::Message Load (0.3ms)[0m  [1m[34mSELECT  "mailboxer_notifications".* FROM "mailboxer_notifications" WHERE "mailboxer_notifications"."type" IN ('Mailboxer::Message') AND "mailboxer_notifications"."conversation_id" = ? ORDER BY "mailboxer_notifications"."created_at" ASC LIMIT ?[0m  [["conversation_id", 1], ["LIMIT", 1]]
+  Rendering reservations/index.html.haml
+  ↳ /Users/rsoul/.rvm/rubies/ruby-2.5.1/lib/ruby/gems/2.5.0/gems/activesupport-5.2.0/lib/active_support/subscriber.rb:101
+  [1m[36mMailboxer::Receipt Load (0.2ms)[0m  [1m[34mSELECT "mailboxer_receipts".* FROM "mailboxer_receipts" WHERE "mailboxer_receipts"."notification_id" = ?[0m  [["notification_id", 1]]
+  ↳ /Users/rsoul/.rvm/rubies/ruby-2.5.1/lib/ruby/gems/2.5.0/gems/activesupport-5.2.0/lib/active_support/subscriber.rb:101
+  [1m[36mUser Load (0.3ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."id" = ?[0m  [["id", 1]]
+  ↳ /Users/rsoul/.rvm/rubies/ruby-2.5.1/lib/ruby/gems/2.5.0/gems/activesupport-5.2.0/lib/active_support/subscriber.rb:101
+  ↳ /Users/rsoul/.rvm/rubies/ruby-2.5.1/lib/ruby/gems/2.5.0/gems/activesupport-5.2.0/lib/active_support/subscriber.rb:101
+  [1m[36mReservation Load (0.2ms)[0m  [1m[34mSELECT "reservations".* FROM "reservations" WHERE "reservations"."room_id" = ? ORDER BY position[0m  [["room_id", 2]]
+  ↳ /Users/rsoul/.rvm/rubies/ruby-2.5.1/lib/ruby/gems/2.5.0/gems/activesupport-5.2.0/lib/active_support/subscriber.rb:101
+  Rendered reservations/index.html.haml (29.5ms)
+Completed 200 OK in 132ms (Views: 68.7ms | ActiveRecord: 0.4ms)
+
+
+  Rendered messages/index.html.haml (33.0ms)
+Completed 200 OK in 131ms (Views: 99.0ms | ActiveRecord: 0.4ms)
+
+
+  [1m[36mMailboxer::Conversation::OptOut Exists (7.2ms)[0m  [1m[34mSELECT  1 AS one FROM "mailboxer_conversation_opt_outs" WHERE "mailboxer_conversation_opt_outs"."conversation_id" = ? AND "mailboxer_conversation_opt_outs"."unsubscriber_type" = ? AND "mailboxer_conversation_opt_outs"."unsubscriber_id" = ? LIMIT ?[0m  [["conversation_id", 1], ["unsubscriber_type", "User"], ["unsubscriber_id", 1], ["LIMIT", 1]]
+  ↳ /Users/rsoul/.rvm/rubies/ruby-2.5.1/lib/ruby/gems/2.5.0/gems/activesupport-5.2.0/lib/active_support/subscriber.rb:101
+  [1m[36mCACHE Mailboxer::Conversation::OptOut Exists (0.0ms)[0m  [1m[34mSELECT  1 AS one FROM "mailboxer_conversation_opt_outs" WHERE "mailboxer_conversation_opt_outs"."conversation_id" = ? AND "mailboxer_conversation_opt_outs"."unsubscriber_type" = ? AND "mailboxer_conversation_opt_outs"."unsubscriber_id" = ? LIMIT ?[0m  [["conversation_id", 1], ["unsubscriber_type", "User"], ["unsubscriber_id", 1], ["LIMIT", 1]]
+  ↳ /Users/rsoul/.rvm/rubies/ruby-2.5.1/lib/ruby/gems/2.5.0/gems/activesupport-5.2.0/lib/active_support/subscriber.rb:101
+  Rendered conversations/index.html.haml within layouts/application (144.7ms)
+  Rendered layouts/_navbar.html.haml (7.6ms)
+Completed 200 OK in 281ms (Views: 202.5ms | ActiveRecord: 32.2ms)
+
+
+Started GET "/conversations/1" for 127.0.0.1 at 2018-09-20 21:09:03 +0200
+Processing by ConversationsController#show as HTML
+  Parameters: {"id"=>"1"}
+  [1m[36mUser Load (0.4ms)[0m  [1m[34mSELECT  "users".* FROM "users" WHERE "users"."id" = ? LIMIT ?[0m  [["id", 1], ["LIMIT", 1]]
+  ↳ /Users/rsoul/.rvm/rubies/ruby-2.5.1/lib/ruby/gems/2.5.0/gems/activesupport-5.2.0/lib/active_support/subscriber.rb:101
+  [1m[36mMailboxer::Conversation Load (0.4ms)[0m  [1m[34mSELECT  DISTINCT "mailboxer_conversations".* FROM "mailboxer_conversations" INNER JOIN "mailboxer_notifications" ON "mailboxer_notifications"."conversation_id" = "mailboxer_conversations"."id" AND "mailboxer_notifications"."type" IN ('Mailboxer::Message') INNER JOIN "mailboxer_receipts" ON "mailboxer_receipts"."notification_id" = "mailboxer_notifications"."id" WHERE "mailboxer_notifications"."type" = ? AND "mailboxer_receipts"."receiver_id" = ? AND "mailboxer_receipts"."receiver_type" = ? AND "mailboxer_conversations"."id" = ? ORDER BY "mailboxer_conversations"."updated_at" DESC LIMIT ?[0m  [["type", "Mailboxer::Message"], ["receiver_id", 1], ["receiver_type", "User"], ["id", 1], ["LIMIT", 1]]
+  ↳ /Users/rsoul/.rvm/rubies/ruby-2.5.1/lib/ruby/gems/2.5.0/gems/activesupport-5.2.0/lib/active_support/subscriber.rb:101
+  Rendering conversations/show.html.haml within layouts/application
+  [1m[36mMailboxer::Message Load (0.3ms)[0m  [1m[34mSELECT  "mailboxer_notifications".* FROM "mailboxer_notifications" WHERE "mailboxer_notifications"."type" IN ('Mailboxer::Message') AND "mailboxer_notifications"."conversation_id" = ? ORDER BY "mailboxer_notifications"."created_at" ASC LIMIT ?[0m  [["conversation_id", 1], ["LIMIT", 1]]
+  ↳ /Users/rsoul/.rvm/rubies/ruby-2.5.1/lib/ruby/gems/2.5.0/gems/activesupport-5.2.0/lib/active_support/subscriber.rb:101
+  [1m[36mMailboxer::Receipt Load (0.2ms)[0m  [1m[34mSELECT "mailboxer_receipts".* FROM "mailboxer_receipts" WHERE "mailboxer_receipts"."notification_id" = ?[0m  [["notification_id", 1]]
+  ↳ /Users/rsoul/.rvm/rubies/ruby-2.5.1/lib/ruby/gems/2.5.0/gems/activesupport-5.2.0/lib/active_support/subscriber.rb:101
+  [1m[36mUser Load (0.2ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."id" = ?[0m  [["id", 1]]
+  ↳ /Users/rsoul/.rvm/rubies/ruby-2.5.1/lib/ruby/gems/2.5.0/gems/activesupport-5.2.0/lib/active_support/subscriber.rb:101
+  [1m[36mMailboxer::Conversation::OptOut Exists (0.1ms)[0m  [1m[34mSELECT  1 AS one FROM "mailboxer_conversation_opt_outs" WHERE "mailboxer_conversation_opt_outs"."conversation_id" = ? AND "mailboxer_conversation_opt_outs"."unsubscriber_type" = ? AND "mailboxer_conversation_opt_outs"."unsubscriber_id" = ? LIMIT ?[0m  [["conversation_id", 1], ["unsubscriber_type", "User"], ["unsubscriber_id", 1], ["LIMIT", 1]]
+  ↳ /Users/rsoul/.rvm/rubies/ruby-2.5.1/lib/ruby/gems/2.5.0/gems/activesupport-5.2.0/lib/active_support/subscriber.rb:101
+  [1m[36mCACHE Mailboxer::Conversation::OptOut Exists (0.0ms)[0m  [1m[34mSELECT  1 AS one FROM "mailboxer_conversation_opt_outs" WHERE "mailboxer_conversation_opt_outs"."conversation_id" = ? AND "mailboxer_conversation_opt_outs"."unsubscriber_type" = ? AND "mailboxer_conversation_opt_outs"."unsubscriber_id" = ? LIMIT ?[0m  [["conversation_id", 1], ["unsubscriber_type", "User"], ["unsubscriber_id", 1], ["LIMIT", 1]]
+  ↳ /Users/rsoul/.rvm/rubies/ruby-2.5.1/lib/ruby/gems/2.5.0/gems/activesupport-5.2.0/lib/active_support/subscriber.rb:101
+  [1m[36mMailboxer::Receipt Load (0.3ms)[0m  [1m[34mSELECT "mailboxer_receipts".* FROM "mailboxer_receipts" INNER JOIN "mailboxer_notifications" ON "mailboxer_notifications"."id" = "mailboxer_receipts"."notification_id" AND "mailboxer_notifications"."type" IN ('Mailboxer::Message') WHERE "mailboxer_notifications"."conversation_id" = ? AND "mailboxer_receipts"."receiver_id" = ? AND "mailboxer_receipts"."receiver_type" = ?[0m  [["conversation_id", 1], ["receiver_id", 1], ["receiver_type", "User"]]
+  ↳ /Users/rsoul/.rvm/rubies/ruby-2.5.1/lib/ruby/gems/2.5.0/gems/activesupport-5.2.0/lib/active_support/subscriber.rb:101
+  [1m[36mMailboxer::Message Load (0.2ms)[0m  [1m[34mSELECT  "mailboxer_notifications".* FROM "mailboxer_notifications" WHERE "mailboxer_notifications"."type" IN ('Mailboxer::Message') AND "mailboxer_notifications"."id" = ? LIMIT ?[0m  [["id", 1], ["LIMIT", 1]]
+  ↳ /Users/rsoul/.rvm/rubies/ruby-2.5.1/lib/ruby/gems/2.5.0/gems/activesupport-5.2.0/lib/active_support/subscriber.rb:101
+  [1m[36mCACHE User Load (0.0ms)[0m  [1m[34mSELECT  "users".* FROM "users" WHERE "users"."id" = ? LIMIT ?[0m  [["id", 1], ["LIMIT", 1]]
+  ↳ /Users/rsoul/.rvm/rubies/ruby-2.5.1/lib/ruby/gems/2.5.0/gems/activesupport-5.2.0/lib/active_support/subscriber.rb:101
+  [1m[36mCACHE Mailboxer::Message Load (0.0ms)[0m  [1m[34mSELECT  "mailboxer_notifications".* FROM "mailboxer_notifications" WHERE "mailboxer_notifications"."type" IN ('Mailboxer::Message') AND "mailboxer_notifications"."id" = ? LIMIT ?[0m  [["id", 1], ["LIMIT", 1]]
+  ↳ /Users/rsoul/.rvm/rubies/ruby-2.5.1/lib/ruby/gems/2.5.0/gems/activesupport-5.2.0/lib/active_support/subscriber.rb:101
+  [1m[36mCACHE User Load (0.0ms)[0m  [1m[34mSELECT  "users".* FROM "users" WHERE "users"."id" = ? LIMIT ?[0m  [["id", 1], ["LIMIT", 1]]
+  ↳ /Users/rsoul/.rvm/rubies/ruby-2.5.1/lib/ruby/gems/2.5.0/gems/activesupport-5.2.0/lib/active_support/subscriber.rb:101
+  Rendered conversations/show.html.haml within layouts/application (17.7ms)
+  Rendered layouts/_navbar.html.haml (6.1ms)
+Completed 200 OK in 131ms (Views: 105.6ms | ActiveRecord: 2.1ms)
+
+
+  [1m[36mRoom Load (0.4ms)[0m  [1m[34mSELECT "rooms".* FROM "rooms"[0m
+  ↳ /Users/rsoul/.rvm/rubies/ruby-2.5.1/lib/ruby/gems/2.5.0/gems/activesupport-5.2.0/lib/active_support/subscriber.rb:101
+  [1m[36mReservation Load (0.2ms)[0m  [1m[34mSELECT "reservations".* FROM "reservations" WHERE "reservations"."room_id" = ? ORDER BY position[0m  [["room_id", 1]]
+  ↳ /Users/rsoul/.rvm/rubies/ruby-2.5.1/lib/ruby/gems/2.5.0/gems/activesupport-5.2.0/lib/active_support/subscriber.rb:101
+Started GET "/" for 127.0.0.1 at 2018-09-20 21:09:53 +0200
+Started GET "/conversations" for 127.0.0.1 at 2018-09-20 21:10:04 +0200
+Started GET "/conversations" for 127.0.0.1 at 2018-09-20 21:10:04 +0200
+Started GET "/conversations" for 127.0.0.1 at 2018-09-20 21:10:04 +0200
+Started GET "/conversations" for 127.0.0.1 at 2018-09-20 21:10:04 +0200
+Started GET "/conversations" for 127.0.0.1 at 2018-09-20 21:10:04 +0200
+Started GET "/conversations" for 127.0.0.1 at 2018-09-20 21:10:04 +0200
+Processing by MapboxController#show as HTML
+  [1m[36mRoom Load (0.2ms)[0m  [1m[34mSELECT "rooms".* FROM "rooms"[0m
+  ↳ /Users/rsoul/.rvm/rubies/ruby-2.5.1/lib/ruby/gems/2.5.0/gems/activesupport-5.2.0/lib/active_support/subscriber.rb:101
+  [1m[36mPower Load (0.1ms)[0m  [1m[34mSELECT "powers".* FROM "powers" WHERE "powers"."room_id" = ?[0m  [["room_id", 1]]
+  ↳ /Users/rsoul/.rvm/rubies/ruby-2.5.1/lib/ruby/gems/2.5.0/gems/activesupport-5.2.0/lib/active_support/subscriber.rb:101
+  [1m[36mUser Load (0.3ms)[0m  [1m[34mSELECT  "users".* FROM "users" WHERE "users"."id" = ? LIMIT ?[0m  [["id", 1], ["LIMIT", 1]]
+  ↳ /Users/rsoul/.rvm/rubies/ruby-2.5.1/lib/ruby/gems/2.5.0/gems/activesupport-5.2.0/lib/active_support/subscriber.rb:101
+  [1m[36mPower Load (0.2ms)[0m  [1m[34mSELECT "powers".* FROM "powers" WHERE "powers"."room_id" = ?[0m  [["room_id", 2]]
+  ↳ /Users/rsoul/.rvm/rubies/ruby-2.5.1/lib/ruby/gems/2.5.0/gems/activesupport-5.2.0/lib/active_support/subscriber.rb:101
+  [1m[36mCACHE User Load (0.0ms)[0m  [1m[34mSELECT  "users".* FROM "users" WHERE "users"."id" = ? LIMIT ?[0m  [["id", 1], ["LIMIT", 1]]
+  ↳ /Users/rsoul/.rvm/rubies/ruby-2.5.1/lib/ruby/gems/2.5.0/gems/activesupport-5.2.0/lib/active_support/subscriber.rb:101
+  Rendering mapbox/show.html.haml within layouts/application
+  Rendered mapbox/show.html.haml within layouts/application (20.3ms)
+  [1m[36mCACHE User Load (0.0ms)[0m  [1m[34mSELECT  "users".* FROM "users" WHERE "users"."id" = ? LIMIT ?[0m  [["id", 1], ["LIMIT", 1]]
+  ↳ /Users/rsoul/.rvm/rubies/ruby-2.5.1/lib/ruby/gems/2.5.0/gems/activesupport-5.2.0/lib/active_support/subscriber.rb:101
+  Rendered layouts/_navbar.html.haml (8.5ms)
+Completed 200 OK in 215ms (Views: 122.4ms | ActiveRecord: 2.9ms)
+
+
+Processing by ConversationsController#index as HTML
+Processing by ConversationsController#index as HTML
+Processing by ConversationsController#index as HTML
+Processing by ConversationsController#index as HTML
+Processing by ConversationsController#index as HTML
+Processing by ConversationsController#index as HTML
+  [1m[36mUser Load (0.2ms)[0m  [1m[34mSELECT  "users".* FROM "users" WHERE "users"."id" = ? LIMIT ?[0m  [["id", 1], ["LIMIT", 1]]
+  [1m[36mUser Load (0.2ms)[0m  [1m[34mSELECT  "users".* FROM "users" WHERE "users"."id" = ? LIMIT ?[0m  [["id", 1], ["LIMIT", 1]]
+  [1m[36mUser Load (0.2ms)[0m  [1m[34mSELECT  "users".* FROM "users" WHERE "users"."id" = ? LIMIT ?[0m  [["id", 1], ["LIMIT", 1]]
+  [1m[36mUser Load (0.2ms)[0m  [1m[34mSELECT  "users".* FROM "users" WHERE "users"."id" = ? LIMIT ?[0m  [["id", 1], ["LIMIT", 1]]
+  ↳ /Users/rsoul/.rvm/rubies/ruby-2.5.1/lib/ruby/gems/2.5.0/gems/activesupport-5.2.0/lib/active_support/subscriber.rb:101
+  ↳ /Users/rsoul/.rvm/rubies/ruby-2.5.1/lib/ruby/gems/2.5.0/gems/activesupport-5.2.0/lib/active_support/subscriber.rb:101
+  [1m[36mUser Load (0.2ms)[0m  [1m[34mSELECT  "users".* FROM "users" WHERE "users"."id" = ? LIMIT ?[0m  [["id", 1], ["LIMIT", 1]]
+  ↳ /Users/rsoul/.rvm/rubies/ruby-2.5.1/lib/ruby/gems/2.5.0/gems/activesupport-5.2.0/lib/active_support/subscriber.rb:101
+  ↳ /Users/rsoul/.rvm/rubies/ruby-2.5.1/lib/ruby/gems/2.5.0/gems/activesupport-5.2.0/lib/active_support/subscriber.rb:101
+  ↳ /Users/rsoul/.rvm/rubies/ruby-2.5.1/lib/ruby/gems/2.5.0/gems/activesupport-5.2.0/lib/active_support/subscriber.rb:101
+  [1m[36mUser Load (0.2ms)[0m  [1m[34mSELECT  "users".* FROM "users" WHERE "users"."id" = ? LIMIT ?[0m  [["id", 1], ["LIMIT", 1]]
+  ↳ /Users/rsoul/.rvm/rubies/ruby-2.5.1/lib/ruby/gems/2.5.0/gems/activesupport-5.2.0/lib/active_support/subscriber.rb:101
+  Rendering conversations/index.html.haml within layouts/application
+  Rendering conversations/index.html.haml within layouts/application
+  [1m[36mMailboxer::Conversation Load (0.3ms)[0m  [1m[34mSELECT DISTINCT "mailboxer_conversations".* FROM "mailboxer_conversations" INNER JOIN "mailboxer_notifications" ON "mailboxer_notifications"."conversation_id" = "mailboxer_conversations"."id" AND "mailboxer_notifications"."type" IN ('Mailboxer::Message') INNER JOIN "mailboxer_receipts" ON "mailboxer_receipts"."notification_id" = "mailboxer_notifications"."id" WHERE "mailboxer_notifications"."type" = ? AND "mailboxer_receipts"."receiver_id" = ? AND "mailboxer_receipts"."receiver_type" = ? ORDER BY "mailboxer_conversations"."updated_at" DESC[0m  [["type", "Mailboxer::Message"], ["receiver_id", 1], ["receiver_type", "User"]]
+  [1m[36mMailboxer::Conversation Load (0.2ms)[0m  [1m[34mSELECT DISTINCT "mailboxer_conversations".* FROM "mailboxer_conversations" INNER JOIN "mailboxer_notifications" ON "mailboxer_notifications"."conversation_id" = "mailboxer_conversations"."id" AND "mailboxer_notifications"."type" IN ('Mailboxer::Message') INNER JOIN "mailboxer_receipts" ON "mailboxer_receipts"."notification_id" = "mailboxer_notifications"."id" WHERE "mailboxer_notifications"."type" = ? AND "mailboxer_receipts"."receiver_id" = ? AND "mailboxer_receipts"."receiver_type" = ? ORDER BY "mailboxer_conversations"."updated_at" DESC[0m  [["type", "Mailboxer::Message"], ["receiver_id", 1], ["receiver_type", "User"]]
+  Rendering conversations/index.html.haml within layouts/application
+  Rendering conversations/index.html.haml within layouts/application
+  [1m[36mMailboxer::Conversation Load (0.2ms)[0m  [1m[34mSELECT DISTINCT "mailboxer_conversations".* FROM "mailboxer_conversations" INNER JOIN "mailboxer_notifications" ON "mailboxer_notifications"."conversation_id" = "mailboxer_conversations"."id" AND "mailboxer_notifications"."type" IN ('Mailboxer::Message') INNER JOIN "mailboxer_receipts" ON "mailboxer_receipts"."notification_id" = "mailboxer_notifications"."id" WHERE "mailboxer_notifications"."type" = ? AND "mailboxer_receipts"."receiver_id" = ? AND "mailboxer_receipts"."receiver_type" = ? ORDER BY "mailboxer_conversations"."updated_at" DESC[0m  [["type", "Mailboxer::Message"], ["receiver_id", 1], ["receiver_type", "User"]]
+  Rendering conversations/index.html.haml within layouts/application
+  Rendering conversations/index.html.haml within layouts/application
+  [1m[36mMailboxer::Conversation Load (0.3ms)[0m  [1m[34mSELECT DISTINCT "mailboxer_conversations".* FROM "mailboxer_conversations" INNER JOIN "mailboxer_notifications" ON "mailboxer_notifications"."conversation_id" = "mailboxer_conversations"."id" AND "mailboxer_notifications"."type" IN ('Mailboxer::Message') INNER JOIN "mailboxer_receipts" ON "mailboxer_receipts"."notification_id" = "mailboxer_notifications"."id" WHERE "mailboxer_notifications"."type" = ? AND "mailboxer_receipts"."receiver_id" = ? AND "mailboxer_receipts"."receiver_type" = ? ORDER BY "mailboxer_conversations"."updated_at" DESC[0m  [["type", "Mailboxer::Message"], ["receiver_id", 1], ["receiver_type", "User"]]
+  ↳ /Users/rsoul/.rvm/rubies/ruby-2.5.1/lib/ruby/gems/2.5.0/gems/activesupport-5.2.0/lib/active_support/subscriber.rb:101
+  ↳ /Users/rsoul/.rvm/rubies/ruby-2.5.1/lib/ruby/gems/2.5.0/gems/activesupport-5.2.0/lib/active_support/subscriber.rb:101
+  ↳ /Users/rsoul/.rvm/rubies/ruby-2.5.1/lib/ruby/gems/2.5.0/gems/activesupport-5.2.0/lib/active_support/subscriber.rb:101
+  [1m[36mMailboxer::Message Load (0.2ms)[0m  [1m[34mSELECT  "mailboxer_notifications".* FROM "mailboxer_notifications" WHERE "mailboxer_notifications"."type" IN ('Mailboxer::Message') AND "mailboxer_notifications"."conversation_id" = ? ORDER BY "mailboxer_notifications"."created_at" ASC LIMIT ?[0m  [["conversation_id", 1], ["LIMIT", 1]]
+  [1m[36mMailboxer::Conversation Load (0.2ms)[0m  [1m[34mSELECT DISTINCT "mailboxer_conversations".* FROM "mailboxer_conversations" INNER JOIN "mailboxer_notifications" ON "mailboxer_notifications"."conversation_id" = "mailboxer_conversations"."id" AND "mailboxer_notifications"."type" IN ('Mailboxer::Message') INNER JOIN "mailboxer_receipts" ON "mailboxer_receipts"."notification_id" = "mailboxer_notifications"."id" WHERE "mailboxer_notifications"."type" = ? AND "mailboxer_receipts"."receiver_id" = ? AND "mailboxer_receipts"."receiver_type" = ? ORDER BY "mailboxer_conversations"."updated_at" DESC[0m  [["type", "Mailboxer::Message"], ["receiver_id", 1], ["receiver_type", "User"]]
+  ↳ /Users/rsoul/.rvm/rubies/ruby-2.5.1/lib/ruby/gems/2.5.0/gems/activesupport-5.2.0/lib/active_support/subscriber.rb:101
+  ↳ /Users/rsoul/.rvm/rubies/ruby-2.5.1/lib/ruby/gems/2.5.0/gems/activesupport-5.2.0/lib/active_support/subscriber.rb:101
+  [1m[36mMailboxer::Message Load (0.2ms)[0m  [1m[34mSELECT  "mailboxer_notifications".* FROM "mailboxer_notifications" WHERE "mailboxer_notifications"."type" IN ('Mailboxer::Message') AND "mailboxer_notifications"."conversation_id" = ? ORDER BY "mailboxer_notifications"."created_at" ASC LIMIT ?[0m  [["conversation_id", 1], ["LIMIT", 1]]
+  [1m[36mMailboxer::Message Load (0.2ms)[0m  [1m[34mSELECT  "mailboxer_notifications".* FROM "mailboxer_notifications" WHERE "mailboxer_notifications"."type" IN ('Mailboxer::Message') AND "mailboxer_notifications"."conversation_id" = ? ORDER BY "mailboxer_notifications"."created_at" ASC LIMIT ?[0m  [["conversation_id", 1], ["LIMIT", 1]]
+  ↳ /Users/rsoul/.rvm/rubies/ruby-2.5.1/lib/ruby/gems/2.5.0/gems/activesupport-5.2.0/lib/active_support/subscriber.rb:101
+  [1m[36mMailboxer::Message Load (0.3ms)[0m  [1m[34mSELECT  "mailboxer_notifications".* FROM "mailboxer_notifications" WHERE "mailboxer_notifications"."type" IN ('Mailboxer::Message') AND "mailboxer_notifications"."conversation_id" = ? ORDER BY "mailboxer_notifications"."created_at" ASC LIMIT ?[0m  [["conversation_id", 1], ["LIMIT", 1]]
+  ↳ /Users/rsoul/.rvm/rubies/ruby-2.5.1/lib/ruby/gems/2.5.0/gems/activesupport-5.2.0/lib/active_support/subscriber.rb:101
+  [1m[36mMailboxer::Message Load (0.3ms)[0m  [1m[34mSELECT  "mailboxer_notifications".* FROM "mailboxer_notifications" WHERE "mailboxer_notifications"."type" IN ('Mailboxer::Message') AND "mailboxer_notifications"."conversation_id" = ? ORDER BY "mailboxer_notifications"."created_at" ASC LIMIT ?[0m  [["conversation_id", 1], ["LIMIT", 1]]
+  ↳ /Users/rsoul/.rvm/rubies/ruby-2.5.1/lib/ruby/gems/2.5.0/gems/activesupport-5.2.0/lib/active_support/subscriber.rb:101
+  ↳ /Users/rsoul/.rvm/rubies/ruby-2.5.1/lib/ruby/gems/2.5.0/gems/activesupport-5.2.0/lib/active_support/subscriber.rb:101
+  [1m[36mMailboxer::Conversation Load (0.3ms)[0m  [1m[34mSELECT DISTINCT "mailboxer_conversations".* FROM "mailboxer_conversations" INNER JOIN "mailboxer_notifications" ON "mailboxer_notifications"."conversation_id" = "mailboxer_conversations"."id" AND "mailboxer_notifications"."type" IN ('Mailboxer::Message') INNER JOIN "mailboxer_receipts" ON "mailboxer_receipts"."notification_id" = "mailboxer_notifications"."id" WHERE "mailboxer_notifications"."type" = ? AND "mailboxer_receipts"."receiver_id" = ? AND "mailboxer_receipts"."receiver_type" = ? ORDER BY "mailboxer_conversations"."updated_at" DESC[0m  [["type", "Mailboxer::Message"], ["receiver_id", 1], ["receiver_type", "User"]]
+  ↳ /Users/rsoul/.rvm/rubies/ruby-2.5.1/lib/ruby/gems/2.5.0/gems/activesupport-5.2.0/lib/active_support/subscriber.rb:101
+  ↳ /Users/rsoul/.rvm/rubies/ruby-2.5.1/lib/ruby/gems/2.5.0/gems/activesupport-5.2.0/lib/active_support/subscriber.rb:101
+  [1m[36mMailboxer::Message Load (0.2ms)[0m  [1m[34mSELECT  "mailboxer_notifications".* FROM "mailboxer_notifications" WHERE "mailboxer_notifications"."type" IN ('Mailboxer::Message') AND "mailboxer_notifications"."conversation_id" = ? ORDER BY "mailboxer_notifications"."created_at" ASC LIMIT ?[0m  [["conversation_id", 1], ["LIMIT", 1]]
+  ↳ /Users/rsoul/.rvm/rubies/ruby-2.5.1/lib/ruby/gems/2.5.0/gems/activesupport-5.2.0/lib/active_support/subscriber.rb:101
+  [1m[36mMailboxer::Receipt Load (0.2ms)[0m  [1m[34mSELECT "mailboxer_receipts".* FROM "mailboxer_receipts" WHERE "mailboxer_receipts"."notification_id" = ?[0m  [["notification_id", 1]]
+  ↳ /Users/rsoul/.rvm/rubies/ruby-2.5.1/lib/ruby/gems/2.5.0/gems/activesupport-5.2.0/lib/active_support/subscriber.rb:101
+  [1m[36mMailboxer::Receipt Load (0.1ms)[0m  [1m[34mSELECT "mailboxer_receipts".* FROM "mailboxer_receipts" WHERE "mailboxer_receipts"."notification_id" = ?[0m  [["notification_id", 1]]
+  [1m[36mMailboxer::Receipt Load (0.2ms)[0m  [1m[34mSELECT "mailboxer_receipts".* FROM "mailboxer_receipts" WHERE "mailboxer_receipts"."notification_id" = ?[0m  [["notification_id", 1]]
+  ↳ /Users/rsoul/.rvm/rubies/ruby-2.5.1/lib/ruby/gems/2.5.0/gems/activesupport-5.2.0/lib/active_support/subscriber.rb:101
+  [1m[36mUser Load (0.4ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."id" = ?[0m  [["id", 1]]
+  ↳ /Users/rsoul/.rvm/rubies/ruby-2.5.1/lib/ruby/gems/2.5.0/gems/activesupport-5.2.0/lib/active_support/subscriber.rb:101
+  [1m[36mUser Load (0.3ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."id" = ?[0m  [["id", 1]]
+  ↳ /Users/rsoul/.rvm/rubies/ruby-2.5.1/lib/ruby/gems/2.5.0/gems/activesupport-5.2.0/lib/active_support/subscriber.rb:101
+  [1m[36mMailboxer::Receipt Load (0.1ms)[0m  [1m[34mSELECT "mailboxer_receipts".* FROM "mailboxer_receipts" WHERE "mailboxer_receipts"."notification_id" = ?[0m  [["notification_id", 1]]
+  [1m[36mMailboxer::Receipt Load (0.1ms)[0m  [1m[34mSELECT "mailboxer_receipts".* FROM "mailboxer_receipts" WHERE "mailboxer_receipts"."notification_id" = ?[0m  [["notification_id", 1]]
+  [1m[36mUser Load (0.3ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."id" = ?[0m  [["id", 1]]
+  [1m[36mMailboxer::Receipt Load (0.2ms)[0m  [1m[34mSELECT "mailboxer_receipts".* FROM "mailboxer_receipts" WHERE "mailboxer_receipts"."notification_id" = ?[0m  [["notification_id", 1]]
+  ↳ /Users/rsoul/.rvm/rubies/ruby-2.5.1/lib/ruby/gems/2.5.0/gems/activesupport-5.2.0/lib/active_support/subscriber.rb:101
+  ↳ /Users/rsoul/.rvm/rubies/ruby-2.5.1/lib/ruby/gems/2.5.0/gems/activesupport-5.2.0/lib/active_support/subscriber.rb:101
+  ↳ /Users/rsoul/.rvm/rubies/ruby-2.5.1/lib/ruby/gems/2.5.0/gems/activesupport-5.2.0/lib/active_support/subscriber.rb:101
+  ↳ /Users/rsoul/.rvm/rubies/ruby-2.5.1/lib/ruby/gems/2.5.0/gems/activesupport-5.2.0/lib/active_support/subscriber.rb:101
+  ↳ /Users/rsoul/.rvm/rubies/ruby-2.5.1/lib/ruby/gems/2.5.0/gems/activesupport-5.2.0/lib/active_support/subscriber.rb:101
+  [1m[36mUser Load (0.3ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."id" = ?[0m  [["id", 1]]
+  [1m[36mUser Load (0.2ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."id" = ?[0m  [["id", 1]]
+  [1m[36mUser Load (0.2ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."id" = ?[0m  [["id", 1]]
+  ↳ /Users/rsoul/.rvm/rubies/ruby-2.5.1/lib/ruby/gems/2.5.0/gems/activesupport-5.2.0/lib/active_support/subscriber.rb:101
+  ↳ /Users/rsoul/.rvm/rubies/ruby-2.5.1/lib/ruby/gems/2.5.0/gems/activesupport-5.2.0/lib/active_support/subscriber.rb:101
+  ↳ /Users/rsoul/.rvm/rubies/ruby-2.5.1/lib/ruby/gems/2.5.0/gems/activesupport-5.2.0/lib/active_support/subscriber.rb:101
+  [1m[36mMailboxer::Conversation::OptOut Exists (0.1ms)[0m  [1m[34mSELECT  1 AS one FROM "mailboxer_conversation_opt_outs" WHERE "mailboxer_conversation_opt_outs"."conversation_id" = ? AND "mailboxer_conversation_opt_outs"."unsubscriber_type" = ? AND "mailboxer_conversation_opt_outs"."unsubscriber_id" = ? LIMIT ?[0m  [["conversation_id", 1], ["unsubscriber_type", "User"], ["unsubscriber_id", 1], ["LIMIT", 1]]
+  [1m[36mMailboxer::Conversation::OptOut Exists (0.1ms)[0m  [1m[34mSELECT  1 AS one FROM "mailboxer_conversation_opt_outs" WHERE "mailboxer_conversation_opt_outs"."conversation_id" = ? AND "mailboxer_conversation_opt_outs"."unsubscriber_type" = ? AND "mailboxer_conversation_opt_outs"."unsubscriber_id" = ? LIMIT ?[0m  [["conversation_id", 1], ["unsubscriber_type", "User"], ["unsubscriber_id", 1], ["LIMIT", 1]]
+  ↳ /Users/rsoul/.rvm/rubies/ruby-2.5.1/lib/ruby/gems/2.5.0/gems/activesupport-5.2.0/lib/active_support/subscriber.rb:101
+  [1m[36mMailboxer::Conversation::OptOut Exists (0.1ms)[0m  [1m[34mSELECT  1 AS one FROM "mailboxer_conversation_opt_outs" WHERE "mailboxer_conversation_opt_outs"."conversation_id" = ? AND "mailboxer_conversation_opt_outs"."unsubscriber_type" = ? AND "mailboxer_conversation_opt_outs"."unsubscriber_id" = ? LIMIT ?[0m  [["conversation_id", 1], ["unsubscriber_type", "User"], ["unsubscriber_id", 1], ["LIMIT", 1]]
+  ↳ /Users/rsoul/.rvm/rubies/ruby-2.5.1/lib/ruby/gems/2.5.0/gems/activesupport-5.2.0/lib/active_support/subscriber.rb:101
+  [1m[36mMailboxer::Conversation::OptOut Exists (0.1ms)[0m  [1m[34mSELECT  1 AS one FROM "mailboxer_conversation_opt_outs" WHERE "mailboxer_conversation_opt_outs"."conversation_id" = ? AND "mailboxer_conversation_opt_outs"."unsubscriber_type" = ? AND "mailboxer_conversation_opt_outs"."unsubscriber_id" = ? LIMIT ?[0m  [["conversation_id", 1], ["unsubscriber_type", "User"], ["unsubscriber_id", 1], ["LIMIT", 1]]
+  [1m[36mCACHE Mailboxer::Conversation::OptOut Exists (0.0ms)[0m  [1m[34mSELECT  1 AS one FROM "mailboxer_conversation_opt_outs" WHERE "mailboxer_conversation_opt_outs"."conversation_id" = ? AND "mailboxer_conversation_opt_outs"."unsubscriber_type" = ? AND "mailboxer_conversation_opt_outs"."unsubscriber_id" = ? LIMIT ?[0m  [["conversation_id", 1], ["unsubscriber_type", "User"], ["unsubscriber_id", 1], ["LIMIT", 1]]
+  ↳ /Users/rsoul/.rvm/rubies/ruby-2.5.1/lib/ruby/gems/2.5.0/gems/activesupport-5.2.0/lib/active_support/subscriber.rb:101
+  ↳ /Users/rsoul/.rvm/rubies/ruby-2.5.1/lib/ruby/gems/2.5.0/gems/activesupport-5.2.0/lib/active_support/subscriber.rb:101
+  [1m[36mCACHE Mailboxer::Conversation::OptOut Exists (0.0ms)[0m  [1m[34mSELECT  1 AS one FROM "mailboxer_conversation_opt_outs" WHERE "mailboxer_conversation_opt_outs"."conversation_id" = ? AND "mailboxer_conversation_opt_outs"."unsubscriber_type" = ? AND "mailboxer_conversation_opt_outs"."unsubscriber_id" = ? LIMIT ?[0m  [["conversation_id", 1], ["unsubscriber_type", "User"], ["unsubscriber_id", 1], ["LIMIT", 1]]
+  [1m[36mMailboxer::Conversation::OptOut Exists (0.1ms)[0m  [1m[34mSELECT  1 AS one FROM "mailboxer_conversation_opt_outs" WHERE "mailboxer_conversation_opt_outs"."conversation_id" = ? AND "mailboxer_conversation_opt_outs"."unsubscriber_type" = ? AND "mailboxer_conversation_opt_outs"."unsubscriber_id" = ? LIMIT ?[0m  [["conversation_id", 1], ["unsubscriber_type", "User"], ["unsubscriber_id", 1], ["LIMIT", 1]]
+  Rendered conversations/index.html.haml within layouts/application (137.9ms)
+  ↳ /Users/rsoul/.rvm/rubies/ruby-2.5.1/lib/ruby/gems/2.5.0/gems/activesupport-5.2.0/lib/active_support/subscriber.rb:101
+  [1m[36mCACHE Mailboxer::Conversation::OptOut Exists (0.0ms)[0m  [1m[34mSELECT  1 AS one FROM "mailboxer_conversation_opt_outs" WHERE "mailboxer_conversation_opt_outs"."conversation_id" = ? AND "mailboxer_conversation_opt_outs"."unsubscriber_type" = ? AND "mailboxer_conversation_opt_outs"."unsubscriber_id" = ? LIMIT ?[0m  [["conversation_id", 1], ["unsubscriber_type", "User"], ["unsubscriber_id", 1], ["LIMIT", 1]]
+  [1m[36mCACHE Mailboxer::Conversation::OptOut Exists (0.0ms)[0m  [1m[34mSELECT  1 AS one FROM "mailboxer_conversation_opt_outs" WHERE "mailboxer_conversation_opt_outs"."conversation_id" = ? AND "mailboxer_conversation_opt_outs"."unsubscriber_type" = ? AND "mailboxer_conversation_opt_outs"."unsubscriber_id" = ? LIMIT ?[0m  [["conversation_id", 1], ["unsubscriber_type", "User"], ["unsubscriber_id", 1], ["LIMIT", 1]]
+  ↳ /Users/rsoul/.rvm/rubies/ruby-2.5.1/lib/ruby/gems/2.5.0/gems/activesupport-5.2.0/lib/active_support/subscriber.rb:101
+  ↳ /Users/rsoul/.rvm/rubies/ruby-2.5.1/lib/ruby/gems/2.5.0/gems/activesupport-5.2.0/lib/active_support/subscriber.rb:101
+  Rendered conversations/index.html.haml within layouts/application (113.2ms)
+  [1m[36mMailboxer::Conversation::OptOut Exists (0.1ms)[0m  [1m[34mSELECT  1 AS one FROM "mailboxer_conversation_opt_outs" WHERE "mailboxer_conversation_opt_outs"."conversation_id" = ? AND "mailboxer_conversation_opt_outs"."unsubscriber_type" = ? AND "mailboxer_conversation_opt_outs"."unsubscriber_id" = ? LIMIT ?[0m  [["conversation_id", 1], ["unsubscriber_type", "User"], ["unsubscriber_id", 1], ["LIMIT", 1]]
+  ↳ /Users/rsoul/.rvm/rubies/ruby-2.5.1/lib/ruby/gems/2.5.0/gems/activesupport-5.2.0/lib/active_support/subscriber.rb:101
+  [1m[36mCACHE Mailboxer::Conversation::OptOut Exists (0.0ms)[0m  [1m[34mSELECT  1 AS one FROM "mailboxer_conversation_opt_outs" WHERE "mailboxer_conversation_opt_outs"."conversation_id" = ? AND "mailboxer_conversation_opt_outs"."unsubscriber_type" = ? AND "mailboxer_conversation_opt_outs"."unsubscriber_id" = ? LIMIT ?[0m  [["conversation_id", 1], ["unsubscriber_type", "User"], ["unsubscriber_id", 1], ["LIMIT", 1]]
+  ↳ /Users/rsoul/.rvm/rubies/ruby-2.5.1/lib/ruby/gems/2.5.0/gems/activesupport-5.2.0/lib/active_support/subscriber.rb:101
+  ↳ /Users/rsoul/.rvm/rubies/ruby-2.5.1/lib/ruby/gems/2.5.0/gems/activesupport-5.2.0/lib/active_support/subscriber.rb:101
+  [1m[36mCACHE Mailboxer::Conversation::OptOut Exists (0.0ms)[0m  [1m[34mSELECT  1 AS one FROM "mailboxer_conversation_opt_outs" WHERE "mailboxer_conversation_opt_outs"."conversation_id" = ? AND "mailboxer_conversation_opt_outs"."unsubscriber_type" = ? AND "mailboxer_conversation_opt_outs"."unsubscriber_id" = ? LIMIT ?[0m  [["conversation_id", 1], ["unsubscriber_type", "User"], ["unsubscriber_id", 1], ["LIMIT", 1]]
+  ↳ /Users/rsoul/.rvm/rubies/ruby-2.5.1/lib/ruby/gems/2.5.0/gems/activesupport-5.2.0/lib/active_support/subscriber.rb:101
+  ↳ /Users/rsoul/.rvm/rubies/ruby-2.5.1/lib/ruby/gems/2.5.0/gems/activesupport-5.2.0/lib/active_support/subscriber.rb:101
+  Rendered conversations/index.html.haml within layouts/application (114.3ms)
+  Rendered conversations/index.html.haml within layouts/application (114.9ms)
+  Rendered conversations/index.html.haml within layouts/application (119.4ms)
+  Rendered conversations/index.html.haml within layouts/application (151.1ms)
+  Rendered layouts/_navbar.html.haml (20.6ms)
+Completed 200 OK in 627ms (Views: 554.0ms | ActiveRecord: 1.4ms)
+
+
+  Rendered layouts/_navbar.html.haml (33.6ms)
+Completed 200 OK in 634ms (Views: 521.9ms | ActiveRecord: 2.4ms)
+
+
+  Rendered layouts/_navbar.html.haml (25.1ms)
+  Rendered layouts/_navbar.html.haml (19.9ms)
+Completed 200 OK in 639ms (Views: 540.7ms | ActiveRecord: 1.8ms)
+
+
+Completed 200 OK in 636ms (Views: 565.3ms | ActiveRecord: 2.0ms)
+
+
+  Rendered layouts/_navbar.html.haml (17.8ms)
+Completed 200 OK in 646ms (Views: 567.9ms | ActiveRecord: 2.3ms)
+
+
+  Rendered layouts/_navbar.html.haml (11.6ms)
+Completed 200 OK in 647ms (Views: 551.9ms | ActiveRecord: 1.2ms)
+
+
+Started GET "/" for 127.0.0.1 at 2018-09-20 21:10:08 +0200
+Processing by MapboxController#show as HTML
+  [1m[36mRoom Load (0.2ms)[0m  [1m[34mSELECT "rooms".* FROM "rooms"[0m
+  ↳ /Users/rsoul/.rvm/rubies/ruby-2.5.1/lib/ruby/gems/2.5.0/gems/activesupport-5.2.0/lib/active_support/subscriber.rb:101
+  [1m[36mPower Load (0.1ms)[0m  [1m[34mSELECT "powers".* FROM "powers" WHERE "powers"."room_id" = ?[0m  [["room_id", 1]]
+  ↳ /Users/rsoul/.rvm/rubies/ruby-2.5.1/lib/ruby/gems/2.5.0/gems/activesupport-5.2.0/lib/active_support/subscriber.rb:101
+  [1m[36mUser Load (0.2ms)[0m  [1m[34mSELECT  "users".* FROM "users" WHERE "users"."id" = ? LIMIT ?[0m  [["id", 1], ["LIMIT", 1]]
+  ↳ /Users/rsoul/.rvm/rubies/ruby-2.5.1/lib/ruby/gems/2.5.0/gems/activesupport-5.2.0/lib/active_support/subscriber.rb:101
+  [1m[36mPower Load (0.1ms)[0m  [1m[34mSELECT "powers".* FROM "powers" WHERE "powers"."room_id" = ?[0m  [["room_id", 2]]
+  ↳ /Users/rsoul/.rvm/rubies/ruby-2.5.1/lib/ruby/gems/2.5.0/gems/activesupport-5.2.0/lib/active_support/subscriber.rb:101
+  [1m[36mCACHE User Load (0.0ms)[0m  [1m[34mSELECT  "users".* FROM "users" WHERE "users"."id" = ? LIMIT ?[0m  [["id", 1], ["LIMIT", 1]]
+  ↳ /Users/rsoul/.rvm/rubies/ruby-2.5.1/lib/ruby/gems/2.5.0/gems/activesupport-5.2.0/lib/active_support/subscriber.rb:101
+  Rendering mapbox/show.html.haml within layouts/application
+  Rendered mapbox/show.html.haml within layouts/application (6.7ms)
+  [1m[36mCACHE User Load (0.0ms)[0m  [1m[34mSELECT  "users".* FROM "users" WHERE "users"."id" = ? LIMIT ?[0m  [["id", 1], ["LIMIT", 1]]
+  ↳ /Users/rsoul/.rvm/rubies/ruby-2.5.1/lib/ruby/gems/2.5.0/gems/activesupport-5.2.0/lib/active_support/subscriber.rb:101
+  Rendered layouts/_navbar.html.haml (6.3ms)
+Completed 200 OK in 126ms (Views: 83.5ms | ActiveRecord: 2.0ms)
+
+
+Started GET "/dashboard.json" for 127.0.0.1 at 2018-09-20 21:10:09 +0200
+Processing by MapboxController#show as JSON
+  [1m[36mRoom Load (0.2ms)[0m  [1m[34mSELECT "rooms".* FROM "rooms"[0m
+  ↳ /Users/rsoul/.rvm/rubies/ruby-2.5.1/lib/ruby/gems/2.5.0/gems/activesupport-5.2.0/lib/active_support/subscriber.rb:101
+  [1m[36mPower Load (0.1ms)[0m  [1m[34mSELECT "powers".* FROM "powers" WHERE "powers"."room_id" = ?[0m  [["room_id", 1]]
+  ↳ /Users/rsoul/.rvm/rubies/ruby-2.5.1/lib/ruby/gems/2.5.0/gems/activesupport-5.2.0/lib/active_support/subscriber.rb:101
+  [1m[36mUser Load (0.1ms)[0m  [1m[34mSELECT  "users".* FROM "users" WHERE "users"."id" = ? LIMIT ?[0m  [["id", 1], ["LIMIT", 1]]
+  ↳ /Users/rsoul/.rvm/rubies/ruby-2.5.1/lib/ruby/gems/2.5.0/gems/activesupport-5.2.0/lib/active_support/subscriber.rb:101
+  [1m[36mPower Load (0.1ms)[0m  [1m[34mSELECT "powers".* FROM "powers" WHERE "powers"."room_id" = ?[0m  [["room_id", 2]]
+  ↳ /Users/rsoul/.rvm/rubies/ruby-2.5.1/lib/ruby/gems/2.5.0/gems/activesupport-5.2.0/lib/active_support/subscriber.rb:101
+  [1m[36mCACHE User Load (0.0ms)[0m  [1m[34mSELECT  "users".* FROM "users" WHERE "users"."id" = ? LIMIT ?[0m  [["id", 1], ["LIMIT", 1]]
+  ↳ /Users/rsoul/.rvm/rubies/ruby-2.5.1/lib/ruby/gems/2.5.0/gems/activesupport-5.2.0/lib/active_support/subscriber.rb:101
+Completed 200 OK in 5ms (Views: 0.1ms | ActiveRecord: 0.5ms)
+
+
+Started GET "/dashboard.json" for 127.0.0.1 at 2018-09-20 21:10:09 +0200
+Processing by MapboxController#show as JSON
+  [1m[36mRoom Load (0.2ms)[0m  [1m[34mSELECT "rooms".* FROM "rooms"[0m
+  ↳ /Users/rsoul/.rvm/rubies/ruby-2.5.1/lib/ruby/gems/2.5.0/gems/activesupport-5.2.0/lib/active_support/subscriber.rb:101
+  [1m[36mPower Load (0.2ms)[0m  [1m[34mSELECT "powers".* FROM "powers" WHERE "powers"."room_id" = ?[0m  [["room_id", 1]]
+  ↳ /Users/rsoul/.rvm/rubies/ruby-2.5.1/lib/ruby/gems/2.5.0/gems/activesupport-5.2.0/lib/active_support/subscriber.rb:101
+  [1m[36mUser Load (0.1ms)[0m  [1m[34mSELECT  "users".* FROM "users" WHERE "users"."id" = ? LIMIT ?[0m  [["id", 1], ["LIMIT", 1]]
+  ↳ /Users/rsoul/.rvm/rubies/ruby-2.5.1/lib/ruby/gems/2.5.0/gems/activesupport-5.2.0/lib/active_support/subscriber.rb:101
+  [1m[36mPower Load (0.1ms)[0m  [1m[34mSELECT "powers".* FROM "powers" WHERE "powers"."room_id" = ?[0m  [["room_id", 2]]
+  ↳ /Users/rsoul/.rvm/rubies/ruby-2.5.1/lib/ruby/gems/2.5.0/gems/activesupport-5.2.0/lib/active_support/subscriber.rb:101
+  [1m[36mCACHE User Load (0.0ms)[0m  [1m[34mSELECT  "users".* FROM "users" WHERE "users"."id" = ? LIMIT ?[0m  [["id", 1], ["LIMIT", 1]]
+  ↳ /Users/rsoul/.rvm/rubies/ruby-2.5.1/lib/ruby/gems/2.5.0/gems/activesupport-5.2.0/lib/active_support/subscriber.rb:101
+Completed 200 OK in 6ms (Views: 0.1ms | ActiveRecord: 0.6ms)
+
+
+Started GET "/rooms/HTwpMWlPy747" for 127.0.0.1 at 2018-09-20 21:10:12 +0200
+Processing by RoomsController#show as HTML
+  Parameters: {"id"=>"HTwpMWlPy747"}
+  [1m[36mRoom Load (0.3ms)[0m  [1m[34mSELECT  "rooms".* FROM "rooms" WHERE "rooms"."hash_id" = ? ORDER BY "rooms"."id" ASC LIMIT ?[0m  [["hash_id", "HTwpMWlPy747"], ["LIMIT", 1]]
+  ↳ /Users/rsoul/.rvm/rubies/ruby-2.5.1/lib/ruby/gems/2.5.0/gems/activesupport-5.2.0/lib/active_support/subscriber.rb:101
+  Rendering rooms/show.html.haml within layouts/application
+  [1m[36mCACHE Room Load (0.0ms)[0m  [1m[34mSELECT  "rooms".* FROM "rooms" WHERE "rooms"."hash_id" = ? ORDER BY "rooms"."id" ASC LIMIT ?[0m  [["hash_id", "HTwpMWlPy747"], ["LIMIT", 1]]
+  ↳ /Users/rsoul/.rvm/rubies/ruby-2.5.1/lib/ruby/gems/2.5.0/gems/activesupport-5.2.0/lib/active_support/subscriber.rb:101
+  [1m[36mUser Load (0.1ms)[0m  [1m[34mSELECT  "users".* FROM "users" WHERE "users"."id" = ? LIMIT ?[0m  [["id", 1], ["LIMIT", 1]]
+  ↳ /Users/rsoul/.rvm/rubies/ruby-2.5.1/lib/ruby/gems/2.5.0/gems/activesupport-5.2.0/lib/active_support/subscriber.rb:101
+  [1m[36mPower Exists (0.3ms)[0m  [1m[34mSELECT  1 AS one FROM "powers" WHERE "powers"."user_id" = ? AND "powers"."room_id" = ? LIMIT ?[0m  [["user_id", 1], ["room_id", 1], ["LIMIT", 1]]
+  ↳ /Users/rsoul/.rvm/rubies/ruby-2.5.1/lib/ruby/gems/2.5.0/gems/activesupport-5.2.0/lib/active_support/subscriber.rb:101
+  [1m[36mCACHE Room Load (0.0ms)[0m  [1m[34mSELECT  "rooms".* FROM "rooms" WHERE "rooms"."hash_id" = ? ORDER BY "rooms"."id" ASC LIMIT ?[0m  [["hash_id", "HTwpMWlPy747"], ["LIMIT", 1]]
+  ↳ /Users/rsoul/.rvm/rubies/ruby-2.5.1/lib/ruby/gems/2.5.0/gems/activesupport-5.2.0/lib/active_support/subscriber.rb:101
+  [1m[36mPower Load (0.1ms)[0m  [1m[34mSELECT "powers".* FROM "powers" WHERE "powers"."room_id" = ?[0m  [["room_id", 1]]
+  ↳ /Users/rsoul/.rvm/rubies/ruby-2.5.1/lib/ruby/gems/2.5.0/gems/activesupport-5.2.0/lib/active_support/subscriber.rb:101
+  [1m[36mCACHE User Load (0.0ms)[0m  [1m[34mSELECT  "users".* FROM "users" WHERE "users"."id" = ? LIMIT ?[0m  [["id", 1], ["LIMIT", 1]]
+  ↳ /Users/rsoul/.rvm/rubies/ruby-2.5.1/lib/ruby/gems/2.5.0/gems/activesupport-5.2.0/lib/active_support/subscriber.rb:101
+  [1m[36mCACHE Room Load (0.0ms)[0m  [1m[34mSELECT  "rooms".* FROM "rooms" WHERE "rooms"."hash_id" = ? ORDER BY "rooms"."id" ASC LIMIT ?[0m  [["hash_id", "HTwpMWlPy747"], ["LIMIT", 1]]
+  ↳ /Users/rsoul/.rvm/rubies/ruby-2.5.1/lib/ruby/gems/2.5.0/gems/activesupport-5.2.0/lib/active_support/subscriber.rb:101
+  [1m[36mCACHE Room Load (0.0ms)[0m  [1m[34mSELECT  "rooms".* FROM "rooms" WHERE "rooms"."hash_id" = ? ORDER BY "rooms"."id" ASC LIMIT ?[0m  [["hash_id", "HTwpMWlPy747"], ["LIMIT", 1]]
+  ↳ /Users/rsoul/.rvm/rubies/ruby-2.5.1/lib/ruby/gems/2.5.0/gems/activesupport-5.2.0/lib/active_support/subscriber.rb:101
+  [1m[36mCACHE Power Exists (0.0ms)[0m  [1m[34mSELECT  1 AS one FROM "powers" WHERE "powers"."user_id" = ? AND "powers"."room_id" = ? LIMIT ?[0m  [["user_id", 1], ["room_id", 1], ["LIMIT", 1]]
+  ↳ /Users/rsoul/.rvm/rubies/ruby-2.5.1/lib/ruby/gems/2.5.0/gems/activesupport-5.2.0/lib/active_support/subscriber.rb:101
+  [1m[36mCACHE Room Load (0.0ms)[0m  [1m[34mSELECT  "rooms".* FROM "rooms" WHERE "rooms"."hash_id" = ? ORDER BY "rooms"."id" ASC LIMIT ?[0m  [["hash_id", "HTwpMWlPy747"], ["LIMIT", 1]]
+  ↳ /Users/rsoul/.rvm/rubies/ruby-2.5.1/lib/ruby/gems/2.5.0/gems/activesupport-5.2.0/lib/active_support/subscriber.rb:101
+  [1m[36mCACHE Power Exists (0.0ms)[0m  [1m[34mSELECT  1 AS one FROM "powers" WHERE "powers"."user_id" = ? AND "powers"."room_id" = ? LIMIT ?[0m  [["user_id", 1], ["room_id", 1], ["LIMIT", 1]]
+  ↳ /Users/rsoul/.rvm/rubies/ruby-2.5.1/lib/ruby/gems/2.5.0/gems/activesupport-5.2.0/lib/active_support/subscriber.rb:101
+  [1m[36mReservation Exists (0.1ms)[0m  [1m[34mSELECT  1 AS one FROM "reservations" WHERE "reservations"."user_id" = ? AND "reservations"."room_id" = ? LIMIT ?[0m  [["user_id", 1], ["room_id", 1], ["LIMIT", 1]]
+  ↳ /Users/rsoul/.rvm/rubies/ruby-2.5.1/lib/ruby/gems/2.5.0/gems/activesupport-5.2.0/lib/active_support/subscriber.rb:101
+  [1m[36mMessage Load (0.1ms)[0m  [1m[34mSELECT "messages".* FROM "messages" WHERE "messages"."room_id" = ?[0m  [["room_id", 1]]
+  ↳ /Users/rsoul/.rvm/rubies/ruby-2.5.1/lib/ruby/gems/2.5.0/gems/activesupport-5.2.0/lib/active_support/subscriber.rb:101
+  Rendered rooms/show.html.haml within layouts/application (42.2ms)
+  Rendered layouts/_navbar.html.haml (6.0ms)
+Completed 200 OK in 135ms (Views: 114.0ms | ActiveRecord: 2.0ms)
+
+
+Started GET "/rooms/HTwpMWlPy747.json" for 127.0.0.1 at 2018-09-20 21:10:12 +0200
+Processing by RoomsController#show as JSON
+  Parameters: {"id"=>"HTwpMWlPy747"}
+  [1m[36mRoom Load (0.3ms)[0m  [1m[34mSELECT  "rooms".* FROM "rooms" WHERE "rooms"."hash_id" = ? ORDER BY "rooms"."id" ASC LIMIT ?[0m  [["hash_id", "HTwpMWlPy747"], ["LIMIT", 1]]
+  ↳ /Users/rsoul/.rvm/rubies/ruby-2.5.1/lib/ruby/gems/2.5.0/gems/activesupport-5.2.0/lib/active_support/subscriber.rb:101
+  Rendering rooms/show.json.jbuilder
+  Rendered rooms/_room.json.jbuilder (1.1ms)
+  Rendered rooms/show.json.jbuilder (3.2ms)
+Completed 200 OK in 41ms (Views: 36.6ms | ActiveRecord: 0.3ms)
+
+
+Started GET "/rooms/HTwpMWlPy747/reservations" for 127.0.0.1 at 2018-09-20 21:10:14 +0200
+Started GET "/rooms/HTwpMWlPy747/messages" for 127.0.0.1 at 2018-09-20 21:10:14 +0200
+Processing by ReservationsController#index as HTML
+Processing by MessagesController#index as HTML
+  Parameters: {"room_id"=>"HTwpMWlPy747"}
+  Parameters: {"room_id"=>"HTwpMWlPy747"}
+  [1m[36mRoom Load (0.2ms)[0m  [1m[34mSELECT  "rooms".* FROM "rooms" WHERE "rooms"."hash_id" = ? ORDER BY "rooms"."id" ASC LIMIT ?[0m  [["hash_id", "HTwpMWlPy747"], ["LIMIT", 1]]
+  ↳ /Users/rsoul/.rvm/rubies/ruby-2.5.1/lib/ruby/gems/2.5.0/gems/activesupport-5.2.0/lib/active_support/subscriber.rb:101
+  [1m[36mRoom Load (0.2ms)[0m  [1m[34mSELECT  "rooms".* FROM "rooms" WHERE "rooms"."hash_id" = ? ORDER BY "rooms"."id" ASC LIMIT ?[0m  [["hash_id", "HTwpMWlPy747"], ["LIMIT", 1]]
+  ↳ /Users/rsoul/.rvm/rubies/ruby-2.5.1/lib/ruby/gems/2.5.0/gems/activesupport-5.2.0/lib/active_support/subscriber.rb:101
+  Rendering messages/index.html.haml
+  [1m[36mMessage Load (0.2ms)[0m  [1m[34mSELECT "messages".* FROM "messages" WHERE "messages"."room_id" = ?[0m  [["room_id", 1]]
+  ↳ /Users/rsoul/.rvm/rubies/ruby-2.5.1/lib/ruby/gems/2.5.0/gems/activesupport-5.2.0/lib/active_support/subscriber.rb:101
+  Rendered messages/index.html.haml (4.4ms)
+Completed 200 OK in 66ms (Views: 64.4ms | ActiveRecord: 0.4ms)
+
+
+  Rendering reservations/index.html.haml
+  [1m[36mReservation Load (0.3ms)[0m  [1m[34mSELECT "reservations".* FROM "reservations" WHERE "reservations"."room_id" = ? ORDER BY position[0m  [["room_id", 1]]
+  ↳ /Users/rsoul/.rvm/rubies/ruby-2.5.1/lib/ruby/gems/2.5.0/gems/activesupport-5.2.0/lib/active_support/subscriber.rb:101
+  Rendered reservations/index.html.haml (7.3ms)
+Completed 200 OK in 76ms (Views: 43.2ms | ActiveRecord: 0.5ms)
+
+
+Started POST "/rooms/1/invite_user" for 127.0.0.1 at 2018-09-20 21:10:17 +0200
+Processing by RoomsController#invite_user_to_room as HTML
+  Parameters: {"utf8"=>"✓", "authenticity_token"=>"ucjDDMKbccWiz3QDg9OkQLsu9WFPx5H7VKtQXcJSZSSH0qR0DbTfZ8yreV6+eDalPjW8vi9K5Muw5MyE6Xltng==", "username"=>"prova1", "commit"=>"Invita", "room_id"=>"1"}
+  [1m[36mRoom Load (0.3ms)[0m  [1m[34mSELECT  "rooms".* FROM "rooms" WHERE "rooms"."id" = ? LIMIT ?[0m  [["id", 1], ["LIMIT", 1]]
+  ↳ /Users/rsoul/.rvm/rubies/ruby-2.5.1/lib/ruby/gems/2.5.0/gems/activesupport-5.2.0/lib/active_support/subscriber.rb:101
+  [1m[36mUser Load (0.1ms)[0m  [1m[34mSELECT  "users".* FROM "users" WHERE "users"."id" = ? LIMIT ?[0m  [["id", 1], ["LIMIT", 1]]
+  ↳ /Users/rsoul/.rvm/rubies/ruby-2.5.1/lib/ruby/gems/2.5.0/gems/activesupport-5.2.0/lib/active_support/subscriber.rb:101
+  [1m[36mUser Load (0.2ms)[0m  [1m[34mSELECT  "users".* FROM "users" WHERE "users"."username" = ? LIMIT ?[0m  [["username", "prova1"], ["LIMIT", 1]]
+  ↳ /Users/rsoul/.rvm/rubies/ruby-2.5.1/lib/ruby/gems/2.5.0/gems/activesupport-5.2.0/lib/active_support/subscriber.rb:101
+  [1m[35m (0.1ms)[0m  [1m[36mbegin transaction[0m
+  ↳ /Users/rsoul/.rvm/rubies/ruby-2.5.1/lib/ruby/gems/2.5.0/gems/activesupport-5.2.0/lib/active_support/subscriber.rb:101
+  [1m[36mMailboxer::Conversation Create (0.5ms)[0m  [1m[32mINSERT INTO "mailboxer_conversations" ("subject", "created_at", "updated_at") VALUES (?, ?, ?)[0m  [["subject", "You have been invited to testinggg"], ["created_at", "2018-09-20 19:10:17.869866"], ["updated_at", "2018-09-20 19:10:17.869866"]]
+  ↳ /Users/rsoul/.rvm/rubies/ruby-2.5.1/lib/ruby/gems/2.5.0/gems/activesupport-5.2.0/lib/active_support/subscriber.rb:101
+  [1m[36mMailboxer::Message Create (0.3ms)[0m  [1m[32mINSERT INTO "mailboxer_notifications" ("type", "body", "subject", "sender_type", "sender_id", "conversation_id", "updated_at", "created_at") VALUES (?, ?, ?, ?, ?, ?, ?, ?)[0m  [["type", "Mailboxer::Message"], ["body", "Hey prova1, prova1 has invited you to check out root_url/rooms/HTwpMWlPy747"], ["subject", "You have been invited to testinggg"], ["sender_type", "User"], ["sender_id", 1], ["conversation_id", 2], ["updated_at", "2018-09-20 19:10:17.869866"], ["created_at", "2018-09-20 19:10:17.869866"]]
+  ↳ /Users/rsoul/.rvm/rubies/ruby-2.5.1/lib/ruby/gems/2.5.0/gems/activesupport-5.2.0/lib/active_support/subscriber.rb:101
+  [1m[36mMailboxer::Receipt Create (0.2ms)[0m  [1m[32mINSERT INTO "mailboxer_receipts" ("receiver_type", "receiver_id", "notification_id", "mailbox_type", "created_at", "updated_at") VALUES (?, ?, ?, ?, ?, ?)[0m  [["receiver_type", "User"], ["receiver_id", 1], ["notification_id", 2], ["mailbox_type", "inbox"], ["created_at", "2018-09-20 19:10:17.916863"], ["updated_at", "2018-09-20 19:10:17.916863"]]
+  ↳ /Users/rsoul/.rvm/rubies/ruby-2.5.1/lib/ruby/gems/2.5.0/gems/activesupport-5.2.0/lib/active_support/subscriber.rb:101
+  [1m[36mMailboxer::Receipt Create (0.1ms)[0m  [1m[32mINSERT INTO "mailboxer_receipts" ("receiver_type", "receiver_id", "notification_id", "is_read", "mailbox_type", "created_at", "updated_at") VALUES (?, ?, ?, ?, ?, ?, ?)[0m  [["receiver_type", "User"], ["receiver_id", 1], ["notification_id", 2], ["is_read", 1], ["mailbox_type", "sentbox"], ["created_at", "2018-09-20 19:10:17.918033"], ["updated_at", "2018-09-20 19:10:17.918033"]]
+  ↳ /Users/rsoul/.rvm/rubies/ruby-2.5.1/lib/ruby/gems/2.5.0/gems/activesupport-5.2.0/lib/active_support/subscriber.rb:101
+  [1m[35m (1.8ms)[0m  [1m[36mcommit transaction[0m
+  ↳ /Users/rsoul/.rvm/rubies/ruby-2.5.1/lib/ruby/gems/2.5.0/gems/activesupport-5.2.0/lib/active_support/subscriber.rb:101
+Redirected to http://localhost:3000/rooms/HTwpMWlPy747
+Completed 302 Found in 56ms (ActiveRecord: 3.5ms)
+
+
+Started GET "/rooms/HTwpMWlPy747" for 127.0.0.1 at 2018-09-20 21:10:17 +0200
+Processing by RoomsController#show as HTML
+  Parameters: {"id"=>"HTwpMWlPy747"}
+  [1m[36mRoom Load (0.3ms)[0m  [1m[34mSELECT  "rooms".* FROM "rooms" WHERE "rooms"."hash_id" = ? ORDER BY "rooms"."id" ASC LIMIT ?[0m  [["hash_id", "HTwpMWlPy747"], ["LIMIT", 1]]
+  ↳ /Users/rsoul/.rvm/rubies/ruby-2.5.1/lib/ruby/gems/2.5.0/gems/activesupport-5.2.0/lib/active_support/subscriber.rb:101
+  Rendering rooms/show.html.haml within layouts/application
+  [1m[36mCACHE Room Load (0.0ms)[0m  [1m[34mSELECT  "rooms".* FROM "rooms" WHERE "rooms"."hash_id" = ? ORDER BY "rooms"."id" ASC LIMIT ?[0m  [["hash_id", "HTwpMWlPy747"], ["LIMIT", 1]]
+  ↳ /Users/rsoul/.rvm/rubies/ruby-2.5.1/lib/ruby/gems/2.5.0/gems/activesupport-5.2.0/lib/active_support/subscriber.rb:101
+  [1m[36mUser Load (0.1ms)[0m  [1m[34mSELECT  "users".* FROM "users" WHERE "users"."id" = ? LIMIT ?[0m  [["id", 1], ["LIMIT", 1]]
+  ↳ /Users/rsoul/.rvm/rubies/ruby-2.5.1/lib/ruby/gems/2.5.0/gems/activesupport-5.2.0/lib/active_support/subscriber.rb:101
+  [1m[36mPower Exists (0.2ms)[0m  [1m[34mSELECT  1 AS one FROM "powers" WHERE "powers"."user_id" = ? AND "powers"."room_id" = ? LIMIT ?[0m  [["user_id", 1], ["room_id", 1], ["LIMIT", 1]]
+  ↳ /Users/rsoul/.rvm/rubies/ruby-2.5.1/lib/ruby/gems/2.5.0/gems/activesupport-5.2.0/lib/active_support/subscriber.rb:101
+  [1m[36mCACHE Room Load (0.0ms)[0m  [1m[34mSELECT  "rooms".* FROM "rooms" WHERE "rooms"."hash_id" = ? ORDER BY "rooms"."id" ASC LIMIT ?[0m  [["hash_id", "HTwpMWlPy747"], ["LIMIT", 1]]
+  ↳ /Users/rsoul/.rvm/rubies/ruby-2.5.1/lib/ruby/gems/2.5.0/gems/activesupport-5.2.0/lib/active_support/subscriber.rb:101
+  [1m[36mPower Load (0.1ms)[0m  [1m[34mSELECT "powers".* FROM "powers" WHERE "powers"."room_id" = ?[0m  [["room_id", 1]]
+  ↳ /Users/rsoul/.rvm/rubies/ruby-2.5.1/lib/ruby/gems/2.5.0/gems/activesupport-5.2.0/lib/active_support/subscriber.rb:101
+  [1m[36mCACHE User Load (0.0ms)[0m  [1m[34mSELECT  "users".* FROM "users" WHERE "users"."id" = ? LIMIT ?[0m  [["id", 1], ["LIMIT", 1]]
+  ↳ /Users/rsoul/.rvm/rubies/ruby-2.5.1/lib/ruby/gems/2.5.0/gems/activesupport-5.2.0/lib/active_support/subscriber.rb:101
+  [1m[36mCACHE Room Load (0.0ms)[0m  [1m[34mSELECT  "rooms".* FROM "rooms" WHERE "rooms"."hash_id" = ? ORDER BY "rooms"."id" ASC LIMIT ?[0m  [["hash_id", "HTwpMWlPy747"], ["LIMIT", 1]]
+  ↳ /Users/rsoul/.rvm/rubies/ruby-2.5.1/lib/ruby/gems/2.5.0/gems/activesupport-5.2.0/lib/active_support/subscriber.rb:101
+  [1m[36mCACHE Room Load (0.0ms)[0m  [1m[34mSELECT  "rooms".* FROM "rooms" WHERE "rooms"."hash_id" = ? ORDER BY "rooms"."id" ASC LIMIT ?[0m  [["hash_id", "HTwpMWlPy747"], ["LIMIT", 1]]
+  ↳ /Users/rsoul/.rvm/rubies/ruby-2.5.1/lib/ruby/gems/2.5.0/gems/activesupport-5.2.0/lib/active_support/subscriber.rb:101
+  [1m[36mCACHE Power Exists (0.0ms)[0m  [1m[34mSELECT  1 AS one FROM "powers" WHERE "powers"."user_id" = ? AND "powers"."room_id" = ? LIMIT ?[0m  [["user_id", 1], ["room_id", 1], ["LIMIT", 1]]
+  ↳ /Users/rsoul/.rvm/rubies/ruby-2.5.1/lib/ruby/gems/2.5.0/gems/activesupport-5.2.0/lib/active_support/subscriber.rb:101
+  [1m[36mCACHE Room Load (0.0ms)[0m  [1m[34mSELECT  "rooms".* FROM "rooms" WHERE "rooms"."hash_id" = ? ORDER BY "rooms"."id" ASC LIMIT ?[0m  [["hash_id", "HTwpMWlPy747"], ["LIMIT", 1]]
+  ↳ /Users/rsoul/.rvm/rubies/ruby-2.5.1/lib/ruby/gems/2.5.0/gems/activesupport-5.2.0/lib/active_support/subscriber.rb:101
+  [1m[36mCACHE Power Exists (0.0ms)[0m  [1m[34mSELECT  1 AS one FROM "powers" WHERE "powers"."user_id" = ? AND "powers"."room_id" = ? LIMIT ?[0m  [["user_id", 1], ["room_id", 1], ["LIMIT", 1]]
+  ↳ /Users/rsoul/.rvm/rubies/ruby-2.5.1/lib/ruby/gems/2.5.0/gems/activesupport-5.2.0/lib/active_support/subscriber.rb:101
+  [1m[36mReservation Exists (0.2ms)[0m  [1m[34mSELECT  1 AS one FROM "reservations" WHERE "reservations"."user_id" = ? AND "reservations"."room_id" = ? LIMIT ?[0m  [["user_id", 1], ["room_id", 1], ["LIMIT", 1]]
+  ↳ /Users/rsoul/.rvm/rubies/ruby-2.5.1/lib/ruby/gems/2.5.0/gems/activesupport-5.2.0/lib/active_support/subscriber.rb:101
+  [1m[36mMessage Load (0.2ms)[0m  [1m[34mSELECT "messages".* FROM "messages" WHERE "messages"."room_id" = ?[0m  [["room_id", 1]]
+  ↳ /Users/rsoul/.rvm/rubies/ruby-2.5.1/lib/ruby/gems/2.5.0/gems/activesupport-5.2.0/lib/active_support/subscriber.rb:101
+  Rendered rooms/show.html.haml within layouts/application (44.6ms)
+  Rendered layouts/_navbar.html.haml (5.8ms)
+Completed 200 OK in 140ms (Views: 135.3ms | ActiveRecord: 1.3ms)
+
+
+Started GET "/rooms/HTwpMWlPy747.json" for 127.0.0.1 at 2018-09-20 21:10:18 +0200
+Processing by RoomsController#show as JSON
+  Parameters: {"id"=>"HTwpMWlPy747"}
+  [1m[36mRoom Load (0.4ms)[0m  [1m[34mSELECT  "rooms".* FROM "rooms" WHERE "rooms"."hash_id" = ? ORDER BY "rooms"."id" ASC LIMIT ?[0m  [["hash_id", "HTwpMWlPy747"], ["LIMIT", 1]]
+  ↳ /Users/rsoul/.rvm/rubies/ruby-2.5.1/lib/ruby/gems/2.5.0/gems/activesupport-5.2.0/lib/active_support/subscriber.rb:101
+  Rendering rooms/show.json.jbuilder
+  Rendered rooms/_room.json.jbuilder (0.9ms)
+  Rendered rooms/show.json.jbuilder (2.5ms)
+Completed 200 OK in 46ms (Views: 40.8ms | ActiveRecord: 0.4ms)
+
+
+Started GET "/conversations" for 127.0.0.1 at 2018-09-20 21:10:20 +0200
+Processing by ConversationsController#index as HTML
+  [1m[36mUser Load (0.2ms)[0m  [1m[34mSELECT  "users".* FROM "users" WHERE "users"."id" = ? LIMIT ?[0m  [["id", 1], ["LIMIT", 1]]
+  ↳ /Users/rsoul/.rvm/rubies/ruby-2.5.1/lib/ruby/gems/2.5.0/gems/activesupport-5.2.0/lib/active_support/subscriber.rb:101
+  Rendering conversations/index.html.haml within layouts/application
+  [1m[36mMailboxer::Conversation Load (0.3ms)[0m  [1m[34mSELECT DISTINCT "mailboxer_conversations".* FROM "mailboxer_conversations" INNER JOIN "mailboxer_notifications" ON "mailboxer_notifications"."conversation_id" = "mailboxer_conversations"."id" AND "mailboxer_notifications"."type" IN ('Mailboxer::Message') INNER JOIN "mailboxer_receipts" ON "mailboxer_receipts"."notification_id" = "mailboxer_notifications"."id" WHERE "mailboxer_notifications"."type" = ? AND "mailboxer_receipts"."receiver_id" = ? AND "mailboxer_receipts"."receiver_type" = ? ORDER BY "mailboxer_conversations"."updated_at" DESC[0m  [["type", "Mailboxer::Message"], ["receiver_id", 1], ["receiver_type", "User"]]
+  ↳ /Users/rsoul/.rvm/rubies/ruby-2.5.1/lib/ruby/gems/2.5.0/gems/activesupport-5.2.0/lib/active_support/subscriber.rb:101
+  [1m[36mMailboxer::Message Load (0.2ms)[0m  [1m[34mSELECT  "mailboxer_notifications".* FROM "mailboxer_notifications" WHERE "mailboxer_notifications"."type" IN ('Mailboxer::Message') AND "mailboxer_notifications"."conversation_id" = ? ORDER BY "mailboxer_notifications"."created_at" ASC LIMIT ?[0m  [["conversation_id", 2], ["LIMIT", 1]]
+  ↳ /Users/rsoul/.rvm/rubies/ruby-2.5.1/lib/ruby/gems/2.5.0/gems/activesupport-5.2.0/lib/active_support/subscriber.rb:101
+  [1m[36mMailboxer::Receipt Load (0.2ms)[0m  [1m[34mSELECT "mailboxer_receipts".* FROM "mailboxer_receipts" WHERE "mailboxer_receipts"."notification_id" = ?[0m  [["notification_id", 2]]
+  ↳ /Users/rsoul/.rvm/rubies/ruby-2.5.1/lib/ruby/gems/2.5.0/gems/activesupport-5.2.0/lib/active_support/subscriber.rb:101
+  [1m[36mUser Load (0.3ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."id" = ?[0m  [["id", 1]]
+  ↳ /Users/rsoul/.rvm/rubies/ruby-2.5.1/lib/ruby/gems/2.5.0/gems/activesupport-5.2.0/lib/active_support/subscriber.rb:101
+  [1m[36mMailboxer::Conversation::OptOut Exists (0.1ms)[0m  [1m[34mSELECT  1 AS one FROM "mailboxer_conversation_opt_outs" WHERE "mailboxer_conversation_opt_outs"."conversation_id" = ? AND "mailboxer_conversation_opt_outs"."unsubscriber_type" = ? AND "mailboxer_conversation_opt_outs"."unsubscriber_id" = ? LIMIT ?[0m  [["conversation_id", 2], ["unsubscriber_type", "User"], ["unsubscriber_id", 1], ["LIMIT", 1]]
+  ↳ /Users/rsoul/.rvm/rubies/ruby-2.5.1/lib/ruby/gems/2.5.0/gems/activesupport-5.2.0/lib/active_support/subscriber.rb:101
+  [1m[36mCACHE Mailboxer::Conversation::OptOut Exists (0.0ms)[0m  [1m[34mSELECT  1 AS one FROM "mailboxer_conversation_opt_outs" WHERE "mailboxer_conversation_opt_outs"."conversation_id" = ? AND "mailboxer_conversation_opt_outs"."unsubscriber_type" = ? AND "mailboxer_conversation_opt_outs"."unsubscriber_id" = ? LIMIT ?[0m  [["conversation_id", 2], ["unsubscriber_type", "User"], ["unsubscriber_id", 1], ["LIMIT", 1]]
+  ↳ /Users/rsoul/.rvm/rubies/ruby-2.5.1/lib/ruby/gems/2.5.0/gems/activesupport-5.2.0/lib/active_support/subscriber.rb:101
+  [1m[36mMailboxer::Message Load (0.3ms)[0m  [1m[34mSELECT  "mailboxer_notifications".* FROM "mailboxer_notifications" WHERE "mailboxer_notifications"."type" IN ('Mailboxer::Message') AND "mailboxer_notifications"."conversation_id" = ? ORDER BY "mailboxer_notifications"."created_at" ASC LIMIT ?[0m  [["conversation_id", 1], ["LIMIT", 1]]
+  ↳ /Users/rsoul/.rvm/rubies/ruby-2.5.1/lib/ruby/gems/2.5.0/gems/activesupport-5.2.0/lib/active_support/subscriber.rb:101
+  [1m[36mMailboxer::Receipt Load (0.2ms)[0m  [1m[34mSELECT "mailboxer_receipts".* FROM "mailboxer_receipts" WHERE "mailboxer_receipts"."notification_id" = ?[0m  [["notification_id", 1]]
+  ↳ /Users/rsoul/.rvm/rubies/ruby-2.5.1/lib/ruby/gems/2.5.0/gems/activesupport-5.2.0/lib/active_support/subscriber.rb:101
+  [1m[36mCACHE User Load (0.0ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."id" = ?[0m  [["id", 1]]
+  ↳ /Users/rsoul/.rvm/rubies/ruby-2.5.1/lib/ruby/gems/2.5.0/gems/activesupport-5.2.0/lib/active_support/subscriber.rb:101
+  [1m[36mMailboxer::Conversation::OptOut Exists (0.2ms)[0m  [1m[34mSELECT  1 AS one FROM "mailboxer_conversation_opt_outs" WHERE "mailboxer_conversation_opt_outs"."conversation_id" = ? AND "mailboxer_conversation_opt_outs"."unsubscriber_type" = ? AND "mailboxer_conversation_opt_outs"."unsubscriber_id" = ? LIMIT ?[0m  [["conversation_id", 1], ["unsubscriber_type", "User"], ["unsubscriber_id", 1], ["LIMIT", 1]]
+  ↳ /Users/rsoul/.rvm/rubies/ruby-2.5.1/lib/ruby/gems/2.5.0/gems/activesupport-5.2.0/lib/active_support/subscriber.rb:101
+  [1m[36mCACHE Mailboxer::Conversation::OptOut Exists (0.0ms)[0m  [1m[34mSELECT  1 AS one FROM "mailboxer_conversation_opt_outs" WHERE "mailboxer_conversation_opt_outs"."conversation_id" = ? AND "mailboxer_conversation_opt_outs"."unsubscriber_type" = ? AND "mailboxer_conversation_opt_outs"."unsubscriber_id" = ? LIMIT ?[0m  [["conversation_id", 1], ["unsubscriber_type", "User"], ["unsubscriber_id", 1], ["LIMIT", 1]]
+  ↳ /Users/rsoul/.rvm/rubies/ruby-2.5.1/lib/ruby/gems/2.5.0/gems/activesupport-5.2.0/lib/active_support/subscriber.rb:101
+  Rendered conversations/index.html.haml within layouts/application (16.2ms)
+  Rendered layouts/_navbar.html.haml (6.7ms)
+Completed 200 OK in 101ms (Views: 95.1ms | ActiveRecord: 1.9ms)
+
+
+Started GET "/conversations/2" for 127.0.0.1 at 2018-09-20 21:10:23 +0200
+Processing by ConversationsController#show as HTML
+  Parameters: {"id"=>"2"}
+  [1m[36mUser Load (0.3ms)[0m  [1m[34mSELECT  "users".* FROM "users" WHERE "users"."id" = ? LIMIT ?[0m  [["id", 1], ["LIMIT", 1]]
+  ↳ /Users/rsoul/.rvm/rubies/ruby-2.5.1/lib/ruby/gems/2.5.0/gems/activesupport-5.2.0/lib/active_support/subscriber.rb:101
+  [1m[36mMailboxer::Conversation Load (0.3ms)[0m  [1m[34mSELECT  DISTINCT "mailboxer_conversations".* FROM "mailboxer_conversations" INNER JOIN "mailboxer_notifications" ON "mailboxer_notifications"."conversation_id" = "mailboxer_conversations"."id" AND "mailboxer_notifications"."type" IN ('Mailboxer::Message') INNER JOIN "mailboxer_receipts" ON "mailboxer_receipts"."notification_id" = "mailboxer_notifications"."id" WHERE "mailboxer_notifications"."type" = ? AND "mailboxer_receipts"."receiver_id" = ? AND "mailboxer_receipts"."receiver_type" = ? AND "mailboxer_conversations"."id" = ? ORDER BY "mailboxer_conversations"."updated_at" DESC LIMIT ?[0m  [["type", "Mailboxer::Message"], ["receiver_id", 1], ["receiver_type", "User"], ["id", 2], ["LIMIT", 1]]
+  ↳ /Users/rsoul/.rvm/rubies/ruby-2.5.1/lib/ruby/gems/2.5.0/gems/activesupport-5.2.0/lib/active_support/subscriber.rb:101
+  Rendering conversations/show.html.haml within layouts/application
+  [1m[36mMailboxer::Message Load (0.3ms)[0m  [1m[34mSELECT  "mailboxer_notifications".* FROM "mailboxer_notifications" WHERE "mailboxer_notifications"."type" IN ('Mailboxer::Message') AND "mailboxer_notifications"."conversation_id" = ? ORDER BY "mailboxer_notifications"."created_at" ASC LIMIT ?[0m  [["conversation_id", 2], ["LIMIT", 1]]
+  ↳ /Users/rsoul/.rvm/rubies/ruby-2.5.1/lib/ruby/gems/2.5.0/gems/activesupport-5.2.0/lib/active_support/subscriber.rb:101
+  [1m[36mMailboxer::Receipt Load (0.3ms)[0m  [1m[34mSELECT "mailboxer_receipts".* FROM "mailboxer_receipts" WHERE "mailboxer_receipts"."notification_id" = ?[0m  [["notification_id", 2]]
+  ↳ /Users/rsoul/.rvm/rubies/ruby-2.5.1/lib/ruby/gems/2.5.0/gems/activesupport-5.2.0/lib/active_support/subscriber.rb:101
+  [1m[36mUser Load (0.2ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."id" = ?[0m  [["id", 1]]
+  ↳ /Users/rsoul/.rvm/rubies/ruby-2.5.1/lib/ruby/gems/2.5.0/gems/activesupport-5.2.0/lib/active_support/subscriber.rb:101
+  [1m[36mMailboxer::Conversation::OptOut Exists (0.1ms)[0m  [1m[34mSELECT  1 AS one FROM "mailboxer_conversation_opt_outs" WHERE "mailboxer_conversation_opt_outs"."conversation_id" = ? AND "mailboxer_conversation_opt_outs"."unsubscriber_type" = ? AND "mailboxer_conversation_opt_outs"."unsubscriber_id" = ? LIMIT ?[0m  [["conversation_id", 2], ["unsubscriber_type", "User"], ["unsubscriber_id", 1], ["LIMIT", 1]]
+  ↳ /Users/rsoul/.rvm/rubies/ruby-2.5.1/lib/ruby/gems/2.5.0/gems/activesupport-5.2.0/lib/active_support/subscriber.rb:101
+  [1m[36mCACHE Mailboxer::Conversation::OptOut Exists (0.0ms)[0m  [1m[34mSELECT  1 AS one FROM "mailboxer_conversation_opt_outs" WHERE "mailboxer_conversation_opt_outs"."conversation_id" = ? AND "mailboxer_conversation_opt_outs"."unsubscriber_type" = ? AND "mailboxer_conversation_opt_outs"."unsubscriber_id" = ? LIMIT ?[0m  [["conversation_id", 2], ["unsubscriber_type", "User"], ["unsubscriber_id", 1], ["LIMIT", 1]]
+  ↳ /Users/rsoul/.rvm/rubies/ruby-2.5.1/lib/ruby/gems/2.5.0/gems/activesupport-5.2.0/lib/active_support/subscriber.rb:101
+  [1m[36mMailboxer::Receipt Load (0.5ms)[0m  [1m[34mSELECT "mailboxer_receipts".* FROM "mailboxer_receipts" INNER JOIN "mailboxer_notifications" ON "mailboxer_notifications"."id" = "mailboxer_receipts"."notification_id" AND "mailboxer_notifications"."type" IN ('Mailboxer::Message') WHERE "mailboxer_notifications"."conversation_id" = ? AND "mailboxer_receipts"."receiver_id" = ? AND "mailboxer_receipts"."receiver_type" = ?[0m  [["conversation_id", 2], ["receiver_id", 1], ["receiver_type", "User"]]
+  ↳ /Users/rsoul/.rvm/rubies/ruby-2.5.1/lib/ruby/gems/2.5.0/gems/activesupport-5.2.0/lib/active_support/subscriber.rb:101
+  [1m[36mMailboxer::Message Load (0.3ms)[0m  [1m[34mSELECT  "mailboxer_notifications".* FROM "mailboxer_notifications" WHERE "mailboxer_notifications"."type" IN ('Mailboxer::Message') AND "mailboxer_notifications"."id" = ? LIMIT ?[0m  [["id", 2], ["LIMIT", 1]]
+  ↳ /Users/rsoul/.rvm/rubies/ruby-2.5.1/lib/ruby/gems/2.5.0/gems/activesupport-5.2.0/lib/active_support/subscriber.rb:101
+  [1m[36mCACHE User Load (0.0ms)[0m  [1m[34mSELECT  "users".* FROM "users" WHERE "users"."id" = ? LIMIT ?[0m  [["id", 1], ["LIMIT", 1]]
+  ↳ /Users/rsoul/.rvm/rubies/ruby-2.5.1/lib/ruby/gems/2.5.0/gems/activesupport-5.2.0/lib/active_support/subscriber.rb:101
+  [1m[36mCACHE Mailboxer::Message Load (0.0ms)[0m  [1m[34mSELECT  "mailboxer_notifications".* FROM "mailboxer_notifications" WHERE "mailboxer_notifications"."type" IN ('Mailboxer::Message') AND "mailboxer_notifications"."id" = ? LIMIT ?[0m  [["id", 2], ["LIMIT", 1]]
+  ↳ /Users/rsoul/.rvm/rubies/ruby-2.5.1/lib/ruby/gems/2.5.0/gems/activesupport-5.2.0/lib/active_support/subscriber.rb:101
+  [1m[36mCACHE User Load (0.0ms)[0m  [1m[34mSELECT  "users".* FROM "users" WHERE "users"."id" = ? LIMIT ?[0m  [["id", 1], ["LIMIT", 1]]
+  ↳ /Users/rsoul/.rvm/rubies/ruby-2.5.1/lib/ruby/gems/2.5.0/gems/activesupport-5.2.0/lib/active_support/subscriber.rb:101
+  Rendered conversations/show.html.haml within layouts/application (22.2ms)
+  Rendered layouts/_navbar.html.haml (6.6ms)
+Completed 200 OK in 107ms (Views: 99.1ms | ActiveRecord: 2.2ms)
+
+
+Started GET "/" for 127.0.0.1 at 2018-09-20 21:10:53 +0200
+Processing by MapboxController#show as HTML
+  [1m[36mRoom Load (0.2ms)[0m  [1m[34mSELECT "rooms".* FROM "rooms"[0m
+  ↳ /Users/rsoul/.rvm/rubies/ruby-2.5.1/lib/ruby/gems/2.5.0/gems/activesupport-5.2.0/lib/active_support/subscriber.rb:101
+  [1m[36mPower Load (0.2ms)[0m  [1m[34mSELECT "powers".* FROM "powers" WHERE "powers"."room_id" = ?[0m  [["room_id", 1]]
+  ↳ /Users/rsoul/.rvm/rubies/ruby-2.5.1/lib/ruby/gems/2.5.0/gems/activesupport-5.2.0/lib/active_support/subscriber.rb:101
+  [1m[36mUser Load (0.2ms)[0m  [1m[34mSELECT  "users".* FROM "users" WHERE "users"."id" = ? LIMIT ?[0m  [["id", 1], ["LIMIT", 1]]
+  ↳ /Users/rsoul/.rvm/rubies/ruby-2.5.1/lib/ruby/gems/2.5.0/gems/activesupport-5.2.0/lib/active_support/subscriber.rb:101
+  [1m[36mPower Load (0.1ms)[0m  [1m[34mSELECT "powers".* FROM "powers" WHERE "powers"."room_id" = ?[0m  [["room_id", 2]]
+  ↳ /Users/rsoul/.rvm/rubies/ruby-2.5.1/lib/ruby/gems/2.5.0/gems/activesupport-5.2.0/lib/active_support/subscriber.rb:101
+  [1m[36mCACHE User Load (0.0ms)[0m  [1m[34mSELECT  "users".* FROM "users" WHERE "users"."id" = ? LIMIT ?[0m  [["id", 1], ["LIMIT", 1]]
+  ↳ /Users/rsoul/.rvm/rubies/ruby-2.5.1/lib/ruby/gems/2.5.0/gems/activesupport-5.2.0/lib/active_support/subscriber.rb:101
+  Rendering mapbox/show.html.haml within layouts/application
+  Rendered mapbox/show.html.haml within layouts/application (7.7ms)
+  [1m[36mCACHE User Load (0.0ms)[0m  [1m[34mSELECT  "users".* FROM "users" WHERE "users"."id" = ? LIMIT ?[0m  [["id", 1], ["LIMIT", 1]]
+  ↳ /Users/rsoul/.rvm/rubies/ruby-2.5.1/lib/ruby/gems/2.5.0/gems/activesupport-5.2.0/lib/active_support/subscriber.rb:101
+  Rendered layouts/_navbar.html.haml (7.0ms)
+Completed 200 OK in 187ms (Views: 97.1ms | ActiveRecord: 2.9ms)
+
+
+Started GET "/dashboard.json" for 127.0.0.1 at 2018-09-20 21:10:54 +0200
+Processing by MapboxController#show as JSON
+  [1m[36mRoom Load (0.2ms)[0m  [1m[34mSELECT "rooms".* FROM "rooms"[0m
+  ↳ /Users/rsoul/.rvm/rubies/ruby-2.5.1/lib/ruby/gems/2.5.0/gems/activesupport-5.2.0/lib/active_support/subscriber.rb:101
+  [1m[36mPower Load (0.1ms)[0m  [1m[34mSELECT "powers".* FROM "powers" WHERE "powers"."room_id" = ?[0m  [["room_id", 1]]
+  ↳ /Users/rsoul/.rvm/rubies/ruby-2.5.1/lib/ruby/gems/2.5.0/gems/activesupport-5.2.0/lib/active_support/subscriber.rb:101
+  [1m[36mUser Load (0.1ms)[0m  [1m[34mSELECT  "users".* FROM "users" WHERE "users"."id" = ? LIMIT ?[0m  [["id", 1], ["LIMIT", 1]]
+  ↳ /Users/rsoul/.rvm/rubies/ruby-2.5.1/lib/ruby/gems/2.5.0/gems/activesupport-5.2.0/lib/active_support/subscriber.rb:101
+  [1m[36mPower Load (0.1ms)[0m  [1m[34mSELECT "powers".* FROM "powers" WHERE "powers"."room_id" = ?[0m  [["room_id", 2]]
+  ↳ /Users/rsoul/.rvm/rubies/ruby-2.5.1/lib/ruby/gems/2.5.0/gems/activesupport-5.2.0/lib/active_support/subscriber.rb:101
+  [1m[36mCACHE User Load (0.0ms)[0m  [1m[34mSELECT  "users".* FROM "users" WHERE "users"."id" = ? LIMIT ?[0m  [["id", 1], ["LIMIT", 1]]
+  ↳ /Users/rsoul/.rvm/rubies/ruby-2.5.1/lib/ruby/gems/2.5.0/gems/activesupport-5.2.0/lib/active_support/subscriber.rb:101
+Completed 200 OK in 6ms (Views: 0.1ms | ActiveRecord: 0.5ms)
+
+
+Started GET "/dashboard.json" for 127.0.0.1 at 2018-09-20 21:10:54 +0200
+Processing by MapboxController#show as JSON
+  [1m[36mRoom Load (0.2ms)[0m  [1m[34mSELECT "rooms".* FROM "rooms"[0m
+  ↳ /Users/rsoul/.rvm/rubies/ruby-2.5.1/lib/ruby/gems/2.5.0/gems/activesupport-5.2.0/lib/active_support/subscriber.rb:101
+  [1m[36mPower Load (0.1ms)[0m  [1m[34mSELECT "powers".* FROM "powers" WHERE "powers"."room_id" = ?[0m  [["room_id", 1]]
+  ↳ /Users/rsoul/.rvm/rubies/ruby-2.5.1/lib/ruby/gems/2.5.0/gems/activesupport-5.2.0/lib/active_support/subscriber.rb:101
+  [1m[36mUser Load (0.1ms)[0m  [1m[34mSELECT  "users".* FROM "users" WHERE "users"."id" = ? LIMIT ?[0m  [["id", 1], ["LIMIT", 1]]
+  ↳ /Users/rsoul/.rvm/rubies/ruby-2.5.1/lib/ruby/gems/2.5.0/gems/activesupport-5.2.0/lib/active_support/subscriber.rb:101
+  [1m[36mPower Load (0.1ms)[0m  [1m[34mSELECT "powers".* FROM "powers" WHERE "powers"."room_id" = ?[0m  [["room_id", 2]]
+  ↳ /Users/rsoul/.rvm/rubies/ruby-2.5.1/lib/ruby/gems/2.5.0/gems/activesupport-5.2.0/lib/active_support/subscriber.rb:101
+  [1m[36mCACHE User Load (0.0ms)[0m  [1m[34mSELECT  "users".* FROM "users" WHERE "users"."id" = ? LIMIT ?[0m  [["id", 1], ["LIMIT", 1]]
+  ↳ /Users/rsoul/.rvm/rubies/ruby-2.5.1/lib/ruby/gems/2.5.0/gems/activesupport-5.2.0/lib/active_support/subscriber.rb:101
+Completed 200 OK in 15ms (Views: 0.1ms | ActiveRecord: 0.7ms)
+
+
+Started GET "/rooms/HTwpMWlPy747" for 127.0.0.1 at 2018-09-20 21:10:58 +0200
+Processing by RoomsController#show as HTML
+  Parameters: {"id"=>"HTwpMWlPy747"}
+  [1m[36mRoom Load (0.3ms)[0m  [1m[34mSELECT  "rooms".* FROM "rooms" WHERE "rooms"."hash_id" = ? ORDER BY "rooms"."id" ASC LIMIT ?[0m  [["hash_id", "HTwpMWlPy747"], ["LIMIT", 1]]
+  ↳ /Users/rsoul/.rvm/rubies/ruby-2.5.1/lib/ruby/gems/2.5.0/gems/activesupport-5.2.0/lib/active_support/subscriber.rb:101
+  Rendering rooms/show.html.haml within layouts/application
+  [1m[36mCACHE Room Load (0.0ms)[0m  [1m[34mSELECT  "rooms".* FROM "rooms" WHERE "rooms"."hash_id" = ? ORDER BY "rooms"."id" ASC LIMIT ?[0m  [["hash_id", "HTwpMWlPy747"], ["LIMIT", 1]]
+  ↳ /Users/rsoul/.rvm/rubies/ruby-2.5.1/lib/ruby/gems/2.5.0/gems/activesupport-5.2.0/lib/active_support/subscriber.rb:101
+  [1m[36mUser Load (0.1ms)[0m  [1m[34mSELECT  "users".* FROM "users" WHERE "users"."id" = ? LIMIT ?[0m  [["id", 1], ["LIMIT", 1]]
+  ↳ /Users/rsoul/.rvm/rubies/ruby-2.5.1/lib/ruby/gems/2.5.0/gems/activesupport-5.2.0/lib/active_support/subscriber.rb:101
+  [1m[36mPower Exists (0.1ms)[0m  [1m[34mSELECT  1 AS one FROM "powers" WHERE "powers"."user_id" = ? AND "powers"."room_id" = ? LIMIT ?[0m  [["user_id", 1], ["room_id", 1], ["LIMIT", 1]]
+  ↳ /Users/rsoul/.rvm/rubies/ruby-2.5.1/lib/ruby/gems/2.5.0/gems/activesupport-5.2.0/lib/active_support/subscriber.rb:101
+  [1m[36mCACHE Room Load (0.0ms)[0m  [1m[34mSELECT  "rooms".* FROM "rooms" WHERE "rooms"."hash_id" = ? ORDER BY "rooms"."id" ASC LIMIT ?[0m  [["hash_id", "HTwpMWlPy747"], ["LIMIT", 1]]
+  ↳ /Users/rsoul/.rvm/rubies/ruby-2.5.1/lib/ruby/gems/2.5.0/gems/activesupport-5.2.0/lib/active_support/subscriber.rb:101
+  [1m[36mPower Load (0.1ms)[0m  [1m[34mSELECT "powers".* FROM "powers" WHERE "powers"."room_id" = ?[0m  [["room_id", 1]]
+  ↳ /Users/rsoul/.rvm/rubies/ruby-2.5.1/lib/ruby/gems/2.5.0/gems/activesupport-5.2.0/lib/active_support/subscriber.rb:101
+  [1m[36mCACHE User Load (0.0ms)[0m  [1m[34mSELECT  "users".* FROM "users" WHERE "users"."id" = ? LIMIT ?[0m  [["id", 1], ["LIMIT", 1]]
+  ↳ /Users/rsoul/.rvm/rubies/ruby-2.5.1/lib/ruby/gems/2.5.0/gems/activesupport-5.2.0/lib/active_support/subscriber.rb:101
+  [1m[36mCACHE Room Load (0.0ms)[0m  [1m[34mSELECT  "rooms".* FROM "rooms" WHERE "rooms"."hash_id" = ? ORDER BY "rooms"."id" ASC LIMIT ?[0m  [["hash_id", "HTwpMWlPy747"], ["LIMIT", 1]]
+  ↳ /Users/rsoul/.rvm/rubies/ruby-2.5.1/lib/ruby/gems/2.5.0/gems/activesupport-5.2.0/lib/active_support/subscriber.rb:101
+  [1m[36mCACHE Room Load (0.0ms)[0m  [1m[34mSELECT  "rooms".* FROM "rooms" WHERE "rooms"."hash_id" = ? ORDER BY "rooms"."id" ASC LIMIT ?[0m  [["hash_id", "HTwpMWlPy747"], ["LIMIT", 1]]
+  ↳ /Users/rsoul/.rvm/rubies/ruby-2.5.1/lib/ruby/gems/2.5.0/gems/activesupport-5.2.0/lib/active_support/subscriber.rb:101
+  [1m[36mCACHE Power Exists (0.0ms)[0m  [1m[34mSELECT  1 AS one FROM "powers" WHERE "powers"."user_id" = ? AND "powers"."room_id" = ? LIMIT ?[0m  [["user_id", 1], ["room_id", 1], ["LIMIT", 1]]
+  ↳ /Users/rsoul/.rvm/rubies/ruby-2.5.1/lib/ruby/gems/2.5.0/gems/activesupport-5.2.0/lib/active_support/subscriber.rb:101
+  [1m[36mCACHE Room Load (0.0ms)[0m  [1m[34mSELECT  "rooms".* FROM "rooms" WHERE "rooms"."hash_id" = ? ORDER BY "rooms"."id" ASC LIMIT ?[0m  [["hash_id", "HTwpMWlPy747"], ["LIMIT", 1]]
+  ↳ /Users/rsoul/.rvm/rubies/ruby-2.5.1/lib/ruby/gems/2.5.0/gems/activesupport-5.2.0/lib/active_support/subscriber.rb:101
+  [1m[36mCACHE Power Exists (0.0ms)[0m  [1m[34mSELECT  1 AS one FROM "powers" WHERE "powers"."user_id" = ? AND "powers"."room_id" = ? LIMIT ?[0m  [["user_id", 1], ["room_id", 1], ["LIMIT", 1]]
+  ↳ /Users/rsoul/.rvm/rubies/ruby-2.5.1/lib/ruby/gems/2.5.0/gems/activesupport-5.2.0/lib/active_support/subscriber.rb:101
+  [1m[36mReservation Exists (0.1ms)[0m  [1m[34mSELECT  1 AS one FROM "reservations" WHERE "reservations"."user_id" = ? AND "reservations"."room_id" = ? LIMIT ?[0m  [["user_id", 1], ["room_id", 1], ["LIMIT", 1]]
+  ↳ /Users/rsoul/.rvm/rubies/ruby-2.5.1/lib/ruby/gems/2.5.0/gems/activesupport-5.2.0/lib/active_support/subscriber.rb:101
+  [1m[36mMessage Load (0.1ms)[0m  [1m[34mSELECT "messages".* FROM "messages" WHERE "messages"."room_id" = ?[0m  [["room_id", 1]]
+  ↳ /Users/rsoul/.rvm/rubies/ruby-2.5.1/lib/ruby/gems/2.5.0/gems/activesupport-5.2.0/lib/active_support/subscriber.rb:101
+  Rendered rooms/show.html.haml within layouts/application (41.6ms)
+  Rendered layouts/_navbar.html.haml (6.0ms)
+Completed 200 OK in 129ms (Views: 117.0ms | ActiveRecord: 1.8ms)
+
+
+Started GET "/rooms/HTwpMWlPy747.json" for 127.0.0.1 at 2018-09-20 21:10:59 +0200
+Processing by RoomsController#show as JSON
+  Parameters: {"id"=>"HTwpMWlPy747"}
+  [1m[36mRoom Load (0.3ms)[0m  [1m[34mSELECT  "rooms".* FROM "rooms" WHERE "rooms"."hash_id" = ? ORDER BY "rooms"."id" ASC LIMIT ?[0m  [["hash_id", "HTwpMWlPy747"], ["LIMIT", 1]]
+  ↳ /Users/rsoul/.rvm/rubies/ruby-2.5.1/lib/ruby/gems/2.5.0/gems/activesupport-5.2.0/lib/active_support/subscriber.rb:101
+  Rendering rooms/show.json.jbuilder
+  Rendered rooms/_room.json.jbuilder (1.0ms)
+  Rendered rooms/show.json.jbuilder (3.0ms)
+Completed 200 OK in 43ms (Views: 38.2ms | ActiveRecord: 0.3ms)
+
+
+Started GET "/rooms/HTwpMWlPy747/reservations" for 127.0.0.1 at 2018-09-20 21:11:01 +0200
+Started GET "/rooms/HTwpMWlPy747/messages" for 127.0.0.1 at 2018-09-20 21:11:01 +0200
+Processing by ReservationsController#index as HTML
+  Parameters: {"room_id"=>"HTwpMWlPy747"}
+Processing by MessagesController#index as HTML
+  [1m[36mRoom Load (0.3ms)[0m  [1m[34mSELECT  "rooms".* FROM "rooms" WHERE "rooms"."hash_id" = ? ORDER BY "rooms"."id" ASC LIMIT ?[0m  [["hash_id", "HTwpMWlPy747"], ["LIMIT", 1]]
+  Parameters: {"room_id"=>"HTwpMWlPy747"}
+  ↳ /Users/rsoul/.rvm/rubies/ruby-2.5.1/lib/ruby/gems/2.5.0/gems/activesupport-5.2.0/lib/active_support/subscriber.rb:101
+  [1m[36mRoom Load (0.2ms)[0m  [1m[34mSELECT  "rooms".* FROM "rooms" WHERE "rooms"."hash_id" = ? ORDER BY "rooms"."id" ASC LIMIT ?[0m  [["hash_id", "HTwpMWlPy747"], ["LIMIT", 1]]
+  ↳ /Users/rsoul/.rvm/rubies/ruby-2.5.1/lib/ruby/gems/2.5.0/gems/activesupport-5.2.0/lib/active_support/subscriber.rb:101
+  Rendering reservations/index.html.haml
+  [1m[36mReservation Load (0.2ms)[0m  [1m[34mSELECT "reservations".* FROM "reservations" WHERE "reservations"."room_id" = ? ORDER BY position[0m  [["room_id", 1]]
+  ↳ /Users/rsoul/.rvm/rubies/ruby-2.5.1/lib/ruby/gems/2.5.0/gems/activesupport-5.2.0/lib/active_support/subscriber.rb:101
+  Rendered reservations/index.html.haml (5.6ms)
+Completed 200 OK in 70ms (Views: 66.2ms | ActiveRecord: 0.5ms)
+
+
+  Rendering messages/index.html.haml
+  [1m[36mMessage Load (0.2ms)[0m  [1m[34mSELECT "messages".* FROM "messages" WHERE "messages"."room_id" = ?[0m  [["room_id", 1]]
+  ↳ /Users/rsoul/.rvm/rubies/ruby-2.5.1/lib/ruby/gems/2.5.0/gems/activesupport-5.2.0/lib/active_support/subscriber.rb:101
+  Rendered messages/index.html.haml (6.8ms)
+Completed 200 OK in 76ms (Views: 43.2ms | ActiveRecord: 0.4ms)
+
+
+Started POST "/rooms/1/invite_user" for 127.0.0.1 at 2018-09-20 21:11:03 +0200
+Processing by RoomsController#invite_user_to_room as HTML
+  Parameters: {"utf8"=>"✓", "authenticity_token"=>"Xmyz/teKuHNT+jyf8Occa5y/kmngDuFs/ULA1eCsLEVgdtSGGKUW0T2eMcLNTI6OGaTbtoCDlFwZDVwMy4ck/w==", "username"=>"prova1", "commit"=>"Invita", "room_id"=>"1"}
+  [1m[36mRoom Load (0.2ms)[0m  [1m[34mSELECT  "rooms".* FROM "rooms" WHERE "rooms"."id" = ? LIMIT ?[0m  [["id", 1], ["LIMIT", 1]]
+  ↳ /Users/rsoul/.rvm/rubies/ruby-2.5.1/lib/ruby/gems/2.5.0/gems/activesupport-5.2.0/lib/active_support/subscriber.rb:101
+  [1m[36mUser Load (0.4ms)[0m  [1m[34mSELECT  "users".* FROM "users" WHERE "users"."id" = ? LIMIT ?[0m  [["id", 1], ["LIMIT", 1]]
+  ↳ /Users/rsoul/.rvm/rubies/ruby-2.5.1/lib/ruby/gems/2.5.0/gems/activesupport-5.2.0/lib/active_support/subscriber.rb:101
+  [1m[36mUser Load (0.3ms)[0m  [1m[34mSELECT  "users".* FROM "users" WHERE "users"."username" = ? LIMIT ?[0m  [["username", "prova1"], ["LIMIT", 1]]
+  ↳ /Users/rsoul/.rvm/rubies/ruby-2.5.1/lib/ruby/gems/2.5.0/gems/activesupport-5.2.0/lib/active_support/subscriber.rb:101
+  [1m[35m (0.1ms)[0m  [1m[36mbegin transaction[0m
+  ↳ /Users/rsoul/.rvm/rubies/ruby-2.5.1/lib/ruby/gems/2.5.0/gems/activesupport-5.2.0/lib/active_support/subscriber.rb:101
+  [1m[36mMailboxer::Conversation Create (0.3ms)[0m  [1m[32mINSERT INTO "mailboxer_conversations" ("subject", "created_at", "updated_at") VALUES (?, ?, ?)[0m  [["subject", "You have been invited to testinggg"], ["created_at", "2018-09-20 19:11:03.559356"], ["updated_at", "2018-09-20 19:11:03.559356"]]
+  ↳ /Users/rsoul/.rvm/rubies/ruby-2.5.1/lib/ruby/gems/2.5.0/gems/activesupport-5.2.0/lib/active_support/subscriber.rb:101
+  [1m[36mMailboxer::Message Create (0.2ms)[0m  [1m[32mINSERT INTO "mailboxer_notifications" ("type", "body", "subject", "sender_type", "sender_id", "conversation_id", "updated_at", "created_at") VALUES (?, ?, ?, ?, ?, ?, ?, ?)[0m  [["type", "Mailboxer::Message"], ["body", "Hey prova1, prova1 has invited you to check out http://localhost:3000/rooms/HTwpMWlPy747"], ["subject", "You have been invited to testinggg"], ["sender_type", "User"], ["sender_id", 1], ["conversation_id", 3], ["updated_at", "2018-09-20 19:11:03.559356"], ["created_at", "2018-09-20 19:11:03.559356"]]
+  ↳ /Users/rsoul/.rvm/rubies/ruby-2.5.1/lib/ruby/gems/2.5.0/gems/activesupport-5.2.0/lib/active_support/subscriber.rb:101
+  [1m[36mMailboxer::Receipt Create (0.2ms)[0m  [1m[32mINSERT INTO "mailboxer_receipts" ("receiver_type", "receiver_id", "notification_id", "mailbox_type", "created_at", "updated_at") VALUES (?, ?, ?, ?, ?, ?)[0m  [["receiver_type", "User"], ["receiver_id", 1], ["notification_id", 3], ["mailbox_type", "inbox"], ["created_at", "2018-09-20 19:11:03.639879"], ["updated_at", "2018-09-20 19:11:03.639879"]]
+  ↳ /Users/rsoul/.rvm/rubies/ruby-2.5.1/lib/ruby/gems/2.5.0/gems/activesupport-5.2.0/lib/active_support/subscriber.rb:101
+  [1m[36mMailboxer::Receipt Create (0.1ms)[0m  [1m[32mINSERT INTO "mailboxer_receipts" ("receiver_type", "receiver_id", "notification_id", "is_read", "mailbox_type", "created_at", "updated_at") VALUES (?, ?, ?, ?, ?, ?, ?)[0m  [["receiver_type", "User"], ["receiver_id", 1], ["notification_id", 3], ["is_read", 1], ["mailbox_type", "sentbox"], ["created_at", "2018-09-20 19:11:03.641135"], ["updated_at", "2018-09-20 19:11:03.641135"]]
+  ↳ /Users/rsoul/.rvm/rubies/ruby-2.5.1/lib/ruby/gems/2.5.0/gems/activesupport-5.2.0/lib/active_support/subscriber.rb:101
+  [1m[35m (2.9ms)[0m  [1m[36mcommit transaction[0m
+  ↳ /Users/rsoul/.rvm/rubies/ruby-2.5.1/lib/ruby/gems/2.5.0/gems/activesupport-5.2.0/lib/active_support/subscriber.rb:101
+Redirected to http://localhost:3000/rooms/HTwpMWlPy747
+Completed 302 Found in 93ms (ActiveRecord: 6.7ms)
+
+
+Started GET "/rooms/HTwpMWlPy747" for 127.0.0.1 at 2018-09-20 21:11:03 +0200
+Processing by RoomsController#show as HTML
+  Parameters: {"id"=>"HTwpMWlPy747"}
+  [1m[36mRoom Load (0.3ms)[0m  [1m[34mSELECT  "rooms".* FROM "rooms" WHERE "rooms"."hash_id" = ? ORDER BY "rooms"."id" ASC LIMIT ?[0m  [["hash_id", "HTwpMWlPy747"], ["LIMIT", 1]]
+  ↳ /Users/rsoul/.rvm/rubies/ruby-2.5.1/lib/ruby/gems/2.5.0/gems/activesupport-5.2.0/lib/active_support/subscriber.rb:101
+  Rendering rooms/show.html.haml within layouts/application
+  [1m[36mCACHE Room Load (0.0ms)[0m  [1m[34mSELECT  "rooms".* FROM "rooms" WHERE "rooms"."hash_id" = ? ORDER BY "rooms"."id" ASC LIMIT ?[0m  [["hash_id", "HTwpMWlPy747"], ["LIMIT", 1]]
+  ↳ /Users/rsoul/.rvm/rubies/ruby-2.5.1/lib/ruby/gems/2.5.0/gems/activesupport-5.2.0/lib/active_support/subscriber.rb:101
+  [1m[36mUser Load (0.1ms)[0m  [1m[34mSELECT  "users".* FROM "users" WHERE "users"."id" = ? LIMIT ?[0m  [["id", 1], ["LIMIT", 1]]
+  ↳ /Users/rsoul/.rvm/rubies/ruby-2.5.1/lib/ruby/gems/2.5.0/gems/activesupport-5.2.0/lib/active_support/subscriber.rb:101
+  [1m[36mPower Exists (0.1ms)[0m  [1m[34mSELECT  1 AS one FROM "powers" WHERE "powers"."user_id" = ? AND "powers"."room_id" = ? LIMIT ?[0m  [["user_id", 1], ["room_id", 1], ["LIMIT", 1]]
+  ↳ /Users/rsoul/.rvm/rubies/ruby-2.5.1/lib/ruby/gems/2.5.0/gems/activesupport-5.2.0/lib/active_support/subscriber.rb:101
+  [1m[36mCACHE Room Load (0.0ms)[0m  [1m[34mSELECT  "rooms".* FROM "rooms" WHERE "rooms"."hash_id" = ? ORDER BY "rooms"."id" ASC LIMIT ?[0m  [["hash_id", "HTwpMWlPy747"], ["LIMIT", 1]]
+  ↳ /Users/rsoul/.rvm/rubies/ruby-2.5.1/lib/ruby/gems/2.5.0/gems/activesupport-5.2.0/lib/active_support/subscriber.rb:101
+  [1m[36mPower Load (0.2ms)[0m  [1m[34mSELECT "powers".* FROM "powers" WHERE "powers"."room_id" = ?[0m  [["room_id", 1]]
+  ↳ /Users/rsoul/.rvm/rubies/ruby-2.5.1/lib/ruby/gems/2.5.0/gems/activesupport-5.2.0/lib/active_support/subscriber.rb:101
+  [1m[36mCACHE User Load (0.0ms)[0m  [1m[34mSELECT  "users".* FROM "users" WHERE "users"."id" = ? LIMIT ?[0m  [["id", 1], ["LIMIT", 1]]
+  ↳ /Users/rsoul/.rvm/rubies/ruby-2.5.1/lib/ruby/gems/2.5.0/gems/activesupport-5.2.0/lib/active_support/subscriber.rb:101
+  [1m[36mCACHE Room Load (0.0ms)[0m  [1m[34mSELECT  "rooms".* FROM "rooms" WHERE "rooms"."hash_id" = ? ORDER BY "rooms"."id" ASC LIMIT ?[0m  [["hash_id", "HTwpMWlPy747"], ["LIMIT", 1]]
+  ↳ /Users/rsoul/.rvm/rubies/ruby-2.5.1/lib/ruby/gems/2.5.0/gems/activesupport-5.2.0/lib/active_support/subscriber.rb:101
+  [1m[36mCACHE Room Load (0.0ms)[0m  [1m[34mSELECT  "rooms".* FROM "rooms" WHERE "rooms"."hash_id" = ? ORDER BY "rooms"."id" ASC LIMIT ?[0m  [["hash_id", "HTwpMWlPy747"], ["LIMIT", 1]]
+  ↳ /Users/rsoul/.rvm/rubies/ruby-2.5.1/lib/ruby/gems/2.5.0/gems/activesupport-5.2.0/lib/active_support/subscriber.rb:101
+  [1m[36mCACHE Power Exists (0.0ms)[0m  [1m[34mSELECT  1 AS one FROM "powers" WHERE "powers"."user_id" = ? AND "powers"."room_id" = ? LIMIT ?[0m  [["user_id", 1], ["room_id", 1], ["LIMIT", 1]]
+  ↳ /Users/rsoul/.rvm/rubies/ruby-2.5.1/lib/ruby/gems/2.5.0/gems/activesupport-5.2.0/lib/active_support/subscriber.rb:101
+  [1m[36mCACHE Room Load (0.0ms)[0m  [1m[34mSELECT  "rooms".* FROM "rooms" WHERE "rooms"."hash_id" = ? ORDER BY "rooms"."id" ASC LIMIT ?[0m  [["hash_id", "HTwpMWlPy747"], ["LIMIT", 1]]
+  ↳ /Users/rsoul/.rvm/rubies/ruby-2.5.1/lib/ruby/gems/2.5.0/gems/activesupport-5.2.0/lib/active_support/subscriber.rb:101
+  [1m[36mCACHE Power Exists (0.0ms)[0m  [1m[34mSELECT  1 AS one FROM "powers" WHERE "powers"."user_id" = ? AND "powers"."room_id" = ? LIMIT ?[0m  [["user_id", 1], ["room_id", 1], ["LIMIT", 1]]
+  ↳ /Users/rsoul/.rvm/rubies/ruby-2.5.1/lib/ruby/gems/2.5.0/gems/activesupport-5.2.0/lib/active_support/subscriber.rb:101
+  [1m[36mReservation Exists (0.2ms)[0m  [1m[34mSELECT  1 AS one FROM "reservations" WHERE "reservations"."user_id" = ? AND "reservations"."room_id" = ? LIMIT ?[0m  [["user_id", 1], ["room_id", 1], ["LIMIT", 1]]
+  ↳ /Users/rsoul/.rvm/rubies/ruby-2.5.1/lib/ruby/gems/2.5.0/gems/activesupport-5.2.0/lib/active_support/subscriber.rb:101
+  [1m[36mMessage Load (0.1ms)[0m  [1m[34mSELECT "messages".* FROM "messages" WHERE "messages"."room_id" = ?[0m  [["room_id", 1]]
+  ↳ /Users/rsoul/.rvm/rubies/ruby-2.5.1/lib/ruby/gems/2.5.0/gems/activesupport-5.2.0/lib/active_support/subscriber.rb:101
+  Rendered rooms/show.html.haml within layouts/application (33.1ms)
+  Rendered layouts/_navbar.html.haml (12.1ms)
+Completed 200 OK in 167ms (Views: 162.1ms | ActiveRecord: 1.1ms)
+
+
+Started GET "/rooms/HTwpMWlPy747.json" for 127.0.0.1 at 2018-09-20 21:11:04 +0200
+Processing by RoomsController#show as JSON
+  Parameters: {"id"=>"HTwpMWlPy747"}
+  [1m[36mRoom Load (0.3ms)[0m  [1m[34mSELECT  "rooms".* FROM "rooms" WHERE "rooms"."hash_id" = ? ORDER BY "rooms"."id" ASC LIMIT ?[0m  [["hash_id", "HTwpMWlPy747"], ["LIMIT", 1]]
+  ↳ /Users/rsoul/.rvm/rubies/ruby-2.5.1/lib/ruby/gems/2.5.0/gems/activesupport-5.2.0/lib/active_support/subscriber.rb:101
+  Rendering rooms/show.json.jbuilder
+  Rendered rooms/_room.json.jbuilder (1.2ms)
+  Rendered rooms/show.json.jbuilder (2.9ms)
+Completed 200 OK in 42ms (Views: 37.0ms | ActiveRecord: 0.3ms)
+
+
+Started GET "/conversations" for 127.0.0.1 at 2018-09-20 21:11:05 +0200
+Processing by ConversationsController#index as HTML
+  [1m[36mUser Load (0.1ms)[0m  [1m[34mSELECT  "users".* FROM "users" WHERE "users"."id" = ? LIMIT ?[0m  [["id", 1], ["LIMIT", 1]]
+  ↳ /Users/rsoul/.rvm/rubies/ruby-2.5.1/lib/ruby/gems/2.5.0/gems/activesupport-5.2.0/lib/active_support/subscriber.rb:101
+  Rendering conversations/index.html.haml within layouts/application
+  [1m[36mMailboxer::Conversation Load (0.7ms)[0m  [1m[34mSELECT DISTINCT "mailboxer_conversations".* FROM "mailboxer_conversations" INNER JOIN "mailboxer_notifications" ON "mailboxer_notifications"."conversation_id" = "mailboxer_conversations"."id" AND "mailboxer_notifications"."type" IN ('Mailboxer::Message') INNER JOIN "mailboxer_receipts" ON "mailboxer_receipts"."notification_id" = "mailboxer_notifications"."id" WHERE "mailboxer_notifications"."type" = ? AND "mailboxer_receipts"."receiver_id" = ? AND "mailboxer_receipts"."receiver_type" = ? ORDER BY "mailboxer_conversations"."updated_at" DESC[0m  [["type", "Mailboxer::Message"], ["receiver_id", 1], ["receiver_type", "User"]]
+  ↳ /Users/rsoul/.rvm/rubies/ruby-2.5.1/lib/ruby/gems/2.5.0/gems/activesupport-5.2.0/lib/active_support/subscriber.rb:101
+  [1m[36mMailboxer::Message Load (0.2ms)[0m  [1m[34mSELECT  "mailboxer_notifications".* FROM "mailboxer_notifications" WHERE "mailboxer_notifications"."type" IN ('Mailboxer::Message') AND "mailboxer_notifications"."conversation_id" = ? ORDER BY "mailboxer_notifications"."created_at" ASC LIMIT ?[0m  [["conversation_id", 3], ["LIMIT", 1]]
+  ↳ /Users/rsoul/.rvm/rubies/ruby-2.5.1/lib/ruby/gems/2.5.0/gems/activesupport-5.2.0/lib/active_support/subscriber.rb:101
+  [1m[36mMailboxer::Receipt Load (0.2ms)[0m  [1m[34mSELECT "mailboxer_receipts".* FROM "mailboxer_receipts" WHERE "mailboxer_receipts"."notification_id" = ?[0m  [["notification_id", 3]]
+  ↳ /Users/rsoul/.rvm/rubies/ruby-2.5.1/lib/ruby/gems/2.5.0/gems/activesupport-5.2.0/lib/active_support/subscriber.rb:101
+  [1m[36mUser Load (0.2ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."id" = ?[0m  [["id", 1]]
+  ↳ /Users/rsoul/.rvm/rubies/ruby-2.5.1/lib/ruby/gems/2.5.0/gems/activesupport-5.2.0/lib/active_support/subscriber.rb:101
+  [1m[36mMailboxer::Conversation::OptOut Exists (0.1ms)[0m  [1m[34mSELECT  1 AS one FROM "mailboxer_conversation_opt_outs" WHERE "mailboxer_conversation_opt_outs"."conversation_id" = ? AND "mailboxer_conversation_opt_outs"."unsubscriber_type" = ? AND "mailboxer_conversation_opt_outs"."unsubscriber_id" = ? LIMIT ?[0m  [["conversation_id", 3], ["unsubscriber_type", "User"], ["unsubscriber_id", 1], ["LIMIT", 1]]
+  ↳ /Users/rsoul/.rvm/rubies/ruby-2.5.1/lib/ruby/gems/2.5.0/gems/activesupport-5.2.0/lib/active_support/subscriber.rb:101
+  [1m[36mCACHE Mailboxer::Conversation::OptOut Exists (0.0ms)[0m  [1m[34mSELECT  1 AS one FROM "mailboxer_conversation_opt_outs" WHERE "mailboxer_conversation_opt_outs"."conversation_id" = ? AND "mailboxer_conversation_opt_outs"."unsubscriber_type" = ? AND "mailboxer_conversation_opt_outs"."unsubscriber_id" = ? LIMIT ?[0m  [["conversation_id", 3], ["unsubscriber_type", "User"], ["unsubscriber_id", 1], ["LIMIT", 1]]
+  ↳ /Users/rsoul/.rvm/rubies/ruby-2.5.1/lib/ruby/gems/2.5.0/gems/activesupport-5.2.0/lib/active_support/subscriber.rb:101
+  [1m[36mMailboxer::Message Load (0.7ms)[0m  [1m[34mSELECT  "mailboxer_notifications".* FROM "mailboxer_notifications" WHERE "mailboxer_notifications"."type" IN ('Mailboxer::Message') AND "mailboxer_notifications"."conversation_id" = ? ORDER BY "mailboxer_notifications"."created_at" ASC LIMIT ?[0m  [["conversation_id", 2], ["LIMIT", 1]]
+  ↳ /Users/rsoul/.rvm/rubies/ruby-2.5.1/lib/ruby/gems/2.5.0/gems/activesupport-5.2.0/lib/active_support/subscriber.rb:101
+  [1m[36mMailboxer::Receipt Load (0.4ms)[0m  [1m[34mSELECT "mailboxer_receipts".* FROM "mailboxer_receipts" WHERE "mailboxer_receipts"."notification_id" = ?[0m  [["notification_id", 2]]
+  ↳ /Users/rsoul/.rvm/rubies/ruby-2.5.1/lib/ruby/gems/2.5.0/gems/activesupport-5.2.0/lib/active_support/subscriber.rb:101
+  [1m[36mCACHE User Load (0.0ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."id" = ?[0m  [["id", 1]]
+  ↳ /Users/rsoul/.rvm/rubies/ruby-2.5.1/lib/ruby/gems/2.5.0/gems/activesupport-5.2.0/lib/active_support/subscriber.rb:101
+  [1m[36mMailboxer::Conversation::OptOut Exists (0.2ms)[0m  [1m[34mSELECT  1 AS one FROM "mailboxer_conversation_opt_outs" WHERE "mailboxer_conversation_opt_outs"."conversation_id" = ? AND "mailboxer_conversation_opt_outs"."unsubscriber_type" = ? AND "mailboxer_conversation_opt_outs"."unsubscriber_id" = ? LIMIT ?[0m  [["conversation_id", 2], ["unsubscriber_type", "User"], ["unsubscriber_id", 1], ["LIMIT", 1]]
+  ↳ /Users/rsoul/.rvm/rubies/ruby-2.5.1/lib/ruby/gems/2.5.0/gems/activesupport-5.2.0/lib/active_support/subscriber.rb:101
+  [1m[36mCACHE Mailboxer::Conversation::OptOut Exists (0.0ms)[0m  [1m[34mSELECT  1 AS one FROM "mailboxer_conversation_opt_outs" WHERE "mailboxer_conversation_opt_outs"."conversation_id" = ? AND "mailboxer_conversation_opt_outs"."unsubscriber_type" = ? AND "mailboxer_conversation_opt_outs"."unsubscriber_id" = ? LIMIT ?[0m  [["conversation_id", 2], ["unsubscriber_type", "User"], ["unsubscriber_id", 1], ["LIMIT", 1]]
+  ↳ /Users/rsoul/.rvm/rubies/ruby-2.5.1/lib/ruby/gems/2.5.0/gems/activesupport-5.2.0/lib/active_support/subscriber.rb:101
+  [1m[36mMailboxer::Message Load (1.8ms)[0m  [1m[34mSELECT  "mailboxer_notifications".* FROM "mailboxer_notifications" WHERE "mailboxer_notifications"."type" IN ('Mailboxer::Message') AND "mailboxer_notifications"."conversation_id" = ? ORDER BY "mailboxer_notifications"."created_at" ASC LIMIT ?[0m  [["conversation_id", 1], ["LIMIT", 1]]
+  ↳ /Users/rsoul/.rvm/rubies/ruby-2.5.1/lib/ruby/gems/2.5.0/gems/activesupport-5.2.0/lib/active_support/subscriber.rb:101
+  [1m[36mMailboxer::Receipt Load (0.2ms)[0m  [1m[34mSELECT "mailboxer_receipts".* FROM "mailboxer_receipts" WHERE "mailboxer_receipts"."notification_id" = ?[0m  [["notification_id", 1]]
+  ↳ /Users/rsoul/.rvm/rubies/ruby-2.5.1/lib/ruby/gems/2.5.0/gems/activesupport-5.2.0/lib/active_support/subscriber.rb:101
+  [1m[36mCACHE User Load (0.0ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."id" = ?[0m  [["id", 1]]
+  ↳ /Users/rsoul/.rvm/rubies/ruby-2.5.1/lib/ruby/gems/2.5.0/gems/activesupport-5.2.0/lib/active_support/subscriber.rb:101
+  [1m[36mMailboxer::Conversation::OptOut Exists (0.2ms)[0m  [1m[34mSELECT  1 AS one FROM "mailboxer_conversation_opt_outs" WHERE "mailboxer_conversation_opt_outs"."conversation_id" = ? AND "mailboxer_conversation_opt_outs"."unsubscriber_type" = ? AND "mailboxer_conversation_opt_outs"."unsubscriber_id" = ? LIMIT ?[0m  [["conversation_id", 1], ["unsubscriber_type", "User"], ["unsubscriber_id", 1], ["LIMIT", 1]]
+  ↳ /Users/rsoul/.rvm/rubies/ruby-2.5.1/lib/ruby/gems/2.5.0/gems/activesupport-5.2.0/lib/active_support/subscriber.rb:101
+  [1m[36mCACHE Mailboxer::Conversation::OptOut Exists (0.0ms)[0m  [1m[34mSELECT  1 AS one FROM "mailboxer_conversation_opt_outs" WHERE "mailboxer_conversation_opt_outs"."conversation_id" = ? AND "mailboxer_conversation_opt_outs"."unsubscriber_type" = ? AND "mailboxer_conversation_opt_outs"."unsubscriber_id" = ? LIMIT ?[0m  [["conversation_id", 1], ["unsubscriber_type", "User"], ["unsubscriber_id", 1], ["LIMIT", 1]]
+  ↳ /Users/rsoul/.rvm/rubies/ruby-2.5.1/lib/ruby/gems/2.5.0/gems/activesupport-5.2.0/lib/active_support/subscriber.rb:101
+  Rendered conversations/index.html.haml within layouts/application (44.7ms)
+Started GET "/rooms/HTwpMWlPy747/reservations" for 127.0.0.1 at 2018-09-20 21:11:06 +0200
+Started GET "/rooms/HTwpMWlPy747/messages" for 127.0.0.1 at 2018-09-20 21:11:06 +0200
+Processing by ReservationsController#index as HTML
+  Parameters: {"room_id"=>"HTwpMWlPy747"}
+Processing by MessagesController#index as HTML
+  [1m[36mRoom Load (0.3ms)[0m  [1m[34mSELECT  "rooms".* FROM "rooms" WHERE "rooms"."hash_id" = ? ORDER BY "rooms"."id" ASC LIMIT ?[0m  [["hash_id", "HTwpMWlPy747"], ["LIMIT", 1]]
+  ↳ /Users/rsoul/.rvm/rubies/ruby-2.5.1/lib/ruby/gems/2.5.0/gems/activesupport-5.2.0/lib/active_support/subscriber.rb:101
+  Parameters: {"room_id"=>"HTwpMWlPy747"}
+  [1m[36mRoom Load (0.2ms)[0m  [1m[34mSELECT  "rooms".* FROM "rooms" WHERE "rooms"."hash_id" = ? ORDER BY "rooms"."id" ASC LIMIT ?[0m  [["hash_id", "HTwpMWlPy747"], ["LIMIT", 1]]
+  ↳ /Users/rsoul/.rvm/rubies/ruby-2.5.1/lib/ruby/gems/2.5.0/gems/activesupport-5.2.0/lib/active_support/subscriber.rb:101
+  Rendering reservations/index.html.haml
+  [1m[36mReservation Load (0.2ms)[0m  [1m[34mSELECT "reservations".* FROM "reservations" WHERE "reservations"."room_id" = ? ORDER BY position[0m  [["room_id", 1]]
+  ↳ /Users/rsoul/.rvm/rubies/ruby-2.5.1/lib/ruby/gems/2.5.0/gems/activesupport-5.2.0/lib/active_support/subscriber.rb:101
+  Rendered reservations/index.html.haml (7.7ms)
+Completed 200 OK in 77ms (Views: 73.4ms | ActiveRecord: 0.5ms)
+
+
+  Rendering messages/index.html.haml
+  [1m[36mMessage Load (0.2ms)[0m  [1m[34mSELECT "messages".* FROM "messages" WHERE "messages"."room_id" = ?[0m  [["room_id", 1]]
+  ↳ /Users/rsoul/.rvm/rubies/ruby-2.5.1/lib/ruby/gems/2.5.0/gems/activesupport-5.2.0/lib/active_support/subscriber.rb:101
+  Rendered messages/index.html.haml (5.2ms)
+Completed 200 OK in 48ms (Views: 45.3ms | ActiveRecord: 0.4ms)
+
+
+  Rendered layouts/_navbar.html.haml (6.5ms)
+Completed 200 OK in 436ms (Views: 424.8ms | ActiveRecord: 5.4ms)
+
+
+Started GET "/conversations/3" for 127.0.0.1 at 2018-09-20 21:11:08 +0200
+Processing by ConversationsController#show as HTML
+  Parameters: {"id"=>"3"}
+  [1m[36mUser Load (0.4ms)[0m  [1m[34mSELECT  "users".* FROM "users" WHERE "users"."id" = ? LIMIT ?[0m  [["id", 1], ["LIMIT", 1]]
+  ↳ /Users/rsoul/.rvm/rubies/ruby-2.5.1/lib/ruby/gems/2.5.0/gems/activesupport-5.2.0/lib/active_support/subscriber.rb:101
+  [1m[36mMailboxer::Conversation Load (0.3ms)[0m  [1m[34mSELECT  DISTINCT "mailboxer_conversations".* FROM "mailboxer_conversations" INNER JOIN "mailboxer_notifications" ON "mailboxer_notifications"."conversation_id" = "mailboxer_conversations"."id" AND "mailboxer_notifications"."type" IN ('Mailboxer::Message') INNER JOIN "mailboxer_receipts" ON "mailboxer_receipts"."notification_id" = "mailboxer_notifications"."id" WHERE "mailboxer_notifications"."type" = ? AND "mailboxer_receipts"."receiver_id" = ? AND "mailboxer_receipts"."receiver_type" = ? AND "mailboxer_conversations"."id" = ? ORDER BY "mailboxer_conversations"."updated_at" DESC LIMIT ?[0m  [["type", "Mailboxer::Message"], ["receiver_id", 1], ["receiver_type", "User"], ["id", 3], ["LIMIT", 1]]
+  ↳ /Users/rsoul/.rvm/rubies/ruby-2.5.1/lib/ruby/gems/2.5.0/gems/activesupport-5.2.0/lib/active_support/subscriber.rb:101
+  Rendering conversations/show.html.haml within layouts/application
+  [1m[36mMailboxer::Message Load (0.3ms)[0m  [1m[34mSELECT  "mailboxer_notifications".* FROM "mailboxer_notifications" WHERE "mailboxer_notifications"."type" IN ('Mailboxer::Message') AND "mailboxer_notifications"."conversation_id" = ? ORDER BY "mailboxer_notifications"."created_at" ASC LIMIT ?[0m  [["conversation_id", 3], ["LIMIT", 1]]
+  ↳ /Users/rsoul/.rvm/rubies/ruby-2.5.1/lib/ruby/gems/2.5.0/gems/activesupport-5.2.0/lib/active_support/subscriber.rb:101
+  [1m[36mMailboxer::Receipt Load (0.2ms)[0m  [1m[34mSELECT "mailboxer_receipts".* FROM "mailboxer_receipts" WHERE "mailboxer_receipts"."notification_id" = ?[0m  [["notification_id", 3]]
+  ↳ /Users/rsoul/.rvm/rubies/ruby-2.5.1/lib/ruby/gems/2.5.0/gems/activesupport-5.2.0/lib/active_support/subscriber.rb:101
+  [1m[36mUser Load (0.3ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."id" = ?[0m  [["id", 1]]
+  ↳ /Users/rsoul/.rvm/rubies/ruby-2.5.1/lib/ruby/gems/2.5.0/gems/activesupport-5.2.0/lib/active_support/subscriber.rb:101
+  [1m[36mMailboxer::Conversation::OptOut Exists (0.1ms)[0m  [1m[34mSELECT  1 AS one FROM "mailboxer_conversation_opt_outs" WHERE "mailboxer_conversation_opt_outs"."conversation_id" = ? AND "mailboxer_conversation_opt_outs"."unsubscriber_type" = ? AND "mailboxer_conversation_opt_outs"."unsubscriber_id" = ? LIMIT ?[0m  [["conversation_id", 3], ["unsubscriber_type", "User"], ["unsubscriber_id", 1], ["LIMIT", 1]]
+  ↳ /Users/rsoul/.rvm/rubies/ruby-2.5.1/lib/ruby/gems/2.5.0/gems/activesupport-5.2.0/lib/active_support/subscriber.rb:101
+  [1m[36mCACHE Mailboxer::Conversation::OptOut Exists (0.0ms)[0m  [1m[34mSELECT  1 AS one FROM "mailboxer_conversation_opt_outs" WHERE "mailboxer_conversation_opt_outs"."conversation_id" = ? AND "mailboxer_conversation_opt_outs"."unsubscriber_type" = ? AND "mailboxer_conversation_opt_outs"."unsubscriber_id" = ? LIMIT ?[0m  [["conversation_id", 3], ["unsubscriber_type", "User"], ["unsubscriber_id", 1], ["LIMIT", 1]]
+  ↳ /Users/rsoul/.rvm/rubies/ruby-2.5.1/lib/ruby/gems/2.5.0/gems/activesupport-5.2.0/lib/active_support/subscriber.rb:101
+  [1m[36mMailboxer::Receipt Load (0.3ms)[0m  [1m[34mSELECT "mailboxer_receipts".* FROM "mailboxer_receipts" INNER JOIN "mailboxer_notifications" ON "mailboxer_notifications"."id" = "mailboxer_receipts"."notification_id" AND "mailboxer_notifications"."type" IN ('Mailboxer::Message') WHERE "mailboxer_notifications"."conversation_id" = ? AND "mailboxer_receipts"."receiver_id" = ? AND "mailboxer_receipts"."receiver_type" = ?[0m  [["conversation_id", 3], ["receiver_id", 1], ["receiver_type", "User"]]
+  ↳ /Users/rsoul/.rvm/rubies/ruby-2.5.1/lib/ruby/gems/2.5.0/gems/activesupport-5.2.0/lib/active_support/subscriber.rb:101
+  [1m[36mMailboxer::Message Load (0.3ms)[0m  [1m[34mSELECT  "mailboxer_notifications".* FROM "mailboxer_notifications" WHERE "mailboxer_notifications"."type" IN ('Mailboxer::Message') AND "mailboxer_notifications"."id" = ? LIMIT ?[0m  [["id", 3], ["LIMIT", 1]]
+  ↳ /Users/rsoul/.rvm/rubies/ruby-2.5.1/lib/ruby/gems/2.5.0/gems/activesupport-5.2.0/lib/active_support/subscriber.rb:101
+  [1m[36mCACHE User Load (0.0ms)[0m  [1m[34mSELECT  "users".* FROM "users" WHERE "users"."id" = ? LIMIT ?[0m  [["id", 1], ["LIMIT", 1]]
+  ↳ /Users/rsoul/.rvm/rubies/ruby-2.5.1/lib/ruby/gems/2.5.0/gems/activesupport-5.2.0/lib/active_support/subscriber.rb:101
+  [1m[36mCACHE Mailboxer::Message Load (0.0ms)[0m  [1m[34mSELECT  "mailboxer_notifications".* FROM "mailboxer_notifications" WHERE "mailboxer_notifications"."type" IN ('Mailboxer::Message') AND "mailboxer_notifications"."id" = ? LIMIT ?[0m  [["id", 3], ["LIMIT", 1]]
+  ↳ /Users/rsoul/.rvm/rubies/ruby-2.5.1/lib/ruby/gems/2.5.0/gems/activesupport-5.2.0/lib/active_support/subscriber.rb:101
+  [1m[36mCACHE User Load (0.0ms)[0m  [1m[34mSELECT  "users".* FROM "users" WHERE "users"."id" = ? LIMIT ?[0m  [["id", 1], ["LIMIT", 1]]
+  ↳ /Users/rsoul/.rvm/rubies/ruby-2.5.1/lib/ruby/gems/2.5.0/gems/activesupport-5.2.0/lib/active_support/subscriber.rb:101
+  Rendered conversations/show.html.haml within layouts/application (18.7ms)
+  Rendered layouts/_navbar.html.haml (6.5ms)
+Completed 200 OK in 104ms (Views: 96.1ms | ActiveRecord: 2.2ms)
+
+
